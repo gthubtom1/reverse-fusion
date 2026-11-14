@@ -50,7 +50,8 @@ configuration.
 
 ## RF-010 RF-22 completion label
 
-`reconstruction-product-v1` is written only after the four representative
+`reconstruction-product-v1-final` is written only after the four representative
 chains, host Builder, three-state acceptance, fresh-clone lifecycle, provider
 boundaries and documentation consistency have direct Evidence. Future targets
-must start a new case instead of weakening this completion record.
+start new cases or small capability updates; they do not reopen the completed
+product architecture merely because every variant was not pre-executed.

@@ -1,8 +1,10 @@
 # Target capability matrix
 
-Reverse Fusion does not promise that every future target has been executed in
-advance. It defines the route and evidence contract for each target family and
-adds a representative fixture when a provider path is implemented.
+Reverse Fusion does not need to execute every future target in advance. It
+defines the route, evidence contract and variant-handling path for each target
+family; representative fixtures validate that the shared pipeline is wired
+correctly. New packers, obfuscators, runtimes and providers enter as target
+cases or small capability updates.
 
 | Family | Static route | Dynamic route | Current state | First real target gate |
 |---|---|---|---|---|

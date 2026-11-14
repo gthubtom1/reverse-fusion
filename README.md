@@ -8,7 +8,7 @@ GitHub：<https://github.com/gthubtom1/reverse-fusion>
 
 ## 当前状态
 
-仓库已完成 `RF-22`，状态为 `reconstruction-product-v1`。WASM、Web/JavaScript、PE/.NET 和 APK/DEX 都有独立的原版 Evidence、Spec tasks、宿主 Builder candidate、构建/运行观察、差分、proof、cleanup 和 obligation ledger。未知能力仍按 REA 的边界保留为 `unknown`，不会被静态相似度升级成通过。
+仓库已完成 `RF-22`，状态为 `reconstruction-product-v1-final`。WASM、Web/JavaScript、PE/.NET 和 APK/DEX 都有独立的原版 Evidence、Spec tasks、宿主 Builder candidate、构建/运行观察、差分、proof、cleanup 和 obligation ledger。代表性目标用于验证统一逻辑，未来目标通过同一套 pipeline 进入新 case；未知能力仍按 REA 的边界保留为 `unknown`，不会被静态相似度升级成通过。
 
 已经提供：
 
@@ -34,7 +34,7 @@ GitHub：<https://github.com/gthubtom1/reverse-fusion>
 - normal-dev、analysis、reconstruction、follow-up profiles。
 - 上游更新和上下文交接文档。
 
-当前宿主事实仍单独记录：Codex/Pi 握手通过，Claude CLI 可启动但当前主机没有登录凭据；Craft 原生 R46 backend 未资格化，但真实 Codex host-owned Builder 已完成六项 bounded transport。模型始终属于当前宿主，仓库不选择或下载模型。
+当前宿主事实仍单独记录：Codex/Pi 握手通过，Claude CLI 可启动但当前主机没有登录凭据；Craft 原生 R46 backend 未资格化，但真实 Codex host-owned Builder 已完成六项 transport。模型始终属于当前宿主，仓库不选择或下载模型。
 
 仓库自己的 Reverse 路由不依赖旧 `reverse-workflow` receipt。它从
 `components/reverse-core/routing.json` 读取固定版本的声明式规则，并把

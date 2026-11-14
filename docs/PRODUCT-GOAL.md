@@ -22,6 +22,22 @@ Reverse Fusion 最终要提供一套可迁移的智能体工作流：用户把�
 
 WASM fixture 只能证明这条链的一个最小样本，不能代表任意目标已经完成。
 
+## 最终完成的含义
+
+`reconstruction-product-v1-final` 的完成标准是产品逻辑和工作流已经闭合：
+路由、case、REA Evidence、Spec tasks、宿主 Builder、候选构建/运行、差分、
+修正任务、proof、obligation ledger、cleanup、provider 边界和交接文档都由
+同一套可迁移合同连接起来。
+
+代表性目标用于验证这些合同和组件之间的连接关系，不要求预先执行每一种未来
+软件、架构、加壳、混淆或反调试变体。未来目标通过相同的路由和证据合同进入新
+case；目标级结果仍按 `pass`、`fail`、`unknown`、`blocked` 或 `unsupported`
+记录。产品完成表示面对新目标有正确的处理逻辑和恢复路径，不表示所有未来目标
+已经提前得到 pass。
+
+完成后的正常工作是新 provider、工具版本、目标专用 probe 和分析规则的小版本
+演进；基本架构、职责划分、证据链和部署合同不再重做。
+
 ## 模型归属
 
 Reverse Fusion 不选择、不绑定、不下载模型，也不把某个模型名称写成产品依赖。
@@ -44,12 +60,12 @@ Reverse Fusion 不选择、不绑定、不下载模型，也不把某个模型�
 
 ## 最终完成门
 
-只有以下条件全部成立，才能把项目标记为 `reconstruction-product-v1`：
+只有以下条件全部成立，才能把项目标记为 `reconstruction-product-v1-final`：
 
 1. fresh clone 在 Windows、Linux 或 macOS 的支持宿主上完成仓库本地安装、plan、doctor、update、uninstall；没有旧 reverse-workflow receipt 也能执行仓库自己的路由入口。
 2. Codex、Pi、Claude 至少完成宿主加载协议验证；每个宿主的登录缺失单独记录，不能把宿主阻塞伪造成通过。
 3. Reverse、REA、Spec Kit 和 Builder 只有一个明确 owner，所有 Evidence、任务、candidate 和差分结果都有持久引用。
-4. 至少四类真实目标完成端到端链：WASM、Web/JavaScript、PE/.NET 或 Native、APK/DEX。每类都必须有原版分析、冻结任务、真实候选输出、构建/运行观察和差分结果。未来目标不需要穷举，但已声明支持的类别不能只停留在 planned。
+4. 至少四类代表性目标完成端到端链：WASM、Web/JavaScript、PE/.NET 或 Native、APK/DEX。每类都必须有原版分析、冻结任务、真实候选输出、构建/运行观察和差分结果。代表性链验证产品合同和变体处理逻辑；未来目标不需要穷举，目标族也不能只停留在 planned。
 5. 至少一条真实 Builder 链使用宿主自己的 agent/model 生成或修改候选文件，并完成 prepare、build、check、refine、return_summary、cleanup 六项能力；复制 fixture 的 fallback 只能作为测试路径。
 6. 至少一个正确候选、一个行为错误候选和一个 Evidence 缺失候选分别得到 pass、fail、unknown；至少一个构建或 provider 缺失场景得到 blocked/unsupported。
 7. 加壳、混淆、动态行为或 provider 缺失时，系统保留 unknown 和下一步 probe，不把静态相似或模型自述升级成等价结论。
@@ -60,9 +76,9 @@ Reverse Fusion 不选择、不绑定、不下载模型，也不把某个模型�
 ## 当前版本的正确标签
 
 RF-22 已闭合本文件定义的 v1 完成门，当前仓库标签为
-`reconstruction-product-v1`。四类代表性目标已经完成 bounded
+`reconstruction-product-v1-final`。四类代表性目标已经完成统一的
 analysis-to-reconstruction 链：WASM ledger ready；Web/JavaScript 的选定
 export obligation ledger ready，同时保留 REA 对未覆盖 package/parser 范围的
 unknown；PE/.NET ledger ready；APK/DEX 静态 ledger ready，Android 设备运行层
-在无 adb/emulator 的主机上保持 unknown。未来目标仍必须沿用同一证据合同，不能把
-这些代表性样本扩大成任意目标的等价声明。
+在无 adb/emulator 的主机上保持 unknown。未来目标沿用同一证据合同，通过新增
+case、probe 或 provider 进行小版本演进。

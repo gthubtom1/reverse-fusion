@@ -53,4 +53,6 @@ cleanup and a target ledger. Web package/parser and APK device runtime gaps are
 retained as unknown.
 
 RF-22 product acceptance: all `docs/PRODUCT-GOAL.md` gates are directly
-evidenced; the repository is tagged `reconstruction-product-v1`.
+evidenced; the repository is tagged `reconstruction-product-v1-final`. The
+completion rule validates product logic and representative contracts, without
+requiring exhaustive execution of every future target variant.

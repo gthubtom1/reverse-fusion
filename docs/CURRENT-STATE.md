@@ -1,11 +1,13 @@
 # Current State
 
 Stage: RF-22
-Status: reconstruction-product-v1
+Status: reconstruction-product-v1-final
 
-RF-17 through RF-22 are closed against `docs/PRODUCT-GOAL.md`. This is a
-bounded, evidence-driven reconstruction product: it does not claim that every
-future target, packer, obfuscator or runtime provider has already been tested.
+RF-17 through RF-22 are closed against `docs/PRODUCT-GOAL.md`. The product
+logic and workflow are complete: representative targets validate the shared
+contracts, while future target variants enter new cases through the same
+route/Evidence/Spec/Builder/comparison/ledger pipeline. Exhaustive execution of
+every future target is not a product completion requirement.
 
 Completed product gates:
 
@@ -28,7 +30,7 @@ Completed product gates:
   runtime proof `ev_15fee3b64989528f65eacac69ae67f6085bb053619730330dfa448fd0162f8b9`,
   ledger `rol_39c38b659a45e5b080c5dc55870f154eb17b9e484fb998aacba88d07cd579c48`,
   `required_open=0`. Static shape remains `partial`; package/parser scope is
-  recorded as unknown in the acceptance record.
+  recorded as unknown in the acceptance record and is handled by future probes.
 - PE/.NET: original `ev_062f2f49691e51cf4fe728d0dca75761220b14432f4ee53a4715429c4f600a16`,
   candidate `ev_4ed5fcd1923341556d97a39443a426d1c9809e71755f71191af465fb372651ab`,
   comparison `ev_8204b1f0b84f883aec5b4480f78865ffbf2faff7ad35c0919e156e96326e5832`,

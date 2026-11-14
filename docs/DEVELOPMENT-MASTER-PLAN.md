@@ -29,6 +29,8 @@ Reconstruction-product work after RF-16:
 - RF-21: one real APK/DEX reconstruction vertical slice (completed; pinned
   JADX provider, static proof and ledger ready; device runtime unknown).
 - RF-22: final reconstruction-product acceptance (completed after every
-  `docs/PRODUCT-GOAL.md` gate was directly checked).
+  `docs/PRODUCT-GOAL.md` gate was directly checked; completion means the shared
+  product logic is closed, while future target variants use new cases and
+  probes rather than requiring exhaustive pre-execution).
 
 Each phase requires a checkpoint, focused tests, a current-state update and a rollback path before the next phase starts.

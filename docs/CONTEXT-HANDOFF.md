@@ -7,7 +7,7 @@ state from chat history alone.
 Current handoff (2026-11-15, RF-22):
 
 - Repository: https://github.com/gthubtom1/reverse-fusion, branch `master`.
-- Status: `reconstruction-product-v1`; RF-17 portable route, RF-18 real
+- Status: `reconstruction-product-v1-final`; RF-17 portable route, RF-18 real
   host-owned Builder, RF-19 Web, RF-20 PE/.NET, RF-21 APK/DEX and RF-22 release
   acceptance are closed.
 - Representative ledgers: WASM
