@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/reverse-fusion/external-baseline-v1.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "root", "bundle_sha256", "artifacts"],
+  "properties": {
+    "version": {"const": 1},
+    "root": {"type": "string", "minLength": 1},
+    "bundle_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "artifacts": {"type": "array", "items": {"type": "object", "additionalProperties": false}}
+  }
+}

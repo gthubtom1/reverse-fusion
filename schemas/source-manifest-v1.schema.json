@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/reverse-fusion/source-manifest-v1.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "project", "components"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "project": {"const": "reverse-fusion"},
+    "components": {"type": "array", "items": {"type": "object"}}
+  }
+}

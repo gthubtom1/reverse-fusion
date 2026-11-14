@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "project": "reverse-fusion",
+  "components": [
+    {
+      "id": "reverse-core",
+      "kind": "owned-enhancement",
+      "path": "components/reverse-core",
+      "source": "https://github.com/gthubtom1/reverse-skill",
+      "base_commit": "3fdbb927b474dc23ef2e19403d5464dcb9702cec",
+      "policy": "new-project-owned"
+    },
+    {
+      "id": "rea",
+      "kind": "official",
+      "source": "https://github.com/morluto/rea",
+      "distribution": "official-package-or-existing-install",
+      "policy": "official-default; fork only after proven capability gap"
+    },
+    {
+      "id": "spec-kit",
+      "kind": "official",
+      "source": "https://github.com/github/spec-kit",
+      "distribution": "official-cli",
+      "policy": "official-default; project-local artifacts"
+    },
+    {
+      "id": "craft-bounded",
+      "kind": "owned-adapter",
+      "source": "https://github.com/storytold/craft-anything",
+      "distribution": "fixed-upstream-plus-patch-series",
+      "policy": "patch first; fork after repeated seam failure"
+    },
+    {
+      "id": "host-adapters",
+      "kind": "owned-adapter",
+      "source": "reverse-fusion",
+      "distribution": "repository",
+      "policy": "single-repository"
+    }
+  ]
+}

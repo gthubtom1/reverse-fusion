@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/reverse-fusion/handoff-v1.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "case", "original", "implementation", "baseline", "checks", "builder", "owner"],
+  "properties": {
+    "version": {"const": 1},
+    "case": {"type": "object"},
+    "original": {"type": "object"},
+    "implementation": {"type": "object"},
+    "baseline": {"type": "object"},
+    "checks": {"type": "object"},
+    "builder": {"type": "object"},
+    "owner": {"type": "object"}
+  }
+}

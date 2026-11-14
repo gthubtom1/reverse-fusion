@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/reverse-fusion/candidate-result-v1.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "disposition", "tasks", "checks", "cleanup"],
+  "properties": {
+    "version": {"const": 1},
+    "disposition": {"enum": ["candidate", "needs-evidence", "needs-spec", "needs-scope", "unsupported", "failed", "blocked-cleanup"]},
+    "tasks": {"type": "array", "items": {"type": "string"}},
+    "checks": {"type": "array", "items": {"type": "object"}},
+    "cleanup": {"type": "object"}
+  }
+}
