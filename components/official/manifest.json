@@ -8,28 +8,36 @@
       "path": "components/reverse-core",
       "source": "https://github.com/gthubtom1/reverse-skill",
       "base_commit": "3fdbb927b474dc23ef2e19403d5464dcb9702cec",
-      "policy": "new-project-owned"
+      "policy": "new-project-owned",
+      "audit_commit": "3fdbb927b474dc23ef2e19403d5464dcb9702cec",
+      "audit_version": "enhanced reverse audit baseline"
     },
     {
       "id": "rea",
       "kind": "official",
       "source": "https://github.com/morluto/rea",
       "distribution": "official-package-or-existing-install",
-      "policy": "official-default; fork only after proven capability gap"
+      "policy": "official-default; fork only after proven capability gap",
+      "audit_commit": "2343e5692595ae9c08ce7de5bb91460118e67ed2",
+      "audit_version": "rea-agents 6.9.0"
     },
     {
       "id": "spec-kit",
       "kind": "official",
       "source": "https://github.com/github/spec-kit",
       "distribution": "official-cli",
-      "policy": "official-default; project-local artifacts"
+      "policy": "official-default; project-local artifacts",
+      "audit_commit": "2ee2b1e8005905db05f5717300a469b3068b908f",
+      "audit_version": "specify CLI 1.4.0 receipt"
     },
     {
       "id": "craft-bounded",
       "kind": "owned-adapter",
       "source": "https://github.com/storytold/craft-anything",
       "distribution": "fixed-upstream-plus-patch-series",
-      "policy": "patch first; fork after repeated seam failure"
+      "policy": "patch first; fork after repeated seam failure",
+      "audit_commit": "8374ad71544f2cc44698ea74ef990aa31600bac6",
+      "audit_version": "Craft upstream 0.6.1 workspace"
     },
     {
       "id": "host-adapters",
