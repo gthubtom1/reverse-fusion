@@ -1,7 +1,7 @@
 # Current State
 
 Stage: RF-16
-Status: final-v1-accepted-with-declared-boundaries
+Status: framework-v1-baseline; reconstruction-v1-in-progress
 
 Completed:
 
@@ -41,6 +41,8 @@ Not yet connected or intentionally unverified:
 - Qualified Craft R46 backend execution and real model build.
 - Host loading/handshake and real target behavior.
 
-Acceptance: RF-01 through RF-16 bounded gates pass where the host supports them; the WASM obligation ledger is `ready` with `required_open: 0`; fresh-clone installation and release checks pass; Codex/Pi host handshakes and Craft agent-cli transport are verified. Claude's missing credential and native Craft R46 qualification remain explicit boundaries. Final v1 is accepted within the declared capability matrix. Provider/runtime gaps remain explicitly bounded in `docs/PROVIDER-STATUS.md` and `docs/FINAL-RELEASE-ACCEPTANCE.md`.
+Framework acceptance: RF-01 through RF-16 bounded gates pass where the host supports them; the WASM obligation ledger is `ready` with `required_open: 0`; fresh-clone installation and release checks pass; Codex/Pi host handshakes and Craft agent-cli transport are verified. Claude's missing credential and native Craft R46 qualification remain explicit boundaries. This is framework acceptance, not final reconstruction-product acceptance. Provider/runtime gaps remain explicitly bounded in `docs/PROVIDER-STATUS.md` and `docs/FINAL-RELEASE-ACCEPTANCE.md`.
 
-Next single action: when a real target is supplied, attach its original Evidence bundle and reuse this route, Spec, Craft, comparison, proof and ledger chain for that case.
+Product correction: the repository currently proves a framework baseline and one WASM fixture chain. It is not yet the final reconstruction product described in `docs/PRODUCT-GOAL.md`.
+
+Next single action: make Reverse routing work from a fresh clone without an old receipt, then connect one real host-owned Builder to a real target reconstruction case.

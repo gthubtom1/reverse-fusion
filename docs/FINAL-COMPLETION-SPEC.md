@@ -4,9 +4,10 @@ The project is final only when every gate below is either verified or has an
 explicit supported boundary recorded in the capability matrix. Intermediate
 milestones are progress records, not final acceptance.
 
-Current release status: **accepted within the declared capability boundaries**.
-The gate-by-gate evidence and retained provider limits are recorded in
-`docs/FINAL-RELEASE-ACCEPTANCE.md`.
+Current release status: **framework baseline accepted; reconstruction product in progress**.
+The bounded framework evidence and retained provider limits are recorded in
+`docs/FINAL-RELEASE-ACCEPTANCE.md`; the broader product contract is in
+`docs/PRODUCT-GOAL.md`.
 
 1. A fresh clone can run the repository-local install/plan/doctor path on each
    supported host family without modifying global client configuration.

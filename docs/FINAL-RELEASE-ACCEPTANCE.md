@@ -1,5 +1,8 @@
 # Final v1 release acceptance
 
+This document accepts the **framework baseline** only. It does not close the
+broader reconstruction-product contract in `docs/PRODUCT-GOAL.md`.
+
 Recorded 2026-11-14 after commit `5de732c` was pushed to
 `https://github.com/gthubtom1/reverse-fusion`.
 

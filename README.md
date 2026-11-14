@@ -8,7 +8,7 @@ GitHub：<https://github.com/gthubtom1/reverse-fusion>
 
 ## 当前状态
 
-仓库目前处于 `RF-14`：合同、唯一逆向路由、Spec Kit 项目层、Craft bounded gate、宿主发现、真实 REA WASM Evidence、正式 obligation ledger 和代表性验收切片已具备；真实 provider 按宿主实际能力标记。
+仓库目前处于 `RF-16`：framework-v1-baseline；合同、WASM Evidence 链、obligation ledger、Spec Kit 项目层、Craft bounded gate 和宿主探针已具备，真实 reconstruction-product-v1 仍在进行中。
 
 已经提供：
 
@@ -27,10 +27,11 @@ GitHub：<https://github.com/gthubtom1/reverse-fusion>
 - `scripts/run-wasm-vertical.ps1` 自动重建原版/正确候选/错误候选 Evidence 并运行三态验收。
 - `scripts/run-rea-ledger.ps1` 将原版/候选 Evidence、接口比较和 WABT 运行结果组装为正式 `rea.reconstruction-proof`，再调用官方 REA ledger 做 fail-closed 闭环。
 - `scripts/run-host-handshakes.ps1` 对 Codex、Pi、Claude 执行只读固定 sentinel 探针，记录真实加载、退出码、阻塞原因和 `config_mutation=false`。
+- `docs/PRODUCT-GOAL.md` 是最终产品合同；`docs/HANDOFF-PROMPT.md` 是交给下一位智能体的持续交接提示词。
 - normal-dev、analysis、reconstruction、follow-up profiles。
 - 上游更新和上下文交接文档。
 
-还没有把真实 provider、模型、目标或宿主配置接入这个新仓库。分析和复刻执行会在后续阶段按 `docs/DEVELOPMENT-MASTER-PLAN.md` 逐步加入。
+当前已验证部分 provider transport，但真实目标 Builder、独立 portable Reverse 路由以及 Web/PE/APK 等代表性复刻链仍按 `docs/PRODUCT-GOAL.md` 继续完成。
 
 ## 给智能体的快速开始
 
@@ -91,5 +92,7 @@ Linux/macOS 删除仓库内 `.venv` 即可。所有入口都限制在仓库目�
 - `docs/TARGET-CAPABILITY-MATRIX.md`
 - `docs/FINAL-COMPLETION-SPEC.md`
 - `docs/FINAL-RELEASE-ACCEPTANCE.md`
+- `docs/PRODUCT-GOAL.md`
+- `docs/HANDOFF-PROMPT.md`
 - `docs/CONTEXT-HANDOFF.md`
 - `docs/ACCEPTANCE-MATRIX.md`
