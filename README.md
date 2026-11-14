@@ -4,9 +4,11 @@
 
 这个仓库是一个独立项目。它不修改旧的 `reverse-skill`、旧 installer、当前 REA 安装、当前 Craft 安装或当前 Codex 配置。
 
+GitHub：<https://github.com/gthubtom1/reverse-fusion>
+
 ## 当前状态
 
-仓库目前处于 `RF-01`：合同和静态部署入口阶段。
+仓库目前处于 `RF-04`：合同、路由桥、适配器和代表性验收切片已具备，真实 provider 仍按宿主实际能力标记。
 
 已经提供：
 
@@ -14,6 +16,10 @@
 - 官方组件 source manifest。
 - 版本化 handoff、external baseline、candidate result 合同。
 - `plan`、`doctor`、`contracts`、`handoff` 静态入口。
+- `install`、`update`、`uninstall` 生命周期入口（默认 dry-run，`--apply` 只写本仓库 `state/`）。
+- `bridge` 对接已安装 enhanced reverse router 的 dry-run 路由结果，不复制第二套路由表。
+- REA evidence/bundle、Spec Kit pointer、Craft bounded candidate 的 typed adapter。
+- `accept --fixture console` 纵向切片：正确候选通过、故意错误候选失败、缺证据返回 unknown。
 - normal-dev、analysis、reconstruction、follow-up profiles。
 - 上游更新和上下文交接文档。
 
@@ -36,7 +42,22 @@ python -m reverse_fusion contracts
 python -m reverse_fusion plan --client auto --format markdown
 python -m reverse_fusion doctor --format markdown
 python -m reverse_fusion handoff --check
+python -m reverse_fusion install --client auto
+python -m reverse_fusion accept --fixture console --candidate correct --record
 ```
+
+在新电脑上的最短部署路径：
+
+```text
+git clone https://github.com/gthubtom1/reverse-fusion.git
+cd reverse-fusion
+python -m venv .venv
+python -m pip install -e .
+python -m reverse_fusion plan --client auto --intent analysis --format markdown
+python -m reverse_fusion doctor --format markdown
+```
+
+`install`、`update`、`uninstall` 默认只生成计划；需要写入本仓库状态时显式增加 `--apply`。真实 REA/Craft provider、宿主加载和目标级行为验收保留为 `unverified` 或 `unsupported`，不会被静态命令伪造为通过。
 
 ## 单仓库边界
 

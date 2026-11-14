@@ -1,12 +1,12 @@
 # Acceptance Matrix
 
-RF-01 static contracts: JSON parses, versions fixed, unknown fields rejected, profiles match, official manifest is valid.
+RF-01 static contracts: JSON parses, versions fixed, unknown fields rejected, profiles match, official/source manifests agree, path and hash boundaries are checked.
 
-RF-02 route/case: dry-run route, no duplicate route owner, case resume and timeline delta.
+RF-02 route/case: dry-run route, no duplicate route owner, case pointer, decision delta and carry-forward references.
 
-RF-03 REA: official handshake, Evidence/bundle integrity and comparison wrappers.
+RF-03 REA: typed Evidence/bundle/unknown/comparison wrappers; real MCP handshake remains host-dependent.
 
-RF-04 vertical slice: correct pass, wrong fail, missing evidence unknown.
+RF-04 vertical slice: console correct pass, wrong fail, missing evidence unknown (automated).
 
 RF-05 Craft: fixed source/patch identity, six-tool gate, baseline/path/task/model drift rejection, typed report and cleanup.
 

@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "upstream": {
+    "repository": "https://github.com/storytold/craft-anything",
+    "commit": "8374ad71544f2cc44698ea74ef990aa31600bac6",
+    "release": "0.6.1"
+  },
+  "patch_series": [
+    "0001-engine-contract-and-dispatch.patch",
+    "0002-bounded-worker-and-checks.patch",
+    "0003-bounded-mcp-exposure.patch",
+    "0004-integration-and-build-support.patch"
+  ],
+  "required_seams": ["accepted-research", "external-baseline", "policy-runtime", "source-lease"],
+  "policy": {
+    "single_writer": true,
+    "bounded_execution": true,
+    "cleanup_required": true,
+    "consent_flag_never_implicit": true
+  }
+}

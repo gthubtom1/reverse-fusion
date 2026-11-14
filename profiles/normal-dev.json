@@ -1,1 +1,1 @@
-{"profile":"normal-dev","route":"host-native","components":[],"craft":"disabled","spec":"on-demand","rea":"disabled"}
+{"profile":"normal-dev","route":"host-native","components":["host-adapters"],"craft":"disabled","spec":"on-demand","rea":"disabled"}

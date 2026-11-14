@@ -11,4 +11,7 @@
 - source/lock/toolchain requirements。
 - update and rollback instructions。
 
-RF-01 只记录边界，不构建 runtime。真实 bundle 接入由 RF-05 完成。
+当前仓库已经提供 `CraftAdapter.prepare()` / `run()` 的 typed boundary；没有
+provider/backend 时返回 `unsupported`，有 backend 时返回带 cleanup 状态的
+candidate。`bundle-manifest.json` 固定 upstream commit、四个 patch seam 和
+single-writer/cleanup policy。真实 bundle 执行仍由原 Spec runner 在满足能力门后选择。

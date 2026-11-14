@@ -5,6 +5,13 @@ description = "Evidence-driven reverse engineering and reconstruction orchestrat
 requires-python = ">=3.11"
 readme = "README.md"
 
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["reverse_fusion*"]
+
 [project.scripts]
 reverse-fusion = "reverse_fusion.cli:main"
 

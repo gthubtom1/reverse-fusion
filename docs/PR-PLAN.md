@@ -1,10 +1,10 @@
 # PR Plan
 
-PR-00 docs and skeleton
-PR-01 contracts and static checker
-PR-02 Reverse case bridge
-PR-03 official REA adapter
-PR-04 REA-only vertical slice
+PR-00 docs and skeleton (merged)
+PR-01 contracts and static checker (merged)
+PR-02 Reverse case bridge (merged at dry-run pointer level)
+PR-03 official REA adapter (merged at typed contract level)
+PR-04 REA-only vertical slice (merged deterministic fixture)
 PR-05 Craft bounded bundle
 PR-06 Spec Kit integration
 PR-07 acceptance plane

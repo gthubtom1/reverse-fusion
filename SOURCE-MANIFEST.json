@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "project": "reverse-fusion",
+  "components": [
+    {
+      "id": "reverse-core",
+      "kind": "owned-enhancement",
+      "source": "https://github.com/gthubtom1/reverse-skill",
+      "commit": "3fdbb927b474dc23ef2e19403d5464dcb9702cec",
+      "role": "single route, case and reverse orchestration owner"
+    },
+    {
+      "id": "rea",
+      "kind": "official",
+      "source": "https://github.com/morluto/rea",
+      "commit": "2343e5692595ae9c08ce7de5bb91460118e67ed2",
+      "role": "official evidence and comparison backend"
+    },
+    {
+      "id": "spec-kit",
+      "kind": "official",
+      "source": "https://github.com/github/spec-kit",
+      "commit": "2ee2b1e8005905db05f5717300a469b3068b908f",
+      "role": "project-local specification and task contract"
+    },
+    {
+      "id": "craft-bounded",
+      "kind": "owned-adapter",
+      "source": "https://github.com/storytold/craft-anything",
+      "commit": "8374ad71544f2cc44698ea74ef990aa31600bac6",
+      "role": "bounded single-writer candidate builder"
+    },
+    {
+      "id": "host-adapters",
+      "kind": "owned-adapter",
+      "source": "reverse-fusion",
+      "commit": "local",
+      "role": "portable host detection and lifecycle commands"
+    }
+  ]
+}
