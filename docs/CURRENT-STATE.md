@@ -50,10 +50,10 @@ Completed product gates:
   `unknown` because this host has no adb device or emulator.
 - Global three-state gate: WASM correct candidate `pass`, intentionally wrong
   candidate `fail`, missing Evidence `unknown`.
-- Fresh clone `12d092096aeeef921b03989ee8e2a7987ab8b36e` in
-  `fresh-clone-rf22-portable` passed contracts, plan, doctor, handoff,
-  install/update/uninstall dry-runs, local bridge, Windows/POSIX installer
-  dry-runs and 14 Python tests. Generated Evidence, candidates and build
+- Fresh clone `f8323ad159a129081a71a51f6579ee2241426d7f` in
+  `fresh-clone-rf23-final` passed contracts, plan, doctor, handoff,
+  install/update/uninstall dry-runs, local bridge with `--record`,
+  Windows/POSIX installer dry-runs and 18 Python tests. Generated Evidence, candidates and build
   outputs remain ignored under `state/` and fixture build directories.
 - Portable deployment and conversational usage are documented in
   `docs/DEPLOYMENT-GUIDE.md`; the README now explains normal-dev, nested

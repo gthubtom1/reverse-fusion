@@ -7,7 +7,7 @@ need to be exhaustively pre-executed for the product to be complete.
 
 | Gate | Direct evidence | Result |
 |---|---|---|
-| Fresh clone and lifecycle | Remote `https://github.com/gthubtom1/reverse-fusion` at commit `12d092096aeeef921b03989ee8e2a7987ab8b36e`; `fresh-clone-rf22-portable` runs local `install`, `plan`, `doctor`, `update`, `uninstall`, `contracts`, `handoff`, `bridge --source local`, Windows and POSIX installer dry-runs, and 14 Python tests without an old receipt | pass |
+| Fresh clone and lifecycle | Remote `https://github.com/gthubtom1/reverse-fusion` at commit `f8323ad159a129081a71a51f6579ee2241426d7f`; `fresh-clone-rf23-final` runs local `install`, `plan`, `doctor`, `update`, `uninstall`, `contracts`, `handoff`, `bridge --source local --record`, Windows and POSIX installer dry-runs, and 18 Python tests without an old receipt | pass |
 | Single route owner | `bridge --source local` resolves repository `routing.json`; external route is explicit read-only compatibility | pass |
 | Official identities | `SOURCE-MANIFEST.json`, official REA `6.9.0`, Spec Kit `1.4.0`, Craft `0.6.1`, JADX MCP `0.7.1` manifest | pass |
 | Real host Builder | Codex generated the APK candidate; `prepare`, `build`, `check`, `refine`, `return_summary`, `cleanup` pass; no `--model`; `config_mutation=false` | pass |
