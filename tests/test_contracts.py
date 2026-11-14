@@ -156,6 +156,18 @@ class ContractTests(unittest.TestCase):
             self.assertEqual(result["status"], "recorded")
             self.assertEqual(result["probes"][0]["status"], "pass")
 
+            # Windows PowerShell 5 may leave a UTF-8 BOM in Out-File output.
+            (state / "host-handshakes.json").write_text(
+                json.dumps({
+                    "config_mutation": False,
+                    "probes": [{"id": "codex", "status": "pass", "version": "x", "exit_code": 0}],
+                }),
+                encoding="utf-8-sig",
+            )
+            bom_result = read_handshake_record(root)
+            self.assertEqual(bom_result["status"], "recorded")
+            self.assertEqual(bom_result["probes"][0]["id"], "codex")
+
     def test_host_config_snapshot_detects_changes_without_reading_contents(self):
         before = {"status": "observed", "files": {"config.toml": "a"}}
         after = {"status": "observed", "files": {"config.toml": "b"}}

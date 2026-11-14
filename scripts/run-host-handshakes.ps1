@@ -103,5 +103,8 @@ $result = [ordered]@{
     config_mutation = @($probes | Where-Object { $_.config_mutation -eq $true }).Count -gt 0
     probes = @($probes)
 }
-$result | ConvertTo-Json -Depth 10 | Out-File -LiteralPath $outputPath -Encoding utf8
+$json = $result | ConvertTo-Json -Depth 10
+# Write BOM-less UTF-8 so Python and non-Windows consumers can read the record
+# without shell-specific decoding rules. The reader also accepts legacy BOM files.
+[IO.File]::WriteAllText($outputPath, $json, [Text.UTF8Encoding]::new($false))
 Write-Output ($result | ConvertTo-Json -Depth 10 -Compress)

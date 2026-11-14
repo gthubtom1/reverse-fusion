@@ -86,7 +86,10 @@ def read_handshake_record(root: Path) -> dict[str, Any]:
     if not path.is_file():
         return {"status": "unrecorded", "config_mutation": False, "probes": []}
     try:
-        value = json.loads(path.read_text(encoding="utf-8"))
+        # Windows PowerShell 5's `Out-File -Encoding utf8` emits a UTF-8 BOM.
+        # Accept both BOM and BOM-less records so a real host probe is readable
+        # on every supported Windows shell without weakening the schema checks.
+        value = json.loads(path.read_text(encoding="utf-8-sig"))
     except (OSError, json.JSONDecodeError):
         return {"status": "invalid", "config_mutation": False, "probes": []}
     probes = value.get("probes") if isinstance(value, dict) else None

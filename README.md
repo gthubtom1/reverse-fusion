@@ -8,7 +8,7 @@ GitHub：<https://github.com/gthubtom1/reverse-fusion>
 
 ## 当前状态
 
-仓库已完成 `RF-22`，状态为 `reconstruction-product-v1-final`。WASM、Web/JavaScript、PE/.NET 和 APK/DEX 都有独立的原版 Evidence、Spec tasks、宿主 Builder candidate、构建/运行观察、差分、proof、cleanup 和 obligation ledger。代表性目标用于验证统一逻辑，未来目标通过同一套 pipeline 进入新 case；未知能力仍按 REA 的边界保留为 `unknown`，不会被静态相似度升级成通过。
+仓库已完成 `RF-23`，状态为 `reconstruction-product-v1-final`。WASM、Web/JavaScript、PE/.NET 和 APK/DEX 都有独立的原版 Evidence、Spec tasks、宿主 Builder candidate、构建/运行观察、差分、proof、cleanup 和 obligation ledger。代表性目标用于验证统一逻辑，未来目标通过同一套 pipeline 进入新 case；未知能力仍按 REA 的边界保留为 `unknown`，不会被静态相似度升级成通过。RF-23 还补齐了 fresh clone 的本地领域技能正文、跨平台路径边界、持久化 case 指针、规范化 Evidence 和宿主配置快照。
 
 已经提供：
 

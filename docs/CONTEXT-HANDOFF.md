@@ -19,8 +19,11 @@ Current handoff (2026-11-15, RF-23):
   APK `rol_b9833a0dd114ad263d96217960a2990d87c9e3629048488d3f4f2379f93762b`.
   All four reviewed ledgers report `required_open: 0`.
 - Host record: Codex/Pi fixed-sentinel handshakes pass; Claude is explicitly
-  blocked by missing login. Codex generated the APK candidate and completed all
-  six Builder checks, including refine and cleanup.
+  blocked by missing login. The current Codex workspace has a repository-local
+  `state/install.json` receipt, a fresh real handshake record, and a live
+  host-owned Builder run that completed all six checks, including refine and
+  cleanup, with `config_mutation=false`. Host records are written as BOM-safe
+  UTF-8 and the reader accepts legacy PowerShell BOM output.
 - Provider record: `docs/PROVIDER-STATUS.md` records Craft native R46,
   Windows PTY, Web static unknowns and Android runtime unknowns separately.
 - Product contract and continuation prompt: `docs/PRODUCT-GOAL.md` and
