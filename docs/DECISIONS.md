@@ -55,3 +55,12 @@ chains, host Builder, three-state acceptance, fresh-clone lifecycle, provider
 boundaries and documentation consistency have direct Evidence. Future targets
 start new cases or small capability updates; they do not reopen the completed
 product architecture merely because every variant was not pre-executed.
+
+## RF-011 Nested subcases
+
+Normal development is a host-native baseline, not a separate universe. A main
+project may create an isolated analysis or reconstruction subcase at any point:
+the subcase owns its target path, route, Evidence, tasks and candidate; only
+reviewed Evidence-backed conclusions flow back into the main project. This
+allows a website, desktop application, APK or another project to be researched
+mid-development without forcing every main project into reconstruction mode.

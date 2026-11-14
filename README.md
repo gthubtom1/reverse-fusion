@@ -31,7 +31,7 @@ GitHub：<https://github.com/gthubtom1/reverse-fusion>
 - `scripts/run-rea-ledger.ps1` 将原版/候选 Evidence、接口比较和 WABT 运行结果组装为正式 `rea.reconstruction-proof`，再调用官方 REA ledger 做 fail-closed 闭环。
 - `scripts/run-host-handshakes.ps1` 对 Codex、Pi、Claude 执行只读固定 sentinel 探针，记录真实加载、退出码、阻塞原因和 `config_mutation=false`。
 - `docs/PRODUCT-GOAL.md` 是最终产品合同；`docs/HANDOFF-PROMPT.md` 是交给下一位智能体的持续交接提示词。
-- normal-dev、analysis、reconstruction、follow-up profiles。
+- normal-dev、analysis、reconstruction、follow-up profiles。normal-dev 是轻量主项目模式，但 Reverse/REA/Spec/Builder 可以在开发中途按需创建隔离 subcase，再把经过 Evidence 支持的结论带回主项目。
 - 上游更新和上下文交接文档。
 
 当前宿主事实仍单独记录：Codex/Pi 握手通过，Claude CLI 可启动但当前主机没有登录凭据；Craft 原生 R46 backend 未资格化，但真实 Codex host-owned Builder 已完成六项 transport。模型始终属于当前宿主，仓库不选择或下载模型。

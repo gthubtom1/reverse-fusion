@@ -52,9 +52,9 @@ Reverse Fusion 不选择、不绑定、不下载模型，也不把某个模型�
 
 ## 组件职责
 
-- **Reverse core**：唯一入口、路由、case、模式和复刻任务生命周期。新电脑没有旧 receipt 时也必须有仓库自己的可用路由；旧 reverse-skill 可以作为固定版本的来源或可选增强，但不能是唯一运行前提。
+- **Reverse core**：唯一入口、路由、case、模式和复刻任务生命周期。它既支持独立 reconstruction case，也支持在 normal-dev 主项目中按需创建隔离的 analysis/reconstruction subcase；新电脑没有旧 receipt 时也必须有仓库自己的可用路由；旧 reverse-skill 可以作为固定版本的来源或可选增强，但不能是唯一运行前提。
 - **REA**：原版分析、静态/动态 Evidence、comparison、unknown 和 obligation ledger。REA 保持官方版本，除非有证据支持的能力缺口。
-- **Spec Kit**：复刻模式的项目级意图、plan、tasks 和 converge 记录。normal-dev 可以关闭，reconstruction 必须保留冻结任务和来源引用。
+- **Spec Kit**：复刻模式的项目级意图、plan、tasks 和 converge 记录。normal-dev 默认按需启用；任何嵌套 subcase 一旦进入复刻阶段，就必须保留冻结任务和来源引用。
 - **Craft/Builder**：按冻结任务生成候选项目、执行构建、检查、修正和清理。模型由当前宿主提供；仓库 fallback 只能用于离线合同测试，不能代表真实复刻能力。
 - **Acceptance**：独立读取原版和候选 Evidence，输出 pass、fail、unknown、blocked 或 unsupported。模型自述、工具可见和 exit 0 都不属于业务验收。
 

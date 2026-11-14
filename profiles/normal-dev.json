@@ -1,1 +1,1 @@
-{"profile":"normal-dev","route":"host-native","components":["host-adapters"],"craft":"disabled","spec":"on-demand","rea":"disabled"}
+{"profile":"normal-dev","route":"host-native+reverse-on-demand","components":["host-adapters","reverse-core","rea"],"craft":"on-demand","spec":"on-demand","rea":"on-demand"}

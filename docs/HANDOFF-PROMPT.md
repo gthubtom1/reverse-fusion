@@ -43,6 +43,10 @@ target case 和完成门，并保留旧 case 的 Evidence、ledger 与 converge 
    并检查 provider 状态。
 2. 新目标先通过 `bridge --source local` 建 case，再在 `specs/` 写 spec、plan、
    tasks、converge；不要复制旧 ledger 当作新目标证据。
+   normal-dev 主项目可以在开发中途创建隔离 subcase：先保存主项目上下文，
+   再对外部网站、APK、桌面软件或其他目标执行 analysis/reconstruction，最后
+   将经过 Evidence 支持的结论作为主项目输入；不要把 subcase candidate 写回
+   主项目目录。
 3. Builder 使用宿主当前模型，调用中不得加入 `--model`；候选输出必须限制在
    case workspace 和 allowed outputs。
 4. 用对应 runner 生成 REA Evidence、proof 和 ledger；把静态未知、设备缺失、
