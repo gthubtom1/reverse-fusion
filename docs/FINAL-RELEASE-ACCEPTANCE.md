@@ -16,7 +16,8 @@ that every future target has already been analyzed or rebuilt.
 | Obligation closure | Proof `ev_59a710...`; ledger `rol_09e996...`; closure digest `eb14c2...`; `required_open=0` | pass |
 | Spec Kit | Project-local `.specify`, `spec.md`, `plan.md`, `tasks.md`, `converge.md` | pass |
 | Craft builder | `local-bounded-worker`; six-tool gate, single writer, digest and cleanup all pass | pass within fallback boundary |
-| Host plans | Codex, Pi and Claude discovered by repository-local adapter; no global config mutation | pass for discovery; loading remains separately unverified |
+| Host loading and handshake | `run-host-handshakes.ps1`: Codex and Pi returned fixed sentinels with exit 0; Claude started and returned the typed missing-login result | Codex/Pi pass; Claude blocked by missing credentials, explicitly recorded |
+| Craft backend transport | Craft `ai test Codex` and clean-room `chat --backend Codex` returned exit 0 and the fixed backend sentinel; Craft config hash restored to its pre-probe value | pass for agent-cli transport; native R46 bounded executor remains unqualified |
 | Target matrix | WASM verified; JavaScript/Web, Electron, PE/.NET, APK/DEX, Native and Protocol/API boundaries recorded | pass within declared matrix |
 | Three-state acceptance | WASM correct=`pass`, wrong=`fail`, missing=`unknown`; console slice has the same three states | pass |
 | Maintenance and rollback | Source drift tests, rollback record, upstream maintenance policy and context handoff | pass |
@@ -26,12 +27,15 @@ that every future target has already been analyzed or rebuilt.
 
 - Windows REA PTY process capture is recorded as unsupported because descendant
   cleanup is not qualified on this host.
-- The installed Craft companion is healthy as an MCP companion, but its receipt
-  does not qualify a native R46 model backend. The repository fallback remains
-  deterministic and explicit.
-- Host loading/handshake and arbitrary real-target behavior are reported as
-  unverified until a target and a provider with the required capability are
-  supplied.
+- The installed Craft companion is healthy as an MCP companion, and its Codex
+  agent-cli transport was exercised. Its receipt still does not qualify a
+  native R46 model backend, so the repository fallback remains deterministic
+  and explicit.
+- Codex and Pi host loading/handshake are verified by fixed-sentinel probes.
+  Claude loading reaches the CLI but is blocked by the missing host login/API
+  credential. A future authenticated host can rerun the same probe.
+- Arbitrary real-target behavior still requires a target and a provider with
+  the required capability.
 
 These boundaries are part of the release contract. A future target closes its
 own case by attaching original Evidence, freezing Spec Kit tasks, selecting a

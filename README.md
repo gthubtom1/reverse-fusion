@@ -26,6 +26,7 @@ GitHub：<https://github.com/gthubtom1/reverse-fusion>
 - `scripts/bootstrap-wabt.ps1` 和 `scripts/run-rea-wasm.ps1` 提供进程级 WABT/REA 复现入口，不写全局配置。
 - `scripts/run-wasm-vertical.ps1` 自动重建原版/正确候选/错误候选 Evidence 并运行三态验收。
 - `scripts/run-rea-ledger.ps1` 将原版/候选 Evidence、接口比较和 WABT 运行结果组装为正式 `rea.reconstruction-proof`，再调用官方 REA ledger 做 fail-closed 闭环。
+- `scripts/run-host-handshakes.ps1` 对 Codex、Pi、Claude 执行只读固定 sentinel 探针，记录真实加载、退出码、阻塞原因和 `config_mutation=false`。
 - normal-dev、analysis、reconstruction、follow-up profiles。
 - 上游更新和上下文交接文档。
 

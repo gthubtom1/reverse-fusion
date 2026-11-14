@@ -30,3 +30,11 @@ RF-14 obligation closure: the bounded WABT runner emits authenticated
 `rea.reconstruction-proof` Evidence, the canonical bundle retains source and
 comparison links, and the official REA ledger reports `ready` with
 `required_open: 0`.
+
+RF-15 release gate: the GitHub fresh clone passes install preview, contracts,
+plan, doctor and handoff from the remote `master` branch.
+
+RF-16 host/provider probes: Codex and Pi fixed-sentinel handshakes pass;
+Claude startup reaches a typed missing-login boundary; Craft Codex agent-cli
+`ai test` and clean-room chat pass while native R46 qualification remains a
+separate gate.

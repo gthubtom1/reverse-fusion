@@ -14,5 +14,7 @@ RF-11: reproducible WABT/REA Evidence slice (accepted for local WASM fixture)
 RF-12: real original/candidate Evidence vertical chain (accepted)
 RF-13: repository-owned bounded fallback writer (verified; upstream Craft R46 remains qualification-dependent)
 RF-14: formal REA reconstruction-proof Evidence and obligation ledger closure (accepted for the WASM fixture)
+RF-15: final release acceptance and fresh-clone closure (accepted)
+RF-16: real host handshake and Craft agent-cli transport probes (accepted with Claude credential boundary)
 
 Each phase requires a checkpoint, focused tests, a current-state update and a rollback path before the next phase starts.
