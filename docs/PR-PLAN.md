@@ -11,5 +11,6 @@ PR-07 acceptance plane
 PR-08 host profiles
 PR-09 hard-target evals
 PR-10 release/update/uninstall
+PR-11 formal REA reconstruction-proof and obligation-ledger closure
 
 Each PR must include source identities, checks, unknowns and rollback.

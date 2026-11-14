@@ -150,7 +150,7 @@ def check_contracts(root: Path) -> dict[str, Any]:
             raise ContractError("WABT manifest archive hash is malformed")
         if wabt.get("required_tools") != ["wasm-validate.exe", "wasm-objdump.exe", "wasm2wat.exe"]:
             raise ContractError("WABT manifest required tool set drifted")
-        for rel in ("scripts/bootstrap-wabt.ps1", "scripts/bootstrap-rea.ps1", "scripts/run-rea-doctor.ps1", "scripts/run-rea-wasm.ps1", "scripts/run-wasm-vertical.ps1", "scripts/install.ps1", "scripts/install.sh", "scripts/uninstall.ps1"):
+        for rel in ("scripts/bootstrap-wabt.ps1", "scripts/bootstrap-rea.ps1", "scripts/run-rea-doctor.ps1", "scripts/run-rea-wasm.ps1", "scripts/run-wasm-vertical.ps1", "scripts/run-rea-ledger.ps1", "scripts/run-rea-ledger.mjs", "scripts/install.ps1", "scripts/install.sh", "scripts/uninstall.ps1"):
             if not (root / rel).is_file():
                 raise ContractError(f"WABT/REA reproducibility script missing: {rel}")
         checks.append({"id": "wabt-reproducibility", "status": "pass"})

@@ -1,7 +1,7 @@
 # Current State
 
-Stage: RF-13
-Status: vertical-chain-and-bounded-fallback-verified; final-v1-gates-in-progress
+Stage: RF-14
+Status: rea-obligation-ledger-closed; final-v1-gates-in-progress
 
 Completed:
 
@@ -26,6 +26,8 @@ Completed:
 - RF-11 reproducible WABT 1.0.42 environment and real REA WASM Evidence accepted.
 - RF-12 real REA original/candidate Evidence plus correct/wrong/missing candidate acceptance path.
 - Repository-owned `local-bounded-worker` candidate fallback with six-tool, single-writer and cleanup contract.
+- Official REA obligation ledger is closed for the WASM vertical slice with a
+  bounded `rea.reconstruction-proof` Evidence record; `required_open` is zero.
 
 Not yet connected or intentionally unverified:
 
@@ -33,6 +35,6 @@ Not yet connected or intentionally unverified:
 - Qualified Craft R46 backend execution and real model build.
 - Host loading/handshake and real target behavior.
 
-Acceptance: RF-01 through RF-13 bounded gates and finite fixtures pass where the host supports them; final-v1 gates are defined in `docs/FINAL-COMPLETION-SPEC.md` and provider/runtime gaps remain in `docs/PROVIDER-STATUS.md`.
+Acceptance: RF-01 through RF-14 bounded gates and finite fixtures pass where the host supports them; the WASM obligation ledger is `ready` with `required_open: 0`. Final-v1 gates remain defined in `docs/FINAL-COMPLETION-SPEC.md`; provider/runtime gaps remain explicitly bounded in `docs/PROVIDER-STATUS.md`.
 
-Next single action: when a real target is supplied inside an existing case, attach its original Evidence bundle and use the same bridge for an independent reconstruction feature.
+Next single action: run the fresh-clone release gate, then attach a real target's original Evidence bundle when a case is supplied and reuse the same bridge for an independent reconstruction feature.

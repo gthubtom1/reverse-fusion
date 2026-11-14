@@ -25,3 +25,8 @@ RF-11 REA/WABT: pinned WABT archive and executable hashes, process-local REA doc
 RF-12 vertical chain: original/candidate REA Evidence, interface comparison, runtime fixture result, correct candidate pass, wrong candidate fail and missing candidate unknown.
 
 RF-13 Craft fallback: local candidate writer passes capability, baseline, task digest, single-writer and cleanup gates; it is clearly distinguished from a model-based Craft backend.
+
+RF-14 obligation closure: the bounded WABT runner emits authenticated
+`rea.reconstruction-proof` Evidence, the canonical bundle retains source and
+comparison links, and the official REA ledger reports `ready` with
+`required_open: 0`.

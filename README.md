@@ -8,7 +8,7 @@ GitHub：<https://github.com/gthubtom1/reverse-fusion>
 
 ## 当前状态
 
-仓库目前处于 `RF-10`：合同、路由桥、Spec Kit 项目层、Craft bounded gate、宿主发现和代表性验收切片已具备；真实 provider 按宿主实际能力标记。
+仓库目前处于 `RF-14`：合同、唯一逆向路由、Spec Kit 项目层、Craft bounded gate、宿主发现、真实 REA WASM Evidence、正式 obligation ledger 和代表性验收切片已具备；真实 provider 按宿主实际能力标记。
 
 已经提供：
 
@@ -25,6 +25,7 @@ GitHub：<https://github.com/gthubtom1/reverse-fusion>
 - `docs/PROVIDER-STATUS.md` 持久化记录每个 provider 的 verified、unsupported 和 unverified 状态。
 - `scripts/bootstrap-wabt.ps1` 和 `scripts/run-rea-wasm.ps1` 提供进程级 WABT/REA 复现入口，不写全局配置。
 - `scripts/run-wasm-vertical.ps1` 自动重建原版/正确候选/错误候选 Evidence 并运行三态验收。
+- `scripts/run-rea-ledger.ps1` 将原版/候选 Evidence、接口比较和 WABT 运行结果组装为正式 `rea.reconstruction-proof`，再调用官方 REA ledger 做 fail-closed 闭环。
 - normal-dev、analysis、reconstruction、follow-up profiles。
 - 上游更新和上下文交接文档。
 
@@ -50,6 +51,9 @@ python -m reverse_fusion handoff --check
 python -m reverse_fusion install --client auto
 python -m reverse_fusion accept --fixture console --candidate correct --record
 python -m reverse_fusion accept --fixture wasm --candidate correct --record
+
+# 在已准备好本地 REA/WABT 后生成正式 obligation ledger
+.\scripts\run-rea-ledger.ps1
 ```
 
 在新电脑上的最短部署路径：

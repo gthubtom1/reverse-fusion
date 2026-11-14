@@ -61,4 +61,27 @@ candidate interface facts and runs the bounded WABT interpreter:
 This proves the acceptance plane can catch a behavior change that a declared
 interface comparison alone would miss.
 
+## Obligation ledger closure
+
+`scripts/run-rea-ledger.ps1` is the reproducible bridge from the accepted
+vertical slice to REA's reconstruction-obligation authority. It regenerates a
+canonical bundle containing the original and candidate inspection Evidence, the
+REA WASM interface comparison, and a bounded `rea.reconstruction-proof` record
+produced by the WABT interpreter run. The proof record is the Evidence consumed
+by both the fixture and verifier bindings; ordinary inspection Evidence is not
+treated as proof by the ledger.
+
+The recorded run produced:
+
+- Interface comparison Evidence: `ev_7feb4947e20562d5adf55dd6f5ad98a58a8e29516c5eeb82bf7b29e691ec6249`.
+- Reconstruction proof Evidence: `ev_59a71030abee7eac0677de1b5282c8b7d709319c70e1a3074bf305c18ce43bec`.
+- Ledger: `rol_09e99625528899bcc2b492bdc7b2811b44fb573c13418ff80af0404548039928`.
+- Closure digest: `eb14c2b9101158f68ceecdb02f2d3d80d8c8b1e723c95d85bf3438e022dcc4b2`.
+- Ledger status: `ready`, with `required_open: 0` and one `verified`
+  obligation (`wasm-answer`).
+
+The proof is finite and target-specific: it records the declared `answer`
+export, the `answer() => i32:42` WABT run, and the exact original/candidate
+Evidence links. It does not broaden into global source or runtime equivalence.
+
 
