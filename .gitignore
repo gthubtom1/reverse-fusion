@@ -7,4 +7,11 @@ Thumbs.db
 .env
 state/*.json
 state/spec-kit-probe-*/
+state/rea-*.json
+state/rea-*.stderr
+state/rea-mcp-doctor.json
+vendor/wabt/**
+!vendor/wabt/README.md
+!vendor/wabt/1.0.42/
+!vendor/wabt/1.0.42/manifest.json
 !state/.gitkeep

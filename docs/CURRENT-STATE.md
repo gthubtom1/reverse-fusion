@@ -1,7 +1,7 @@
 # Current State
 
-Stage: RF-10
-Status: accepted-bounded-release; provider-runtime-partially-unverified
+Stage: RF-11
+Status: accepted-rea-wasm-evidence; process-runtime-partially-unverified
 
 Completed:
 
@@ -23,13 +23,14 @@ Completed:
 - RF-08 Codex/Pi/Claude host discovery without global configuration writes.
 - RF-09 hard-target provider limitations recorded as unsupported/unverified.
 - RF-10 release, rollback and upstream maintenance records updated.
+- RF-11 reproducible WABT 1.0.42 environment and real REA WASM Evidence accepted.
 
 Not yet connected or intentionally unverified:
 
-- REA Windows PTY capture and WABT-backed WASM inspection on this host.
+- REA Windows PTY process capture on this host.
 - Qualified Craft R46 backend execution and real model build.
 - Host loading/handshake and real target behavior.
 
-Acceptance: RF-01 through RF-10 bounded gates and finite fixtures pass where the host supports them; provider/runtime gaps are recorded in `docs/PROVIDER-STATUS.md`.
+Acceptance: RF-01 through RF-11 bounded gates and finite fixtures pass where the host supports them; provider/runtime gaps are recorded in `docs/PROVIDER-STATUS.md`.
 
 Next single action: when a real target is supplied inside an existing case, attach its original Evidence bundle and use the same bridge for an independent reconstruction feature.

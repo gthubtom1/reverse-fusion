@@ -21,6 +21,7 @@ GitHub：<https://github.com/gthubtom1/reverse-fusion>
 - REA evidence/bundle、Spec Kit pointer、Craft bounded candidate 的 typed adapter。
 - `accept --fixture console` 纵向切片：正确候选通过、故意错误候选失败、缺证据返回 unknown。
 - `docs/PROVIDER-STATUS.md` 持久化记录每个 provider 的 verified、unsupported 和 unverified 状态。
+- `scripts/bootstrap-wabt.ps1` 和 `scripts/run-rea-wasm.ps1` 提供进程级 WABT/REA 复现入口，不写全局配置。
 - normal-dev、analysis、reconstruction、follow-up profiles。
 - 上游更新和上下文交接文档。
 

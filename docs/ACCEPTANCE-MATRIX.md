@@ -19,3 +19,5 @@ RF-08 hosts: Codex/Pi/Claude discovery and read-only plan; host loading remains 
 RF-09 hard-target: provider capability and cleanup gates recorded; no real target claim from the console fixture.
 
 RF-10 release: clean tree, tests, checkpoint, rollback and upstream maintenance records, GitHub push.
+
+RF-11 REA/WABT: pinned WABT archive and executable hashes, process-local REA doctor, complete WASM Evidence ID, artifact digest and explicit runtime/network limitations.

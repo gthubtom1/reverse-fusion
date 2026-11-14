@@ -143,6 +143,17 @@ def check_contracts(root: Path) -> dict[str, Any]:
         if not isinstance(craft.get("patch_series"), list) or len(craft["patch_series"]) != 4:
             raise ContractError("Craft bundle manifest must pin four ordered patches")
         checks.append({"id": "craft-bundle-manifest", "status": "pass"})
+        wabt = read_json(root / "vendor" / "wabt" / "1.0.42" / "manifest.json")
+        if wabt.get("version") != "1.0.42" or wabt.get("platform") != "windows-x64":
+            raise ContractError("WABT manifest identity mismatch")
+        if not isinstance(wabt.get("archive_sha256"), str) or len(wabt["archive_sha256"]) != 64:
+            raise ContractError("WABT manifest archive hash is malformed")
+        if wabt.get("required_tools") != ["wasm-validate.exe", "wasm-objdump.exe", "wasm2wat.exe"]:
+            raise ContractError("WABT manifest required tool set drifted")
+        for rel in ("scripts/bootstrap-wabt.ps1", "scripts/run-rea-doctor.ps1", "scripts/run-rea-wasm.ps1"):
+            if not (root / rel).is_file():
+                raise ContractError(f"WABT/REA reproducibility script missing: {rel}")
+        checks.append({"id": "wabt-reproducibility", "status": "pass"})
         for rel in (
             "specs/console-project/.specify/integration.json",
             "specs/console-project/specs/001-console-contract/spec.md",
