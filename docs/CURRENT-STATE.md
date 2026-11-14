@@ -1,7 +1,7 @@
 # Current State
 
-Stage: RF-04
-Status: accepted-static-slice; provider-runtime-unverified
+Stage: RF-10
+Status: accepted-bounded-release; provider-runtime-partially-unverified
 
 Completed:
 
@@ -17,16 +17,19 @@ Completed:
 - Official REA evidence/bundle, project-local Spec pointer, and bounded Craft candidate contracts are implemented.
 - Console vertical slice proves correct pass, intentionally wrong fail, and missing-evidence unknown.
 - GitHub repository created and pushed: https://github.com/gthubtom1/reverse-fusion
+- RF-05 Craft six-tool gate, baseline/path/task/model drift checks and cleanup-aware candidate contract.
+- RF-06 official Spec Kit 1.4.0 check/init and project-local feature artifacts.
+- RF-07 acceptance plane separated into specification, behavior comparison and runtime fields.
+- RF-08 Codex/Pi/Claude host discovery without global configuration writes.
+- RF-09 hard-target provider limitations recorded as unsupported/unverified.
+- RF-10 release, rollback and upstream maintenance records updated.
 
 Not yet connected or intentionally unverified:
 
-- Real REA provider/MCP.
-- Real Craft bundle/executor.
-- Host configuration.
-- Real target.
-- Host loading and real provider handshake.
-- Real target and business acceptance.
+- REA Windows PTY capture and WABT-backed WASM inspection on this host.
+- Qualified Craft R46 backend execution and real model build.
+- Host loading/handshake and real target behavior.
 
-Acceptance: RF-01 through RF-04 static gates pass; RF-05 Craft runtime, RF-06 Spec CLI execution, and real target behavior remain bounded follow-up work.
+Acceptance: RF-01 through RF-10 bounded gates and finite fixtures pass where the host supports them; provider/runtime gaps are recorded in `docs/PROVIDER-STATUS.md`.
 
 Next single action: when a real target is supplied inside an existing case, attach its original Evidence bundle and use the same bridge for an independent reconstruction feature.

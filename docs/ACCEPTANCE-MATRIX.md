@@ -8,8 +8,14 @@ RF-03 REA: typed Evidence/bundle/unknown/comparison wrappers; real MCP handshake
 
 RF-04 vertical slice: console correct pass, wrong fail, missing evidence unknown (automated).
 
-RF-05 Craft: fixed source/patch identity, six-tool gate, baseline/path/task/model drift rejection, typed report and cleanup.
+RF-05 Craft: fixed source/patch identity, exact six-tool gate, baseline/path/task/model drift rejection, typed report and cleanup; current installed companion remains unsupported until R46 qualification.
 
-RF-06 Spec: project-local init, source refs, analyze, implement and append-only converge.
+RF-06 Spec: official 1.4.0 CLI check/init, project-local source refs, feature artifacts and append-only converge.
 
-RF-07 acceptance: spec compliance, behavior equivalence and independent runtime acceptance separated.
+RF-07 acceptance: spec compliance, behavior equivalence and independent runtime acceptance separated; deterministic fixture pass/fail/unknown recorded.
+
+RF-08 hosts: Codex/Pi/Claude discovery and read-only plan; host loading remains a separate handshake.
+
+RF-09 hard-target: provider capability and cleanup gates recorded; no real target claim from the console fixture.
+
+RF-10 release: clean tree, tests, checkpoint, rollback and upstream maintenance records, GitHub push.

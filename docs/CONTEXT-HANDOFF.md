@@ -7,7 +7,8 @@ Record source identities, observed/inferred/unknown/designed facts, completed ta
 Current handoff (2026-11-14):
 
 - Repository: https://github.com/gthubtom1/reverse-fusion, branch `master`.
-- Stage: RF-04 accepted static slice; provider runtime and real target remain `unverified`.
-- Completed: contracts, source drift/path/hash checks, native router dry-run bridge, REA/Spec/Craft typed adapters, lifecycle CLI and console pass/fail/unknown fixture.
+- Stage: RF-10 accepted bounded release; provider runtime and real target remain partially `unverified`.
+- Completed: contracts, source drift/path/hash checks, native route bridge, Craft six-tool gate, official Spec Kit init, typed REA/Spec/Craft adapters, lifecycle CLI, host discovery and console pass/fail/unknown fixture.
+- Provider record: see `docs/PROVIDER-STATUS.md`.
 - Next single action: attach a real case's Evidence bundle when a target is supplied, then run the original reconstruction handoff.
 - Rollback: revert the latest RF commit; old reverse-skill/installer/REA/Craft/Spec Kit and host configuration remain untouched.

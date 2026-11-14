@@ -8,7 +8,7 @@ GitHub：<https://github.com/gthubtom1/reverse-fusion>
 
 ## 当前状态
 
-仓库目前处于 `RF-04`：合同、路由桥、适配器和代表性验收切片已具备，真实 provider 仍按宿主实际能力标记。
+仓库目前处于 `RF-10`：合同、路由桥、Spec Kit 项目层、Craft bounded gate、宿主发现和代表性验收切片已具备；真实 provider 按宿主实际能力标记。
 
 已经提供：
 
@@ -20,6 +20,7 @@ GitHub：<https://github.com/gthubtom1/reverse-fusion>
 - `bridge` 对接已安装 enhanced reverse router 的 dry-run 路由结果，不复制第二套路由表。
 - REA evidence/bundle、Spec Kit pointer、Craft bounded candidate 的 typed adapter。
 - `accept --fixture console` 纵向切片：正确候选通过、故意错误候选失败、缺证据返回 unknown。
+- `docs/PROVIDER-STATUS.md` 持久化记录每个 provider 的 verified、unsupported 和 unverified 状态。
 - normal-dev、analysis、reconstruction、follow-up profiles。
 - 上游更新和上下文交接文档。
 

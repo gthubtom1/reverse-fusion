@@ -13,6 +13,7 @@ from . import __version__
 from .adapters import CraftAdapter, spec_pointer
 from .case_bridge import build_case_pointer, dry_run_route, locate_reverse_root
 from .contracts import ContractError, check_contracts, read_json, sha256_file
+from .host import adapter_plan, detect_hosts
 from .vertical import correct_candidate, evaluate_console, wrong_candidate
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -54,12 +55,7 @@ def cmd_plan(args: argparse.Namespace) -> int:
         "client_requested": args.client,
         "intent": args.intent,
         "profile": profile,
-        "host": {
-            "os": platform.system().lower(),
-            "arch": platform.machine().lower(),
-            "python": platform.python_version(),
-            "cwd": str(Path.cwd()),
-        },
+        "host": {**adapter_plan(args.client), "python": platform.python_version(), "cwd": str(Path.cwd())},
         "components": manifest["components"],
         "profile_settings": selected,
         "effects": ["reads repository files", "does not start provider", "does not modify host config"],
@@ -78,13 +74,14 @@ def cmd_doctor(args: argparse.Namespace) -> int:
         "operation": "doctor",
         "status": "pass" if contract["status"] == "pass" else "fail",
         "checks": contract["checks"],
-        "host": {"os": platform.system().lower(), "arch": platform.machine().lower(), "python": platform.python_version()},
+        "host": {**detect_hosts(), "python": platform.python_version()},
         "receipt": str(ROOT / "state" / "install.json") if (ROOT / "state" / "install.json").is_file() else "not-installed",
         "reverse_root": str(locate_reverse_root()) if locate_reverse_root() else None,
         "loaded": "unverified",
         "running": "unverified",
         "accepted": "unverified",
         "source_manifest_sha256": sha256_file(ROOT / "SOURCE-MANIFEST.json"),
+        "provider_status": str(ROOT / "docs" / "PROVIDER-STATUS.md"),
     }
     _print(result, args.format)
     return 0 if result["status"] == "pass" else 1
@@ -111,7 +108,7 @@ def cmd_install(args: argparse.Namespace) -> int:
         "operation": "install",
         "mode": "apply" if args.apply else "dry-run",
         "project": "reverse-fusion",
-        "host": {"client": args.client, "os": platform.system().lower(), "arch": platform.machine().lower()},
+        "host": {"client": args.client, **detect_hosts()},
         "effects": ["write repository state/install.json"] if args.apply else ["read repository files only"],
         "status": "ready",
     }

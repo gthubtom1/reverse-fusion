@@ -8,6 +8,7 @@ from shutil import copytree
 from reverse_fusion.adapters import CraftAdapter, spec_pointer
 from reverse_fusion.case_bridge import build_case_pointer
 from reverse_fusion.contracts import ContractError, check_contracts, validate_candidate_result, validate_external_baseline, validate_handoff
+from reverse_fusion.host import detect_hosts
 from reverse_fusion.vertical import correct_candidate, evaluate_console, wrong_candidate
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -78,12 +79,28 @@ class ContractTests(unittest.TestCase):
         self.assertEqual(pointer.route_owner, "reverse.native-router")
         self.assertEqual(spec_pointer("specs/demo", "console", ["T-001"], ["E-CONSOLE-001"]).feature, "console")
         adapter = CraftAdapter("abc123", ("0001.patch",))
-        unsupported = adapter.run(baseline={"bundle_sha256": "x"}, tasks=["T-001"])
+        unsupported = adapter.run(baseline={"bundle_sha256": "a" * 64}, tasks=["T-001"], research_ref="E-CONSOLE-001")
         self.assertEqual(unsupported["disposition"], "unsupported")
-        candidate = CraftAdapter("abc123", ("0001.patch",), backend="test").run(
-            baseline={"bundle_sha256": "x"}, tasks=["T-001"], writer=lambda tasks: {"tasks": tasks}
+        candidate = CraftAdapter(
+            "abc123",
+            ("0001.patch",),
+            backend="test",
+            capabilities=CraftAdapter.REQUIRED_CAPABILITIES,
+        ).run(
+            baseline={"bundle_sha256": "a" * 64},
+            tasks=["T-001"],
+            writer=lambda tasks: {"tasks": tasks},
+            model_id="fixture-model",
+            research_ref="E-CONSOLE-001",
         )
         self.assertEqual(validate_candidate_result(candidate)["disposition"], "candidate")
+
+    def test_craft_gate_and_host_discovery(self):
+        gate = CraftAdapter.six_tool_gate(["prepare", "build"])
+        self.assertEqual(gate["status"], "fail")
+        hosts = detect_hosts()
+        self.assertIn("codex", hosts["hosts"])
+        self.assertFalse(hosts["global_config_mutation"])
 
 
 if __name__ == "__main__":

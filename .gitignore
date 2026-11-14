@@ -6,4 +6,5 @@ __pycache__/
 Thumbs.db
 .env
 state/*.json
+state/spec-kit-probe-*/
 !state/.gitkeep

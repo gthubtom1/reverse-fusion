@@ -136,6 +136,23 @@ def check_contracts(root: Path) -> dict[str, Any]:
             if schema.get("$schema") is None or schema.get("$id") is None:
                 raise ContractError(f"{rel}: missing $schema/$id")
             checks.append({"id": rel, "status": "pass"})
+        craft = read_json(root / "components" / "craft-bounded" / "bundle-manifest.json")
+        required_capabilities = ["prepare", "build", "check", "refine", "return_summary", "cleanup"]
+        if craft.get("version") != 1 or craft.get("required_capabilities") != required_capabilities:
+            raise ContractError("Craft bundle manifest does not contain the exact six-tool gate")
+        if not isinstance(craft.get("patch_series"), list) or len(craft["patch_series"]) != 4:
+            raise ContractError("Craft bundle manifest must pin four ordered patches")
+        checks.append({"id": "craft-bundle-manifest", "status": "pass"})
+        for rel in (
+            "specs/console-project/.specify/integration.json",
+            "specs/console-project/specs/001-console-contract/spec.md",
+            "specs/console-project/specs/001-console-contract/plan.md",
+            "specs/console-project/specs/001-console-contract/tasks.md",
+            "specs/console-project/specs/001-console-contract/converge.md",
+        ):
+            if not (root / rel).is_file():
+                raise ContractError(f"Spec Kit project artifact missing: {rel}")
+        checks.append({"id": "spec-kit-project", "status": "pass"})
         for profile in ("normal-dev", "analysis", "reconstruction", "follow-up"):
             value = read_json(root / "profiles" / f"{profile}.json")
             if value.get("profile") != profile:
