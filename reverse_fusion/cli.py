@@ -116,8 +116,8 @@ def cmd_install(args: argparse.Namespace) -> int:
         "status": "ready",
     }
     if args.apply:
-        _write_state("install", {**plan, "installed": True, "version": __version__})
         plan["status"] = "installed"
+        _write_state("install", {**plan, "installed": True, "version": __version__})
     _print(plan, args.format)
     return 0
 
