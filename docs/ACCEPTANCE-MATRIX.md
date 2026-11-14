@@ -21,3 +21,5 @@ RF-09 hard-target: provider capability and cleanup gates recorded; no real targe
 RF-10 release: clean tree, tests, checkpoint, rollback and upstream maintenance records, GitHub push.
 
 RF-11 REA/WABT: pinned WABT archive and executable hashes, process-local REA doctor, complete WASM Evidence ID, artifact digest and explicit runtime/network limitations.
+
+RF-12 vertical chain: original/candidate REA Evidence, interface comparison, runtime fixture result, correct candidate pass, wrong candidate fail and missing candidate unknown.

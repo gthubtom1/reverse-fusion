@@ -20,8 +20,10 @@ GitHub：<https://github.com/gthubtom1/reverse-fusion>
 - `bridge` 对接已安装 enhanced reverse router 的 dry-run 路由结果，不复制第二套路由表。
 - REA evidence/bundle、Spec Kit pointer、Craft bounded candidate 的 typed adapter。
 - `accept --fixture console` 纵向切片：正确候选通过、故意错误候选失败、缺证据返回 unknown。
+- `accept --fixture wasm` 纵向切片：REA 原版 Evidence、正确候选通过、错误候选失败、缺证据 unknown。
 - `docs/PROVIDER-STATUS.md` 持久化记录每个 provider 的 verified、unsupported 和 unverified 状态。
 - `scripts/bootstrap-wabt.ps1` 和 `scripts/run-rea-wasm.ps1` 提供进程级 WABT/REA 复现入口，不写全局配置。
+- `scripts/run-wasm-vertical.ps1` 自动重建原版/正确候选/错误候选 Evidence 并运行三态验收。
 - normal-dev、analysis、reconstruction、follow-up profiles。
 - 上游更新和上下文交接文档。
 
@@ -46,6 +48,7 @@ python -m reverse_fusion doctor --format markdown
 python -m reverse_fusion handoff --check
 python -m reverse_fusion install --client auto
 python -m reverse_fusion accept --fixture console --candidate correct --record
+python -m reverse_fusion accept --fixture wasm --candidate correct --record
 ```
 
 在新电脑上的最短部署路径：
@@ -53,11 +56,14 @@ python -m reverse_fusion accept --fixture console --candidate correct --record
 ```text
 git clone https://github.com/gthubtom1/reverse-fusion.git
 cd reverse-fusion
-python -m venv .venv
-python -m pip install -e .
+.\scripts\install.ps1
 python -m reverse_fusion plan --client auto --intent analysis --format markdown
 python -m reverse_fusion doctor --format markdown
 ```
+
+Linux/macOS 使用 `RF_DRY_RUN=1 ./scripts/install.sh` 预览，或直接执行
+`./scripts/install.sh`；卸载 Windows 使用 `scripts/uninstall.ps1 -Apply`，
+Linux/macOS 删除仓库内 `.venv` 即可。所有入口都限制在仓库目录内，不写宿主全局配置。
 
 `install`、`update`、`uninstall` 默认只生成计划；需要写入本仓库状态时显式增加 `--apply`。真实 REA/Craft provider、宿主加载和目标级行为验收保留为 `unverified` 或 `unsupported`，不会被静态命令伪造为通过。
 
@@ -76,5 +82,7 @@ python -m reverse_fusion doctor --format markdown
 - `docs/DEVELOPMENT-MASTER-PLAN.md`
 - `docs/PR-PLAN.md`
 - `docs/UPSTREAM-MAINTENANCE.md`
+- `docs/TARGET-CAPABILITY-MATRIX.md`
+- `docs/FINAL-COMPLETION-SPEC.md`
 - `docs/CONTEXT-HANDOFF.md`
 - `docs/ACCEPTANCE-MATRIX.md`

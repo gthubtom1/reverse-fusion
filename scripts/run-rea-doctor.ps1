@@ -5,13 +5,10 @@ param(
 )
 
 $ErrorActionPreference = 'Stop'
-if (-not $NodePath -or -not $ReaScript) {
-    $receiptPath = Join-Path $env:LOCALAPPDATA 'reverse-workflow\.installer\receipt.json'
-    if (-not (Test-Path -LiteralPath $receiptPath)) { throw 'Set REVERSE_FUSION_NODE and REVERSE_FUSION_REA_SCRIPT for this host' }
-    $receipt = Get-Content -Raw $receiptPath | ConvertFrom-Json
-    if (-not $NodePath) { $NodePath = $receipt.runtime.node }
-    if (-not $ReaScript) { $ReaScript = Join-Path $receipt.paths.rea_package 'scripts\rea.mjs' }
-}
+$reaBootstrap = Join-Path $PSScriptRoot 'bootstrap-rea.ps1'
+$rea = & powershell -NoProfile -File $reaBootstrap -NodePath $NodePath | ConvertFrom-Json
+if (-not $NodePath) { $NodePath = $rea.node }
+if (-not $ReaScript) { $ReaScript = $rea.script }
 $bootstrap = Join-Path $PSScriptRoot 'bootstrap-wabt.ps1'
 $bootstrapResult = & powershell -NoProfile -File $bootstrap | ConvertFrom-Json
 $env:REA_WABT_BIN_DIRECTORY = $bootstrapResult.bin

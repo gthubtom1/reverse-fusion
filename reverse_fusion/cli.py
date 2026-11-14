@@ -15,6 +15,7 @@ from .case_bridge import build_case_pointer, dry_run_route, locate_reverse_root
 from .contracts import ContractError, check_contracts, read_json, sha256_file
 from .host import adapter_plan, detect_hosts
 from .vertical import correct_candidate, evaluate_console, wrong_candidate
+from .wasm_vertical import evaluate_wasm
 
 ROOT = Path(__file__).resolve().parents[1]
 MANIFEST = ROOT / "components" / "official" / "manifest.json"
@@ -139,6 +140,13 @@ def cmd_update(args: argparse.Namespace) -> int:
 
 
 def cmd_accept(args: argparse.Namespace) -> int:
+    if args.fixture == "wasm":
+        result = evaluate_wasm(ROOT, args.candidate, record_paths=args.record)
+        result.update({"operation": "accept", "fixture": args.fixture})
+        if args.record:
+            _write_state("wasm-acceptance", result)
+        _print(result, args.format)
+        return 0 if result["status"] == "pass" else (2 if result["status"] == "unknown" else 1)
     if args.fixture != "console":
         _print({"operation": "accept", "status": "unsupported", "fixture": args.fixture}, args.format)
         return 2
@@ -175,7 +183,7 @@ def build_parser() -> argparse.ArgumentParser:
         if name == "install":
             p.add_argument("--client", default="auto")
         if name == "accept":
-            p.add_argument("--fixture", choices=("console",), default="console")
+            p.add_argument("--fixture", choices=("console", "wasm"), default="console")
             p.add_argument("--candidate", choices=("correct", "wrong", "missing"), default="correct")
             p.add_argument("--record", action="store_true")
             p.add_argument("argv", nargs="*")

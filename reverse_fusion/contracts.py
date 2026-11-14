@@ -150,10 +150,20 @@ def check_contracts(root: Path) -> dict[str, Any]:
             raise ContractError("WABT manifest archive hash is malformed")
         if wabt.get("required_tools") != ["wasm-validate.exe", "wasm-objdump.exe", "wasm2wat.exe"]:
             raise ContractError("WABT manifest required tool set drifted")
-        for rel in ("scripts/bootstrap-wabt.ps1", "scripts/run-rea-doctor.ps1", "scripts/run-rea-wasm.ps1"):
+        for rel in ("scripts/bootstrap-wabt.ps1", "scripts/bootstrap-rea.ps1", "scripts/run-rea-doctor.ps1", "scripts/run-rea-wasm.ps1", "scripts/run-wasm-vertical.ps1", "scripts/install.ps1", "scripts/install.sh", "scripts/uninstall.ps1"):
             if not (root / rel).is_file():
                 raise ContractError(f"WABT/REA reproducibility script missing: {rel}")
         checks.append({"id": "wabt-reproducibility", "status": "pass"})
+        rea_manifest = read_json(root / "vendor" / "rea" / "manifest.json")
+        if rea_manifest.get("package") != "rea-agents" or rea_manifest.get("version") != "6.9.0":
+            raise ContractError("REA local manifest identity mismatch")
+        if not isinstance(rea_manifest.get("integrity"), str) or not rea_manifest["integrity"].startswith("sha512-"):
+            raise ContractError("REA local manifest integrity missing")
+        checks.append({"id": "rea-reproducibility", "status": "pass"})
+        for rel in ("docs/TARGET-CAPABILITY-MATRIX.md", "docs/FINAL-COMPLETION-SPEC.md"):
+            if not (root / rel).is_file():
+                raise ContractError(f"final v1 document missing: {rel}")
+        checks.append({"id": "final-v1-documents", "status": "pass"})
         for rel in (
             "specs/console-project/.specify/integration.json",
             "specs/console-project/specs/001-console-contract/spec.md",

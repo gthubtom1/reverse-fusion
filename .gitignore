@@ -14,4 +14,7 @@ vendor/wabt/**
 !vendor/wabt/README.md
 !vendor/wabt/1.0.42/
 !vendor/wabt/1.0.42/manifest.json
+vendor/rea/**
+!vendor/rea/README.md
+!vendor/rea/manifest.json
 !state/.gitkeep
