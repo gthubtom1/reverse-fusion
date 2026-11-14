@@ -38,3 +38,19 @@ RF-16 host/provider probes: Codex and Pi fixed-sentinel handshakes pass;
 Claude startup reaches a typed missing-login boundary; Craft Codex agent-cli
 `ai test` and clean-room chat pass while native R46 qualification remains a
 separate gate.
+
+RF-17 portable Reverse: local route manifest and descriptors resolve from a
+fresh clone without the old receipt; external route remains explicit and
+read-only.
+
+RF-18 host Builder: Codex writes a bounded candidate and completes
+prepare/build/check/refine/return_summary/cleanup without model selection or
+global configuration mutation.
+
+RF-19 Web, RF-20 PE/.NET and RF-21 APK/DEX: each has original/candidate REA
+Evidence, frozen Spec tasks, build/run observation, comparison, canonical proof,
+cleanup and a target ledger. Web package/parser and APK device runtime gaps are
+retained as unknown.
+
+RF-22 product acceptance: all `docs/PRODUCT-GOAL.md` gates are directly
+evidenced; the repository is tagged `reconstruction-product-v1`.

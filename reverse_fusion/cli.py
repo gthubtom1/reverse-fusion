@@ -11,6 +11,7 @@ from typing import Any
 
 from . import __version__
 from .adapters import CraftAdapter, LocalBoundedWorker, spec_pointer
+from .builder import HostBuilder
 from .case_bridge import build_case_pointer, dry_run_route, locate_reverse_root
 from .contracts import ContractError, check_contracts, read_json, sha256_file
 from .host import adapter_plan, detect_hosts, read_handshake_record
@@ -161,10 +162,20 @@ def cmd_accept(args: argparse.Namespace) -> int:
 
 
 def cmd_bridge(args: argparse.Namespace) -> int:
-    route = dry_run_route(args.hint)
-    pointer = build_case_pointer(Path(args.case_root), route.get("primary") or "unresolved", args.mode, delta=["route resolved by native reverse router"] if route.get("primary") else ["route unresolved"], refs=["reverse.native-router"])
+    route = dry_run_route(args.hint, source=args.source, primary=args.primary)
+    routed = route.get("status") in {"local-route-pass", "external-route-pass"}
+    owner = "reverse-fusion.local-router" if route.get("source") == "local" else "reverse.native-router"
+    pointer = build_case_pointer(
+        Path(args.case_root),
+        route.get("primary") or "unresolved",
+        args.mode,
+        delta=[f"route resolved by {route.get('source', 'unknown')} router"] if routed else ["route unresolved"],
+        refs=[owner],
+        route_owner=owner,
+        route_source=route.get("source", "unknown"),
+    )
     _print({"operation": "case-bridge", "route": route, "pointer": pointer.to_dict()}, args.format)
-    return 0 if route.get("status") == "routed" else 2
+    return 0 if routed else 2
 
 
 def cmd_craft(args: argparse.Namespace) -> int:
@@ -184,10 +195,32 @@ def cmd_craft(args: argparse.Namespace) -> int:
     return 0 if result["disposition"] == "candidate" else 2
 
 
+def cmd_build(args: argparse.Namespace) -> int:
+    workspace = (ROOT / args.workspace).resolve()
+    try:
+        workspace.relative_to(ROOT)
+    except ValueError:
+        _print({"operation": "build", "status": "blocked", "reason": "workspace must stay inside this repository"}, args.format)
+        return 2
+    result = HostBuilder(workspace, host=args.host, timeout_seconds=args.timeout).run(
+        baseline={"bundle_sha256": args.baseline_sha256},
+        tasks=args.tasks,
+        research_ref=args.research_ref,
+        output_relative=args.output,
+        prompt=args.prompt,
+        allowed_outputs=args.allowed_output,
+    )
+    result.update({"operation": "build", "workspace": str(workspace), "model_selection": "host-owned"})
+    if args.record:
+        _write_state("host-builder", result)
+    _print(result, args.format)
+    return 0 if result["disposition"] == "candidate" else 2
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="reverse-fusion", description="Reverse Fusion evidence-driven reconstruction entry")
     sub = parser.add_subparsers(dest="command", required=True)
-    for name, fn in (("contracts", cmd_contracts), ("doctor", cmd_doctor), ("plan", cmd_plan), ("handoff", cmd_handoff), ("install", cmd_install), ("uninstall", cmd_uninstall), ("update", cmd_update), ("accept", cmd_accept), ("bridge", cmd_bridge), ("craft", cmd_craft)):
+    for name, fn in (("contracts", cmd_contracts), ("doctor", cmd_doctor), ("plan", cmd_plan), ("handoff", cmd_handoff), ("install", cmd_install), ("uninstall", cmd_uninstall), ("update", cmd_update), ("accept", cmd_accept), ("bridge", cmd_bridge), ("craft", cmd_craft), ("build", cmd_build)):
         p = sub.add_parser(name)
         p.add_argument("--format", choices=("json", "markdown"), default="json")
         if name == "handoff":
@@ -209,12 +242,25 @@ def build_parser() -> argparse.ArgumentParser:
             p.add_argument("--hint", required=True)
             p.add_argument("--case-root", default="work/current-case")
             p.add_argument("--mode", choices=("analysis", "reconstruction", "follow-up", "normal-dev"), default="reconstruction")
+            p.add_argument("--source", choices=("local", "auto", "external"), default="local")
+            p.add_argument("--primary", help="explicit local or upstream route id, for example R46")
         if name == "craft":
             p.add_argument("--source", required=True, help="repository-relative source fixture")
             p.add_argument("--output", required=True, help="repository-relative candidate output")
             p.add_argument("--tasks", nargs="+", default=["T-001"])
             p.add_argument("--research-ref", default="E-CONSOLE-001")
             p.add_argument("--model-id", default="deterministic-fixture-worker")
+            p.add_argument("--record", action="store_true")
+        if name == "build":
+            p.add_argument("--host", choices=("auto", "codex", "pi", "claude"), default="auto")
+            p.add_argument("--workspace", default="state/host-build")
+            p.add_argument("--output", required=True, help="workspace-relative candidate output")
+            p.add_argument("--allowed-output", action="append", default=[])
+            p.add_argument("--tasks", nargs="+", required=True)
+            p.add_argument("--research-ref", required=True)
+            p.add_argument("--baseline-sha256", required=True)
+            p.add_argument("--prompt", required=True)
+            p.add_argument("--timeout", type=int, default=180)
             p.add_argument("--record", action="store_true")
         p.set_defaults(handler=fn)
     return parser

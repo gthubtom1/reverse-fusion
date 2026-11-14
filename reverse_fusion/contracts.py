@@ -150,10 +150,20 @@ def check_contracts(root: Path) -> dict[str, Any]:
             raise ContractError("WABT manifest archive hash is malformed")
         if wabt.get("required_tools") != ["wasm-validate.exe", "wasm-objdump.exe", "wasm2wat.exe"]:
             raise ContractError("WABT manifest required tool set drifted")
-        for rel in ("scripts/bootstrap-wabt.ps1", "scripts/bootstrap-rea.ps1", "scripts/run-rea-doctor.ps1", "scripts/run-rea-wasm.ps1", "scripts/run-wasm-vertical.ps1", "scripts/run-rea-ledger.ps1", "scripts/run-rea-ledger.mjs", "scripts/run-host-handshakes.ps1", "scripts/install.ps1", "scripts/install.sh", "scripts/uninstall.ps1"):
+        for rel in ("scripts/bootstrap-wabt.ps1", "scripts/bootstrap-rea.ps1", "scripts/bootstrap-jadx.ps1", "scripts/run-rea-doctor.ps1", "scripts/run-rea-wasm.ps1", "scripts/run-wasm-vertical.ps1", "scripts/run-rea-ledger.ps1", "scripts/run-rea-ledger.mjs", "scripts/run-web-proof.mjs", "scripts/run-web-vertical.ps1", "scripts/run-dotnet-proof.mjs", "scripts/run-dotnet-vertical.ps1", "scripts/run-apk-proof.mjs", "scripts/run-apk-vertical.ps1", "scripts/run-host-handshakes.ps1", "scripts/install.ps1", "scripts/install.sh", "scripts/uninstall.ps1"):
             if not (root / rel).is_file():
                 raise ContractError(f"WABT/REA reproducibility script missing: {rel}")
         checks.append({"id": "wabt-reproducibility", "status": "pass"})
+        jadx = read_json(root / "vendor" / "jadx-headless-mcp" / "0.7.1" / "manifest.json")
+        if jadx.get("provider") != "jadx-headless-mcp" or jadx.get("version") != "0.7.1":
+            raise ContractError("JADX headless MCP manifest identity mismatch")
+        if not isinstance(jadx.get("sha256"), str) or len(jadx["sha256"]) != 64:
+            raise ContractError("JADX headless MCP manifest hash is malformed")
+        if not isinstance(jadx.get("required_classes"), list) or len(jadx["required_classes"]) < 3:
+            raise ContractError("JADX headless MCP manifest required classes are incomplete")
+        if not (root / "scripts" / "bootstrap-jadx.ps1").is_file():
+            raise ContractError("JADX provider bootstrap script missing")
+        checks.append({"id": "jadx-reproducibility", "status": "pass"})
         rea_manifest = read_json(root / "vendor" / "rea" / "manifest.json")
         if rea_manifest.get("package") != "rea-agents" or rea_manifest.get("version") != "6.9.0":
             raise ContractError("REA local manifest identity mismatch")

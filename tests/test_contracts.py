@@ -6,7 +6,8 @@ from pathlib import Path
 from shutil import copytree
 
 from reverse_fusion.adapters import CraftAdapter, LocalBoundedWorker, spec_pointer
-from reverse_fusion.case_bridge import build_case_pointer
+from reverse_fusion.builder import HostBuilder
+from reverse_fusion.case_bridge import build_case_pointer, dry_run_route
 from reverse_fusion.contracts import ContractError, check_contracts, validate_candidate_result, validate_external_baseline, validate_handoff
 from reverse_fusion.host import detect_hosts, read_handshake_record
 from reverse_fusion.vertical import correct_candidate, evaluate_console, wrong_candidate
@@ -95,6 +96,19 @@ class ContractTests(unittest.TestCase):
         )
         self.assertEqual(validate_candidate_result(candidate)["disposition"], "candidate")
 
+    def test_local_route_does_not_require_external_receipt(self):
+        result = dry_run_route("APK reverse reconstruction", source="local")
+        self.assertEqual(result["status"], "local-route-pass")
+        self.assertEqual(result["source"], "local")
+        self.assertEqual(result["primary_id"], "R1")
+        self.assertTrue((ROOT / result["primary"]).is_file())
+
+    def test_external_route_is_explicitly_unavailable_when_uninstalled(self):
+        result = dry_run_route("reconstruction implementation", source="external")
+        self.assertIn(result["status"], {"unavailable", "external-route-pass"})
+        if result["status"] == "unavailable":
+            self.assertEqual(result["source"], "external")
+
     def test_craft_gate_and_host_discovery(self):
         gate = CraftAdapter.six_tool_gate(["prepare", "build"])
         self.assertEqual(gate["status"], "fail")
@@ -133,6 +147,21 @@ class ContractTests(unittest.TestCase):
             self.assertEqual(result["disposition"], "candidate")
             self.assertEqual(result["cleanup"]["status"], "verified")
             self.assertTrue((workspace / "state/implementation/candidate.txt").is_file())
+
+    def test_host_builder_does_not_select_a_model_and_fails_closed_without_host(self):
+        with tempfile.TemporaryDirectory() as directory:
+            workspace = Path(directory)
+            builder = HostBuilder(workspace, host="missing-host")
+            result = builder.run(
+                baseline={"bundle_sha256": "a" * 64},
+                tasks=["T-001"],
+                research_ref="E-001",
+                output_relative="candidate.txt",
+                prompt="write the candidate",
+            )
+            self.assertEqual(result["disposition"], "unsupported")
+            invocation = HostBuilder(workspace, host="codex")._invocation("codex", "codex", "prompt")
+            self.assertNotIn("--model", invocation.argv)
 
 
 if __name__ == "__main__":

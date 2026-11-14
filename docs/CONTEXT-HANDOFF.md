@@ -1,19 +1,29 @@
 # Context Handoff
 
-Before ending a session or compressing context, update `docs/CURRENT-STATE.md` and create `checkpoints/RF-XX-YYYYMMDD-NNN.md`.
+Before ending a session or compressing context, update
+`docs/CURRENT-STATE.md` and create a new checkpoint. Never recover project
+state from chat history alone.
 
-Record source identities, observed/inferred/unknown/designed facts, completed task IDs, current stage, next single action, blockers and rollback path. Do not rely on chat history to recover project state.
-
-Current handoff (2026-11-14):
+Current handoff (2026-11-15, RF-22):
 
 - Repository: https://github.com/gthubtom1/reverse-fusion, branch `master`.
-- Stage: RF-16 framework-v1-baseline; reconstruction-v1 remains in progress. Codex/Pi host loading and Craft agent-cli transport are verified, while Claude login, process runtime, independent Reverse routing and arbitrary real targets remain explicitly `blocked`, `unverified` or `unsupported` where recorded.
-- Completed: contracts, source drift/path/hash checks, native route bridge, Craft six-tool gate plus local fallback writer, official Spec Kit init, typed REA/Spec/Craft adapters, lifecycle CLI, host discovery, reproducible local WABT/REA bootstrap and real REA original/candidate inspection.
-- Provider record: see `docs/PROVIDER-STATUS.md`.
-- Ledger closure: WASM proof Evidence `ev_59a71030abee7eac0677de1b5282c8b7d709319c70e1a3074bf305c18ce43bec`; ledger `rol_09e99625528899bcc2b492bdc7b2811b44fb573c13418ff80af0404548039928` is `ready` with `required_open: 0`.
-- Fresh-clone release gate: remote `master` clone passed install preview, contracts, plan, doctor and handoff.
-- Host probe: `scripts/run-host-handshakes.ps1` records Codex/Pi `pass` and Claude `blocked` with `config_mutation=false`.
-- Craft probe: Codex agent-cli `ai test` and clean-room chat passed; native R46 qualification remains false and the user Craft config digest was restored.
-- Product contract: read `docs/PRODUCT-GOAL.md`; the copy-paste continuation prompt is `docs/HANDOFF-PROMPT.md`.
-- Next single action: make Reverse routing work from a fresh clone without an old receipt, then connect one real host-owned Builder to a real target reconstruction case.
-- Rollback: revert the latest RF commit; old reverse-skill/installer/REA/Craft/Spec Kit and host configuration remain untouched.
+- Status: `reconstruction-product-v1`; RF-17 portable route, RF-18 real
+  host-owned Builder, RF-19 Web, RF-20 PE/.NET, RF-21 APK/DEX and RF-22 release
+  acceptance are closed.
+- Representative ledgers: WASM
+  `rol_09e99625528899bcc2b492bdc7b2811b44fb573c13418ff80af0404548039928`;
+  Web `rol_39c38b659a45e5b080c5dc55870f154eb17b9e484fb998aacba88d07cd579c48`;
+  .NET `rol_53dd8e6683c0351977afc491a5c50863e56a390e5925d0c6d63fde1372bebba9`;
+  APK `rol_b9833a0dd114ad263d96217960a2990d87c9e3629048488d3f4f2379f93762b`.
+  All four reviewed ledgers report `required_open: 0`.
+- Host record: Codex/Pi fixed-sentinel handshakes pass; Claude is explicitly
+  blocked by missing login. Codex generated the APK candidate and completed all
+  six Builder checks, including refine and cleanup.
+- Provider record: `docs/PROVIDER-STATUS.md` records Craft native R46,
+  Windows PTY, Web static unknowns and Android runtime unknowns separately.
+- Product contract and continuation prompt: `docs/PRODUCT-GOAL.md` and
+  `docs/HANDOFF-PROMPT.md`.
+- Next single action: perform a read-only upstream review or open a new target
+  case; do not rewrite the closed RF-17–RF-22 evidence.
+- Rollback: revert the latest RF-22 repository commit(s); old reverse-skill,
+  installer, REA/Craft/Spec Kit and host configuration remain untouched.

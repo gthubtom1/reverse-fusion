@@ -7,7 +7,10 @@
       "kind": "owned-enhancement",
       "source": "https://github.com/gthubtom1/reverse-skill",
       "commit": "3fdbb927b474dc23ef2e19403d5464dcb9702cec",
-      "role": "single route, case and reverse orchestration owner"
+      "role": "single route, case and reverse orchestration owner",
+      "local_route": "components/reverse-core/router.py",
+      "local_routing_manifest": "components/reverse-core/routing.json",
+      "local_route_version": "rf-17"
     },
     {
       "id": "rea",
@@ -15,6 +18,15 @@
       "source": "https://github.com/morluto/rea",
       "commit": "2343e5692595ae9c08ce7de5bb91460118e67ed2",
       "role": "official evidence and comparison backend"
+    },
+    {
+      "id": "jadx-headless-mcp",
+      "kind": "official-provider",
+      "source": "https://github.com/1013503897/jadx-headless-mcp",
+      "commit": "5844800a486d2248fa949b74c9896285f5b54de2",
+      "role": "official caller-supplied APK/DEX analysis provider",
+      "version": "0.7.1",
+      "manifest": "vendor/jadx-headless-mcp/0.7.1/manifest.json"
     },
     {
       "id": "spec-kit",

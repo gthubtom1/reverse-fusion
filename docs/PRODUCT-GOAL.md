@@ -59,4 +59,10 @@ Reverse Fusion 不选择、不绑定、不下载模型，也不把某个模型�
 
 ## 当前版本的正确标签
 
-当前仓库是 `framework-v1-baseline`：WASM 代表性 Evidence 链、obligation ledger、宿主探针、Spec 指针、Craft 合同和 fallback 已完成；Reverse 独立 portable 路由、真实 Builder 和 Web/PE/APK 等真实复刻链仍需按本文件继续完成。
+RF-22 已闭合本文件定义的 v1 完成门，当前仓库标签为
+`reconstruction-product-v1`。四类代表性目标已经完成 bounded
+analysis-to-reconstruction 链：WASM ledger ready；Web/JavaScript 的选定
+export obligation ledger ready，同时保留 REA 对未覆盖 package/parser 范围的
+unknown；PE/.NET ledger ready；APK/DEX 静态 ledger ready，Android 设备运行层
+在无 adb/emulator 的主机上保持 unknown。未来目标仍必须沿用同一证据合同，不能把
+这些代表性样本扩大成任意目标的等价声明。

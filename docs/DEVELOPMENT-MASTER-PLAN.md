@@ -19,12 +19,16 @@ RF-16: real host handshake and Craft agent-cli transport probes (accepted with C
 
 Reconstruction-product work after RF-16:
 
-- RF-17: repository-local Reverse route that works without an old receipt.
-- RF-18: real host-owned Builder output under the six-tool contract.
-- RF-19: one real Web/JavaScript reconstruction vertical slice.
-- RF-20: one real PE/.NET or Native reconstruction vertical slice.
-- RF-21: one real APK/DEX reconstruction vertical slice.
-- RF-22: final reconstruction-product acceptance only after `docs/PRODUCT-GOAL.md`
-  is closed.
+- RF-17: repository-local Reverse route that works without an old receipt (completed).
+- RF-18: real host-owned Builder output under the six-tool contract (completed;
+  Codex candidate plus refine/cleanup evidence).
+- RF-19: one real Web/JavaScript reconstruction vertical slice (completed;
+  reviewed export ledger ready, conservative unknown scope retained).
+- RF-20: one real PE/.NET reconstruction vertical slice (completed; managed
+  comparison, runtime proof and ledger ready).
+- RF-21: one real APK/DEX reconstruction vertical slice (completed; pinned
+  JADX provider, static proof and ledger ready; device runtime unknown).
+- RF-22: final reconstruction-product acceptance (completed after every
+  `docs/PRODUCT-GOAL.md` gate was directly checked).
 
 Each phase requires a checkpoint, focused tests, a current-state update and a rollback path before the next phase starts.

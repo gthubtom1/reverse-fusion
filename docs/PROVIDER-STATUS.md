@@ -1,17 +1,22 @@
 # Provider and host status
 
-Recorded 2026-11-14 for RF-05 through RF-16.
+Recorded 2026-11-15 for RF-17 through RF-22. These observations describe this
+host and do not claim identical provider availability on another computer.
 
-| Surface | Observed result | State | Next bounded action |
+| Surface | Observed result | State | Boundary or next action |
 |---|---|---|---|
-| Spec Kit | `specify 1.4.0`; `specify check` passed; Codex, Pi and Claude CLI detected | verified for CLI/init | use the project-local feature artifacts and run the official workflow when a real feature is supplied |
-| REA process capture | Windows PTY provider returned `capability_unavailable` because descendant cleanup is not verified | unsupported on this host | run the same capture on Linux/macOS or a REA host with a qualified PTY provider |
-| REA MCP runtime | repository-local official `rea-agents@6.9.0` package with pinned npm integrity; process-local `mcp doctor` passed: 255 tools, 6 prompts, catalog digest `2c725b48818ac5266198069330907c657f0fa2b6b8236065e5a191e20d95c2d7` | verified for local stdio handshake | provide a supported Node 22.23.4+/24.22.1+ path on a fresh host |
-| REA WASM inspection | process-local `REA_WABT_BIN_DIRECTORY` pointed to pinned WABT 1.0.42; `inspect-wasm-artifact` returned `ev_d6ed8f580f5b6d7fb001de26c8b8b6732fd32308f8aeb6eeb624738209e35f96`, valid 39-byte artifact and export `answer: () -> i32` | verified for this fixture and toolchain | repeat with a real target Evidence bundle when supplied |
-| REA reconstruction proof and obligation ledger | bounded WABT runner emitted `rea.reconstruction-proof` Evidence `ev_59a71030abee7eac0677de1b5282c8b7d709319c70e1a3074bf305c18ce43bec`; official ledger closure `rol_09e99625528899bcc2b492bdc7b2811b44fb573c13418ff80af0404548039928` | verified for the declared WASM obligation; `required_open: 0` | reuse the same proof contract for each real target's reviewed obligations |
-| Craft companion | installed 0.6.1 MCP with `--all-tools`; setup doctor self-test passed, Codex registration reported a different command shape, and receipt says `native_r46_backend_qualified: false`; repository fallback `local-bounded-worker` passes its six-tool/single-writer/cleanup fixture | MCP tool companion is healthy; upstream R46 backend unsupported; local deterministic fallback verified | only accept a runner-selected qualified backend for model builds; fallback remains for reproducible offline candidates |
-| Craft agent backend transport | Craft `0.6.1` `ai test Codex` returned the signed-in Codex version; `chat --backend Codex --clean-room` returned `RF_CRAFT_BACKEND_CODEX` with exit 0; temporary backend registration was removed and Craft config SHA-256 returned to `DF760044CAC114045B328CAEB0F1948AAD9BAB857C93982729360FA4310061B9` | verified for agent-cli transport; not a qualified native R46 bounded executor | keep native R46 qualification separate from agent-cli reachability; use the repository fallback until the bounded executor is installed |
-| Host adapters | `scripts/run-host-handshakes.ps1` observed Codex `RF_HOST_HANDSHAKE_CODEX` and Pi `RF_HOST_HANDSHAKE_PI` with exit 0; Claude `2.1.310` started but returned `Not logged in · Please run /login` | Codex/Pi loading and handshake verified; Claude explicitly blocked by missing host credentials; all probe records set `config_mutation=false` | authenticate Claude on a future host, then rerun the same probe |
+| Repository-owned Reverse router | `bridge --source local` resolves fixed `routing.json` and local `routes/R*.md` without an old receipt; Web=`R3`, PE/.NET=`R5`, APK/DEX=`R1` | verified | carry the selected route into each new target case |
+| Spec Kit | `specify 1.4.0`, project-local artifacts and reconstruction task files | verified | keep feature tasks and converge records append-only |
+| REA MCP runtime | official `rea-agents@6.9.0`, pinned integrity, process-local doctor passed | verified | bootstrap a supported Node 22.23.4+/24.22.1+ path on a fresh host |
+| WABT/REA WASM | WABT `1.0.42`; original/candidate/comparison/proof; ledger `rol_09e99625528899bcc2b492bdc7b2811b44fb573c13418ff80af0404548039928`, `required_open=0` | verified for bounded fixture | reuse proof contract for future WASM cases |
+| REA Web/JavaScript | original `ev_d42bef240bdf9e48b3444a5bb947adcc5bb30257a8e492115e421e9cac1e3955`, candidate `ev_ff3486e9a5d5cb34105392e5bdfbb2388d416d8c2028ab75ad8ecad4eaa55ed1`, runtime proof and ledger `rol_39c38b659a45e5b080c5dc55870f154eb17b9e484fb998aacba88d07cd579c48` | verified for reviewed export; static partial | package/parser obligations remain explicit unknown scope |
+| REA PE/.NET | original/candidate managed artifacts and members, exact comparison, four runtime traces; ledger `rol_53dd8e6683c0351977afc491a5c50863e56a390e5925d0c6d63fde1372bebba9` | verified for bounded method | build larger managed targets with the same exact-signature contract |
+| JADX/REA APK/DEX | official `jadx-headless-mcp@0.7.1` downloaded only by `bootstrap-jadx.ps1`, SHA-256 `6e5eacf500b64292bfb73c49797c1958f6ee44646e43e868039ae7feb573ff75`; static package/class comparison; ledger `rol_b9833a0dd114ad263d96217960a2990d87c9e3629048488d3f4f2379f93762b` | static verified; Android runtime unknown | rerun with adb/emulator to close runtime boundary |
+| REA process capture | Windows PTY provider returned `capability_unavailable` because descendant cleanup is not verified | unsupported on this host | use Linux/macOS or a qualified Windows PTY provider |
+| Craft companion | upstream 0.6.1 MCP retains required `--all-tools`; native R46 backend receipt remains unqualified | companion healthy; native backend unsupported | keep host-owned Builder as the real model transport; fallback is offline-only |
+| Host-owned Builder | Codex generated APK candidate; six checks `prepare/build/check/refine/return_summary/cleanup` pass, no `--model`, `config_mutation=false` | verified for this case | use host-provided current model/provider; never select one in the repository |
+| Host handshakes | Codex and Pi fixed sentinels pass; Claude CLI starts and returns missing-login boundary | Codex/Pi verified; Claude blocked | authenticate Claude on a future host and rerun the read-only probe |
 
-The status table is evidence about this machine and this session. It does not
-claim that another computer has the same provider availability.
+All provider failures, login gaps and device gaps remain typed as
+`blocked`, `unsupported` or `unknown`; none is converted into business
+acceptance by exit code or tool visibility.

@@ -10,7 +10,10 @@
       "base_commit": "3fdbb927b474dc23ef2e19403d5464dcb9702cec",
       "policy": "new-project-owned",
       "audit_commit": "3fdbb927b474dc23ef2e19403d5464dcb9702cec",
-      "audit_version": "enhanced reverse audit baseline"
+      "audit_version": "enhanced reverse audit baseline",
+      "local_route": "components/reverse-core/router.py",
+      "local_routing_manifest": "components/reverse-core/routing.json",
+      "local_route_version": "rf-17"
     },
     {
       "id": "rea",
@@ -20,6 +23,15 @@
       "policy": "official-default; fork only after proven capability gap",
       "audit_commit": "2343e5692595ae9c08ce7de5bb91460118e67ed2",
       "audit_version": "rea-agents 6.9.0"
+    },
+    {
+      "id": "jadx-headless-mcp",
+      "kind": "official-provider",
+      "source": "https://github.com/1013503897/jadx-headless-mcp",
+      "distribution": "caller-supplied-release",
+      "policy": "official-default; repository-local checksum bootstrap",
+      "audit_version": "jadx-headless-mcp 0.7.1",
+      "manifest": "vendor/jadx-headless-mcp/0.7.1/manifest.json"
     },
     {
       "id": "spec-kit",

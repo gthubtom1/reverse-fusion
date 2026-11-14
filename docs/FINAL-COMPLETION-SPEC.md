@@ -4,10 +4,10 @@ The project is final only when every gate below is either verified or has an
 explicit supported boundary recorded in the capability matrix. Intermediate
 milestones are progress records, not final acceptance.
 
-Current release status: **framework baseline accepted; reconstruction product in progress**.
-The bounded framework evidence and retained provider limits are recorded in
-`docs/FINAL-RELEASE-ACCEPTANCE.md`; the broader product contract is in
-`docs/PRODUCT-GOAL.md`.
+Current release status: **reconstruction-product-v1 accepted for the declared
+bounded target and provider surfaces**. The direct Evidence and retained
+provider limits are recorded in `docs/FINAL-RELEASE-ACCEPTANCE.md`; the product
+contract remains in `docs/PRODUCT-GOAL.md`.
 
 1. A fresh clone can run the repository-local install/plan/doctor path on each
    supported host family without modifying global client configuration.
@@ -30,6 +30,6 @@ The bounded framework evidence and retained provider limits are recorded in
    are persisted and mechanically checked.
 10. Tests, contracts, docs, checkpoints and GitHub remote are clean and agree.
 
-The final product claim is “the framework is complete within its declared
-capability boundaries.” It is not a claim that every future target has already
-been analyzed.
+The final product claim is “the reconstruction product is complete within its
+declared capability boundaries.” It is not a claim that every future target,
+packer, obfuscator or runtime provider has already been analyzed.

@@ -8,7 +8,7 @@ GitHub：<https://github.com/gthubtom1/reverse-fusion>
 
 ## 当前状态
 
-仓库目前处于 `RF-16`：framework-v1-baseline；合同、WASM Evidence 链、obligation ledger、Spec Kit 项目层、Craft bounded gate 和宿主探针已具备，真实 reconstruction-product-v1 仍在进行中。
+仓库已完成 `RF-22`，状态为 `reconstruction-product-v1`。WASM、Web/JavaScript、PE/.NET 和 APK/DEX 都有独立的原版 Evidence、Spec tasks、宿主 Builder candidate、构建/运行观察、差分、proof、cleanup 和 obligation ledger。未知能力仍按 REA 的边界保留为 `unknown`，不会被静态相似度升级成通过。
 
 已经提供：
 
@@ -17,21 +17,34 @@ GitHub：<https://github.com/gthubtom1/reverse-fusion>
 - 版本化 handoff、external baseline、candidate result 合同。
 - `plan`、`doctor`、`contracts`、`handoff` 静态入口。
 - `install`、`update`、`uninstall` 生命周期入口（默认 dry-run，`--apply` 只写本仓库 `state/`）。
-- `bridge` 对接已安装 enhanced reverse router 的 dry-run 路由结果，不复制第二套路由表。
+- `bridge` 默认调用仓库自己的 portable Reverse 路由；已安装 enhanced reverse router 只在显式 `--source external` 时作为只读兼容来源，结果区分 `local-route-pass`、`external-route-pass`、`unavailable` 和 `blocked`。
 - REA evidence/bundle、Spec Kit pointer、Craft bounded candidate 的 typed adapter。
 - `accept --fixture console` 纵向切片：正确候选通过、故意错误候选失败、缺证据返回 unknown。
 - `accept --fixture wasm` 纵向切片：REA 原版 Evidence、正确候选通过、错误候选失败、缺证据 unknown。
 - `craft --source ... --output ...` 使用 `local-bounded-worker` 生成 typed candidate，官方 Craft backend 资格化后可由原 runner 替换。
 - `docs/PROVIDER-STATUS.md` 持久化记录每个 provider 的 verified、unsupported 和 unverified 状态。
 - `scripts/bootstrap-wabt.ps1` 和 `scripts/run-rea-wasm.ps1` 提供进程级 WABT/REA 复现入口，不写全局配置。
+- `scripts/bootstrap-jadx.ps1` 固定并校验官方 `jadx-headless-mcp 0.7.1`，只写仓库 `vendor/`，用于 APK/DEX REA 分析。
 - `scripts/run-wasm-vertical.ps1` 自动重建原版/正确候选/错误候选 Evidence 并运行三态验收。
+- `scripts/run-web-vertical.ps1`、`scripts/run-dotnet-vertical.ps1` 和 `scripts/run-apk-vertical.ps1` 分别复现三条真实目标链；它们只在仓库 `state/` 写入运行产物。
+- `scripts/run-web-proof.mjs`、`scripts/run-dotnet-proof.mjs` 和 `scripts/run-apk-proof.mjs` 生成 canonical `rea.reconstruction-proof` 与对应 ledger input。
 - `scripts/run-rea-ledger.ps1` 将原版/候选 Evidence、接口比较和 WABT 运行结果组装为正式 `rea.reconstruction-proof`，再调用官方 REA ledger 做 fail-closed 闭环。
 - `scripts/run-host-handshakes.ps1` 对 Codex、Pi、Claude 执行只读固定 sentinel 探针，记录真实加载、退出码、阻塞原因和 `config_mutation=false`。
 - `docs/PRODUCT-GOAL.md` 是最终产品合同；`docs/HANDOFF-PROMPT.md` 是交给下一位智能体的持续交接提示词。
 - normal-dev、analysis、reconstruction、follow-up profiles。
 - 上游更新和上下文交接文档。
 
-当前已验证部分 provider transport，但真实目标 Builder、独立 portable Reverse 路由以及 Web/PE/APK 等代表性复刻链仍按 `docs/PRODUCT-GOAL.md` 继续完成。
+当前宿主事实仍单独记录：Codex/Pi 握手通过，Claude CLI 可启动但当前主机没有登录凭据；Craft 原生 R46 backend 未资格化，但真实 Codex host-owned Builder 已完成六项 bounded transport。模型始终属于当前宿主，仓库不选择或下载模型。
+
+仓库自己的 Reverse 路由不依赖旧 `reverse-workflow` receipt。它从
+`components/reverse-core/routing.json` 读取固定版本的声明式规则，并把
+PRIMARY 映射到 `components/reverse-core/routes/` 下的本地描述。旧路由包
+仍可用下面的显式命令做只读对照：
+
+```text
+python -m reverse_fusion bridge --hint "APK reverse" --source local
+python -m reverse_fusion bridge --hint "APK reverse" --source external
+```
 
 ## 给智能体的快速开始
 
@@ -54,6 +67,11 @@ python -m reverse_fusion install --client auto
 python -m reverse_fusion accept --fixture console --candidate correct --record
 python -m reverse_fusion accept --fixture wasm --candidate correct --record
 
+# 目标链（先准备对应宿主 Builder candidate）
+.\scripts\run-web-vertical.ps1
+.\scripts\run-dotnet-vertical.ps1
+.\scripts\run-apk-vertical.ps1
+
 # 在已准备好本地 REA/WABT 后生成正式 obligation ledger
 .\scripts\run-rea-ledger.ps1
 ```
@@ -72,7 +90,7 @@ Linux/macOS 使用 `RF_DRY_RUN=1 ./scripts/install.sh` 预览，或直接执行
 `./scripts/install.sh`；卸载 Windows 使用 `scripts/uninstall.ps1 -Apply`，
 Linux/macOS 删除仓库内 `.venv` 即可。所有入口都限制在仓库目录内，不写宿主全局配置。
 
-`install`、`update`、`uninstall` 默认只生成计划；需要写入本仓库状态时显式增加 `--apply`。真实 REA/Craft provider、宿主加载和目标级行为验收保留为 `unverified` 或 `unsupported`，不会被静态命令伪造为通过。
+`install`、`update`、`uninstall` 默认只生成计划；需要写入本仓库状态时显式增加 `--apply`。目标链 runner 对 provider、登录和设备缺失返回 `blocked`、`unsupported` 或 `unknown`，不会把 exit 0、工具可见或模型自述写成业务验收。
 
 ## 单仓库边界
 

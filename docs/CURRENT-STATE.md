@@ -1,48 +1,68 @@
 # Current State
 
-Stage: RF-16
-Status: framework-v1-baseline; reconstruction-v1-in-progress
+Stage: RF-22
+Status: reconstruction-product-v1
 
-Completed:
+RF-17 through RF-22 are closed against `docs/PRODUCT-GOAL.md`. This is a
+bounded, evidence-driven reconstruction product: it does not claim that every
+future target, packer, obfuscator or runtime provider has already been tested.
 
-- Single-repository skeleton.
-- Official component manifest.
-- Versioned contract schemas.
-- Static `contracts`, `plan`, `doctor`, and `handoff` commands.
-- `python -m reverse_fusion` module entry.
-- Four profiles.
-- Craft bounded boundary documentation.
-- Six contract and vertical-slice unit tests pass.
-- Native reverse router dry-run bridge is available without a second routing table.
-- Official REA evidence/bundle, project-local Spec pointer, and bounded Craft candidate contracts are implemented.
-- Console vertical slice proves correct pass, intentionally wrong fail, and missing-evidence unknown.
-- GitHub repository created and pushed: https://github.com/gthubtom1/reverse-fusion
-- RF-05 Craft six-tool gate, baseline/path/task/model drift checks and cleanup-aware candidate contract.
-- RF-06 official Spec Kit 1.4.0 check/init and project-local feature artifacts.
-- RF-07 acceptance plane separated into specification, behavior comparison and runtime fields.
-- RF-08 Codex/Pi/Claude host discovery without global configuration writes.
-- RF-09 hard-target provider limitations recorded as unsupported/unverified.
-- RF-10 release, rollback and upstream maintenance records updated.
-- RF-11 reproducible WABT 1.0.42 environment and real REA WASM Evidence accepted.
-- RF-12 real REA original/candidate Evidence plus correct/wrong/missing candidate acceptance path.
-- Repository-owned `local-bounded-worker` candidate fallback with six-tool, single-writer and cleanup contract.
-- Official REA obligation ledger is closed for the WASM vertical slice with a
-  bounded `rea.reconstruction-proof` Evidence record; `required_open` is zero.
-- Fresh-clone release gate passed from the pushed GitHub `master` commit.
-- Codex and Pi completed fixed-sentinel non-interactive loading handshakes;
-  Claude reached the CLI and returned a typed missing-login boundary.
-- Craft Codex agent-cli transport completed `ai test` and clean-room chat
-  probes; the temporary backend registration was removed and the Craft config
-  digest returned to its pre-probe value.
+Completed product gates:
 
-Not yet connected or intentionally unverified:
+- Fresh clones own the portable Reverse route from
+  `components/reverse-core/routing.json`; an old reverse-workflow receipt is
+  optional read-only compatibility input.
+- Codex and Pi fixed-sentinel host handshakes pass. Claude CLI starts but is
+  blocked by the missing host login/API credential; the record is explicit and
+  does not count as a false pass.
+- The host-owned Codex Builder generated the APK candidate and completed
+  `prepare`, `build`, `check`, `refine`, `return_summary` and `cleanup`; the
+  invocation contains no `--model` and records `config_mutation=false`.
+- Spec tasks and append-only converge records exist for Web/JavaScript,
+  PE/.NET and APK/DEX under `specs/reconstruction-*`.
+- WASM ledger: `rol_09e99625528899bcc2b492bdc7b2811b44fb573c13418ff80af0404548039928`,
+  `required_open=0`.
+- Web/JavaScript: original `ev_d42bef240bdf9e48b3444a5bb947adcc5bb30257a8e492115e421e9cac1e3955`,
+  candidate `ev_ff3486e9a5d5cb34105392e5bdfbb2388d416d8c2028ab75ad8ecad4eaa55ed1`,
+  comparison `ev_216f5663a396f32a8c09777922294d6149abcee640129d9911fb62e150b47a75`,
+  runtime proof `ev_15fee3b64989528f65eacac69ae67f6085bb053619730330dfa448fd0162f8b9`,
+  ledger `rol_39c38b659a45e5b080c5dc55870f154eb17b9e484fb998aacba88d07cd579c48`,
+  `required_open=0`. Static shape remains `partial`; package/parser scope is
+  recorded as unknown in the acceptance record.
+- PE/.NET: original `ev_062f2f49691e51cf4fe728d0dca75761220b14432f4ee53a4715429c4f600a16`,
+  candidate `ev_4ed5fcd1923341556d97a39443a426d1c9809e71755f71191af465fb372651ab`,
+  comparison `ev_8204b1f0b84f883aec5b4480f78865ffbf2faff7ad35c0919e156e96326e5832`,
+  runtime proof `ev_c4d41f92991a0bb95aa29499ea1f272cdc3a5b0270a008a48016fcc4d13f1e83`,
+  ledger `rol_53dd8e6683c0351977afc491a5c50863e56a390e5925d0c6d63fde1372bebba9`,
+  `required_open=0`.
+- APK/DEX: original package `ev_cba76f8064e8c1933ee7b4899591dab58aeb658cfe308e6486fa427534ac6284`,
+  original class `ev_d9349e30a3eeafaa557a55ee4afd6a18bed7b7d617ffc060b6b1b873112de962`,
+  candidate package `ev_a49fc8732219412e40bf3fd1b9440fca4c48ce83636a2ff2df5ac36324055c17`,
+  candidate class `ev_323d65a56a365581d436b61b8b0ded6a573edc91446fbee8bdcc18b44dd08c79`,
+  comparison `ev_4a0123224c2a1a5daa8124e3dcfb36f5d5f522697c303a4ed3c6285488c8f350`,
+  proof `ev_af2166ec8020eafb0b3c0914ba5fd5a51936571407b0bed11749097865d4affa`,
+  ledger `rol_b9833a0dd114ad263d96217960a2990d87c9e3629048488d3f4f2379f93762b`,
+  `required_open=0`. APK build and static comparison pass; Android runtime is
+  `unknown` because this host has no adb device or emulator.
+- Global three-state gate: WASM correct candidate `pass`, intentionally wrong
+  candidate `fail`, missing Evidence `unknown`.
+- Fresh-clone and lifecycle checks, contracts, Python tests and `git diff
+  --check` are required release checks. Generated Evidence, candidates and
+  build outputs remain ignored under `state/` and fixture build directories.
 
-- REA Windows PTY process capture on this host.
-- Qualified Craft R46 backend execution and real model build.
-- Host loading/handshake and real target behavior.
+Provider boundaries:
 
-Framework acceptance: RF-01 through RF-16 bounded gates pass where the host supports them; the WASM obligation ledger is `ready` with `required_open: 0`; fresh-clone installation and release checks pass; Codex/Pi host handshakes and Craft agent-cli transport are verified. Claude's missing credential and native Craft R46 qualification remain explicit boundaries. This is framework acceptance, not final reconstruction-product acceptance. Provider/runtime gaps remain explicitly bounded in `docs/PROVIDER-STATUS.md` and `docs/FINAL-RELEASE-ACCEPTANCE.md`.
+- Craft companion 0.6.1 remains installed with its required `--all-tools`
+  argument. Native R46 qualification is still unsupported, while the real
+  host Builder path is verified independently.
+- Windows REA PTY process capture remains unsupported because descendant cleanup
+  is not qualified on this host.
+- Full REA JavaScript analysis retains conservative semantic unknowns; the Web
+  case closes only its reviewed export obligation and records excluded
+  package/parser behavior as unknown.
+- APK/DEX Android device behavior requires a future adb/emulator provider.
 
-Product correction: the repository currently proves a framework baseline and one WASM fixture chain. It is not yet the final reconstruction product described in `docs/PRODUCT-GOAL.md`.
-
-Next single action: make Reverse routing work from a fresh clone without an old receipt, then connect one real host-owned Builder to a real target reconstruction case.
+No old repository, old installer, REA/Craft/Spec Kit installation, host
+credential or global client configuration was modified. The next maintenance
+action is an upstream review using `docs/UPSTREAM-MAINTENANCE.md`, not an
+automatic merge.
