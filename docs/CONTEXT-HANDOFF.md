@@ -4,12 +4,14 @@ Before ending a session or compressing context, update
 `docs/CURRENT-STATE.md` and create a new checkpoint. Never recover project
 state from chat history alone.
 
-Current handoff (2026-11-15, RF-22):
+Current handoff (2026-11-15, RF-23):
 
 - Repository: https://github.com/gthubtom1/reverse-fusion, branch `master`.
 - Status: `reconstruction-product-v1-final`; RF-17 portable route, RF-18 real
   host-owned Builder, RF-19 Web, RF-20 PE/.NET, RF-21 APK/DEX and RF-22 release
-  acceptance are closed.
+  acceptance plus RF-23 independent-audit hardening are closed. Local domain
+  skills live under `skills/`; normalized representative Evidence lives under
+  `evidence/rf22/`.
 - Representative ledgers: WASM
   `rol_09e99625528899bcc2b492bdc7b2811b44fb573c13418ff80af0404548039928`;
   Web `rol_39c38b659a45e5b080c5dc55870f154eb17b9e484fb998aacba88d07cd579c48`;
@@ -24,6 +26,6 @@ Current handoff (2026-11-15, RF-22):
 - Product contract and continuation prompt: `docs/PRODUCT-GOAL.md` and
   `docs/HANDOFF-PROMPT.md`.
 - Next single action: perform a read-only upstream review or open a new target
-  case; do not rewrite the closed RF-17–RF-22 evidence.
-- Rollback: revert the latest RF-22 repository commit(s); old reverse-skill,
+  case; do not rewrite the closed RF-17–RF-23 evidence.
+- Rollback: revert the latest RF-23 repository commit(s); old reverse-skill,
   installer, REA/Craft/Spec Kit and host configuration remain untouched.

@@ -1,13 +1,15 @@
 param(
     [string]$NodePath = $env:REVERSE_FUSION_NODE,
     [string]$JavaHome = $env:JAVA_HOME,
-    [string]$AndroidSdk = $env:ANDROID_HOME
+    [string]$AndroidSdk = $env:ANDROID_HOME,
+    [string]$PythonPath = $env:REVERSE_FUSION_PYTHON
 )
 
 $ErrorActionPreference = 'Stop'
 $repo = [IO.Path]::GetFullPath((Join-Path $PSScriptRoot '..'))
 $state = Join-Path $repo 'state'
 if (-not $NodePath) { $NodePath = 'node' }
+if (-not $PythonPath) { $PythonPath = 'python' }
 if (-not $JavaHome) { throw 'Set JAVA_HOME to a JDK 21+ before running the APK vertical slice.' }
 if (-not $AndroidSdk) { throw 'Set ANDROID_HOME to an Android SDK before running the APK vertical slice.' }
 $bootstrap = & powershell -NoProfile -File (Join-Path $PSScriptRoot 'bootstrap-jadx.ps1') | ConvertFrom-Json
@@ -33,7 +35,7 @@ build = Path(sys.argv[1])
 with zipfile.ZipFile(build / 'unsigned.apk', 'a') as archive:
     archive.write(build / 'classes.dex', 'classes.dex', compress_type=zipfile.ZIP_STORED)
 shutil.copyfile(build / 'unsigned.apk', build / 'fixture.apk')
-'@ | python - (Join-Path $OutputRoot '')
+'@ | & $PythonPath - (Join-Path $OutputRoot '')
 }
 $originalRoot = Join-Path $repo 'fixtures\apk-original'
 Build-Apk $originalRoot (Join-Path $originalRoot 'build')

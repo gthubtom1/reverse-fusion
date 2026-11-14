@@ -83,8 +83,10 @@ normal-dev 是主项目的默认基线。开发过程中如果需要研究另一
    两个入口默认只使用仓库内的虚拟环境；先 dry-run，再根据宿主实际情况执行
    apply。Linux/macOS 如果默认命令名不是 `python`，可通过 `RF_PYTHON` 指向
    当前 Python 3.11+ launcher。REA、WABT、JADX 等较大的 provider 由各自
-   bootstrap 按 manifest 校验，只落在仓库 `vendor/`；某个 provider 没有当前
-   操作系统或设备支持时，保留 `unsupported`/`blocked`，主项目仍可继续使用。
+   bootstrap 按 manifest 校验，只落在仓库 `vendor/`；当前 WABT/APK/REA
+   vertical runner 以 PowerShell 为主，POSIX 宿主由 agent 选择等价的本机
+   provider 命令，或明确记录 `unsupported`/`blocked`。核心路由、领域技能、
+   contracts、case 和普通开发仍可独立使用。
 
 4. **完成正常开发部署**
 
@@ -103,7 +105,9 @@ normal-dev 是主项目的默认基线。开发过程中如果需要研究另一
    ```
 
    subcase 使用独立的 case root、route、Evidence、Spec tasks、candidate 和
-   ledger。主项目源代码、构建目录和工作树保持隔离。
+   ledger。需要持久化路由和恢复点时使用 `bridge --record`；它会在仓库内的
+   case root 写入 `case.json`，并拒绝越过仓库边界的路径。主项目源代码、构建
+   目录和工作树保持隔离。
 
 ## 对话中的动态工作方式
 

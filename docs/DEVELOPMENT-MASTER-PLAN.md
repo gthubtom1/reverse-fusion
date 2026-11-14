@@ -32,5 +32,9 @@ Reconstruction-product work after RF-16:
   `docs/PRODUCT-GOAL.md` gate was directly checked; completion means the shared
   product logic is closed, while future target variants use new cases and
   probes rather than requiring exhaustive pre-execution).
+- RF-23: independent audit hardening (completed; local domain skill bodies,
+  canonical Evidence artifacts, cross-platform path boundaries, persistent case
+  records, WABT runtime hashing and observed host-config snapshots are now part
+  of the contracts).
 
 Each phase requires a checkpoint, focused tests, a current-state update and a rollback path before the next phase starts.

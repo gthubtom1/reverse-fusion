@@ -33,6 +33,8 @@ class LocalRoute:
     matches: tuple[str, ...]
     notes: tuple[str, ...]
     routing_sha256: str
+    skill: str
+    skill_available: bool
 
     def to_dict(self) -> dict[str, Any]:
         return {
@@ -46,6 +48,8 @@ class LocalRoute:
             "matches": list(self.matches),
             "notes": list(self.notes),
             "routing_sha256": self.routing_sha256,
+            "skill": self.skill,
+            "skill_available": self.skill_available,
         }
 
 
@@ -88,6 +92,14 @@ def _descriptor(route_id: str, route: dict[str, Any]) -> str:
     return str(descriptor.relative_to(ROOT.parent.parent)).replace("\\", "/")
 
 
+def _local_skill(route: dict[str, Any]) -> tuple[str, bool]:
+    skill = route.get("skill")
+    if not isinstance(skill, str) or not skill:
+        return "", False
+    path = ROOT.parent.parent / "skills" / skill
+    return f"skills/{skill}", path.is_file()
+
+
 def route(hint: str, *, primary: str | None = None) -> LocalRoute:
     """Resolve a hint without reading any external installation state."""
     data, digest = _load()
@@ -121,18 +133,27 @@ def route(hint: str, *, primary: str | None = None) -> LocalRoute:
             confidence = "high" if len(scores) == 1 else "medium"
 
     selected_data = data["routes"][selected]
+    descriptor = _descriptor(selected, selected_data)
+    skill, skill_available = _local_skill(selected_data)
+    if not (LOCAL_ROUTE_DIR / f"{selected}.md").is_file():
+        notes.append("Local route descriptor is missing.")
+    if not skill_available:
+        notes.append("Local domain skill is missing.")
+    status = "local-route-pass" if (LOCAL_ROUTE_DIR / f"{selected}.md").is_file() and skill_available else "unavailable"
     if not text:
         notes.append("Empty hint; provide task text before acting on the route.")
     return LocalRoute(
-        status="local-route-pass",
+        status=status,
         source="local",
         hint=hint,
         primary_id=selected,
-        primary=_descriptor(selected, selected_data),
+        primary=descriptor,
         label=selected_data["label"],
         confidence=confidence,
         matches=tuple(item for item in data["priority"] if item in scores),
         notes=tuple(notes),
         routing_sha256=digest,
+        skill=skill,
+        skill_available=skill_available,
     )
 

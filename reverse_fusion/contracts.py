@@ -3,6 +3,7 @@ from __future__ import annotations
 import json
 from hashlib import sha256
 from pathlib import Path
+from pathlib import PurePosixPath, PureWindowsPath
 from typing import Any, Iterable
 
 
@@ -32,9 +33,19 @@ def sha256_file(path: Path) -> str:
     return digest.hexdigest()
 
 
+def is_safe_relative_path(value: str) -> bool:
+    """Reject POSIX and Windows absolute/traversal paths on every host."""
+    if not isinstance(value, str) or not value.strip():
+        return False
+    for path_type in (PurePosixPath, PureWindowsPath):
+        path = path_type(value)
+        if path.is_absolute() or any(part in {"", ".", ".."} for part in path.parts):
+            return False
+    return True
+
+
 def _is_relative_safe(value: str) -> bool:
-    path = Path(value)
-    return bool(value) and not path.is_absolute() and ".." not in path.parts
+    return is_safe_relative_path(value)
 
 
 def _check_unique_ids(items: Iterable[dict[str, Any]], label: str) -> None:
@@ -64,13 +75,22 @@ def validate_external_baseline(value: dict[str, Any]) -> dict[str, Any]:
 
 def validate_candidate_result(value: dict[str, Any]) -> dict[str, Any]:
     required = {"version", "disposition", "tasks", "checks", "cleanup"}
+    allowed = required | {"reason", "result", "task_digest", "model_id", "research_ref", "backend", "host", "host_result", "output", "candidate_sha256", "refine_result"}
     missing = sorted(required - value.keys())
-    if missing or value.get("version") != 1:
-        raise ContractError(f"candidate result missing={missing} or version is not 1")
-    if value["disposition"] not in {"candidate", "needs-evidence", "needs-spec", "needs-scope", "unsupported", "failed", "blocked-cleanup"}:
+    unknown = sorted(set(value) - allowed)
+    if missing or unknown or value.get("version") != 1:
+        raise ContractError(f"candidate result missing={missing} unknown={unknown} or version is not 1")
+    if value["disposition"] not in {"candidate", "needs-evidence", "needs-spec", "needs-scope", "unsupported", "failed", "blocked", "blocked-cleanup"}:
         raise ContractError("candidate result has invalid disposition")
     if not isinstance(value["tasks"], list) or not isinstance(value["checks"], list) or not isinstance(value["cleanup"], dict):
         raise ContractError("candidate result tasks/checks/cleanup have invalid types")
+    if any(not isinstance(task, str) for task in value["tasks"]):
+        raise ContractError("candidate result tasks must contain strings")
+    for check in value["checks"]:
+        if not isinstance(check, dict) or not isinstance(check.get("id"), str) or not isinstance(check.get("status"), str):
+            raise ContractError("candidate result checks must contain id and status strings")
+    if not isinstance(value["cleanup"].get("status"), str):
+        raise ContractError("candidate result cleanup must contain a status string")
     return value
 
 
@@ -126,6 +146,20 @@ def check_contracts(root: Path) -> dict[str, Any]:
         if {item.get("id") for item in source_manifest["components"]} != {item.get("id") for item in manifest["components"]}:
             raise ContractError("source manifest component ids drift from official manifest")
         checks.append({"id": "source-manifest", "status": "pass"})
+        routing_path = root / "components" / "reverse-core" / "routing.json"
+        routing = read_json(routing_path)
+        routes = routing.get("routes")
+        priority = routing.get("priority")
+        if not isinstance(routes, dict) or not isinstance(priority, list) or set(routes) != set(priority):
+            raise ContractError("reverse routing manifest routes and priority diverge")
+        for route_id, route in routes.items():
+            if not isinstance(route, dict) or not isinstance(route.get("skill"), str):
+                raise ContractError(f"reverse route {route_id} is missing a local skill reference")
+            if not (root / "components" / "reverse-core" / "routes" / f"{route_id}.md").is_file():
+                raise ContractError(f"reverse route descriptor missing: {route_id}")
+            if not (root / "skills" / route["skill"]).is_file():
+                raise ContractError(f"reverse domain skill missing: {route['skill']}")
+        checks.append({"id": "reverse-routing-and-skills", "status": "pass", "routes": len(routes)})
         for rel in (
             "schemas/handoff-v1.schema.json",
             "schemas/external-baseline-v1.schema.json",
@@ -148,7 +182,7 @@ def check_contracts(root: Path) -> dict[str, Any]:
             raise ContractError("WABT manifest identity mismatch")
         if not isinstance(wabt.get("archive_sha256"), str) or len(wabt["archive_sha256"]) != 64:
             raise ContractError("WABT manifest archive hash is malformed")
-        if wabt.get("required_tools") != ["wasm-validate.exe", "wasm-objdump.exe", "wasm2wat.exe"]:
+        if wabt.get("required_tools") != ["wasm-validate.exe", "wasm-objdump.exe", "wasm2wat.exe", "wasm-interp.exe"]:
             raise ContractError("WABT manifest required tool set drifted")
         for rel in ("scripts/bootstrap-wabt.ps1", "scripts/bootstrap-rea.ps1", "scripts/bootstrap-jadx.ps1", "scripts/run-rea-doctor.ps1", "scripts/run-rea-wasm.ps1", "scripts/run-wasm-vertical.ps1", "scripts/run-rea-ledger.ps1", "scripts/run-rea-ledger.mjs", "scripts/run-web-proof.mjs", "scripts/run-web-vertical.ps1", "scripts/run-dotnet-proof.mjs", "scripts/run-dotnet-vertical.ps1", "scripts/run-apk-proof.mjs", "scripts/run-apk-vertical.ps1", "scripts/run-host-handshakes.ps1", "scripts/install.ps1", "scripts/install.sh", "scripts/uninstall.ps1"):
             if not (root / rel).is_file():
@@ -174,6 +208,19 @@ def check_contracts(root: Path) -> dict[str, Any]:
             if not (root / rel).is_file():
                 raise ContractError(f"final v1 document missing: {rel}")
         checks.append({"id": "final-v1-documents", "status": "pass"})
+        evidence_manifest = read_json(root / "evidence" / "rf22" / "manifest.json")
+        targets = evidence_manifest.get("targets")
+        if evidence_manifest.get("schema_version") != 1 or not isinstance(targets, dict) or set(targets) != {"wasm", "web", "dotnet", "apk"}:
+            raise ContractError("RF-22 evidence manifest must contain all four representative targets")
+        for target, record in targets.items():
+            files = record.get("files") if isinstance(record, dict) else None
+            if not isinstance(files, dict) or not files:
+                raise ContractError(f"RF-22 evidence manifest has no files for {target}")
+            for name, metadata in files.items():
+                path = root / "evidence" / "rf22" / target / name
+                if not path.is_file() or not isinstance(metadata, dict) or metadata.get("sha256") != sha256_file(path):
+                    raise ContractError(f"RF-22 evidence hash mismatch: {target}/{name}")
+        checks.append({"id": "rf22-evidence-manifest", "status": "pass"})
         for rel in (
             "specs/console-project/.specify/integration.json",
             "specs/console-project/specs/001-console-contract/spec.md",

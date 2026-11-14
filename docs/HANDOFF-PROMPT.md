@@ -8,9 +8,9 @@ docs/DEPLOYMENT-GUIDE.md、
 docs/PRODUCT-GOAL.md、docs/CURRENT-STATE.md、docs/DECISIONS.md、
 docs/PROVIDER-STATUS.md、docs/TARGET-CAPABILITY-MATRIX.md、
 docs/FINAL-RELEASE-ACCEPTANCE.md、SOURCE-MANIFEST.json、最新 checkpoint 和
-Git 状态。
+Git 状态，并读取 `skills/` 下与新目标 route 对应的领域技能正文。
 
-当前标签是 reconstruction-product-v1-final（RF-22 已闭合）。这不是重新设计框架
+当前标签是 reconstruction-product-v1-final（RF-23 已闭合）。这不是重新设计框架
 或再次宣布 framework-v1-baseline 的任务。任何新工作都必须先建立新的
 target case 和完成门，并保留旧 case 的 Evidence、ledger 与 converge 记录。
 
@@ -26,6 +26,8 @@ target case 和完成门，并保留旧 case 的 Evidence、ledger 与 converge 
   cleanup、canonical reconstruction proof 和 obligation ledger。
 - provider、登录、设备、PTY 或加壳/混淆能力缺失时写 blocked、unsupported 或
   unknown，并保留下一步 probe。
+- fresh clone 的 route 必须能解析到本地 descriptor 和本地领域技能正文；缺任一项
+  就记录 `unavailable`，不要用旧 receipt 假装本地能力存在。
 
 当前已闭合的代表性链（它们验证统一产品合同，不要求穷举未来目标）：
 

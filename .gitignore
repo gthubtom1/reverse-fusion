@@ -9,6 +9,7 @@ state/*.json
 state/*/
 state/**
 !state/.gitkeep
+work/**
 fixtures/**/build/
 fixtures/**/bin/
 fixtures/**/obj/

@@ -1,9 +1,9 @@
 # Current State
 
-Stage: RF-22
+Stage: RF-23
 Status: reconstruction-product-v1-final
 
-RF-17 through RF-22 are closed against `docs/PRODUCT-GOAL.md`. The product
+RF-17 through RF-23 are closed against `docs/PRODUCT-GOAL.md`. The product
 logic and workflow are complete: representative targets validate the shared
 contracts, while future target variants enter new cases through the same
 route/Evidence/Spec/Builder/comparison/ledger pipeline. Exhaustive execution of
@@ -12,14 +12,16 @@ every future target is not a product completion requirement.
 Completed product gates:
 
 - Fresh clones own the portable Reverse route from
-  `components/reverse-core/routing.json`; an old reverse-workflow receipt is
-  optional read-only compatibility input.
+  `components/reverse-core/routing.json` and the matching domain skill body
+  under `skills/`; an old reverse-workflow receipt is optional read-only
+  compatibility input.
 - Codex and Pi fixed-sentinel host handshakes pass. Claude CLI starts but is
   blocked by the missing host login/API credential; the record is explicit and
   does not count as a false pass.
 - The host-owned Codex Builder generated the APK candidate and completed
   `prepare`, `build`, `check`, `refine`, `return_summary` and `cleanup`; the
-  invocation contains no `--model` and records `config_mutation=false`.
+  invocation contains no `--model` and records an observed equal known-config
+  snapshot before and after the host calls.
 - Spec tasks and append-only converge records exist for Web/JavaScript,
   PE/.NET and APK/DEX under `specs/reconstruction-*`.
 - WASM ledger: `rol_09e99625528899bcc2b492bdc7b2811b44fb573c13418ff80af0404548039928`,
@@ -57,6 +59,10 @@ Completed product gates:
   `docs/DEPLOYMENT-GUIDE.md`; the README now explains normal-dev, nested
   analysis/reconstruction subcases, component ownership and selective upstream
   maintenance without assuming a fixed host path or model.
+- The local Reverse domain skill bodies now live under `skills/`, and normalized
+  RF-22 Evidence/proof/ledger records are tracked under `evidence/rf22/`; their
+  manifest is hash-checked so a fresh clone can inspect the representative
+  acceptance without the ignored machine-specific `state/` paths.
 
 Provider boundaries:
 

@@ -8,7 +8,8 @@
 4. `docs/CURRENT-STATE.md`
 5. `docs/DECISIONS.md`
 6. `components/official/manifest.json`
-7. 当前阶段对应的 `docs/DEVELOPMENT-MASTER-PLAN.md` 和 checkpoint
+7. `skills/` 中与当前 route 对应的领域技能
+8. 当前阶段对应的 `docs/DEVELOPMENT-MASTER-PLAN.md` 和 checkpoint
 
 工作规则：
 
@@ -18,6 +19,8 @@
 - 每个阶段只有一个下一步动作。
 - 任何来源、schema、scope、baseline、model、provider 或 writer 变化都要更新 checkpoint。
 - 不把安装成功、工具可见、Craft Ready、exit 0 或模型自述写成业务 acceptance。
+- fresh clone 必须同时拥有 route descriptor 和对应的 `skills/<domain>/SKILL.md`；
+  只有分类元数据而没有领域正文时，route 状态必须是 unavailable。
 - 先做最小可验证纵向切片，再扩展模块。
 - 上游更新走 `docs/UPSTREAM-MAINTENANCE.md`，不要盲目合并。
 - 普通开发使用 normal-dev profile；不自动强行创建 reverse case，但主项目开发

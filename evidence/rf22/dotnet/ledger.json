@@ -1,0 +1,271 @@
+{
+  "data": {
+    "analysis_profile": null,
+    "authority": "analyst-inference",
+    "confidence": "inferred",
+    "environment": null,
+    "evidence_id": "ev_41c9720adc50d12a75b0fd439f4e8a134e18576d77c45e96400afdddd18a0308",
+    "evidence_links": [
+      "ev_c4d41f92991a0bb95aa29499ea1f272cdc3a5b0270a008a48016fcc4d13f1e83"
+    ],
+    "limitations": [
+      "Artifact identity is unavailable for this observation."
+    ],
+    "locations": [],
+    "normalized_result": {
+      "closure_digest": "aadc2ce54906b923b65e7da1cd3f47e556b56cbef03a69873cf3a22829d1f007",
+      "coverage": {
+        "status": "complete"
+      },
+      "dependency_graph": [],
+      "evidence_links": [
+        "ev_c4d41f92991a0bb95aa29499ea1f272cdc3a5b0270a008a48016fcc4d13f1e83"
+      ],
+      "ledger_id": "rol_53dd8e6683c0351977afc491a5c50863e56a390e5925d0c6d63fde1372bebba9",
+      "limitations": [],
+      "obligations": [
+        {
+          "application_layer": "application",
+          "authority_references": [
+            {
+              "authority": "controlled-replay",
+              "evidence_id": "ev_c4d41f92991a0bb95aa29499ea1f272cdc3a5b0270a008a48016fcc4d13f1e83",
+              "location": "/evidence/ev_c4d41f92991a0bb95aa29499ea1f272cdc3a5b0270a008a48016fcc4d13f1e83",
+              "state": "reviewed"
+            }
+          ],
+          "binding": {
+            "fixtures": [
+              {
+                "authority": "integration",
+                "case_kind": "positive",
+                "evidence_ids": [
+                  "ev_c4d41f92991a0bb95aa29499ea1f272cdc3a5b0270a008a48016fcc4d13f1e83"
+                ],
+                "fixture_id": "dotnet-answer-fixture"
+              }
+            ],
+            "obligation_id": "dotnet-answer",
+            "original_cases": [
+              {
+                "evidence_id": "ev_c4d41f92991a0bb95aa29499ea1f272cdc3a5b0270a008a48016fcc4d13f1e83",
+                "kind": "positive",
+                "location": "Program.Answer"
+              }
+            ],
+            "owner": {
+              "module_path": "Program.cs",
+              "owner_sha256": "8b7dba42b57ddc5066da7ecb6e99d1655d54b4e29800f867b7dc72de9f635ef9",
+              "symbol": "Answer"
+            },
+            "parser_type": null,
+            "verifier": {
+              "authority": "integration",
+              "claim_id": "dotnet-answer",
+              "command": "dotnet ReverseFixture.dll <input>",
+              "enumerated_obligation_ids": [
+                "dotnet-answer"
+              ],
+              "nondeterminism": {
+                "mode": "finite-traces",
+                "specification": "Answer(value) trims, uppercases invariantly and prefixes rf:"
+              },
+              "result_evidence_id": "ev_c4d41f92991a0bb95aa29499ea1f272cdc3a5b0270a008a48016fcc4d13f1e83",
+              "status": "pass",
+              "verifier_id": "dotnet-runtime"
+            }
+          },
+          "dependency_obligation_ids": [],
+          "diagnostics": [],
+          "family": "managed-method",
+          "obligation_id": "dotnet-answer",
+          "obligation_version": 1,
+          "observed_cases": [
+            {
+              "evidence_id": "ev_c4d41f92991a0bb95aa29499ea1f272cdc3a5b0270a008a48016fcc4d13f1e83",
+              "kind": "positive",
+              "location": "Program.Answer"
+            }
+          ],
+          "origin": "reviewed",
+          "required": true,
+          "required_case_kinds": [
+            "positive"
+          ],
+          "required_fixture_authority": "integration",
+          "required_next_evidence": [],
+          "required_original_authority": "runtime",
+          "required_verifier_authority": "integration",
+          "requires_parser_type": false,
+          "residual_unknown_ids": [],
+          "source_state": "reviewed",
+          "status": "verified",
+          "target": {
+            "application_node_id": null,
+            "artifact_sha256": "8b7dba42b57ddc5066da7ecb6e99d1655d54b4e29800f867b7dc72de9f635ef9",
+            "location": "Program.Answer",
+            "semantic_node_id": null
+          },
+          "title": "Managed Answer method matches the observed finite runtime traces",
+          "unavailable_authority": []
+        }
+      ],
+      "ownership_graph": [
+        {
+          "module_path": "Program.cs",
+          "obligation_id": "dotnet-answer",
+          "symbol": "Answer"
+        }
+      ],
+      "reports": {
+        "contradicted_obligation_ids": [],
+        "missing_owner_obligation_ids": [],
+        "missing_verifier_obligation_ids": [],
+        "residual_unknown_ids": []
+      },
+      "schema": "ReconstructionObligationLedger",
+      "status": "ready",
+      "summary": {
+        "by_application_layer": [
+          {
+            "count": 0,
+            "key": "cli"
+          },
+          {
+            "count": 0,
+            "key": "protocol"
+          },
+          {
+            "count": 0,
+            "key": "electron"
+          },
+          {
+            "count": 0,
+            "key": "persistence"
+          },
+          {
+            "count": 0,
+            "key": "process"
+          },
+          {
+            "count": 0,
+            "key": "runtime"
+          },
+          {
+            "count": 0,
+            "key": "packaging"
+          },
+          {
+            "count": 0,
+            "key": "native-abi"
+          },
+          {
+            "count": 1,
+            "key": "application"
+          },
+          {
+            "count": 0,
+            "key": "other"
+          }
+        ],
+        "by_evidence_authority": [
+          {
+            "count": 0,
+            "key": "shipped-artifact"
+          },
+          {
+            "count": 1,
+            "key": "controlled-replay"
+          },
+          {
+            "count": 0,
+            "key": "historical-reference"
+          },
+          {
+            "count": 0,
+            "key": "external-service"
+          },
+          {
+            "count": 0,
+            "key": "analyst-inference"
+          }
+        ],
+        "by_source_state": [
+          {
+            "count": 0,
+            "key": "candidate"
+          },
+          {
+            "count": 0,
+            "key": "observed"
+          },
+          {
+            "count": 1,
+            "key": "reviewed"
+          },
+          {
+            "count": 0,
+            "key": "unknown"
+          }
+        ],
+        "by_status": [
+          {
+            "count": 0,
+            "key": "unowned"
+          },
+          {
+            "count": 0,
+            "key": "characterized"
+          },
+          {
+            "count": 0,
+            "key": "implemented"
+          },
+          {
+            "count": 1,
+            "key": "verified"
+          },
+          {
+            "count": 0,
+            "key": "contradicted"
+          },
+          {
+            "count": 0,
+            "key": "blocked"
+          },
+          {
+            "count": 0,
+            "key": "out-of-scope"
+          },
+          {
+            "count": 0,
+            "key": "unknown"
+          }
+        ],
+        "required": 1,
+        "required_open": 0,
+        "total": 1,
+        "verified": 1
+      }
+    },
+    "operation": "build_reconstruction_obligation_ledger",
+    "parameters": {
+      "closure_digest": "aadc2ce54906b923b65e7da1cd3f47e556b56cbef03a69873cf3a22829d1f007",
+      "ledger_id": "rol_53dd8e6683c0351977afc491a5c50863e56a390e5925d0c6d63fde1372bebba9"
+    },
+    "predicate_type": "rea.reconstruction-obligation-ledger",
+    "provider": {
+      "id": "rea-javascript-application-workflows",
+      "name": "REA JavaScript application workflows",
+      "version": "1"
+    },
+    "raw_result": null,
+    "relationship_coverage": null,
+    "subject": null
+  },
+  "meta": {
+    "command": "build-reconstruction-obligation-ledger",
+    "duration": "1053ms"
+  },
+  "ok": true
+}

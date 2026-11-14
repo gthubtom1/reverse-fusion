@@ -1,0 +1,96 @@
+{
+  "data": {
+    "analysis_profile": null,
+    "authority": "controlled-replay",
+    "confidence": "observed",
+    "environment": null,
+    "evidence_id": "ev_15fee3b64989528f65eacac69ae67f6085bb053619730330dfa448fd0162f8b9",
+    "evidence_links": [
+      "ev_d42bef240bdf9e48b3444a5bb947adcc5bb30257a8e492115e421e9cac1e3955",
+      "ev_ff3486e9a5d5cb34105392e5bdfbb2388d416d8c2028ab75ad8ecad4eaa55ed1",
+      "ev_216f5663a396f32a8c09777922294d6149abcee640129d9911fb62e150b47a75"
+    ],
+    "limitations": [
+      "Artifact identity is unavailable for this observation.",
+      "The runtime proof covers the declared answer inputs only.",
+      "REA static return-shape comparison remains conservative and may report unknown for dynamic expressions.",
+      "This fixture does not claim browser rendering, network, or framework equivalence."
+    ],
+    "locations": [],
+    "normalized_result": {
+      "bindings": [
+        {
+          "fixtures": [
+            {
+              "case_kind": "positive",
+              "fixture_id": "web-answer-fixture",
+              "passed": true
+            }
+          ],
+          "obligation_id": "web-answer",
+          "obligation_version": 1,
+          "owner_sha256": "f1151303f4514b09297feff737ea8ecc49fe1374347ffd34e84c8f5907a4115b",
+          "verifiers": [
+            {
+              "claim_id": "web-answer",
+              "passed": true,
+              "verifier_id": "node-runtime"
+            }
+          ]
+        }
+      ]
+    },
+    "operation": "verify_reconstruction_obligations",
+    "parameters": {
+      "fixture_id": "web-answer-fixture",
+      "obligation_id": "web-answer",
+      "toolchain": "v24.22.1",
+      "verifier_id": "node-runtime"
+    },
+    "predicate_type": "rea.reconstruction-proof",
+    "provider": {
+      "id": "reverse-fusion-web-verifier",
+      "name": "Reverse Fusion Web verifier",
+      "version": "1"
+    },
+    "raw_result": {
+      "operation": "web-answer",
+      "runtime": {
+        "status": "pass",
+        "traces": [
+          {
+            "candidate": "rf:HELLO",
+            "equal": true,
+            "input": " hello ",
+            "original": "rf:HELLO"
+          },
+          {
+            "candidate": "rf:",
+            "equal": true,
+            "input": "",
+            "original": "rf:"
+          },
+          {
+            "candidate": "rf:MIXED  TEXT",
+            "equal": true,
+            "input": "\tMixed  text\n",
+            "original": "rf:MIXED  TEXT"
+          },
+          {
+            "candidate": "rf:REVERSE-FUSION",
+            "equal": true,
+            "input": "reverse-fusion",
+            "original": "rf:REVERSE-FUSION"
+          }
+        ]
+      },
+      "static_comparison": {
+        "evidence_id": "ev_216f5663a396f32a8c09777922294d6149abcee640129d9911fb62e150b47a75",
+        "status": "partial"
+      }
+    },
+    "relationship_coverage": null,
+    "subject": null
+  },
+  "ok": true
+}

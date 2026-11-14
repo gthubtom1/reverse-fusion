@@ -52,7 +52,7 @@ Reverse Fusion 不选择、不绑定、不下载模型，也不把某个模型�
 
 ## 组件职责
 
-- **Reverse core**：唯一入口、路由、case、模式和复刻任务生命周期。它既支持独立 reconstruction case，也支持在 normal-dev 主项目中按需创建隔离的 analysis/reconstruction subcase；新电脑没有旧 receipt 时也必须有仓库自己的可用路由；旧 reverse-skill 可以作为固定版本的来源或可选增强，但不能是唯一运行前提。
+- **Reverse core**：唯一入口、路由、case、模式和复刻任务生命周期。它既支持独立 reconstruction case，也支持在 normal-dev 主项目中按需创建隔离的 analysis/reconstruction subcase；`bridge --record` 持久化仓库内的 `case.json` 恢复点；新电脑没有旧 receipt 时也必须有仓库自己的可用路由和本地领域技能；旧 reverse-skill 可以作为固定版本的来源或可选增强，但不能是唯一运行前提。
 - **REA**：原版分析、静态/动态 Evidence、comparison、unknown 和 obligation ledger。REA 保持官方版本，除非有证据支持的能力缺口。
 - **Spec Kit**：复刻模式的项目级意图、plan、tasks 和 converge 记录。normal-dev 默认按需启用；任何嵌套 subcase 一旦进入复刻阶段，就必须保留冻结任务和来源引用。
 - **Craft/Builder**：按冻结任务生成候选项目、执行构建、检查、修正和清理。模型由当前宿主提供；仓库 fallback 只能用于离线合同测试，不能代表真实复刻能力。
@@ -64,13 +64,13 @@ Reverse Fusion 不选择、不绑定、不下载模型，也不把某个模型�
 
 1. fresh clone 在 Windows、Linux 或 macOS 的支持宿主上完成仓库本地安装、plan、doctor、update、uninstall；没有旧 reverse-workflow receipt 也能执行仓库自己的路由入口。
 2. Codex、Pi、Claude 至少完成宿主加载协议验证；每个宿主的登录缺失单独记录，不能把宿主阻塞伪造成通过。
-3. Reverse、REA、Spec Kit 和 Builder 只有一个明确 owner，所有 Evidence、任务、candidate 和差分结果都有持久引用。
+3. Reverse、REA、Spec Kit 和 Builder 只有一个明确 owner；每个本地 route 都同时拥有 descriptor 和领域技能正文，所有 Evidence、任务、candidate 和差分结果都有持久引用。
 4. 至少四类代表性目标完成端到端链：WASM、Web/JavaScript、PE/.NET 或 Native、APK/DEX。每类都必须有原版分析、冻结任务、真实候选输出、构建/运行观察和差分结果。代表性链验证产品合同和变体处理逻辑；未来目标不需要穷举，目标族也不能只停留在 planned。
 5. 至少一条真实 Builder 链使用宿主自己的 agent/model 生成或修改候选文件，并完成 prepare、build、check、refine、return_summary、cleanup 六项能力；复制 fixture 的 fallback 只能作为测试路径。
 6. 至少一个正确候选、一个行为错误候选和一个 Evidence 缺失候选分别得到 pass、fail、unknown；至少一个构建或 provider 缺失场景得到 blocked/unsupported。
 7. 加壳、混淆、动态行为或 provider 缺失时，系统保留 unknown 和下一步 probe，不把静态相似或模型自述升级成等价结论。
-8. 所有 host/global 配置写入都有明确 scope；默认安装、探针、卸载和失败清理不改变旧仓库、宿主凭据或全局配置。
-9. `docs/CURRENT-STATE.md`、`docs/FINAL-RELEASE-ACCEPTANCE.md`、checkpoint、README、manifest、测试和 GitHub remote 对同一完成状态，没有“RF-14/RF-16”或“final/unfinished”互相矛盾。
+8. 所有 host/global 配置写入都有明确 scope；默认安装、探针、卸载和失败清理不改变旧仓库、宿主凭据或全局配置，并通过已知配置文件哈希前后对照记录观察结果。
+9. `evidence/rf22/manifest.json` 对代表性 Evidence/proof/ledger 文件做 hash 校验；`docs/CURRENT-STATE.md`、`docs/FINAL-RELEASE-ACCEPTANCE.md`、checkpoint、README、manifest、测试和 GitHub remote 对同一完成状态，没有“RF-14/RF-16”或“final/unfinished”互相矛盾。
 10. 只有完成以上门后才允许写 `final product complete`。此前只能写 `framework-v1-baseline`、`reconstruction-v1-in-progress` 或明确的 `blocked/unsupported`。
 
 ## 当前版本的正确标签

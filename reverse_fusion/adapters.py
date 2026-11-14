@@ -8,8 +8,10 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from hashlib import sha256
 import shutil
-from pathlib import Path, PurePosixPath
+from pathlib import Path
 from typing import Any, Callable
+
+from .contracts import is_safe_relative_path
 
 
 @dataclass
@@ -107,8 +109,7 @@ class CraftAdapter:
 
     @staticmethod
     def _safe_relative_path(value: str) -> bool:
-        path = PurePosixPath(value)
-        return bool(value) and not path.is_absolute() and all(part not in {"", ".", ".."} for part in path.parts)
+        return is_safe_relative_path(value)
 
     def prepare(
         self,

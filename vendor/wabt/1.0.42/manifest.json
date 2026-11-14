@@ -7,7 +7,8 @@
   "bin_sha256": {
     "wasm-validate.exe": "4939f4bcc66b8b0370685f656c1a33df068f5d1b245b75c94b10c74ffdd946a3",
     "wasm-objdump.exe": "7f9cf21ca410d867261f719e01f2a0f7b5f13eb83abf0efa975a207307069ac8",
-    "wasm2wat.exe": "9ccce93d1000e4d3ba7e5c365bd1e3b5d909dea2f72c7511d584f8a8e9108873"
+    "wasm2wat.exe": "9ccce93d1000e4d3ba7e5c365bd1e3b5d909dea2f72c7511d584f8a8e9108873",
+    "wasm-interp.exe": "3433086015d69cf50398500f4e122e55fd62097a3c95c0203e6294442f594399"
   },
-  "required_tools": ["wasm-validate.exe", "wasm-objdump.exe", "wasm2wat.exe"]
+  "required_tools": ["wasm-validate.exe", "wasm-objdump.exe", "wasm2wat.exe", "wasm-interp.exe"]
 }

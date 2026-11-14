@@ -13,6 +13,14 @@
       "local_route_version": "rf-17"
     },
     {
+      "id": "reverse-domain-skills",
+      "kind": "owned-enhancement",
+      "source": "https://github.com/gthubtom1/reverse-skill",
+      "commit": "3fdbb927b474dc23ef2e19403d5464dcb9702cec",
+      "role": "portable domain skill content for local route handoff",
+      "path": "skills"
+    },
+    {
       "id": "rea",
       "kind": "official",
       "source": "https://github.com/morluto/rea",

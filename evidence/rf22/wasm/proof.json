@@ -1,0 +1,129 @@
+{
+  "data": {
+    "analysis_profile": null,
+    "authority": "controlled-replay",
+    "confidence": "observed",
+    "environment": null,
+    "evidence_id": "ev_59a71030abee7eac0677de1b5282c8b7d709319c70e1a3074bf305c18ce43bec",
+    "evidence_links": [
+      "ev_d6ed8f580f5b6d7fb001de26c8b8b6732fd32308f8aeb6eeb624738209e35f96",
+      "ev_85ebdcc34c5cb2ad48b8b5ed7760bcba11c1ff9fcf4fd09db0507872f42325f6",
+      "ev_7feb4947e20562d5adf55dd6f5ad98a58a8e29516c5eeb82bf7b29e691ec6249"
+    ],
+    "limitations": [
+      "Artifact identity is unavailable for this observation.",
+      "This proof covers the declared finite WASM fixture and WABT interpreter run only.",
+      "It does not establish global source equivalence or behavior outside the declared export."
+    ],
+    "locations": [],
+    "normalized_result": {
+      "bindings": [
+        {
+          "fixtures": [
+            {
+              "case_kind": "positive",
+              "fixture_id": "wasm-answer-fixture",
+              "passed": true
+            }
+          ],
+          "obligation_id": "wasm-answer",
+          "obligation_version": 1,
+          "owner_sha256": "ccf59f0f7a7625ee380ed228905aadfa11072ac14cea1c53d1e7f3953d4d48c6",
+          "verifiers": [
+            {
+              "claim_id": "wasm-answer",
+              "passed": true,
+              "verifier_id": "wasm-interpreter"
+            }
+          ]
+        }
+      ]
+    },
+    "operation": "verify_reconstruction_obligations",
+    "parameters": {
+      "fixture_id": "wasm-answer-fixture",
+      "obligation_id": "wasm-answer",
+      "toolchain": "wabt@1.0.42",
+      "verifier_id": "wasm-interpreter"
+    },
+    "predicate_type": "rea.reconstruction-proof",
+    "provider": {
+      "id": "reverse-fusion-wabt-verifier",
+      "name": "Reverse Fusion WABT verifier",
+      "version": "1"
+    },
+    "raw_result": {
+      "candidate": "correct",
+      "interface": {
+        "candidate": [
+          {
+            "direction": "export",
+            "index": 0,
+            "issue": null,
+            "kind": "func",
+            "module": null,
+            "name": "answer",
+            "signature": {
+              "kind": "func",
+              "params": [],
+              "results": [
+                "i32"
+              ]
+            },
+            "wat_form": "(export \"answer\" (func 0))"
+          }
+        ],
+        "equal": true,
+        "evidence_ids": [
+          "ev_d6ed8f580f5b6d7fb001de26c8b8b6732fd32308f8aeb6eeb624738209e35f96",
+          "ev_85ebdcc34c5cb2ad48b8b5ed7760bcba11c1ff9fcf4fd09db0507872f42325f6"
+        ],
+        "original": [
+          {
+            "direction": "export",
+            "index": 0,
+            "issue": null,
+            "kind": "func",
+            "module": null,
+            "name": "answer",
+            "signature": {
+              "kind": "func",
+              "params": [],
+              "results": [
+                "i32"
+              ]
+            },
+            "wat_form": "(export \"answer\" (func 0))"
+          }
+        ],
+        "status": "pass"
+      },
+      "left_run": {
+        "output": "answer() => i32:42",
+        "returncode": 0,
+        "status": "observed",
+        "value": 42
+      },
+      "operation": "accept",
+      "right_run": {
+        "output": "answer() => i32:42",
+        "returncode": 0,
+        "status": "observed",
+        "value": 42
+      },
+      "runtime": {
+        "candidate": 42,
+        "equal": true,
+        "evidence_ids": [
+          "ev_d6ed8f580f5b6d7fb001de26c8b8b6732fd32308f8aeb6eeb624738209e35f96",
+          "ev_85ebdcc34c5cb2ad48b8b5ed7760bcba11c1ff9fcf4fd09db0507872f42325f6"
+        ],
+        "original": 42,
+        "status": "pass"
+      }
+    },
+    "relationship_coverage": null,
+    "subject": null
+  },
+  "ok": true
+}

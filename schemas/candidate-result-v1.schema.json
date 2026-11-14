@@ -6,7 +6,7 @@
   "required": ["version", "disposition", "tasks", "checks", "cleanup"],
   "properties": {
     "version": {"const": 1},
-    "disposition": {"enum": ["candidate", "needs-evidence", "needs-spec", "needs-scope", "unsupported", "failed", "blocked-cleanup"]},
+    "disposition": {"enum": ["candidate", "needs-evidence", "needs-spec", "needs-scope", "unsupported", "failed", "blocked", "blocked-cleanup"]},
     "tasks": {"type": "array", "items": {"type": "string"}},
     "checks": {"type": "array", "items": {"type": "object"}},
     "cleanup": {"type": "object"}

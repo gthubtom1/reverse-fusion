@@ -1,0 +1,143 @@
+{
+  "data": {
+    "analysis_profile": null,
+    "authority": "controlled-replay",
+    "confidence": "observed",
+    "environment": null,
+    "evidence_id": "ev_c4d41f92991a0bb95aa29499ea1f272cdc3a5b0270a008a48016fcc4d13f1e83",
+    "evidence_links": [
+      "ev_062f2f49691e51cf4fe728d0dca75761220b14432f4ee53a4715429c4f600a16",
+      "ev_615c7ead68aeb164c8f738b622899de67b85fd0e4592f216361e60b77d9b64a8",
+      "ev_4ed5fcd1923341556d97a39443a426d1c9809e71755f71191af465fb372651ab",
+      "ev_debf2fefc75fd5d3f2fe76df9d6a5f394329610627c536a7306cdc8cf416f7d6",
+      "ev_8204b1f0b84f883aec5b4480f78865ffbf2faff7ad35c0919e156e96326e5832"
+    ],
+    "limitations": [
+      "Artifact identity is unavailable for this observation.",
+      "The runtime proof covers the declared finite command-line inputs only.",
+      "Managed member comparison includes build-local metadata and does not establish whole-program equivalence."
+    ],
+    "locations": [],
+    "normalized_result": {
+      "bindings": [
+        {
+          "fixtures": [
+            {
+              "case_kind": "positive",
+              "fixture_id": "dotnet-answer-fixture",
+              "passed": true
+            }
+          ],
+          "obligation_id": "dotnet-answer",
+          "obligation_version": 1,
+          "owner_sha256": "8b7dba42b57ddc5066da7ecb6e99d1655d54b4e29800f867b7dc72de9f635ef9",
+          "verifiers": [
+            {
+              "claim_id": "dotnet-answer",
+              "passed": true,
+              "verifier_id": "dotnet-runtime"
+            }
+          ]
+        }
+      ]
+    },
+    "operation": "verify_reconstruction_obligations",
+    "parameters": {
+      "fixture_id": "dotnet-answer-fixture",
+      "obligation_id": "dotnet-answer",
+      "toolchain": "<absolute-path>",
+      "verifier_id": "dotnet-runtime"
+    },
+    "predicate_type": "rea.reconstruction-proof",
+    "provider": {
+      "id": "reverse-fusion-dotnet-verifier",
+      "name": "Reverse Fusion .NET verifier",
+      "version": "1"
+    },
+    "raw_result": {
+      "managed_comparison": {
+        "evidence_id": "ev_8204b1f0b84f883aec5b4480f78865ffbf2faff7ad35c0919e156e96326e5832",
+        "summary": {
+          "added": 0,
+          "changed": 1,
+          "removed": 0,
+          "unchanged": 1,
+          "unknown": 0
+        }
+      },
+      "operation": "dotnet-answer",
+      "runtime": {
+        "status": "pass",
+        "traces": [
+          {
+            "candidate": {
+              "exit_code": 0,
+              "input": " hello ",
+              "output": "rf:HELLO",
+              "status": "observed"
+            },
+            "equal": true,
+            "input": " hello ",
+            "original": {
+              "exit_code": 0,
+              "input": " hello ",
+              "output": "rf:HELLO",
+              "status": "observed"
+            }
+          },
+          {
+            "candidate": {
+              "exit_code": 0,
+              "input": "",
+              "output": "rf:",
+              "status": "observed"
+            },
+            "equal": true,
+            "input": "",
+            "original": {
+              "exit_code": 0,
+              "input": "",
+              "output": "rf:",
+              "status": "observed"
+            }
+          },
+          {
+            "candidate": {
+              "exit_code": 0,
+              "input": "\tMixed  text\n",
+              "output": "rf:MIXED  TEXT",
+              "status": "observed"
+            },
+            "equal": true,
+            "input": "\tMixed  text\n",
+            "original": {
+              "exit_code": 0,
+              "input": "\tMixed  text\n",
+              "output": "rf:MIXED  TEXT",
+              "status": "observed"
+            }
+          },
+          {
+            "candidate": {
+              "exit_code": 0,
+              "input": "reverse-fusion",
+              "output": "rf:REVERSE-FUSION",
+              "status": "observed"
+            },
+            "equal": true,
+            "input": "reverse-fusion",
+            "original": {
+              "exit_code": 0,
+              "input": "reverse-fusion",
+              "output": "rf:REVERSE-FUSION",
+              "status": "observed"
+            }
+          }
+        ]
+      }
+    },
+    "relationship_coverage": null,
+    "subject": null
+  },
+  "ok": true
+}

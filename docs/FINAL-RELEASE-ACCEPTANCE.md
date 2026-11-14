@@ -11,12 +11,13 @@ need to be exhaustively pre-executed for the product to be complete.
 | Single route owner | `bridge --source local` resolves repository `routing.json`; external route is explicit read-only compatibility | pass |
 | Official identities | `SOURCE-MANIFEST.json`, official REA `6.9.0`, Spec Kit `1.4.0`, Craft `0.6.1`, JADX MCP `0.7.1` manifest | pass |
 | Real host Builder | Codex generated the APK candidate; `prepare`, `build`, `check`, `refine`, `return_summary`, `cleanup` pass; no `--model`; `config_mutation=false` | pass |
+| Canonical Evidence artifacts | `evidence/rf22/manifest.json` and normalized original/candidate/comparison/proof/ledger JSON are tracked for all four representative targets and hash-checked by contracts | pass |
 | WASM chain | original/candidate/comparison/proof Evidence and ledger `rol_09e99625528899bcc2b492bdc7b2811b44fb573c13418ff80af0404548039928`, `required_open=0` | pass |
 | Web/JavaScript chain | original/candidate/comparison `ev_216f5663a396f32a8c09777922294d6149abcee640129d9911fb62e150b47a75`, runtime proof, ledger `rol_39c38b659a45e5b080c5dc55870f154eb17b9e484fb998aacba88d07cd579c48`, `required_open=0` | pass for reviewed export; static/package unknowns retained for future probes |
 | PE/.NET chain | original/candidate managed Evidence, exact member comparison, four runtime traces, ledger `rol_53dd8e6683c0351977afc491a5c50863e56a390e5925d0c6d63fde1372bebba9`, `required_open=0` | pass |
 | APK/DEX chain | pinned JADX 0.7.1; original/candidate package/class Evidence, static comparison and ledger `rol_b9833a0dd114ad263d96217960a2990d87c9e3629048488d3f4f2379f93762b`, `required_open=0` | static pass; Android runtime unknown without adb/emulator |
 | Three-state behavior | WASM correct=`pass`, intentionally wrong=`fail`, missing Evidence=`unknown` | pass |
-| Host status | Codex/Pi handshakes pass; Claude missing-login boundary is recorded as blocked | pass with explicit provider boundary |
+| Host status | Codex/Pi handshakes pass; Claude missing-login boundary is recorded as blocked; known host config snapshots are observed equal before/after probes | pass with explicit provider boundary |
 | Cleanup and scope | generated state/build files ignored; builder and probes record cleanup; old repository, old installs and global config remain unchanged | pass |
 | Consistency | Python tests, contracts, `git diff --check`, docs, manifests, checkpoint and GitHub remote agree | pass |
 

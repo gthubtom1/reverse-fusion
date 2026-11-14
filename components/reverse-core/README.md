@@ -3,8 +3,10 @@
 This directory owns the portable route and case boundary for Reverse Fusion.
 `routing.json` is a versioned data snapshot of the upstream route semantics;
 `router.py` executes it without a receipt, provider, credential, or model. The
-generated `routes/R*.md` files are local route descriptors and the stable
-handoff surface for a fresh clone.
+generated `routes/R*.md` files are local route descriptors and the root `skills/`
+copy contains the actual domain instructions used by a fresh-clone handoff.
+The route is reported unavailable if either its descriptor or its local skill is
+missing.
 
 The installed enhanced `reverse-skill` remains a read-only compatibility source
 when explicitly requested with `reverse-fusion bridge --source external`. Its

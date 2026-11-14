@@ -1,0 +1,107 @@
+{
+  "data": {
+    "analysis_profile": null,
+    "authority": "shipped-artifact",
+    "confidence": "observed",
+    "environment": null,
+    "evidence_id": "ev_4a0123224c2a1a5daa8124e3dcfb36f5d5f522697c303a4ed3c6285488c8f350",
+    "evidence_links": [
+      "ev_cba76f8064e8c1933ee7b4899591dab58aeb658cfe308e6486fa427534ac6284",
+      "ev_d9349e30a3eeafaa557a55ee4afd6a18bed7b7d617ffc060b6b1b873112de962",
+      "ev_a49fc8732219412e40bf3fd1b9440fca4c48ce83636a2ff2df5ac36324055c17",
+      "ev_323d65a56a365581d436b61b8b0ded6a573edc91446fbee8bdcc18b44dd08c79"
+    ],
+    "limitations": [
+      "Artifact identity is unavailable for this observation.",
+      "The comparison covers the declared manifest projection and Answer class member inventory only.",
+      "Android runtime behavior is not established without a device or emulator capture."
+    ],
+    "locations": [],
+    "normalized_result": {
+      "class_equal": true,
+      "coverage": {
+        "status": "complete-within-inputs"
+      },
+      "package_equal": true,
+      "summary": {
+        "added": 0,
+        "changed": 0,
+        "removed": 0,
+        "unchanged": 1,
+        "unknown": 0
+      }
+    },
+    "operation": "compare_android_reconstruction",
+    "parameters": {
+      "class_name": "com.reversefusion.Answer",
+      "scope": "manifest-and-class-members"
+    },
+    "predicate_type": "rea.comparison",
+    "provider": {
+      "id": "reverse-fusion-apk-comparator",
+      "name": "Reverse Fusion APK comparator",
+      "version": "1"
+    },
+    "raw_result": {
+      "candidate_methods": [
+        {
+          "dex_descriptor": "()V",
+          "is_constructor": true,
+          "name": "<init>",
+          "reported_signature": "<init>(): void"
+        },
+        {
+          "dex_descriptor": "(Ljava/lang/String;)Ljava/lang/String;",
+          "is_constructor": false,
+          "name": "answer",
+          "reported_signature": "answer(java.lang.String): java.lang.String"
+        }
+      ],
+      "candidate_package": [
+        {
+          "actions": [
+            "android.intent.action.MAIN"
+          ],
+          "categories": [
+            "android.intent.category.LAUNCHER"
+          ],
+          "exported": true,
+          "kind": "activity",
+          "name": "com.reversefusion.fixture.MainActivity"
+        }
+      ],
+      "class_equal": true,
+      "original_methods": [
+        {
+          "dex_descriptor": "()V",
+          "is_constructor": true,
+          "name": "<init>",
+          "reported_signature": "<init>(): void"
+        },
+        {
+          "dex_descriptor": "(Ljava/lang/String;)Ljava/lang/String;",
+          "is_constructor": false,
+          "name": "answer",
+          "reported_signature": "answer(java.lang.String): java.lang.String"
+        }
+      ],
+      "original_package": [
+        {
+          "actions": [
+            "android.intent.action.MAIN"
+          ],
+          "categories": [
+            "android.intent.category.LAUNCHER"
+          ],
+          "exported": true,
+          "kind": "activity",
+          "name": "com.reversefusion.fixture.MainActivity"
+        }
+      ],
+      "package_equal": true
+    },
+    "relationship_coverage": null,
+    "subject": null
+  },
+  "ok": true
+}

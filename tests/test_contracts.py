@@ -7,9 +7,9 @@ from shutil import copytree
 
 from reverse_fusion.adapters import CraftAdapter, LocalBoundedWorker, spec_pointer
 from reverse_fusion.builder import HostBuilder
-from reverse_fusion.case_bridge import build_case_pointer, dry_run_route
+from reverse_fusion.case_bridge import build_case_pointer, dry_run_route, record_case_pointer, resolve_case_root
 from reverse_fusion.contracts import ContractError, check_contracts, validate_candidate_result, validate_external_baseline, validate_handoff
-from reverse_fusion.host import detect_hosts, read_handshake_record
+from reverse_fusion.host import adapter_plan, compare_host_config, detect_hosts, read_handshake_record, snapshot_host_config
 from reverse_fusion.vertical import correct_candidate, evaluate_console, wrong_candidate
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -45,6 +45,13 @@ class ContractTests(unittest.TestCase):
             path.write_text(json.dumps(data), encoding="utf-8")
             self.assertEqual(check_contracts(root)["status"], "fail")
 
+    def test_reverse_route_skill_drift_rejected(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory) / "repo"
+            copytree(ROOT, root)
+            (root / "components" / "reverse-core" / "routes" / "R1.md").unlink()
+            self.assertEqual(check_contracts(root)["status"], "fail")
+
     def test_duplicate_and_path_boundary_rejected(self):
         for mutation in ("duplicate", "traversal", "absolute"):
             with self.subTest(mutation=mutation), tempfile.TemporaryDirectory() as directory:
@@ -66,6 +73,10 @@ class ContractTests(unittest.TestCase):
             validate_candidate_result({"version": 2, "disposition": "candidate", "tasks": [], "checks": [], "cleanup": {}})
         with self.assertRaises(ContractError):
             validate_handoff({"version": 1})
+        blocked = {"version": 1, "disposition": "blocked", "tasks": [], "checks": [], "cleanup": {"status": "blocked"}}
+        self.assertEqual(validate_candidate_result(blocked)["disposition"], "blocked")
+        with self.assertRaises(ContractError):
+            validate_candidate_result({**blocked, "unexpected": True})
 
     def test_vertical_slice_pass_fail_unknown(self):
         passed = evaluate_console(correct_candidate, ["a", "b"])
@@ -102,6 +113,17 @@ class ContractTests(unittest.TestCase):
         self.assertEqual(result["source"], "local")
         self.assertEqual(result["primary_id"], "R1")
         self.assertTrue((ROOT / result["primary"]).is_file())
+        self.assertTrue(result["skill_available"])
+
+    def test_case_pointer_can_be_recorded_inside_repository_boundary(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            pointer = build_case_pointer(Path("work/case"), "components/reverse-core/routes/R1.md", "analysis")
+            path = record_case_pointer(root, pointer)
+            self.assertTrue(path.is_file())
+            self.assertEqual(json.loads(path.read_text(encoding="utf-8"))["status"], "open")
+            with self.assertRaises(ValueError):
+                resolve_case_root(root, "..\\outside")
 
     def test_external_route_is_explicitly_unavailable_when_uninstalled(self):
         result = dry_run_route("reconstruction implementation", source="external")
@@ -115,6 +137,7 @@ class ContractTests(unittest.TestCase):
         hosts = detect_hosts()
         self.assertIn("codex", hosts["hosts"])
         self.assertFalse(hosts["global_config_mutation"])
+        self.assertEqual(adapter_plan("missing-host")["selected"], [])
 
     def test_host_handshake_record_is_typed_and_fail_closed(self):
         with tempfile.TemporaryDirectory() as directory:
@@ -133,6 +156,13 @@ class ContractTests(unittest.TestCase):
             self.assertEqual(result["status"], "recorded")
             self.assertEqual(result["probes"][0]["status"], "pass")
 
+    def test_host_config_snapshot_detects_changes_without_reading_contents(self):
+        before = {"status": "observed", "files": {"config.toml": "a"}}
+        after = {"status": "observed", "files": {"config.toml": "b"}}
+        result = compare_host_config(before, after)
+        self.assertTrue(result["mutation"])
+        self.assertEqual(snapshot_host_config("unknown")["status"], "observed")
+
     def test_local_bounded_worker_candidate(self):
         with tempfile.TemporaryDirectory() as directory:
             workspace = Path(directory)
@@ -148,6 +178,20 @@ class ContractTests(unittest.TestCase):
             self.assertEqual(result["cleanup"]["status"], "verified")
             self.assertTrue((workspace / "state/implementation/candidate.txt").is_file())
 
+    def test_windows_absolute_and_traversal_outputs_are_rejected(self):
+        with tempfile.TemporaryDirectory() as directory:
+            workspace = Path(directory)
+            source = workspace / "source.txt"
+            source.write_text("candidate", encoding="utf-8")
+            for output in ("C:/escape.txt", "..\\escape.txt", "C:\\escape.txt"):
+                result = LocalBoundedWorker(workspace).run(
+                    source=source,
+                    output_relative=output,
+                    tasks=["T-001"],
+                    research_ref="E-CONSOLE-001",
+                )
+                self.assertEqual(result["disposition"], "needs-scope")
+
     def test_host_builder_does_not_select_a_model_and_fails_closed_without_host(self):
         with tempfile.TemporaryDirectory() as directory:
             workspace = Path(directory)
@@ -162,6 +206,8 @@ class ContractTests(unittest.TestCase):
             self.assertEqual(result["disposition"], "unsupported")
             invocation = HostBuilder(workspace, host="codex")._invocation("codex", "codex", "prompt")
             self.assertNotIn("--model", invocation.argv)
+            self.assertFalse(HostBuilder._safe_relative("C:/escape.txt"))
+            self.assertFalse(HostBuilder._safe_relative("..\\escape.txt"))
 
 
 if __name__ == "__main__":

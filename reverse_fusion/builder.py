@@ -17,6 +17,9 @@ from hashlib import sha256
 from pathlib import Path
 from typing import Any
 
+from .contracts import is_safe_relative_path
+from .host import compare_host_config, snapshot_host_config
+
 
 @dataclass(frozen=True)
 class HostInvocation:
@@ -152,8 +155,7 @@ class HostBuilder:
 
     @staticmethod
     def _safe_relative(value: str) -> bool:
-        path = Path(value)
-        return bool(value) and not path.is_absolute() and ".." not in path.parts
+        return is_safe_relative_path(value)
 
     def run(
         self,
@@ -184,7 +186,10 @@ class HostBuilder:
             output_path.relative_to(self.workspace)
         except ValueError:
             return {"version": 1, "disposition": "needs-scope", "tasks": tasks, "checks": checks, "cleanup": {"status": "not-started"}, "reason": "candidate output escapes workspace"}
-        allowed = set(allowed_outputs or [output_relative.replace("\\", "/")])
+        requested_allowed = allowed_outputs or [output_relative]
+        if any(not is_safe_relative_path(item) for item in requested_allowed):
+            return {"version": 1, "disposition": "needs-scope", "tasks": tasks, "checks": checks, "cleanup": {"status": "not-started"}, "reason": "allowed output escapes workspace"}
+        allowed = {item.replace("\\", "/") for item in requested_allowed}
         before = self._snapshot()
         checks.append({"id": "prepare", "status": "pass", "host": host, "research_ref": research_ref})
 
@@ -199,8 +204,26 @@ class HostBuilder:
             "After writing the candidate, return a short factual summary."
         )
         invocation = self._invocation(host, executable, instruction)
+        config_before = snapshot_host_config(host)
         host_result = self._invoke(invocation, instruction)
+        config_after = snapshot_host_config(host)
+        config_check = compare_host_config(config_before, config_after)
+        host_result["config_snapshot"] = config_check
+        host_result["config_mutation"] = config_check["mutation"]
         checks.append({"id": "build", "status": host_result["status"], "host": host, "exit_code": host_result.get("exit_code")})
+        checks.append({"id": "host-config", "status": "pass" if config_check["mutation"] is False else config_check["status"], "mutation": config_check["mutation"]})
+        if config_check["mutation"] is not False:
+            return {
+                "version": 1,
+                "disposition": "blocked-cleanup",
+                "tasks": tasks,
+                "checks": checks,
+                "cleanup": {"status": "blocked"},
+                "backend": f"host-agent:{host}",
+                "host_result": host_result,
+                "research_ref": research_ref,
+                "reason": "host configuration snapshot changed or could not be observed",
+            }
         if host_result["status"] != "pass":
             checks.extend([
                 {"id": "check", "status": "not-run"},
@@ -226,10 +249,19 @@ class HostBuilder:
                 "Return a short factual refinement summary."
             )
             refine_invocation = self._invocation(host, executable, refine_instruction)
+            refine_config_before = snapshot_host_config(host)
             refine_result = self._invoke(refine_invocation, refine_instruction)
+            refine_config_after = snapshot_host_config(host)
+            refine_config_check = compare_host_config(refine_config_before, refine_config_after)
+            refine_result["config_snapshot"] = refine_config_check
+            refine_result["config_mutation"] = refine_config_check["mutation"]
             refine_after = self._snapshot()
             refine_unexpected = sorted(set(refine_after) - set(before) - allowed)
-            if refine_result["status"] == "pass" and output_path.is_file() and not refine_unexpected:
+            if refine_config_check["mutation"] is not False:
+                checks.append({"id": "refine-config", "status": refine_config_check["status"], "mutation": refine_config_check["mutation"]})
+                checks.append({"id": "refine", "status": "blocked-cleanup", "unexpected_writes": refine_unexpected})
+                disposition = "blocked-cleanup"
+            elif refine_result["status"] == "pass" and output_path.is_file() and not refine_unexpected:
                 checks.append({"id": "refine", "status": "pass", "candidate": output_relative})
                 disposition = "candidate"
             else:
@@ -242,11 +274,11 @@ class HostBuilder:
             disposition = "failed"
             result_refine = None
         checks.append({"id": "return_summary", "status": "pass"})
-        cleanup_status = "verified"
+        cleanup_status = "blocked" if disposition == "blocked-cleanup" else "verified"
         # The candidate is retained; only transient builder temp material would
         # be removed here. The contract records that no host/global config was
         # touched by this invocation.
-        checks.append({"id": "cleanup", "status": cleanup_status, "config_mutation": False})
+        checks.append({"id": "cleanup", "status": cleanup_status, "config_mutation": config_check["mutation"]})
         result: dict[str, Any] = {
             "version": 1,
             "disposition": disposition,

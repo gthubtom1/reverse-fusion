@@ -1,0 +1,72 @@
+{
+  "data": {
+    "analysis_profile": null,
+    "authority": "controlled-replay",
+    "confidence": "observed",
+    "environment": null,
+    "evidence_id": "ev_af2166ec8020eafb0b3c0914ba5fd5a51936571407b0bed11749097865d4affa",
+    "evidence_links": [
+      "ev_cba76f8064e8c1933ee7b4899591dab58aeb658cfe308e6486fa427534ac6284",
+      "ev_d9349e30a3eeafaa557a55ee4afd6a18bed7b7d617ffc060b6b1b873112de962",
+      "ev_a49fc8732219412e40bf3fd1b9440fca4c48ce83636a2ff2df5ac36324055c17",
+      "ev_323d65a56a365581d436b61b8b0ded6a573edc91446fbee8bdcc18b44dd08c79",
+      "ev_4a0123224c2a1a5daa8124e3dcfb36f5d5f522697c303a4ed3c6285488c8f350"
+    ],
+    "limitations": [
+      "Artifact identity is unavailable for this observation.",
+      "The proof establishes static APK/package and DEX member equivalence within the selected inputs.",
+      "Android device/emulator runtime remains unknown and is retained as a separate acceptance field."
+    ],
+    "locations": [],
+    "normalized_result": {
+      "bindings": [
+        {
+          "fixtures": [
+            {
+              "case_kind": "positive",
+              "fixture_id": "apk-answer-static-fixture",
+              "passed": true
+            }
+          ],
+          "obligation_id": "apk-answer-static",
+          "obligation_version": 1,
+          "owner_sha256": "ae803892b22a9efbc2e564c4deb515975ab3134be64b00567049e37dc1677836",
+          "verifiers": [
+            {
+              "claim_id": "apk-answer-static",
+              "passed": true,
+              "verifier_id": "apk-static-comparison"
+            }
+          ]
+        }
+      ]
+    },
+    "operation": "verify_reconstruction_obligations",
+    "parameters": {
+      "fixture_id": "apk-answer-static-fixture",
+      "obligation_id": "apk-answer-static",
+      "toolchain": "jadx-headless-mcp@0.7.1",
+      "verifier_id": "apk-static-comparison"
+    },
+    "predicate_type": "rea.reconstruction-proof",
+    "provider": {
+      "id": "reverse-fusion-apk-verifier",
+      "name": "Reverse Fusion APK verifier",
+      "version": "1"
+    },
+    "raw_result": {
+      "android_runtime": {
+        "reason": "No adb device or emulator was available on this host",
+        "status": "unknown"
+      },
+      "operation": "apk-answer-static",
+      "static": {
+        "comparison_evidence_id": "ev_4a0123224c2a1a5daa8124e3dcfb36f5d5f522697c303a4ed3c6285488c8f350",
+        "status": "pass"
+      }
+    },
+    "relationship_coverage": null,
+    "subject": null
+  },
+  "ok": true
+}

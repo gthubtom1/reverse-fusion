@@ -1,0 +1,107 @@
+{
+  "product": "reconstruction-product-v1",
+  "schema_version": 1,
+  "source": "normalized state artifacts from RF-22 representative runs",
+  "targets": {
+    "apk": {
+      "files": {
+        "candidate.json": {
+          "sha256": "10ed1301af7bf637824b44ad28a910f2e9350e72ed0d2ea96a06157e9aafa49a",
+          "source_state": "rea-apk-candidate.json"
+        },
+        "comparison.json": {
+          "sha256": "996dab951b81d92a693e1363940b41b3469d8def40a536f25198153e78750e99",
+          "source_state": "rea-apk-comparison.json"
+        },
+        "ledger.json": {
+          "sha256": "f0b67351b49b3058c14a436ee2cd29b0894ae2cc0455484a664b738581a8e6ed",
+          "source_state": "rea-apk-ledger.json"
+        },
+        "original.json": {
+          "sha256": "99efba7ce94e467537fecee9d42dbb399c94cd9fc9112f9e1c77edacfd4b1e38",
+          "source_state": "rea-apk-original.json"
+        },
+        "proof.json": {
+          "sha256": "ac6517e400e66362fceb4701c45ce2f9b5d8578953a15da79d59880bd0c12655",
+          "source_state": "rea-apk-proof-evidence.json"
+        }
+      }
+    },
+    "dotnet": {
+      "files": {
+        "candidate.json": {
+          "sha256": "ba2dc9fa4d6a73bf3a8a9e8ae242a9e84c5d24dbe83da467f0509c318da8c40a",
+          "source_state": "rea-dotnet-candidate.json"
+        },
+        "comparison.json": {
+          "sha256": "5c95cd4a66530703aa3d22fe48bcc0f12b901b6f1570e6959cce137db6d5ba6d",
+          "source_state": "rea-dotnet-comparison.json"
+        },
+        "ledger.json": {
+          "sha256": "341139f7546bdcb02941e9fb7bcd0dd0a2d3039b465b4e3e06a6a7b2ff3ee66a",
+          "source_state": "rea-dotnet-ledger.json"
+        },
+        "original.json": {
+          "sha256": "f9be2de7e2244937d66292e33f1f5a8c5dd5c3e770c4314fcb1bc9d3ee0ea79d",
+          "source_state": "rea-dotnet-original.json"
+        },
+        "proof.json": {
+          "sha256": "e7494cbcdd95b5e4bf39f016b77ffabeada35acc866c8effa86db5f4a650f0d7",
+          "source_state": "rea-dotnet-proof-evidence.json"
+        }
+      }
+    },
+    "wasm": {
+      "files": {
+        "candidate.json": {
+          "sha256": "cfda9415d35e651984feda0d4373cb71b864c306d9b526eeb2b47001d3f626b4",
+          "source_state": "rea-wasm-candidate-evidence.json"
+        },
+        "comparison.json": {
+          "sha256": "82147932428d2a9fd28874e155dc76b1a0066983703c9f6b4b3283dbde8d7ef1",
+          "source_state": "rea-wasm-comparison-evidence.json"
+        },
+        "ledger.json": {
+          "sha256": "9798bd7fd640f94d9c7b78cfaa25427c1e909385b3ee886f295b3b098bbc212a",
+          "source_state": "ledger-output.json"
+        },
+        "original.json": {
+          "sha256": "4c291517a3979bc6e03194324592b3bc65444a4c584f3ef7697035717426faaf",
+          "source_state": "rea-wasm-evidence.json"
+        },
+        "proof.json": {
+          "sha256": "b78a54c22ea98cbe406a7bde39b3145f4f29cb31dcca767c8156d5c8500e14a4",
+          "source_state": "rea-wasm-proof-evidence.json"
+        },
+        "wrong-candidate.json": {
+          "sha256": "b5fb596ad6ab7abfa669deb7f2e1054bb5b2711df12d76bc4facb918bf336961",
+          "source_state": "rea-wasm-wrong-evidence.json"
+        }
+      }
+    },
+    "web": {
+      "files": {
+        "candidate.json": {
+          "sha256": "42d5a1537d64537b39c941cd7712b1b7a52313c7791917ebb7614481d638b8c5",
+          "source_state": "rea-web-candidate.json"
+        },
+        "comparison.json": {
+          "sha256": "f06ddf7f2b9583a5d122d6cac89b4e84a1adec139748051c7f6a9f6fdf1cec93",
+          "source_state": "rea-web-comparison.json"
+        },
+        "ledger.json": {
+          "sha256": "f9d1ac15f70c8d10aef7491d6dd11e5b338dc94c984525a7fd6bdfae0915cc2b",
+          "source_state": "rea-web-ledger.json"
+        },
+        "original.json": {
+          "sha256": "009a15c1c4b1c49eeca8827625a6f0384c810ff51151519ccfeb8299886d4bf4",
+          "source_state": "rea-web-original.json"
+        },
+        "proof.json": {
+          "sha256": "a3e554511725dd69c7e8bd3de1ee5d9986d90d67de7a9b4bc274653cbf2e7c97",
+          "source_state": "rea-web-proof-evidence.json"
+        }
+      }
+    }
+  }
+}

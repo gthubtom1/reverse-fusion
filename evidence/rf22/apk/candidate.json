@@ -1,0 +1,204 @@
+{
+  "data": {
+    "analysis_profile": null,
+    "authority": "shipped-artifact",
+    "caller_input_path": "<workspace>\\state\\apk-candidate\\build\\fixture.apk",
+    "confidence": "observed",
+    "environment": null,
+    "evidence_id": "ev_a49fc8732219412e40bf3fd1b9440fca4c48ce83636a2ff2df5ac36324055c17",
+    "evidence_links": [],
+    "limitations": [
+      "Static decompiler observations do not establish runtime behavior; the APK is never executed.",
+      "Method signatures use provider display types; DEX prototypes come from frozen JADX metadata. Display names may be aliases, and overload indices are local to this engine and artifact.",
+      "Class inventories use parsed metadata before code generation, including synthetic members that may be omitted from decompiled source. Source positions remain unknown.",
+      "Incoming reference totals count JADX using nodes. Direct invoke entries within a using method report raw DEX code-unit offsets and method indexes, but coverage is limited to those nodes and directly matched invokes; it does not establish every possible dynamic or reflective call site.",
+      "Manifest summaries are parsed once by REA's bridge from the exact root AndroidManifest.xml resource, using namespace-aware XML attributes; decoded XML is retained. These summaries do not verify APK signatures, split APKs or Android runtime capture."
+    ],
+    "locations": [
+      {
+        "kind": "artifact-path",
+        "path": "AndroidManifest.xml"
+      }
+    ],
+    "normalized_result": {
+      "class_count": 2,
+      "components": {
+        "items": [
+          {
+            "actions": [
+              "android.intent.action.MAIN"
+            ],
+            "authorities": null,
+            "categories": [
+              "android.intent.category.LAUNCHER"
+            ],
+            "declaration_coverage": "complete",
+            "declaration_index": 0,
+            "declared_name": ".MainActivity",
+            "enabled": null,
+            "enabled_declaration": null,
+            "exported": true,
+            "exported_default": true,
+            "foreground_service_type": null,
+            "grant_uri_permissions": null,
+            "grant_uri_permissions_declaration": null,
+            "intent_filter_count": 1,
+            "intent_filters": [
+              {
+                "actions": [
+                  "android.intent.action.MAIN"
+                ],
+                "categories": [
+                  "android.intent.category.LAUNCHER"
+                ],
+                "coverage": "complete",
+                "data": [],
+                "location": {
+                  "column": 13,
+                  "line": 14,
+                  "offset": 539
+                },
+                "priority": null,
+                "source_index": 0
+              }
+            ],
+            "kind": "activity",
+            "location": {
+              "column": 9,
+              "line": 11,
+              "offset": 436
+            },
+            "meta_data": [],
+            "name": "com.reversefusion.fixture.MainActivity",
+            "permission": null,
+            "permission_source": "none",
+            "process": null,
+            "target_activity": null
+          }
+        ],
+        "limitations": [],
+        "status": "complete"
+      },
+      "engine": {
+        "artifact_sha256": "6e5eacf500b64292bfb73c49797c1958f6ee44646e43e868039ae7feb573ff75",
+        "heap_limit_mib": 4024,
+        "name": "jadx-headless-mcp",
+        "source_revision": "5844800a486d2248fa949b74c9896285f5b54de2",
+        "version": "0.7.1",
+        "worker_count": 1
+      },
+      "manifest": {
+        "reported_total_bytes": null,
+        "status": "complete",
+        "text": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<manifest xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    android:compileSdkVersion=\"28\"\r\n    android:compileSdkVersionCodename=\"9\"\r\n    package=\"com.reversefusion.fixture\"\r\n    platformBuildVersionCode=\"28\"\r\n    platformBuildVersionName=\"9\">\r\n    <application\r\n        android:theme=\"@android:style/Theme.Material.Light\"\r\n        android:label=\"Reverse Fusion Fixture\">\r\n        <activity\r\n            android:name=\".MainActivity\"\r\n            android:exported=\"true\">\r\n            <intent-filter>\r\n                <action android:name=\"android.intent.action.MAIN\"/>\r\n                <category android:name=\"android.intent.category.LAUNCHER\"/>\r\n            </intent-filter>\r\n        </activity>\r\n    </application>\r\n</manifest>"
+      },
+      "min_sdk": null,
+      "package_name": "com.reversefusion.fixture",
+      "permissions": [],
+      "resource_count": 2,
+      "signature_verification": "not_performed",
+      "target_sdk": null,
+      "version_code": null,
+      "version_name": null
+    },
+    "operation": "inspect_android_package",
+    "parameters": {
+      "path": "<workspace>\\state\\apk-candidate\\build\\fixture.apk"
+    },
+    "predicate_type": "rea.analysis",
+    "provider": {
+      "id": "jadx",
+      "name": "JADX headless",
+      "version": "0.7.1"
+    },
+    "raw_result": {
+      "bridge_sha256": "f9d6d68eadd3d51a89e2debda359454c20534560080d4438f9b9cfe5a19f0b2e",
+      "calls": [
+        {
+          "input": {},
+          "operation": "rea_jvm_status",
+          "response": {
+            "content": [
+              {
+                "text": "{\"metadata_scope\":\"parsed_members\",\"engine_reported_version\":\"0.7.1\",\"available_processors\":20,\"java_version\":\"21.0.12.1\",\"max_heap_bytes\":4219469824}",
+                "type": "text"
+              }
+            ],
+            "isError": false
+          }
+        },
+        {
+          "input": {
+            "path": "<absolute-path>",
+            "resources": "full",
+            "threads": 1
+          },
+          "operation": "load_apk",
+          "response": {
+            "content": [
+              {
+                "text": "{\"state\":\"LOADED\",\"apk_path\":\"<absolute-path>\",\"class_count\":2,\"raw_class_count\":2,\"resource_count\":2,\"load_duration_ms\":365,\"decompile_timeout_ms\":90000,\"threads\":1,\"code_cache_size\":64,\"resources\":\"full\"}",
+                "type": "text"
+              }
+            ],
+            "isError": false
+          }
+        },
+        {
+          "input": {},
+          "operation": "get_app_info",
+          "response": {
+            "content": [
+              {
+                "text": "{\"package\":\"com.reversefusion.fixture\",\"version_name\":\"\",\"version_code\":\"\",\"min_sdk\":\"\",\"target_sdk\":\"\",\"permissions\":[]}",
+                "type": "text"
+              }
+            ],
+            "isError": false
+          }
+        },
+        {
+          "input": {},
+          "operation": "get_android_manifest",
+          "response": {
+            "content": [
+              {
+                "text": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<manifest xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    android:compileSdkVersion=\"28\"\r\n    android:compileSdkVersionCodename=\"9\"\r\n    package=\"com.reversefusion.fixture\"\r\n    platformBuildVersionCode=\"28\"\r\n    platformBuildVersionName=\"9\">\r\n    <application\r\n        android:theme=\"@android:style/Theme.Material.Light\"\r\n        android:label=\"Reverse Fusion Fixture\">\r\n        <activity\r\n            android:name=\".MainActivity\"\r\n            android:exported=\"true\">\r\n            <intent-filter>\r\n                <action android:name=\"android.intent.action.MAIN\"/>\r\n                <category android:name=\"android.intent.category.LAUNCHER\"/>\r\n            </intent-filter>\r\n        </activity>\r\n    </application>\r\n</manifest>",
+                "type": "text"
+              }
+            ],
+            "isError": false
+          }
+        }
+      ],
+      "jar_sha256": "6e5eacf500b64292bfb73c49797c1958f6ee44646e43e868039ae7feb573ff75",
+      "loaded": {
+        "apk_path": "<absolute-path>",
+        "class_count": 2,
+        "resource_count": 2,
+        "resources": "full",
+        "state": "LOADED",
+        "threads": 1
+      },
+      "server": {
+        "name": "rea-jadx-bridge",
+        "version": "10"
+      }
+    },
+    "relationship_coverage": null,
+    "subject": {
+      "architecture": null,
+      "digest": {
+        "sha256": "4fb84e4c06e844b80e68db27e2955e9cd567faaedc7d2001d07bb6e6745b8297"
+      },
+      "format": "apk",
+      "local_path": "<workspace>\\state\\apk-candidate\\build\\fixture.apk",
+      "name": "fixture.apk"
+    }
+  },
+  "meta": {
+    "command": "inspect-android-package",
+    "duration": "4162ms"
+  },
+  "ok": true
+}

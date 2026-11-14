@@ -15,7 +15,7 @@ host and do not claim identical provider availability on another computer.
 | REA process capture | Windows PTY provider returned `capability_unavailable` because descendant cleanup is not verified | unsupported on this host | use Linux/macOS or a qualified Windows PTY provider |
 | Craft companion | upstream 0.6.1 MCP retains required `--all-tools`; native R46 backend receipt remains unqualified | companion healthy; native backend unsupported | keep host-owned Builder as the real model transport; fallback is offline-only |
 | Host-owned Builder | Codex generated APK candidate; six checks `prepare/build/check/refine/return_summary/cleanup` pass, no `--model`, `config_mutation=false` | verified for this case | use host-provided current model/provider; never select one in the repository |
-| Host handshakes | Codex and Pi fixed sentinels pass; Claude CLI starts and returns missing-login boundary | Codex/Pi verified; Claude blocked | authenticate Claude on a future host and rerun the read-only probe |
+| Host handshakes | Codex and Pi fixed sentinels pass; Claude CLI starts and returns missing-login boundary; known Codex/Pi/Claude config file hashes are equal before/after each probe | Codex/Pi verified; Claude blocked; config snapshot observed | authenticate Claude on a future host and rerun the read-only probe |
 
 All provider failures, login gaps and device gaps remain typed as
 `blocked`, `unsupported` or `unknown`; none is converted into business

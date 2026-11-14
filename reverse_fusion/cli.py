@@ -12,7 +12,7 @@ from typing import Any
 from . import __version__
 from .adapters import CraftAdapter, LocalBoundedWorker, spec_pointer
 from .builder import HostBuilder
-from .case_bridge import build_case_pointer, dry_run_route, locate_reverse_root
+from .case_bridge import build_case_pointer, dry_run_route, locate_reverse_root, record_case_pointer, resolve_case_root
 from .contracts import ContractError, check_contracts, read_json, sha256_file
 from .host import adapter_plan, detect_hosts, read_handshake_record
 from .vertical import correct_candidate, evaluate_console, wrong_candidate
@@ -165,8 +165,13 @@ def cmd_bridge(args: argparse.Namespace) -> int:
     route = dry_run_route(args.hint, source=args.source, primary=args.primary)
     routed = route.get("status") in {"local-route-pass", "external-route-pass"}
     owner = "reverse-fusion.local-router" if route.get("source") == "local" else "reverse.native-router"
+    try:
+        case_root = resolve_case_root(ROOT, args.case_root)
+    except ValueError as exc:
+        _print({"operation": "case-bridge", "status": "blocked", "reason": str(exc)}, args.format)
+        return 2
     pointer = build_case_pointer(
-        Path(args.case_root),
+        case_root.relative_to(ROOT),
         route.get("primary") or "unresolved",
         args.mode,
         delta=[f"route resolved by {route.get('source', 'unknown')} router"] if routed else ["route unresolved"],
@@ -174,7 +179,11 @@ def cmd_bridge(args: argparse.Namespace) -> int:
         route_owner=owner,
         route_source=route.get("source", "unknown"),
     )
-    _print({"operation": "case-bridge", "route": route, "pointer": pointer.to_dict()}, args.format)
+    result = {"operation": "case-bridge", "route": route, "pointer": pointer.to_dict(), "recorded": False}
+    if args.record and routed:
+        result["case_file"] = str(record_case_pointer(ROOT, pointer))
+        result["recorded"] = True
+    _print(result, args.format)
     return 0 if routed else 2
 
 
@@ -244,6 +253,7 @@ def build_parser() -> argparse.ArgumentParser:
             p.add_argument("--mode", choices=("analysis", "reconstruction", "follow-up", "normal-dev"), default="reconstruction")
             p.add_argument("--source", choices=("local", "auto", "external"), default="local")
             p.add_argument("--primary", help="explicit local or upstream route id, for example R46")
+            p.add_argument("--record", action="store_true", help="persist a repository-local case.json after route resolution")
         if name == "craft":
             p.add_argument("--source", required=True, help="repository-relative source fixture")
             p.add_argument("--output", required=True, help="repository-relative candidate output")

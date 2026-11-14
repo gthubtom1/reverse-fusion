@@ -64,3 +64,19 @@ the subcase owns its target path, route, Evidence, tasks and candidate; only
 reviewed Evidence-backed conclusions flow back into the main project. This
 allows a website, desktop application, APK or another project to be researched
 mid-development without forcing every main project into reconstruction mode.
+
+## RF-012 Local domain skill ownership
+
+The new repository carries a pinned copy of the enhanced reverse-skill domain
+skill bodies under `skills/`. Route metadata alone is insufficient for a fresh
+clone; the local route reports `unavailable` when its descriptor or referenced
+skill body is missing. The old reverse-skill checkout remains read-only and
+optional compatibility input.
+
+## RF-013 Evidence and host-boundary records
+
+Representative RF-22 Evidence/proof/ledger records are stored in normalized,
+host-path-free form under `evidence/rf22/` and hash-checked by contracts. Host
+handshakes and Builder runs compare hashes of known host configuration files
+before and after invocation; a changed or unobservable snapshot is typed as a
+blocked cleanup result rather than a declared pass.

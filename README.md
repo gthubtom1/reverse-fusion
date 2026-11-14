@@ -32,6 +32,7 @@ GitHub：<https://github.com/gthubtom1/reverse-fusion>
 - `scripts/run-host-handshakes.ps1` 对 Codex、Pi、Claude 执行只读固定 sentinel 探针，记录真实加载、退出码、阻塞原因和 `config_mutation=false`。
 - `docs/PRODUCT-GOAL.md` 是最终产品合同；`docs/HANDOFF-PROMPT.md` 是交给下一位智能体的持续交接提示词。
 - `docs/DEPLOYMENT-GUIDE.md` 是交给任意 Codex、Pi、Claude Code 或兼容 agent 的宿主无关部署、嵌套 subcase 和选择性上游更新指南。
+- `skills/` 保存 Reverse Skills 的本地领域正文；`evidence/rf22/` 保存去除宿主绝对路径后的代表性 Evidence、proof 和 ledger，可在 fresh clone 中复核。
 - normal-dev、analysis、reconstruction、follow-up profiles。normal-dev 是轻量主项目模式，但 Reverse/REA/Spec/Builder 可以在开发中途按需创建隔离 subcase，再把经过 Evidence 支持的结论带回主项目。
 - 上游更新和上下文交接文档。
 
@@ -89,6 +90,7 @@ PRIMARY 映射到 `components/reverse-core/routes/` 下的本地描述。旧路�
 ```text
 python -m reverse_fusion bridge --hint "APK reverse" --source local
 python -m reverse_fusion bridge --hint "APK reverse" --source external
+python -m reverse_fusion bridge --hint "APK reverse reconstruction" --source local --case-root work/apk-case --record
 ```
 
 ## 给智能体的快速开始
@@ -162,6 +164,8 @@ Linux/macOS 删除仓库内 `.venv` 即可。所有入口都限制在仓库目�
 
 - `docs/PROJECT-CONTEXT.md`
 - `docs/DEPLOYMENT-GUIDE.md`
+- `THIRD-PARTY-NOTICES.md`
+- `evidence/rf22/README.md`
 - `docs/CURRENT-STATE.md`
 - `docs/DECISIONS.md`
 - `docs/DEVELOPMENT-MASTER-PLAN.md`

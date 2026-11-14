@@ -4,8 +4,47 @@ from __future__ import annotations
 import json
 import platform
 import shutil
+from hashlib import sha256
+import os
 from pathlib import Path
 from typing import Any
+
+
+def _known_config_paths(host: str) -> list[Path]:
+    home = Path.home()
+    if host == "codex":
+        root = Path(os.environ.get("CODEX_HOME", home / ".codex"))
+        return [root / "config.toml", root / "AGENTS.md"]
+    if host == "pi":
+        root = Path(os.environ.get("PI_CODING_AGENT_DIR", home / ".pi" / "agent"))
+        return [root / "settings.json", root / "mcp.json", root / "AGENTS.md"]
+    if host == "claude":
+        root = Path(os.environ.get("CLAUDE_CONFIG_DIR", home / ".claude"))
+        return [root / "settings.json", root / "config.json", home / ".claude.json"]
+    return []
+
+
+def snapshot_host_config(host: str) -> dict[str, Any]:
+    """Hash known host config files without reading or storing their contents."""
+    files: dict[str, str] = {}
+    for path in _known_config_paths(host):
+        try:
+            if path.is_file():
+                files[str(path)] = sha256(path.read_bytes()).hexdigest()
+        except OSError:
+            return {"status": "unobserved", "files": files, "reason": f"cannot hash {path}"}
+    return {"status": "observed", "files": files, "known_paths": [str(path) for path in _known_config_paths(host)]}
+
+
+def compare_host_config(before: dict[str, Any], after: dict[str, Any]) -> dict[str, Any]:
+    if before.get("status") != "observed" or after.get("status") != "observed":
+        return {"status": "unknown", "mutation": None, "before": before, "after": after}
+    return {
+        "status": "observed",
+        "mutation": before.get("files", {}) != after.get("files", {}),
+        "before": before,
+        "after": after,
+    }
 
 
 def detect_hosts() -> dict[str, Any]:
@@ -28,7 +67,7 @@ def detect_hosts() -> dict[str, Any]:
 
 def adapter_plan(client: str) -> dict[str, Any]:
     hosts = detect_hosts()
-    selected = hosts["available"] if client == "auto" else [client] if client in hosts["hosts"] else []
+    selected = hosts["available"] if client == "auto" else [client] if client in hosts["available"] else []
     return {
         "requested": client,
         "selected": selected,

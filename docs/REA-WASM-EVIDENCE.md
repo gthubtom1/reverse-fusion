@@ -19,7 +19,7 @@ prompts and catalog digest `2c725b48818ac5266198069330907c657f0fa2b6b8236065e5a1
 The scripts bootstrap the official `rea-agents@6.9.0` npm package into the
 ignored local `vendor/rea` directory, verify its pinned npm integrity, download
 WABT only when the pinned local directory is absent, verify the archive and
-three executable SHA-256 values, set `REA_WABT_BIN_DIRECTORY` for child
+four executable SHA-256 values, set `REA_WABT_BIN_DIRECTORY` for child
 processes only, and launch the REA CLI. They write complete JSON to `state/`
 and do not write global configuration.
 

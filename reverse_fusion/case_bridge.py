@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import json
 import os
+import platform
 import subprocess
 import sys
 from dataclasses import asdict, dataclass
@@ -31,6 +32,28 @@ class CasePointer:
         return asdict(self)
 
 
+def resolve_case_root(repo_root: Path, case_root: str) -> Path:
+    candidate = (repo_root / case_root).resolve()
+    try:
+        candidate.relative_to(repo_root.resolve())
+    except ValueError as exc:
+        raise ValueError("case root must stay inside the repository") from exc
+    return candidate
+
+
+def record_case_pointer(repo_root: Path, pointer: CasePointer) -> Path:
+    case_root = resolve_case_root(repo_root, pointer.case_root)
+    case_root.mkdir(parents=True, exist_ok=True)
+    record = {
+        "schema_version": 1,
+        "status": "open",
+        "pointer": pointer.to_dict(),
+    }
+    path = case_root / "case.json"
+    path.write_text(json.dumps(record, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    return path
+
+
 def locate_reverse_root() -> Path | None:
     """Locate an installed enhanced reverse-skill without writing to it."""
     explicit = os.environ.get("REVERSE_SKILL_ROOT")
@@ -39,15 +62,28 @@ def locate_reverse_root() -> Path | None:
         if (candidate / "RULES.md").is_file():
             return candidate
     receipt_value = os.environ.get("REVERSE_WORKFLOW_RECEIPT")
-    receipt = Path(receipt_value) if receipt_value else Path.home() / "AppData" / "Local" / "reverse-workflow" / ".installer" / "receipt.json"
-    if receipt.is_file():
+    candidates = [Path(receipt_value)] if receipt_value else []
+    root_override = os.environ.get("REVERSE_WORKFLOW_HOME")
+    if root_override:
+        candidates.append(Path(root_override) / ".installer" / "receipt.json")
+    home = Path.home()
+    if platform.system().lower() == "windows":
+        candidates.append(home / "AppData" / "Local" / "reverse-workflow" / ".installer" / "receipt.json")
+    else:
+        candidates.extend([
+            home / ".local" / "share" / "reverse-workflow" / ".installer" / "receipt.json",
+            home / ".config" / "reverse-workflow" / ".installer" / "receipt.json",
+        ])
+    for receipt in candidates:
+        if not receipt or not receipt.is_file():
+            continue
         try:
             data = json.loads(receipt.read_text(encoding="utf-8"))
             candidate = Path(data["reverse"]["root"])
             if (candidate / "RULES.md").is_file():
                 return candidate
         except (OSError, KeyError, TypeError, json.JSONDecodeError):
-            return None
+            continue
     return None
 
 
