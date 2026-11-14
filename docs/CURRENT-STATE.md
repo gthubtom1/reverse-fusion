@@ -46,8 +46,9 @@ Completed product gates:
   `unknown` because this host has no adb device or emulator.
 - Global three-state gate: WASM correct candidate `pass`, intentionally wrong
   candidate `fail`, missing Evidence `unknown`.
-- Fresh-clone and lifecycle checks, contracts, Python tests and `git diff
-  --check` are required release checks. Generated Evidence, candidates and
+- Fresh clone `dd7ffcaaa98de02fbb3fc2d5a0a85be38b6fe42f` passed contracts,
+  plan, doctor, handoff, install/update/uninstall dry-runs, local bridge and
+  14 Python tests. Generated Evidence, candidates and
   build outputs remain ignored under `state/` and fixture build directories.
 
 Provider boundaries:
