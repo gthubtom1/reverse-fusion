@@ -16,12 +16,12 @@ that every future target has already been analyzed or rebuilt.
 | Obligation closure | Proof `ev_59a710...`; ledger `rol_09e996...`; closure digest `eb14c2...`; `required_open=0` | pass |
 | Spec Kit | Project-local `.specify`, `spec.md`, `plan.md`, `tasks.md`, `converge.md` | pass |
 | Craft builder | `local-bounded-worker`; six-tool gate, single writer, digest and cleanup all pass | pass within fallback boundary |
-| Host loading and handshake | `run-host-handshakes.ps1`: Codex and Pi returned fixed sentinels with exit 0; Claude started and returned the typed missing-login result | Codex/Pi pass; Claude blocked by missing credentials, explicitly recorded |
+| Host loading and handshake | `run-host-handshakes.ps1` plus `reverse_fusion doctor`: Codex and Pi returned fixed sentinels with exit 0; Claude started and returned the typed missing-login result | Codex/Pi pass; Claude blocked by missing credentials, explicitly recorded |
 | Craft backend transport | Craft `ai test Codex` and clean-room `chat --backend Codex` returned exit 0 and the fixed backend sentinel; Craft config hash restored to its pre-probe value | pass for agent-cli transport; native R46 bounded executor remains unqualified |
 | Target matrix | WASM verified; JavaScript/Web, Electron, PE/.NET, APK/DEX, Native and Protocol/API boundaries recorded | pass within declared matrix |
 | Three-state acceptance | WASM correct=`pass`, wrong=`fail`, missing=`unknown`; console slice has the same three states | pass |
 | Maintenance and rollback | Source drift tests, rollback record, upstream maintenance policy and context handoff | pass |
-| Repository consistency | `10` Python tests passed, contracts passed, `git diff --check` passed, remote master contains the release commit | pass |
+| Repository consistency | `11` Python tests passed, contracts passed, `git diff --check` passed, remote master contains the release commit | pass |
 
 ## Provider boundaries retained
 

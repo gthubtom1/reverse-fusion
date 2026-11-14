@@ -13,7 +13,7 @@ from . import __version__
 from .adapters import CraftAdapter, LocalBoundedWorker, spec_pointer
 from .case_bridge import build_case_pointer, dry_run_route, locate_reverse_root
 from .contracts import ContractError, check_contracts, read_json, sha256_file
-from .host import adapter_plan, detect_hosts
+from .host import adapter_plan, detect_hosts, read_handshake_record
 from .vertical import correct_candidate, evaluate_console, wrong_candidate
 from .wasm_vertical import evaluate_wasm
 
@@ -81,6 +81,7 @@ def cmd_doctor(args: argparse.Namespace) -> int:
         "loaded": "unverified",
         "running": "unverified",
         "accepted": "unverified",
+        "handshakes": read_handshake_record(ROOT),
         "source_manifest_sha256": sha256_file(ROOT / "SOURCE-MANIFEST.json"),
         "provider_status": str(ROOT / "docs" / "PROVIDER-STATUS.md"),
     }

@@ -8,7 +8,7 @@ from shutil import copytree
 from reverse_fusion.adapters import CraftAdapter, LocalBoundedWorker, spec_pointer
 from reverse_fusion.case_bridge import build_case_pointer
 from reverse_fusion.contracts import ContractError, check_contracts, validate_candidate_result, validate_external_baseline, validate_handoff
-from reverse_fusion.host import detect_hosts
+from reverse_fusion.host import detect_hosts, read_handshake_record
 from reverse_fusion.vertical import correct_candidate, evaluate_console, wrong_candidate
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -101,6 +101,23 @@ class ContractTests(unittest.TestCase):
         hosts = detect_hosts()
         self.assertIn("codex", hosts["hosts"])
         self.assertFalse(hosts["global_config_mutation"])
+
+    def test_host_handshake_record_is_typed_and_fail_closed(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            self.assertEqual(read_handshake_record(root)["status"], "unrecorded")
+            state = root / "state"
+            state.mkdir()
+            (state / "host-handshakes.json").write_text(
+                json.dumps({
+                    "config_mutation": False,
+                    "probes": [{"id": "codex", "status": "pass", "version": "x", "exit_code": 0}],
+                }),
+                encoding="utf-8",
+            )
+            result = read_handshake_record(root)
+            self.assertEqual(result["status"], "recorded")
+            self.assertEqual(result["probes"][0]["status"], "pass")
 
     def test_local_bounded_worker_candidate(self):
         with tempfile.TemporaryDirectory() as directory:
