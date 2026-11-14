@@ -4,6 +4,10 @@ The project is final only when every gate below is either verified or has an
 explicit supported boundary recorded in the capability matrix. Intermediate
 milestones are progress records, not final acceptance.
 
+Current release status: **accepted within the declared capability boundaries**.
+The gate-by-gate evidence and retained provider limits are recorded in
+`docs/FINAL-RELEASE-ACCEPTANCE.md`.
+
 1. A fresh clone can run the repository-local install/plan/doctor path on each
    supported host family without modifying global client configuration.
 2. Reverse remains the only route and case owner; official REA, Spec Kit and

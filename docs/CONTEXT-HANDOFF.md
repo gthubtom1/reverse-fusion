@@ -7,9 +7,10 @@ Record source identities, observed/inferred/unknown/designed facts, completed ta
 Current handoff (2026-11-14):
 
 - Repository: https://github.com/gthubtom1/reverse-fusion, branch `master`.
-- Stage: RF-14 vertical chain, bounded fallback and REA obligation ledger closure verified; process runtime and real target remain partially `unverified`.
+- Stage: RF-14 final v1 accepted within declared boundaries; process runtime, host loading and arbitrary real targets remain explicitly `unverified` or `unsupported` where recorded.
 - Completed: contracts, source drift/path/hash checks, native route bridge, Craft six-tool gate plus local fallback writer, official Spec Kit init, typed REA/Spec/Craft adapters, lifecycle CLI, host discovery, reproducible local WABT/REA bootstrap and real REA original/candidate inspection.
 - Provider record: see `docs/PROVIDER-STATUS.md`.
 - Ledger closure: WASM proof Evidence `ev_59a71030abee7eac0677de1b5282c8b7d709319c70e1a3074bf305c18ce43bec`; ledger `rol_09e99625528899bcc2b492bdc7b2811b44fb573c13418ff80af0404548039928` is `ready` with `required_open: 0`.
-- Next single action: run the fresh-clone release gate, then attach a real case's Evidence bundle when a target is supplied and run the original reconstruction handoff.
+- Fresh-clone release gate: remote `master` clone passed install preview, contracts, plan, doctor and handoff.
+- Next single action: attach a real case's Evidence bundle when a target is supplied and run the same reconstruction handoff.
 - Rollback: revert the latest RF commit; old reverse-skill/installer/REA/Craft/Spec Kit and host configuration remain untouched.

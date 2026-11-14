@@ -89,5 +89,6 @@ Linux/macOS 删除仓库内 `.venv` 即可。所有入口都限制在仓库目�
 - `docs/UPSTREAM-MAINTENANCE.md`
 - `docs/TARGET-CAPABILITY-MATRIX.md`
 - `docs/FINAL-COMPLETION-SPEC.md`
+- `docs/FINAL-RELEASE-ACCEPTANCE.md`
 - `docs/CONTEXT-HANDOFF.md`
 - `docs/ACCEPTANCE-MATRIX.md`

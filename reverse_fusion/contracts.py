@@ -160,7 +160,7 @@ def check_contracts(root: Path) -> dict[str, Any]:
         if not isinstance(rea_manifest.get("integrity"), str) or not rea_manifest["integrity"].startswith("sha512-"):
             raise ContractError("REA local manifest integrity missing")
         checks.append({"id": "rea-reproducibility", "status": "pass"})
-        for rel in ("docs/TARGET-CAPABILITY-MATRIX.md", "docs/FINAL-COMPLETION-SPEC.md"):
+        for rel in ("docs/TARGET-CAPABILITY-MATRIX.md", "docs/FINAL-COMPLETION-SPEC.md", "docs/FINAL-RELEASE-ACCEPTANCE.md"):
             if not (root / rel).is_file():
                 raise ContractError(f"final v1 document missing: {rel}")
         checks.append({"id": "final-v1-documents", "status": "pass"})
