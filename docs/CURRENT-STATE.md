@@ -52,6 +52,10 @@ Completed product gates:
   plan, doctor, handoff, install/update/uninstall dry-runs, local bridge and
   14 Python tests. Generated Evidence, candidates and
   build outputs remain ignored under `state/` and fixture build directories.
+- Portable deployment and conversational usage are documented in
+  `docs/DEPLOYMENT-GUIDE.md`; the README now explains normal-dev, nested
+  analysis/reconstruction subcases, component ownership and selective upstream
+  maintenance without assuming a fixed host path or model.
 
 Provider boundaries:
 

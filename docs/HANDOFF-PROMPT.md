@@ -4,6 +4,7 @@
 
 ```text
 你正在维护 reverse-fusion。先完整读取 README.md、AGENTS.md、
+docs/DEPLOYMENT-GUIDE.md、
 docs/PRODUCT-GOAL.md、docs/CURRENT-STATE.md、docs/DECISIONS.md、
 docs/PROVIDER-STATUS.md、docs/TARGET-CAPABILITY-MATRIX.md、
 docs/FINAL-RELEASE-ACCEPTANCE.md、SOURCE-MANIFEST.json、最新 checkpoint 和
