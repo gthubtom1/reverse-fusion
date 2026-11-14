@@ -10,7 +10,7 @@ from pathlib import Path
 from typing import Any
 
 from . import __version__
-from .adapters import CraftAdapter, spec_pointer
+from .adapters import CraftAdapter, LocalBoundedWorker, spec_pointer
 from .case_bridge import build_case_pointer, dry_run_route, locate_reverse_root
 from .contracts import ContractError, check_contracts, read_json, sha256_file
 from .host import adapter_plan, detect_hosts
@@ -166,10 +166,27 @@ def cmd_bridge(args: argparse.Namespace) -> int:
     return 0 if route.get("status") == "routed" else 2
 
 
+def cmd_craft(args: argparse.Namespace) -> int:
+    source = (ROOT / args.source).resolve()
+    worker = LocalBoundedWorker(ROOT)
+    result = worker.run(
+        source=source,
+        output_relative=args.output,
+        tasks=args.tasks,
+        research_ref=args.research_ref,
+        model_id=args.model_id,
+    )
+    result.update({"operation": "craft", "source": str(source), "backend": "local-bounded-worker"})
+    if args.record:
+        _write_state("craft-candidate", result)
+    _print(result, args.format)
+    return 0 if result["disposition"] == "candidate" else 2
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="reverse-fusion", description="Reverse Fusion evidence-driven reconstruction entry")
     sub = parser.add_subparsers(dest="command", required=True)
-    for name, fn in (("contracts", cmd_contracts), ("doctor", cmd_doctor), ("plan", cmd_plan), ("handoff", cmd_handoff), ("install", cmd_install), ("uninstall", cmd_uninstall), ("update", cmd_update), ("accept", cmd_accept), ("bridge", cmd_bridge)):
+    for name, fn in (("contracts", cmd_contracts), ("doctor", cmd_doctor), ("plan", cmd_plan), ("handoff", cmd_handoff), ("install", cmd_install), ("uninstall", cmd_uninstall), ("update", cmd_update), ("accept", cmd_accept), ("bridge", cmd_bridge), ("craft", cmd_craft)):
         p = sub.add_parser(name)
         p.add_argument("--format", choices=("json", "markdown"), default="json")
         if name == "handoff":
@@ -191,6 +208,13 @@ def build_parser() -> argparse.ArgumentParser:
             p.add_argument("--hint", required=True)
             p.add_argument("--case-root", default="work/current-case")
             p.add_argument("--mode", choices=("analysis", "reconstruction", "follow-up", "normal-dev"), default="reconstruction")
+        if name == "craft":
+            p.add_argument("--source", required=True, help="repository-relative source fixture")
+            p.add_argument("--output", required=True, help="repository-relative candidate output")
+            p.add_argument("--tasks", nargs="+", default=["T-001"])
+            p.add_argument("--research-ref", default="E-CONSOLE-001")
+            p.add_argument("--model-id", default="deterministic-fixture-worker")
+            p.add_argument("--record", action="store_true")
         p.set_defaults(handler=fn)
     return parser
 

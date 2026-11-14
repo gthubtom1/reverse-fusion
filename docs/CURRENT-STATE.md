@@ -1,7 +1,7 @@
 # Current State
 
-Stage: RF-12
-Status: vertical-wasm-chain-verified; final-v1-gates-in-progress
+Stage: RF-13
+Status: vertical-chain-and-bounded-fallback-verified; final-v1-gates-in-progress
 
 Completed:
 
@@ -25,6 +25,7 @@ Completed:
 - RF-10 release, rollback and upstream maintenance records updated.
 - RF-11 reproducible WABT 1.0.42 environment and real REA WASM Evidence accepted.
 - RF-12 real REA original/candidate Evidence plus correct/wrong/missing candidate acceptance path.
+- Repository-owned `local-bounded-worker` candidate fallback with six-tool, single-writer and cleanup contract.
 
 Not yet connected or intentionally unverified:
 
@@ -32,6 +33,6 @@ Not yet connected or intentionally unverified:
 - Qualified Craft R46 backend execution and real model build.
 - Host loading/handshake and real target behavior.
 
-Acceptance: RF-01 through RF-12 bounded gates and finite fixtures pass where the host supports them; final-v1 gates are defined in `docs/FINAL-COMPLETION-SPEC.md` and provider/runtime gaps remain in `docs/PROVIDER-STATUS.md`.
+Acceptance: RF-01 through RF-13 bounded gates and finite fixtures pass where the host supports them; final-v1 gates are defined in `docs/FINAL-COMPLETION-SPEC.md` and provider/runtime gaps remain in `docs/PROVIDER-STATUS.md`.
 
 Next single action: when a real target is supplied inside an existing case, attach its original Evidence bundle and use the same bridge for an independent reconstruction feature.

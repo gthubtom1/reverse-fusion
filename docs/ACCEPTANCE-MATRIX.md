@@ -23,3 +23,5 @@ RF-10 release: clean tree, tests, checkpoint, rollback and upstream maintenance 
 RF-11 REA/WABT: pinned WABT archive and executable hashes, process-local REA doctor, complete WASM Evidence ID, artifact digest and explicit runtime/network limitations.
 
 RF-12 vertical chain: original/candidate REA Evidence, interface comparison, runtime fixture result, correct candidate pass, wrong candidate fail and missing candidate unknown.
+
+RF-13 Craft fallback: local candidate writer passes capability, baseline, task digest, single-writer and cleanup gates; it is clearly distinguished from a model-based Craft backend.

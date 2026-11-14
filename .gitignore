@@ -10,6 +10,7 @@ state/spec-kit-probe-*/
 state/rea-*.json
 state/rea-*.stderr
 state/rea-mcp-doctor.json
+state/implementation/
 vendor/wabt/**
 !vendor/wabt/README.md
 !vendor/wabt/1.0.42/

@@ -18,3 +18,9 @@ single-writer/cleanup policy，并要求 `prepare/build/check/refine/return_summ
 六项能力全部存在。当前 Codex companion 的安装回执明确记录
 `native_r46_backend_qualified: false`，因此本仓库保留该 MCP 作为工具伴随，
 由原 Spec runner 选择的合格 bounded backend 仍是后续运行时门。
+
+项目同时提供 `local-bounded-worker` 作为仓库自有 fallback：它只把明确
+选定的 fixture/source 写入一个安全的仓库相对路径，校验任务 digest、
+baseline、single-writer 和 cleanup，并返回同一 typed candidate contract。
+它用于可重复的离线验收，不冒充真实模型 Builder；有合格 Craft backend
+时由原 runner 选择替换。

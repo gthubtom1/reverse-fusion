@@ -13,8 +13,8 @@ milestones are progress records, not final acceptance.
 4. Spec Kit project-local artifacts preserve source references, tasks and
    append-only converge records.
 5. Craft has a qualified bounded backend or a repository-owned bounded fallback
-   with the same six-tool, single-writer and cleanup contract. A mere MCP tool
-   listing is not acceptance.
+   with the same six-tool, single-writer and cleanup contract. The current
+   fallback is `local-bounded-worker`; a mere MCP tool listing is not acceptance.
 6. Codex, Pi and Claude host plans are portable; actual host loading is reported
    separately from discovery.
 7. The target capability matrix covers the declared families and records

@@ -5,7 +5,7 @@ import unittest
 from pathlib import Path
 from shutil import copytree
 
-from reverse_fusion.adapters import CraftAdapter, spec_pointer
+from reverse_fusion.adapters import CraftAdapter, LocalBoundedWorker, spec_pointer
 from reverse_fusion.case_bridge import build_case_pointer
 from reverse_fusion.contracts import ContractError, check_contracts, validate_candidate_result, validate_external_baseline, validate_handoff
 from reverse_fusion.host import detect_hosts
@@ -101,6 +101,21 @@ class ContractTests(unittest.TestCase):
         hosts = detect_hosts()
         self.assertIn("codex", hosts["hosts"])
         self.assertFalse(hosts["global_config_mutation"])
+
+    def test_local_bounded_worker_candidate(self):
+        with tempfile.TemporaryDirectory() as directory:
+            workspace = Path(directory)
+            source = workspace / "source.txt"
+            source.write_text("candidate", encoding="utf-8")
+            result = LocalBoundedWorker(workspace).run(
+                source=source,
+                output_relative="state/implementation/candidate.txt",
+                tasks=["T-001"],
+                research_ref="E-CONSOLE-001",
+            )
+            self.assertEqual(result["disposition"], "candidate")
+            self.assertEqual(result["cleanup"]["status"], "verified")
+            self.assertTrue((workspace / "state/implementation/candidate.txt").is_file())
 
 
 if __name__ == "__main__":

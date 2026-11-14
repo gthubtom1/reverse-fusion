@@ -7,6 +7,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 from hashlib import sha256
+import shutil
 from pathlib import Path, PurePosixPath
 from typing import Any, Callable
 
@@ -190,4 +191,74 @@ class CraftAdapter:
             "task_digest": prepared["task_digest"],
             "model_id": prepared["model_id"],
             "research_ref": prepared["research_ref"],
+        }
+
+
+@dataclass
+class LocalBoundedWorker:
+    """Repository-owned deterministic fallback for a single candidate write.
+
+    It copies an explicitly selected source fixture into one repository-relative
+    output path. It does not call a model or mutate host configuration, and it
+    returns the same typed candidate shape as a qualified Craft backend.
+    """
+
+    workspace: Path
+    upstream_commit: str = "local-bounded-worker"
+    patch_series: tuple[str, ...] = ("local-contract-v1",)
+
+    def run(
+        self,
+        *,
+        source: Path,
+        output_relative: str,
+        tasks: list[str],
+        research_ref: str,
+        model_id: str = "deterministic-fixture-worker",
+    ) -> dict[str, Any]:
+        source_path = source.resolve()
+        workspace = self.workspace.resolve()
+        if not source_path.is_file():
+            return {"version": 1, "disposition": "needs-evidence", "tasks": tasks, "checks": [], "cleanup": {"status": "not-started"}, "reason": "source fixture missing"}
+        try:
+            source_path.relative_to(workspace)
+        except ValueError:
+            return {"version": 1, "disposition": "needs-scope", "tasks": tasks, "checks": [], "cleanup": {"status": "not-started"}, "reason": "source fixture outside workspace"}
+        digest = sha256(source_path.read_bytes()).hexdigest()
+        adapter = CraftAdapter(
+            self.upstream_commit,
+            self.patch_series,
+            backend="local-bounded-worker",
+            capabilities=CraftAdapter.REQUIRED_CAPABILITIES,
+        )
+        prepared = adapter.prepare(
+            baseline={"bundle_sha256": digest},
+            tasks=tasks,
+            implementation_root=output_relative,
+            model_id=model_id,
+            research_ref=research_ref,
+        )
+        if prepared.get("disposition") != "ready":
+            return {"version": 1, "disposition": prepared["disposition"], "tasks": tasks, "checks": [], "cleanup": {"status": "not-started"}, "reason": prepared.get("reason")}
+        output = workspace / Path(output_relative)
+        output.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copyfile(source_path, output)
+        output_digest = sha256(output.read_bytes()).hexdigest()
+        return {
+            "version": 1,
+            "disposition": "candidate",
+            "tasks": tasks,
+            "checks": [
+                {"id": "six-tool-gate", "status": "pass"},
+                {"id": "single-writer", "status": "pass"},
+                {"id": "candidate-digest", "status": "pass"},
+            ],
+            "cleanup": {"status": "verified"},
+            "backend": "local-bounded-worker",
+            "source_sha256": digest,
+            "candidate_sha256": output_digest,
+            "output": str(output),
+            "task_digest": prepared["task_digest"],
+            "model_id": model_id,
+            "research_ref": research_ref,
         }

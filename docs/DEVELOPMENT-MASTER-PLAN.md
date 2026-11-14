@@ -12,5 +12,6 @@ RF-09: hard-target evals (provider limitations recorded)
 RF-10: release and maintenance (ready after final push)
 RF-11: reproducible WABT/REA Evidence slice (accepted for local WASM fixture)
 RF-12: real original/candidate Evidence vertical chain (in progress)
+RF-13: repository-owned bounded fallback writer (verified; upstream Craft R46 remains qualification-dependent)
 
 Each phase requires a checkpoint, focused tests, a current-state update and a rollback path before the next phase starts.
