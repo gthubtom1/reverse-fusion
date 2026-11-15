@@ -1,9 +1,9 @@
 # Current State
 
-Stage: RF-23
+Stage: RF-24
 Status: reconstruction-product-v1-final
 
-RF-17 through RF-23 are closed against `docs/PRODUCT-GOAL.md`. The product
+RF-17 through RF-24 are closed against `docs/PRODUCT-GOAL.md`. The product
 logic and workflow are complete: representative targets validate the shared
 contracts, while future target variants enter new cases through the same
 route/Evidence/Spec/Builder/comparison/ledger pipeline. Exhaustive execution of
@@ -65,6 +65,20 @@ Completed product gates:
   acceptance without the ignored machine-specific `state/` paths.
 
 Provider boundaries:
+
+- RF-24 compared every inherited skills file against enhanced reverse-skill
+  `3fdbb927b474dc23ef2e19403d5464dcb9702cec`: all 453 were present before
+  repair. Restored CTF/Burp resources bring the preservation inventory to 603
+  files with seven integration patches and four whitespace-only patches.
+- Routes carry `required_reads` and report unavailable when required support is
+  missing; difficulty discovered later follows `RULES.md`. Case pointers retain
+  these refs. Native PS/Bash entries read the product routing source.
+- RF-24 validation: 22 project tests (including all 192 route cases), original
+  compatibility, 16 hard-target contract evals, focused PS/Git Bash routing and
+  syntax checks, and a Burp loopback test pass. These are preservation and
+  connection checks, not protected-target execution.
+- Audit: `docs/REVERSE-CAPABILITY-AUDIT.md`; latest checkpoint:
+  `checkpoints/RF-24-20261115-001.md`.
 
 - Craft companion 0.6.1 remains installed with its required `--all-tools`
   argument. Native R46 qualification is still unsupported, while the real

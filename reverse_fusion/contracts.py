@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import re
 from hashlib import sha256
 from pathlib import Path
 from pathlib import PurePosixPath, PureWindowsPath
@@ -117,6 +118,58 @@ def _check_versioned_object(path: Path, required: set[str], allowed: set[str]) -
     return value
 
 
+def _check_reverse_support(root: Path, route_ids: set[str]) -> dict[str, Any]:
+    """Check inherited content and runtime dependencies in the existing doctor.
+
+    Digests describe content preservation, never successful target execution.
+    Text line endings are normalized; the Gradle wrapper JAR is hashed as bytes.
+    """
+    base = root / "components" / "reverse-core"
+    runtime = read_json(base / "runtime.json")
+    try:
+        if runtime["schema_version"] != 1:
+            raise ContractError("reverse runtime version mismatch")
+        hard = runtime["hard_target"]
+        re.compile(hard["pattern"])
+        groups = [runtime["base_reads"], hard["common_reads"]]
+        for mapping in (runtime["route_reads"], hard["route_reads"]):
+            if not isinstance(mapping, dict) or set(mapping) - route_ids:
+                raise ContractError("reverse runtime references an unknown route")
+            groups.extend(mapping.values())
+        for paths in groups:
+            if not isinstance(paths, list):
+                raise ContractError("reverse runtime reads must be lists")
+            for name in paths:
+                if (not is_safe_relative_path(name)
+                        or not (root / name).resolve().is_relative_to(root.resolve())
+                        or not (root / name).is_file()):
+                    raise ContractError(f"reverse runtime resource missing or unsafe: {name}")
+    except (KeyError, TypeError, re.error) as exc:
+        raise ContractError(f"invalid reverse runtime context: {exc}") from exc
+    preserved = read_json(base / "preservation.json")
+    files = preserved.get("files")
+    if preserved.get("schema_version") != 1 or not isinstance(files, dict) or not files:
+        raise ContractError("reverse preservation manifest is invalid")
+    sources = read_json(root / "SOURCE-MANIFEST.json")["components"]
+    origin = next((item for item in sources if item.get("id") == "reverse-domain-skills"), {})
+    if preserved.get("source") != origin.get("source") or preserved.get("commit") != origin.get("commit"):
+        raise ContractError("reverse preservation source identity differs from SOURCE-MANIFEST")
+    for name, record in files.items():
+        if not is_safe_relative_path(name) or not isinstance(record, dict):
+            raise ContractError(f"invalid preserved Reverse resource: {name}")
+        path = root / name
+        if not path.resolve().is_relative_to(root.resolve()) or not path.is_file():
+            raise ContractError(f"preserved Reverse resource missing: {name}")
+        payload = path.read_bytes()
+        if path.suffix != ".jar":
+            payload = payload.replace(b"\r\n", b"\n")
+        if sha256(payload).hexdigest() != record.get("sha256"):
+            raise ContractError(f"preserved Reverse resource hash mismatch: {name}")
+        if "upstream_sha256" in record and not record.get("patch_reason"):
+            raise ContractError(f"preserved Reverse patch has no reason: {name}")
+    return {"id": "reverse-support-preservation", "status": "pass", "files": len(files)}
+
+
 def check_contracts(root: Path) -> dict[str, Any]:
     checks: list[dict[str, Any]] = []
     try:
@@ -160,6 +213,7 @@ def check_contracts(root: Path) -> dict[str, Any]:
             if not (root / "skills" / route["skill"]).is_file():
                 raise ContractError(f"reverse domain skill missing: {route['skill']}")
         checks.append({"id": "reverse-routing-and-skills", "status": "pass", "routes": len(routes)})
+        checks.append(_check_reverse_support(root, set(routes)))
         for rel in (
             "schemas/handoff-v1.schema.json",
             "schemas/external-baseline-v1.schema.json",

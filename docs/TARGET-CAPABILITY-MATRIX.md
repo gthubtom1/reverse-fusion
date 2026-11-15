@@ -18,3 +18,9 @@ cases or small capability updates.
 
 The matrix is a routing and contract inventory. A target-level claim still
 requires the Evidence and comparison for that target.
+
+RF-24 preserves the enhanced Reverse hard-target methods and helpers, including
+packing/unpacking, anti-analysis, OLLVM, .NET obfuscation, Android dynamic DEX/JNI
+and JS/WASM context. Routes expose their required reads and fail when required
+support is missing. Content preservation and decision-contract tests do not
+qualify every protector or dynamic provider; see `REVERSE-CAPABILITY-AUDIT.md`.

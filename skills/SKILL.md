@@ -180,7 +180,7 @@ bash <skill-root>/scripts/bootstrap-reverse.sh 工具名 --start-services
 
 Kali：
 ```bash
-bash <package-root>/kali/scripts/bootstrap-reverse.sh 工具名 --start-services
+bash <package-root>/skills/scripts/bootstrap-reverse.sh 工具名 --mcp-host=none
 ```
 
 支持的能力（以 `scripts/bootstrap-manifest.json` 为准）：jadx、apktool、jeb-pro、binaryninja、frida、frida-ps、idalib-mcp、reqable-mcp、jshookmcp、xquik-mcp、anything-analyzer、idapro、r2、rabin2、adb、agent-browser、ghidra-mcp、seclists、proxycat、burpsuite-mcp、nmap、pentestswarm、binwalk、yara、pwntools、bkcrack

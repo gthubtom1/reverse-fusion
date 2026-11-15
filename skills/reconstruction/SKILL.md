@@ -111,7 +111,7 @@ MUST 在同 case 的 timeline/workitems/notes 保存 feature、原 bundle、真�
 
 ### 自举触发点与失败处理
 
-本 skill 脚本 MUST NOT 自动 bootstrap、下载、启动服务或改配置。代理发现所需工具为 no 时，唯一恢复入口是原平台 bootstrap（Windows `../scripts/bootstrap-reverse.ps1`；Linux/macOS `../scripts/bootstrap-reverse.sh`；Kali 包根 `kali/scripts/bootstrap-reverse.sh`），仅调用已登记且获授权的能力。未登记/失败时 MUST 停止依赖该工具的步骤，报告实测版本、错误与缺口，交独立 installer/维护者；同工具失败两次不再自动重试。已有授权覆盖的确定性步骤直接继续。
+本 skill 脚本 MUST NOT 自动 bootstrap、下载、启动服务或改配置。代理发现所需工具为 no 时，按包根 `RULES.md` 选择仓库本地 bootstrap 或已授权的工具准备路径；Windows 的 `../scripts/bootstrap-reverse.ps1`、Linux/macOS/Kali 的 `../scripts/bootstrap-reverse.sh` 是保留的工具入口，其全局安装、服务和宿主配置副作用不属于默认部署。仅调用已登记且获授权的能力。未登记/失败时 MUST 停止依赖该工具的步骤，报告实测版本、错误与缺口；同工具失败两次不再自动重试。已有授权覆盖的确定性步骤直接继续。
 
 ## 语言行为契约
 

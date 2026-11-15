@@ -13,7 +13,8 @@
       "audit_version": "enhanced reverse audit baseline",
       "local_route": "components/reverse-core/router.py",
       "local_routing_manifest": "components/reverse-core/routing.json",
-      "local_route_version": "rf-17"
+      "local_route_version": "rf-24",
+      "runtime_manifest": "components/reverse-core/runtime.json"
     },
     {
       "id": "reverse-domain-skills",
@@ -22,7 +23,12 @@
       "source": "https://github.com/gthubtom1/reverse-skill",
       "policy": "new-project-owned; copied domain skills remain locally maintained",
       "audit_commit": "3fdbb927b474dc23ef2e19403d5464dcb9702cec",
-      "audit_version": "enhanced reverse domain skills"
+      "audit_version": "enhanced reverse domain skills",
+      "preservation_manifest": "components/reverse-core/preservation.json",
+      "included_support": [
+        "CTF-Sandbox-Orchestrator",
+        "burp-mcp-full"
+      ]
     },
     {
       "id": "rea",

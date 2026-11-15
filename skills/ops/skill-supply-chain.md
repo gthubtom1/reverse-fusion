@@ -4,7 +4,7 @@
 > 检索日期：2026-07-17  
 > 适用：安装/编写/合并 **任何** skill、MCP、bootstrap 脚本时
 
-本包**可执行脚本面**静态审计（后门 / 删库 / 管道执行）：[`docs/PACKAGE-SECURITY-AUDIT.md`](../../docs/PACKAGE-SECURITY-AUDIT.md)。
+本增强副本的迁移与依赖核对见 [Reverse 能力保全审计](../../docs/REVERSE-CAPABILITY-AUDIT.md)。旧版的[可执行脚本面审计](https://github.com/gthubtom1/reverse-skill/blob/3fdbb927b474dc23ef2e19403d5464dcb9702cec/docs/PACKAGE-SECURITY-AUDIT.md)只描述该来源提交，不作为新项目运行验收。
 
 ## 1. 为什么 reverse-skill 要单独管这个
 

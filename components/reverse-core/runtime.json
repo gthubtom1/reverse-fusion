@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "base_reads": ["RULES.md"],
+  "route_reads": {
+    "R41": ["CTF-Sandbox-Orchestrator/ctf-sandbox-orchestrator/SKILL.md"],
+    "R11": ["burp-mcp-full/README.md"]
+  },
+  "hard_target": {
+    "pattern": "pack(?:ed|er|ing)|unpack|upx|aspack|vmprotect|themida|ollvm|obfuscat|deobfuscat|anti[- _]?(?:debug|analysis|vm|frida|hook)|self[- _]?check|dynamic[- _]?(?:load|dex)|early[- _]?exit|加壳|脱壳|加固|混淆|反调试|反分析|反虚拟机|反.?Frida|自校验|动态加载|动态.?DEX|早退|工具.{0,8}(?:检测|报错)|(?:检测|报错).{0,8}(?:IDA|Ghidra|调试器)",
+    "common_reads": [
+      "skills/reverse-engineering/references/hard-target-decision-framework.md",
+      "skills/reverse-engineering/references/provider-neutral-failure-matrix.md",
+      "skills/ops/analysis-decision-framework.md",
+      "skills/ops/rea-delegation-contract.md",
+      "skills/ops/process-lifecycle.md"
+    ],
+    "route_reads": {
+      "R0": ["skills/reverse-engineering/anti-analysis.md", "skills/reverse-engineering/references/high-difficulty-pe-playbook.md", "skills/reverse-engineering/references/ollvm-deobfuscation.md"],
+      "R1": ["skills/apk-reverse/references/high-difficulty-android-playbook.md", "skills/apk-reverse/references/android-advanced.md", "skills/reverse-engineering/anti-analysis.md"],
+      "R2": ["skills/apk-reverse/references/high-difficulty-android-playbook.md", "skills/reverse-engineering/anti-analysis.md"],
+      "R3": ["skills/js-reverse/references/high-difficulty-js-wasm-playbook.md", "skills/js-reverse/references/ast-deobfuscation.md", "skills/reverse-engineering/references/nonpe-format-cookbook.md"],
+      "R4": ["skills/reverse-engineering/anti-analysis.md", "skills/reverse-engineering/references/ollvm-deobfuscation.md"],
+      "R5": ["skills/dotnet-reverse/references/obfuscators.md", "skills/reverse-engineering/anti-analysis.md"],
+      "R6": ["skills/reverse-engineering/anti-analysis.md", "skills/reverse-engineering/references/high-difficulty-pe-playbook.md", "skills/reverse-engineering/references/ollvm-deobfuscation.md"],
+      "R7": ["skills/reverse-engineering/anti-analysis.md", "skills/reverse-engineering/references/high-difficulty-pe-playbook.md"],
+      "R9": ["skills/reverse-engineering/anti-analysis.md", "skills/reverse-engineering/references/high-difficulty-pe-playbook.md"],
+      "R22": ["skills/reverse-engineering/anti-analysis.md", "skills/reverse-engineering/references/high-difficulty-pe-playbook.md"],
+      "R33": ["skills/reverse-engineering/anti-analysis.md", "skills/reverse-engineering/references/ollvm-deobfuscation.md"],
+      "R45": ["skills/reverse-engineering/anti-analysis.md", "skills/reverse-engineering/references/high-difficulty-pe-playbook.md"]
+    }
+  }
+}

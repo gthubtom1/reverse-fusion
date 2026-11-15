@@ -175,7 +175,7 @@ def cmd_bridge(args: argparse.Namespace) -> int:
         route.get("primary") or "unresolved",
         args.mode,
         delta=[f"route resolved by {route.get('source', 'unknown')} router"] if routed else ["route unresolved"],
-        refs=[owner],
+        refs=[owner, *route.get("required_reads", [])],
         route_owner=owner,
         route_source=route.get("source", "unknown"),
     )

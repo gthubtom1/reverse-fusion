@@ -10,6 +10,7 @@
 6. `components/official/manifest.json`
 7. `skills/` 中与当前 route 对应的领域技能
 8. 当前阶段对应的 `docs/DEVELOPMENT-MASTER-PLAN.md` 和 checkpoint
+9. `RULES.md`；调用本地路由后读取返回的 `skill` 和 `required_reads`
 
 工作规则：
 
@@ -21,6 +22,9 @@
 - 不把安装成功、工具可见、Craft Ready、exit 0 或模型自述写成业务 acceptance。
 - fresh clone 必须同时拥有 route descriptor 和对应的 `skills/<domain>/SKILL.md`；
   只有分类元数据而没有领域正文时，route 状态必须是 unavailable。
+- 路由返回的 `missing_support` 必须为空；困难目标资料在任务文本命中或后续证据
+  发现加壳、混淆、反调试时按需加载。保留来源与有意适配的清单见
+  `components/reverse-core/preservation.json`，更新增强内容时同步记录适配原因。
 - 先做最小可验证纵向切片，再扩展模块。
 - 上游更新走 `docs/UPSTREAM-MAINTENANCE.md`，不要盲目合并。
 - 普通开发使用 normal-dev profile；不自动强行创建 reverse case，但主项目开发

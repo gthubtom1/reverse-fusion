@@ -80,3 +80,14 @@ host-path-free form under `evidence/rf22/` and hash-checked by contracts. Host
 handshakes and Builder runs compare hashes of known host configuration files
 before and after invocation; a changed or unobservable snapshot is typed as a
 blocked cleanup result rather than a declared pass.
+
+## RF-014 Preserve content and executable handoff separately
+
+RF-24 audits enhanced reverse-skill at its recorded pin. Skill text equality is
+not sufficient when a domain references resources outside skills or a route
+does not carry downstream context. Restore those supporting resources, publish
+current portable rules, expose required reads, and report missing resources.
+Keep hard-target methods adaptive and provider neutral. The 603-file inventory
+records seven integration patches and four whitespace-only patches; it is content preservation, not
+target runtime acceptance. All local route entries use the product JSON; the
+original skills JSON remains the original compatibility baseline.

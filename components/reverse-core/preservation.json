@@ -1,0 +1,1844 @@
+{
+  "schema_version": 1,
+  "source": "https://github.com/gthubtom1/reverse-skill",
+  "commit": "3fdbb927b474dc23ef2e19403d5464dcb9702cec",
+  "hash_mode": "LF-normalized content; JAR files use raw bytes",
+  "groups": {
+    "skills": 453,
+    "CTF-Sandbox-Orchestrator": 136,
+    "burp-mcp-full": 14
+  },
+  "files": {
+    "CTF-Sandbox-Orchestrator/LICENSE": {
+      "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
+    },
+    "CTF-Sandbox-Orchestrator/README.md": {
+      "sha256": "adc17d8d1c5037871da8010624b3ff9b99ab4114ed4c84ab9fa48d9dc6192973"
+    },
+    "CTF-Sandbox-Orchestrator/competition-ad-certificate-abuse/SKILL.md": {
+      "sha256": "acb228fae7ec89a9fb5656f5f6209e98309d0b06e204625fe52d46c5421ce96f"
+    },
+    "CTF-Sandbox-Orchestrator/competition-ad-certificate-abuse/agents/openai.yaml": {
+      "sha256": "a4e4e06bb8c806628c091fb84359d8bf4a27d1d2dfdfc1c45d824951c8865495"
+    },
+    "CTF-Sandbox-Orchestrator/competition-ad-certificate-abuse/references/ad-certificate-abuse.md": {
+      "sha256": "687b8c2dc614f7361ee7eb8ce78e05d7a66758c05478dd1664580f4f53899551"
+    },
+    "CTF-Sandbox-Orchestrator/competition-agent-cloud/SKILL.md": {
+      "sha256": "9e56a603f14f2d6d9264bf77da408697deec9e152e5ccd6c391dc14440ff5032"
+    },
+    "CTF-Sandbox-Orchestrator/competition-agent-cloud/agents/openai.yaml": {
+      "sha256": "50f6fb10a25e596bdb0f30b8f63a0998676fa96aff0fa6bf5f75cb627e76ec23"
+    },
+    "CTF-Sandbox-Orchestrator/competition-agent-cloud/references/agent-cloud.md": {
+      "sha256": "274d751dfcb7f23b7f96e3abb2da3e8894705e8bffe54caa60fda8b30b758e4f"
+    },
+    "CTF-Sandbox-Orchestrator/competition-android-hooking/SKILL.md": {
+      "sha256": "01ed954e9b6fcdc9a2e78de49fd8b7f52614a36c251851cfef97df20272af712"
+    },
+    "CTF-Sandbox-Orchestrator/competition-android-hooking/agents/openai.yaml": {
+      "sha256": "0a1192e647429bc6d4321156517d572a18f6318b5ef908fb654ebfb7bb9368ed"
+    },
+    "CTF-Sandbox-Orchestrator/competition-android-hooking/references/android-hooking.md": {
+      "sha256": "441087c0d70cc1ece641ec3b1ff71f1bba154ae876065149e1b37cb40d43e713"
+    },
+    "CTF-Sandbox-Orchestrator/competition-browser-persistence/SKILL.md": {
+      "sha256": "48282126789e97818c374d9479d831aa70d8825701e4bae16ded574631da1097"
+    },
+    "CTF-Sandbox-Orchestrator/competition-browser-persistence/agents/openai.yaml": {
+      "sha256": "209fd7516099ce85e3889e3d943529e1ac6ab79197319ad421399f922f72004d"
+    },
+    "CTF-Sandbox-Orchestrator/competition-browser-persistence/references/browser-persistence.md": {
+      "sha256": "b96d918b0e256ebdb71b83e43de89a3fa04d5d99f3400975a7fb1542452b289c"
+    },
+    "CTF-Sandbox-Orchestrator/competition-bundle-sourcemap-recovery/SKILL.md": {
+      "sha256": "8f89baa5ea28f37f3920fe3e152f4b1d7d27d1442d97e57e0f6f7ffc836825ce"
+    },
+    "CTF-Sandbox-Orchestrator/competition-bundle-sourcemap-recovery/agents/openai.yaml": {
+      "sha256": "0103052395bf3cf7cef8c60d142b1d3bf656741f3569dd34a16067c7df3a6ef7"
+    },
+    "CTF-Sandbox-Orchestrator/competition-bundle-sourcemap-recovery/references/bundle-sourcemap-recovery.md": {
+      "sha256": "04035d3da0766bd14fb63b641881e7fd886c379b3d6ddf1da0b22ad6c63ec513"
+    },
+    "CTF-Sandbox-Orchestrator/competition-cloud-metadata-path/SKILL.md": {
+      "sha256": "5f15e808652caad49611a7b75a6efbd9bccdf430c187f5dbf57a85b7954d4053"
+    },
+    "CTF-Sandbox-Orchestrator/competition-cloud-metadata-path/agents/openai.yaml": {
+      "sha256": "9adb7a1c062e1ab3d7529daa71047fe2e271142b17205b985fbbee91049f337d"
+    },
+    "CTF-Sandbox-Orchestrator/competition-cloud-metadata-path/references/cloud-metadata-path.md": {
+      "sha256": "bd5f588230051b93c2803796d9b1d6dca2196660adfacc3839972bf628fe300a"
+    },
+    "CTF-Sandbox-Orchestrator/competition-container-runtime/SKILL.md": {
+      "sha256": "87412c06f8caa85ed2bf8d53a00d356f9bd1813144df9b2ec499652066775c7b"
+    },
+    "CTF-Sandbox-Orchestrator/competition-container-runtime/agents/openai.yaml": {
+      "sha256": "f09ac7be4c655f63c93a71a4e355b20f6f80585197d018eb3771c21a1ce267d1"
+    },
+    "CTF-Sandbox-Orchestrator/competition-container-runtime/references/container-runtime.md": {
+      "sha256": "9ab4224c6faff3e0c346ff5c4baea7ddcb8be511a9b31413f5e7f2a6143d5a5d"
+    },
+    "CTF-Sandbox-Orchestrator/competition-crypto-mobile/SKILL.md": {
+      "sha256": "7d78f7d1dc176aafe9ccdc0e127e5189bd963593f4434a2da2f4b61aaec4c311"
+    },
+    "CTF-Sandbox-Orchestrator/competition-crypto-mobile/agents/openai.yaml": {
+      "sha256": "16a00a541f6b2807276214287dd1805ed533647bbee008a171ae5a1f26b41752"
+    },
+    "CTF-Sandbox-Orchestrator/competition-crypto-mobile/references/crypto-mobile.md": {
+      "sha256": "c51bf4746d07e1cbb23280be89044baebdbd9a07a17bcef87b008b4e88d92e0b"
+    },
+    "CTF-Sandbox-Orchestrator/competition-custom-protocol-replay/SKILL.md": {
+      "sha256": "b4ffc7e7812293d8eb0f14ed04490a1fdb2f3eae8bfdb0a589a70b12a423f0f3"
+    },
+    "CTF-Sandbox-Orchestrator/competition-custom-protocol-replay/agents/openai.yaml": {
+      "sha256": "d152127029dccec675a3b6da0d8285dc0c4d9a72345f7d3f25b2548f4392c515"
+    },
+    "CTF-Sandbox-Orchestrator/competition-custom-protocol-replay/references/custom-protocol-replay.md": {
+      "sha256": "0c43b793655555ff87409ce196369744db33d7a250c4188ad315338e1c26761c"
+    },
+    "CTF-Sandbox-Orchestrator/competition-dpapi-credential-chain/SKILL.md": {
+      "sha256": "029cf3988446e8d6dfde30516924ae910e4e8e0c667845d82b1ae2a2d507d7d2"
+    },
+    "CTF-Sandbox-Orchestrator/competition-dpapi-credential-chain/agents/openai.yaml": {
+      "sha256": "eba7bf6a2c25b9f9d5d4bb2a5a3b61b49c6e5fbd367c3c1881691449eb97864a"
+    },
+    "CTF-Sandbox-Orchestrator/competition-dpapi-credential-chain/references/dpapi-credential-chain.md": {
+      "sha256": "13b35d81191a72a4c6c5f94e5d911dc40fe83f4cab7e77f0c21a4a54ea6e322e"
+    },
+    "CTF-Sandbox-Orchestrator/competition-file-parser-chain/SKILL.md": {
+      "sha256": "ac09fa9241fde21453174b9a3bd6f917c024b8523663ed24cdb4a90692fa0a6c"
+    },
+    "CTF-Sandbox-Orchestrator/competition-file-parser-chain/agents/openai.yaml": {
+      "sha256": "b0239aebdac57003aa2b9e75891893996e3cc38eead5395f5fbf5f8a592a2195"
+    },
+    "CTF-Sandbox-Orchestrator/competition-file-parser-chain/references/file-parser-chain.md": {
+      "sha256": "bad1ef728c08ef6abe0e44eae668de58a20e9c1c6cb970ab16212ec9d45d4baf"
+    },
+    "CTF-Sandbox-Orchestrator/competition-firmware-layout/SKILL.md": {
+      "sha256": "32e17b49d0f3bd17832124d3f60f5ec00b56bb423e732e28dac2ea61a6714d2e"
+    },
+    "CTF-Sandbox-Orchestrator/competition-firmware-layout/agents/openai.yaml": {
+      "sha256": "6524b9bb3dd9397822480d491f1648f5a8dd9502f1bd03a701b795f0b001a6d6"
+    },
+    "CTF-Sandbox-Orchestrator/competition-firmware-layout/references/firmware-layout.md": {
+      "sha256": "0c6cf03d2f73161f4e6a0a7c6a2f83b9eaf335e3b4c47dad316f813390a04308"
+    },
+    "CTF-Sandbox-Orchestrator/competition-forensic-timeline/SKILL.md": {
+      "sha256": "552d9c4759b724618f9333a2cf7c686759b39ac6a3b856bb3f417760ab8de617"
+    },
+    "CTF-Sandbox-Orchestrator/competition-forensic-timeline/agents/openai.yaml": {
+      "sha256": "7eacb09ed7a132d259c7110c9e85699a91ec0932b3d8e169561fcfbcf82dd6c4"
+    },
+    "CTF-Sandbox-Orchestrator/competition-forensic-timeline/references/forensic-timeline.md": {
+      "sha256": "6ec45b6ef81e147f2b4da90fbe27a894a70ea1b1c6a13201f5894082bc42728a"
+    },
+    "CTF-Sandbox-Orchestrator/competition-graphql-rpc-drift/SKILL.md": {
+      "sha256": "a6e8e2d54d79f065d13940b888d379aa31ee2b2470d459f4c1ab4f57763a47d5"
+    },
+    "CTF-Sandbox-Orchestrator/competition-graphql-rpc-drift/agents/openai.yaml": {
+      "sha256": "2d442eb419c5ca445cc0203d341e53941cfc40c34d1024e96699cb4c450379d8"
+    },
+    "CTF-Sandbox-Orchestrator/competition-graphql-rpc-drift/references/graphql-rpc-drift.md": {
+      "sha256": "c41eaf9034b47dcd028efc5b1a8e72b5f418f756e911fa7b253e9b08e05465ab"
+    },
+    "CTF-Sandbox-Orchestrator/competition-identity-windows/SKILL.md": {
+      "sha256": "deec978f35c404f4b10b0cc4dcc274a48a7c2a75f73925043fc8454c32b2a6fd"
+    },
+    "CTF-Sandbox-Orchestrator/competition-identity-windows/agents/openai.yaml": {
+      "sha256": "c3b07747d3cda874cd6f6c1b968cec5345c62c7908e3a2837c0e604d3d7e6dfa"
+    },
+    "CTF-Sandbox-Orchestrator/competition-identity-windows/references/identity-windows.md": {
+      "sha256": "cfcb3e6237d860d2f8698daf47865bdab103ff2824109b0dad6c34bd298222f3"
+    },
+    "CTF-Sandbox-Orchestrator/competition-ios-runtime/SKILL.md": {
+      "sha256": "11a041d6729a0733fb9813ecbc0753c87c2bf65b07cac6e3b6917a568d020156"
+    },
+    "CTF-Sandbox-Orchestrator/competition-ios-runtime/agents/openai.yaml": {
+      "sha256": "357acac7e122c279144480f3099826dce1109f26973620bae1ca6db2bb1815a2"
+    },
+    "CTF-Sandbox-Orchestrator/competition-ios-runtime/references/ios-runtime.md": {
+      "sha256": "9d5ba37db8bbc8e448630b374805799a47730ae70172dd04c31bccdd585865b7"
+    },
+    "CTF-Sandbox-Orchestrator/competition-jwt-claim-confusion/SKILL.md": {
+      "sha256": "f470a0467fdfe41accc0941d76976fb2d0f00ac21d29d49c049daf9d9274c7a5"
+    },
+    "CTF-Sandbox-Orchestrator/competition-jwt-claim-confusion/agents/openai.yaml": {
+      "sha256": "566dea9ca92499f95a75b2cbb265dad1e4828c275f0a16024fedbaa4fbb8d6e6"
+    },
+    "CTF-Sandbox-Orchestrator/competition-jwt-claim-confusion/references/jwt-claim-confusion.md": {
+      "sha256": "c80472b8347e1ccc557be259a4f682c4489970ed332972634276bf98e7f5fa04"
+    },
+    "CTF-Sandbox-Orchestrator/competition-k8s-control-plane/SKILL.md": {
+      "sha256": "18fa637d99266cd4776bd254d31b51c078d3fa5b4251cbf5baa9f6b4fdd7a262"
+    },
+    "CTF-Sandbox-Orchestrator/competition-k8s-control-plane/agents/openai.yaml": {
+      "sha256": "20783e1b97cae5043720322387c08316154ebed745069ac74503e7a2dc3e131f"
+    },
+    "CTF-Sandbox-Orchestrator/competition-k8s-control-plane/references/k8s-control-plane.md": {
+      "sha256": "71c64dacaf86790ee76afbf270c7d80759414b8b96d2eb8424a01475117f5e64"
+    },
+    "CTF-Sandbox-Orchestrator/competition-kerberos-delegation/SKILL.md": {
+      "sha256": "245321129a7f642dd0aae880f66d5c4e30578bae14e60c90128f5741e01b306a"
+    },
+    "CTF-Sandbox-Orchestrator/competition-kerberos-delegation/agents/openai.yaml": {
+      "sha256": "43300fd6466c0886d579cc29e6e1fcf5a03a1f27ac52aedf154cf7c91b2cb100"
+    },
+    "CTF-Sandbox-Orchestrator/competition-kerberos-delegation/references/kerberos-delegation.md": {
+      "sha256": "03f88165e94569a8da3220b0ed16081c7ddfa5746b7f3d9930c2d8795338af85"
+    },
+    "CTF-Sandbox-Orchestrator/competition-kernel-container-escape/SKILL.md": {
+      "sha256": "c6e840b0365ea1aa895a14bab60a6c62cd5a8e157152097fb981582b6a722c9f"
+    },
+    "CTF-Sandbox-Orchestrator/competition-kernel-container-escape/agents/openai.yaml": {
+      "sha256": "2da8fd7a98da92e772cc19fd0bc419e640a4d1adc216207560f4f8e3c6f4e44f"
+    },
+    "CTF-Sandbox-Orchestrator/competition-kernel-container-escape/references/kernel-container-escape.md": {
+      "sha256": "ea5c9073be68ee362ca1915f47baf178e828f1653402c36f4b1b5d384de7b30a"
+    },
+    "CTF-Sandbox-Orchestrator/competition-linux-credential-pivot/SKILL.md": {
+      "sha256": "f00c32a3361cf34ce93a095cab5b416ddbcc7bf97d4a868c5bc57cd4db8eb125"
+    },
+    "CTF-Sandbox-Orchestrator/competition-linux-credential-pivot/agents/openai.yaml": {
+      "sha256": "b03abb23d14dd7cb4b12112c755e2b8caa177c95e52e75d72d14084cb015da46"
+    },
+    "CTF-Sandbox-Orchestrator/competition-linux-credential-pivot/references/linux-credential-pivot.md": {
+      "sha256": "cedfda5f0074368a797bed81bef74ea577b1d7b628effc17ff70a3e2719e1225"
+    },
+    "CTF-Sandbox-Orchestrator/competition-lsass-ticket-material/SKILL.md": {
+      "sha256": "32ef1100a9c89d0914b0c31836d89250b9cc18dc39fccbb933cadf97aec334fb"
+    },
+    "CTF-Sandbox-Orchestrator/competition-lsass-ticket-material/agents/openai.yaml": {
+      "sha256": "a4c65cb272e52c8cd85281dc9dee1d1ebc1f848d7ab916e138b78736cfbbb57e"
+    },
+    "CTF-Sandbox-Orchestrator/competition-lsass-ticket-material/references/lsass-ticket-material.md": {
+      "sha256": "0b0e953f5931fbd23f12de510a941f40f8f344ba752076f8d7871cc72b24a506"
+    },
+    "CTF-Sandbox-Orchestrator/competition-mailbox-abuse/SKILL.md": {
+      "sha256": "e83476c6a9882ddd0258e9d6bd217d8770a901b264f2f7b20195ace6a5f3df7a"
+    },
+    "CTF-Sandbox-Orchestrator/competition-mailbox-abuse/agents/openai.yaml": {
+      "sha256": "086a013faa3e39a0bfcf480b0628d4b76c419765f1defff6f7afd9119e07eb81"
+    },
+    "CTF-Sandbox-Orchestrator/competition-mailbox-abuse/references/mailbox-abuse.md": {
+      "sha256": "30d018bd5bd3f7909aa1db1b47337efbfa7752360fa15de5e14bf428d02a2a4c"
+    },
+    "CTF-Sandbox-Orchestrator/competition-malware-config/SKILL.md": {
+      "sha256": "e8ece81ac60bdf17b7fca392b39af7d17af34d74d00ef94af4b2d10504607853"
+    },
+    "CTF-Sandbox-Orchestrator/competition-malware-config/agents/openai.yaml": {
+      "sha256": "f207996104cb9eaaf5f929389066ee8988d17bcf5c2edbdd4a26e55af68ac94b"
+    },
+    "CTF-Sandbox-Orchestrator/competition-malware-config/references/malware-config.md": {
+      "sha256": "b73441fcb3655d94727d47f8792e88ce106d8ece3f60b7eab620e2abedc7b5a9"
+    },
+    "CTF-Sandbox-Orchestrator/competition-oauth-oidc-chain/SKILL.md": {
+      "sha256": "47d4f2a26bee83c212b84295d4719a273b6e9a06773fe0510269a19569617878"
+    },
+    "CTF-Sandbox-Orchestrator/competition-oauth-oidc-chain/agents/openai.yaml": {
+      "sha256": "f5cb1a34cc521789ee3120d80f09a42dab4f0abbf8cde8440814b7e20948d804"
+    },
+    "CTF-Sandbox-Orchestrator/competition-oauth-oidc-chain/references/oauth-oidc-chain.md": {
+      "sha256": "8e88d765b550272fd34b48a664107c32351684a5efbdb7b8d180c0acf82454de"
+    },
+    "CTF-Sandbox-Orchestrator/competition-pcap-protocol/SKILL.md": {
+      "sha256": "18285bb445a87a31548e482b74a6251b0136af68c68d65842cd4314fec5c893f"
+    },
+    "CTF-Sandbox-Orchestrator/competition-pcap-protocol/agents/openai.yaml": {
+      "sha256": "d49e1ed4809d99ccb2128aee4a4334682652f1610c742953e9c5d0b32d107085"
+    },
+    "CTF-Sandbox-Orchestrator/competition-pcap-protocol/references/pcap-protocol.md": {
+      "sha256": "2d9508c75c3be8ca4e8c64102ef78a68ab8fb1d5f553fe9cd3af847f65778b70"
+    },
+    "CTF-Sandbox-Orchestrator/competition-prompt-injection/SKILL.md": {
+      "sha256": "7c0344fa94d35679dfe0dd3513f72b95994a7044fd39b0c407e89c836425c443"
+    },
+    "CTF-Sandbox-Orchestrator/competition-prompt-injection/agents/openai.yaml": {
+      "sha256": "b06769d6a3b87c7a9fb5f6b1899c5696237606512516a93b38bcdef67d1100a9"
+    },
+    "CTF-Sandbox-Orchestrator/competition-prompt-injection/references/prompt-injection.md": {
+      "sha256": "eb69544636fafb10c519c7f157711b53ea083a1d39ca74a189884da3122ba6fc"
+    },
+    "CTF-Sandbox-Orchestrator/competition-queue-worker-drift/SKILL.md": {
+      "sha256": "e39356ec96f379846ffc8f816f437a86bc69c3172b03607a76c9fdf788c013d5"
+    },
+    "CTF-Sandbox-Orchestrator/competition-queue-worker-drift/agents/openai.yaml": {
+      "sha256": "976477cfcf50c3653b16f91a601d6f2dcc21a668e749afab6753de4df2d9438c"
+    },
+    "CTF-Sandbox-Orchestrator/competition-queue-worker-drift/references/queue-worker-drift.md": {
+      "sha256": "c462d0852e8c86a6227b6336750c6aabf934c450e43a629eec06c369be3b630c"
+    },
+    "CTF-Sandbox-Orchestrator/competition-race-condition-state-drift/SKILL.md": {
+      "sha256": "94338b6e63548f232041f59594e78e9d079a05710bda594fb1e07dd9b078167b"
+    },
+    "CTF-Sandbox-Orchestrator/competition-race-condition-state-drift/agents/openai.yaml": {
+      "sha256": "39359988f9c00e3ad3bf9bb5fc73726ec6030e324f8c4e926e1aa61e352e2487"
+    },
+    "CTF-Sandbox-Orchestrator/competition-race-condition-state-drift/references/race-condition-state-drift.md": {
+      "sha256": "7ed7c1d0d0bfb27f3e412da279d397a5ebbcd6c0fc23136c5814560c874e7e95"
+    },
+    "CTF-Sandbox-Orchestrator/competition-relay-coercion-chain/SKILL.md": {
+      "sha256": "0902a70e320e4f4864b679f2a17836085218cc12d3cf5ca0dfb1cf1fb72c7ae3"
+    },
+    "CTF-Sandbox-Orchestrator/competition-relay-coercion-chain/agents/openai.yaml": {
+      "sha256": "726b75fc9e6f03c73489b0a43ff960f5f99a147eb8d875820d5020aeee4be9a8"
+    },
+    "CTF-Sandbox-Orchestrator/competition-relay-coercion-chain/references/relay-coercion-chain.md": {
+      "sha256": "7d89cb8b12b3960c2f2b3b41a7f0182704d75ff63456e859c8a6f515075c81f2"
+    },
+    "CTF-Sandbox-Orchestrator/competition-request-normalization-smuggling/SKILL.md": {
+      "sha256": "9b9dd18133e28ebc1ae7399fa20361a976f1d6e51bd808e3eda62e6f2a14dc63"
+    },
+    "CTF-Sandbox-Orchestrator/competition-request-normalization-smuggling/agents/openai.yaml": {
+      "sha256": "7780b9f59233e91b7e2ae80483de178dc51914b47a3820515ffeef1e3439d219"
+    },
+    "CTF-Sandbox-Orchestrator/competition-request-normalization-smuggling/references/request-normalization-smuggling.md": {
+      "sha256": "8e4b3695b62b557eb1f291cbffa162963a93487dab1524f7ba9938af9aff3eaa"
+    },
+    "CTF-Sandbox-Orchestrator/competition-reverse-pwn/SKILL.md": {
+      "sha256": "c8f622721f626346dec67fd1f25c41527f0a51f226c7ad71ed9d3ac1184fc5a8"
+    },
+    "CTF-Sandbox-Orchestrator/competition-reverse-pwn/agents/openai.yaml": {
+      "sha256": "bbd61de5eb7b49b4717fc0a30580967725f2b739e5c913ac415a44ee714ac64f"
+    },
+    "CTF-Sandbox-Orchestrator/competition-reverse-pwn/references/reverse-pwn.md": {
+      "sha256": "685f29cbb658b59b00a1d88da34603e9bb08f2ae71ee8fd4e91adf681287a063"
+    },
+    "CTF-Sandbox-Orchestrator/competition-runtime-routing/SKILL.md": {
+      "sha256": "2d49d8e943f328fea03d4b72215b64422480f8b22d9d0376bfb424f307e196bc"
+    },
+    "CTF-Sandbox-Orchestrator/competition-runtime-routing/agents/openai.yaml": {
+      "sha256": "21619695f8f85ba918479de71c6b78d4b0950429a73620e18371df1ab530f606"
+    },
+    "CTF-Sandbox-Orchestrator/competition-runtime-routing/references/runtime-routing.md": {
+      "sha256": "66998afcefb124d90ec87f41391ed91414b1a84500bac27a092dba8e758e260e"
+    },
+    "CTF-Sandbox-Orchestrator/competition-ssrf-metadata-pivot/SKILL.md": {
+      "sha256": "e54eea6f95f4e4fa7a4dd3e4e93889864cd067b48a48b4ed5f28ab9614894677"
+    },
+    "CTF-Sandbox-Orchestrator/competition-ssrf-metadata-pivot/agents/openai.yaml": {
+      "sha256": "2e7c364a9e0c68c9e30db95d8b227f553eb18df4b1893e4b17e360a57b90f883"
+    },
+    "CTF-Sandbox-Orchestrator/competition-ssrf-metadata-pivot/references/ssrf-metadata-pivot.md": {
+      "sha256": "8f0a79320f038ee6f9d36b232d3817adfff81abbf66a7c78a6674d4739581a3a"
+    },
+    "CTF-Sandbox-Orchestrator/competition-stego-media/SKILL.md": {
+      "sha256": "34c6ec0ebc773d9404dfe06c7ad018c68f807babd004bc4ecb9cb3e0e21ba192"
+    },
+    "CTF-Sandbox-Orchestrator/competition-stego-media/agents/openai.yaml": {
+      "sha256": "6c7cde8d5ef2043d5d400e2882995fd35847656330598eab57645e4ae0255e9b"
+    },
+    "CTF-Sandbox-Orchestrator/competition-stego-media/references/stego-media.md": {
+      "sha256": "08d6885eba31ae679949bb19964ac59718eedb181c4aafc81b328b06425e3185"
+    },
+    "CTF-Sandbox-Orchestrator/competition-supply-chain/SKILL.md": {
+      "sha256": "9db0fa1c57f973c8c9d86a5ce2f509be5edb578d11114ffd667bde9df8bea339"
+    },
+    "CTF-Sandbox-Orchestrator/competition-supply-chain/agents/openai.yaml": {
+      "sha256": "b388b4b7833e3f32aeeb407a44dfa2543c3d123654ca86f1cea6bce5960fcf73"
+    },
+    "CTF-Sandbox-Orchestrator/competition-supply-chain/references/supply-chain.md": {
+      "sha256": "cb541142f9ca72a197a79b68d762982c86ef0c0f8c7d0a1b53112d2ee3a23443"
+    },
+    "CTF-Sandbox-Orchestrator/competition-template-render-path/SKILL.md": {
+      "sha256": "0bf311c5e7e599dcb7542459dd21447e122362226dda278cc458be308be6a14b"
+    },
+    "CTF-Sandbox-Orchestrator/competition-template-render-path/agents/openai.yaml": {
+      "sha256": "e360a9bcf82c273442a1cd2f5d765d9b6d37e9a4a74232e08cb2ccba90c984ed"
+    },
+    "CTF-Sandbox-Orchestrator/competition-template-render-path/references/template-render-path.md": {
+      "sha256": "d95701386cbd8ef13bc56c52f19d68847d4f85e1d098f9e43b95d9d2e4566a0a"
+    },
+    "CTF-Sandbox-Orchestrator/competition-web-runtime/SKILL.md": {
+      "sha256": "a448411bf12ea91802457a3dd000e8ea98e9a78d28f116160b1929b3612cde87"
+    },
+    "CTF-Sandbox-Orchestrator/competition-web-runtime/agents/openai.yaml": {
+      "sha256": "97eebb89b20b2ac34a7572760243f1ebd31e64c089ae661304a22e9d2369a531"
+    },
+    "CTF-Sandbox-Orchestrator/competition-web-runtime/references/cookie-hmac-key-reuse-auth-bypass.md": {
+      "sha256": "5afe6d39d847d1badcb54903deefd8afdb46b02ae9ca876c12b71bb151cc6d0f"
+    },
+    "CTF-Sandbox-Orchestrator/competition-web-runtime/references/routing-runtime.md": {
+      "sha256": "7cc714c7fb0ccf8d2f495943c98725d15f35d8f274a2556cab5fdb34bf42b375"
+    },
+    "CTF-Sandbox-Orchestrator/competition-websocket-runtime/SKILL.md": {
+      "sha256": "8237cae908ea7f950215620bc82700124cc3a2ace0d8c3bc1a40f39963ffd193"
+    },
+    "CTF-Sandbox-Orchestrator/competition-websocket-runtime/agents/openai.yaml": {
+      "sha256": "a83e4923843d907a0be06b14af0536e27b3e27bb7c1d622e3bda2b9239b952de"
+    },
+    "CTF-Sandbox-Orchestrator/competition-websocket-runtime/references/websocket-runtime.md": {
+      "sha256": "b36c5aeee41f7ed980b8acd32af880a38e638208bb499d91908741644b4c3ded"
+    },
+    "CTF-Sandbox-Orchestrator/competition-windows-pivot/SKILL.md": {
+      "sha256": "70d5f5d5901813a3d16959748c4ffe4f6d8acc8e4c0d49d4d17fd8c3a1d3644d"
+    },
+    "CTF-Sandbox-Orchestrator/competition-windows-pivot/agents/openai.yaml": {
+      "sha256": "eec4a90f92ba12d7c21f273b6a4247ee7b9f6675cf7004ab3e7b5c9d14228a37"
+    },
+    "CTF-Sandbox-Orchestrator/competition-windows-pivot/references/windows-pivot.md": {
+      "sha256": "a7988e8958234dc901186ef9511173974618edc371ccbe7ccd3b6cf55ad0a39c"
+    },
+    "CTF-Sandbox-Orchestrator/competition-zip-archive/SKILL.md": {
+      "sha256": "e2f86fcfded2727ce26118b4410ccaa203a4da0605d5d546ce325dd2dfdbb9e6"
+    },
+    "CTF-Sandbox-Orchestrator/competition-zip-archive/agents/openai.yaml": {
+      "sha256": "3053745cf00cb989a193411c87c9b68e2579c458f17f848174c5868ae04fb85f"
+    },
+    "CTF-Sandbox-Orchestrator/competition-zip-archive/references/zip-archive.md": {
+      "sha256": "1ac77784bc746ab6c9957b862f8f9b65829b578b8d7254726429100bc61593ec"
+    },
+    "CTF-Sandbox-Orchestrator/ctf-sandbox-orchestrator/SKILL.md": {
+      "sha256": "b2a36e861a48ca4bafd055b4ecbd604ccb1b61c2b3ea48de3e3d7ba1bd0ab034"
+    },
+    "CTF-Sandbox-Orchestrator/ctf-sandbox-orchestrator/agents/openai.yaml": {
+      "sha256": "d73c58bfd20f872291e891202e285fec672f39502cbe3f54e13ce7c28fe99a06"
+    },
+    "CTF-Sandbox-Orchestrator/ctf-sandbox-orchestrator/references/agent-cloud.md": {
+      "sha256": "ebb881be0a38b3e08199b636c4426bb2bea0b16712420a26d5f7915627a113c4"
+    },
+    "CTF-Sandbox-Orchestrator/ctf-sandbox-orchestrator/references/crypto-mobile.md": {
+      "sha256": "aa50bf81d64f9080a71953394007981dc7839f5b07ccdae39d9544142602215b"
+    },
+    "CTF-Sandbox-Orchestrator/ctf-sandbox-orchestrator/references/ctf-resources-digest.md": {
+      "sha256": "7294a4187b34b34ae2f97448b8a42a6ab2de0d3f14b7f9bb19cdcf214b50660a",
+      "upstream_sha256": "a3a3eb3437c5898ec4aef23f1ecbcb14d8bc81f69a4b9936ee8241507462dfda",
+      "patch_reason": "Remove inherited trailing whitespace only; no method or executable behavior changed."
+    },
+    "CTF-Sandbox-Orchestrator/ctf-sandbox-orchestrator/references/identity-windows.md": {
+      "sha256": "049e9d8d4751c4321023258a45b661210cbe3e37cf3c68b134a18392d0e4c076"
+    },
+    "CTF-Sandbox-Orchestrator/ctf-sandbox-orchestrator/references/reporting.md": {
+      "sha256": "753581067b0de2d4909417dec6361501866162b09a654ad3d5c1bccb3d433807"
+    },
+    "CTF-Sandbox-Orchestrator/ctf-sandbox-orchestrator/references/reverse-native.md": {
+      "sha256": "bd825c6fa1b3c22d47d43a3dacf5bea4aec6845714ba80d5758a920e93a92088"
+    },
+    "CTF-Sandbox-Orchestrator/ctf-sandbox-orchestrator/references/router-matrix.md": {
+      "sha256": "2f8ce9a7d6f7ae5bad201a7ca4818dd6cc88476382fbc5edc4d33716ffb2b958"
+    },
+    "CTF-Sandbox-Orchestrator/ctf-sandbox-orchestrator/references/web-api.md": {
+      "sha256": "ec6a87f178660da60e09d7623adc9df3f7f734b91d925137ffd8bacf30329644"
+    },
+    "burp-mcp-full/README.md": {
+      "sha256": "811ae02e416b515da3ef3919a7e9b5832ebc74b7689d66b70f59f79f97de9788"
+    },
+    "burp-mcp-full/build.bat": {
+      "sha256": "7e7bcb11efd1a122ff851bbe4733a06525f45384487913a8c70f5a07459aec0f"
+    },
+    "burp-mcp-full/build.gradle": {
+      "sha256": "4658b8325a15132dc4e3fa1bc76d77fd1c4bf419fe2f4d13118f668e11ed54f7"
+    },
+    "burp-mcp-full/build.sh": {
+      "sha256": "7287e95a92a2582ac6471d4c43b5e22bc05ebc1e69b3caf4401a51641ae1ace3"
+    },
+    "burp-mcp-full/gradle/wrapper/gradle-wrapper.jar": {
+      "sha256": "2db75c40782f5e8ba1fc278a5574bab070adccb2d21ca5a6e5ed840888448046"
+    },
+    "burp-mcp-full/gradle/wrapper/gradle-wrapper.properties": {
+      "sha256": "dd7a1ea9958ebb69a3b4b91854fbdb5ed746996a26ae32c5b1a051f7ce4b8613"
+    },
+    "burp-mcp-full/gradlew": {
+      "sha256": "a3648413b47ef77af21d5ebc36c687c7d103aaef3e17f33de7d4f080a6f300a3"
+    },
+    "burp-mcp-full/gradlew.bat": {
+      "sha256": "2209f919a22528af59a2af2ad97e8d056cca18e39f7d87aa3fd549a73b180150"
+    },
+    "burp-mcp-full/mcp-bridge.js": {
+      "sha256": "41a4b9bfb728b107a7deecf46445dbf3566690c1da8dd588758852491a7ba444",
+      "upstream_sha256": "85a143c1c37fb3eae398c68579baeed1cd65bd8c08c44b3471a765841e83adcc",
+      "patch_reason": "Remove inherited trailing whitespace only; no method or executable behavior changed."
+    },
+    "burp-mcp-full/settings.gradle": {
+      "sha256": "3fad09d6a4aa957f0ed10371a081823f64cca494ceb80dea7f3ab136181f0859"
+    },
+    "burp-mcp-full/src/main/java/com/burpmcp/BurpMcpExtension.java": {
+      "sha256": "bdf4d49510936d83b282013c99522ada6895e2069fafc6431133c4b35f7416f4",
+      "upstream_sha256": "9c2cb32185f852339ae6e5f068c6844dc5fde350dc257dd75e70875194d7d3cb",
+      "patch_reason": "Remove inherited trailing whitespace only; no method or executable behavior changed."
+    },
+    "burp-mcp-full/src/main/java/com/burpmcp/McpHttpServer.java": {
+      "sha256": "b6d8dfa846c62bf91e32608f197e5602cd2566b36427c6f2474322ad0276c14f",
+      "upstream_sha256": "04ad4dec00ec792f8e227b8c7078000425186c568473cb52c22b38ea345e3c48",
+      "patch_reason": "Remove inherited trailing whitespace only; no method or executable behavior changed."
+    },
+    "burp-mcp-full/src/main/resources/META-INF/extensions/burp-extension.properties": {
+      "sha256": "5923b807f390f822dd50071d256aca2ad9c2ebabf919019f4e04dd6bd0b45e2e"
+    },
+    "burp-mcp-full/test/mcp-bridge.test.js": {
+      "sha256": "7f67800b67c3491709a64a8a65b32ff4854d11cf62c2b21b64c7591a4946bced"
+    },
+    "skills/CONTRIBUTING.md": {
+      "sha256": "81151af7293bb9278111c7430724e1ee92a51110fddab06c58091aaf00176bd8"
+    },
+    "skills/INDEX.md": {
+      "sha256": "a794ae8cc379ec4dcae89ae236d309457a6c606f00860937a75efff7300e92d9"
+    },
+    "skills/MASTER-ROUTING.md": {
+      "sha256": "936acd97ad21d324e7a966c3e97e27cbdd202d2c03803aaa1a5cf22e10bfaa66"
+    },
+    "skills/SKILL.md": {
+      "sha256": "42646e082cc89a5a1da3e2fd5e6c6165526b97bf04eac0151f009dee8a9b0c0d",
+      "upstream_sha256": "24723a2f0fde33f5aff82e5f58288ff6cbefe8fc2c78b43ca30cfe3e27e7cb58",
+      "patch_reason": "Use the shipped Linux/macOS bootstrap entry on Kali; the old separate Kali installer is not a dependency."
+    },
+    "skills/api-security/SKILL.md": {
+      "sha256": "db43296b79aff0e7c3b705063baccf54dead35e2ef7f19e447f25eee62d51d59"
+    },
+    "skills/api-security/references/jwt-oauth-testing.md": {
+      "sha256": "b9408e4026cbce626f340e4036dee66a1c8122a29473adbfffd1de65774b722f"
+    },
+    "skills/api-security/references/rest-graphql-testing.md": {
+      "sha256": "0bb12f409e74104f89f96f53c57ca246677c447fe33e7ff887f0bae6dba8f7ea"
+    },
+    "skills/apk-reverse/SKILL.md": {
+      "sha256": "da09234766189d75186fe5783e33e8d5b15b62be445dc70e0ec04887c9e81b0a"
+    },
+    "skills/apk-reverse/references/android-advanced.md": {
+      "sha256": "288ee482c6e208f7d395862efb22a3f49cca89fd0de44be65e913416bed921f4"
+    },
+    "skills/apk-reverse/references/apk-security-checklist.md": {
+      "sha256": "025f8f710b16a4537ba6abc76b33353c863d101d2f395a10837b117c2fb4979c"
+    },
+    "skills/apk-reverse/references/distilled-android-runtime-boundaries.md": {
+      "sha256": "dd311cd131f5807e8fb5248656d853a7e60ea20fb003f0912a1b6c6ca6f9d21e"
+    },
+    "skills/apk-reverse/references/distilled-jni-dex-boundaries.md": {
+      "sha256": "67ae1fb86313192fdd36429ca23d90bfebabc83e6a1ddcdac68260aaafab576e"
+    },
+    "skills/apk-reverse/references/frida-bypass-kit.md": {
+      "sha256": "29c0ac239752b56f827524ae72ede7b2fc3bcb2cdf92069122d650969e5378e2"
+    },
+    "skills/apk-reverse/references/frida-cookbook.md": {
+      "sha256": "4cc585cc34d94160c3e0efddc923b63c37553e14a74332471fa9dfe90a3fc2a0"
+    },
+    "skills/apk-reverse/references/high-difficulty-android-playbook.md": {
+      "sha256": "1ce18c0ca55925df7c3a5910f6e5369f0e21285f6a36a58594c3e5d14093d8b4"
+    },
+    "skills/apk-reverse/scripts/decode.ps1": {
+      "sha256": "0d0bfde0ce9598ee09dc9079fb51351ed398a40d0a7f520b67e668d175977231"
+    },
+    "skills/apk-reverse/scripts/decode.sh": {
+      "sha256": "c56833fa5f87923c04e52bf40be3f6a9452553037333e3548744d9ba26119ec7"
+    },
+    "skills/apk-reverse/scripts/frida-run.ps1": {
+      "sha256": "8779eceb6121b1797aadcd31682e8f5e5e07cdd55039ef277b7525605fbe7f7b"
+    },
+    "skills/apk-reverse/scripts/frida-run.sh": {
+      "sha256": "c78e0eef65f3f14e38df03616f98fa5715b9f4e09522c47904df8721611dcf0a"
+    },
+    "skills/apk-reverse/scripts/manifest-summary.ps1": {
+      "sha256": "a4a18acfea5a2236345bac44e05e7b1e6c3adbf836c22afa671087d07803d53e"
+    },
+    "skills/apk-reverse/scripts/rebuild-sign-install.ps1": {
+      "sha256": "74416b4f2fd50851848026fd350443cda953e9fa42b1b096be950806be89289f"
+    },
+    "skills/apk-reverse/scripts/rebuild-sign-install.sh": {
+      "sha256": "a1adcd7a23fb5201bae40547b5e36845d21c7e85e64501bb752b61e8726a7744"
+    },
+    "skills/attack-chain/SKILL.md": {
+      "sha256": "96c94609fdd5c7d9ce552128db50316ca800ba27c202e6619380cd6494a09d37"
+    },
+    "skills/attack-chain/references/attack-playbooks.md": {
+      "sha256": "0b9e70f95716ad170df35de90e00bee91b467cff8f07bdbaafe5d65dc7368f7a"
+    },
+    "skills/attack-chain/references/evasion-cheatsheet.md": {
+      "sha256": "d39e5acad16732f5e9f4436c37afc2f3882aded82664694cffd60cc15eb4d247"
+    },
+    "skills/attack-chain/references/lifecycle-checklist.md": {
+      "sha256": "9a411e2f1037670cf1c3efd5ab2bb608265092d54be296effa7e0dc23bdab7e5"
+    },
+    "skills/binary-diff/SKILL.md": {
+      "sha256": "89a56171d72570b9f0536e821f3e8a6a4529e8cb3db29cbb3abf5c924ca102b7"
+    },
+    "skills/binary-diff/references/prompt-template.md": {
+      "sha256": "dd53b5a19b0722983332a88422528f4820c33aa05fce0fdfe168b05586f8ba2c"
+    },
+    "skills/binary-ninja-reverse/SKILL.md": {
+      "sha256": "257823a0e25b902ee35b8d0760bb20767af761ebbb6a8ab2e8af4b873773845c"
+    },
+    "skills/binary-ninja-reverse/agents/openai.yaml": {
+      "sha256": "67e23524d2c9458cfa5dbacd401cef2d22a0225891342f2c6dc4d58521b73d40"
+    },
+    "skills/browser-automation/SKILL.md": {
+      "sha256": "c19a9293ea15be66cab95ef2f3e622d5becda2bb752b8101610f5feee260fba3"
+    },
+    "skills/browser-automation/references/distilled-captcha-evidence.md": {
+      "sha256": "129e249c6ca1ce45aa72b161c6e2356445082df1c687657f2b996ac48de504df"
+    },
+    "skills/browser-automation/references/distilled-challenge-session-state.md": {
+      "sha256": "fd52c6b366603dff79c6f53ed913250edc1dd05c4f4c52b9dbec4a959d6ce1b6"
+    },
+    "skills/browser-automation/references/playwright-cheatsheet.md": {
+      "sha256": "b4d94649b4e18b54a9cbc3d89e59fe412ac1acc039e8070a7b47e4f8e1209163"
+    },
+    "skills/browser-automation/scripts/setup.ps1": {
+      "sha256": "9ba1cff076abec8f7dcad558cf19fa2b281f419e51b026304bff95fbfecbef79"
+    },
+    "skills/browser-extension-reverse/SKILL.md": {
+      "sha256": "908c0bbcd53cdda04bcfd49cc610d049fdf58f0d9c9b70b65415e1f6730bc565"
+    },
+    "skills/browser-extension-reverse/references/extension-analysis.md": {
+      "sha256": "de083cc52478d265cbc19462a67c17ae7932d561dce345158bc97eddc3c2b8b5"
+    },
+    "skills/case-review/SKILL.md": {
+      "sha256": "1f8474fd375a8d4cce77c7933a5e7b43cf05a87a71d788a69b8051986d8642a4"
+    },
+    "skills/case-review/scripts/review_case.py": {
+      "sha256": "fddd89c9b8a77cded72775d17aab7850f04c5b068853ea8f0e0ffdbd5d427519"
+    },
+    "skills/case-review/tests/test_review_case.py": {
+      "sha256": "7e1fb99a27f02dea8cb16852d0d3538eb2b9a935ae0f1cd9948dd797e8f64446"
+    },
+    "skills/cloud-k8s/SKILL.md": {
+      "sha256": "86fdb2c06275b3acf501ec438a8d00f1737f5f831942e80b841bec007a5d5585"
+    },
+    "skills/cloud-k8s/references/k8s-cloud-checklist.md": {
+      "sha256": "6fbaccfecc6c13e617c7916a8c923b75b7c9f38acdade1d071323bde272df8a8"
+    },
+    "skills/code-audit/SKILL.md": {
+      "sha256": "122dafd8682807da6ea11c81be18cc5f02afad65d306cd7aee117191e6a3ca0b"
+    },
+    "skills/code-audit/references/sast-review-checklist.md": {
+      "sha256": "3d603986a782f6ebdcb899d32bce2e668d06c19745df7a45e8fa5ccee6cf7d09"
+    },
+    "skills/config/routing.json": {
+      "sha256": "f03fa31c1f755ae21560198604ffbe5459c6d8fdc14a7c3bde1acfc1d987cb33"
+    },
+    "skills/ctf-sandbox/SKILL.md": {
+      "sha256": "8aac859b40eb9b4e38c4ddfef38d3422656485d9edc34a54ca6f485cc8bad1b0"
+    },
+    "skills/database-security/SKILL.md": {
+      "sha256": "b052ce09f400b8ea1fc4898d2c1c0e6c52ac5429d5ccd11518a057ce2ebf086a"
+    },
+    "skills/database-security/references/db-misconfig-checklist.md": {
+      "sha256": "02d2ed1d19c906986c0860cb9830fa5642a686b0f0961363967e7d3c0ea8175b"
+    },
+    "skills/diagram-generator/README.md": {
+      "sha256": "924b8e28ea766fae7a52ff0d7084e1188c545fd63d404663d2e47ba96782d19f"
+    },
+    "skills/diagram-generator/SKILL.md": {
+      "sha256": "ed02e5d9f08db6c8648d8311bab7a45af14751b5e594a9b37240878dd72de0c7"
+    },
+    "skills/diagram-generator/agents/openai.yaml": {
+      "sha256": "1b519dce887d18aa8524ca568cbf64ae84c236ea568ae7c3e2cb353e6512ac7a"
+    },
+    "skills/diagram-generator/references/diagram-patterns.md": {
+      "sha256": "36b86ecd9fd3f95b5ec46465be6d99939902945cd8075b1cb1512897b75f9bb4"
+    },
+    "skills/diagram-generator/scripts/create_sample_diagrams.py": {
+      "sha256": "22f2165f76e7da82e696ac645c563b06e84a8221b53507eadb1deef98faff37e"
+    },
+    "skills/diagram-generator/scripts/render_diagram.py": {
+      "sha256": "f3a2eee8b9f0f811ba0ee1026449ea563333fdd006554271cb9c83338c15c730"
+    },
+    "skills/digital-forensics/SKILL.md": {
+      "sha256": "e07f637660fc59b2ddb6ebe3c4f8e0c9f6df9ed16990ed81d5f5e8212837dd0d"
+    },
+    "skills/digital-forensics/references/distilled-symbols-timeline.md": {
+      "sha256": "1df2fe4b5463d994a2cad77fa156fcfb7ee66498d49e6de9c1193d3c0491fcd1"
+    },
+    "skills/digital-forensics/references/forensics-triage.md": {
+      "sha256": "a426cc4c063b9a670c9f4bfb9391c9eaf5f3408c559aebcce57b6fc094afedc7"
+    },
+    "skills/docs-generator/SKILL.md": {
+      "sha256": "1ceb99a41426a91e69521a6232d44691f4cb299b0e1bda2390ef48a3a047db85"
+    },
+    "skills/docs-generator/references/security-report-templates.md": {
+      "sha256": "b4093349a1e44a52026928f896f01afdd70826dcbc388acba938339628e65a11"
+    },
+    "skills/docs-generator/references/templates.md": {
+      "sha256": "03cedfb2b2f63bc33e0b6547fa168c8ea99e19dce30404127c2e74e686d74a7f"
+    },
+    "skills/docs-generator/references/vendor-report-rules.md": {
+      "sha256": "7a9f3c6de3e53d8c403d6728285402d1d7dd7b0239f91a915298bbf2bd6856a7"
+    },
+    "skills/dotnet-reverse/SKILL.md": {
+      "sha256": "d85b36464ea779be3796802eea95d6780dcff325bbdc9c8cbed689a859f1615a"
+    },
+    "skills/dotnet-reverse/references/common-workflow.md": {
+      "sha256": "2da25776e246b65d9ef4d5104a3a17f40c8587e29f633a1d00bb91d561da48a7"
+    },
+    "skills/dotnet-reverse/references/obfuscators.md": {
+      "sha256": "7e62af27d2aa4eabbe5489d6eafa35ca0e796f9e622b85b6eb7affc3f5c42dfe"
+    },
+    "skills/dotnet-reverse/references/sharp-tools.md": {
+      "sha256": "085a7627bddd3ec074c9bd8884a3779f3f37749aeee26cf79dd56d53d719ba67"
+    },
+    "skills/edr-bypass-re/SKILL.md": {
+      "sha256": "aec103f818c88937aa360246d76eaa261b96e3e83464eb7f86f96bd8aa04cdb5"
+    },
+    "skills/edr-bypass-re/references/hook-survey.md": {
+      "sha256": "2f1774bb16ff99d55cc5c36d17ff79d84ba3b004b4b88e68383116b98daae73f"
+    },
+    "skills/edr-bypass-re/references/telemetry-blinding.md": {
+      "sha256": "7cccbcd5fa6fafdbf611070164788c2455976b2adda0e4f178b407e5bef7105f"
+    },
+    "skills/edr-bypass-re/references/unhook-techniques.md": {
+      "sha256": "96b9d4576ac05f66d3f5bb9b6033c7017c6038d431fe4ba45d9ab67622c27d3c"
+    },
+    "skills/email-security/SKILL.md": {
+      "sha256": "fb881515775900b21a6d1266b20d60a21bfe992279a6bf8c4411a71e1a9efa63"
+    },
+    "skills/email-security/references/email-auth-checklist.md": {
+      "sha256": "6a48fdb41311ad9caff4d234aba7a89ffcaa4497614d21dba0974b258b742ee5"
+    },
+    "skills/field-journal/2026-05-15-cellular-pro-mumu-ksad-fragment-fix.md": {
+      "sha256": "ed4fe861c233c31c622585f00b4be3432b6d29197fd56d529a02e4e12057c79d"
+    },
+    "skills/field-journal/2026-05-15_lumine-go-reverse.md": {
+      "sha256": "86ec3d4c7b7f1146b492d25e25e2acfa060453f121478bb0d3c5bb69daf33107"
+    },
+    "skills/field-journal/2026-05-16_pentest-personalblog-fun-mass-assignment.md": {
+      "sha256": "7179d84b8fbffb82d100e40b6e8cf89326884162a1453f403a5978d929a001f5"
+    },
+    "skills/field-journal/2026-05-17_pentest-vue-spa-actuator-leak.md": {
+      "sha256": "bda68dab89a2f650f19da5c032019f7c129b625c8729e4a140a19fa67baa0004"
+    },
+    "skills/field-journal/2026-05-25_pentest-cf-access-sibling-subdomain-cookie-poisoning.md": {
+      "sha256": "8b72a538d0e5941f4822ddea773f7566cadfd02782922c01972abd145059e8e6"
+    },
+    "skills/field-journal/2026-05-26_pentest-newapi-rate-limit-bypass.md": {
+      "sha256": "e01b15f5f266c698a8c699c593e20179f27168db288db889fe6a0f1ed232de87"
+    },
+    "skills/field-journal/2026-06-29_burp-mcp-full-test-and-fix.md": {
+      "sha256": "d0c88447c0223ad814030d098b6a1b8d447f31f112cd1dd254be4e77b7268ab4"
+    },
+    "skills/field-journal/2026-07-05_dsl-vm-captcha-reverse.md": {
+      "sha256": "8734cdf9d26d0f5b74f8cfe8d0660ba4893e6d2bd261e9bf67906728bdc0f4c4"
+    },
+    "skills/field-journal/2026-07-14_android-arm64-self-extract-source-recovery.md": {
+      "sha256": "9b1a25ad1cba9f05210db21474124ea26808b4a284db4e3f63a28be93e7c629e"
+    },
+    "skills/field-journal/2026-07-18_gin-juice-client-friction.md": {
+      "sha256": "8e595445e543537fb14a78c8c68616bd644596099c7da598f1d781abb77942e9"
+    },
+    "skills/field-journal/2026-07-20_reverse-toolchain-windows-bootstrap.md": {
+      "sha256": "f5e2595e0abc88816bce42219f008e6ba257d8795f3f2a4af2fe14b4316fd3cb"
+    },
+    "skills/field-journal/2026-07-22_electron-bytenode-privileged-update-chain.md": {
+      "sha256": "f10b8a854331bd35972deb9de581c6ac1d7ec7ad094eb86bd2d324a93197af48"
+    },
+    "skills/field-journal/2026-08-01_nextjs-cdk-contract-faithful-local-reconstruction.md": {
+      "sha256": "4c6b159ca4a7896e98d63a07d85e5a79f7cf7dac0ce318a2fcd121487174d8d1"
+    },
+    "skills/field-journal/2026-08-01_pentest-encryption-oracle-public-template-sql-admin-takeover.md": {
+      "sha256": "2b8b006d2fa2d8361dad540020cfd0d4a6e9e9fc98c33a52d0eb459cc559e276"
+    },
+    "skills/field-journal/2026-08-06_cortex-m-msc-firmware-self-keyed-rotate-xor.md": {
+      "sha256": "15deea9d9029948d0001058771e29dafa16eff609cd05e4d4cdd2de710f8abca"
+    },
+    "skills/field-journal/2026-08-08_client-neutral-structured-routing-pr-integration.md": {
+      "sha256": "ac0a177339a30b4915577da25955c7c71410c2f998d3c416944e31328b407405"
+    },
+    "skills/field-journal/2026-08-08_pr-value-triage-and-safe-integration.md": {
+      "sha256": "15b9c8ee8c5e270852dc3965dfef087bd08ef16f200a79c7ffbe75f86f381669"
+    },
+    "skills/field-journal/2026-08-14_windows-powershell-native-exit-code-pr-review.md": {
+      "sha256": "f26f36fe75bc3681fc040b55e2d06bc2c6cdb9958b0669ecbeb94cf5144b9a7d"
+    },
+    "skills/field-journal/2026-08-17_tool-index-r2-fallback-powershell-pwsh-host-fix.md": {
+      "sha256": "0f3441d17f0f6d16aa0bb13116763de1db8da8a90fda82bb3389d0d157ad1cf5"
+    },
+    "skills/field-journal/2026-08-20_apk-flutter-banner-ad-removal.md": {
+      "sha256": "fb0ede0aa215230dfd67c5bc055ec7775b7193cdcc8f8b79ea8991a7ad6606c2"
+    },
+    "skills/field-journal/2026-09-03_issue-pr-security-boundary-integration.md": {
+      "sha256": "b4d596aac3987837befd36b88f6419e3a256483e0ec3492827d538d310f0d4dd"
+    },
+    "skills/field-journal/CONTRIBUTE-BACK.md": {
+      "sha256": "8ee66b7e3ac60de91a7f5939fa615787f2ba93395064b0522027490c79bf3ca1"
+    },
+    "skills/field-journal/_index.md": {
+      "sha256": "2d92e47620b0bebc51875ac29061569a17bd97c24abf75801619e3c5e5b4d8da"
+    },
+    "skills/field-journal/_template.md": {
+      "sha256": "31acb54588de88f14897ebd26f649a3a6194aaadf6ac7b6ce85ca880433ea354"
+    },
+    "skills/field-journal/anonymization.md": {
+      "sha256": "903ad79fcce58db34611bd36b63258dadddf7c22f7577fdea72a4d287a24a0ef"
+    },
+    "skills/field-journal/precedent-auth.md": {
+      "sha256": "7bf882239aa23e7ba961f2c438ef5a3132c35a95ac1193a261c96223b70ee047"
+    },
+    "skills/field-journal/precedent-pentest.md": {
+      "sha256": "80fabd62390057329c48334f3b5987b265b9864a5a6c029419865247b0dadca5"
+    },
+    "skills/field-journal/precedent-reverse.md": {
+      "sha256": "48dc691f86ba39aa97c375850da977867e4f5bb74c56861cdcae22994357307a"
+    },
+    "skills/field-journal/seed-001_elf-packed-loader.md": {
+      "sha256": "a943f62f45c9bd218895efaaf961f75696568bf6ceeab0e8028c06800a0078d6"
+    },
+    "skills/field-journal/seed-002_go-malware-stripped.md": {
+      "sha256": "e0c7ca18a03e70709d1f972942764599bb183b446c8e840d902b6ed0e0fb021d"
+    },
+    "skills/field-journal/seed-003_web-api-auth-bypass.md": {
+      "sha256": "8841c9c3958a89009a561c55cf171fef6cf680054a3232180977c12623ebd97f"
+    },
+    "skills/field-journal/seed-004_js-sign-webpack.md": {
+      "sha256": "e7d159bc51e18790cdb3c98b3e79f55c70fa3ed6a119cfd9bb28418b8c6c7bd8"
+    },
+    "skills/field-journal/seed-005_ad-certipy-esc1.md": {
+      "sha256": "1e71c2ea90facf6ad4809a0d6b282e5dcfaaa66a84ee874cea5d7b89da65a607"
+    },
+    "skills/field-journal/seed-006_ssrf-cloud-metadata.md": {
+      "sha256": "c6af26160cec7af6ea7a360ddcca7ff6e8b99ba5298997696982172933164c60"
+    },
+    "skills/field-journal/seed-007_ntlm-relay-coercer.md": {
+      "sha256": "030095adb01de5de88e388c095020df6d5b59eb9d198ee13e414263b27caa2cc"
+    },
+    "skills/field-journal/seed-008_apk-okhttp-ssl-pin-bypass.md": {
+      "sha256": "18e206e70bd64e487c2da270098b2377aeadbfddd2e035041f7a38041d867db5"
+    },
+    "skills/field-journal/seed-009_ios-jailbreak-detect-bypass.md": {
+      "sha256": "e742afb55a2891396602d0930f5c6c219c8845bbf0d53b0d69c1f2b966329df1"
+    },
+    "skills/field-journal/seed-010_ctf-pwn-rop-x64.md": {
+      "sha256": "13b81e4568e5896200ea1621681995ffcb385000de9b93462b1ae79c6979c94a"
+    },
+    "skills/field-journal/seed-011_pcap-protocol-reverse.md": {
+      "sha256": "88275c0913835f4d9596724a14f30f593c275a7142405720b6f171c3974ed680"
+    },
+    "skills/field-journal/seed-012_log4shell-jndi-rce.md": {
+      "sha256": "41fa60511fa734fb33e94f6bdb89ff7479d7019df82a2bf292834489eb4ccb07"
+    },
+    "skills/field-journal/seed-013_kerberoasting-spn.md": {
+      "sha256": "dff44be83624c767ff30175ac06983ee5d7b23d0efba5b6d69c1b174f04b86c9"
+    },
+    "skills/field-journal/seed-014_unity-il2cpp-reverse.md": {
+      "sha256": "432ea0d05f1c9d115d4b0cd0230658bc0c6363f268a4c814e6d46dced8f16af4"
+    },
+    "skills/field-journal/seed-015_iot-firmware-uart.md": {
+      "sha256": "c24acb5e090f328c479f45e913c6260b3fe1e7f593530d63bc47a1e64081bc9f"
+    },
+    "skills/field-journal/seed-016_k8s-container-escape.md": {
+      "sha256": "a4bde9f5ebaf362302686d275b65e2003bb7cd9d8d9e9706d37270d01b4648f3"
+    },
+    "skills/field-journal/seed-017_xxe-oob-exfil.md": {
+      "sha256": "bfb1e665fb6a4373f56e3f506dcaf7f1fab8eeff78125f2a24fd18eca1105737"
+    },
+    "skills/firmware-pentest/SKILL.md": {
+      "sha256": "803512f2a83e1bc5731bab71dcce1f7d27a237a7b298e125c397e5d226feecd3"
+    },
+    "skills/firmware-pentest/references/distilled-rehosting-assumptions.md": {
+      "sha256": "3590e6455445ed5084b1733e1e571fbf7693d3d899a8713463bb9b6df1a22650"
+    },
+    "skills/firmware-pentest/references/emba-automated-analysis.md": {
+      "sha256": "fa4a933cb9920b259d4399cd9aa3dac569ca8b818291c179e5854803f0cc08f9"
+    },
+    "skills/firmware-pentest/references/emulation-and-fuzz.md": {
+      "sha256": "e5760bb6c7b48fb561226163f6642c528afed3ba79ee62f412e3482bff4447c3"
+    },
+    "skills/firmware-pentest/references/extraction-methodology.md": {
+      "sha256": "218610a581207c91d49b4cfb8280ae0b4fb8c1e33fa945b87f9c679e0daac61b"
+    },
+    "skills/ghidra-reverse/SKILL.md": {
+      "sha256": "f71acac4668b0320ce9f9768bb7cacc200b75140f1bab051982c8c5c3d3869b7"
+    },
+    "skills/ghidra-reverse/references/ghidra-cheatsheet.md": {
+      "sha256": "bd6fb357f9441f3657dff868d9b9a58db7d9f47d7220e5f8839e4c67276cdd1a"
+    },
+    "skills/go-rust-reverse/SKILL.md": {
+      "sha256": "e5037d0ec42f8c8ae5c11b8429ce5ba83fac11cccbecf3bccbfc99df4861139c"
+    },
+    "skills/go-rust-reverse/references/go-rust-notes.md": {
+      "sha256": "661c71d7082d611fb969ecbc35f3301aceb1da15933a89313000088b0d599b64"
+    },
+    "skills/hardware-security/SKILL.md": {
+      "sha256": "0c983618e13278817303ab96d32ada26e5f058afc778106b45672fbb04b0ec3c"
+    },
+    "skills/hardware-security/references/debug-interface-triage.md": {
+      "sha256": "e74f1cb8c9ad43f4c1f82a0422a958d7c9230b285ffa02dac27554e2db95f62b"
+    },
+    "skills/ida-reverse/LOCAL-SETUP.md": {
+      "sha256": "dd7837ffded13f5a8b2cd5d03dbac3c18c15db32231e0ff40a36bbe11cc841cf"
+    },
+    "skills/ida-reverse/SKILL.md": {
+      "sha256": "c6103d51f982158668587851feb5f6ce98172a4e0c9feb49df52e91561ad39be"
+    },
+    "skills/ida-reverse/references/ida-mcp-cheatsheet.md": {
+      "sha256": "6d0f3013f4977691fe1e7d81397abe1f550b1b6462ea5f5f5302b816baf0405b"
+    },
+    "skills/ida-reverse/scripts/IdaOpenHelpers.ps1": {
+      "sha256": "25493119a8b38e5563c545587bc12363fc68fe1aec67056f595dfea0bba1a845"
+    },
+    "skills/ida-reverse/scripts/install-autostart.ps1": {
+      "sha256": "7977e9ecf47f294d9601acb714003a6ced0eb48e7017c38c15673c7a4a484f4b"
+    },
+    "skills/ida-reverse/scripts/open.ps1": {
+      "sha256": "e40a0f281d82a28045ebb99f5a514b52b192eacc036d3b53c0e4636321b9858e"
+    },
+    "skills/ida-reverse/scripts/recover.ps1": {
+      "sha256": "f7f194b6439e89f52debcf2b6b11b60fe30a5c669f3e170c27b98c003d60550f"
+    },
+    "skills/ida-reverse/scripts/run-supervisor.py": {
+      "sha256": "7a6f71a099bde4cfceeae5e959c4c29d4615d37bb41206d210d46ccfe7dc3032"
+    },
+    "skills/ida-reverse/scripts/start-gui.ps1": {
+      "sha256": "d6c2004fd6b0c31e25d8da185c59fc3999009f048c86e9e0e50ae6fa672753ec"
+    },
+    "skills/ida-reverse/scripts/start.ps1": {
+      "sha256": "396b46b180792272d8089c8e48a9d23525b7f8f20680e5bb26b1b3e0bbdd0d88"
+    },
+    "skills/ida-reverse/scripts/watchdog.ps1": {
+      "sha256": "91b0f5a11051f57b2855c00f7783a08f316cbd71a1f2806c86e69bc8619fa7cd"
+    },
+    "skills/identity-federation/SKILL.md": {
+      "sha256": "673e4222ed9c06fd9e03fac7ce8b015ff21a93765b236138539081c10e3ced24"
+    },
+    "skills/identity-federation/references/sso-flow-checklist.md": {
+      "sha256": "33c61fe6b7bde7aae5ab60c11b2132d71dd5dcaec060ea0111b3f121a7542b73"
+    },
+    "skills/js-reverse/SKILL.md": {
+      "sha256": "0074743c97dbd1d9c30faf858ae2b6f4924458145e9ed3b39f9130fa7e3c7ca1"
+    },
+    "skills/js-reverse/references/ast-deobfuscation.md": {
+      "sha256": "f17674b425049e38b11d50123793d0658602e9614cca7882fa6ca193f8090081"
+    },
+    "skills/js-reverse/references/automation-entry.md": {
+      "sha256": "74f04e1b434bb4dd716328db52825eef7bf14c4709965a42ca0a4b19338ea4e4"
+    },
+    "skills/js-reverse/references/distilled-environment-signature-bytes.md": {
+      "sha256": "e4ce4e63c0e0d6ec552b7c9c8fbcf3a2e4fc628bac0569629dbc6d486411ef0c"
+    },
+    "skills/js-reverse/references/distilled-jsvm-wasm-browser-observation.md": {
+      "sha256": "3c3a10c6055e082683527d8480a2c83f03bcc023bd62c5466933d2a794da289c"
+    },
+    "skills/js-reverse/references/env-patching.md": {
+      "sha256": "86d099755acaf104c9d83966cc11746b6e8378db66c75e546b5f106e6117afb5"
+    },
+    "skills/js-reverse/references/fallbacks.md": {
+      "sha256": "4a29d01fcc2c79b15df353b8f93ef9cd26d57a4dedff66d4170eeb23e0fa4696"
+    },
+    "skills/js-reverse/references/high-difficulty-js-wasm-playbook.md": {
+      "sha256": "8e702ba4a27cb2611a26ee510d6dc37e57dc9012f4c5d334ec20f208d306fa90"
+    },
+    "skills/js-reverse/references/instrumentation.md": {
+      "sha256": "04306264d4403a7091f3c9910fdaf575557699496fe5bbde6c9ac96313116d61"
+    },
+    "skills/js-reverse/references/local-rebuild.md": {
+      "sha256": "64819623a0dad7104220cd7c71dd171cb6cc38a59d59b15974fc7df3c3bbc26f"
+    },
+    "skills/js-reverse/references/mcp-task-template.md": {
+      "sha256": "80ea1f87d1a9719d04d98fafcfe355e23984f49a32c88aadfea4b2ccdf6a0f00"
+    },
+    "skills/js-reverse/references/node-env-rebuild.md": {
+      "sha256": "68edef32e61396d6278bdde500c702b7627dd944b88985032c68fff844019027"
+    },
+    "skills/js-reverse/references/output-contract.md": {
+      "sha256": "318818bbde547fa2c91c621b7ec7d50b9f6b585953949ae6709d8da0693116e6"
+    },
+    "skills/js-reverse/references/task-artifacts.md": {
+      "sha256": "d798a89acb2526316a155918e4a1063d6b88993b7119329abaa3f8c7ced7ba39"
+    },
+    "skills/js-reverse/references/task-input-template.md": {
+      "sha256": "286631de3aa4a8767404a3231c633c756e08798084fa145e42d1630106a0dc03"
+    },
+    "skills/js-reverse/references/tool-defaults.md": {
+      "sha256": "bb8f97f71bad3bd6a10265ac846b2fed5fc7c28da60344ab565b9bd903474af3"
+    },
+    "skills/llm-security/SKILL.md": {
+      "sha256": "141ef901d5a070ddcd633f1a07717ba1b4eb8bbe0db4dd2f44429d65d1aece39"
+    },
+    "skills/llm-security/references/agent-obedience-engineering.md": {
+      "sha256": "f343a827fb96206a41a6e5c371931e13eb4194ed3f06c18fab5a1370da4dd942"
+    },
+    "skills/llm-security/references/agent-security-testing.md": {
+      "sha256": "bb63477f428acc9bf69233d5389b81bb995b04d83788c85a9e723cb65c5ddcc8"
+    },
+    "skills/llm-security/references/owasp-llm-top10.md": {
+      "sha256": "377bcf373c2f07916af795c2b3237e7522b22d476ff48355a9a201b914b19377"
+    },
+    "skills/llm-security/references/prompt-injection-methodology.md": {
+      "sha256": "4a99d68823dd4403bcc9810dd04111bbac111411cbc02bee666102b0f3104b3f"
+    },
+    "skills/macos-reverse/SKILL.md": {
+      "sha256": "727633a83f01000977d3eecd93fb77324ea082f0207c9fd1b532ae315e01e1ec"
+    },
+    "skills/macos-reverse/references/macho-triage.md": {
+      "sha256": "cdf5ae1803f16043618ada0e5f00d3edf0b58a3726b2be049eb485c77cf615d1"
+    },
+    "skills/malware-analysis/SKILL.md": {
+      "sha256": "4b62b8283d60084fd58f87442d9ac283b26b19e244b71d50ceee699b4353afe1"
+    },
+    "skills/malware-analysis/references/anti-analysis-techniques.md": {
+      "sha256": "27bbda99e9cac6ef6945ff5fedfc3b705cafc8ad9e3a4a6ef3e5e033221ccd2b"
+    },
+    "skills/malware-analysis/references/sandbox-orchestration.md": {
+      "sha256": "679fe226a69e03633b33840dc0b035917c3a800b3b8282ec31c067ba124f658a"
+    },
+    "skills/malware-analysis/references/yara-sigma-rules.md": {
+      "sha256": "5369e6177e14518b8752696028fe869baa1b8ae96dbc7dc7d88b65a6ac4a1a76"
+    },
+    "skills/mobile-reverse/SKILL.md": {
+      "sha256": "b98b526522ba37b64f20ad763dd5992f42884aa34e30e5cc2f73e7a6a86881f5"
+    },
+    "skills/mobile-reverse/references/anti-detection-bypass.md": {
+      "sha256": "41cc64e54cad6f920ddbf6f88c98da4bc6d0bad2989f6c78f08dc4d3b82a03c2"
+    },
+    "skills/mobile-reverse/references/distilled-ios-metadata-runtime.md": {
+      "sha256": "d122d3dbb58f25a0ffa44d21bb44f6a54cb6a8c3fa11350d4c37d374859f2afc"
+    },
+    "skills/mobile-reverse/references/frida-objection-deep.md": {
+      "sha256": "73d3f22ead0cf6da134550fb7e4023abe177c1c86ecd075bf95515c1803f2d46"
+    },
+    "skills/mobile-reverse/references/ios-reverse-guide.md": {
+      "sha256": "737b28e598257713677404613c55af5fd2def40caa3bd101d3328d14e6b1a62d"
+    },
+    "skills/ops/IDENTITY.md": {
+      "sha256": "b52a9980a076d01a16bd5f71e9d0cfc2be016b435274b7c38c4ebe97b7b29e46"
+    },
+    "skills/ops/README.md": {
+      "sha256": "a338fed7fd1daeb2d8c178495f00417f61bad6b9d11a6e0212c4dbafe07c79f6"
+    },
+    "skills/ops/analysis-blindspot-cookbook.md": {
+      "sha256": "9f2f1eec0c82d07687191b10861293d836f69583139252cf755fff88dc87d334"
+    },
+    "skills/ops/analysis-decision-framework.md": {
+      "sha256": "3566c27ba943180b77d75b43d5bd4614eac7026b845dff9889770f72b0aca5c6"
+    },
+    "skills/ops/authorization-coverage.md": {
+      "sha256": "4d41a791331562fedb1fecc10e115ea0e0c4f55945c64064c7fb91eb882f49b7"
+    },
+    "skills/ops/beginner-operator-guidance.md": {
+      "sha256": "d39992b0b48ff368cbaa6ac547b68f93286cb788a0c617319a9caaa152f81a12"
+    },
+    "skills/ops/evidence-finding-path.md": {
+      "sha256": "5dd0422121e4a02adab99fe1c33bee9153caf4c693d8afbaceff8fa5cdc871e6"
+    },
+    "skills/ops/guided-operator-contract.md": {
+      "sha256": "f55ff0bf8e4d91766c9f3d08f5605ffd4d62c459341e619d1b45a9449457c261"
+    },
+    "skills/ops/process-lifecycle.md": {
+      "sha256": "db3e6423f9536768f49e7bcfe83e363c4828def78614527e63cd377a6ee6d4c4"
+    },
+    "skills/ops/rea-delegation-contract.md": {
+      "sha256": "fcbb16063a350d33bbffc71a8ffa82fade74ae3e768d82a017c436f7bd81b221"
+    },
+    "skills/ops/role-map.md": {
+      "sha256": "ed1e9e5d31c9651eec5c261d0dd4acc3a63b5aa501cf79f4095a5f3a02b1ccf9"
+    },
+    "skills/ops/sandbox-profile.md": {
+      "sha256": "2d0b9ce7e1fa5833b741ecf66e6ab71b2f40d9e7c994891973ecac300c8f04fa"
+    },
+    "skills/ops/scope-contract.md": {
+      "sha256": "a120e34d827743dd19108b6fb7ca53e3c3969d9c25bb2e19ea0fdba254dcc7d2"
+    },
+    "skills/ops/skill-supply-chain.md": {
+      "sha256": "fe8fde4be282bdcf150d501d0f3c59099f9515f672d3998cf02322e882a17c64",
+      "upstream_sha256": "927f3b6a758be75c22259ab9639c13e57178f6ad65866508586a0367001e698e",
+      "patch_reason": "Resolve the current audit locally and retain the historical security audit as a pinned external reference."
+    },
+    "skills/ops/timeline-workitem.md": {
+      "sha256": "8621af4384ff89c7a9f106219b2d860bf3652b6f3b67ce58c76a95684bb5dc47"
+    },
+    "skills/ot-ics/SKILL.md": {
+      "sha256": "81bf7ff97d1e0d446ec262a2fed726e52abe3cce88e07c01ce31afcd0061bc9e"
+    },
+    "skills/ot-ics/references/ot-safe-assessment.md": {
+      "sha256": "0c9eb6ea4d0a8116c813fd0fa9a3c914ba446c6500c674ea2bcf08955bd4edf3"
+    },
+    "skills/patch-diff-exploit/SKILL.md": {
+      "sha256": "b010987e97733c3f218700f45e283c916ee7af925e8ce216320c503006c8bcf7"
+    },
+    "skills/patch-diff-exploit/references/diff-tools-comparison.md": {
+      "sha256": "e72cbaa32d76283f5739238e3b66e7b143194b940f44be146ad7624c335ac0cd"
+    },
+    "skills/patch-diff-exploit/references/patch-tuesday-workflow.md": {
+      "sha256": "d486f45cecd4fb7705b9d3cf329e2b83207315bbbe46998d606f6e68b5aceb86"
+    },
+    "skills/patch-diff-exploit/references/root-cause-and-poc.md": {
+      "sha256": "9fee53c914412252e4a61c8183a0471c0451be062f984df559ee25af183ccf5a"
+    },
+    "skills/pentest-tools/SKILL.md": {
+      "sha256": "5bab5fe16593998862c763959ae6643e1bf81ed8d75bfa924f42c2aabd1170c9"
+    },
+    "skills/pentest-tools/payloads/README.md": {
+      "sha256": "44aacce292577dac49f7ef7ed26f095f0dd768d57d268e101d7389f7e132592b"
+    },
+    "skills/pentest-tools/references/ai-pentest-agents.md": {
+      "sha256": "84b2913a52354265b91e92aa7097a8c7c1b8aa0512f485daa1960cec78990921"
+    },
+    "skills/pentest-tools/references/ai-pentesting-landscape-2026.md": {
+      "sha256": "649c8665835b084e4398a4ed5a3735606cc50b1c5d4b86e2a210fed477ecf645"
+    },
+    "skills/pentest-tools/references/automation-loop-pattern.md": {
+      "sha256": "256f99caa7b65efb6246e5286ccc2425e957e4bfd323fb59c4b30b114dc4283e"
+    },
+    "skills/pentest-tools/references/awesome-pentest-digest.md": {
+      "sha256": "7d11cc879edb426cded0ab75c59942ae8049809de5ae6e909927fa9d3f4aad5b"
+    },
+    "skills/pentest-tools/references/burpsuite-mcp-guide.md": {
+      "sha256": "7657929cf5eaa93fa7277de690dd390a3e1b243a61fbd2d55eb4f8299020db30"
+    },
+    "skills/pentest-tools/references/client-side-lab-playbook.md": {
+      "sha256": "9380d626b7116c78bceeb7ff6fed83ffc548d9addbcb7ef0be3ea2dfa7c9d4e4"
+    },
+    "skills/pentest-tools/references/kali-mcp-ecosystem.md": {
+      "sha256": "f242aee5c8190f3457755ca2febc88fb8837b51b634c45b8b9426ac617166340"
+    },
+    "skills/pentest-tools/references/msf-protocol.md": {
+      "sha256": "e5d0c0b5a1b55d98ed2903cea45500ccb0fc7099beb920a2ad0fb0d2a598c40c"
+    },
+    "skills/pentest-tools/references/network-attack-defense.md": {
+      "sha256": "3bccbb98b195bc0b5a1dd92869af65660b4dd2d493e30c432381b9831dc71f8c"
+    },
+    "skills/pentest-tools/references/nuclei-guide-2026.md": {
+      "sha256": "479d866711e880dd66460369f010baeee0a8caaceb71d18fcb7f2ebff171c333"
+    },
+    "skills/pentest-tools/references/pentest-ai-agents-matrix.md": {
+      "sha256": "caebe2d2b65825d7e2c3298cffdad96eb66c6a273740653c97a85d99bf19a9bb"
+    },
+    "skills/pentest-tools/references/pentest-loop.md": {
+      "sha256": "9ddbef30f7427e71deb1ec1fa61c76be1cc6faf3c005656224ffadd97ed6af61"
+    },
+    "skills/pentest-tools/references/recon-pipeline.md": {
+      "sha256": "bd3e0183e381a77adcc95b021e477f248212384a9679723427b6090bbe23e4b5"
+    },
+    "skills/pentest-tools/references/web-attack-cheatsheet.md": {
+      "sha256": "fc8decb8ae27d5dfbb510109c22cdea9c2e02b438177d476d847ec11849f3e53"
+    },
+    "skills/pentest-tools/src-hunter/.claude-plugin/marketplace.json": {
+      "sha256": "83044119a36c5d7369a2d56778ef73c5890e4dd0699083c696c1b8da09d6eb65"
+    },
+    "skills/pentest-tools/src-hunter/.gitignore": {
+      "sha256": "0df5a67344714a94ff6cd961b24374d5e1547e833c5d00a4e23a48cb0acaceec"
+    },
+    "skills/pentest-tools/src-hunter/LICENSE": {
+      "sha256": "5b02fedc65e661a7818e303a1e4680927ed5afa636c491b3bdf7d33f41f9f908"
+    },
+    "skills/pentest-tools/src-hunter/README.en.md": {
+      "sha256": "71240902c2f05648cb7e23eeaece27b38f850ee1bc758b173f2c8cd131ac8038"
+    },
+    "skills/pentest-tools/src-hunter/README.md": {
+      "sha256": "4ed9b800306ebbb680d8edfd5443fe223e6b785e217f05f038ad24ee99f6725d"
+    },
+    "skills/pentest-tools/src-hunter/SKILL.md": {
+      "sha256": "1819d01dce004deeea66217d9e2aeda7e5cead3ff3ecbd5cb77db1844b34741a"
+    },
+    "skills/pentest-tools/src-hunter/references/.gitkeep": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "skills/pentest-tools/src-hunter/references/dictionaries/00-index.md": {
+      "sha256": "b6237b3f65ff4b43c97a7df12d5ea30f8c8f49c7429f9fbafa0f5b982fecb586"
+    },
+    "skills/pentest-tools/src-hunter/references/dictionaries/chinese-srcfingerprints.md": {
+      "sha256": "b029599c86b9a69c93eae8cd97bb8217a95ce10267bcb273fbf48b92827e79b6"
+    },
+    "skills/pentest-tools/src-hunter/references/dictionaries/default-credentials-cn.md": {
+      "sha256": "65cbf20d7613944358e365152b3bc40cd8c8a0256411c9e464717ad4146e5d9f"
+    },
+    "skills/pentest-tools/src-hunter/references/industry/00-index.md": {
+      "sha256": "b5df0cf51d43570e24bf69ee9ac417137134cb2144d2344cf57a1e1caeff82bd"
+    },
+    "skills/pentest-tools/src-hunter/references/industry/banking-finance.md": {
+      "sha256": "6a362481f7074c71c487ac436108cf58ed7564ea3ff10519154bc6cd032afbd7"
+    },
+    "skills/pentest-tools/src-hunter/references/industry/telecom-isp.md": {
+      "sha256": "4142907b7d8999ecef1abd42044fa00b5bdf133c337c97cead31eb00499a733d"
+    },
+    "skills/pentest-tools/src-hunter/references/methodology/00-index.md": {
+      "sha256": "28fbb4b5d9ac798f104ef9e4dd0366f830de59d45afa9229bed4dd59a1c6b71a"
+    },
+    "skills/pentest-tools/src-hunter/references/methodology/01-attack-priority.md": {
+      "sha256": "a79cece936041a110da6c8fb613ffbb1f6571861c2ee70528c2fb83d8f27145f"
+    },
+    "skills/pentest-tools/src-hunter/references/methodology/02-bypass-toolkit.md": {
+      "sha256": "195e0147d816b80fa81ccd46942e79dbda1b463c442ece03143af30f0004dc55"
+    },
+    "skills/pentest-tools/src-hunter/references/methodology/03-evidence-discipline.md": {
+      "sha256": "aade9972e088b935f70f150329482d823457d13f892cd2faf791129225c62de8"
+    },
+    "skills/pentest-tools/src-hunter/references/methodology/04-control-gap-hunting.md": {
+      "sha256": "d6674c1c586e1352849bf7be7d1cd58fd43873f9bf6601961001918dc1acc9b8"
+    },
+    "skills/pentest-tools/src-hunter/references/methodology/05-srctimebox-priority.md": {
+      "sha256": "d305fabc822db4948280eb2e8874041acd0ad3e6b75df162768907a7db705d12"
+    },
+    "skills/pentest-tools/src-hunter/references/payloader/by-category/intranet/adcs攻击.md": {
+      "sha256": "49764e95a2e121899961b1915794f9264d095343b471bca97d5317d020ed0020"
+    },
+    "skills/pentest-tools/src-hunter/references/payloader/by-category/intranet/exchange攻击.md": {
+      "sha256": "cf4caee522f21c3ba61b32d5d6f12194238bf52b8b17ae339eb2c83adcbb626b"
+    },
+    "skills/pentest-tools/src-hunter/references/payloader/by-category/intranet/sharepoint攻击.md": {
+      "sha256": "7b70d23bb9f9513f01d168fa32a3905c064f82479c22a586f4c01693693efeeb"
+    },
+    "skills/pentest-tools/src-hunter/references/payloader/by-category/intranet/信息收集.md": {
+      "sha256": "5acfd461329ca663c7ce13e21f7ba842a628baeb9ab228ed32f3087dd07c716e"
+    },
+    "skills/pentest-tools/src-hunter/references/payloader/by-category/intranet/免杀与规避.md": {
+      "sha256": "2485e619ad92861fd0b5679cb7379b3080940aacac7faa370c80792d92dd970b"
+    },
+    "skills/pentest-tools/src-hunter/references/payloader/by-category/intranet/凭证窃取.md": {
+      "sha256": "1342b24a3495cacb5a5b52cdcb651d57ca63acae27d308ced93e116957589d14"
+    },
+    "skills/pentest-tools/src-hunter/references/payloader/by-category/intranet/域渗透攻击.md": {
+      "sha256": "d17eca3e9f70bd57f5b402b354c3fa7f0f819c45cad5172900d85ce3de9fac53"
+    },
+    "skills/pentest-tools/src-hunter/references/payloader/by-category/intranet/权限提升.md": {
+      "sha256": "35b9e8b08920b1bc3bdc10383d30d486da23ac32c6041bc8ee38cfad2f07bf8b"
+    },
+    "skills/pentest-tools/src-hunter/references/payloader/by-category/intranet/权限维持.md": {
+      "sha256": "b7e706d1fd458c22ecda66b0a864c756c14668f6e447e4278ee93f404723309b"
+    },
+    "skills/pentest-tools/src-hunter/references/payloader/by-category/intranet/横向移动.md": {
+      "sha256": "f5a021ef61469f424a1a7657f74cb5769040fa00fd83420d2cafdc961bb1b96a"
+    },
+    "skills/pentest-tools/src-hunter/references/payloader/by-category/intranet/隧道代理.md": {
+      "sha256": "f6d800b30cc8082bdd0229823cbd993ea52740dfeed622753fd31798537ccfa7"
+    },
+    "skills/pentest-tools/src-hunter/references/payloader/by-category/web/ai安全.md": {
+      "sha256": "f46fe80c1d6bad523eab76a3617513d6805f29e590945bfe32ff00b5f1c4f205"
+    },
+    "skills/pentest-tools/src-hunter/references/payloader/by-category/web/api安全.md": {
+      "sha256": "7e6f3250a870cc70a92ac487d1dde3ffdfbe843f9ed6aaaefd1dcec5f9bc2bbd"
+    },
+    "skills/pentest-tools/src-hunter/references/payloader/by-category/web/csrf跨站请求伪造.md": {
+      "sha256": "902e611ac1e94675d16d9504942ded4d4ffac5e0b38c91aa64f2f6e68dcdb136"
+    },
+    "skills/pentest-tools/src-hunter/references/payloader/by-category/web/jwt安全.md": {
+      "sha256": "ca8a4e5c96b617bf63d679aaf2173efe81c3b93e554e5f4dae69d8cf61fba93b"
+    },
+    "skills/pentest-tools/src-hunter/references/payloader/by-category/web/lfi-rfi文件包含.md": {
+      "sha256": "8f3027b8f0e4f804883199186af7beb9c9e5c27fd511094ec1bbe4b00c0e9da5"
+    },
+    "skills/pentest-tools/src-hunter/references/payloader/by-category/web/rce远程代码执行.md": {
+      "sha256": "3c3f90ed64fce28b1a4c1447cc06488d0f4fd79235e466a9f1a77fd07732f19a"
+    },
+    "skills/pentest-tools/src-hunter/references/payloader/by-category/web/sql-nosql注入.md": {
+      "sha256": "54c8bc04c2e76f4387a284b28ee6ecbeee15f4fd93a2d762af0974197dc444bd"
+    },
+    "skills/pentest-tools/src-hunter/references/payloader/by-category/web/ssrf服务端请求伪造.md": {
+      "sha256": "cb1d17bd8a8e7d55b64d1c6fa42c9cbf61d709f14666241d5045e97cdb793d4a"
+    },
+    "skills/pentest-tools/src-hunter/references/payloader/by-category/web/ssti模板注入.md": {
+      "sha256": "87795a61c8b447afb6149dca45d8b4e03611a08628c3ab6544e298be550a7413"
+    },
+    "skills/pentest-tools/src-hunter/references/payloader/by-category/web/websocket安全.md": {
+      "sha256": "d09ac8509f7860073fe077090024a6d48341a1b4db56050df428f8902beede48"
+    },
+    "skills/pentest-tools/src-hunter/references/payloader/by-category/web/xss跨站脚本.md": {
+      "sha256": "2e1ec33087f87e6f953be9cd4e349e7dd04c4f519bce5fa6edf028bf50db79e2"
+    },
+    "skills/pentest-tools/src-hunter/references/payloader/by-category/web/xxe实体注入.md": {
+      "sha256": "15033e2cfc27f9e13e519bd919b887cc942b6ad306794ccf5f3409786aba9163"
+    },
+    "skills/pentest-tools/src-hunter/references/payloader/by-category/web/业务逻辑漏洞.md": {
+      "sha256": "4979c6c25cfc88ce0a1f742a275d852a1c7231a922a67018a99be2d6fca423db"
+    },
+    "skills/pentest-tools/src-hunter/references/payloader/by-category/web/云安全漏洞.md": {
+      "sha256": "06227cb4d026e2c2df16d2bb010349180cc69e2f68f9646edacdc935b18a8723"
+    },
+    "skills/pentest-tools/src-hunter/references/payloader/by-category/web/供应链攻击.md": {
+      "sha256": "f7acc4df83c0b406475c343df09324834dcbeb86589269b1d4517275f7fd3dc6"
+    },
+    "skills/pentest-tools/src-hunter/references/payloader/by-category/web/原型链污染.md": {
+      "sha256": "8d74c1d9dbb503deb2af11a4eec5f55083ff35e51c2eec1a7d8d32e276fc4631"
+    },
+    "skills/pentest-tools/src-hunter/references/payloader/by-category/web/开放重定向.md": {
+      "sha256": "da3ba98d03006743f88d94aef8abb630b2f2049937c1ce9ce2a1413ec1680453"
+    },
+    "skills/pentest-tools/src-hunter/references/payloader/by-category/web/文件漏洞.md": {
+      "sha256": "0236fc2822eaeb293c320045989f7d8468640fd0e22576c1c07e07217ef40121"
+    },
+    "skills/pentest-tools/src-hunter/references/payloader/by-category/web/框架漏洞.md": {
+      "sha256": "27c4743dc671f2ae9441d87f809a64f8978cfdaeeaa940f632c23937160f1c3c"
+    },
+    "skills/pentest-tools/src-hunter/references/payloader/by-category/web/点击劫持.md": {
+      "sha256": "449736c9a519b0949861d2be912192875f0afc9a350bbe5e8fa041e7619ea862"
+    },
+    "skills/pentest-tools/src-hunter/references/payloader/by-category/web/缓存与cdn安全.md": {
+      "sha256": "e6bf45fb9851dfcaba9aa8417cbabddf0f771aeee265c38a8de96a409303b67c"
+    },
+    "skills/pentest-tools/src-hunter/references/payloader/by-category/web/认证漏洞.md": {
+      "sha256": "b7f77de2c38ee4d1b376351a5d8373f76aca74dcafa16c3a6b3c4ccad460b0c4"
+    },
+    "skills/pentest-tools/src-hunter/references/payloader/by-category/web/请求走私.md": {
+      "sha256": "c5b9c665f23e3a2f2dcd5f78f81595774406f1ecdb5d041599db2842f1e63c84"
+    },
+    "skills/pentest-tools/src-hunter/references/payloader/index.md": {
+      "sha256": "089fd77453da1971ba3fc3c3858494eadfda4312f2cbcedc6717ec5eb36c5db2"
+    },
+    "skills/pentest-tools/src-hunter/references/payloader/raw/navigation.json": {
+      "sha256": "ffcb11d359554d2e8dd6f35d5121cf52ef4d26f0484fb9d5f30ff1058cd63971"
+    },
+    "skills/pentest-tools/src-hunter/references/payloader/raw/tools.json": {
+      "sha256": "4cec9f217c270c13aa341ab73d4a74b63ba685bb8a5437c7e6533663d55041e0"
+    },
+    "skills/pentest-tools/src-hunter/references/payloader/raw/web.json": {
+      "sha256": "25c5dcb30505f7ff7417d6bee274419fc8730855f33af1c35a89118c02d8de21"
+    },
+    "skills/pentest-tools/src-hunter/references/payloader/tools/web渗透.md": {
+      "sha256": "39a2bbbfca07402744b4fa5ccb68ee925bc3e7bbe805dadedc09b17bac454489"
+    },
+    "skills/pentest-tools/src-hunter/references/payloader/tools/windows渗透.md": {
+      "sha256": "6bebbdfb5877ff550d2786f276ce8de29bc1bfef8c0a017d25bb3b193193e8a9"
+    },
+    "skills/pentest-tools/src-hunter/references/payloader/tools/信息收集.md": {
+      "sha256": "c038c60912649e4a71e76f34168e744bcfe7ba50fc72f0475dc66afc3775bfaf"
+    },
+    "skills/pentest-tools/src-hunter/references/payloader/tools/内网渗透.md": {
+      "sha256": "91b16a15984e7595ac1ae0281d7061638f54b2f272341f9041bc182832d88369"
+    },
+    "skills/pentest-tools/src-hunter/references/payloader/tools/凭证窃取.md": {
+      "sha256": "e9b7796010790258e403e3f034918dcfd67fa86e83843b56c0f69b668d2f402d"
+    },
+    "skills/pentest-tools/src-hunter/references/payloader/tools/域渗透.md": {
+      "sha256": "8da38326c4a4cfc5d451141ec68242e067199366010e135101caaf65f6ce461d"
+    },
+    "skills/pentest-tools/src-hunter/references/payloader/tools/密码攻击.md": {
+      "sha256": "d2586e92d896fcd39fb70f4c317b643bbcccc9243d485094481dfbc9e7ab9cd3"
+    },
+    "skills/pentest-tools/src-hunter/references/payloader/tools/权限提升.md": {
+      "sha256": "758c0337ef26cb7df26f16023b29c6c54498e5a36cbf190a3d9fdf3a06cb724e"
+    },
+    "skills/pentest-tools/src-hunter/references/payloader/tools/漏洞利用.md": {
+      "sha256": "f5e490d5f35ce24a68f284e2cb4db3fee75dffb9b39d4ee6d3ba368f43706ae5"
+    },
+    "skills/pentest-tools/src-hunter/references/payloader/tools/系统命令.md": {
+      "sha256": "5da09ab4d320b19fc3c7f2137753ceb7791b81f70f7e391313ddbb644bc86b27"
+    },
+    "skills/pentest-tools/src-hunter/references/payloader/tools/红队工具.md": {
+      "sha256": "d50bc7bbaf879cdad7f96619e1c178b2dab3f4af0cc42b77afb4d05dadc2c07e"
+    },
+    "skills/pentest-tools/src-hunter/references/payloader/tools/编码解码.md": {
+      "sha256": "b9da8bd5126c5f681ad7aaa7446b826c5405dfb15fe0a464a4985ae534e05ed1"
+    },
+    "skills/pentest-tools/src-hunter/references/payloader/tools/隧道代理.md": {
+      "sha256": "cf2842df7b97c820a513c27f5cb7f2b99c2376b376364cd4398ca699f586101d"
+    },
+    "skills/pentest-tools/src-hunter/references/payloader/waf-bypass.md": {
+      "sha256": "0273517455962bb9908264f82e4708b31d541c91c2ec715e8032d6c1376728b5"
+    },
+    "skills/pentest-tools/src-hunter/references/playbooks/00-index.md": {
+      "sha256": "7dff850138018018b112518a447a089d75e2eb7a37c08c94680a78b7eb76afed"
+    },
+    "skills/pentest-tools/src-hunter/references/playbooks/api-rest.md": {
+      "sha256": "559270ce29945cb1b3c536291c3a7e8936d2e3483e0728b1349ad33fbb21916d"
+    },
+    "skills/pentest-tools/src-hunter/references/playbooks/arbitrary-x-authz.md": {
+      "sha256": "acbb62c6c1d993f1a628d88deb04c11dc384127aed6f190043f3bc0f9aacdfab"
+    },
+    "skills/pentest-tools/src-hunter/references/playbooks/dos.md": {
+      "sha256": "41ef3b79b715c834e6c72fafd1bbf6f64a67de4b38a725d70176a0bfb9fee0e7"
+    },
+    "skills/pentest-tools/src-hunter/references/playbooks/file-upload.md": {
+      "sha256": "babfafeacae9c1ac38ae81053a7654ed136941d34313750fc2b5e94f50cb9c62"
+    },
+    "skills/pentest-tools/src-hunter/references/playbooks/graphql.md": {
+      "sha256": "7a7dab374f1c308ae2246de7e7f126c7dfb03a4aea1ba5e3ab57b9712d367b0d"
+    },
+    "skills/pentest-tools/src-hunter/references/playbooks/http-smuggling.md": {
+      "sha256": "82ff4bf6104fb3cb4628c33a6ec57e49d2dcb5c00024507675b1bfcd03ffa692"
+    },
+    "skills/pentest-tools/src-hunter/references/playbooks/info-disclosure.md": {
+      "sha256": "357adaaf6a090473ac21a971fbb76f976a915e6a3c6925303a79ce1b39c984ad"
+    },
+    "skills/pentest-tools/src-hunter/references/playbooks/intranet-postexp.md": {
+      "sha256": "73d9532614a19f9a76d2087dca92cd67731bc8788779c0588c3a727b57ef4931"
+    },
+    "skills/pentest-tools/src-hunter/references/playbooks/llm-prompt-injection.md": {
+      "sha256": "5a7c5062f0e277eae08a1303857601ea66e5c4d0481cd3e3b8681a6655f67eb9"
+    },
+    "skills/pentest-tools/src-hunter/references/playbooks/logic-flaws.md": {
+      "sha256": "867dad673cfb3ba8b036fdddee2a963dce76ec0337dec185edda1b845aa1a300"
+    },
+    "skills/pentest-tools/src-hunter/references/playbooks/mobile.md": {
+      "sha256": "a56cd6ecd0472f0c1689c299f21ae056ae0c27a32b6cbde0a854f2e45ac3588e"
+    },
+    "skills/pentest-tools/src-hunter/references/playbooks/oauth-saml-jwt.md": {
+      "sha256": "74f0f1b756d3cb414af042a13a93969851c1e6acd5ce821d36f84bfd043a5cdd"
+    },
+    "skills/pentest-tools/src-hunter/references/playbooks/path-traversal.md": {
+      "sha256": "f98da7c3f908dc4320193b728319bbd59528b87899ab785400d70378660e72e0"
+    },
+    "skills/pentest-tools/src-hunter/references/playbooks/race-conditions.md": {
+      "sha256": "8868b0e42f5429ebd76886d255a588046376e91b250832e68517052a5335baaf"
+    },
+    "skills/pentest-tools/src-hunter/references/playbooks/rce.md": {
+      "sha256": "7d096c7ad9567e3485bf1720fd7ad17a9a53096a8970de4fdb8d8000df09ed8a"
+    },
+    "skills/pentest-tools/src-hunter/references/playbooks/sqli.md": {
+      "sha256": "ce3de87afb9969dc0db0891e03a305c2d3e6ac7bd3ce5a75db1f676de6bdf8dd"
+    },
+    "skills/pentest-tools/src-hunter/references/playbooks/ssrf-cache-host.md": {
+      "sha256": "e8db89cf04375decd7c108b96a83e99aca488b92e336d82ec1c676c6eec50f03"
+    },
+    "skills/pentest-tools/src-hunter/references/playbooks/unauth-access.md": {
+      "sha256": "bb5b99cdbb790a1aa4f3fd5f2105c91f69b6c88c9629e037a554113716325069"
+    },
+    "skills/pentest-tools/src-hunter/references/playbooks/xss.md": {
+      "sha256": "c1ed31e52c5354225efbce0d0a04d2882f78c8d3780c3a70a57759d3db5d9352"
+    },
+    "skills/pentest-tools/src-hunter/references/templates/report-submission.md": {
+      "sha256": "e529ef89042cc3d3fc49dc7e650794f321f96652e693b78d1c534ad2096da2ad"
+    },
+    "skills/pentest-tools/src-hunter/references/tools/mcp-jshook.md": {
+      "sha256": "7d4e9a5b263456c74a93352ae5a358d7e3b2069c6a2a77ba06c3cc65c3a03196"
+    },
+    "skills/pentest-tools/templates/findings.md": {
+      "sha256": "02b399601d0b0aaf4410f551af26178a9c639d2b3c45e75a97a630e7c21459ca"
+    },
+    "skills/pentest-tools/templates/progress.md": {
+      "sha256": "87bfc12dc4c4b9f5e9d87e1996d69bb706c7298402b9e6378e9f7128ed877aea"
+    },
+    "skills/pentest-tools/templates/rules.md": {
+      "sha256": "fb3c9f1e8c8495c6cab57a2646c259051203356739bd0fc2ce6f6675918a41e6"
+    },
+    "skills/pentest-tools/templates/scope.md": {
+      "sha256": "7731362693d0beb839e8899b13697afb4602cdd74eca4c7b0e7243086d048798"
+    },
+    "skills/pentest-tools/templates/task_plan.md": {
+      "sha256": "0d8eb4de9040534f3be9a39f37d7915d627bc2dc17f243402dbd9803fb8303d3"
+    },
+    "skills/protocol-reverse/SKILL.md": {
+      "sha256": "78be3a32de5fdf39a4e898b14d16ad8f74ebd7499e2e86b97a7d1a274ab7a43d"
+    },
+    "skills/protocol-reverse/references/distilled-http-state-replay.md": {
+      "sha256": "439fb27b23f3a11436669e91adab8a5ce54743b9c99782edac36ca35f97d6503"
+    },
+    "skills/protocol-reverse/references/distilled-registration-protocol.md": {
+      "sha256": "f9397eca4750532dae398c40428f6e7e15d83302312c5104680eb5b66ed90348"
+    },
+    "skills/protocol-reverse/references/high-difficulty-protocol-playbook.md": {
+      "sha256": "50fdfc1017c82bc208076a1b20c45fb361b81367784761e7f1eeee07ae2b8a5f"
+    },
+    "skills/protocol-reverse/references/protocol-workflow.md": {
+      "sha256": "f306d29c2121fbdad5ac12bd19c102f68337b4c0dda25daecc3c331abe63b2f6"
+    },
+    "skills/pwn-chain/SKILL.md": {
+      "sha256": "112df259349791cfde9019e0466258da87df64842ebf2825949f5aadf0a496d2"
+    },
+    "skills/pwn-chain/references/heap-pwn.md": {
+      "sha256": "61ff066fffe69d7a3bb828fae6899a636d5a05cfe0874c56fa178a5018ebda0a"
+    },
+    "skills/pwn-chain/references/kernel-pwn.md": {
+      "sha256": "cbb8cfa41ca06e8b616e252c0078692d88c09e6f3c7da05833ee633159a83524"
+    },
+    "skills/pwn-chain/references/stack-pwn.md": {
+      "sha256": "a342605f4c10048d62a9ff25321453d26a3ce397b7c10adde00964881a4cabcd"
+    },
+    "skills/radare2/SKILL.md": {
+      "sha256": "850c50bae1d59bfcf732f3f452bd19baefac73870a76c95a3aac6e89a4bdffe8"
+    },
+    "skills/radare2/references/cheatsheet.md": {
+      "sha256": "809bcbc5f5ff098acce96600abf4a94b7b8f54a7388fea71eab66f685f0e2d77"
+    },
+    "skills/radare2/scripts/recon.ps1": {
+      "sha256": "e663ab7aa68bb39f20f3d942c95e850f2bcf222f083aa7509e45f8ff97096ffb"
+    },
+    "skills/radare2/scripts/recon.sh": {
+      "sha256": "2f3d5292f958e84796b4213ae1d9e18d3becc0092a7379735596d10e398a058f"
+    },
+    "skills/radio-sdr/SKILL.md": {
+      "sha256": "2bd539bcea3cc477b15e2583634aff9f9497cd55d826443960979e945d4cad07"
+    },
+    "skills/radio-sdr/references/sdr-lab-rules.md": {
+      "sha256": "74a8e9a7a4c8b62bae47963cd2d34ed6e0e150c327e0b9712ba17189eff10d6e"
+    },
+    "skills/reconstruction/SKILL.md": {
+      "sha256": "69f488a4afd06b43fa5fc29641bf8f4388cd7fc1a9c2907b42f308e82a9463fd",
+      "upstream_sha256": "86f2ac1e9c18e0d964e1f694a229484b93d6e9ba0c3a1346bd1c328de77dfe77",
+      "patch_reason": "Resolve tool preparation through current local rules and preserve global-install boundaries."
+    },
+    "skills/reconstruction/TESTING.md": {
+      "sha256": "4dce508bd3662bd7c1506a61edaa150fcad109c77dc2b05158512ea3b2e33da0"
+    },
+    "skills/reconstruction/examples/synthetic-project/README.md": {
+      "sha256": "ab13979533aeeaff5356fa6e65865c3cf4d48166e0965fdf626c79f69a5efa39"
+    },
+    "skills/reconstruction/examples/synthetic-project/case-fixture/demo/evidence/E-001.md": {
+      "sha256": "bba87d682e91975ff89d5d3a64b31cd1f7ded7cf5fb13c2de95e0373417bc0c8"
+    },
+    "skills/reconstruction/examples/synthetic-project/case-fixture/demo/evidence/observation.md": {
+      "sha256": "0c24a7f8fd0a0d81ac48bc94947e87ceeedba1ea7b42ed9d1b827ac941f7ca97"
+    },
+    "skills/reconstruction/examples/synthetic-project/case-fixture/demo/evidence/synthetic-bundle.json": {
+      "sha256": "1ac05397a2b39bc66c3b537249288972cb0461e49747f0e0bb78ed6e4f9f7116"
+    },
+    "skills/reconstruction/examples/synthetic-project/case-fixture/demo/evidence/synthetic-obligations.json": {
+      "sha256": "1d14f1713cbf2b3a7c9b5e2cf2bd6421dbd6254f7942321aba1475dff7476223"
+    },
+    "skills/reconstruction/examples/synthetic-project/case-fixture/demo/notes/handoff-manifest.json": {
+      "sha256": "1dfb488e0be84d8ceec048e2feb018238e826f43486157c26bd690970cb2aecb"
+    },
+    "skills/reconstruction/examples/synthetic-project/case-fixture/demo/scope.md": {
+      "sha256": "85285480417a705e4c3c11a3fc2b5eea7b11c86b8d07c78563a2591bb16ce75c"
+    },
+    "skills/reconstruction/examples/synthetic-project/case-fixture/demo/timeline.md": {
+      "sha256": "091ad6b1355cbe21e3ff1961ae1268ee8ff67787ececfa13d9bb25f58e95ae61"
+    },
+    "skills/reconstruction/examples/synthetic-project/case-fixture/demo/workitems.md": {
+      "sha256": "2316bdb4d61b6ac9dd03bda2255e39f9eb8b3bdcd6996b153335b8df47a63c0b"
+    },
+    "skills/reconstruction/examples/synthetic-project/specs/001-literal-v1/plan.md": {
+      "sha256": "716cbfef78912e8b4619632ee31e1a2dadb7b2e7c825583b934d8d9cd0628180"
+    },
+    "skills/reconstruction/examples/synthetic-project/specs/001-literal-v1/spec.md": {
+      "sha256": "4e0e3f2b78279e5399a834e21da3a1bd87abbf5ee9b2c77be9726331b64a33a2"
+    },
+    "skills/reconstruction/examples/synthetic-project/specs/001-literal-v1/tasks.md": {
+      "sha256": "a82cc54345885cf01c79ce8b520021f68eccee087f2e0d82bcc0dfa857633b4e"
+    },
+    "skills/reconstruction/references/differential-validation.md": {
+      "sha256": "63bfc90b1ff3cdea4c901d30b07ecae5e2830850329c48c1053fbff4320ed9cc"
+    },
+    "skills/reconstruction/references/evidence-to-spec.md": {
+      "sha256": "1c82528e440707b6751d79ec034d7524463d49835e9ffb157e4a45f4772bfb23"
+    },
+    "skills/reconstruction/references/execution-backend-contract.json": {
+      "sha256": "d11c62d3fc41e628266da4d68f7ffb6d42e7f8f4be7c6c8858b2bea97d9c8146"
+    },
+    "skills/reconstruction/references/execution-backend.md": {
+      "sha256": "56275a13f58d1501d340d3be9e6564a7c13e84cbc91e5eae237f181819f56de6"
+    },
+    "skills/reconstruction/references/handoff-manifest.md": {
+      "sha256": "1d64d223c7e855b47ee3970b42b63b2ad1b256e30852b6ca185412ca59f95d33"
+    },
+    "skills/reconstruction/references/spec-kit-workflow.md": {
+      "sha256": "9f681a12d8aac869ca59cfa5fdf026617914fbab7a6155724770380f4e7e603b"
+    },
+    "skills/reconstruction/references/upstream-follow-update.md": {
+      "sha256": "90c9a1ee0ee93a899ae3c8abe01f0f565535b13f434f647858ff9177aa1f17d5"
+    },
+    "skills/reconstruction/scripts/check_handoff.py": {
+      "sha256": "69cc08c3e814ac0f35a4da046ace10ccd22aad48a161c31b49b04dff51d941c8"
+    },
+    "skills/reconstruction/tests/fixtures/backend-routing.json": {
+      "sha256": "06f0b993058a0b435ededb78b9935d12268ec6e5fa466e2f6990b15b38332b59"
+    },
+    "skills/reconstruction/tests/test_backend_routing.py": {
+      "sha256": "acd8fc61b290538699e1be8fdb1c178bddc2b4cbdb4fb571b495bff677adb4c1"
+    },
+    "skills/reconstruction/tests/test_check_handoff.py": {
+      "sha256": "7f7a123337affa15f03ca17ba7f585799e9dfaef0d4ea2ed4a429b7821db636e"
+    },
+    "skills/references/community-security-skills.md": {
+      "sha256": "21f980cc0105917f52a4377a89b7aa702589a90b225d28f97b9be0a7bbd50e04"
+    },
+    "skills/references/distillation-sources-batch-2.md": {
+      "sha256": "b141469a7504425a94393348f0b522d75714537e7f06c81c3ba587fc669864f5"
+    },
+    "skills/references/distillation-sources-batch-3.md": {
+      "sha256": "4741d34aef008893eebc93b7cd6277472b20f99215828afde3b2442b3827b640"
+    },
+    "skills/references/distillation-sources-batch-4.md": {
+      "sha256": "a3d29282b29f5a947462de79632ec498a6395a103d28e0a74c8155de2e305375"
+    },
+    "skills/references/distillation-sources.md": {
+      "sha256": "43dfadfe72236fdf370b6e49c834f79f8c2f03612d22ec6132cc7af4edf123d4"
+    },
+    "skills/references/domain-coverage-baseline.md": {
+      "sha256": "13c3063fb907a30bb17216b291367e36a8ad33457b8b3157f7ae805e3ef9c193"
+    },
+    "skills/references/domain-coverage-map.md": {
+      "sha256": "6a5385c2a355500ff65d0547e77dec404663f776722184c86980ba3ac9e5bdf5"
+    },
+    "skills/references/knowledge-confidence.md": {
+      "sha256": "525bfca5df9325c6c764ba43bbe9834acc8d6c92da70a71fe2bb58a85ac9a0bd"
+    },
+    "skills/references/knowledge-maintenance.md": {
+      "sha256": "e428350e0f495a311f9c4d72a137127383953d4924f076a7927ef36da08b94c2"
+    },
+    "skills/reverse-engineering/SKILL.md": {
+      "sha256": "61e91c6b8967ecf7cf2cf0b5526bb9a5e116f56c32b5e0ed4cec217013a92ec4"
+    },
+    "skills/reverse-engineering/anti-analysis.md": {
+      "sha256": "338417bde3a4473cf0b8238d7d32b5895fb98a25625776bf83752c3fb9844b9e"
+    },
+    "skills/reverse-engineering/awesome-re-resources.md": {
+      "sha256": "58cc6e32781cc9ea8f8e499bf2dc78a4d91b1fd41e784dad0424dc4f2ace4826"
+    },
+    "skills/reverse-engineering/crypto-decode-tools.md": {
+      "sha256": "1c2ce07acdbdbdd66fd45b6b1313d247c0885c7368570698064c56dc8e7735a3"
+    },
+    "skills/reverse-engineering/dsl-vm-reverse/SKILL.md": {
+      "sha256": "d3903b68141e8454fdbd3b2514446e89b14d42f7c4468b1062e4ac9e0a473e56"
+    },
+    "skills/reverse-engineering/elf-analysis.md": {
+      "sha256": "71ce8375e31194215b11c52ce7736669d2487fd44d2e1a2608e21a6ded14acc4"
+    },
+    "skills/reverse-engineering/evals/check_hard_target_evals.py": {
+      "sha256": "628725069e6ba5938b0a16eb0bcd5bd54ad428937b994401946a9b88b9960896"
+    },
+    "skills/reverse-engineering/evals/hard-target-evals.json": {
+      "sha256": "96ae6d1ee5f853a75e6f94aee6f22a86a4f9b1861ab49b81708914ed9bff5715"
+    },
+    "skills/reverse-engineering/field-notes.md": {
+      "sha256": "0f47426788f1cc8e9515a1f656a3e08091d2bd104941c45cfccf37ce20de2e43"
+    },
+    "skills/reverse-engineering/go-reverse.md": {
+      "sha256": "75e9060c4f6dd341c7c5f2f33a5c1fbccb21cd2ab2265833ebc5368856631041"
+    },
+    "skills/reverse-engineering/kernel-driver-reverse.md": {
+      "sha256": "f08149742b25287d2524d944a87162952a9d96ca5d6fedd24a81102d69c46119"
+    },
+    "skills/reverse-engineering/languages-compiled.md": {
+      "sha256": "26aecb4f27d050bb99fc646858df80c3773cf6e0bf42fa64a1ed18f911b1c7fb"
+    },
+    "skills/reverse-engineering/languages-platforms.md": {
+      "sha256": "67b6d6bb199c0eb69488ffb5f1b514c7103cb0656804cf599f3978439bf9bbf7"
+    },
+    "skills/reverse-engineering/languages.md": {
+      "sha256": "ba8e9c8f8df9351e9e85243574b8e2b0724e19e63d0f796294b0eef166f78b6d"
+    },
+    "skills/reverse-engineering/patterns-ctf-2.md": {
+      "sha256": "8d3b7d1fde1cd0917641877f2d39c6c2c9621859a4da426c39ebe6be2ec240ad"
+    },
+    "skills/reverse-engineering/patterns-ctf-3.md": {
+      "sha256": "76cfa06f01a4e8ed5cc91d1942c59aa65e70171989cd0064cd92b55961e0e716"
+    },
+    "skills/reverse-engineering/patterns-ctf.md": {
+      "sha256": "41edf048db36c3cb6ab1264f226df920adfa27923844a9ec5b40664ffe655c27"
+    },
+    "skills/reverse-engineering/patterns.md": {
+      "sha256": "be64443fcbd3d83d4a4f30ee4947310014a9bb0a26aace1126fd9a29ceb6b9c3"
+    },
+    "skills/reverse-engineering/platforms-hardware.md": {
+      "sha256": "123b5cc066bc09d7cd25312347aec79acd4476d8cec154ae951432f97912d2dc"
+    },
+    "skills/reverse-engineering/platforms.md": {
+      "sha256": "a0d87958d7430f7bb7095703340a359f0f8b102760ea0a0381fe48534acdaa48"
+    },
+    "skills/reverse-engineering/references/ai-assisted-re.md": {
+      "sha256": "f8fabe6926483dd9eae681e85edf2584856b5950054f7318b53230ca4dbd3cb2"
+    },
+    "skills/reverse-engineering/references/distilled-ctf-crypto-validation.md": {
+      "sha256": "7bab27971f62ed4dc48749039d807e5c45498a6fb03d04781fe87647438a2aba"
+    },
+    "skills/reverse-engineering/references/distilled-pe-protection-evidence.md": {
+      "sha256": "1e9615f18f3132a81e822026616024bef72f92ee17f5348ecbb5fdd5763a79e2"
+    },
+    "skills/reverse-engineering/references/distilled-windows-entry-imports.md": {
+      "sha256": "e43c7e465055287c6d33617863961870427669cf6e6e01936de61f91e3a5b59d"
+    },
+    "skills/reverse-engineering/references/external-distillation-batch-1.md": {
+      "sha256": "e324b509fb9f87fdc58143ddf73f3a4982b02683b6093e4a23e9ff6a9425c6d8"
+    },
+    "skills/reverse-engineering/references/hard-target-decision-framework.md": {
+      "sha256": "ec4aaf4c04868746b061f810cdc54accdfd2a2fa1d2fe81bc09c3f5e687ea871"
+    },
+    "skills/reverse-engineering/references/high-difficulty-pe-playbook.md": {
+      "sha256": "78699d2be4c8a86da2e5be130feb8b3695179f3b89d3754728936cd2a78fb2ae"
+    },
+    "skills/reverse-engineering/references/nonpe-format-cookbook.md": {
+      "sha256": "6e5fd5f6cdef266ff0c5951d6cdddb9c4711610e0372f269425796f36c36c5ad"
+    },
+    "skills/reverse-engineering/references/ollvm-deobfuscation.md": {
+      "sha256": "9bc48a802ec429ad1d7a1b097581c3c4988581576c6ef68e4e16f60e4b5afeed"
+    },
+    "skills/reverse-engineering/references/provider-neutral-failure-matrix.md": {
+      "sha256": "1ce626410e6ec0c150b0bf2742169c784cac6891f0d0cf2fd3816029e5c45e57"
+    },
+    "skills/reverse-engineering/references/re-agent-workflow.md": {
+      "sha256": "a6cdc61618f721ecaab4282671e0f1593a18d9328100d6104d9d22c5a819d595"
+    },
+    "skills/reverse-engineering/tools-advanced.md": {
+      "sha256": "948f9a19fda1b922ddf526b74ffca50c441aca5b0c1dd777fab9c70f6f42e770"
+    },
+    "skills/reverse-engineering/tools-dynamic.md": {
+      "sha256": "c8b082d9be576e0811b2ef0bf192784ff2d04798cd0b8da437e019dbf8a45d04"
+    },
+    "skills/reverse-engineering/tools.md": {
+      "sha256": "212701fca9bd636c8d07fdca6765f99138014d7d59b25abe3458739387193f60"
+    },
+    "skills/routing.md": {
+      "sha256": "6008faa8299c6a0eb228c10f9c1fa8e60ee6a5e0ea1ba8193d629197632c186a"
+    },
+    "skills/routing_zh.md": {
+      "sha256": "ba124a60ad209fd10ff75ea3771c2346b6bd64e17183e6ee23b84012dfdb4aab"
+    },
+    "skills/scripts/append-evidence.ps1": {
+      "sha256": "7f16073920d38bae36262e646c1a75751c09bb13fc1615033aacad702dd21f52"
+    },
+    "skills/scripts/bootstrap-manifest.json": {
+      "sha256": "8fb4fc5a08e3e7e937f80867b3f4b54232c05ee500d1703206c0135a93d43ed8"
+    },
+    "skills/scripts/bootstrap-reverse.ps1": {
+      "sha256": "7b6d5e84acb89f53f2397ce86cf05911bcfe0a49cf86702419b821b2350837c5"
+    },
+    "skills/scripts/bootstrap-reverse.sh": {
+      "sha256": "54a4ba0ae0e022a1aea7ac48e4ac19a5aa432e44ff64bac77fe5987b745896aa",
+      "upstream_sha256": "81608f7efb5e6b011a61962aa743a395201cb9872c1627101c4596c529b9166d",
+      "patch_reason": "Use the current portable deployment guide rather than missing old platform documentation."
+    },
+    "skills/scripts/case-guard.ps1": {
+      "sha256": "65ce3ebbd66d31bf326d81a31ba6cdf188cd81d0b848a9b926837ac6dbaee52e"
+    },
+    "skills/scripts/case-guard.sh": {
+      "sha256": "066101d6abe62b9f78e2a0843bcaaf576b236056dff64572ed5cd6d3053cdc8b"
+    },
+    "skills/scripts/case-init.ps1": {
+      "sha256": "cf446071657f4f3e72bff798eb9bafff8f361b75b9d69cb601397fec71a4ea1c"
+    },
+    "skills/scripts/case-init.sh": {
+      "sha256": "0821a20c3de13efe9884a25d90eb59036216a066c3fb5e6232fa68752eb34392"
+    },
+    "skills/scripts/check-authorization-coverage.py": {
+      "sha256": "432e7c57ba5195dd3fea9d4ff85b7d6e9b7c7d4e4a354591a7d573864d50b42a"
+    },
+    "skills/scripts/consolidate-evidence.ps1": {
+      "sha256": "34ecba9be5d36c6e45ac002e5567e88b2d92274b920049d8559baa1c70b1d4f9"
+    },
+    "skills/scripts/consolidate_evidence.py": {
+      "sha256": "73c7c4e6271bc4518259570df46100d59ba1752c207de231042d4c05cfa4490c"
+    },
+    "skills/scripts/extract-summaries.ps1": {
+      "sha256": "a2d163017a604442d7b719499a058c3f62140b14dd7b76b9802d130bc6eaa6bd"
+    },
+    "skills/scripts/lib/BootstrapSupplyChain.ps1": {
+      "sha256": "1d0098113602a4d21833081ca4e1f56fbdd1f7b8b13a49fb3e50eacb0a672f11"
+    },
+    "skills/scripts/lib/HostRuntime.ps1": {
+      "sha256": "498dbb8dbed13df9a2099267cc670b3f73eed30913996a754c08ee53191bb74a"
+    },
+    "skills/scripts/lib/RouteScope.ps1": {
+      "sha256": "7adc5d06f89af1da24065218c421dcf6fd63ffff2181fd03510e84074162358d"
+    },
+    "skills/scripts/lib/ToolDiscovery.ps1": {
+      "sha256": "701f60428367a4ad98612293ffdae039127e2026b91f28e128a333f1c598b7c7"
+    },
+    "skills/scripts/lib/WorkRoot.ps1": {
+      "sha256": "7dcd7dcebb66afb36996662ff547fe2bc72a0591fd5a60d7206dbd447eb85acf"
+    },
+    "skills/scripts/master-route.ps1": {
+      "sha256": "e8f1f099638be87de27e026d043dc301a6221c5de49a0420ccfddd2297248f17",
+      "upstream_sha256": "4fdfa70a3902949455a93dad2e4b1d4200b9359be99e015bbf6a4c42259695da",
+      "patch_reason": "Read the product routing source when present so the legacy PowerShell entry cannot choose a divergent route."
+    },
+    "skills/scripts/master-route.sh": {
+      "sha256": "a10c576efee3d2aa2999270a4a927a07616482ae126223f5c1211bd17b2ac24e",
+      "upstream_sha256": "eee4e59710cd71aba125de1594da8dd083d444576418e127d10a93a6928cd99f",
+      "patch_reason": "Read the product routing source when present so the legacy Bash entry cannot choose a divergent route."
+    },
+    "skills/scripts/process-lease.ps1": {
+      "sha256": "e813f505c215f90e8b6792d654d5bdf90bc48e60d8e28d2ab8c23fa4668cf97e"
+    },
+    "skills/scripts/refresh-tool-index.ps1": {
+      "sha256": "120e1b716d933aa18db33c122b57309878533ad976c413ddd4e9ec1e1659b8da"
+    },
+    "skills/scripts/refresh-tool-index.sh": {
+      "sha256": "ae12741b574a5b72c6784d30ee65d174da6f57e9ba0425cc2e506b3ec8b97424",
+      "upstream_sha256": "be889f7cabc5a29b8b52cf158d0be2d9a695b6cd278109f9d9681f86abdaa8e9",
+      "patch_reason": "Use the current portable deployment guide rather than missing old platform documentation."
+    },
+    "skills/scripts/scan-leaks.ps1": {
+      "sha256": "6f880170e825c985c8caeb2884e4ab752c28d2d58b3950db1dc1caa6df30f506"
+    },
+    "skills/scripts/smoke.ps1": {
+      "sha256": "b33e2a5a32476f0bbbd52c0dd44b1ea362eed5d10059c746f89f67bb7ccd60f3"
+    },
+    "skills/scripts/test-authorization-coverage.py": {
+      "sha256": "3ba8412614a7884d8ddb7c8d3f75f36cd80751de4b0a80c37b5ce345771ca628"
+    },
+    "skills/scripts/test-bash-workflow.sh": {
+      "sha256": "6286551c6c088f23d4f5a811093e693555a377ec5f8f8aff211c6af4320800c6"
+    },
+    "skills/scripts/test-bootstrap-codex-encoding.ps1": {
+      "sha256": "7ba7cfa42b036dcac6874fd571e071f10b0c35937a1157e44036734f7e52a56e"
+    },
+    "skills/scripts/test-bootstrap-manifest.sh": {
+      "sha256": "f8e632385603029c0ac537fea620862de34825a4cab4b2db69a31add398a0d14"
+    },
+    "skills/scripts/test-bootstrap-supply-chain.ps1": {
+      "sha256": "10006bc282959f50b877e3fa0ebe61b6b6b35772c51a114630b40722bd5dcca0"
+    },
+    "skills/scripts/test-client-neutral-bootstrap.ps1": {
+      "sha256": "80d89b87010ae4c5f47d59330eaeacaaef107d77019f1551889cb422d7917e2f"
+    },
+    "skills/scripts/test-client-neutral-bootstrap.sh": {
+      "sha256": "565eaf1a4240f5b71e4734a6674a4afad63f8e73295f5331c744ad149edc9355"
+    },
+    "skills/scripts/test-consolidate-evidence.ps1": {
+      "sha256": "4abfdfee8ca58fdacb257965d40dbe1a0d5d7e8d92da91563546415d3892959a"
+    },
+    "skills/scripts/test-p0-friction.ps1": {
+      "sha256": "4b3d20b677b96689e3245178b30023a3eb794b23ddc230f28ddbd14b06b62f5e"
+    },
+    "skills/scripts/test-parse-contracts.ps1": {
+      "sha256": "42175fda9963ed4003cb3c38a8eba20b0b53954d24385bd9de7859b36ddedc74"
+    },
+    "skills/scripts/test-router-readonly.py": {
+      "sha256": "f22fb6b789588be24b85a309cbb7342689bf27b8494c63be2ac7440c0c3f825a"
+    },
+    "skills/scripts/test-routing-compatibility.py": {
+      "sha256": "d3937a70b59df6deb947149ef0c73ada164a53911e9153496d511e1ef960a9c7"
+    },
+    "skills/scripts/test-routing.ps1": {
+      "sha256": "2d0ca96f223eec22424ac4912e2282b3b9a4b9ca4c2e4eb4d90238c5ddadd47f"
+    },
+    "skills/scripts/test-routing.sh": {
+      "sha256": "d18ced1a51c7027290213978299046a0e3238a14e8520db2e5f1711b08d6c9cd"
+    },
+    "skills/scripts/test-workflow-title-safety.ps1": {
+      "sha256": "ed341955a09ce99c1d93df120dca6a208cdde16f76a576c3ad1441f338edd756"
+    },
+    "skills/scripts/update-star-history.ps1": {
+      "sha256": "a35b107ce6a2e5c2334afe17a0c3777041c8f388dab053b07c1b03e19391b079"
+    },
+    "skills/scripts/verify-doc-facts.ps1": {
+      "sha256": "8d7d3ff82b87c74507b7a77f004047b1c95be5971b67cb9c3362cdd8b2a5b25d"
+    },
+    "skills/scripts/verify-doc-links.py": {
+      "sha256": "3962a044ab310e222c32689b5a6736d87327319b3b0ee924f52016ae55161c73"
+    },
+    "skills/scripts/verify-repository-security.py": {
+      "sha256": "79e57dce243b089a856f547c5cd0399c085c53610d364ebd6afa2d9088ebda15"
+    },
+    "skills/scripts/verify-routing-coherence.ps1": {
+      "sha256": "a13aeca5f913c6a2cbb14f82877f0d9f077c92206578427145fbb975b957dd92"
+    },
+    "skills/supply-chain-security/SKILL.md": {
+      "sha256": "21071161959f58aadfec2a0c6ccb4bdec6837af3df34fcaa988c7e6ccae42a33"
+    },
+    "skills/supply-chain-security/references/cicd-pipeline-security.md": {
+      "sha256": "6e8dbec4e75b25b293aa20cd3e2b910cf268b8d4f3975aef0d3960addfccf518"
+    },
+    "skills/supply-chain-security/references/distilled-provenance-cloud-trust.md": {
+      "sha256": "d65c1953327eb9e703d2b94772dbecd9e8694bda0660f41c6d6051b6d5ba9f74"
+    },
+    "skills/supply-chain-security/references/sbom-sca-methodology.md": {
+      "sha256": "97c54111804c7539f1ddb5e9c06cd0fc6287c825a5dfb5abce3416d951ee8722"
+    },
+    "skills/tests/routing-benchmark.json": {
+      "sha256": "959f9776eb54f351f0defbca3fc6b1aaf1b328068a7ecfd14bec9864366d855e"
+    },
+    "skills/tests/upstream-routing-contract.json": {
+      "sha256": "3421726ce170d69898df81a69bd4cb3a4db8c377921595283533b19de3c572de"
+    },
+    "skills/thick-client/SKILL.md": {
+      "sha256": "714f7e2499b52b2f39a9973fbe6aafa2691454c3f36c7a3374b667aa25b2bfb5"
+    },
+    "skills/thick-client/references/thick-client-checklist.md": {
+      "sha256": "c9e593a932ffa3f45b5a183ca9c0f0852a607ca69dd44589bb73900c12e56682"
+    },
+    "skills/threat-hunting/SKILL.md": {
+      "sha256": "b14ecc481830186bd8780e529f57d64d8e6bb6568df3b2fdc58b3b1c7e2b01c9"
+    },
+    "skills/threat-hunting/references/hunting-loop.md": {
+      "sha256": "dc240430b3f5574b1852125940848efa459af069f90c5d0c29aed8eba4d1252a"
+    },
+    "skills/threat-intelligence/SKILL.md": {
+      "sha256": "63d42ed1ff3cf9c81d58459c49c5e6a20ffb1cf72e2a5a29c10c976ae8ce7b4b"
+    },
+    "skills/threat-intelligence/references/x-public-intelligence.md": {
+      "sha256": "ee26ab99963600c4ad8e5684bd28cc1adb2b4f9151bbb69040a34ca2f9d69708"
+    },
+    "skills/tool-index.md.template": {
+      "sha256": "7a987d5497daf4786431ae24528b767b52cd3e5da169eda53acc754f765996a5"
+    },
+    "skills/wifi-wireless/SKILL.md": {
+      "sha256": "f73acb19e6e002450956ecbc90261d28081dcce85eaee8ae6c4568a9c92def22"
+    },
+    "skills/wifi-wireless/references/wireless-lab-rules.md": {
+      "sha256": "352cf65ea6fd0c1d959749da7c0d0bfe32a1a698d92c7d44877c6f94f15a5dae"
+    },
+    "skills/windows-ad/SKILL.md": {
+      "sha256": "5670e104212f7ca2b86bd7585df70e3850cd163fc5faed586f4412c88691cc5c"
+    },
+    "skills/windows-ad/references/ad-attack-paths.md": {
+      "sha256": "effab5e97278f30d54285372d9b2e76678665645b732b5772428275042cc12bc"
+    }
+  }
+}

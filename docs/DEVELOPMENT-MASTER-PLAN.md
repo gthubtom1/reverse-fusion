@@ -37,4 +37,9 @@ Reconstruction-product work after RF-16:
   records, WABT runtime hashing and observed host-config snapshots are now part
   of the contracts).
 
+- RF-24: enhanced Reverse capability preservation (completed; all 453 skills
+  files compared, missing CTF/Burp resources restored, portable rules and
+  difficulty handoff connected, native routing aligned, and a 603-file content
+  inventory checked inside the existing contracts).
+
 Each phase requires a checkpoint, focused tests, a current-state update and a rollback path before the next phase starts.

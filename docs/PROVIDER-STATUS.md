@@ -6,6 +6,7 @@ host and do not claim identical provider availability on another computer.
 | Surface | Observed result | State | Boundary or next action |
 |---|---|---|---|
 | Repository-owned Reverse router | `bridge --source local` resolves fixed `routing.json` and local `routes/R*.md` without an old receipt; Web=`R3`, PE/.NET=`R5`, APK/DEX=`R1` | verified | carry the selected route into each new target case |
+| Enhanced Reverse preservation (RF-24) | 453 inherited skills files compared; 603 source files retained with seven integration and four whitespace-only patches; required hard-target context is carried to cases; missing/tampered content is detected | content and handoff verified | specific packers, devices and analysis tools still need target-level runtime Evidence; see REVERSE-CAPABILITY-AUDIT.md |
 | Spec Kit | `specify 1.4.0`, project-local artifacts and reconstruction task files | verified | keep feature tasks and converge records append-only |
 | REA MCP runtime | official `rea-agents@6.9.0`, pinned integrity, process-local doctor passed | verified | bootstrap a supported Node 22.23.4+/24.22.1+ path on a fresh host |
 | WABT/REA WASM | WABT `1.0.42`; original/candidate/comparison/proof; ledger `rol_09e99625528899bcc2b492bdc7b2811b44fb573c13418ff80af0404548039928`, `required_open=0` | verified for bounded fixture | reuse proof contract for future WASM cases |

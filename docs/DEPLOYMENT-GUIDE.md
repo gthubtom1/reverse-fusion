@@ -95,6 +95,12 @@ normal-dev 是主项目的默认基线。开发过程中如果需要研究另一
 
 5. **创建嵌套分析或复刻 subcase**
 
+   路由后读取 `RULES.md`、返回的 `skill` 和 `required_reads`。
+   `missing_support` 非空时处理缺失资源。困难迹象来自任务文本或后续证据时，
+   按 `components/reverse-core/runtime.json` 加载资料，不固定工具顺序。
+   `contracts` 同时核对来源文件和有意适配清单。CTF/Burp 源码随仓库保留，
+   运行工具按需准备；本机生成的工具索引属于被忽略的本地状态。
+
    ```text
    当前主项目继续保持 normal-dev。
    创建一个隔离 subcase：

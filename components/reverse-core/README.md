@@ -17,3 +17,15 @@ owner. A missing or unusable external installation is reported as
 Route selection is triage, not business acceptance. A selected descriptor must
 still hand off to the target-specific analysis, REA Evidence, Spec tasks,
 host-owned Builder, and independent comparison contracts.
+
+RF-24 adds `runtime.json`: routes return the concrete `required_reads` and
+`missing_support`, including relevant hard-target overlays when the hint
+describes protection or anti-analysis. `RULES.md` applies the same transition
+when difficulty is discovered later. `bridge --record` carries these refs into
+the case. Missing required support makes that route unavailable.
+
+`preservation.json` records the pinned enhanced content and reviewed integration
+patches. The existing `contracts`/`doctor` check verifies these files rather
+than introducing another validator. The inherited PowerShell/Bash route entries
+read this directory's effective `routing.json` when present; the inherited
+`skills/config/routing.json` stays as the upstream compatibility baseline.

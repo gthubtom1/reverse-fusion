@@ -165,13 +165,7 @@ is_kali() {
 }
 
 platform_doc() {
-  case "$PLATFORM" in
-    macos) echo "docs/platforms/macos.md" ;;
-    linux)
-      if is_kali; then echo "kali/README-kali.md"; else echo "docs/platforms/linux.md"; fi
-      ;;
-    *) echo "PLATFORMS.md" ;;
-  esac
+  echo "docs/DEPLOYMENT-GUIDE.md"
 }
 
 print_usage() {

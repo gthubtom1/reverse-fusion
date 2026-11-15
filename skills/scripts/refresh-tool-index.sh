@@ -216,14 +216,13 @@ done
   echo ""
   case "$PLATFORM" in
     linux)
-      echo "- Read \`docs/platforms/linux.md\` for ordinary Linux setup."
-      echo "- If the host is Kali, read \`kali/README-kali.md\` instead."
+      echo "- Read \`docs/DEPLOYMENT-GUIDE.md\` for Linux/Kali setup."
       ;;
     macos)
-      echo "- Read \`docs/platforms/macos.md\` for Homebrew and app-bundle setup."
+      echo "- Read \`docs/DEPLOYMENT-GUIDE.md\` for macOS setup."
       ;;
     *)
-      echo "- Read \`PLATFORMS.md\` and choose the closest platform guide."
+      echo "- Read \`docs/DEPLOYMENT-GUIDE.md\` and detect the current platform."
       ;;
   esac
   echo "- Register MCP servers in your Agent client; tool availability does not imply MCP registration."

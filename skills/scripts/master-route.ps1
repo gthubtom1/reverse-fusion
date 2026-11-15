@@ -20,6 +20,8 @@ if (-not $scriptDir) { $scriptDir = Split-Path -Parent $MyInvocation.MyCommand.P
 $skillsRoot = Split-Path -Parent $scriptDir
 $packageRoot = Split-Path -Parent $skillsRoot
 $configPath = Join-Path $skillsRoot 'config/routing.json'
+$fusionConfig = Join-Path $packageRoot 'components/reverse-core/routing.json'
+if (Test-Path -LiteralPath $fusionConfig -PathType Leaf) { $configPath = $fusionConfig }
 
 # --- 读取路由配置（单一事实源） ---
 if (-not (Test-Path -LiteralPath $configPath)) {

@@ -4,9 +4,9 @@ Before ending a session or compressing context, update
 `docs/CURRENT-STATE.md` and create a new checkpoint. Never recover project
 state from chat history alone.
 
-Current handoff (2026-11-15, RF-23):
+Current handoff (2026-11-15, RF-24):
 
-Latest deployment checkpoint: `checkpoints/RF-23-20261115-002.md`.
+Latest checkpoint: `checkpoints/RF-24-20261115-001.md`. The RF-23 deployment remains recorded in its original checkpoint.
 
 - Repository: https://github.com/gthubtom1/reverse-fusion, branch `master`.
 - Status: `reconstruction-product-v1-final`; RF-17 portable route, RF-18 real
@@ -30,7 +30,10 @@ Latest deployment checkpoint: `checkpoints/RF-23-20261115-002.md`.
   Windows PTY, Web static unknowns and Android runtime unknowns separately.
 - Product contract and continuation prompt: `docs/PRODUCT-GOAL.md` and
   `docs/HANDOFF-PROMPT.md`.
+- RF-24: enhanced Reverse preservation and runtime handoff are audited in
+  `docs/REVERSE-CAPABILITY-AUDIT.md`. The inventory covers 603 source files;
+  required reads now survive case handoff, and CTF/Burp support is present.
 - Next single action: perform a read-only upstream review or open a new target
-  case; do not rewrite the closed RF-17–RF-23 evidence.
-- Rollback: revert the latest RF-23 repository commit(s); old reverse-skill,
+  case; do not rewrite the closed RF-17–RF-24 evidence.
+- Rollback: revert the RF-24 repository commit; old reverse-skill,
   installer, REA/Craft/Spec Kit and host configuration remain untouched.

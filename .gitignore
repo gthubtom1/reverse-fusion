@@ -5,6 +5,11 @@ __pycache__/
 .DS_Store
 Thumbs.db
 .env
+*.egg-info/
+skills/tool-index.md
+skills/tool-index.json
+burp-mcp-full/build/
+burp-mcp-full/.gradle/
 state/*.json
 state/*/
 state/**

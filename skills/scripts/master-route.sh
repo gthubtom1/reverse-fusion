@@ -31,6 +31,9 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 SKILLS_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
 PACKAGE_ROOT="$(cd "$SKILLS_ROOT/.." && pwd)"
 CONFIG_PATH="$SKILLS_ROOT/config/routing.json"
+if [[ -f "$PACKAGE_ROOT/components/reverse-core/routing.json" ]]; then
+  CONFIG_PATH="$PACKAGE_ROOT/components/reverse-core/routing.json"
+fi
 
 PYTHON=""
 for candidate in python python3; do

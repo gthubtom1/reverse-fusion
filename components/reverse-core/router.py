@@ -12,7 +12,7 @@ import hashlib
 import json
 import re
 from dataclasses import dataclass
-from pathlib import Path
+from pathlib import Path, PureWindowsPath
 from typing import Any
 
 
@@ -35,6 +35,9 @@ class LocalRoute:
     routing_sha256: str
     skill: str
     skill_available: bool
+    hard_target: bool
+    required_reads: tuple[str, ...]
+    missing_support: tuple[str, ...]
 
     def to_dict(self) -> dict[str, Any]:
         return {
@@ -50,7 +53,49 @@ class LocalRoute:
             "routing_sha256": self.routing_sha256,
             "skill": self.skill,
             "skill_available": self.skill_available,
+            "hard_target": self.hard_target,
+            "required_reads": list(self.required_reads),
+            "missing_support": list(self.missing_support),
         }
+
+
+def runtime_context(route_id: str, hint: str, skill: str) -> tuple[bool, tuple[str, ...], tuple[str, ...]]:
+    """Expose the actual downstream instructions, including difficulty overlays.
+
+    This is a read-only handoff, not a choice of tools or an execution recipe.
+    RULES also requires these overlays when difficulty is discovered later.
+    """
+    repo = ROOT.parent.parent
+    runtime_file = ROOT / "runtime.json"
+    if not runtime_file.is_file():
+        return False, (skill,), ("components/reverse-core/runtime.json",)
+    data = json.loads(runtime_file.read_text(encoding="utf-8"))
+    try:
+        if data["schema_version"] != 1:
+            raise ValueError("local runtime context version mismatch")
+        hard = data["hard_target"]
+        difficult = bool(re.search(hard["pattern"], hint, flags=re.IGNORECASE))
+        groups = [data["base_reads"], [skill], data["route_reads"].get(route_id, [])]
+        if difficult:
+            groups.extend([hard["common_reads"], hard["route_reads"].get(route_id, [])])
+        reads: list[str] = []
+        for group in groups:
+            if not isinstance(group, list) or any(not isinstance(item, str) for item in group):
+                raise ValueError("local runtime reads must be lists of relative paths")
+            reads.extend(group)
+    except (KeyError, TypeError, re.error) as exc:
+        raise ValueError(f"invalid local runtime context: {exc}") from exc
+    required = tuple(dict.fromkeys(reads))
+    missing = []
+    for name in required:
+        path = repo / name
+        if (PureWindowsPath(name).is_absolute() or Path(name).is_absolute()
+                or ".." in PureWindowsPath(name).parts
+                or not path.resolve().is_relative_to(repo.resolve())):
+            raise ValueError("local runtime resource escapes repository")
+        if not path.is_file():
+            missing.append(name)
+    return difficult, required, tuple(missing)
 
 
 def _load() -> tuple[dict[str, Any], str]:
@@ -139,7 +184,10 @@ def route(hint: str, *, primary: str | None = None) -> LocalRoute:
         notes.append("Local route descriptor is missing.")
     if not skill_available:
         notes.append("Local domain skill is missing.")
-    status = "local-route-pass" if (LOCAL_ROUTE_DIR / f"{selected}.md").is_file() and skill_available else "unavailable"
+    difficult, required_reads, missing_support = runtime_context(selected, hint, skill)
+    if missing_support:
+        notes.append("Local runtime supporting resources are missing.")
+    status = "local-route-pass" if (LOCAL_ROUTE_DIR / f"{selected}.md").is_file() and skill_available and not missing_support else "unavailable"
     if not text:
         notes.append("Empty hint; provide task text before acting on the route.")
     return LocalRoute(
@@ -155,5 +203,8 @@ def route(hint: str, *, primary: str | None = None) -> LocalRoute:
         routing_sha256=digest,
         skill=skill,
         skill_available=skill_available,
+        hard_target=difficult,
+        required_reads=required_reads,
+        missing_support=missing_support,
     )
 
