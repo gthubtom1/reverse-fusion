@@ -44,10 +44,8 @@ class HostBuilder:
             names = [f"{name}.exe", f"{name}.ps1", f"{name}.cmd"] if os.name == "nt" else [name]
             return next((found for item in names if (found := shutil.which(item))), None)
         if self.host == "auto":
-            for candidate in self.HOSTS:
-                path = executable(candidate)
-                if path:
-                    return candidate, path
+            # PATH order is not the current conversation's host identity.
+            # Require the caller/bootstrap to select one explicitly.
             return None, None
         if self.host not in self.HOSTS:
             return None, None

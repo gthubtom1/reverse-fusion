@@ -3,10 +3,10 @@
 给当前 coding agent 使用的普通开发、逆向分析与独立复刻工具集。
 仓库：<https://github.com/gthubtom1/reverse-fusion>。
 
-产品版本 `1.0.0`，当前复核阶段 `RF-25`。准确的验收结果、现场 provider 状态和
+产品版本 `1.0.0`，当前复核阶段 `RF-26`。准确的验收结果、现场 provider 状态和
 未覆盖范围分别保存在 [当前状态](docs/CURRENT-STATE.md)、
 [发布验收](docs/FINAL-RELEASE-ACCEPTANCE.md) 与
-[最新 checkpoint](checkpoints/RF-25-20261115-001.md)。历史 final 标签不覆盖这些记录。
+[最新 checkpoint](checkpoints/RF-26-20261115-001.md)。历史 final 标签不覆盖这些记录。
 
 ## 换电脑，只给仓库链接
 
@@ -44,13 +44,17 @@ cd reverse-fusion
 - **开发中途研究参考项目**：在主项目中创建隔离 analysis/reconstruction subcase，
   将审查后的事实和候选整合回来；主项目不需要变成一种固定逆向流程。
 
-专业任务的入口是：
+聚合架构、阶段交接和各组件边界见 [架构说明](docs/ARCHITECTURE.md)。专业任务的入口是：
 
 ```text
 [venv-python] -m reverse_fusion bridge --source local --hint "目标与问题"
 ```
 
-读取返回的 `skill`、`required_reads` 和 `hard_target`；`missing_support` 应为空。
+读取返回的 `workflow`、`skill`、`related_routes`、`next_stage`、`required_reads` 和
+`hard_target`；`missing_support` 应为空。`normal-dev` 的普通开发返回
+`workflow.stage=host-native`，不会抢占 Reverse；分析或复刻才显式使用相应的
+`--mode`。混合目标的 secondary skill 通过 `related_routes` 和 case refs 保留，
+不要求一次性加载所有 45 个领域。
 困难特征也可以在后续观察中发现。加壳、混淆、反调试、动态 DEX、JNI、JS VM/WASM
 等资料按证据加载，静态分析、运行、dump、脱壳、hook 和设备观察的顺序由 agent
 判断。缺工具或关键事实时保留 `unknown`、`blocked` 或 `unsupported`，不靠固定

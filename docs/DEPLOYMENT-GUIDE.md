@@ -6,6 +6,9 @@
 无需用户另存长提示词。所有路径根据当前 checkout 计算，不固定盘符、用户目录、
 shell、模型或工具安装路径。
 
+组件之间的真实衔接见 [ARCHITECTURE.md](ARCHITECTURE.md)：Reverse 是唯一默认
+路由与 case owner，REA/Spec/Builder/验收按 workflow stage 按需激活。
+
 ## 部署范围与顺序
 
 1. 智能体读取 README、AGENTS 和 `docs/AGENT-BOOTSTRAP.md`，发现 OS、架构、
@@ -30,6 +33,10 @@ shell、模型或工具安装路径。
 4. 读取 `state/install.json`，确认 selected host 和版本；确认当前 agent 已读取
    仓库规则及一次本地 route 的 `skill`、`required_reads`。receipt 是仓库内状态，
    不是宿主全局注册，也不是业务验收。
+   首次需要具体逆向工具时，先运行仓库内对应平台的
+   `skills/scripts/refresh-tool-index.ps1` 或 `skills/scripts/refresh-tool-index.sh`。
+   生成的 `skills/tool-index.md` 是本机观察文件，不进入 Git，也不把缺失工具伪装
+   成可用能力；没有它时 skill 的工具路径检查仍保持 `unknown`。
 5. 需要独立 CLI transport 时，才对选定宿主执行
    `handshake --client [selected-host] --timeout 45 --record`。固定 sentinel 只
    证明最终 assistant 应答；它不证明目标业务、完整领域加载或所有工具健康。
@@ -57,8 +64,10 @@ shell、模型或工具安装路径。
 自己的 analysis/reconstruction subcase。主项目继续 normal-dev；只有经过审查、
 Evidence 支持的结论或候选才能带回主项目，临时候选不覆盖主项目源代码。
 
-先调用 `bridge --source local --hint [task]`，读取返回的 `skill`、
-`required_reads`、`hard_target` 和 `missing_support`。需要持久恢复点时增加
+先调用 `bridge --source local --hint [task]`，读取返回的 `workflow`、`skill`、
+`related_routes`、`next_stage`、`required_reads`、`hard_target` 和
+`missing_support`。普通开发的默认结果是 `workflow.stage=host-native`；需要
+逆向时显式使用 `--mode analysis` 或 `--mode reconstruction`。需要持久恢复点时增加
 `--case-root [repo-relative-case] --mode analysis --record`。资料缺失即
 unavailable，不用旧 receipt 假装具备能力。
 

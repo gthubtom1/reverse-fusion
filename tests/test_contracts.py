@@ -9,10 +9,11 @@ from unittest.mock import patch
 
 from reverse_fusion.adapters import CraftAdapter, LocalBoundedWorker, spec_pointer
 from reverse_fusion.builder import HostBuilder
-from reverse_fusion.case_bridge import build_case_pointer, dry_run_route, record_case_pointer, resolve_case_root
+from reverse_fusion.case_bridge import build_case_pointer, dry_run_route, record_case_pointer, resolve_case_root, workflow_contract
 from reverse_fusion.contracts import ContractError, check_contracts, validate_candidate_result, validate_external_baseline, validate_handoff
 from reverse_fusion.host import adapter_plan, compare_host_config, detect_hosts, read_handshake_record, snapshot_host_config
 from reverse_fusion.vertical import correct_candidate, evaluate_console, wrong_candidate
+from reverse_fusion import cli
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -141,6 +142,36 @@ class ContractTests(unittest.TestCase):
         self.assertEqual(result["primary_id"], "R1")
         self.assertTrue((ROOT / result["primary"]).is_file())
         self.assertTrue(result["skill_available"])
+
+    def test_route_exposes_related_domains_and_reconstruction_stage(self):
+        result = dry_run_route("reverse a JavaScript app and reconstruct its behavior", source="local")
+        self.assertEqual(result["primary_id"], "R3")
+        self.assertTrue(result["next_stage"])
+        self.assertEqual(result["next_stage"]["id"], "R46")
+        self.assertIn("skills/reconstruction/SKILL.md", result["next_stage"]["skill"])
+        self.assertTrue(any(item["id"] == "R46" for item in result["related_routes"]))
+
+        mixed = dry_run_route("reverse JavaScript and APK", source="local")
+        self.assertEqual(mixed["primary_id"], "R1")
+        self.assertTrue(any(item["id"] == "R3" for item in mixed["related_routes"]))
+        self.assertTrue(any(item["id"] == "R3" and item["required_reads"] for item in mixed["related_routes"]))
+
+    def test_workflow_contract_keeps_normal_dev_light_and_reconstruction_explicit(self):
+        normal = workflow_contract({}, "normal-dev")
+        self.assertEqual(normal["stage"], "host-native")
+        self.assertEqual(normal["required_artifacts"], [])
+        recon = workflow_contract({"primary": "components/reverse-core/routes/R3.md", "next_stage": {"id": "R46"}}, "reconstruction")
+        self.assertEqual(recon["stage"], "reconstruction")
+        self.assertIn("frozen-spec-tasks", recon["required_artifacts"])
+        self.assertEqual(recon["next_stage"], {"id": "R46"})
+
+    def test_bridge_default_is_host_native_and_follow_up_requires_existing_case(self):
+        with patch.object(cli, "ROOT", ROOT):
+            self.assertEqual(cli.main(["bridge", "--hint", "build a normal web app", "--format", "json"]), 0)
+            self.assertEqual(cli.main(["bridge", "--hint", "reimplement behavior", "--format", "json"]), 0)
+            with tempfile.TemporaryDirectory() as directory:
+                case_root = Path(directory).name
+                self.assertEqual(cli.main(["bridge", "--hint", "continue", "--mode", "follow-up", "--case-root", f"work/{case_root}", "--format", "json"]), 2)
 
     def test_case_pointer_can_be_recorded_inside_repository_boundary(self):
         with tempfile.TemporaryDirectory() as directory:

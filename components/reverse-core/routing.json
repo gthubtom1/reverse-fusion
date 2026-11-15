@@ -50,8 +50,16 @@
           "note": "抓包/HTTP 捕获/请求重放 属 JS 前端链路 (anything-analyzer)"
         },
         {
-          "must": "javascript|web.?app|frontend|网页|前端",
+          "must": "javascript|web.?app|website|web.?site|frontend|网页|前端",
           "note": "Web/JavaScript reconstruction and analysis uses the JS/frontend route."
+        },
+        {
+          "must": "\\bjsvmp\\b|js.?vmp|webassembly|\\bwasm\\b|javascript.?obfuscat|javascript.?anti[- _]?debug|cff",
+          "note": "JS VM/CFF/WASM and JavaScript anti-analysis reach the JS/WASM playbook."
+        },
+        {
+          "must": "\\bjs\\b.{0,32}(?:obfuscat|anti[- _]?debug)|(?:obfuscat|anti[- _]?debug).{0,32}\\bjs\\b",
+          "note": "Short JS obfuscation and anti-debug wording remains on the JS route."
         }
       ]
     },
@@ -150,6 +158,10 @@
           "must": "\\boauth\\b",
           "exclude": "oauth2|oidc|saml|sso|openid|联邦|单点",
           "note": "OAuth 裸词分给 API；OIDC/SAML/SSO 归 R37"
+        },
+        {
+          "must": "\\bjwt\\b|rest.?api\\b|websocket|soap",
+          "note": "JWT, REST, WebSocket and SOAP are API-security inputs."
         }
       ]
     },
@@ -241,6 +253,10 @@
       "keywords": [
         {
           "must": "protocol.?reverse|custom.?protocol|protobuf|grpc|pcap|wireshark|pcap.?protocol|wireshark.?dissector|协议.?逆向|自定义.?协议|流量.?逆向|流量.?分析"
+        },
+        {
+          "must": "custom.?binary.?protocol|binary.?protocol|network.?protocol",
+          "note": "Custom binary and network protocol analysis reaches the protocol route."
         }
       ]
     },
@@ -346,6 +362,10 @@
       "keywords": [
         {
           "must": "browser.?extension|chrome.?extension|\\bcrx\\b|\\bxpi\\b|mv3.?extension|浏览器.?扩展|chrome.?扩展"
+        },
+        {
+          "must": "firefox.?extension|\\bxpi\\b",
+          "note": "Firefox/XPI extensions reach the browser-extension route."
         }
       ]
     },
@@ -364,6 +384,10 @@
       "keywords": [
         {
           "must": "thick.?client|desktop.?client|electron.?app|winforms|wpf|厚客户端|桌面.?客户端"
+        },
+        {
+          "must": "electron|asar|tauri|\\bqt\\b",
+          "note": "Electron/ASAR/Tauri/Qt thick-client targets reach the desktop route."
         }
       ]
     },
@@ -383,6 +407,10 @@
         {
           "must": "uart|jtag|swd|debug.?pad|flashrom|硬件.?调试|串口.?shell|芯片.?提取|usb.?逆向|usb.?设备",
           "note": "USB 设备逆向归硬件调试接口"
+        },
+        {
+          "must": "\\bspi\\b|\\bi2c\\b|\\bi2s\\b|can.?bus",
+          "note": "SPI/I2C/I2S/CAN debug interfaces reach the hardware route."
         }
       ]
     },
@@ -459,6 +487,10 @@
         {
           "must": "复刻|独立.?实现|行为.?等价|reconstruct(?:ion)?|replica.?implementation|behavior(?:al)?.?(?:equivalence|comparison)",
           "note": "Explicit reconstruction stage. Existing target-specific priorities remain above this route; analyze mixed requests before handing off."
+        },
+        {
+          "must": "reimplement|re-?implement|clone.?behavior|implementation.?equivalence",
+          "note": "Explicit reimplementation/equivalence requests enter the reconstruction handoff."
         }
       ]
     },

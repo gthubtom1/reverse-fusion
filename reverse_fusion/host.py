@@ -38,9 +38,18 @@ def assistant_texts(stdout: str, host: str) -> list[str]:
     return texts
 
 
-def probe_hosts(root: Path, *, client: str = "auto", timeout_seconds: int = 45) -> dict[str, Any]:
-    """Run one finite, read-only transport probe per explicitly selected host."""
-    clients = ["codex", "pi", "claude"] if client == "auto" else [client]
+def probe_hosts(root: Path, *, client: str | None = None, timeout_seconds: int = 45) -> dict[str, Any]:
+    """Run one finite, read-only transport probe for one selected host.
+
+    ``auto`` is intentionally rejected: the current conversation's host is
+    owned by the desktop agent and cannot be inferred reliably from PATH.
+    Probing every installed CLI would violate the selected-host boundary.
+    """
+    if client not in {"codex", "pi", "claude"}:
+        return {"schema_version": 1, "operation": "host-handshakes", "generated_at": datetime.now(timezone.utc).isoformat(),
+                "config_mutation": False, "probes": [], "status": "blocked",
+                "reason": "selected host is required; pass codex, pi or claude explicitly"}
+    clients = [client]
     probes = []
     for host in clients:
         if host not in {"codex", "pi", "claude"}:

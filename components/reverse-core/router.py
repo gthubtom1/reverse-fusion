@@ -38,6 +38,8 @@ class LocalRoute:
     hard_target: bool
     required_reads: tuple[str, ...]
     missing_support: tuple[str, ...]
+    related_routes: tuple[dict[str, Any], ...] = ()
+    next_stage: dict[str, Any] | None = None
 
     def to_dict(self) -> dict[str, Any]:
         return {
@@ -56,6 +58,8 @@ class LocalRoute:
             "hard_target": self.hard_target,
             "required_reads": list(self.required_reads),
             "missing_support": list(self.missing_support),
+            "related_routes": list(self.related_routes),
+            "next_stage": self.next_stage,
         }
 
 
@@ -185,9 +189,45 @@ def route(hint: str, *, primary: str | None = None) -> LocalRoute:
     if not skill_available:
         notes.append("Local domain skill is missing.")
     difficult, required_reads, missing_support = runtime_context(selected, hint, skill)
+    related: list[dict[str, Any]] = []
+    for route_id in data["priority"]:
+        if route_id == selected or route_id not in scores:
+            continue
+        candidate_data = data["routes"][route_id]
+        candidate_skill, candidate_available = _local_skill(candidate_data)
+        candidate_difficult, candidate_reads, candidate_missing = runtime_context(route_id, hint, candidate_skill)
+        related.append({
+            "id": route_id,
+            "label": candidate_data.get("label"),
+            "descriptor": _descriptor(route_id, candidate_data),
+            "skill": candidate_skill,
+            "skill_available": candidate_available,
+            "hard_target": candidate_difficult,
+            "required_reads": list(candidate_reads),
+            "missing_support": list(candidate_missing),
+            "activation": "explicit-secondary-route",
+        })
+    next_stage = None
+    if selected != "R46" and ("R46" in scores or re.search(r"复刻|reconstruct|replica|behavior.?equivalence", text, flags=re.IGNORECASE)):
+        recon = data["routes"]["R46"]
+        recon_skill, recon_available = _local_skill(recon)
+        _, recon_reads, recon_missing = runtime_context("R46", hint, recon_skill)
+        next_stage = {
+            "id": "R46",
+            "label": recon.get("label"),
+            "skill": recon_skill,
+            "skill_available": recon_available,
+            "required_reads": list(recon_reads),
+            "missing_support": list(recon_missing),
+            "activation": "explicit-second-stage",
+            "hint": "reconstruction stage for the reviewed target behavior",
+        }
     if missing_support:
         notes.append("Local runtime supporting resources are missing.")
-    status = "local-route-pass" if (LOCAL_ROUTE_DIR / f"{selected}.md").is_file() and skill_available and not missing_support else "unavailable"
+    if not text:
+        status = "blocked"
+    else:
+        status = "local-route-pass" if (LOCAL_ROUTE_DIR / f"{selected}.md").is_file() and skill_available and not missing_support else "unavailable"
     if not text:
         notes.append("Empty hint; provide task text before acting on the route.")
     return LocalRoute(
@@ -206,5 +246,7 @@ def route(hint: str, *, primary: str | None = None) -> LocalRoute:
         hard_target=difficult,
         required_reads=required_reads,
         missing_support=missing_support,
+        related_routes=tuple(related),
+        next_stage=next_stage,
     )
 

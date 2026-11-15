@@ -1,6 +1,6 @@
 # Provider and host status
 
-Recorded for RF-25 on 2026-11-15. These are bounded observations on the audit
+Recorded for RF-25 provider runs and the RF-26 architecture review on 2026-11-15. These are bounded observations on the audit
 host. Another computer discovers its own providers; previous success is not a
 new installation's credential, loading or runtime qualification.
 
@@ -25,7 +25,7 @@ new installation's credential, loading or runtime qualification.
 
 Current Evidence identities and file digests live in
 `evidence/rf22/manifest.json`; exact finite checks and host probe results live in
-`checkpoints/RF-25-20261115-001.md`. Proof adapters are repository-owned bounded
+`checkpoints/RF-25-20261115-001.md` and `checkpoints/RF-26-20261115-001.md`. Proof adapters are repository-owned bounded
 integration verifiers using REA's official serializer, not REA's native process
 verification authority. A fixed sentinel proves an assistant transport response
 only; instruction loading and business acceptance need their own observations.
@@ -36,3 +36,8 @@ Known host configuration files are hash-compared around optional child calls.
 An unobservable/changed snapshot or uncertain timeout cleanup is not reported
 as verified cleanup. No model, credential or global configuration is installed
 by Reverse Fusion.
+
+RF-26 adds no new provider qualification. It verifies that provider activation
+is explicit in the workflow contract: the current host remains the default
+Builder, REA/Spec/Craft are activated only by the selected stage, and a missing
+tool index or provider stays typed as `unknown`, `blocked` or `unsupported`.

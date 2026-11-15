@@ -75,3 +75,28 @@ Linux/macOS 物理主机及全部受保护目标未逐一执行。它们属于�
 不是用旧 smoke 或单个 pass 填平的缺口。
 
 本轮在有限门完成后停止；后续只做实际目标任务或有明确收益的上游增量维护。
+
+## RF-26 聚合架构补充复核
+
+RF-25 之后的独立复核发现，Reverse 内容保全和代表性链路已通过，但旧 `bridge`
+返回的主要是一次性 route 结果，混合领域、R46 复刻阶段和 follow-up 依赖 agent
+记忆。RF-26 已补上最小机器可观察合同：
+
+- `components/reverse-core/routing.json` 是默认路由事实源；本地 `LocalRoute` 返回
+  `related_routes`、secondary 的 skill/required reads 和 `next_stage`。
+- `bridge` 返回并可持久化 `workflow`，列出当前 stage、所需产物、激活边界和业务
+  验收边界；复刻语义会显式指向 R46，普通 `normal-dev` 返回 `host-native`。
+- `follow-up` 必须读取同一 case root 的开放 `case.json`，缺少记录时 typed
+  `blocked`；不会静默新建 route。
+- 宿主、安装和 Builder 要求显式 selected host；不按 PATH 顺序猜 Codex/Pi/Claude，
+  不选择模型。相关 focused tests 覆盖 mixed route、normal-dev guard、workflow
+  round-trip、selected-host 和空/缺 case 边界。
+- 本轮扩展了本地产品路由对 WASM/JSVMP、JWT/REST/WebSocket/SOAP、自定义二进制
+  协议、Firefox/XPI、Electron/ASAR/Tauri/Qt、SPI/I2C/CAN 和显式重实现语义的
+  可达性。`skills/config/routing.json` 仍作为固定上游基线保留，因而与产品本地
+  `components/reverse-core/routing.json` 有意存在适配差异；默认执行只认后者，
+  compatibility/coherence 门禁不应把上游基线误称为本地事实源。
+
+这层合同仍然是按需提示和恢复点，不是固定逆向流水线，也不自动启动所有 provider。
+route 命中只证明本地资料可达；tool-index、具体 provider、设备和商业工具仍按目标
+记录 `unknown`、`blocked` 或 `unsupported`。本补充不修改旧仓库、旧安装或全局配置。

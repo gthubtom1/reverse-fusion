@@ -1,15 +1,16 @@
 # Current State
 
-Stage: RF-25
+Stage: RF-26
 Status: reconstruction-product-v1-final
 
 Product version: `1.0.0`. The retained Reverse domain contract version is
 `components/reverse-core/VERSION` (`1.9.0`); these are separate identities.
 
-RF-25 rechecks the RF-22 product claim and RF-23/RF-24 hardening against actual
+RF-26 rechecks the RF-25 product claim and adds the machine-readable aggregation
+handoff against actual
 code, source files and execution. Historical checkpoints remain historical;
 the current acceptance is this file, `docs/FINAL-RELEASE-ACCEPTANCE.md` and
-`checkpoints/RF-25-20261115-001.md`. The finite audit and declared integration
+`checkpoints/RF-26-20261115-001.md`. The finite audit and declared integration
 release gates are closed. Future target variants are new cases, not a requirement to
 pre-execute every possible program, architecture or protector.
 
@@ -18,6 +19,12 @@ pre-execute every possible program, architecture or protector.
 - Fresh clones carry the local Reverse router, route descriptors, domain skills,
   required reads and hard-target handoff. An old reverse-workflow receipt is
   optional read-only compatibility input, not an installation requirement.
+- `components/reverse-core/routing.json` is the default route fact source. A
+  bridge result contains `related_routes`, `next_stage` and a structured
+  `workflow` contract. Ordinary `normal-dev` requests remain `host-native`;
+  analysis, reconstruction and follow-up have explicit stage boundaries. A
+  follow-up must load an existing open case instead of silently starting a new
+  route.
 - `docs/AGENT-BOOTSTRAP.md` is the stored URL-only deployment entry. It installs
   a repository-local venv, checks contracts and records the selected host. It
   does not globally inject skills into other projects; another workspace must
@@ -92,18 +99,19 @@ The full Web graph ledger is archived separately as `evidence/rf22/web/full-ledg
 
 ## Next action
 
-No audit implementation task remains. Use the deployed checkout for normal
-development or a new target case; selective upstream review follows
+Use the deployed checkout for normal development or a new target case. For a
+mixed task, read the bridge `workflow` and activate only the related route or
+`next_stage` that the evidence requires. Selective upstream review follows
 `docs/UPSTREAM-MAINTENANCE.md` when requested.
 
-The remote clone of `a643b958774dc8d90b3be29f68aff5d5d0f0b91a` started without
+The RF-25 remote clone started without
 old state, installed product 1.0.0 into a new venv, passed contracts/plan/doctor/
 handoff, selected-host receipt, hard-target route, 37 product tests and 39
 reconstruction tests. Native provider failure stopped before stale acceptance,
 POSIX traversal was rejected, and Node 24.20.0 was rejected by the precise
-REA engine gate. Final documentation closure follows that source commit; its
-checkpoint records this tested code identity rather than claiming another
-machine or every provider was executed.
+REA engine gate. The RF-26 checkpoint records this architecture re-audit and
+fresh-clone contract identity rather than claiming another machine or every
+provider was executed.
 
 Old repositories, old installations, host credentials and global configuration
 are outside this repository's write scope.

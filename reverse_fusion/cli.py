@@ -4,6 +4,7 @@ import argparse
 import json
 import os
 import platform
+import re
 import shutil
 import sys
 from pathlib import Path
@@ -12,7 +13,16 @@ from typing import Any
 from . import __version__
 from .adapters import CraftAdapter, LocalBoundedWorker, spec_pointer
 from .builder import HostBuilder
-from .case_bridge import build_case_pointer, dry_run_route, locate_reverse_root, record_case_pointer, resolve_case_root
+from .case_bridge import (
+    _reverse_intent,
+    build_case_pointer,
+    dry_run_route,
+    load_case_record,
+    locate_reverse_root,
+    record_case_pointer,
+    resolve_case_root,
+    workflow_contract,
+)
 from .contracts import ContractError, check_contracts, read_json, sha256_file
 from .host import adapter_plan, detect_hosts, read_handshake_record, probe_hosts
 from .vertical import correct_candidate, evaluate_console, wrong_candidate
@@ -183,6 +193,39 @@ def cmd_accept(args: argparse.Namespace) -> int:
 
 
 def cmd_bridge(args: argparse.Namespace) -> int:
+    # normal-dev is host-native by default.  Reverse is activated only by an
+    # explicit reverse/analysis/reconstruction request, so a frontend or API
+    # implementation task is not silently claimed by a security route.
+    effective_mode = "analysis" if args.mode == "normal-dev" and _reverse_intent(args.hint) else args.mode
+    if effective_mode == "normal-dev":
+        result = {
+            "operation": "case-bridge",
+            "status": "host-native",
+            "source": "host",
+            "mode": effective_mode,
+            "workflow": workflow_contract({}, "normal-dev"),
+            "activation_required": "use --mode analysis or --mode reconstruction when Reverse is requested",
+            "recorded": False,
+        }
+        _print(result, args.format)
+        return 0
+
+    existing = None
+    if effective_mode == "follow-up":
+        try:
+            existing = load_case_record(ROOT, args.case_root)
+        except ValueError as exc:
+            _print({"operation": "case-bridge", "status": "blocked", "reason": str(exc)}, args.format)
+            return 2
+        if existing is None:
+            _print({"operation": "case-bridge", "status": "blocked", "reason": "follow-up requires an existing open case.json", "case_root": args.case_root}, args.format)
+            return 2
+        if args.primary is None:
+            prior_primary = existing["pointer"]["primary"]
+            match = re.search(r"(?:^|/)R\d+\.md$", prior_primary)
+            if match:
+                args.primary = match.group(0).split("/")[-1][:-3]
+
     route = dry_run_route(args.hint, source=args.source, primary=args.primary)
     routed = route.get("status") in {"local-route-pass", "external-route-pass"}
     owner = "reverse-fusion.local-router" if route.get("source") == "local" else "reverse.native-router"
@@ -191,16 +234,27 @@ def cmd_bridge(args: argparse.Namespace) -> int:
     except ValueError as exc:
         _print({"operation": "case-bridge", "status": "blocked", "reason": str(exc)}, args.format)
         return 2
+    workflow = workflow_contract(route, effective_mode, follow_up=existing is not None)
     pointer = build_case_pointer(
         case_root.relative_to(ROOT),
         route.get("primary") or "unresolved",
-        args.mode,
+        effective_mode,
         delta=[f"route resolved by {route.get('source', 'unknown')} router"] if routed else ["route unresolved"],
-        refs=[owner, *route.get("required_reads", [])],
+        refs=[owner, *route.get("required_reads", []), *[str(item.get("skill")) for item in route.get("related_routes", []) if isinstance(item, dict) and item.get("skill")]],
         route_owner=owner,
         route_source=route.get("source", "unknown"),
+        workflow=workflow,
     )
-    result = {"operation": "case-bridge", "route": route, "pointer": pointer.to_dict(), "recorded": False}
+    result = {
+        "operation": "case-bridge",
+        "route": route,
+        "mode": effective_mode,
+        "requested_mode": args.mode,
+        "workflow": workflow,
+        "resume": existing["pointer"] if existing is not None else None,
+        "pointer": pointer.to_dict(),
+        "recorded": False,
+    }
     if args.record and routed:
         result["case_file"] = str(record_case_pointer(ROOT, pointer))
         result["recorded"] = True
@@ -266,9 +320,14 @@ def cmd_handshake(args: argparse.Namespace) -> int:
     if args.record:
         _write_state("host-handshakes", result)
     _print(result, args.format)
-    # A completed probe can legitimately report blocked/unavailable. Callers
-    # read typed per-host results instead of treating this exit code as pass.
-    return 0
+    if result.get("status") == "blocked":
+        return 2
+    statuses = [item.get("status") for item in result.get("probes", [])]
+    if statuses == ["pass"]:
+        return 0
+    if any(status in {"failed", "unknown"} for status in statuses):
+        return 1
+    return 2
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -280,13 +339,13 @@ def build_parser() -> argparse.ArgumentParser:
         if name == "handoff":
             p.add_argument("--check", action="store_true")
         if name == "plan":
-            p.add_argument("--client", default="auto")
-            p.add_argument("--intent", choices=("normal-dev", "analysis", "reconstruction", "follow-up"), default="analysis")
+            p.add_argument("--client", choices=("codex", "pi", "claude"), required=True)
+            p.add_argument("--intent", choices=("normal-dev", "analysis", "reconstruction", "follow-up"), default="normal-dev")
             p.add_argument("--profile")
         if name in {"install", "uninstall", "update"}:
             p.add_argument("--apply", action="store_true", help="write only this repository's state")
         if name == "install":
-            p.add_argument("--client", default="auto")
+            p.add_argument("--client", choices=("codex", "pi", "claude"), required=True)
         if name == "accept":
             p.add_argument("--fixture", choices=("console", "wasm"), default="console")
             p.add_argument("--candidate", choices=("correct", "wrong", "missing"), default="correct")
@@ -295,7 +354,7 @@ def build_parser() -> argparse.ArgumentParser:
         if name == "bridge":
             p.add_argument("--hint", required=True)
             p.add_argument("--case-root", default="work/current-case")
-            p.add_argument("--mode", choices=("analysis", "reconstruction", "follow-up", "normal-dev"), default="reconstruction")
+            p.add_argument("--mode", choices=("analysis", "reconstruction", "follow-up", "normal-dev"), default="normal-dev")
             p.add_argument("--source", choices=("local", "auto", "external"), default="local")
             p.add_argument("--primary", help="explicit local or upstream route id, for example R46")
             p.add_argument("--record", action="store_true", help="persist a repository-local case.json after route resolution")
@@ -307,7 +366,7 @@ def build_parser() -> argparse.ArgumentParser:
             p.add_argument("--model-id", default="deterministic-fixture-worker")
             p.add_argument("--record", action="store_true")
         if name == "build":
-            p.add_argument("--host", choices=("auto", "codex", "pi", "claude"), default="auto")
+            p.add_argument("--host", choices=("codex", "pi", "claude"), required=True)
             p.add_argument("--workspace", default="state/host-build")
             p.add_argument("--output", required=True, help="workspace-relative candidate output")
             p.add_argument("--allowed-output", action="append", default=[])
@@ -326,7 +385,7 @@ def build_parser() -> argparse.ArgumentParser:
             p.add_argument("--research-file", action="append", default=[])
             p.add_argument("--allowed-output", action="append", default=[])
         if name == "handshake":
-            p.add_argument("--client", choices=("auto", "codex", "pi", "claude"), default="auto")
+            p.add_argument("--client", choices=("codex", "pi", "claude"), required=True)
             p.add_argument("--timeout", type=int, default=45)
             p.add_argument("--record", action="store_true")
         p.set_defaults(handler=fn)
