@@ -4,17 +4,19 @@ Before ending a session or compressing context, update `docs/CURRENT-STATE.md`
 and the current checkpoint. Recover state from the checkout and execution
 records rather than chat history.
 
-Current handoff: RF-27, product `1.0.0`, 2026-11-16.
+Current handoff: RF-28, product `1.0.0`, 2026-11-16.
 
 - Repository: <https://github.com/gthubtom1/reverse-fusion>, branch `master`.
 - Deployment entry: `docs/AGENT-BOOTSTRAP.md`. This travels with the repository;
   the user does not need to keep or repeatedly paste a chat prompt.
 - Current status and next action: `docs/CURRENT-STATE.md`. Audit closure and
-  exact scope and checks: `checkpoints/RF-27-20261116-001.md`.
+  exact scope and checks: `checkpoints/RF-28-20261116-001.md`.
 - Product contract: `docs/PRODUCT-GOAL.md`. Architecture is an adaptive helper
   for the current host, not a model choice or fixed reverse-engineering order.
-- Default writer: current-session Builder. Frozen tasks/research and allowed
-  candidate writes are observed by `session prepare/check/refine/finish`.
+- Default reconstruction writer: actual Craft engine, with current host reasoning.
+  Real official Spec generated workflow is required; native-craft freezes inputs
+  and performs workspace/write/edit/check/summary/cleanup. Session checks only
+  provide additional file-boundary observation; see docs/NATIVE-COMPONENTS.md.
   Task commands use the outcome project's `--project-root` (default cwd).
   Case-bound prepare reuses the handoff checker and freezes the semantic review;
   it cannot prove semantic readiness or discover omitted dependencies.
@@ -27,8 +29,9 @@ Current handoff: RF-27, product `1.0.0`, 2026-11-16.
   replay; APK build/static manifest/member comparison only. Web full graph has
   4 required open obligations; APK device/runtime remains unknown.
 - Providers: `docs/PROVIDER-STATUS.md`; source IDs and distributions:
-  `SOURCE-MANIFEST.json` and `components/official/manifest.json`. Craft is an
-  interface-only reference; historical patch names are not distributed files.
+  `SOURCE-MANIFEST.json` and `components/official/manifest.json`. Craft uses the pinned
+  actual Rust engine plus a repository-owned seam and replayable Windows patch;
+  old patch names remain historical references.
 - Reverse preservation: 603 source files with upstream/local digest and current
   adaptation reasons in `components/reverse-core/preservation.json`. RF-24's
   historical report is `docs/REVERSE-CAPABILITY-AUDIT.md`.
@@ -39,6 +42,6 @@ Current handoff: RF-27, product `1.0.0`, 2026-11-16.
   restore is implemented. Old installs and host runtime configuration stay outside
   this repository's write scope; the managed Codex adapter is removed by receipt.
 
-RF-27 corrects gaps not covered by RF-26's local contract closure. The next action is a user target case or selective upstream
-review. New observations can supersede historical results; never rewrite a
+RF-27 corrects gaps not covered by RF-26's local contract closure. RF-28 requires real component installation and composition; the next action is
+external official Spec → native Craft → independent comparison acceptance. New observations can supersede historical results; never rewrite a
 historical checkpoint to imply it measured a later checkout or host state.

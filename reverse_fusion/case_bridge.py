@@ -160,7 +160,7 @@ def workflow_contract(route: dict[str, Any], mode: str, *, follow_up: bool = Fal
     elif mode == "reconstruction":
         stage = "reconstruction"
         artifacts = ["original-evidence", "frozen-spec-tasks", "candidate", "build-run", "comparison", "proof", "obligation-ledger", "cleanup"]
-        activation = ["REA original Evidence", "Spec tasks", "current-session Builder", "independent acceptance"]
+        activation = ["REA original Evidence", "official Spec Kit project workflow", "native Craft engine via current-host reasoning", "independent acceptance"]
         boundary = ["candidate is bounded by frozen tasks", "pass/fail/unknown/blocked/unsupported remain distinct"]
     else:
         stage = "follow-up"

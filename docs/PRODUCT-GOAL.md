@@ -18,7 +18,7 @@ Reverse Fusion 最终要提供一套可迁移的智能体工作流：用户把�
   -> Reverse 唯一路由和 case
   -> REA 原版 Evidence
   -> Spec Kit 项目任务（复刻模式）
-  -> 当前对话中的宿主 agent 执行 bounded Builder
+  -> 当前宿主推理 → 真实 Craft engine 执行 bounded Builder
   -> 候选构建与运行
   -> 原版/候选差分
   -> 修正任务
@@ -59,8 +59,8 @@ Reverse Fusion 不选择、不绑定、不下载模型，也不把某个模型�
 
 - **Reverse core**：唯一入口、路由、case、模式和复刻任务生命周期。它既支持独立 reconstruction case，也支持在 normal-dev 主项目中按需创建隔离的 analysis/reconstruction subcase；`bridge --record` 持久化仓库内的 `case.json` 恢复点；新电脑没有旧 receipt 时也必须有仓库自己的可用路由和本地领域技能；旧 reverse-skill 可以作为固定版本的来源或可选增强，但不能是唯一运行前提。
 - **REA**：原版分析、静态/动态 Evidence、comparison、unknown 和 obligation ledger。REA 保持官方版本，除非有证据支持的能力缺口。
-- **Spec Kit**：复刻模式的项目级意图、plan、tasks 和 converge 记录。normal-dev 默认按需启用；任何嵌套 subcase 一旦进入复刻阶段，就必须保留冻结任务和来源引用。
-- **Craft/Builder**：按冻结任务生成候选项目、执行构建、检查、修正和清理。默认 writer 是当前对话中的宿主 agent，`session prepare/check/refine/finish` 冻结输入并观察候选文件边界；无需另启 CLI、账号或模型。子 CLI 是按需独立资格化的可选 transport。Craft 当前只分发 bounded interface，历史 patch 名称不是已发布 patch；离线复制 fallback 只用于合同测试，不代表真实复刻能力。
+- **Spec Kit**：复刻模式的项目级意图、plan、tasks 和 converge 记录。normal-dev 默认按需启用；任何嵌套 subcase 一旦进入复刻实现阶段，就必须执行真实官方生成工作流并保留冻结任务和来源引用。
+- **Craft/Builder**：按冻结任务生成候选项目、执行构建、检查、修正和清理。真实 Craft engine 执行 Workspace、候选写入/编辑、受限命令与检查，当前宿主提供推理和内容；`session` 仅附加观察。固定 engine、接缝源码、可重放 Windows 补丁及构建身份随仓库保存。无需另启模型或重复 Study。离线复制只用于合同测试。
 - **Acceptance**：独立读取原版和候选 Evidence，输出 pass、fail、unknown、blocked 或 unsupported。模型自述、工具可见和 exit 0 都不属于业务验收。
 
 ## 最终完成门

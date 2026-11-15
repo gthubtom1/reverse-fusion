@@ -9,7 +9,8 @@ The product is ready within its declared integration scope only when:
 
 1. A remote fresh clone can create a repository-local venv, run contracts,
    plan/doctor/handoff, record the selected host and resolve a local route without
-   an old receipt. Tested OS/shell scope must be distinguished from planned
+   an old receipt. Real REA, official Spec Kit and the actual Craft engine must
+   be installed and checked; a package-only install cannot pass. Tested OS/shell scope must be distinguished from planned
    portability; unsupported provider runners stay explicit.
 2. Reverse is the only route/case owner. Every local route has its descriptor,
    domain body and required support. The preserved enhanced-source inventory
@@ -17,10 +18,12 @@ The product is ready within its declared integration scope only when:
 3. REA Evidence, bundles, comparison, unknowns and ledger pointers obey their
    official identity/closure contracts. An archive passes both file hashes and
    official Evidence parsing, with a real tamper rejection check.
-4. Reconstruction spec/plan/tasks retain source references, frozen inputs and
+4. Reconstruction executes the installed official Spec Kit generated workflow;
+   spec/plan/tasks retain source references, frozen inputs and
    append-only converge. Analysis and normal development do not acquire these
    reconstruction requirements merely because the package is installed.
-5. The current conversation's host can be the bounded single candidate writer;
+5. The current host reasons and supplies content to actual Craft engine tools;
+   Craft is the bounded single candidate writer and command runner;
    prepare, build, check, refine, summary and cleanup are observable. Session
    file checks alone are not business acceptance. Offline copy workers and an
    unqualified native Craft backend do not satisfy this real-writer gate.

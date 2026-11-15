@@ -14,9 +14,9 @@
 `components/reverse-core/preservation.json`、当前 checkpoint 和 Git 状态。
 具体目标还要读取本地路由返回的 `skill`、`required_reads` 和当前 case。
 
-当前维护阶段是 RF-27，产品版本为 `1.0.0`，Reverse 领域合同版本为 `1.9.0`。
+当前维护阶段是 RF-28，产品版本为 `1.0.0`，Reverse 领域合同版本为 `1.9.0`。
 是否已完成本轮审计，以 `CURRENT-STATE.md` 和
-`checkpoints/RF-27-20261116-001.md` 为准。RF-22/RF-23/RF-24/RF-26 的历史 final
+`checkpoints/RF-28-20261116-001.md` 为准。RF-22/RF-23/RF-24/RF-26 的历史 final
 标签不覆盖本轮发现的问题或当前 provider 阻塞。
 
 ## 保持的职责与边界
@@ -26,15 +26,15 @@
 - REA 管理 Evidence、comparison 和 ledger；本仓库的有限 integration verifier
   可使用官方 serializer，但不得冒充 REA 原生进程验证器或靠改 links 闭合。
 - Spec 是任务和来源引用层。normal-dev 按需使用，analysis 不强制 Spec/candidate；
-  reconstruction 才冻结 spec/plan/tasks，并保留 converge 和修正记录。
-- 默认 Builder 就是当前对话中的宿主 agent，使用其现有工具、账号和模型。
-  `session prepare/check/refine/finish` 冻结输入并观察写入边界；它不启动第二个
-  CLI，不安装模型。可选子 CLI 单独资格化；当前子 Codex 的 credits 阻塞不
-  影响当前会话编码路径。旧文本 smoke 绝非 APK 候选或业务证明。
+  reconstruction 才执行官方生成工作流、冻结 spec/plan/tasks，并保留 converge 和修正记录。
+- 宿主负责推理，通过真实 Craft engine 作为唯一候选写入者与命令运行者。
+  native-craft prepare/build/check/refine/return_summary/cleanup 使用冻结租约；session
+  仅做附加观察。REA、官方 Spec CLI 与原生 Craft 都必须安装。
+  接缝/补丁和完整参数见 [NATIVE-COMPONENTS.md](NATIVE-COMPONENTS.md)。
 - 模型、provider 和登录属于宿主；不选择、下载或切换模型，不复制凭据。
 - 旧仓库、旧安装、宿主运行配置和用户全局指引中的非托管内容只读；Codex 安装只维护
   receipt 记录的 `reverse-fusion` 适配层。Craft companion 的 `--all-tools` 保持原样。
-  当前 Craft 分发是 interface-only，四个历史 patch 名称不代表文件已经分发。
+  当前 Craft 分发有真实 engine 接入和可重放 Windows 补丁；四个旧 patch 名称仍仅作历史参考。
 - 工具可见、exit 0、MCP connected、Craft Ready 和模型自述不是业务验收。
 
 ## 开始一次任务
@@ -45,8 +45,8 @@
    subcase；读取路由和困难目标资料，保留原版 Evidence、限制及下一步 probe。
 3. 只有用户要求复刻时升级为 reconstruction，冻结 tasks/research，准备唯一
    writer 和明确 allowed outputs。按 `CROSS-PROJECT-WORKFLOW.md` 传入 `--project-root`，
-   绑定同一 case、原 handoff 与语义审查记录后使用 `session prepare`，让当前宿主写候选，
-   再 `check`、审查/refine、`finish`。文件观察通过后仍需独立 build/run 和对比。
+   绑定同一 case、原 handoff 与语义审查记录后使用 `native-craft prepare`，
+   由真实 engine 写入、检查、修正与清理，再执行附加 session 观察。文件观察通过后仍需独立 build/run 和对比。
 4. 记录原版/候选分析、comparison、有限 proof、清理与 obligation ledger。
    证据、登录、设备或工具缺失时保留 `unknown`、`blocked`、`unsupported`。
    有壳、混淆、反调试时根据证据调整工具顺序，不把方法固定为一条流水线。

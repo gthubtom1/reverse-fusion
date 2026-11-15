@@ -2,13 +2,13 @@
 
 Reverse Fusion 是独立 GitHub 项目，不是旧安装仓库的改版。它在当前 coding agent
 中提供可恢复的普通开发、分析和复刻辅助能力：enhanced Reverse 领域技能、官方
-REA、任务/Spec 层、bounded Builder interface、独立验收与仓库本地安装入口。
+REA、官方 Spec 工作流、真实 Craft engine 接入、独立验收与仓库本地安装入口。
 部署交接保存在 `docs/AGENT-BOOTSTRAP.md`，用户只需仓库链接，无需另存聊天文本。
 
 Reverse 是唯一 route/case owner；REA 管理 Evidence/comparison/ledger；Spec
-管理项目任务和来源引用；默认 Builder 是当前对话的宿主 agent；独立 verifier
-负责业务验收。Craft 当前是 interface-only reference，不分发历史 patch，也不
-要求启动原版工作台或另选模型。可选子 CLI transport 有独立的登录/额度状态。
+管理项目任务和来源引用；宿主负责推理，通过真实 Craft engine 写候选和运行检查；独立 verifier
+负责业务验收。REA、Spec、Craft 是必装核心组件，Craft 原生接缝及可重放补丁由本仓库维护。
+不启动重复 Study 或另选模型。可选子 CLI transport 有独立的登录/额度状态。
 
 normal-dev 默认不启动 REA 或 Builder。开发中途可建立隔离 analysis subcase，
 保留 route、原版 Evidence、限制和结论；只有 reconstruction 才冻结 tasks，

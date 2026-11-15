@@ -78,8 +78,11 @@ invoking legacy global installers or persistent services.
 
 Reverse owns the case and analysis narrative; REA owns its native Evidence and
 proof records. The lead references those records instead of forging a second
-REA ledger. Spec Kit stores the reviewed tasks; the host-owned Builder writes
-only the bounded candidate. Analysis-only cases can stop at their requested
+REA ledger. The installed official Spec Kit generated workflow produces reviewed
+tasks; current host reasoning supplies content to the actual Craft native engine,
+which writes only the bounded candidate and runs frozen checks. Session observation
+and offline copying do not replace those components. See docs/NATIVE-COMPONENTS.md.
+Analysis-only cases can stop at their requested
 report. Reconstruction adds build/run, comparison, proof and obligations.
 Preserve `pass`, `fail`, `unknown`, `blocked` and `unsupported` at the actual
 scope of each observation. Integrate reviewed results into the main project

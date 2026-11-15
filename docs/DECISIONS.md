@@ -148,3 +148,21 @@ Python diagnosis/acceptance and Windows provider runners restore that selection
 without changing global PATH or host configuration. Environment/explicit options
 take precedence; copied, missing or malformed receipts fall back to discovery.
 The runtime receipt is an executable-path choice, not health, Evidence or proof.
+
+## RF-021 Required real components supersede interface-only completion
+
+The user requires installed REA, official Spec Kit and actual Craft participation
+in reconstruction. Missing components cannot be accepted by substituting host
+Markdown or a session observer. Windows default install bootstraps all core
+components and a local compatible Node when needed, then selected-host install
+rejects missing runtimes. Normal development and analysis retain their stages.
+
+The owned Craft external-writer seam links the fixed upstream Rust engine;
+the current host supplies reasoning/content to real Workspace and build tools.
+A reproduced Windows quoted-command gap is fixed by a replayable source patch,
+with source/patch/binary/archive identity and real timeout/descendant/lock tests.
+This authorized adaptation avoids an unrelated second Study/model/account.
+Official generated Spec workflow and its prerequisites are executed in the
+outcome project. Tool/runtime qualification stays separate from original/candidate
+comparison, native REA evidence and finite target obligations. Historical RF-25
+interface checks remain historical, not the current product completion gate.

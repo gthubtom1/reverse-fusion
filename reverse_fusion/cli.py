@@ -332,7 +332,7 @@ def cmd_bridge(args: argparse.Namespace) -> int:
     if workflow['stage'] == 'reconstruction':
         result['implementation_gate'] = {
             'status': 'not-assessed',
-            'next_step': 'session prepare with --case-root, --handoff-manifest and --review-file',
+            'next_step': 'official Spec workflow, then native-craft prepare with frozen lease, --case-root, --handoff-manifest and --review-file; see docs/NATIVE-COMPONENTS.md',
             'boundary': 'reconstruction is the requested workflow, not a finding that analysis is complete',
         }
     result["next_action"] = (
