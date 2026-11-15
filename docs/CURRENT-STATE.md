@@ -8,7 +8,11 @@ product goal, adaptive investigation before implementation, and real components
 at the appropriate stages. RF-28's coached test does not establish this entry
 behavior. RF-29 adds a persisted original request and delivery objective separate
 from the current stage, domain-first routing, local-case continuation and the
-agent workflow plus beginner guide. A new uncoached chat test is still pending.
+agent workflow plus beginner guide. The first uncoached chat found a gap between
+read-only initial routing and first recorded refinement: scope retained the
+whole goal but the machine pointer lost it. That chat is paused; the first-record
+adapter/CLI and next-stage handoff are repaired, with73 product tests passing.
+An independent fresh retest is pending. See `evidence/rf29/novice-run-a.json`.
 Current checkpoint: `checkpoints/RF-29-20261116-001.md`.
 
 Real REA 6.9.0, official Spec Kit 1.4.1.dev0 and the pinned actual Craft engine

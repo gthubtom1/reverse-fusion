@@ -32,6 +32,7 @@ class CrossProjectTests(unittest.TestCase):
                                   '--mode', 'analysis', '--case-root', 'work/target', '--record')
             self.assertEqual(refined['workflow']['user_request'], prompt)
             self.assertEqual(refined['workflow']['objective'], 'reconstruction')
+            self.assertEqual(refined['route']['next_stage']['id'], 'R46')
             self.assertIn('notes/original-behavior.md', refined['pointer']['carry_forward_refs'])
             resumed = self.invoke(project, 'bridge', '--hint', '继续')
             self.assertEqual(resumed['mode'], 'follow-up')
@@ -44,13 +45,27 @@ class CrossProjectTests(unittest.TestCase):
     def test_continue_ambiguity_never_overwrites_a_case(self):
         with tempfile.TemporaryDirectory() as directory:
             project = Path(directory).resolve()
-            for name in ('first', 'second'):
+            for name in ('current-case', 'second'):
                 self.invoke(project, 'bridge', '--hint', '分析这个软件',
                             '--case-root', f'work/{name}', '--record')
             before = {p: p.read_bytes() for p in project.rglob('case.json')}
             result = self.invoke(project, 'bridge', '--hint', '继续', '--record', code=2)
             self.assertEqual(result['status'], 'needs-case-selection')
             self.assertEqual({p: p.read_bytes() for p in before}, before)
+
+    def test_first_record_after_read_only_probe_keeps_original_request(self):
+        with tempfile.TemporaryDirectory() as directory:
+            project = Path(directory).resolve()
+            prompt = '帮我分析这个软件，然后复刻出来。'
+            self.invoke(project, 'bridge', '--hint', prompt)
+            self.assertFalse((project / 'work').exists())
+            recorded = self.invoke(project, 'bridge', '--hint', 'Tauri JS native IPC analysis',
+                                   '--user-request', prompt, '--mode', 'analysis',
+                                   '--case-root', 'work/named-target', '--record')
+            saved = json.loads((project / 'work/named-target/case.json').read_text(encoding='utf-8'))
+            self.assertEqual(saved['pointer']['workflow']['user_request'], prompt)
+            self.assertEqual(saved['pointer']['workflow']['objective'], 'reconstruction')
+            self.assertEqual(recorded['route']['next_stage']['id'], 'R46')
 
     def test_plain_analysis_recreation_and_normal_development_are_distinct(self):
         with tempfile.TemporaryDirectory() as directory:

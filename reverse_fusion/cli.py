@@ -249,16 +249,19 @@ def cmd_accept(args: argparse.Namespace) -> int:
 
 def cmd_bridge(args: argparse.Namespace) -> int:
     project = _project_root(args)
+    explicit_case = args.case_root is not None
+    args.case_root = args.case_root or 'work/current-case'
     # normal-dev is host-native by default.  Reverse is activated only by an
     # explicit reverse/analysis/reconstruction request, so a frontend or API
     # implementation task is not silently claimed by a security route.
     intent = request_intent(args.hint)
+    original_intent = request_intent(args.user_request or args.hint)
     effective_mode = args.mode
     if args.mode == 'normal-dev':
         if intent == 'follow-up':
             cases = discover_open_cases(project)
             requested = resolve_case_root(project, args.case_root)
-            if (requested / 'case.json').is_file():
+            if explicit_case and (requested / 'case.json').is_file():
                 effective_mode = 'follow-up'
             elif len(cases) == 1:
                 args.case_root = cases[0]
@@ -268,7 +271,7 @@ def cmd_bridge(args: argparse.Namespace) -> int:
                         'cases': cases, 'project_root': str(project),
                         'next_action': 'Read the project cases and recent conversation to identify the intended target; ask a plain target question only if it remains ambiguous.'}, args.format)
                 return 2
-        elif intent in {'analysis', 'reconstruction'}:
+        elif intent in {'analysis', 'reconstruction'} or original_intent in {'analysis', 'reconstruction'}:
             effective_mode = 'analysis'
     if effective_mode == "normal-dev":
         result = {
@@ -286,7 +289,7 @@ def cmd_bridge(args: argparse.Namespace) -> int:
         return 0
 
     existing = None
-    objective = 'reconstruction' if intent == 'reconstruction' or effective_mode == 'reconstruction' else 'analysis'
+    objective = 'reconstruction' if original_intent == 'reconstruction' or effective_mode == 'reconstruction' else 'analysis'
     if effective_mode != 'follow-up':
         try:
             candidate_case = resolve_case_root(project, args.case_root)
@@ -319,9 +322,13 @@ def cmd_bridge(args: argparse.Namespace) -> int:
         _print({"operation": "case-bridge", "status": "blocked", "reason": str(exc)}, args.format)
         return 2
     prior_workflow = existing['pointer'].get('workflow', {}) if existing else {}
-    if effective_mode != 'reconstruction' and intent != 'reconstruction':
+    if effective_mode != 'reconstruction' and original_intent != 'reconstruction':
         objective = prior_workflow.get('objective', 'reconstruction' if prior_workflow.get('stage') == 'reconstruction' else objective)
-    original_request = prior_workflow.get('user_request', args.hint)
+    original_request = prior_workflow.get('user_request', args.user_request or args.hint)
+    if objective == 'reconstruction' and not route.get('next_stage') and route.get('primary_id') != 'R46':
+        # Domain refinement changes the evidence question, not the final goal.
+        next_stage = prior_workflow.get('next_stage') or dry_run_route('reconstruct target', source=args.source).get('next_stage')
+        route = {**route, 'next_stage': next_stage}
     workflow = workflow_contract(route, effective_mode, follow_up=existing is not None,
                                  objective=objective, user_request=original_request)
     if effective_mode == 'follow-up' and prior_workflow:
@@ -505,7 +512,8 @@ def build_parser() -> argparse.ArgumentParser:
             p.add_argument("argv", nargs="*")
         if name == "bridge":
             p.add_argument("--hint", required=True)
-            p.add_argument("--case-root", default="work/current-case")
+            p.add_argument("--case-root", help="project-relative case; default work/current-case, or the unique existing case for a continuation")
+            p.add_argument('--user-request', help='original user request when first recording after a separate read-only technical route probe')
             p.add_argument("--mode", choices=("analysis", "reconstruction", "follow-up", "normal-dev"), default="normal-dev")
             p.add_argument("--source", choices=("local", "auto", "external"), default="local")
             p.add_argument("--primary", help="explicit local or upstream route id, for example R46")

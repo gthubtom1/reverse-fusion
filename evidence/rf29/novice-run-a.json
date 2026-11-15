@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "scope": "uncoached-entry-and-analysis-observation",
+  "status": "fail",
+  "entry_commit": "66a7493",
+  "thread_id": "01a1e194-343a-7230-88c3-1cbbefdad05e",
+  "project_root": "C:\\Users\\toti\\Documents\\Codex\\2026-11-16\\reverse-fusion-novice-use-test-2",
+  "prompt": "帮我分析这个文件夹里的软件，然后复刻出一个界面和功能都一样、能实际使用的版本。我不懂技术，需要我提供什么就直接告诉我。",
+  "sample_sha256": "bf6534e176d5665433ad925d18ddc9db3949b42b60d8e8b2c7d666acfdf3837b",
+  "initial_material": "only original installer; app-created empty outputs/work dirs; no old analysis or candidate",
+  "observation": [
+    "Loaded user-level global skill without component names in user prompt",
+    "Initial bridge correctly reported analysis stage and reconstruction objective",
+    "Refined from generic R0 to actual JS R3 with thick-client R32 after unpacking",
+    "Official REA inspect-pe-imports and inspect-pe-resources generated native output files",
+    "Scope narrative preserved whole product goal and unresolved licensing/game dependencies",
+    "No reconstruction candidate; Spec and Craft not invoked because implementation was not reached"
+  ],
+  "defect": "First bridge was read-only; first recorded bridge used the technical hint and set original request and objective to analysis. Narrative scope still retained reconstruction, but machine recovery disagreed.",
+  "intervention": "Plain pause request only; target chat saved progress and confirmed paused. No routing or implementation coaching.",
+  "pause_confirmed": true,
+  "records": [
+    {
+      "path": "work/skinforge/case.json",
+      "sha256": "77e2a01a353ea4221d30ab898cfb42c84428bac154f6914935c936781ea1bf08"
+    },
+    {
+      "path": "work/skinforge/scope.md",
+      "sha256": "47957dcee2f9b14c2db311cb5df81bc822c3e75e0b73f009044ec44748e13754"
+    },
+    {
+      "path": "work/skinforge/evidence/rea-imports.json",
+      "sha256": "625f59ba24465f9b404ae3363bb126d001326311fd41f0cfe27527eb713666c6"
+    },
+    {
+      "path": "work/skinforge/evidence/rea-resources.json",
+      "sha256": "803ee75552bb59f2f49796612bf37f1b286a5c0fef3f3234989a8c4b8288c12d"
+    }
+  ],
+  "repair": [
+    "First-call example now records original request and reuses case root",
+    "--user-request preserves original intent when recording after a read-only probe",
+    "Refinement retains R46 next-stage for original reconstruction objective",
+    "Implicit continuation cannot privilege default case root when multiple cases exist"
+  ]
+}

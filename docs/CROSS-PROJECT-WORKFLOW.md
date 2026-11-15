@@ -10,14 +10,22 @@ case、规格、候选及测试。`bridge`、`session`、`build`、`craft`、`na
 
 ## 按实际阶段接续
 
-1. **识别与分析**：先路由再读取 `required_read_paths`。这些绝对路径指向技能仓库，
-   不是软件A。识别目标身份、摘要和实际技术栈后，细化领域路由并记录同一 case：
+1. **识别与分析**：首次用用户原话路由并落盘，再读取 `required_read_paths`。
+   这些绝对路径指向技能仓库，不是软件A。尚未识别目标时可使用通用案例名：
 
    ```text
-   [python] -m reverse_fusion bridge --project-root "[project]" --source local --hint "真实技术栈及待研究行为" --mode analysis --case-root work/case --record
+   [python] -m reverse_fusion bridge --project-root "[project]" --source local --hint "[用户原话]" --case-root work/current-case --record
    ```
 
-   原版只读；恢复或建立同一个 scope/timeline/workitems/evidence，保留网络范围和未知项。
+   识别目标身份、摘要和实际技术栈后，细化同一案例；文件夹名不必随技术改变：
+
+   ```text
+   [python] -m reverse_fusion bridge --project-root "[project]" --source local --hint "真实技术栈及待研究行为" --mode analysis --case-root work/current-case --record
+   ```
+
+   后文的 `work/case` 是占位符，实际始终用首次返回的 case_root。
+   如果首次只是只读探路，首次落盘加 `--user-request "[用户原话]"`，避免技术 hint
+   覆盖完整目标。原版只读；恢复或建立同一个 scope/timeline/workitems/evidence，保留网络范围和未知项。
    先做可验证的行为切片，发现 JS/native/设备等边界后读相关领域资料。
    大型目录、二进制字符串和完整反编译写文件，返回摘要与检索结果，避免整份输出挤占上下文。
 

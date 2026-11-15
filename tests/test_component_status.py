@@ -46,6 +46,9 @@ class ComponentStatusTests(unittest.TestCase):
             self.assertEqual(status['rea']['status'], 'not-installed')
             self.assertEqual(status['rea']['handshake'], 'unverified')
             self.assertEqual(status['craft']['native_backend'], 'not-installed')
+            self.assertEqual(status['builder']['status'], 'not-installed')
+            with patch('reverse_fusion.component_status._craft_status', return_value={'native_backend': 'installed-identity-verified'}):
+                self.assertEqual(component_status(root)['builder']['status'], 'installed-identity-verified')
             package = vendor / 'package'
             (package / 'scripts').mkdir(parents=True)
             (package / 'scripts/rea.mjs').write_text('// synthetic presence fixture', encoding='utf-8')

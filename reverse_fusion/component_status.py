@@ -88,6 +88,7 @@ def component_status(root: Path) -> dict:
                 engine_status = 'satisfied' if supported else 'blocked'
         except (OSError, subprocess.SubprocessError):
             engine_status = 'unknown'
+    craft = _craft_status(root)
     return {
         'reverse': {'status': 'repository-local', 'router': str(root / 'components/reverse-core/router.py'),
                     'boundary': 'route availability is checked by contracts; target analysis is separate'},
@@ -98,7 +99,7 @@ def component_status(root: Path) -> dict:
                 'handshake': 'unverified', 'provider_health': 'unverified',
                 'next_action': 'Use scripts/bootstrap-rea.ps1 on Windows when REA is needed; check the pinned Node engine and then the actual REA catalog/provider before use. A source manifest is not an installed runtime.'},
         'spec': _spec_status(root),
-        'builder': {'backend': 'current-session', 'status': 'available-interface',
-                    'boundary': 'run session prepare/check/refine/finish in the selected project; direct host edits alone are not an observed Builder session'},
-        'craft': _craft_status(root),
+        'builder': {'backend': 'host-reasoning-with-native-craft', 'status': craft['native_backend'],
+                    'boundary': 'review analysis and execute official Spec workflow before native-craft prepare/build/check/refine/return_summary/cleanup; session is an auxiliary boundary observer, not the implementation engine'},
+        'craft': craft,
     }
