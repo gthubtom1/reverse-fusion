@@ -15,7 +15,9 @@ restores that limitation and must not be called an authenticated archive.
 
 ## Installation and providers
 
-- CLI `uninstall --apply` removes this checkout's `state/install.json` only.
+- CLI `uninstall --apply` removes this checkout's `state/install.json` and, when the
+  receipt records it, the managed Codex user-level adapter. Existing unrelated
+  content in the user's global `AGENTS.md` is preserved.
 - `scripts/uninstall.ps1 -Apply` or `scripts/uninstall.sh` removes the repository
   venv and receipt after canonical containment checks. Vendor assets remain.
 - For an upstream/provider regression, restore the previous manifest and adapter

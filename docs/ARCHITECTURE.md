@@ -46,6 +46,6 @@ REA 原版 Evidence / comparison / ledger
 
 Reverse Skills 的 603 个增强来源文件已保全，包含加壳/脱壳、反调试/反 VM/反 Hook、OLLVM、动态 DEX/JNI/反 Frida、.NET 混淆和 JS VM/WASM 方法。保全证明内容和入口存在；具体目标仍由 Evidence、provider 和设备状态决定。缺少工具索引、登录、额度、设备或商业工具时，保留 `unknown`、`blocked` 或 `unsupported`。
 
-REA 保持官方版本，Spec 任务是复刻阶段的冻结来源，Craft 当前只提供 bounded interface；默认 writer 是当前对话里的宿主 agent。项目不选择模型、不下载模型、不复制凭据，也不修改旧仓库或宿主全局配置。
+REA 保持官方版本，Spec 任务是复刻阶段的冻结来源，Craft 当前只提供 bounded interface；默认 writer 是当前对话里的宿主 agent。项目不选择模型、不下载模型、不复制凭据，也不修改旧仓库或宿主运行配置；Codex 安装只写一个指向当前 checkout 的受控用户级路由适配层。
 
 安装和卸载只处理当前 checkout 的 `.venv`、repository-local receipt 及按需生成的 vendor/case 内容。换电脑时只需给当前宿主仓库链接；宿主读取本文件和 `docs/AGENT-BOOTSTRAP.md` 后，会按本机 OS、Python、selected host 和 provider 状态完成适配。

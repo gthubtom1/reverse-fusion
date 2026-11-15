@@ -29,9 +29,11 @@ cd reverse-fusion
 发现、准备。REA/WABT/JADX 的固定资产只写本仓库 `vendor/`，不要求首次安装就
 下载所有 provider。模型、账号、登录和 provider 属于当前宿主，项目不选择或下载模型。
 
-安装只作用于这个 checkout，不自动全局注入其他工作区。在另一个项目使用时，
-让该项目的 agent 显式读取这个 checkout 的入口，或在那里克隆部署。详细的发现、
-安装、使用与卸载步骤见 [部署指南](docs/DEPLOYMENT-GUIDE.md)。
+仓库正文和运行时只保留在这个 checkout；选择 Codex 的安装还会在用户级
+`~/.agents/skills/reverse-fusion/SKILL.md` 与 `~/.codex/AGENTS.md` 写入薄适配层。
+因此在另一个项目中可以直接调用同一个共享路由器，不需要复制整套 `skills/`。若要
+只做仓库本地安装，使用 `--no-global-adapter`。详细的发现、安装、跨项目使用与卸载
+步骤见 [部署指南](docs/DEPLOYMENT-GUIDE.md) 和 [Codex 跨项目接入](docs/CODEX-INTEGRATION.md)。
 
 ## 在对话中怎么用
 
@@ -68,7 +70,7 @@ cd reverse-fusion
 | REA | 官方 `6.9.0`，负责原生分析、Evidence、比较和 ledger；本仓库有 typed adapter、runner 与明确归属的有限 integration verifier |
 | Spec | 需求、plan、tasks、来源引用与 converge；正式任务文件可直接使用，官方 CLI 按需准备 |
 | Craft/Builder | 当前分发 bounded interface，默认 writer 为当前会话 agent；子 CLI transport 可选，Craft native R46 尚未资格化 |
-| 宿主与安装 | 本仓库的本地安装、发现、只读握手、当前会话 Builder 和配置摘要观察；不更改旧仓库、旧安装或全局配置 |
+| 宿主与安装 | 本仓库的本地安装、Codex 用户级路由适配、发现、只读握手、当前会话 Builder 和配置摘要观察；不更改旧仓库、旧安装、模型、凭据或 provider 配置 |
 
 这是一套有本地代码、技能正文、合同与验收的独立仓库。REA 等固定运行时按 manifest
 获取；Craft 的四个历史补丁名称仅是来源参考，未分发可重放补丁。已有 companion 的
@@ -133,8 +135,9 @@ R46 与 Windows REA PTY descendant cleanup 仍 unsupported。详见
 先按目标准备候选和对应运行时。基础安装不要求每次跑完全部代表性链。归档认证可在
 准备 REA 后运行 `node scripts/verify-evidence.mjs`，Node 须满足 REA 的精确 engine。
 
-CLI 生命周期默认 dry-run；`install --apply --client [selected-host]` 只写安装 receipt，
-`uninstall --apply` 只移除该 receipt。Windows 的 `scripts/uninstall.ps1 -Apply` 与
+CLI 生命周期默认 dry-run；`install --apply --client [selected-host]` 写安装 receipt，
+并在 Codex 选择下写入用户级适配层。`uninstall --apply` 会移除 receipt 和本次安装
+写入的适配层。Windows 的 `scripts/uninstall.ps1 -Apply` 与
 POSIX 的 `scripts/uninstall.sh` 移除本仓库 venv 和 receipt，保留 vendor、case 与成果。
 项目没有自动全局回滚或 receipt transaction journal。
 

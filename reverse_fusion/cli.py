@@ -28,6 +28,7 @@ from .host import adapter_plan, detect_hosts, read_handshake_record, probe_hosts
 from .vertical import correct_candidate, evaluate_console, wrong_candidate
 from .wasm_vertical import evaluate_wasm
 from .session_builder import prepare_session, check_session
+from .global_adapter import install_global_adapter, remove_global_adapter, adapter_paths
 
 ROOT = Path(__file__).resolve().parents[1]
 MANIFEST = ROOT / "components" / "official" / "manifest.json"
@@ -138,15 +139,26 @@ def cmd_install(args: argparse.Namespace) -> int:
     if contract["status"] != "pass":
         _print({"operation": "install", "status": "blocked", "reason": "repository contracts failed", "checks": contract["checks"]}, args.format)
         return 2
+    enable_global_adapter = args.global_adapter if args.global_adapter is not None else args.client == "codex"
+    adapter_preview = {
+        "enabled": bool(enable_global_adapter),
+        "skill": str(adapter_paths()["skill"]),
+        "agents": str(adapter_paths()["agents"]),
+        "repository": str(ROOT.resolve()),
+    } if enable_global_adapter else {"enabled": False}
     plan = {
         "operation": "install",
         "mode": "apply" if args.apply else "dry-run",
         "project": "reverse-fusion",
         "host": {"client": args.client, **detect_hosts()},
-        "effects": ["write repository state/install.json"] if args.apply else ["read repository files only"],
+        "effects": (["write repository state/install.json", "write user-level Codex adapter"] if args.apply and enable_global_adapter else ["write repository state/install.json"] if args.apply else ["read repository files only"]),
+        "global_adapter": adapter_preview,
+        "global_config_mutation": bool(args.apply and enable_global_adapter),
         "status": "ready",
     }
     if args.apply:
+        if enable_global_adapter:
+            plan["global_adapter"] = install_global_adapter(ROOT)
         plan["status"] = "installed"
         _write_state("install", {**plan, "installed": True, "version": __version__})
     _print(plan, args.format)
@@ -155,9 +167,18 @@ def cmd_install(args: argparse.Namespace) -> int:
 
 def cmd_uninstall(args: argparse.Namespace) -> int:
     path = _state_path("install")
+    adapter = {"enabled": False, "removed": []}
+    if args.apply and path.exists():
+        try:
+            prior = json.loads(path.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError):
+            prior = {}
+        adapter_state = prior.get("global_adapter") if isinstance(prior, dict) else None
+        if isinstance(adapter_state, dict) and adapter_state.get("enabled"):
+            adapter = remove_global_adapter()
     if args.apply and path.exists():
         path.unlink()
-    result = {"operation": "uninstall", "mode": "apply" if args.apply else "dry-run", "status": "uninstalled" if args.apply else "ready", "state_file": str(path), "venv": str(ROOT / ".venv"), "vendor": "retained; remove explicitly if a provider asset is no longer wanted", "global_config_mutation": False}
+    result = {"operation": "uninstall", "mode": "apply" if args.apply else "dry-run", "status": "uninstalled" if args.apply else "ready", "state_file": str(path), "venv": str(ROOT / ".venv"), "vendor": "retained; remove explicitly if a provider asset is no longer wanted", "global_adapter": adapter, "global_config_mutation": bool(adapter.get("removed"))}
     _print(result, args.format)
     return 0
 
@@ -346,6 +367,8 @@ def build_parser() -> argparse.ArgumentParser:
             p.add_argument("--apply", action="store_true", help="write only this repository's state")
         if name == "install":
             p.add_argument("--client", choices=("codex", "pi", "claude"), required=True)
+            p.add_argument("--global-adapter", dest="global_adapter", action="store_true", default=None, help="install the user-level Codex adapter (default for codex)")
+            p.add_argument("--no-global-adapter", dest="global_adapter", action="store_false", help="skip the user-level Codex adapter")
         if name == "accept":
             p.add_argument("--fixture", choices=("console", "wasm"), default="console")
             p.add_argument("--candidate", choices=("correct", "wrong", "missing"), default="correct")

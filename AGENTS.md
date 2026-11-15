@@ -4,14 +4,15 @@
 
 1. `README.md`
 2. `docs/DEPLOYMENT-GUIDE.md`
-3. `docs/PROJECT-CONTEXT.md`
-4. `docs/CURRENT-STATE.md`
-5. `docs/DECISIONS.md`
-6. `components/official/manifest.json`
-7. `skills/` 中与当前 route 对应的领域技能
-8. 当前阶段对应的 `docs/DEVELOPMENT-MASTER-PLAN.md` 和 checkpoint
-9. `RULES.md`；调用本地路由后读取返回的 `skill` 和 `required_reads`
-10. `docs/AGENT-BOOTSTRAP.md`；只给仓库 URL 时，以此文件作为唯一部署入口
+3. `docs/CODEX-INTEGRATION.md` when the selected host is Codex
+4. `docs/PROJECT-CONTEXT.md`
+5. `docs/CURRENT-STATE.md`
+6. `docs/DECISIONS.md`
+7. `components/official/manifest.json`
+8. `skills/` 中与当前 route 对应的领域技能
+9. 当前阶段对应的 `docs/DEVELOPMENT-MASTER-PLAN.md` 和 checkpoint
+10. `RULES.md`；调用本地路由后读取返回的 `skill` 和 `required_reads`
+11. `docs/AGENT-BOOTSTRAP.md`；只给仓库 URL 时，以此文件作为唯一部署入口
 
 工作规则：
 
@@ -23,8 +24,9 @@
 - 不把安装成功、工具可见、Craft Ready、exit 0 或模型自述写成业务 acceptance。
 - RF-25 全量审计与 RF-26 聚合架构复核已闭合；当前完成范围和保留边界以
   `docs/CURRENT-STATE.md`、`docs/FINAL-RELEASE-ACCEPTANCE.md` 和最新 checkpoint 为准。
-- 安装只面向当前选定的一个宿主，并使用仓库 `.venv` 的 Python。宿主发现不等于安装；
-  本仓库不会全局注册到其他工作区，其他项目必须显式让 agent 读取本仓库入口。
+- 安装只面向当前选定的一个宿主，并使用仓库 `.venv` 的 Python。Codex 部署还会写入
+  一个用户级 `reverse-fusion` 技能和带标记的全局 `AGENTS.md` 指引；它们只指向当前
+  checkout 的路由器，不复制技能正文，也不写入其他项目。宿主发现不等于安装。
 - fresh clone 必须同时拥有 route descriptor 和对应的 `skills/<domain>/SKILL.md`；
   只有分类元数据而没有领域正文时，route 状态必须是 unavailable。
 - 路由返回的 `missing_support` 必须为空；困难目标资料在任务文本命中或后续证据

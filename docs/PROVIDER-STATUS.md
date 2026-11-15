@@ -34,8 +34,10 @@ The compact current probe observations are also tracked at
 
 Known host configuration files are hash-compared around optional child calls.
 An unobservable/changed snapshot or uncertain timeout cleanup is not reported
-as verified cleanup. No model, credential or global configuration is installed
-by Reverse Fusion.
+as verified cleanup. No model, credential or host runtime configuration is installed
+by Reverse Fusion. A selected Codex installation may write the managed user-level
+`reverse-fusion` skill and `AGENTS.md` routing block recorded in `state/install.json`;
+unrelated global instructions are preserved.
 
 RF-26 adds no new provider qualification. It verifies that provider activation
 is explicit in the workflow contract: the current host remains the default

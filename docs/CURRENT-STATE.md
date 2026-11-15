@@ -26,9 +26,10 @@ pre-execute every possible program, architecture or protector.
   follow-up must load an existing open case instead of silently starting a new
   route.
 - `docs/AGENT-BOOTSTRAP.md` is the stored URL-only deployment entry. It installs
-  a repository-local venv, checks contracts and records the selected host. It
-  does not globally inject skills into other projects; another workspace must
-  explicitly read this checkout's entry or deploy its own checkout.
+  a repository-local venv, checks contracts and records the selected host. When
+  Codex is selected, it also installs a thin user-level `reverse-fusion` adapter
+  and marked global `AGENTS.md` block that point back to this checkout; the domain
+  skill bodies remain repository-local and the current project remains the work area.
 - Normal development does not force a case. Analysis cases retain route,
   Evidence, limitations and conclusions. Reconstruction adds frozen tasks,
   a candidate, build/run, comparison, proof, cleanup and an obligation ledger.
@@ -93,9 +94,10 @@ The full Web graph ledger is archived separately as `evidence/rf22/web/full-ledg
   native R46 qualification remains `unsupported`.
 - Windows REA PTY descendant cleanup remains unsupported. Android device
   runtime and Web graph obligations retain their explicit unknown states.
-- Uninstall scripts remove the repository venv and installation receipt;
-  pinned vendor assets remain until explicitly removed. No receipt transaction
-  journal or automatic global rollback is implemented.
+- Uninstall removes the repository venv and installation receipt, and the CLI removes
+  the managed Codex adapter recorded by that receipt; pinned vendor assets remain
+  until explicitly removed. No receipt transaction journal or automatic provider
+  rollback is implemented.
 
 ## Next action
 
@@ -113,5 +115,7 @@ REA engine gate. The RF-26 checkpoint records this architecture re-audit and
 fresh-clone contract identity rather than claiming another machine or every
 provider was executed.
 
-Old repositories, old installations, host credentials and global configuration
-are outside this repository's write scope.
+Old repositories, old installations, host credentials and host runtime configuration
+are outside this repository's write scope. The selected Codex install intentionally
+writes only its own marked user-level adapter pointer and preserves unrelated global
+instructions.

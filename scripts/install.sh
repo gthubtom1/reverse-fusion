@@ -24,4 +24,4 @@ fi
 venv_python="$venv/bin/python"
 if [ -x "$venv/Scripts/python.exe" ]; then venv_python="$venv/Scripts/python.exe"; fi
 "$venv_python" -m pip install --no-deps -e "$repo"
-printf '%s\n' '{"status":"installed","global_config_mutation":false}'
+printf '%s\n' '{"status":"installed","global_adapter":"deferred-to-reverse-fusion-install"}'

@@ -4,11 +4,15 @@
 Claude Code 或兼容 coding agent，并说“把这个仓库部署到当前工作区”即可；
 agent 克隆或定位仓库后，以本文件的当前 checkout 版本为准。
 
-部署只作用于这个 Reverse Fusion checkout 和当前选定的一个宿主，不注册全局命令，
-也不把能力自动注入其他项目。另一个项目需要使用本仓库时，用户必须显式让该项目的
-agent 读取本 checkout 的 `AGENTS.md` 和本文件，或在那个工作区重新克隆并部署仓库。
+部署把 Reverse Fusion 的代码和资料保留在当前 checkout；当选定宿主是 Codex 时，
+还会在当前用户的 `~/.agents/skills/reverse-fusion/SKILL.md` 和 `~/.codex/AGENTS.md`
+写入一个薄适配层。适配层只指向这个 checkout 的路由器，不复制技能正文，不把输出
+写到其他项目，也不修改模型、凭据或 provider 配置。这样另一个项目可以直接调用同一
+份共享路由；如果不需要跨项目调用，可使用 `--no-global-adapter` 跳过它。
 
 仓库地址：<https://github.com/gthubtom1/reverse-fusion>
+
+Codex 跨项目接入的文件和生命周期见 [CODEX-INTEGRATION.md](CODEX-INTEGRATION.md)。
 
 智能体克隆或定位仓库后，必须以当前 checkout 的文件为准，先读取：
 
@@ -43,13 +47,16 @@ agent 读取本 checkout 的 `AGENTS.md` 和本文件，或在那个工作区重
    ```
 
 4. 确认 `state/install.json` 的 `status` 为 `installed` 且 `host.client` 等于
-   `[selected-host]`。receipt 中发现到的其他 CLI 只属于环境观察，不代表它们已安装、
-   已登录、已加载本仓库或通过握手。
-5. 安装只写仓库自己的 `.venv` 和 `state/install.json`。REA、WABT、JADX 等 provider
+   `[selected-host]`。选择 Codex 时还确认 `global_adapter.enabled` 为 `true`，并检查
+   receipt 中记录的 `global_adapter.skill` 和 `global_adapter.agents` 路径存在。receipt
+   中发现到的其他 CLI 只属于环境观察，不代表它们已安装、已登录、已加载本仓库或通过握手。
+5. 安装写仓库自己的 `.venv`、`state/install.json`，并在 Codex 选择下写入用户级适配层。
+   REA、WABT、JADX 等 provider
    仅在具体任务需要时由对应 bootstrap 写入仓库 `vendor/`；case 仅在用户开始目标时写入
    仓库 `work/` 或明确的仓库内 case root。
 6. 模型、账号和 provider 由 `[selected-host]` 拥有。项目不选择、下载、切换或绑定
-   模型，不复制凭据，也不修改宿主全局配置。Craft companion 的 `--all-tools` 参数保持不变。
+   模型，不复制凭据，也不修改宿主运行配置。Codex 适配层只增加路由指引；Craft
+   companion 的 `--all-tools` 参数保持不变。
 7. 当前对话中的 agent 就是默认 Builder，不为了使用本仓库另启一个 CLI、账号或模型。
    只有需要独立 transport 时，才对 `[selected-host]` 执行
    `[venv-python] -m reverse_fusion handshake --client [selected-host] --timeout 45 --record`。
@@ -82,9 +89,9 @@ agent 读取本 checkout 的 `AGENTS.md` 和本文件，或在那个工作区重
 
 ## 完成和停止标准
 
-部署完成只表示当前 checkout 的 venv、selected-host receipt、`contracts`、`plan`、
-`doctor`、`handoff` 和本地路由边界已记录。它不表示其他宿主或项目已经加载本仓库，
-也不表示当前电脑具备所有 REA、IDA、Frida、Android 设备或商业工具能力。
+部署完成表示当前 checkout 的 venv、selected-host receipt、Codex 用户级适配层（若启用）、
+`contracts`、`plan`、`doctor`、`handoff` 和本地路由边界已记录。它不表示其他宿主或项目
+已经通过业务验收，也不表示当前电脑具备所有 REA、IDA、Frida、Android 设备或商业工具能力。
 
 以后检查上游时，只读比较 `SOURCE-MANIFEST.json` 和
 `components/official/manifest.json`，只有真实 capability gap 得到改善才吸收，

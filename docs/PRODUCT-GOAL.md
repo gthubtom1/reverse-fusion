@@ -69,7 +69,7 @@ Reverse Fusion 不选择、不绑定、不下载模型，也不把某个模型�
 5. 至少一条真实 Builder 链使用宿主自己的 agent/model 生成或修改候选文件，并完成 prepare、build、check、refine、return_summary、cleanup 六项能力；复制 fixture 的 fallback 只能作为测试路径。
 6. 至少一个正确候选、一个行为错误候选和一个 Evidence 缺失候选分别得到 pass、fail、unknown；至少一个构建或 provider 缺失场景得到 blocked/unsupported。
 7. 加壳、混淆、动态行为或 provider 缺失时，系统保留 unknown 和下一步 probe，不把静态相似或模型自述升级成等价结论。
-8. 所有 host/global 配置写入都有明确 scope；默认安装、探针、卸载和失败清理不改变旧仓库、宿主凭据或全局配置，并通过已知配置文件哈希前后对照记录观察结果。
+8. 所有 host/global 配置写入都有明确 scope；默认安装、探针、卸载和失败清理不改变旧仓库、宿主凭据或宿主运行配置。Codex 安装只写 receipt 记录的用户级路由适配层，并通过已知配置文件哈希前后对照记录其他 host 观察结果。
 9. `evidence/rf22/manifest.json` 对代表性 Evidence/proof/ledger 文件做 hash 校验；官方 REA 还要通过身份解析、bundle links 闭合与实际篡改反例。不得改写 hash 覆盖的绝对路径却保留旧 ID。`docs/CURRENT-STATE.md`、`docs/FINAL-RELEASE-ACCEPTANCE.md`、checkpoint、README、manifest、测试和 GitHub remote 对同一完成状态；历史记录不覆盖当前结论。
 10. 只有完成以上门后才允许写 `final product complete`。此前只能写 `framework-v1-baseline`、`reconstruction-v1-in-progress` 或明确的 `blocked/unsupported`。
 

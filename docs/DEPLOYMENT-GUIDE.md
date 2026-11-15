@@ -18,7 +18,9 @@ shell、模型或工具安装路径。
    `scripts/install.ps1 -Python [launcher]`。POSIX 先
    `RF_PYTHON=[launcher] RF_DRY_RUN=1 ./scripts/install.sh`，再
    `RF_PYTHON=[launcher] ./scripts/install.sh`。这创建本 checkout 的 `.venv` 并
-   安装本地包。脚本不是部署其他全局宿主的入口。
+   安装本地包。随后运行 `reverse_fusion install --apply --client codex` 时，CLI 会
+   额外写入用户级 Codex 适配层，使任意工作区都能找到这个 checkout 的路由器。
+   `--no-global-adapter` 可跳过这一步。
 3. 从此使用 `[venv-python]`：Windows 为 `[repo]/.venv/Scripts/python.exe`，
    POSIX 为 `[repo]/.venv/bin/python`。依次执行：
 
@@ -30,9 +32,10 @@ shell、模型或工具安装路径。
    [venv-python] -m reverse_fusion install --apply --client [selected-host]
    ```
 
-4. 读取 `state/install.json`，确认 selected host 和版本；确认当前 agent 已读取
-   仓库规则及一次本地 route 的 `skill`、`required_reads`。receipt 是仓库内状态，
-   不是宿主全局注册，也不是业务验收。
+4. 读取 `state/install.json`，确认 selected host 和版本；选择 Codex 时确认
+   `global_adapter.enabled=true` 以及用户级 `SKILL.md`、`AGENTS.md` 存在；确认当前
+   agent 已读取仓库规则及一次本地 route 的 `skill`、`required_reads`。receipt 记录
+   仓库安装和适配层状态，不等于 provider 健康或业务验收。
    首次需要具体逆向工具时，先运行仓库内对应平台的
    `skills/scripts/refresh-tool-index.ps1` 或 `skills/scripts/refresh-tool-index.sh`。
    生成的 `skills/tool-index.md` 是本机观察文件，不进入 Git，也不把缺失工具伪装
@@ -43,12 +46,14 @@ shell、模型或工具安装路径。
    缺登录、额度或 provider 时如实记录 blocked/unknown，仍可使用已运行的当前
    会话 agent。无需为了默认 Builder 再启动一个 CLI。
 6. REA、WABT、JADX 等按具体任务需要 bootstrap 到本仓库 `vendor/`，不在基础
-   安装时下载全部工具。保存实际能力、缺失项和下一步；任何旧安装和全局配置均
-   不写入。Craft companion 的 `--all-tools` 保持原样。
+   安装时下载全部工具。保存实际能力、缺失项和下一步；不写旧安装、模型、凭据或
+   provider 运行配置。Codex 的受控适配层只写路由指引。Craft companion 的
+   `--all-tools` 保持原样。
 
-本 checkout 的规则加载只作用于当前工作区。另一个项目需要显式让 agent 读取
-本 checkout 的 `AGENTS.md` 和 `docs/AGENT-BOOTSTRAP.md`，或在该工作区部署
-自己的 checkout。项目不会暗中全局注入所有其他会话。
+Reverse Fusion 的正文和 case 仍属于当前 checkout。Codex 的用户级适配层只在任务涉及
+逆向、保护分析、协议复刻、行为重建或用户明确要求 Reverse Fusion 时触发；普通软件
+开发保持 `host-native`。当前项目目录始终是输出和候选的工作区，不会被共享 checkout
+替代。
 
 ## 对话中的动态工作方式
 
@@ -121,8 +126,9 @@ Linux/macOS 实机验收。
 允许受控 adapter、patch 或 fork，保留 source identity、focused checks 和回滚点。
 完整过程见 [UPSTREAM-MAINTENANCE.md](UPSTREAM-MAINTENANCE.md)。
 
-CLI `uninstall --apply` 只删 receipt；Windows `scripts/uninstall.ps1 -Apply`
-或 POSIX `scripts/uninstall.sh` 删除仓库 venv 和 receipt，vendor 资产保留。
+CLI `uninstall --apply` 会按 receipt 删除本次安装写入的 Codex 适配层和 receipt；
+Windows `scripts/uninstall.ps1 -Apply` 或 POSIX `scripts/uninstall.sh` 删除仓库 venv
+和 receipt，vendor 资产保留。用户在全局 `AGENTS.md` 中已有的其他内容会被保留。
 案例、原版 Evidence、Spec 与候选不属于通用卸载垃圾。回滚按 Git revision 和
 provider manifest 处理，项目没有自动全局恢复或 receipt transaction journal。
 具体边界见 [ROLLBACK.md](ROLLBACK.md)。

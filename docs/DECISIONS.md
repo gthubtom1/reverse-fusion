@@ -104,9 +104,16 @@ original skills JSON remains the original compatibility baseline.
 
 `docs/AGENT-BOOTSTRAP.md` is the only deployment action contract. The user gives
 the repository link; the selected current host discovers paths and installs a
-local venv/receipt. No global injection into unrelated workspaces is implied.
-Analysis does not require reconstruction tasks. Uninstall scripts remove the
+local venv/receipt. Analysis does not require reconstruction tasks. Uninstall scripts remove the
 local venv/receipt, retain vendor/case assets and implement no transaction journal.
+
+## RF-017 Codex cross-project adapter
+
+When Codex is the selected host, install writes a user-level `reverse-fusion` skill
+and a marked global `AGENTS.md` block that point to this checkout's router. The
+adapter is deliberately thin: it preserves the current project as the work area,
+does not copy domain skills, choose models, or start providers, and can be skipped
+with `--no-global-adapter`. Uninstall removes only the managed block and skill.
 
 ## RF-016 Bounded integration proof authority
 

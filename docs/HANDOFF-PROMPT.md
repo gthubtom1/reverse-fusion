@@ -32,7 +32,8 @@
   CLI，不安装模型。可选子 CLI 单独资格化；当前子 Codex 的 credits 阻塞不
   影响当前会话编码路径。旧文本 smoke 绝非 APK 候选或业务证明。
 - 模型、provider 和登录属于宿主；不选择、下载或切换模型，不复制凭据。
-- 旧仓库、旧安装、全局配置只读。Craft companion 的 `--all-tools` 保持原样。
+- 旧仓库、旧安装、宿主运行配置和用户全局指引中的非托管内容只读；Codex 安装只维护
+  receipt 记录的 `reverse-fusion` 适配层。Craft companion 的 `--all-tools` 保持原样。
   当前 Craft 分发是 interface-only，四个历史 patch 名称不代表文件已经分发。
 - 工具可见、exit 0、MCP connected、Craft Ready 和模型自述不是业务验收。
 

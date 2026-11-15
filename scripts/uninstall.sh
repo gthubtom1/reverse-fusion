@@ -17,6 +17,11 @@ receipt=$("$python_bin" -c 'import os,sys; print(os.path.realpath(sys.argv[1]))'
 if command -v cygpath >/dev/null 2>&1; then receipt=$(cygpath -u "$receipt"); fi
 case "$receipt" in "$repo"/*) ;; *) echo "receipt must stay inside repository" >&2; exit 2 ;; esac
 
+venv_python="$venv/bin/python"
+if [ -x "$venv/Scripts/python.exe" ]; then venv_python="$venv/Scripts/python.exe"; fi
+if [ -x "$venv_python" ]; then
+  "$venv_python" -m reverse_fusion uninstall --apply --format json >/dev/null
+fi
 if [ -e "$venv" ]; then rm -rf -- "$venv"; fi
 if [ -f "$receipt" ]; then rm -f -- "$receipt"; fi
-printf '%s\n' '{"status":"uninstalled","global_config_mutation":false}'
+printf '%s\n' '{"status":"uninstalled","global_adapter":"removed-by-reverse-fusion-cli-when-recorded"}'

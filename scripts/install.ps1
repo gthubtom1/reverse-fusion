@@ -12,4 +12,4 @@ if ($DryRun) { Write-Output (ConvertTo-Json @{ mode='dry-run'; commands=@("$Pyth
 Assert-NativeExit $LASTEXITCODE 'venv creation'
 & (Join-Path $venv 'Scripts\python.exe') -m pip install --no-deps -e $repo
 Assert-NativeExit $LASTEXITCODE 'editable install'
-Write-Output (ConvertTo-Json @{ status='installed'; venv=$venv; global_config_mutation=$false } -Compress)
+Write-Output (ConvertTo-Json @{ status='installed'; venv=$venv; global_adapter='deferred-to-reverse-fusion-install' } -Compress)

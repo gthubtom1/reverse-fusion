@@ -32,9 +32,9 @@ Current handoff: RF-26, product `1.0.0`, 2026-11-15.
 - Normal development does not require reverse tasks. Analysis subcases need
   route/Evidence/conclusions; reconstruction adds frozen tasks and the complete
   candidate acceptance chain. Restore required reads and isolation on resume.
-- Rollback: `docs/ROLLBACK.md`; no transaction journal or automatic global
-  restore is implemented. Old installs and global configuration stay outside
-  this repository's write scope.
+- Rollback: `docs/ROLLBACK.md`; no transaction journal or automatic provider
+  restore is implemented. Old installs and host runtime configuration stay outside
+  this repository's write scope; the managed Codex adapter is removed by receipt.
 
 RF-26 is closed; the next action is a user target case or selective upstream
 review. New observations can supersede historical results; never rewrite a
