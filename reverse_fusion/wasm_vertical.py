@@ -5,12 +5,12 @@ import json
 import os
 import re
 import subprocess
-import shutil
 from hashlib import sha256
 from pathlib import Path
 from typing import Any
 
 from .adapters import comparison
+from .runtime import node_runtime
 
 
 def _read_record(path: Path) -> dict[str, Any] | None:
@@ -66,7 +66,7 @@ def evaluate_wasm(root: Path, candidate_kind: str, *, record_paths: bool = False
     # The official codec owns content identity. A subject digest alone does
     # not authenticate edited interface observations inside an Evidence record.
     verifier = root / 'scripts' / 'verify-evidence.mjs'
-    node = os.environ.get('REVERSE_FUSION_NODE') or shutil.which('node')
+    node, _ = node_runtime(root)
     if not node or not verifier.is_file():
         return {'status': 'unknown', 'reason': 'Official REA Evidence authentication is unavailable', 'evidence_ids': evidence_ids}
     try:

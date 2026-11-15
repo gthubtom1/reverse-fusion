@@ -11,7 +11,7 @@ $repo = [IO.Path]::GetFullPath((Join-Path $PSScriptRoot '..'))
 Push-Location $repo
 try {
 $state = Join-Path $repo 'state'
-if (-not $NodePath) { $NodePath = 'node' }
+$NodePath = Resolve-ReaNodePath $repo $NodePath
 if (-not $PythonPath) { $PythonPath = 'python' }
 if (-not $JavaHome) { throw 'Set JAVA_HOME to a JDK 21+ before running the APK vertical slice.' }
 if (-not $AndroidSdk) { throw 'Set ANDROID_HOME to an Android SDK before running the APK vertical slice.' }

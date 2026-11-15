@@ -10,7 +10,7 @@ $repo = [IO.Path]::GetFullPath((Join-Path $PSScriptRoot '..'))
 Push-Location $repo
 try {
 $state = Join-Path $repo 'state'
-if (-not $NodePath) { $NodePath = 'node' }
+$NodePath = Resolve-ReaNodePath $repo $NodePath
 if (-not $DotnetPath) { $DotnetPath = 'dotnet' }
 $env:REVERSE_FUSION_DOTNET = $DotnetPath
 $rea = Join-Path $repo 'vendor\rea\package\scripts\rea.mjs'

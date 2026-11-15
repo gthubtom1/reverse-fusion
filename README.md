@@ -6,7 +6,7 @@
 产品版本 `1.0.0`，当前修复阶段 `RF-27`（跨项目集成与复刻交接）。准确的验收结果、现场 provider 状态和
 未覆盖范围分别保存在 [当前状态](docs/CURRENT-STATE.md)、
 [发布验收](docs/FINAL-RELEASE-ACCEPTANCE.md) 与
-[最新 checkpoint](checkpoints/RF-27-20261116-001.md)。历史 final 标签不覆盖这些记录。
+[最新 checkpoint](checkpoints/RF-27-20261116-002.md)。历史 final 标签不覆盖这些记录。
 
 ## 换电脑，只给仓库链接
 

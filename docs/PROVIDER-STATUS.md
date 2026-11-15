@@ -1,9 +1,15 @@
 # Provider and host status
 
-RF-27 current machine observation (2026-11-16): local REA entry/package is not
-installed, Node is v24.20.0 and does not satisfy the pin, and `specify` is absent
-from PATH. The current host remains the writer; native Craft R46 is unsupported.
-`doctor.components` reports these separately from its repository-contract pass.
+RF-27 initial machine observation (2026-11-16): REA was not installed, PATH Node
+was v24.20.0 (below the pin), and `specify` was absent. During the isolated live
+test, maintenance discovered the desktop-bundled Node v24.22.1, integrity-checked
+and extracted REA 6.9.0 into this checkout, and recorded the selected runtime in
+`state/rea-runtime.json`. Official `mcp doctor` reported healthy, 255/255 tools,
+6/6 prompts and a matching catalog digest. This is catalog qualification only;
+target providers, original behavior and reconstruction acceptance are separate.
+`doctor.components` rechecks the recorded executable's version and continues to
+report handshake/provider health as unverified rather than inferring it from a
+past probe. `specify` remains absent and native Craft R46 remains unsupported.
 The table below is historical RF-25 evidence, not this machine's runtime status.
 
 Recorded for RF-25 provider runs and the RF-26 architecture review on 2026-11-15. These are bounded observations on the audit

@@ -38,7 +38,10 @@ PROFILES = ROOT / "profiles"
 
 def _print(value: Any, fmt: str) -> None:
     if fmt == "json":
-        print(json.dumps(value, ensure_ascii=False, indent=2, sort_keys=True))
+        # JSON is also piped between Windows processes whose default code pages
+        # can differ. Escapes preserve every Unicode path without requiring the
+        # caller to set PYTHONIOENCODING or -X utf8.
+        print(json.dumps(value, ensure_ascii=True, indent=2, sort_keys=True))
         return
     if isinstance(value, dict):
         for key, item in value.items():

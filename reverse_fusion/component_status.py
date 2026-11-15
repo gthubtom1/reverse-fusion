@@ -2,10 +2,11 @@
 from __future__ import annotations
 
 import json
-import os
 import re
 import shutil
 import subprocess
+
+from .runtime import node_runtime
 from pathlib import Path
 
 
@@ -24,7 +25,7 @@ def component_status(root: Path) -> dict:
         except (OSError, ValueError, AttributeError):
             rea_status = 'identity-mismatch'
     specify = shutil.which('specify')
-    node = os.environ.get('REVERSE_FUSION_NODE') or shutil.which('node')
+    node, node_source = node_runtime(root)
     node_version, engine_status = None, 'missing'
     if node:
         try:
@@ -46,6 +47,7 @@ def component_status(root: Path) -> dict:
                     'boundary': 'route availability is checked by contracts; target analysis is separate'},
         'rea': {'status': rea_status, 'entry': str(entry), 'version_pin': manifest['version'],
                 'node_engine': manifest['node_engine'], 'node': node,
+                'node_source': node_source,
                 'node_version': node_version, 'node_engine_status': engine_status,
                 'handshake': 'unverified', 'provider_health': 'unverified',
                 'next_action': 'Use scripts/bootstrap-rea.ps1 on Windows when REA is needed; check the pinned Node engine and then the actual REA catalog/provider before use. A source manifest is not an installed runtime.'},

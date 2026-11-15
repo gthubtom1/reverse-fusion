@@ -113,6 +113,13 @@ Reverse 是唯一 route/case owner；REA 管理 Evidence/comparison/ledger；Spe
 replay，native R46 unsupported。模型、provider 和登录始终属于当前宿主。
 
 REA pin 为 `6.9.0`，Node engine 精确为 `^22.23.4 || ^24.22.1 || >=26.12.1`。
+如果 PATH 中的 Node 过旧，可以向 `scripts/bootstrap-rea.ps1 -NodePath [绝对路径]`
+传入本机另一个满足要求的 Node；无需替换全局 Node。bootstrap 在校验版本和包完整性后，
+将选定路径记入本 checkout 的 `state/rea-runtime.json`。后续 doctor、bootstrap、
+Windows provider runner 和 WASM 验收按“显式参数/环境变量、有效本仓库 receipt、PATH”
+的顺序使用运行时。receipt 不进入 Git，换电脑必须重新发现；路径消失或 receipt 属于
+另一个 checkout 时回退到本机 PATH。缓存路径仍存在但版本变化时，doctor 会重新核版本，
+bootstrap 仍执行精确 engine 门。receipt 不代表 provider 健康或目标验收。
 WABT pin `1.0.42`，JADX headless MCP pin `0.7.1`。Spec source 为
 `1.4.1.dev0`，历史 CLI execution 为 `1.4.0`；本地任务文件不要求每次装 Spec CLI。
 实际现场可用性看 `PROVIDER-STATUS.md` 和当前 checkpoint，不从 source pin 推断。

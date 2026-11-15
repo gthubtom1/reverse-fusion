@@ -6,9 +6,34 @@ from unittest.mock import patch
 import subprocess
 
 from reverse_fusion.component_status import component_status
+from reverse_fusion.runtime import node_runtime
 
 
 class ComponentStatusTests(unittest.TestCase):
+    def test_repository_runtime_survives_new_process_environment_and_rejects_copied_receipt(self):
+        with tempfile.TemporaryDirectory(prefix='rf runtime ') as directory:
+            root = Path(directory).resolve()
+            (root / 'state').mkdir()
+            executable = root / 'bundled node.exe'
+            executable.write_bytes(b'synthetic executable path; never run')
+            receipt_path = root / 'state/rea-runtime.json'
+            receipt = {'schema_version': 1, 'repository_root': str(root), 'node': str(executable)}
+            receipt_path.write_text(json.dumps(receipt), encoding='utf-8-sig')
+            with patch.dict('os.environ', {}, clear=True), \
+                 patch('reverse_fusion.runtime.shutil.which', return_value='path-node'):
+                self.assertEqual(node_runtime(root), (str(executable), 'repository-receipt'))
+                with patch.dict('os.environ', {'REVERSE_FUSION_NODE': 'explicit-node'}):
+                    self.assertEqual(node_runtime(root), ('explicit-node', 'environment'))
+                receipt['repository_root'] = str(root / 'other-checkout')
+                receipt_path.write_text(json.dumps(receipt), encoding='utf-8')
+                self.assertEqual(node_runtime(root), ('path-node', 'path'))
+                receipt['repository_root'] = str(root)
+                receipt['node'] = str(root / 'removed-node.exe')
+                receipt_path.write_text(json.dumps(receipt), encoding='utf-8')
+                self.assertEqual(node_runtime(root), ('path-node', 'path'))
+                receipt_path.write_text('invalid json', encoding='utf-8')
+                self.assertEqual(node_runtime(root), ('path-node', 'path'))
+
     def test_pin_does_not_masquerade_as_installed_or_healthy_rea(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)

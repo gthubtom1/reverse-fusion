@@ -41,6 +41,16 @@ The bounded RF-25/RF-26 target evidence below remains historical. RF-27 does not
 reclassify it as live health or target acceptance. See
 `checkpoints/RF-27-20261116-001.md` for the new external-project verification scope.
 
+The subsequent isolated-workspace test and runtime/Windows JSON correction are
+recorded in `checkpoints/RF-27-20261116-002.md`. A new user-authorized Codex chat
+has actually loaded the global pointer and recorded its case outside this tool
+checkout. Maintenance installed integrity-checked REA with an explicitly selected
+compatible desktop Node, then persisted that selection in an ignored checkout
+receipt. Official catalog diagnosis passed; the target host has also performed
+an official PE import observation. Target analysis and equivalence are separate
+and remain incomplete. JSON output now preserves Unicode across Windows pipe
+code pages without requiring callers to set UTF-8 flags.
+
 ## Current implementation and observations
 
 - Fresh clones carry the local Reverse router, route descriptors, domain skills,
@@ -111,6 +121,8 @@ The full Web graph ledger is archived separately as `evidence/rf22/web/full-ledg
   Preservation is not proof that every protected target executes successfully.
 - Official REA is `6.9.0`; Node must satisfy
   `^22.23.4 || ^24.22.1 || >=26.12.1`. Node 24.20.0 does not satisfy this pin.
+  The current checkout has now been bootstrapped with compatible Node 24.22.1;
+  details and the limits of its live catalog check are in the latest checkpoint.
   WABT is `1.0.42`; JADX headless MCP is `0.7.1`.
 - Spec Kit source pin reports `1.4.1.dev0`; the earlier CLI execution receipt
   reports `1.4.0`. Task artifacts can be used without installing the CLI for

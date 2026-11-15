@@ -90,6 +90,24 @@ function Assert-NativeExit([int]$ExitCode, [string]$Operation, [int[]]$Expected 
     }
 }
 
+function Resolve-ReaNodePath([string]$RepositoryRoot, [string]$ExplicitPath) {
+    if ($ExplicitPath) { return $ExplicitPath }
+    $receiptPath = Join-Path $RepositoryRoot 'state/rea-runtime.json'
+    if (Test-Path -LiteralPath $receiptPath -PathType Leaf) {
+        try {
+            $receipt = Get-Content -Raw -LiteralPath $receiptPath | ConvertFrom-Json
+            if ($receipt.schema_version -eq 1 -and
+                [IO.Path]::IsPathRooted($receipt.repository_root) -and
+                (Get-CanonicalPath $receipt.repository_root) -eq (Get-CanonicalPath $RepositoryRoot) -and
+                [IO.Path]::IsPathRooted($receipt.node) -and
+                (Test-Path -LiteralPath $receipt.node -PathType Leaf)) {
+                return [string]$receipt.node
+            }
+        } catch { }
+    }
+    return 'node'
+}
+
 function Read-FreshJson([string]$RepositoryRoot, [string]$Path, [DateTime]$StartedAt) {
     $safe = Assert-RepositoryWritePath $RepositoryRoot $Path
     if (-not (Test-Path -LiteralPath $safe -PathType Leaf)) { throw "Expected output was not created: $safe" }

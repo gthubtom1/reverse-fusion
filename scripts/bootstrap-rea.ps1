@@ -9,7 +9,8 @@ $manifestPath = Join-Path $PSScriptRoot '..\vendor\rea\manifest.json'
 $manifest = Get-Content -Raw $manifestPath | ConvertFrom-Json
 $destination = Assert-RepositoryWritePath $repo $Destination
 New-Item -ItemType Directory -Path $destination -Force | Out-Null
-if (-not $NodePath) { $NodePath = 'node' }
+$NodePath = Resolve-ReaNodePath $repo $NodePath
+$NodePath = (Get-Command $NodePath -CommandType Application -ErrorAction Stop).Source
 $nodeVersionText = (& $NodePath --version 2>&1 | Out-String).Trim()
 Assert-NativeExit $LASTEXITCODE 'Node version probe'
 if ($nodeVersionText -notmatch '^v?(\d+)\.(\d+)\.(\d+)$') { throw "Unrecognized Node version: $nodeVersionText" }
@@ -22,7 +23,7 @@ if ($manifest.node_engine -ne '^22.23.4 || ^24.22.1 || >=26.12.1' -or -not $supp
 }
 $archive = Assert-RepositoryWritePath $repo (Join-Path $destination ("{0}-{1}.tgz" -f $manifest.package, $manifest.version))
 if (-not (Test-Path -LiteralPath $archive)) {
-    npm pack ("{0}@{1}" -f $manifest.package, $manifest.version) --pack-destination $destination | Out-Null
+    npm pack ("{0}@{1}" -f $manifest.package, $manifest.version) --pack-destination $destination --loglevel error | Out-Null
     Assert-NativeExit $LASTEXITCODE 'REA npm pack'
 }
 $hashHex = (Get-FileHash -Algorithm SHA512 -LiteralPath $archive).Hash
@@ -50,4 +51,7 @@ $packageJson = Get-Content -Raw -LiteralPath $packageJsonPath | ConvertFrom-Json
 if ($packageJson.name -ne $manifest.package -or $packageJson.version -ne $manifest.version -or $packageJson.engines.node -ne $manifest.node_engine) {
     throw 'Extracted REA package identity or Node engine mismatch'
 }
+$runtimeReceipt = Assert-RepositoryWritePath $repo (Join-Path $repo 'state/rea-runtime.json')
+New-Item -ItemType Directory -Path ([IO.Path]::GetDirectoryName($runtimeReceipt)) -Force | Out-Null
+@{ schema_version=1; repository_root=$repo; node=$NodePath; node_version=$nodeVersion.ToString(); package=$manifest.package; version=$manifest.version; integrity=$manifest.integrity } | ConvertTo-Json | Set-Content -LiteralPath $runtimeReceipt -Encoding utf8
 Write-Output (ConvertTo-Json @{ status='ready'; node=$NodePath; node_version=$nodeVersion.ToString(); node_engine=$manifest.node_engine; script=$entry; package=$manifest.package; version=$manifest.version; integrity=$manifest.integrity } -Compress)

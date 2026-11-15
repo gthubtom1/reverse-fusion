@@ -44,7 +44,7 @@ The final product contract remains `docs/PRODUCT-GOAL.md`.
    finite core lifecycle without old receipts. Record exact result/commit, push
    the final checkpoint and stop with a clean synchronized checkout.
 
-The latest checkpoint is `checkpoints/RF-27-20261116-001.md`. Any incomplete
+The latest checkpoint is `checkpoints/RF-27-20261116-002.md`. Any incomplete
 check remains explicit there and in CURRENT-STATE. After closure, subsequent
 work is a new target or selective upstream maintenance, not another endless
 retest of unrelated future variants.

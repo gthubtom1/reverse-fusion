@@ -1,5 +1,6 @@
 """Exercise the installed CLI from a real project outside the tool checkout."""
 import json
+import os
 from pathlib import Path
 import subprocess
 import shutil
@@ -12,6 +13,20 @@ TOOL_ROOT = Path(__file__).resolve().parents[1]
 
 
 class CrossProjectTests(unittest.TestCase):
+    def test_json_transport_preserves_unicode_without_utf8_caller_override(self):
+        with tempfile.TemporaryDirectory(prefix='rf 项目 🧪 ') as directory:
+            project = Path(directory).resolve()
+            env = dict(os.environ, PYTHONIOENCODING='gbk')
+            result = subprocess.run(
+                [sys.executable, '-m', 'reverse_fusion', 'bridge', '--mode', 'analysis',
+                 '--hint', 'JavaScript 逆向 🧪', '--format', 'json'],
+                cwd=project, env=env, capture_output=True, timeout=30,
+            )
+            self.assertEqual(result.returncode, 0, result.stderr.decode('ascii', errors='replace'))
+            payload = json.loads(result.stdout.decode('ascii'))
+            self.assertEqual(payload['project_root'], str(project))
+            self.assertEqual(payload['route']['hint'], 'JavaScript 逆向 🧪')
+
     def invoke(self, project, *args, code=0, cwd=None):
         result = subprocess.run(
             [sys.executable, '-X', 'utf8', '-m', 'reverse_fusion', *args],

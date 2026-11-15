@@ -60,6 +60,10 @@ session 冻结与路径边界。仅从外部目录运行一次无写入的 bridg
 6. 模型、账号和 provider 由 `[selected-host]` 拥有。项目不选择、下载、切换或绑定
    模型，不复制凭据，也不修改宿主运行配置。Codex 适配层只增加路由指引；Craft
    companion 的 `--all-tools` 参数保持不变。
+   按需准备 REA 时，先核 Node 的精确 engine；PATH 版本不满足要求且本机已有兼容
+   Node，可将其绝对路径交给 `scripts/bootstrap-rea.ps1 -NodePath [路径]`。bootstrap
+   校验后保存本 checkout 的运行时 receipt，后续命令可恢复；不要把本机路径提交到 Git，
+   不要为此覆盖宿主或全局 Node。具体选择顺序见部署指南。
 7. 当前对话中的 agent 就是默认 Builder，不为了使用本仓库另启一个 CLI、账号或模型。
    只有需要独立 transport 时，才对 `[selected-host]` 执行
    `[venv-python] -m reverse_fusion handshake --client [selected-host] --timeout 45 --record`。

@@ -26,6 +26,10 @@ case、规格、候选及测试。`bridge`、`session`、`build`、`craft` 的 `
    REA 固定 manifest 不是安装；入口存在不是握手，catalog 可见也不是 provider 实跑。
    按需要准备 REA，再观察它实际支持的接口。缺 REA 可用已安装的原生工具继续分析，
    将原始输出作为明确来源的证据，但 REA 原生 bundle/proof/ledger 不得伪造为已完成。
+   若本机存在另一个兼容 Node，维护方可用 `bootstrap-rea.ps1 -NodePath [绝对路径]`
+   准备仓库内 REA；选择保存在工具 checkout 的 `state/rea-runtime.json`，新项目无需
+   复制运行时或重复设置全局 PATH。重新检查 doctor 的 `node_source` 和实际版本，
+   然后调用官方接口验证该目标支持的能力。
 
 3. **证据到规格**：选定被证据支持的功能，写 feature 的 spec/plan/tasks，任务引用原
    Evidence、观察与 unknown。区分 observed/inferred/designed。需要官方 Spec CLI 时按

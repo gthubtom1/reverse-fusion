@@ -6,7 +6,7 @@ $repo = [IO.Path]::GetFullPath((Join-Path $PSScriptRoot '..'))
 Push-Location $repo
 try {
 $state = Join-Path $repo 'state'
-if (-not $NodePath) { $NodePath = 'node' }
+$NodePath = Resolve-ReaNodePath $repo $NodePath
 $rea = Join-Path $repo 'vendor\rea\package\scripts\rea.mjs'
 New-Item -ItemType Directory -Path $state -Force | Out-Null
 $null = Reset-OutputFile $repo (Join-Path $state 'rea-web-original.json')

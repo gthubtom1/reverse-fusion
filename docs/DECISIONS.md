@@ -139,3 +139,12 @@ semantic review record. Declared critical unknowns and stale references block it
 No new Evidence or obligation ledger is created. Mechanical PASS cannot discover
 omitted dependencies or validate a caller's scope decision; a generic unbound
 session only observes file boundaries and cannot certify reconstruction readiness.
+
+## RF-020 Repository runtime selection survives project changes
+
+An explicit compatible Node selected for REA bootstrap is recorded in the tool
+checkout's ignored runtime receipt, after engine and package integrity checks.
+Python diagnosis/acceptance and Windows provider runners restore that selection
+without changing global PATH or host configuration. Environment/explicit options
+take precedence; copied, missing or malformed receipts fall back to discovery.
+The runtime receipt is an executable-path choice, not health, Evidence or proof.
