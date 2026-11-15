@@ -3,8 +3,8 @@
 ## Source references
 
 - Reverse route: `R3` (`components/reverse-core/routes/R3.md`)
-- Original REA Evidence: `state/rea-web-original.json`
-- Candidate REA Evidence: `state/rea-web-candidate.json`
+- Original REA Evidence: `evidence/rf22/web/original.json`
+- Candidate REA Evidence: `evidence/rf22/web/candidate.json`
 - Runtime proof: `state/rea-web-proof-evidence.json`
 
 ## Functional requirements

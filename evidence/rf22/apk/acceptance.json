@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "operation": "apk-reconstruction",
+  "status": "pass",
+  "original_package_evidence_id": "ev_ff88919c8e55454e743b06904a676e7b34ffab93b52612607ca8fe21ef857f23",
+  "original_class_evidence_id": "ev_11a4236680c29b296e2748af9b437d87ca7ab0b9fcf2a3e7abbf814738327f2d",
+  "candidate_package_evidence_id": "ev_f5385a0f23667ad3eb4f47d2342cda8cfc6b2dd31a772958dd4d96bee7045dc6",
+  "candidate_class_evidence_id": "ev_018979598cec4cf2f980c15aaf03764c847c93884a213383a125b5bab119ae4f",
+  "comparison_evidence_id": "ev_f6bd401451d226dbf7c6cf316aca902162674f5aac791234e71d9278b4116ded",
+  "proof_evidence_id": "ev_78f43d34ad47b3941e621fcba168883fdf69af0964402b0bebe82bfb60e397c8",
+  "build": {
+    "status": "pass",
+    "artifact": "C:\\Users\\toti\\Documents\\Codex\\2026-11-14\\c-users-toti-pi-agent-sessions\\work\\reverse-fusion\\state\\apk-candidate\\build\\fixture.apk"
+  },
+  "run": {
+    "status": "unknown",
+    "reason": "No adb device or emulator was available on this host"
+  },
+  "cleanup": {
+    "status": "observed",
+    "scope": "REA inspection invocations returned; this adapter starts no target application."
+  }
+}

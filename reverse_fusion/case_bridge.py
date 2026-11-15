@@ -17,6 +17,8 @@ from typing import Any
 
 from importlib.util import module_from_spec, spec_from_file_location
 
+from .contracts import is_safe_relative_path
+
 
 @dataclass(frozen=True)
 class CasePointer:
@@ -44,14 +46,68 @@ def resolve_case_root(repo_root: Path, case_root: str) -> Path:
 def record_case_pointer(repo_root: Path, pointer: CasePointer) -> Path:
     case_root = resolve_case_root(repo_root, pointer.case_root)
     case_root.mkdir(parents=True, exist_ok=True)
+    path = case_root / "case.json"
+    if not path.resolve().is_relative_to(repo_root.resolve()):
+        raise ValueError('Case record path escapes the repository')
+    history: list[dict[str, Any]] = []
+    revision = 1
+    if path.is_file():
+        try:
+            previous = json.loads(path.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError) as exc:
+            raise ValueError(f"existing case record is unreadable: {exc}") from exc
+        if not isinstance(previous, dict) or set(previous) - {"schema_version", "status", "revision", "history", "pointer"}:
+            raise ValueError("existing case record is malformed")
+        if type(previous.get("schema_version")) is not int or previous.get("schema_version") != 1 or previous.get("status") != "open":
+            raise ValueError("existing case record has an invalid schema or status")
+        prior_pointer = previous.get("pointer")
+        _validate_pointer(prior_pointer, "existing case pointer")
+        if resolve_case_root(repo_root, prior_pointer["case_root"]) != case_root:
+            raise ValueError("existing case pointer belongs to another case root")
+        prior_revision = previous.get("revision", 1)
+        if isinstance(prior_revision, bool) or not isinstance(prior_revision, int) or prior_revision < 1:
+            raise ValueError("existing case record has an invalid revision")
+        prior_history = previous.get("history", [])
+        if not isinstance(prior_history, list):
+            raise ValueError("existing case record has invalid history")
+        for index, item in enumerate(prior_history):
+            if not isinstance(item, dict) or set(item) != {"revision", "pointer"}:
+                raise ValueError(f"existing case history[{index}] is malformed")
+            item_revision = item.get("revision")
+            if isinstance(item_revision, bool) or not isinstance(item_revision, int) or item_revision < 1:
+                raise ValueError(f"existing case history[{index}] has an invalid revision")
+            _validate_pointer(item.get("pointer"), f"existing case history[{index}] pointer")
+            if resolve_case_root(repo_root, item["pointer"]["case_root"]) != case_root:
+                raise ValueError(f"existing case history[{index}] belongs to another case root")
+        if [item["revision"] for item in prior_history] != list(range(1, prior_revision)):
+            raise ValueError("existing case history revisions are not contiguous")
+        history = list(prior_history)
+        history.append({"revision": prior_revision, "pointer": prior_pointer})
+        revision = prior_revision + 1
     record = {
         "schema_version": 1,
         "status": "open",
+        "revision": revision,
+        "history": history,
         "pointer": pointer.to_dict(),
     }
-    path = case_root / "case.json"
     path.write_text(json.dumps(record, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     return path
+
+
+def _validate_pointer(value: Any, label: str) -> None:
+    required = {"case_root", "route_owner", "primary", "mode", "decision_delta", "carry_forward_refs", "route_source"}
+    if not isinstance(value, dict) or set(value) != required:
+        raise ValueError(f"{label} is malformed")
+    for key in required - {"decision_delta", "carry_forward_refs"}:
+        if not isinstance(value.get(key), str):
+            raise ValueError(f"{label}.{key} must be a string")
+    if value["mode"] not in {"analysis", "reconstruction", "follow-up", "normal-dev"}:
+        raise ValueError(f"{label}.mode is invalid")
+    for key in ("decision_delta", "carry_forward_refs"):
+        items = value.get(key)
+        if not isinstance(items, list) or any(not isinstance(item, str) for item in items):
+            raise ValueError(f"{label}.{key} must be a string list")
 
 
 def locate_reverse_root() -> Path | None:
@@ -101,16 +157,28 @@ def _local_route(hint: str, primary: str | None = None) -> dict[str, Any]:
         return {"status": "unavailable", "source": "local", "reason": str(exc), "hint": hint}
 
 
-def _external_route(hint: str, reverse_root: Path | None) -> dict[str, Any]:
+def _external_route(hint: str, reverse_root: Path | None, primary: str | None = None) -> dict[str, Any]:
     root = reverse_root or locate_reverse_root()
     if root is None:
         return {"status": "unavailable", "source": "external", "reason": "reverse-skill root not located", "hint": hint}
-    script = root / "skills" / "scripts" / "master-route.ps1"
-    if not script.is_file():
-        return {"status": "unavailable", "source": "external", "reason": "native router missing", "path": str(script), "hint": hint}
+    ps_script = root / "skills" / "scripts" / "master-route.ps1"
+    sh_script = root / "skills" / "scripts" / "master-route.sh"
+    requested_primary = primary
+    if ps_script.is_file() and (platform.system().lower() == "windows" or not sh_script.is_file()):
+        command = ["powershell", "-NoProfile", "-File", str(ps_script), "-DryRun", "-Hint", hint]
+        if requested_primary:
+            command.extend(["-Primary", requested_primary])
+        script = ps_script
+    elif sh_script.is_file():
+        command = ["bash", str(sh_script), "--dry-run", "--hint", hint]
+        if requested_primary:
+            command.extend(["--primary", requested_primary])
+        script = sh_script
+    else:
+        return {"status": "unavailable", "source": "external", "reason": "native router missing", "path": str(ps_script), "hint": hint}
     try:
         completed = subprocess.run(
-            ["powershell", "-NoProfile", "-File", str(script), "-DryRun", "-Hint", hint],
+            command,
             cwd=str(root),
             capture_output=True,
             text=True,
@@ -120,14 +188,59 @@ def _external_route(hint: str, reverse_root: Path | None) -> dict[str, Any]:
     except (OSError, subprocess.SubprocessError) as exc:
         return {"status": "unavailable", "source": "external", "reason": str(exc), "hint": hint}
     output = (completed.stdout or completed.stderr).strip()
-    primary = next((line.split("->", 1)[1].strip() for line in output.splitlines() if line.startswith("PRIMARY ->")), None)
+    selected = next((line.split("->", 1)[1].strip() for line in output.splitlines() if line.startswith("PRIMARY ->")), None)
+    skill = selected if isinstance(selected, str) and selected.startswith("skills/") else ""
+    skill_available = False
+    missing_support: list[str] = []
+    required_reads = ["RULES.md"]
+    if skill:
+        required_reads.append(skill)
+    for name in required_reads:
+        if not is_safe_relative_path(name):
+            missing_support.append(name)
+            continue
+        candidate = (root / name).resolve()
+        try:
+            candidate.relative_to(root.resolve())
+        except ValueError:
+            missing_support.append(name)
+            continue
+        if not candidate.is_file():
+            missing_support.append(name)
+    if skill:
+        skill_available = skill not in missing_support
+
+    selected_id = requested_primary
+    config_path = root / "components" / "reverse-core" / "routing.json"
+    if not config_path.is_file():
+        config_path = root / "skills" / "config" / "routing.json"
+    try:
+        routing = json.loads(config_path.read_text(encoding="utf-8-sig"))
+        routes = routing.get("routes", {}) if isinstance(routing, dict) else {}
+        derived_id = next(
+            (route_id for route_id, route in routes.items()
+             if isinstance(route, dict) and f"skills/{route.get('skill', '')}" == skill),
+            None,
+        )
+    except (OSError, json.JSONDecodeError):
+        derived_id = None
+    if derived_id:
+        selected_id = derived_id
+    primary_mismatch = bool(requested_primary and derived_id and requested_primary != derived_id)
+    routed = completed.returncode == 0 and bool(selected) and skill_available and not missing_support and not primary_mismatch
     return {
-        "status": "external-route-pass" if completed.returncode == 0 and primary else "unavailable",
+        "status": "external-route-pass" if routed else "unavailable",
         "source": "external",
-        "primary": primary,
+        "primary": selected,
+        "primary_id": selected_id,
+        "skill": skill,
+        "skill_available": skill_available,
+        "required_reads": required_reads,
+        "missing_support": missing_support,
         "output": output,
         "returncode": completed.returncode,
         "router": str(script),
+        "reason": "external router did not honor the requested primary" if primary_mismatch else None,
     }
 
 
@@ -147,10 +260,10 @@ def dry_run_route(
     if source not in {"local", "external", "auto"}:
         return {"status": "blocked", "source": source, "reason": "unsupported route source", "hint": hint}
     if source == "external":
-        return _external_route(hint, reverse_root)
+        return _external_route(hint, reverse_root, primary=primary)
     local = _local_route(hint, primary=primary)
     if source == "auto" and local.get("status") != "local-route-pass":
-        external = _external_route(hint, reverse_root)
+        external = _external_route(hint, reverse_root, primary=primary)
         if external.get("status") == "external-route-pass":
             return external
     return local

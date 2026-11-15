@@ -1,39 +1,41 @@
 # Context Handoff
 
-Before ending a session or compressing context, update
-`docs/CURRENT-STATE.md` and create a new checkpoint. Never recover project
-state from chat history alone.
+Before ending a session or compressing context, update `docs/CURRENT-STATE.md`
+and the current checkpoint. Recover state from the checkout and execution
+records rather than chat history.
 
-Current handoff (2026-11-15, RF-24):
+Current handoff: RF-25, product `1.0.0`, 2026-11-15.
 
-Latest checkpoint: `checkpoints/RF-24-20261115-001.md`. The RF-23 deployment remains recorded in its original checkpoint.
+- Repository: <https://github.com/gthubtom1/reverse-fusion>, branch `master`.
+- Deployment entry: `docs/AGENT-BOOTSTRAP.md`. This travels with the repository;
+  the user does not need to keep or repeatedly paste a chat prompt.
+- Current status and next action: `docs/CURRENT-STATE.md`. Audit closure and
+  exact final counts/commit: `checkpoints/RF-25-20261115-001.md`.
+- Product contract: `docs/PRODUCT-GOAL.md`. Architecture is an adaptive helper
+  for the current host, not a model choice or fixed reverse-engineering order.
+- Default writer: current-session Builder. Frozen tasks/research and allowed
+  candidate writes are observed by `session prepare/check/refine/finish`.
+  Business proof remains independent. Optional child Codex currently has a
+  credits block; earlier text smoke is not an APK candidate.
+- Archive: `evidence/rf22/manifest.json` indexes current raw representative
+  Evidence, proof and ledgers. RF-25 supersedes the identity-invalid normalized
+  archive without changing hash-covered paths under an existing Evidence ID.
+- Scope: WASM three-state check, Web finite export replay and .NET finite method
+  replay; APK build/static manifest/member comparison only. Web full graph has
+  4 required open obligations; APK device/runtime remains unknown.
+- Providers: `docs/PROVIDER-STATUS.md`; source IDs and distributions:
+  `SOURCE-MANIFEST.json` and `components/official/manifest.json`. Craft is an
+  interface-only reference; historical patch names are not distributed files.
+- Reverse preservation: 603 source files with upstream/local digest and current
+  adaptation reasons in `components/reverse-core/preservation.json`. RF-24's
+  historical report is `docs/REVERSE-CAPABILITY-AUDIT.md`.
+- Normal development does not require reverse tasks. Analysis subcases need
+  route/Evidence/conclusions; reconstruction adds frozen tasks and the complete
+  candidate acceptance chain. Restore required reads and isolation on resume.
+- Rollback: `docs/ROLLBACK.md`; no transaction journal or automatic global
+  restore is implemented. Old installs and global configuration stay outside
+  this repository's write scope.
 
-- Repository: https://github.com/gthubtom1/reverse-fusion, branch `master`.
-- Status: `reconstruction-product-v1-final`; RF-17 portable route, RF-18 real
-  host-owned Builder, RF-19 Web, RF-20 PE/.NET, RF-21 APK/DEX and RF-22 release
-  acceptance plus RF-23 independent-audit hardening are closed. Local domain
-  skills live under `skills/`; normalized representative Evidence lives under
-  `evidence/rf22/`.
-- Representative ledgers: WASM
-  `rol_09e99625528899bcc2b492bdc7b2811b44fb573c13418ff80af0404548039928`;
-  Web `rol_39c38b659a45e5b080c5dc55870f154eb17b9e484fb998aacba88d07cd579c48`;
-  .NET `rol_53dd8e6683c0351977afc491a5c50863e56a390e5925d0c6d63fde1372bebba9`;
-  APK `rol_b9833a0dd114ad263d96217960a2990d87c9e3629048488d3f4f2379f93762b`.
-  All four reviewed ledgers report `required_open: 0`.
-- Host record: Codex/Pi fixed-sentinel handshakes pass; Claude is explicitly
-  blocked by missing login. The current Codex workspace has a repository-local
-  `state/install.json` receipt, a fresh real handshake record, and a live
-  host-owned Builder run that completed all six checks, including refine and
-  cleanup, with `config_mutation=false`. Host records are written as BOM-safe
-  UTF-8 and the reader accepts legacy PowerShell BOM output.
-- Provider record: `docs/PROVIDER-STATUS.md` records Craft native R46,
-  Windows PTY, Web static unknowns and Android runtime unknowns separately.
-- Product contract and continuation prompt: `docs/PRODUCT-GOAL.md` and
-  `docs/HANDOFF-PROMPT.md`.
-- RF-24: enhanced Reverse preservation and runtime handoff are audited in
-  `docs/REVERSE-CAPABILITY-AUDIT.md`. The inventory covers 603 source files;
-  required reads now survive case handoff, and CTF/Burp support is present.
-- Next single action: perform a read-only upstream review or open a new target
-  case; do not rewrite the closed RF-17–RF-24 evidence.
-- Rollback: revert the RF-24 repository commit; old reverse-skill,
-  installer, REA/Craft/Spec Kit and host configuration remain untouched.
+After RF-25 closes, the next action is a user target case or selective upstream
+review. New observations can supersede historical results; never rewrite a
+historical checkpoint to imply it measured a later checkout or host state.

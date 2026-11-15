@@ -1,0 +1,88 @@
+{
+  "version": 1,
+  "operation": "dotnet-reconstruction",
+  "status": "pass",
+  "original_evidence_id": "ev_46f34b29169f2d2c94b63c10e235e666be935547ada46c6bbf002d1aa1e81ecd",
+  "original_members_evidence_id": "ev_ad5eba07846da562efac582bf35b3f14a069af941b122762d2c9f8651187da28",
+  "candidate_evidence_id": "ev_fa3d5e411a26c307330294c3723193a533dabad6ea8ffdd1ed929fd89981369e",
+  "candidate_members_evidence_id": "ev_24aee65a3c5405256369eee76c97549629f7c7ca025822498213420a5ae99918",
+  "comparison_evidence_id": "ev_1ab1bd44ad56b9732b467cba874f11d0904f7859cf15eced62868059bbc43291",
+  "proof_evidence_id": "ev_49ba9007e221598d3ed39de4b3d4c84e6b3d43e2a527aedde911a883147e0e87",
+  "static_summary": {
+    "unchanged": 0,
+    "changed": 2,
+    "added": 0,
+    "removed": 0,
+    "unknown": 0
+  },
+  "runtime": [
+    {
+      "input": " hello ",
+      "original": {
+        "status": "observed",
+        "input": " hello ",
+        "output": "rf:HELLO",
+        "exit_code": 0
+      },
+      "candidate": {
+        "status": "observed",
+        "input": " hello ",
+        "output": "rf:HELLO",
+        "exit_code": 0
+      },
+      "equal": true
+    },
+    {
+      "input": "",
+      "original": {
+        "status": "observed",
+        "input": "",
+        "output": "rf:",
+        "exit_code": 0
+      },
+      "candidate": {
+        "status": "observed",
+        "input": "",
+        "output": "rf:",
+        "exit_code": 0
+      },
+      "equal": true
+    },
+    {
+      "input": "\tMixed  text\n",
+      "original": {
+        "status": "observed",
+        "input": "\tMixed  text\n",
+        "output": "rf:MIXED  TEXT",
+        "exit_code": 0
+      },
+      "candidate": {
+        "status": "observed",
+        "input": "\tMixed  text\n",
+        "output": "rf:MIXED  TEXT",
+        "exit_code": 0
+      },
+      "equal": true
+    },
+    {
+      "input": "reverse-fusion",
+      "original": {
+        "status": "observed",
+        "input": "reverse-fusion",
+        "output": "rf:REVERSE-FUSION",
+        "exit_code": 0
+      },
+      "candidate": {
+        "status": "observed",
+        "input": "reverse-fusion",
+        "output": "rf:REVERSE-FUSION",
+        "exit_code": 0
+      },
+      "equal": true
+    }
+  ],
+  "cleanup": {
+    "status": "observed",
+    "scope": "Bounded child invocations returned; descendant containment is not qualified."
+  }
+}

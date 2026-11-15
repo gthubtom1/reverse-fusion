@@ -1438,9 +1438,9 @@
       "sha256": "74a8e9a7a4c8b62bae47963cd2d34ed6e0e150c327e0b9712ba17189eff10d6e"
     },
     "skills/reconstruction/SKILL.md": {
-      "sha256": "69f488a4afd06b43fa5fc29641bf8f4388cd7fc1a9c2907b42f308e82a9463fd",
+      "sha256": "6ab62f757eed3cf74a1929e719bbffaa4baa78740b3375bf1fba15566c7c7ed7",
       "upstream_sha256": "86f2ac1e9c18e0d964e1f694a229484b93d6e9ba0c3a1346bd1c328de77dfe77",
-      "patch_reason": "Resolve tool preparation through current local rules and preserve global-install boundaries."
+      "patch_reason": "Reverse Fusion current-session Builder, optional official Spec CLI, repository-local bootstrap and explicitly attributed bounded REA integration proof adapter; preserve inherited native backend requirements only for that optional backend."
     },
     "skills/reconstruction/TESTING.md": {
       "sha256": "4dce508bd3662bd7c1506a61edaa150fcad109c77dc2b05158512ea3b2e33da0"
@@ -1488,7 +1488,9 @@
       "sha256": "1c82528e440707b6751d79ec034d7524463d49835e9ffb157e4a45f4772bfb23"
     },
     "skills/reconstruction/references/execution-backend-contract.json": {
-      "sha256": "d11c62d3fc41e628266da4d68f7ffb6d42e7f8f4be7c6c8858b2bea97d9c8146"
+      "sha256": "0ff9f3a9f00098e003439e654311e2e3b17c473d17239262af0a9538933c43cc",
+      "upstream_sha256": "d11c62d3fc41e628266da4d68f7ffb6d42e7f8f4be7c6c8858b2bea97d9c8146",
+      "patch_reason": "Refresh required-file digests after reviewed Reverse Fusion reconstruction integration; external native backend capability identity is unchanged."
     },
     "skills/reconstruction/references/execution-backend.md": {
       "sha256": "56275a13f58d1501d340d3be9e6564a7c13e84cbc91e5eae237f181819f56de6"
@@ -1509,7 +1511,9 @@
       "sha256": "06f0b993058a0b435ededb78b9935d12268ec6e5fa466e2f6990b15b38332b59"
     },
     "skills/reconstruction/tests/test_backend_routing.py": {
-      "sha256": "acd8fc61b290538699e1be8fdb1c178bddc2b4cbdb4fb571b495bff677adb4c1"
+      "sha256": "56a5acdfe7e53eca283c6a07ce34198a2db1dc18c135d1de9196ede14648996f",
+      "upstream_sha256": "acd8fc61b290538699e1be8fdb1c178bddc2b4cbdb4fb571b495bff677adb4c1",
+      "patch_reason": "Read the inherited Reverse contract version from components/reverse-core/VERSION; product release VERSION has independent identity."
     },
     "skills/reconstruction/tests/test_check_handoff.py": {
       "sha256": "7f7a123337affa15f03ca17ba7f585799e9dfaef0d4ea2ed4a429b7821db636e"

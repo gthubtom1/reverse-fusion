@@ -1,69 +1,66 @@
-# 交给下一位智能体的维护提示词
+# 仓库内的维护交接
 
-把下面内容直接交给下一位 Codex、Pi、Claude 或兼容 coding agent：
+本文件随 GitHub 仓库保存。新电脑部署只需仓库链接和“部署到当前工作区”；
+唯一部署入口是 [AGENT-BOOTSTRAP.md](AGENT-BOOTSTRAP.md)，用户无需另存或复制
+长提示词。本文件用于后续维护、恢复任务和选择性更新。
 
-```text
-你正在维护 reverse-fusion。先完整读取 README.md、AGENTS.md、
-docs/DEPLOYMENT-GUIDE.md、
-docs/PRODUCT-GOAL.md、docs/CURRENT-STATE.md、docs/DECISIONS.md、
-docs/PROVIDER-STATUS.md、docs/TARGET-CAPABILITY-MATRIX.md、
-docs/FINAL-RELEASE-ACCEPTANCE.md、docs/REVERSE-CAPABILITY-AUDIT.md、
-RULES.md、SOURCE-MANIFEST.json、最新 checkpoint 和
-Git 状态，并读取 `skills/` 下与新目标 route 对应的领域技能正文。
+## 接手时读取
 
-当前标签是 reconstruction-product-v1-final（RF-24 已闭合）。这不是重新设计框架
-或再次宣布 framework-v1-baseline 的任务。任何新工作都必须先建立新的
-target case 和完成门，并保留旧 case 的 Evidence、ledger 与 converge 记录。
+读取 `README.md`、`AGENTS.md`、`RULES.md`、`docs/AGENT-BOOTSTRAP.md`、
+`docs/PRODUCT-GOAL.md`、`docs/PROJECT-CONTEXT.md`、`docs/CURRENT-STATE.md`、
+`docs/DECISIONS.md`、`docs/PROVIDER-STATUS.md`、`docs/TARGET-CAPABILITY-MATRIX.md`、
+`docs/FINAL-RELEASE-ACCEPTANCE.md`、`docs/DEPLOYMENT-GUIDE.md`、
+`SOURCE-MANIFEST.json`、`components/official/manifest.json`、
+`components/reverse-core/preservation.json`、当前 checkpoint 和 Git 状态。
+具体目标还要读取本地路由返回的 `skill`、`required_reads` 和当前 case。
 
-硬约束：
+当前维护阶段是 RF-25，产品版本为 `1.0.0`，Reverse 领域合同版本为 `1.9.0`。
+是否已完成本轮审计，以 `CURRENT-STATE.md` 和
+`checkpoints/RF-25-20261115-001.md` 为准。RF-22/RF-23/RF-24 的历史 final
+标签不覆盖本轮发现的问题或当前 provider 阻塞。
 
-- 不修改旧 reverse-skill、旧 installer、REA/Craft/Spec Kit 现有安装、Craft
-  companion 的 `--all-tools` 参数、宿主凭据或全局配置。
-- 不选择、下载或绑定 Codex/Pi/Claude 的模型。模型、账号和 provider 属于
-  当前宿主；仓库只记录宿主返回的运行观察。
-- 不把工具可见、MCP connected、exit 0、Craft Ready 或模型自述写成业务验收。
-- 每个新目标都必须有唯一 Reverse route、原版 REA Evidence、冻结 Spec
-  tasks、host-owned Builder candidate、build/run、comparison、pass/fail/unknown、
-  cleanup、canonical reconstruction proof 和 obligation ledger。
-- provider、登录、设备、PTY 或加壳/混淆能力缺失时写 blocked、unsupported 或
-  unknown，并保留下一步 probe。
-- fresh clone 的 route 必须能解析到本地 descriptor 和本地领域技能正文；缺任一项
-  就记录 `unavailable`，不要用旧 receipt 假装本地能力存在。
-- 读取路由返回的 required_reads；困难迹象稍后出现时按 RULES 加载对应资料。
-  更新来源文件时同步 preservation.json 的内容摘要与适配原因。
+## 保持的职责与边界
 
-当前已闭合的代表性链（它们验证统一产品合同，不要求穷举未来目标）：
+- Reverse 是唯一 route/case owner。fresh clone 必须自带 descriptor、技能正文和
+  必需资料；缺失时返回 `unavailable`，旧 receipt 不是替代品。
+- REA 管理 Evidence、comparison 和 ledger；本仓库的有限 integration verifier
+  可使用官方 serializer，但不得冒充 REA 原生进程验证器或靠改 links 闭合。
+- Spec 是任务和来源引用层。normal-dev 按需使用，analysis 不强制 Spec/candidate；
+  reconstruction 才冻结 spec/plan/tasks，并保留 converge 和修正记录。
+- 默认 Builder 就是当前对话中的宿主 agent，使用其现有工具、账号和模型。
+  `session prepare/check/refine/finish` 冻结输入并观察写入边界；它不启动第二个
+  CLI，不安装模型。可选子 CLI 单独资格化；当前子 Codex 的 credits 阻塞不
+  影响当前会话编码路径。旧文本 smoke 绝非 APK 候选或业务证明。
+- 模型、provider 和登录属于宿主；不选择、下载或切换模型，不复制凭据。
+- 旧仓库、旧安装、全局配置只读。Craft companion 的 `--all-tools` 保持原样。
+  当前 Craft 分发是 interface-only，四个历史 patch 名称不代表文件已经分发。
+- 工具可见、exit 0、MCP connected、Craft Ready 和模型自述不是业务验收。
 
-- WASM：WABT interpreter 与 official REA ledger ready。
-- Web/JavaScript：Node finite traces pass；静态 partial 和 package/parser
-  unknown 保留在 acceptance；reviewed export ledger ready。
-- PE/.NET：.NET 8 build、REA managed comparison、四组 runtime traces 和 ledger
-  ready。
-- APK/DEX：JADX headless MCP 0.7.1、javac/D8/AAPT、REA package/class static
-  comparison 和 static ledger ready；无 adb/emulator 时 Android runtime 为
-  unknown。
+## 开始一次任务
 
-维护流程：
+1. 按部署入口使用仓库 venv Python，运行 `contracts`、当前 host 的 `plan`、
+   `doctor` 和 `handoff --check`。doctor 的 provider 状态不是现场业务证明。
+2. normal-dev 继续普通开发。需要研究外部项目时，在仓库内建立隔离 analysis
+   subcase；读取路由和困难目标资料，保留原版 Evidence、限制及下一步 probe。
+3. 只有用户要求复刻时升级为 reconstruction，冻结 tasks/research，准备唯一
+   writer 和明确 allowed outputs。使用 `session prepare`，让当前宿主写候选，
+   再 `check`、审查/refine、`finish`。文件观察通过后仍需独立 build/run 和对比。
+4. 记录原版/候选分析、comparison、有限 proof、清理与 obligation ledger。
+   证据、登录、设备或工具缺失时保留 `unknown`、`blocked`、`unsupported`。
+   有壳、混淆、反调试时根据证据调整工具顺序，不把方法固定为一条流水线。
+5. 只把审查后的 Evidence 支持结论或候选带回主项目；不让临时子案例覆盖主项目。
+6. 收口时更新当前状态、provider、能力矩阵、验收表、manifest 和 checkpoint；
+   运行与改动相称的有限检查，不重复扩张到无关目标。
 
-1. 先运行 `python -m reverse_fusion contracts`、`plan`、`doctor`、`handoff`
-   并检查 provider 状态。
-2. 新目标先通过 `bridge --source local` 建 case，再在 `specs/` 写 spec、plan、
-   tasks、converge；不要复制旧 ledger 当作新目标证据。
-   normal-dev 主项目可以在开发中途创建隔离 subcase：先保存主项目上下文，
-   再对外部网站、APK、桌面软件或其他目标执行 analysis/reconstruction，最后
-   将经过 Evidence 支持的结论作为主项目输入；不要把 subcase candidate 写回
-   主项目目录。
-3. Builder 使用宿主当前模型，调用中不得加入 `--model`；候选输出必须限制在
-   case workspace 和 allowed outputs。
-4. 用对应 runner 生成 REA Evidence、proof 和 ledger；把静态未知、设备缺失、
-   PTY 缺失写入 acceptance。
-5. 完成后更新 CURRENT-STATE、PROVIDER-STATUS、TARGET-CAPABILITY-MATRIX、
-   FINAL-RELEASE-ACCEPTANCE、checkpoint、manifest 和 README，然后运行 tests、
-   contracts、fresh-clone lifecycle 和 `git diff --check`。
-6. 上游更新只做只读比较；只有新的 capability gap 有直接证据时，才在本仓库
-   增加受控增强或 fork，并记录 rollback。
+代表性验收的准确身份在 `evidence/rf22/manifest.json`。RF-25 原样归档替代了
+旧的路径规范化记录；历史观测中的绝对路径不作为部署配置，也不能直接改写后
+继续沿用旧 Evidence ID。Web 有限 export ledger 与完整 graph 未知义务分开；
+APK 只有构建和 manifest/member 静态证明，设备运行及方法体等价保持 unknown。
 
-交付必须列出：新目标的原版/候选/比较/proof/ledger ID，宿主 transport 和模型
-归属，pass/fail/unknown/blocked/unsupported，cleanup 与全局配置摘要，commit、
-GitHub URL 和回滚点。没有直接 Evidence 的结论保持 unknown。
-```
+## 更新与交付
+
+上游更新按 `docs/UPSTREAM-MAINTENANCE.md` 做只读比较。只吸收改善真实缺口的
+变化，记录 source/patch/fork 身份、影响、focused checks 和回滚点；无需跟随
+每次上游发布。交付写明实际范围、结果状态、cleanup、commit、GitHub 链接和
+尚存 provider 边界。验收记录与仓库状态一致后停止，不把未来每种目标都变成
+本次发布的必做测试。

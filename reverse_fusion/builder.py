@@ -11,7 +11,6 @@ import json
 import os
 import shutil
 import subprocess
-import tempfile
 from dataclasses import dataclass
 from hashlib import sha256
 from pathlib import Path
@@ -33,6 +32,7 @@ class HostBuilder:
 
     HOSTS = ("codex", "pi", "claude")
     REQUIRED_TOOLS = ("prepare", "build", "check", "refine", "return_summary", "cleanup")
+    UNSAFE_ENTRY = "unsafe-link-or-junction"
 
     def __init__(self, workspace: Path, *, host: str = "codex", timeout_seconds: int = 180):
         self.workspace = workspace.resolve()
@@ -40,15 +40,18 @@ class HostBuilder:
         self.timeout_seconds = timeout_seconds
 
     def _choose_host(self) -> tuple[str | None, str | None]:
+        def executable(name):
+            names = [f"{name}.exe", f"{name}.ps1", f"{name}.cmd"] if os.name == "nt" else [name]
+            return next((found for item in names if (found := shutil.which(item))), None)
         if self.host == "auto":
             for candidate in self.HOSTS:
-                path = shutil.which(candidate) or shutil.which(f"{candidate}.exe")
+                path = executable(candidate)
                 if path:
                     return candidate, path
             return None, None
         if self.host not in self.HOSTS:
             return None, None
-        return self.host, shutil.which(self.host) or shutil.which(f"{self.host}.exe")
+        return self.host, executable(self.host)
 
     def _invocation(self, host: str, executable: str, prompt: str) -> HostInvocation:
         if host == "codex":
@@ -65,7 +68,7 @@ class HostBuilder:
                 "--json",
                 "-C",
                 str(self.workspace),
-                prompt,
+                "-",
             )
         elif host == "pi":
             argv = (
@@ -91,6 +94,8 @@ class HostBuilder:
                 "--output-format",
                 "json",
             )
+        if executable.lower().endswith('.ps1'):
+            argv = (shutil.which('powershell') or 'pwsh', '-NoProfile', '-File', executable, *argv[1:])
         return HostInvocation(host, executable, argv)
 
     def _invoke(self, invocation: HostInvocation, prompt: str) -> dict[str, Any]:
@@ -98,7 +103,8 @@ class HostBuilder:
             completed = subprocess.run(
                 list(invocation.argv),
                 cwd=str(self.workspace),
-                stdin=subprocess.DEVNULL,
+                input=prompt if invocation.host == "codex" else None,
+                **({} if invocation.host == "codex" else {"stdin": subprocess.DEVNULL}),
                 capture_output=True,
                 text=True,
                 encoding="utf-8",
@@ -108,14 +114,16 @@ class HostBuilder:
                 env={**os.environ, "RF_BUILDER_ACTIVE": "1"},
             )
         except subprocess.TimeoutExpired as exc:
+            excerpt = lambda value: (value.decode('utf-8', errors='replace') if isinstance(value, bytes) else value or '')[-4000:]
             return {
                 "status": "blocked",
                 "reason": "host builder timed out",
                 "host": invocation.host,
                 "executable": invocation.executable,
                 "argv": list(invocation.argv[:-1]),
-                "stdout": (exc.stdout or "")[-4000:],
-                "stderr": (exc.stderr or "")[-4000:],
+                "stdout": excerpt(exc.stdout),
+                "stderr": excerpt(exc.stderr),
+                "cleanup": "unknown",
             }
         except OSError as exc:
             return {"status": "blocked", "reason": str(exc), "host": invocation.host, "executable": invocation.executable}
@@ -123,9 +131,12 @@ class HostBuilder:
         stderr = completed.stderr or ""
         combined = f"{stdout}\n{stderr}"
         lower = combined.lower()
-        if completed.returncode != 0 and ("not logged in" in lower or "login" in lower or "credential" in lower):
+        if completed.returncode != 0 and any(token in lower for token in (
+            "not logged in", "login", "credential", "out of credits", "quota",
+            "service temporarily unavailable", "503",
+        )):
             status = "blocked"
-            reason = "host CLI started but has no usable login/provider credential"
+            reason = "host login, quota or provider availability blocked the invocation"
         elif completed.returncode == 0:
             status = "pass"
             reason = "host CLI completed"
@@ -148,10 +159,48 @@ class HostBuilder:
         if not self.workspace.exists():
             return {}
         result: dict[str, str] = {}
-        for path in self.workspace.rglob("*"):
-            if path.is_file() and ".git" not in path.parts:
-                result[str(path.relative_to(self.workspace)).replace("\\", "/")] = sha256(path.read_bytes()).hexdigest()
+        for current, directories, files in os.walk(self.workspace, topdown=True, followlinks=False):
+            current_path = Path(current)
+            retained_directories = []
+            for name in directories:
+                path = current_path / name
+                relative = str(path.relative_to(self.workspace)).replace("\\", "/")
+                if self._is_link_or_junction(path):
+                    result[relative] = self.UNSAFE_ENTRY
+                else:
+                    retained_directories.append(name)
+            directories[:] = retained_directories
+            for name in files:
+                path = current_path / name
+                relative = str(path.relative_to(self.workspace)).replace("\\", "/")
+                if self._is_link_or_junction(path):
+                    result[relative] = self.UNSAFE_ENTRY
+                else:
+                    result[relative] = sha256(path.read_bytes()).hexdigest()
         return result
+
+    @staticmethod
+    def _is_link_or_junction(path: Path) -> bool:
+        try:
+            is_junction = getattr(path, "is_junction", None)
+            return path.is_symlink() or bool(is_junction and is_junction())
+        except OSError:
+            return True
+
+    @classmethod
+    def _unsafe_entries(cls, snapshot: dict[str, str]) -> list[str]:
+        return sorted(path for path, digest in snapshot.items() if digest == cls.UNSAFE_ENTRY)
+
+    @staticmethod
+    def _snapshot_delta(before: dict[str, str], after: dict[str, str]) -> dict[str, list[str]]:
+        """Return added, changed and deleted paths between two workspace snapshots."""
+        before_keys = set(before)
+        after_keys = set(after)
+        return {
+            "added": sorted(after_keys - before_keys),
+            "changed": sorted(path for path in before_keys & after_keys if before[path] != after[path]),
+            "deleted": sorted(before_keys - after_keys),
+        }
 
     @staticmethod
     def _safe_relative(value: str) -> bool:
@@ -190,17 +239,38 @@ class HostBuilder:
         if any(not is_safe_relative_path(item) for item in requested_allowed):
             return {"version": 1, "disposition": "needs-scope", "tasks": tasks, "checks": checks, "cleanup": {"status": "not-started"}, "reason": "allowed output escapes workspace"}
         allowed = {item.replace("\\", "/") for item in requested_allowed}
+        for relative in allowed:
+            allowed_path = (self.workspace / relative).resolve()
+            try:
+                allowed_path.relative_to(self.workspace)
+            except ValueError:
+                return {"version": 1, "disposition": "needs-scope", "tasks": tasks, "checks": [], "cleanup": {"status": "not-started"}, "reason": "allowed output escapes workspace"}
         before = self._snapshot()
+        unsafe_before = self._unsafe_entries(before)
+        if unsafe_before:
+            return {
+                "version": 1,
+                "disposition": "needs-scope",
+                "tasks": tasks,
+                "checks": checks,
+                "cleanup": {"status": "not-started"},
+                "reason": "workspace contains a symbolic link or junction",
+                "result": {"unsafe_entries": unsafe_before},
+            }
         checks.append({"id": "prepare", "status": "pass", "host": host, "research_ref": research_ref})
 
-        instruction = (
+        bounded_context = (
             f"You are the Builder for a bounded reconstruction task. Work only in {self.workspace}. "
             f"Frozen tasks (already accepted, do not invent new scope): {json.dumps(tasks, ensure_ascii=False)}. "
             f"Accepted research Evidence reference: {research_ref}. "
             f"Create or modify only the candidate files listed here: {json.dumps(sorted(allowed), ensure_ascii=False)}. "
             f"The required primary output is {output_relative}. "
             f"Use the supplied task and Evidence context. Do not modify repository, host, credential, or configuration files. "
-            f"Do not choose or report a model. {prompt} "
+            f"Do not choose or report a model. Original bounded task: {prompt} "
+        )
+        instruction = (
+            bounded_context
+            + "Build the candidate now. "
             "After writing the candidate, return a short factual summary."
         )
         invocation = self._invocation(host, executable, instruction)
@@ -230,20 +300,33 @@ class HostBuilder:
                 {"id": "refine", "status": "not-run"},
                 {"id": "return_summary", "status": "pass"},
             ])
-            return {"version": 1, "disposition": host_result["status"], "tasks": tasks, "checks": checks, "cleanup": {"status": "verified"}, "backend": f"host-agent:{host}", "host_result": host_result, "research_ref": research_ref}
+            return {"version": 1, "disposition": host_result["status"], "tasks": tasks, "checks": checks, "cleanup": {"status": "unknown" if host_result.get("cleanup") == "unknown" else "observed"}, "backend": f"host-agent:{host}", "host_result": host_result, "research_ref": research_ref}
 
+        after_build = self._snapshot()
+        build_delta = self._snapshot_delta(before, after_build)
+        changed_or_added = set(build_delta["added"]) | set(build_delta["changed"])
+        unexpected = sorted((set(changed_or_added) | set(build_delta["deleted"])) - allowed)
+        unsafe_after_build = self._unsafe_entries(after_build)
+        output_key = output_relative.replace("\\", "/")
         output_exists = output_path.is_file()
-        changed = set(self._snapshot()) - set(before)
-        unexpected = sorted(changed - allowed)
-        if output_exists and not unexpected:
-            checks.append({"id": "check", "status": "pass", "candidate": output_relative})
+        output_fresh = output_key in changed_or_added
+        if output_exists and output_fresh and not unexpected and not unsafe_after_build:
+            checks.append({
+                "id": "check",
+                "status": "observed",
+                "candidate": output_relative,
+                "candidate_write": "added-or-changed",
+                "business_acceptance": "not-performed",
+                "snapshot_delta": build_delta,
+            })
             # Exercise the refinement seam even when the first candidate
             # already satisfies the bounded file contract.  The host is told
             # to leave a correct candidate untouched; this proves that the
             # six-tool transport is available without inventing a second
             # writer or changing the frozen scope.
             refine_instruction = (
-                f"Review the existing candidate file {output_relative} against the same frozen tasks and Evidence. "
+                bounded_context
+                + f"Review the existing candidate file {output_relative} against the frozen tasks and Evidence above. "
                 "If it already satisfies the tasks, leave it unchanged. If a correction is required, edit only the "
                 f"allowed candidate files {json.dumps(sorted(allowed), ensure_ascii=False)}. Do not create any other files. "
                 "Return a short factual refinement summary."
@@ -255,26 +338,35 @@ class HostBuilder:
             refine_config_check = compare_host_config(refine_config_before, refine_config_after)
             refine_result["config_snapshot"] = refine_config_check
             refine_result["config_mutation"] = refine_config_check["mutation"]
+            refine_before = after_build
             refine_after = self._snapshot()
-            refine_unexpected = sorted(set(refine_after) - set(before) - allowed)
+            refine_delta = self._snapshot_delta(refine_before, refine_after)
+            refine_unexpected = sorted((set(refine_delta["added"]) | set(refine_delta["changed"]) | set(refine_delta["deleted"])) - allowed)
+            refine_unsafe = self._unsafe_entries(refine_after)
             if refine_config_check["mutation"] is not False:
                 checks.append({"id": "refine-config", "status": refine_config_check["status"], "mutation": refine_config_check["mutation"]})
                 checks.append({"id": "refine", "status": "blocked-cleanup", "unexpected_writes": refine_unexpected})
                 disposition = "blocked-cleanup"
-            elif refine_result["status"] == "pass" and output_path.is_file() and not refine_unexpected:
-                checks.append({"id": "refine", "status": "pass", "candidate": output_relative})
+            elif refine_result["status"] == "pass" and output_path.is_file() and not refine_unexpected and not refine_unsafe:
+                checks.append({
+                    "id": "refine",
+                    "status": "observed",
+                    "candidate": output_relative,
+                    "business_acceptance": "not-performed",
+                    "snapshot_delta": refine_delta,
+                })
                 disposition = "candidate"
             else:
-                checks.append({"id": "refine", "status": refine_result["status"], "unexpected_writes": refine_unexpected})
-                disposition = "failed"
+                checks.append({"id": "refine", "status": refine_result["status"], "unexpected_writes": refine_unexpected, "unsafe_entries": refine_unsafe})
+                disposition = "blocked" if refine_result["status"] == "blocked" else "failed"
             result_refine = refine_result
         else:
-            checks.append({"id": "check", "status": "fail", "candidate": output_relative, "unexpected_writes": unexpected})
+            checks.append({"id": "check", "status": "fail", "candidate": output_relative, "unexpected_writes": unexpected, "unsafe_entries": unsafe_after_build, "snapshot_delta": build_delta, "candidate_fresh": output_fresh, "business_acceptance": "not-performed"})
             checks.append({"id": "refine", "status": "unsupported", "reason": "host output did not satisfy the bounded file contract"})
             disposition = "failed"
             result_refine = None
         checks.append({"id": "return_summary", "status": "pass"})
-        cleanup_status = "blocked" if disposition == "blocked-cleanup" else "verified"
+        cleanup_status = "blocked" if disposition == "blocked-cleanup" else "unknown" if result_refine and result_refine.get("cleanup") == "unknown" else "observed"
         # The candidate is retained; only transient builder temp material would
         # be removed here. The contract records that no host/global config was
         # touched by this invocation.

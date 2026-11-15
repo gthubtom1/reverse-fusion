@@ -6,7 +6,10 @@ This project is published as one GitHub repository. Official components are desc
 
 ## RF-002 Official by default
 
-REA and Spec Kit remain official until a documented capability gap justifies a local fork. Craft starts as an upstream-plus-patch bundle.
+REA and Spec Kit remain official until a documented capability gap justifies a
+local fork. Craft is currently a repository-owned bounded interface with an
+upstream reference, not an upstream-plus-patch distribution. The four historical
+patch names are provenance only; no patch is distributed or replayed here.
 
 ## RF-003 Old projects are read-only
 
@@ -31,8 +34,10 @@ fresh-clone receipt dependency without introducing a second runtime route owner.
 
 The repository owns task scope, output paths, checks and cleanup. The current
 Codex/Pi/Claude host owns its account, provider and model; no model is selected
-or downloaded by Reverse Fusion. A real host Builder is accepted only when its
-candidate writes, six-tool trace and cleanup are directly observable.
+or downloaded by Reverse Fusion. The default Builder is that agent in the
+current conversation, not another CLI invocation. Frozen-input and allowed-write
+observations are separate from independent business acceptance. Child CLI
+transport is optional and has its own live login/quota/cleanup status.
 
 ## RF-008 Bounded target ledgers
 
@@ -75,11 +80,14 @@ optional compatibility input.
 
 ## RF-013 Evidence and host-boundary records
 
-Representative RF-22 Evidence/proof/ledger records are stored in normalized,
-host-path-free form under `evidence/rf22/` and hash-checked by contracts. Host
-handshakes and Builder runs compare hashes of known host configuration files
-before and after invocation; a changed or unobservable snapshot is typed as a
-blocked cleanup result rather than a declared pass.
+Representative records live under the stable `evidence/rf22/` path. RF-25 found
+that path normalization had changed hash-covered fields without changing IDs;
+it replaces those invalid records with raw authenticated runs. Historical
+absolute paths are observations, not deployment configuration. Contracts check
+file hashes; official REA additionally checks identity, bundle links and a real
+tamper counterexample. Optional host calls compare known configuration hashes;
+changed/unobservable snapshots and uncertain descendant cleanup are never
+declared verified merely because the root invocation returned.
 
 ## RF-014 Preserve content and executable handoff separately
 
@@ -88,6 +96,23 @@ not sufficient when a domain references resources outside skills or a route
 does not carry downstream context. Restore those supporting resources, publish
 current portable rules, expose required reads, and report missing resources.
 Keep hard-target methods adaptive and provider neutral. The 603-file inventory
-records seven integration patches and four whitespace-only patches; it is content preservation, not
-target runtime acceptance. All local route entries use the product JSON; the
+records exact current upstream/local digests and adaptation reasons; it is
+content preservation, not target runtime acceptance. All local route entries use the product JSON; the
 original skills JSON remains the original compatibility baseline.
+
+## RF-015 Repository-stored deployment and honest scope
+
+`docs/AGENT-BOOTSTRAP.md` is the only deployment action contract. The user gives
+the repository link; the selected current host discovers paths and installs a
+local venv/receipt. No global injection into unrelated workspaces is implied.
+Analysis does not require reconstruction tasks. Uninstall scripts remove the
+local venv/receipt, retain vendor/case assets and implement no transaction journal.
+
+## RF-016 Bounded integration proof authority
+
+Repository-owned bounded verifiers may use the pinned official REA serializer
+under the explicit integration exception in `skills/reconstruction/SKILL.md`.
+They must recheck artifact hashes, perform the declared finite observations and
+retain links. They do not impersonate REA native process verification. Web's
+bounded answer ledger is separate from its complete graph's open obligations;
+APK manifest/member equality does not prove method-body or device equivalence.

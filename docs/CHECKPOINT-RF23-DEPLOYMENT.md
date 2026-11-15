@@ -1,11 +1,13 @@
-# RF-23 Deployment Checkpoint
+# RF-23 Deployment Checkpoint (historical)
 
 Date: 2026-11-15
 
 Repository: `https://github.com/gthubtom1/reverse-fusion`
 
-This checkpoint records the current Codex workspace deployment after the RF-23
-product commit:
+This checkpoint records the Codex workspace deployment after the RF-23 product
+commit. RF-24 was the release when this record was written; current status is
+in `CURRENT-STATE.md` and the RF-25 checkpoint. This file remains the historical
+deployment record referenced by the RF-23 audit:
 
 - `scripts/install.ps1 -Python python` created the repository-local `.venv`.
 - `reverse_fusion install --apply --client codex --format json` wrote only

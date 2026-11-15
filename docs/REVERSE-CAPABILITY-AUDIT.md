@@ -48,13 +48,17 @@ wrapper 共同构成，并没有内置已验证能自动处理任意保护器的
 ## 清单与有意适配
 
 `components/reverse-core/preservation.json` 固定 **603 个来源文件**：skills
-453、CTF sidecar 136、Burp 14。592 个保持来源内容，7 个集成适配和 4 个纯行尾空白清理同时记录上游
-摘要、本地摘要及原因：
+453、CTF sidecar 136、Burp 14。RF-24 时 592 个保持来源内容，7 个集成适配和
+4 个纯行尾空白清理。RF-25 又适配 reconstruction 的 backend descriptor 和版本测试，
+并明确当前会话 Builder 与有限 proof 适配边界；现在 590 个保持来源内容，9 个集成
+适配与 4 个空白适配共 13 个均记录上游摘要、本地摘要及原因：
 
 - skills/SKILL.md、skills/reconstruction/SKILL.md：通用 shell 入口与本地部署边界。
 - skills/ops/skill-supply-chain.md：当前能力审计与固定历史审计链接。
 - skills/scripts/master-route.ps1 和 .sh：同一有效路由来源。
 - skills/scripts/bootstrap-reverse.sh、refresh-tool-index.sh：当前平台文档。
+- skills/reconstruction/references/execution-backend-contract.json：审查后更新必需文件摘要。
+- skills/reconstruction/tests/test_backend_routing.py：产品版本和领域合同版本分离。
 
 另有 4 个来源文件仅清除已有行尾空白（CTF 资料一处、Burp 的 JS/Java 三处），
 以通过默认 git diff --check；执行逻辑未变。加壳、反调试和混淆技术资料及对应

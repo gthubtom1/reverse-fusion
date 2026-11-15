@@ -1,3 +1,3 @@
-"""Reverse Fusion RF-01 contract and static planning package."""
+"""Reverse Fusion portable agent capability and reconstruction integration."""
 
-__version__ = "0.1.0-dev"
+__version__ = "1.0.0"

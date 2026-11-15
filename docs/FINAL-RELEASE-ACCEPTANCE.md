@@ -1,38 +1,51 @@
-# Final v1 release acceptance
+# v1 release acceptance
 
-This release closes `reconstruction-product-v1-final` for the product logic and
-provider contracts declared in `docs/PRODUCT-GOAL.md`. Representative targets
-validate the shared workflow; future targets use the same pipeline and do not
-need to be exhaustively pre-executed for the product to be complete.
+RF-25 is the current audit of product `1.0.0`. Its completion status is read
+from `docs/CURRENT-STATE.md` and `checkpoints/RF-25-20261115-001.md`; RF-22,
+RF-23 and RF-24 checkpoints preserve historical observations and do not
+override this audit. Final release closure requires the remaining finite
+checks below, a remote fresh clone and synchronized GitHub content.
 
-| Gate | Direct evidence | Result |
+| Gate | Direct record / scope | Current result |
 |---|---|---|
-| Fresh clone and lifecycle | Remote `https://github.com/gthubtom1/reverse-fusion` at commit `f8323ad159a129081a71a51f6579ee2241426d7f`; `fresh-clone-rf23-final` runs local `install`, `plan`, `doctor`, `update`, `uninstall`, `contracts`, `handoff`, `bridge --source local --record`, Windows and POSIX installer dry-runs, and 18 Python tests without an old receipt | pass |
-| Single route owner | `bridge --source local` resolves repository `routing.json`; external route is explicit read-only compatibility | pass |
-| Official identities | `SOURCE-MANIFEST.json`, official REA `6.9.0`, Spec Kit `1.4.0`, Craft `0.6.1`, JADX MCP `0.7.1` manifest | pass |
-| Real host Builder | Codex generated the APK candidate; `prepare`, `build`, `check`, `refine`, `return_summary`, `cleanup` pass; no `--model`; `config_mutation=false` | pass |
-| Canonical Evidence artifacts | `evidence/rf22/manifest.json` and normalized original/candidate/comparison/proof/ledger JSON are tracked for all four representative targets and hash-checked by contracts | pass |
-| WASM chain | original/candidate/comparison/proof Evidence and ledger `rol_09e99625528899bcc2b492bdc7b2811b44fb573c13418ff80af0404548039928`, `required_open=0` | pass |
-| Web/JavaScript chain | original/candidate/comparison `ev_216f5663a396f32a8c09777922294d6149abcee640129d9911fb62e150b47a75`, runtime proof, ledger `rol_39c38b659a45e5b080c5dc55870f154eb17b9e484fb998aacba88d07cd579c48`, `required_open=0` | pass for reviewed export; static/package unknowns retained for future probes |
-| PE/.NET chain | original/candidate managed Evidence, exact member comparison, four runtime traces, ledger `rol_53dd8e6683c0351977afc491a5c50863e56a390e5925d0c6d63fde1372bebba9`, `required_open=0` | pass |
-| APK/DEX chain | pinned JADX 0.7.1; original/candidate package/class Evidence, static comparison and ledger `rol_b9833a0dd114ad263d96217960a2990d87c9e3629048488d3f4f2379f93762b`, `required_open=0` | static pass; Android runtime unknown without adb/emulator |
-| Three-state behavior | WASM correct=`pass`, intentionally wrong=`fail`, missing Evidence=`unknown` | pass |
-| Host status | Codex/Pi handshakes pass; Claude missing-login boundary is recorded as blocked; known host config snapshots are observed equal before/after probes | pass with explicit provider boundary |
-| Cleanup and scope | generated state/build files ignored; builder and probes record cleanup; old repository, old installs and global config remain unchanged | pass |
-| Consistency | Python tests, contracts, `git diff --check`, docs, manifests, checkpoint and GitHub remote agree | pass |
+| URL-only deployment | `docs/AGENT-BOOTSTRAP.md`, linked by README and AGENTS; current selected host, local venv/receipt | implemented; final remote fresh-clone check recorded in RF-25 checkpoint |
+| One Reverse owner | local routing JSON, descriptors, domain bodies and required reads; no old receipt needed | local implementation; contract and route checks required |
+| Retained enhanced domains | 603-file preservation inventory, upstream/local SHA and reasons for adaptations | preserved; final digest check required |
+| Component identities | REA 6.9.0; Spec source 1.4.1.dev0 vs historical CLI 1.4.0; WABT1.0.42; JADX0.7.1; interface-only Craft reference | explicit and separate from local provider health |
+| Real candidate writer | current conversation host freezes task/research hashes and generates eight source files; session check/refine/finish | observed; candidate writes are not business acceptance |
+| Child CLI boundary | actual Codex child build returned out of credits | blocked, not required by current-session path |
+| Evidence archive admission | raw RF-25 records under stable `evidence/rf22/` path; official identity parsing, link closure, tamper rejection and file digests | final archive check required; old normalized records superseded |
+| WASM | real interpreter values and official REA bounded ledger; correct/wrong/missing cases | pass/fail/unknown respectively |
+| Web/JavaScript | real original/candidate analysis, inventory, export replay, proof and bounded ledger | finite export pass; full graph ledger unknown with 4 required open |
+| PE/.NET | actual .NET8 build/run, managed member comparison, finite replay, proof and ledger | bounded method pass |
+| APK/DEX | actual build and real package/class inspection, manifest/member comparison, proof and static ledger | bounded static pass; Android runtime unknown |
+| Optional host probes | exact final assistant sentinel, selected client, config snapshots and finite deadline | current results recorded separately; old passes are not reused |
+| Failure boundaries | stale candidates, existing-file edits/deletions, source/task drift, links/path traversal, provider failure | focused counterexample tests required |
+| Scope and cleanup | repository-local writes; global configuration snapshots where observed; ignored build outputs | per-run cleanup scope recorded; uncertain descendants remain unknown |
+| Documentation and release | current docs/manifests/checkpoint, tests, `git diff --check`, GitHub commit and remote fresh clone | pending final RF-25 closure |
 
-## Runtime boundaries retained as normal product states
+The canonical IDs are in `evidence/rf22/manifest.json`; this table does not keep
+a second independently edited list of IDs. The RF-25 checkpoint records exact
+test counts, clone commit and remaining provider boundaries after final checks.
 
-- Native Craft R46 qualification is unsupported; the verified product path is a
-  host-owned Builder whose current model and provider belong to Codex/Pi/Claude.
-- Windows REA process capture is unsupported because descendant cleanup has not
-  been qualified.
-- Web static semantic unknowns and package/parser obligations are recorded as
-  unknown scope, not silently closed.
-- Android device/runtime behavior is unknown on this host because no adb device
-  or emulator was available.
+## Retained runtime boundaries
 
-These boundaries are part of the product contract. A future target closes its
-own case by attaching original Evidence, frozen Spec tasks, a qualified host
-Builder, candidate build/run observations, comparison, proof, cleanup and a
-ledger with the same fail-closed semantics.
+- Current-session Builder uses the already active host and adds no CLI account
+  or model dependency. Optional CLI transport has its own live status.
+- Craft native R46 is unsupported and the current companion is unobserved. The
+  repository does not distribute the four historical patches.
+- Windows REA PTY descendant cleanup remains unsupported.
+- Web runtime proof covers the declared finite answer cases. The complete graph
+  ledger is `unknown`: 5 total, 1 verified and 4 required open obligations (2
+  packaging and 2 application/parser); comparison links are retained. Its
+  archive is `evidence/rf22/web/full-ledger.json`.
+- APK proof covers manifest/member projections. It does not establish Answer
+  method body behavior, a launchable application or device execution. The
+  fixture MainActivity is not a functioning Android Activity.
+- PowerShell provider runners have been exercised on the audit host; Git Bash
+  checks do not claim native Linux or macOS hardware execution.
+
+These boundaries are valid operational states inside the declared integration
+scope. They do not establish full equivalence for a future target. A new target
+gets its own Evidence, frozen tasks when reconstructing, candidate, observations,
+comparison, cleanup and obligation ledger.

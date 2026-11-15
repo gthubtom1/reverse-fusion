@@ -8,6 +8,18 @@ description: >-
 
 # 独立复刻与追版 / Reconstruction
 
+## Reverse Fusion 当前宿主适配
+
+在本仓库内，先以根 `RULES.md` 和 `docs/AGENT-BOOTSTRAP.md` 解释下列继承流程。
+默认编码者就是正在对话的宿主 agent；使用 `reverse_fusion session` 冻结任务、
+研究输入和写入边界，再由它现有的工具编码，不另启 Pi、Craft、账号或模型。
+Spec 文件保留正式需求与任务映射；只有需要官方命令自动化时才准备 Spec Kit CLI。
+`references/execution-backend.md` 的模型 pin、预算、租约及 native R46 资格规则
+仅用于显式选择该外部后端的任务，不是当前会话执行的额外安装条件。
+本地工具索引缺失时，先按根规则刷新；工具和分析顺序由目标证据决定。
+当前会话的文件边界观察不替代任务验收，最终仍分别执行 build/run、comparison、
+有限 proof 和对应 ledger；缺设备或运行能力保留 unknown。
+
 ## ACTION REQUIRED（读完后立刻执行）
 
 1. `NOW`: MUST 读取 [先例索引](../field-journal/_index.md) 与 [逆向先例](../field-journal/precedent-reverse.md)，确认任务属于独立复刻、验证或追版。先例 MUST NOT 替代授权；授权以原 case 的 `scope.md` 为准，检查 auth、资产、活动、网络与 readiness。超出原 scope 的新版本/新活动 MUST 先补范围决定。
@@ -92,6 +104,16 @@ MUST 按 [differential-validation](references/differential-validation.md) 冻结
 MUST 由真实测试生产 proof，记录 owner 精确哈希输入、唯一 module_path/symbol、obligation 版本、fixture/verifier 身份。需求/依赖/源码/比较器/环境/测试改变后，旧 proof MUST 按适用性失效并重跑；保留旧证据不代表本轮通过。MUST NOT 手填 `passed` 字段或伪造 semantic ID。
 
 REA 生产链仅委派官方接口：`build_reconstruction_obligation_ledger`、适用平台的 `capture_process_scenario` / `compare_process_captures` / `verify_reconstruction`、`evaluate_reconstruction_coverage`。输入与结果状态以安装版 schema 为准，MUST NOT 导入其库或复写 closure。交付范围内 required obligations verified、required_open=0、ledger ready，选定 boundary 必需 surface/claim 与依赖完整，且无失败/未知，才可报告相应有限声明通过。零声明和同源两侧不能算通过。平台不支持则标 unknown/unsupported；独立 harness 不能冒充原生声明关闭。
+
+**Reverse Fusion 集成适配边界**：本仓库的 `scripts/proof-support.mjs` 是明确记录的
+REA 6.9.0 序列化适配器，可读取固定版本的 Evidence/bundle 构造器，为本仓库真实
+执行的有限比较器生成 `reverse-fusion-*-verifier` 来源的集成 proof。该窄例外不适用于
+REA 原生 capture、process verification 或 closure 实现。比较器必须认证输入 Evidence、
+重核两侧文件 SHA、实际执行并保留输出，由程序计算 `passed`，使用官方 CLI 独立检查
+bundle/ledger。缺失、执行失败、过时输入和故意错误变体均须阻断相应通过声明。
+保留完整原版分析及其未知项，不删除/重写原 Evidence links 来隐藏 generated obligations；
+有限运行 ledger 与全量分析 ledger 分别记录。集成 proof 只支持声明的输入/静态投影，
+不冒充官方原生行为验证，也不支持全局等价声明。
 
 ### 5. 交付与恢复
 

@@ -6,9 +6,10 @@ param(
 )
 
 $ErrorActionPreference = 'Stop'
-$repo = [IO.Path]::GetFullPath((Join-Path $PSScriptRoot '..'))
+. (Join-Path $PSScriptRoot 'lib\ScriptSupport.ps1')
+$repo = Get-CanonicalPath (Join-Path $PSScriptRoot '..')
 $fixturePath = [IO.Path]::GetFullPath($Fixture)
-$evidencePath = [IO.Path]::GetFullPath($EvidenceOut)
+$evidencePath = Assert-RepositoryWritePath $repo $EvidenceOut
 if (-not (Test-Path -LiteralPath $fixturePath)) { throw "Fixture not found: $fixturePath" }
 
 $reaBootstrap = Join-Path $PSScriptRoot 'bootstrap-rea.ps1'
@@ -19,7 +20,12 @@ $bootstrap = Join-Path $PSScriptRoot 'bootstrap-wabt.ps1'
 $bootstrapResult = & powershell -NoProfile -File $bootstrap | ConvertFrom-Json
 $env:REA_WABT_BIN_DIRECTORY = $bootstrapResult.bin
 New-Item -ItemType Directory -Path ([IO.Path]::GetDirectoryName($evidencePath)) -Force | Out-Null
-& $NodePath $ReaScript inspect-wasm-artifact $fixturePath --format json --full-output | Out-File -LiteralPath $evidencePath -Encoding utf8
-if ($LASTEXITCODE -ne 0) { throw "REA inspect-wasm-artifact failed with exit code $LASTEXITCODE" }
-$raw = Get-Content -Raw $evidencePath | ConvertFrom-Json
+$started = Reset-OutputFile $repo $evidencePath
+Push-Location $repo
+try {
+    & $NodePath $ReaScript inspect-wasm-artifact $fixturePath --format json --full-output | Out-File -LiteralPath $evidencePath -Encoding utf8
+    Assert-NativeExit $LASTEXITCODE 'REA inspect-wasm-artifact'
+} finally { Pop-Location }
+$raw = Read-FreshJson $repo $evidencePath $started
+if (-not $raw.ok -or -not $raw.data.evidence_id) { throw 'REA WASM output lacks a successful Evidence record' }
 Write-Output (ConvertTo-Json @{ status = 'pass'; evidence_id = $raw.data.evidence_id; artifact_sha256 = $raw.data.subject.digest.sha256; wabt_bin = $bootstrapResult.bin; evidence_path = $evidencePath } -Compress)

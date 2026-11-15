@@ -1,0 +1,113 @@
+{
+  "version": 1,
+  "backend": "current-session",
+  "workspace": "state/rf25-current-candidates",
+  "tasks": [
+    "WEB-T002",
+    "DOTNET-T002",
+    "APK-T002"
+  ],
+  "frozen_refs": {
+    "specs/reconstruction-web/tasks.md": "a9f079c7ee390e6704607778a3cee73c548fb557d6ef32a92df056c99b5402d2",
+    "specs/reconstruction-dotnet/tasks.md": "76d7080553b28c3196a3f1ec0da2a52422e4b64e7dc7adc0e53cd6cd3c9e1415",
+    "specs/reconstruction-apk/tasks.md": "d8a437e0a25e854cdacbb22ce61f04432e424ca0fe126fa70692a2cd27a2d712",
+    "state/rf25-accepted-research.json": "91b91da66ef622c5e408569895776f43d64f63cdceeb35d39a3e576d2f94e107"
+  },
+  "allowed_outputs": [
+    "web/app.js",
+    "web/package.json",
+    "web/index.html",
+    "dotnet/Program.cs",
+    "dotnet/ReverseFixture.csproj",
+    "apk/src/com/reversefusion/Answer.java",
+    "apk/src/com/reversefusion/MainActivity.java",
+    "apk/AndroidManifest.xml"
+  ],
+  "before": {},
+  "phase": "finished",
+  "events": [
+    {
+      "phase": "check",
+      "outputs": {
+        "apk/AndroidManifest.xml": "bd3a0deebdc28c48dc2897b06f1f14296494d480980faeb10251382367a2c75c",
+        "apk/src/com/reversefusion/Answer.java": "54a67064c4b2368f4ae3a809aa6f0dbeb5cd4dc5d2e82f04f0df40c975de55e0",
+        "apk/src/com/reversefusion/MainActivity.java": "db324cea6708e99a054d5400ba982e9b2109adfca8b0d107eab5ce06ca0097c5",
+        "dotnet/Program.cs": "d7b5532731703fecd1eb07d07ab279b699b39b302a520834848a27e27f5da742",
+        "dotnet/ReverseFixture.csproj": "031da6a6f6d810b9f23ffe7818f3acefb7b0ff54b0eb8c6752735ad58d254904",
+        "web/app.js": "9b5f571b8b57281fd38a0e8b478d99ae33251ff28f86e47853a505bcd7b8ca1c",
+        "web/index.html": "30417a713f4440c1040366270a7f180ca83481e3e3096bf64c03e8ce7678f94d",
+        "web/package.json": "d3da82842a63fce36668a116d33378a4692eedf1c4833a4fdeef239b6f19c98c"
+      },
+      "snapshot_delta": {
+        "added": [
+          "apk/AndroidManifest.xml",
+          "apk/src/com/reversefusion/Answer.java",
+          "apk/src/com/reversefusion/MainActivity.java",
+          "dotnet/Program.cs",
+          "dotnet/ReverseFixture.csproj",
+          "web/app.js",
+          "web/index.html",
+          "web/package.json"
+        ],
+        "changed": [],
+        "deleted": []
+      }
+    },
+    {
+      "phase": "refine",
+      "outputs": {
+        "apk/AndroidManifest.xml": "bd3a0deebdc28c48dc2897b06f1f14296494d480980faeb10251382367a2c75c",
+        "apk/src/com/reversefusion/Answer.java": "54a67064c4b2368f4ae3a809aa6f0dbeb5cd4dc5d2e82f04f0df40c975de55e0",
+        "apk/src/com/reversefusion/MainActivity.java": "db324cea6708e99a054d5400ba982e9b2109adfca8b0d107eab5ce06ca0097c5",
+        "dotnet/Program.cs": "d7b5532731703fecd1eb07d07ab279b699b39b302a520834848a27e27f5da742",
+        "dotnet/ReverseFixture.csproj": "031da6a6f6d810b9f23ffe7818f3acefb7b0ff54b0eb8c6752735ad58d254904",
+        "web/app.js": "9b5f571b8b57281fd38a0e8b478d99ae33251ff28f86e47853a505bcd7b8ca1c",
+        "web/index.html": "30417a713f4440c1040366270a7f180ca83481e3e3096bf64c03e8ce7678f94d",
+        "web/package.json": "d3da82842a63fce36668a116d33378a4692eedf1c4833a4fdeef239b6f19c98c"
+      },
+      "snapshot_delta": {
+        "added": [
+          "apk/AndroidManifest.xml",
+          "apk/src/com/reversefusion/Answer.java",
+          "apk/src/com/reversefusion/MainActivity.java",
+          "dotnet/Program.cs",
+          "dotnet/ReverseFixture.csproj",
+          "web/app.js",
+          "web/index.html",
+          "web/package.json"
+        ],
+        "changed": [],
+        "deleted": []
+      }
+    },
+    {
+      "phase": "finish",
+      "outputs": {
+        "apk/AndroidManifest.xml": "bd3a0deebdc28c48dc2897b06f1f14296494d480980faeb10251382367a2c75c",
+        "apk/src/com/reversefusion/Answer.java": "54a67064c4b2368f4ae3a809aa6f0dbeb5cd4dc5d2e82f04f0df40c975de55e0",
+        "apk/src/com/reversefusion/MainActivity.java": "db324cea6708e99a054d5400ba982e9b2109adfca8b0d107eab5ce06ca0097c5",
+        "dotnet/Program.cs": "d7b5532731703fecd1eb07d07ab279b699b39b302a520834848a27e27f5da742",
+        "dotnet/ReverseFixture.csproj": "031da6a6f6d810b9f23ffe7818f3acefb7b0ff54b0eb8c6752735ad58d254904",
+        "web/app.js": "9b5f571b8b57281fd38a0e8b478d99ae33251ff28f86e47853a505bcd7b8ca1c",
+        "web/index.html": "30417a713f4440c1040366270a7f180ca83481e3e3096bf64c03e8ce7678f94d",
+        "web/package.json": "d3da82842a63fce36668a116d33378a4692eedf1c4833a4fdeef239b6f19c98c"
+      },
+      "snapshot_delta": {
+        "added": [
+          "apk/AndroidManifest.xml",
+          "apk/src/com/reversefusion/Answer.java",
+          "apk/src/com/reversefusion/MainActivity.java",
+          "dotnet/Program.cs",
+          "dotnet/ReverseFixture.csproj",
+          "web/app.js",
+          "web/index.html",
+          "web/package.json"
+        ],
+        "changed": [],
+        "deleted": []
+      }
+    }
+  ],
+  "model_selection": "current-host-owned",
+  "business_acceptance": "not-performed"
+}

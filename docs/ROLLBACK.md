@@ -1,5 +1,34 @@
 # Rollback
 
-Source/code rollback uses git revert in this repository. Upstream/bundle rollback selects the previous manifest identity. Host rollback uses the new receipt transaction journal only. User projects, case/Evidence, Spec features, app and checks are preserved.
+Rollback acts on this repository only. Inspect `git status`, save wanted local
+work and identify the exact commits before reverting. The pre-RF-25 baseline
+is `2bcb7d4bdc02b1edcde5855c40445590822d415c`; the RF-25 checkpoint records
+the audited replacement commit. Use `git log --oneline` and revert the relevant
+RF-25 changes in reverse order, or inspect the old revision in a separate
+checkout. Do not reset unrelated user changes.
 
-Cleanup uncertainty retains the writer lease and blocks a replacement writer until the owner confirms termination.
+The historical RF-24 changes are enumerated by
+`git log --reverse --oneline 481e936..2bcb7d4`. This is a source-history boundary,
+not an instruction to revert all later work automatically. Old Evidence from
+that baseline includes the invalid path-normalized archive; restoring it also
+restores that limitation and must not be called an authenticated archive.
+
+## Installation and providers
+
+- CLI `uninstall --apply` removes this checkout's `state/install.json` only.
+- `scripts/uninstall.ps1 -Apply` or `scripts/uninstall.sh` removes the repository
+  venv and receipt after canonical containment checks. Vendor assets remain.
+- For an upstream/provider regression, restore the previous manifest and adapter
+  commit together. Recreate only the affected repository-local vendor asset
+  with its pinned bootstrap and rerun its focused check. Do not replace an
+  existing global tool installation or rewrite host credentials/configuration.
+- Case records, original Evidence, Spec features and candidates are not generic
+  uninstall garbage. Preserve them unless the user explicitly wants that case
+  removed. Generated build/cache artifacts may be removed within the verified
+  repository or named case path.
+
+There is no implemented receipt transaction journal, automatic global restore
+or universal process-termination guarantee. If a child call times out or
+descendant cleanup is uncertain, record cleanup as unknown/blocked and resolve
+that writer before starting a replacement. Do not promote a configuration
+snapshot or a returned root process into proof that all descendants ended.

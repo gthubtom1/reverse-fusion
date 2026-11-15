@@ -13,7 +13,7 @@ Reverse Fusion 最终要提供一套可迁移的智能体工作流：用户把�
   -> Reverse 唯一路由和 case
   -> REA 原版 Evidence
   -> Spec Kit 项目任务（复刻模式）
-  -> 宿主自己的 agent/model 执行 Builder
+  -> 当前对话中的宿主 agent 执行 bounded Builder
   -> 候选构建与运行
   -> 原版/候选差分
   -> 修正任务
@@ -55,7 +55,7 @@ Reverse Fusion 不选择、不绑定、不下载模型，也不把某个模型�
 - **Reverse core**：唯一入口、路由、case、模式和复刻任务生命周期。它既支持独立 reconstruction case，也支持在 normal-dev 主项目中按需创建隔离的 analysis/reconstruction subcase；`bridge --record` 持久化仓库内的 `case.json` 恢复点；新电脑没有旧 receipt 时也必须有仓库自己的可用路由和本地领域技能；旧 reverse-skill 可以作为固定版本的来源或可选增强，但不能是唯一运行前提。
 - **REA**：原版分析、静态/动态 Evidence、comparison、unknown 和 obligation ledger。REA 保持官方版本，除非有证据支持的能力缺口。
 - **Spec Kit**：复刻模式的项目级意图、plan、tasks 和 converge 记录。normal-dev 默认按需启用；任何嵌套 subcase 一旦进入复刻阶段，就必须保留冻结任务和来源引用。
-- **Craft/Builder**：按冻结任务生成候选项目、执行构建、检查、修正和清理。模型由当前宿主提供；仓库 fallback 只能用于离线合同测试，不能代表真实复刻能力。
+- **Craft/Builder**：按冻结任务生成候选项目、执行构建、检查、修正和清理。默认 writer 是当前对话中的宿主 agent，`session prepare/check/refine/finish` 冻结输入并观察候选文件边界；无需另启 CLI、账号或模型。子 CLI 是按需独立资格化的可选 transport。Craft 当前只分发 bounded interface，历史 patch 名称不是已发布 patch；离线复制 fallback 只用于合同测试，不代表真实复刻能力。
 - **Acceptance**：独立读取原版和候选 Evidence，输出 pass、fail、unknown、blocked 或 unsupported。模型自述、工具可见和 exit 0 都不属于业务验收。
 
 ## 最终完成门
@@ -70,15 +70,20 @@ Reverse Fusion 不选择、不绑定、不下载模型，也不把某个模型�
 6. 至少一个正确候选、一个行为错误候选和一个 Evidence 缺失候选分别得到 pass、fail、unknown；至少一个构建或 provider 缺失场景得到 blocked/unsupported。
 7. 加壳、混淆、动态行为或 provider 缺失时，系统保留 unknown 和下一步 probe，不把静态相似或模型自述升级成等价结论。
 8. 所有 host/global 配置写入都有明确 scope；默认安装、探针、卸载和失败清理不改变旧仓库、宿主凭据或全局配置，并通过已知配置文件哈希前后对照记录观察结果。
-9. `evidence/rf22/manifest.json` 对代表性 Evidence/proof/ledger 文件做 hash 校验；`docs/CURRENT-STATE.md`、`docs/FINAL-RELEASE-ACCEPTANCE.md`、checkpoint、README、manifest、测试和 GitHub remote 对同一完成状态，没有“RF-14/RF-16”或“final/unfinished”互相矛盾。
+9. `evidence/rf22/manifest.json` 对代表性 Evidence/proof/ledger 文件做 hash 校验；官方 REA 还要通过身份解析、bundle links 闭合与实际篡改反例。不得改写 hash 覆盖的绝对路径却保留旧 ID。`docs/CURRENT-STATE.md`、`docs/FINAL-RELEASE-ACCEPTANCE.md`、checkpoint、README、manifest、测试和 GitHub remote 对同一完成状态；历史记录不覆盖当前结论。
 10. 只有完成以上门后才允许写 `final product complete`。此前只能写 `framework-v1-baseline`、`reconstruction-v1-in-progress` 或明确的 `blocked/unsupported`。
 
 ## 当前版本的正确标签
 
-RF-22 已闭合本文件定义的 v1 完成门，当前仓库标签为
-`reconstruction-product-v1-final`。四类代表性目标已经完成统一的
-analysis-to-reconstruction 链：WASM ledger ready；Web/JavaScript 的选定
-export obligation ledger ready，同时保留 REA 对未覆盖 package/parser 范围的
-unknown；PE/.NET ledger ready；APK/DEX 静态 ledger ready，Android 设备运行层
-在无 adb/emulator 的主机上保持 unknown。未来目标沿用同一证据合同，通过新增
-case、probe 或 provider 进行小版本演进。
+RF-22 的 `reconstruction-product-v1-final` 是历史标签，RF-23/RF-24 随后增加
+部署和 Reverse 保全。RF-25 全量审计发现旧 Builder/归档/runner/文档结论仍需
+修正，故当前状态以 `docs/CURRENT-STATE.md` 与
+`checkpoints/RF-25-20261115-001.md` 为准，不根据历史 final 推断本轮已经通过。
+产品版本为 `1.0.0`；本轮所有有限完成门闭合后才恢复当前发布完成声明。
+
+本轮声明范围：WASM 有限执行与三态；Web answer 有限重放 ledger ready，而完整
+graph ledger 为 unknown、4 个 required open（2 packaging、2 application/parser）；
+PE/.NET 有限方法运行 ledger ready；APK 构建与 manifest/member 投影 ledger ready。
+APK 的设备运行、方法体等价和有效 Activity 启动均不由静态证明建立。未知项保留，
+不靠移除 comparison links 或缩写报告把它们升级成完整目标等价。未来目标沿用
+同一合同建立 case、probe 或 provider，无需预先穷举每种变体。

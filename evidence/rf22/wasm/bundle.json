@@ -1,0 +1,576 @@
+{
+  "artifacts": [
+    {
+      "digest": {
+        "sha256": "ccf59f0f7a7625ee380ed228905aadfa11072ac14cea1c53d1e7f3953d4d48c6"
+      },
+      "format": "file",
+      "architecture": null
+    }
+  ],
+  "providers": [
+    {
+      "id": "rea-artifact-comparison",
+      "name": "REA artifact comparison",
+      "version": "1"
+    },
+    {
+      "id": "reverse-fusion-wabt-verifier",
+      "name": "Reverse Fusion WABT integration verifier",
+      "version": "rf25"
+    },
+    {
+      "id": "wabt-artifact",
+      "name": "REA WABT artifact adapter",
+      "version": "wabt@1.0.42"
+    }
+  ],
+  "environments": [],
+  "scenarios": [
+    {
+      "evidence_id": "ev_4eb5fa35dbf3017b8f8815b24b870ba0f4824341bd0f6181383125673fe2634c",
+      "operation": "verify_reconstruction_obligations",
+      "authority": "controlled-replay"
+    }
+  ],
+  "captures": [],
+  "unknowns": [],
+  "records": [
+    {
+      "evidence_id": "ev_4eb5fa35dbf3017b8f8815b24b870ba0f4824341bd0f6181383125673fe2634c",
+      "subject": null,
+      "provider": {
+        "id": "reverse-fusion-wabt-verifier",
+        "name": "Reverse Fusion WABT integration verifier",
+        "version": "rf25"
+      },
+      "analysis_profile": null,
+      "predicate_type": "rea.reconstruction-proof",
+      "operation": "verify_reconstruction_obligations",
+      "parameters": {
+        "obligation_id": "wasm-answer",
+        "fixture_id": "wasm-answer-fixture",
+        "verifier_id": "wasm-interpreter",
+        "original_sha256": "ccf59f0f7a7625ee380ed228905aadfa11072ac14cea1c53d1e7f3953d4d48c6",
+        "candidate_sha256": "ccf59f0f7a7625ee380ed228905aadfa11072ac14cea1c53d1e7f3953d4d48c6",
+        "interpreter_sha256": "3433086015d69cf50398500f4e122e55fd62097a3c95c0203e6294442f594399",
+        "verifier_sha256": "0e40adba1fa5b47dab0c3eb0301f240f80f7c6927680dea17ac9d548bb4c6494"
+      },
+      "raw_result": {
+        "original": {
+          "status": "observed",
+          "value": 42,
+          "output": "answer() => i32:42\n",
+          "stderr": "",
+          "exit_code": 0
+        },
+        "candidate": {
+          "status": "observed",
+          "value": 42,
+          "output": "answer() => i32:42\n",
+          "stderr": "",
+          "exit_code": 0
+        }
+      },
+      "normalized_result": {
+        "bindings": [
+          {
+            "obligation_id": "wasm-answer",
+            "obligation_version": 1,
+            "owner_sha256": "ccf59f0f7a7625ee380ed228905aadfa11072ac14cea1c53d1e7f3953d4d48c6",
+            "fixtures": [
+              {
+                "fixture_id": "wasm-answer-fixture",
+                "case_kind": "positive",
+                "passed": true
+              }
+            ],
+            "verifiers": [
+              {
+                "verifier_id": "wasm-interpreter",
+                "claim_id": "wasm-answer",
+                "passed": true
+              }
+            ]
+          }
+        ]
+      },
+      "confidence": "observed",
+      "authority": "controlled-replay",
+      "environment": null,
+      "limitations": [
+        "Artifact identity is unavailable for this observation.",
+        "Repository-owned integration replay covers answer() only; it is not native REA process verification or global equivalence."
+      ],
+      "relationship_coverage": null,
+      "locations": [],
+      "evidence_links": [
+        "ev_d6ed8f580f5b6d7fb001de26c8b8b6732fd32308f8aeb6eeb624738209e35f96",
+        "ev_85ebdcc34c5cb2ad48b8b5ed7760bcba11c1ff9fcf4fd09db0507872f42325f6",
+        "ev_7feb4947e20562d5adf55dd6f5ad98a58a8e29516c5eeb82bf7b29e691ec6249"
+      ]
+    },
+    {
+      "evidence_id": "ev_7feb4947e20562d5adf55dd6f5ad98a58a8e29516c5eeb82bf7b29e691ec6249",
+      "subject": null,
+      "provider": {
+        "id": "rea-artifact-comparison",
+        "name": "REA artifact comparison",
+        "version": "1"
+      },
+      "analysis_profile": null,
+      "predicate_type": "rea.wasm-interface-comparison",
+      "operation": "compare_wasm_interfaces",
+      "parameters": {
+        "left_evidence_id": "ev_d6ed8f580f5b6d7fb001de26c8b8b6732fd32308f8aeb6eeb624738209e35f96",
+        "right_evidence_id": "ev_85ebdcc34c5cb2ad48b8b5ed7760bcba11c1ff9fcf4fd09db0507872f42325f6",
+        "scope": "both"
+      },
+      "raw_result": null,
+      "normalized_result": {
+        "left": {
+          "evidence_id": "ev_d6ed8f580f5b6d7fb001de26c8b8b6732fd32308f8aeb6eeb624738209e35f96",
+          "artifact": {
+            "path": "C:\\Users\\toti\\Documents\\Codex\\2026-11-14\\c-users-toti-pi-agent-sessions\\work\\reverse-fusion\\fixtures\\answer.wasm",
+            "sha256": "ccf59f0f7a7625ee380ed228905aadfa11072ac14cea1c53d1e7f3953d4d48c6",
+            "bytes": 39
+          }
+        },
+        "right": {
+          "evidence_id": "ev_85ebdcc34c5cb2ad48b8b5ed7760bcba11c1ff9fcf4fd09db0507872f42325f6",
+          "artifact": {
+            "path": "C:\\Users\\toti\\Documents\\Codex\\2026-11-14\\c-users-toti-pi-agent-sessions\\work\\reverse-fusion\\fixtures\\answer-candidate.wasm",
+            "sha256": "ccf59f0f7a7625ee380ed228905aadfa11072ac14cea1c53d1e7f3953d4d48c6",
+            "bytes": 39
+          }
+        },
+        "scope": "both",
+        "coverage": "complete-within-inputs",
+        "changes": [
+          {
+            "direction": "export",
+            "module": null,
+            "name": "answer",
+            "state": "unchanged",
+            "left": [
+              {
+                "direction": "export",
+                "module": null,
+                "name": "answer",
+                "kind": "func",
+                "index": 0,
+                "signature": {
+                  "kind": "func",
+                  "params": [],
+                  "results": [
+                    "i32"
+                  ]
+                },
+                "wat_form": "(export \"answer\" (func 0))",
+                "issue": null
+              }
+            ],
+            "right": [
+              {
+                "direction": "export",
+                "module": null,
+                "name": "answer",
+                "kind": "func",
+                "index": 0,
+                "signature": {
+                  "kind": "func",
+                  "params": [],
+                  "results": [
+                    "i32"
+                  ]
+                },
+                "wat_form": "(export \"answer\" (func 0))",
+                "issue": null
+              }
+            ],
+            "reason": null
+          }
+        ],
+        "summary": {
+          "added": 0,
+          "removed": 0,
+          "changed": 0,
+          "unchanged": 1,
+          "unknown": 0
+        },
+        "limitations": [
+          "Exact declared interface equality is not runtime/ABI compatibility, successful linking or original-source identity.",
+          "Typed facts come from the selected validated WABT decoding; unsupported signature semantics and duplicate names remain unknown."
+        ]
+      },
+      "confidence": "derived",
+      "authority": "analyst-inference",
+      "environment": null,
+      "limitations": [
+        "Artifact identity is unavailable for this observation.",
+        "Exact declared interface equality is not runtime/ABI compatibility, successful linking or original-source identity.",
+        "Typed facts come from the selected validated WABT decoding; unsupported signature semantics and duplicate names remain unknown."
+      ],
+      "relationship_coverage": null,
+      "locations": [],
+      "evidence_links": [
+        "ev_d6ed8f580f5b6d7fb001de26c8b8b6732fd32308f8aeb6eeb624738209e35f96",
+        "ev_85ebdcc34c5cb2ad48b8b5ed7760bcba11c1ff9fcf4fd09db0507872f42325f6"
+      ]
+    },
+    {
+      "evidence_id": "ev_85ebdcc34c5cb2ad48b8b5ed7760bcba11c1ff9fcf4fd09db0507872f42325f6",
+      "subject": {
+        "name": "answer-candidate.wasm",
+        "digest": {
+          "sha256": "ccf59f0f7a7625ee380ed228905aadfa11072ac14cea1c53d1e7f3953d4d48c6"
+        },
+        "local_path": "C:\\Users\\toti\\Documents\\Codex\\2026-11-14\\c-users-toti-pi-agent-sessions\\work\\reverse-fusion\\fixtures\\answer-candidate.wasm",
+        "format": "file",
+        "architecture": null
+      },
+      "provider": {
+        "id": "wabt-artifact",
+        "name": "REA WABT artifact adapter",
+        "version": "wabt@1.0.42"
+      },
+      "analysis_profile": null,
+      "predicate_type": "rea.analysis",
+      "operation": "inspect_wasm_artifact",
+      "parameters": {
+        "path": "C:\\Users\\toti\\Documents\\Codex\\2026-11-14\\c-users-toti-pi-agent-sessions\\work\\reverse-fusion\\fixtures\\answer-candidate.wasm",
+        "glue_paths": [],
+        "candidate_paths": []
+      },
+      "caller_input_path": "C:\\Users\\toti\\Documents\\Codex\\2026-11-14\\c-users-toti-pi-agent-sessions\\work\\reverse-fusion\\fixtures\\answer-candidate.wasm",
+      "raw_result": null,
+      "normalized_result": {
+        "artifact": {
+          "path": "C:\\Users\\toti\\Documents\\Codex\\2026-11-14\\c-users-toti-pi-agent-sessions\\work\\reverse-fusion\\fixtures\\answer-candidate.wasm",
+          "sha256": "ccf59f0f7a7625ee380ed228905aadfa11072ac14cea1c53d1e7f3953d4d48c6",
+          "bytes": 39
+        },
+        "validation": "valid",
+        "sections": [
+          {
+            "kind": "Type",
+            "start": 10,
+            "end": 15,
+            "bytes": 5,
+            "description": "count: 1"
+          },
+          {
+            "kind": "Function",
+            "start": 17,
+            "end": 19,
+            "bytes": 2,
+            "description": "count: 1"
+          },
+          {
+            "kind": "Export",
+            "start": 21,
+            "end": 31,
+            "bytes": 10,
+            "description": "count: 1"
+          },
+          {
+            "kind": "Code",
+            "start": 33,
+            "end": 39,
+            "bytes": 6,
+            "description": "count: 1"
+          }
+        ],
+        "interface": {
+          "state": "complete",
+          "entries": [
+            {
+              "direction": "export",
+              "module": null,
+              "name": "answer",
+              "kind": "func",
+              "index": 0,
+              "signature": {
+                "kind": "func",
+                "params": [],
+                "results": [
+                  "i32"
+                ]
+              },
+              "wat_form": "(export \"answer\" (func 0))",
+              "issue": null
+            }
+          ],
+          "issues": []
+        },
+        "imports": [],
+        "exports": [
+          "(export \"answer\" (func 0))"
+        ],
+        "debug_name_metadata": "not-present",
+        "custom_section_warnings": [],
+        "headers": "\nmodule.wasm:\tfile format wasm 0x1\n\nSections:\n\n     Type start=0x0000000a end=0x0000000f (size=0x00000005) count: 1\n Function start=0x00000011 end=0x00000013 (size=0x00000002) count: 1\n   Export start=0x00000015 end=0x0000001f (size=0x0000000a) count: 1\n     Code start=0x00000021 end=0x00000027 (size=0x00000006) count: 1\n\n",
+        "details": "module.wasm:\tfile format wasm 0x1\n\nSection Details:\n\nType[1]:\n - type[0] () -> i32\nFunction[1]:\n - func[0] sig=0 <answer>\nExport[1]:\n - func[0] <answer> -> \"answer\"\nCode[1]:\n - func[0] size=4 <answer>\n",
+        "wat": {
+          "text": "(module\n  (type (;0;) (func (result i32)))\n  (func (;0;) (type 0) (result i32)\n    i32.const 42)\n  (export \"answer\" (func 0)))\n",
+          "sha256": "cfb85ee3cf82e0f804d574eda29b92c86471c25232301ea33ba123b91f327e82",
+          "representation": "decoded-wat"
+        },
+        "tool_profile": {
+          "source": "https://github.com/WebAssembly/wabt",
+          "release": "1.0.42",
+          "source_commit": "ff0ef7e0009402740c805a9744c09b05be063e48",
+          "commands": [
+            {
+              "tool": "wasm-validate",
+              "path": "C:\\Users\\toti\\Documents\\Codex\\2026-11-14\\c-users-toti-pi-agent-sessions\\work\\reverse-fusion\\vendor\\wabt\\1.0.42\\windows-x64\\wabt-1.0.42\\bin\\wasm-validate.exe",
+              "sha256": "4939f4bcc66b8b0370685f656c1a33df068f5d1b245b75c94b10c74ffdd946a3",
+              "version_banner": "1.0.42\n",
+              "arguments": [
+                "--enable-all",
+                "--ignore-custom-section-errors",
+                "module.wasm"
+              ]
+            },
+            {
+              "tool": "wasm-objdump",
+              "path": "C:\\Users\\toti\\Documents\\Codex\\2026-11-14\\c-users-toti-pi-agent-sessions\\work\\reverse-fusion\\vendor\\wabt\\1.0.42\\windows-x64\\wabt-1.0.42\\bin\\wasm-objdump.exe",
+              "sha256": "7f9cf21ca410d867261f719e01f2a0f7b5f13eb83abf0efa975a207307069ac8",
+              "version_banner": "1.0.42\n",
+              "arguments": [
+                "-h",
+                "-x",
+                "module.wasm"
+              ]
+            },
+            {
+              "tool": "wasm2wat",
+              "path": "C:\\Users\\toti\\Documents\\Codex\\2026-11-14\\c-users-toti-pi-agent-sessions\\work\\reverse-fusion\\vendor\\wabt\\1.0.42\\windows-x64\\wabt-1.0.42\\bin\\wasm2wat.exe",
+              "sha256": "9ccce93d1000e4d3ba7e5c365bd1e3b5d909dea2f72c7511d584f8a8e9108873",
+              "version_banner": "1.0.42\n",
+              "arguments": [
+                "--enable-all",
+                "--ignore-custom-section-errors",
+                "module.wasm"
+              ]
+            }
+          ],
+          "timeout_ms": 30000,
+          "output_budget_bytes": 33554432
+        },
+        "candidates": [
+          {
+            "path": "C:\\Users\\toti\\Documents\\Codex\\2026-11-14\\c-users-toti-pi-agent-sessions\\work\\reverse-fusion\\fixtures\\answer-candidate.wasm",
+            "sha256": "ccf59f0f7a7625ee380ed228905aadfa11072ac14cea1c53d1e7f3953d4d48c6",
+            "bytes": 39
+          }
+        ],
+        "glue": [],
+        "runtime_execution": "not-performed",
+        "network_fetch": "not-performed",
+        "limitations": [
+          "WAT is a decoded representation, not original source or proof of runtime behavior. Custom annotations may retain payloads, but WAT does not establish original binary layout or round-trip byte identity. Original bytes and objdump output remain authoritative.",
+          "Imports and exports retain exact top-level WABT WAT forms. Names remain escaped producer text; unescaped objdump display names are not parsed as unambiguous identifiers.",
+          "JavaScript references are AST-observed static literals only. Candidate matches are associations, not proven data flow, URL-to-file identity or runtime loading. Computed references and aliases are not resolved.",
+          "No target execution or implicit fetch. WABT tools are trusted caller-supplied executables; SHA-256 identifies their bytes, not publisher authenticity. No OS memory sandbox is claimed.",
+          "Each WABT command has a 30000 ms deadline and a 33554432 byte combined output budget (max_output_bytes). The deadline is not a whole-inspection budget. Oversized output fails instead of producing truncated success."
+        ]
+      },
+      "confidence": "observed",
+      "authority": "shipped-artifact",
+      "environment": null,
+      "limitations": [
+        "WAT is a decoded representation, not original source or proof of runtime behavior. Custom annotations may retain payloads, but WAT does not establish original binary layout or round-trip byte identity. Original bytes and objdump output remain authoritative.",
+        "Imports and exports retain exact top-level WABT WAT forms. Names remain escaped producer text; unescaped objdump display names are not parsed as unambiguous identifiers.",
+        "JavaScript references are AST-observed static literals only. Candidate matches are associations, not proven data flow, URL-to-file identity or runtime loading. Computed references and aliases are not resolved.",
+        "No target execution or implicit fetch. WABT tools are trusted caller-supplied executables; SHA-256 identifies their bytes, not publisher authenticity. No OS memory sandbox is claimed.",
+        "Each WABT command has a 30000 ms deadline and a 33554432 byte combined output budget (max_output_bytes). The deadline is not a whole-inspection budget. Oversized output fails instead of producing truncated success."
+      ],
+      "relationship_coverage": null,
+      "locations": [
+        {
+          "kind": "artifact-path",
+          "path": "C:\\Users\\toti\\Documents\\Codex\\2026-11-14\\c-users-toti-pi-agent-sessions\\work\\reverse-fusion\\fixtures\\answer-candidate.wasm"
+        }
+      ],
+      "evidence_links": []
+    },
+    {
+      "evidence_id": "ev_d6ed8f580f5b6d7fb001de26c8b8b6732fd32308f8aeb6eeb624738209e35f96",
+      "subject": {
+        "name": "answer.wasm",
+        "digest": {
+          "sha256": "ccf59f0f7a7625ee380ed228905aadfa11072ac14cea1c53d1e7f3953d4d48c6"
+        },
+        "local_path": "C:\\Users\\toti\\Documents\\Codex\\2026-11-14\\c-users-toti-pi-agent-sessions\\work\\reverse-fusion\\fixtures\\answer.wasm",
+        "format": "file",
+        "architecture": null
+      },
+      "provider": {
+        "id": "wabt-artifact",
+        "name": "REA WABT artifact adapter",
+        "version": "wabt@1.0.42"
+      },
+      "analysis_profile": null,
+      "predicate_type": "rea.analysis",
+      "operation": "inspect_wasm_artifact",
+      "parameters": {
+        "path": "C:\\Users\\toti\\Documents\\Codex\\2026-11-14\\c-users-toti-pi-agent-sessions\\work\\reverse-fusion\\fixtures\\answer.wasm",
+        "glue_paths": [],
+        "candidate_paths": []
+      },
+      "caller_input_path": "C:\\Users\\toti\\Documents\\Codex\\2026-11-14\\c-users-toti-pi-agent-sessions\\work\\reverse-fusion\\fixtures\\answer.wasm",
+      "raw_result": null,
+      "normalized_result": {
+        "artifact": {
+          "path": "C:\\Users\\toti\\Documents\\Codex\\2026-11-14\\c-users-toti-pi-agent-sessions\\work\\reverse-fusion\\fixtures\\answer.wasm",
+          "sha256": "ccf59f0f7a7625ee380ed228905aadfa11072ac14cea1c53d1e7f3953d4d48c6",
+          "bytes": 39
+        },
+        "validation": "valid",
+        "sections": [
+          {
+            "kind": "Type",
+            "start": 10,
+            "end": 15,
+            "bytes": 5,
+            "description": "count: 1"
+          },
+          {
+            "kind": "Function",
+            "start": 17,
+            "end": 19,
+            "bytes": 2,
+            "description": "count: 1"
+          },
+          {
+            "kind": "Export",
+            "start": 21,
+            "end": 31,
+            "bytes": 10,
+            "description": "count: 1"
+          },
+          {
+            "kind": "Code",
+            "start": 33,
+            "end": 39,
+            "bytes": 6,
+            "description": "count: 1"
+          }
+        ],
+        "interface": {
+          "state": "complete",
+          "entries": [
+            {
+              "direction": "export",
+              "module": null,
+              "name": "answer",
+              "kind": "func",
+              "index": 0,
+              "signature": {
+                "kind": "func",
+                "params": [],
+                "results": [
+                  "i32"
+                ]
+              },
+              "wat_form": "(export \"answer\" (func 0))",
+              "issue": null
+            }
+          ],
+          "issues": []
+        },
+        "imports": [],
+        "exports": [
+          "(export \"answer\" (func 0))"
+        ],
+        "debug_name_metadata": "not-present",
+        "custom_section_warnings": [],
+        "headers": "\nmodule.wasm:\tfile format wasm 0x1\n\nSections:\n\n     Type start=0x0000000a end=0x0000000f (size=0x00000005) count: 1\n Function start=0x00000011 end=0x00000013 (size=0x00000002) count: 1\n   Export start=0x00000015 end=0x0000001f (size=0x0000000a) count: 1\n     Code start=0x00000021 end=0x00000027 (size=0x00000006) count: 1\n\n",
+        "details": "module.wasm:\tfile format wasm 0x1\n\nSection Details:\n\nType[1]:\n - type[0] () -> i32\nFunction[1]:\n - func[0] sig=0 <answer>\nExport[1]:\n - func[0] <answer> -> \"answer\"\nCode[1]:\n - func[0] size=4 <answer>\n",
+        "wat": {
+          "text": "(module\n  (type (;0;) (func (result i32)))\n  (func (;0;) (type 0) (result i32)\n    i32.const 42)\n  (export \"answer\" (func 0)))\n",
+          "sha256": "cfb85ee3cf82e0f804d574eda29b92c86471c25232301ea33ba123b91f327e82",
+          "representation": "decoded-wat"
+        },
+        "tool_profile": {
+          "source": "https://github.com/WebAssembly/wabt",
+          "release": "1.0.42",
+          "source_commit": "ff0ef7e0009402740c805a9744c09b05be063e48",
+          "commands": [
+            {
+              "tool": "wasm-validate",
+              "path": "C:\\Users\\toti\\Documents\\Codex\\2026-11-14\\c-users-toti-pi-agent-sessions\\work\\reverse-fusion\\vendor\\wabt\\1.0.42\\windows-x64\\wabt-1.0.42\\bin\\wasm-validate.exe",
+              "sha256": "4939f4bcc66b8b0370685f656c1a33df068f5d1b245b75c94b10c74ffdd946a3",
+              "version_banner": "1.0.42\n",
+              "arguments": [
+                "--enable-all",
+                "--ignore-custom-section-errors",
+                "module.wasm"
+              ]
+            },
+            {
+              "tool": "wasm-objdump",
+              "path": "C:\\Users\\toti\\Documents\\Codex\\2026-11-14\\c-users-toti-pi-agent-sessions\\work\\reverse-fusion\\vendor\\wabt\\1.0.42\\windows-x64\\wabt-1.0.42\\bin\\wasm-objdump.exe",
+              "sha256": "7f9cf21ca410d867261f719e01f2a0f7b5f13eb83abf0efa975a207307069ac8",
+              "version_banner": "1.0.42\n",
+              "arguments": [
+                "-h",
+                "-x",
+                "module.wasm"
+              ]
+            },
+            {
+              "tool": "wasm2wat",
+              "path": "C:\\Users\\toti\\Documents\\Codex\\2026-11-14\\c-users-toti-pi-agent-sessions\\work\\reverse-fusion\\vendor\\wabt\\1.0.42\\windows-x64\\wabt-1.0.42\\bin\\wasm2wat.exe",
+              "sha256": "9ccce93d1000e4d3ba7e5c365bd1e3b5d909dea2f72c7511d584f8a8e9108873",
+              "version_banner": "1.0.42\n",
+              "arguments": [
+                "--enable-all",
+                "--ignore-custom-section-errors",
+                "module.wasm"
+              ]
+            }
+          ],
+          "timeout_ms": 30000,
+          "output_budget_bytes": 33554432
+        },
+        "candidates": [
+          {
+            "path": "C:\\Users\\toti\\Documents\\Codex\\2026-11-14\\c-users-toti-pi-agent-sessions\\work\\reverse-fusion\\fixtures\\answer.wasm",
+            "sha256": "ccf59f0f7a7625ee380ed228905aadfa11072ac14cea1c53d1e7f3953d4d48c6",
+            "bytes": 39
+          }
+        ],
+        "glue": [],
+        "runtime_execution": "not-performed",
+        "network_fetch": "not-performed",
+        "limitations": [
+          "WAT is a decoded representation, not original source or proof of runtime behavior. Custom annotations may retain payloads, but WAT does not establish original binary layout or round-trip byte identity. Original bytes and objdump output remain authoritative.",
+          "Imports and exports retain exact top-level WABT WAT forms. Names remain escaped producer text; unescaped objdump display names are not parsed as unambiguous identifiers.",
+          "JavaScript references are AST-observed static literals only. Candidate matches are associations, not proven data flow, URL-to-file identity or runtime loading. Computed references and aliases are not resolved.",
+          "No target execution or implicit fetch. WABT tools are trusted caller-supplied executables; SHA-256 identifies their bytes, not publisher authenticity. No OS memory sandbox is claimed.",
+          "Each WABT command has a 30000 ms deadline and a 33554432 byte combined output budget (max_output_bytes). The deadline is not a whole-inspection budget. Oversized output fails instead of producing truncated success."
+        ]
+      },
+      "confidence": "observed",
+      "authority": "shipped-artifact",
+      "environment": null,
+      "limitations": [
+        "WAT is a decoded representation, not original source or proof of runtime behavior. Custom annotations may retain payloads, but WAT does not establish original binary layout or round-trip byte identity. Original bytes and objdump output remain authoritative.",
+        "Imports and exports retain exact top-level WABT WAT forms. Names remain escaped producer text; unescaped objdump display names are not parsed as unambiguous identifiers.",
+        "JavaScript references are AST-observed static literals only. Candidate matches are associations, not proven data flow, URL-to-file identity or runtime loading. Computed references and aliases are not resolved.",
+        "No target execution or implicit fetch. WABT tools are trusted caller-supplied executables; SHA-256 identifies their bytes, not publisher authenticity. No OS memory sandbox is claimed.",
+        "Each WABT command has a 30000 ms deadline and a 33554432 byte combined output budget (max_output_bytes). The deadline is not a whole-inspection budget. Oversized output fails instead of producing truncated success."
+      ],
+      "relationship_coverage": null,
+      "locations": [
+        {
+          "kind": "artifact-path",
+          "path": "C:\\Users\\toti\\Documents\\Codex\\2026-11-14\\c-users-toti-pi-agent-sessions\\work\\reverse-fusion\\fixtures\\answer.wasm"
+        }
+      ],
+      "evidence_links": []
+    }
+  ]
+}

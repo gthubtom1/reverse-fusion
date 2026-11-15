@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-11-15T01:33:54.064082+00:00",
+  "operation": "optional-cli-transport-probes",
+  "scope": "Exact assistant sentinel only; not repository instruction loading or business acceptance.",
+  "probes": [
+    {
+      "id": "codex",
+      "status": "blocked",
+      "reason": "host login, quota, runtime or provider availability blocked the probe",
+      "version": "codex-cli 0.167.0-alpha.4.1",
+      "exit_code": 1,
+      "observed": false,
+      "config_mutation": false,
+      "cleanup": "root invocation returned; no descendant claim"
+    },
+    {
+      "id": "pi",
+      "status": "pass",
+      "reason": "exact assistant sentinel observed",
+      "version": "1.4.0",
+      "exit_code": 0,
+      "observed": true,
+      "config_mutation": false,
+      "cleanup": "root invocation returned; no descendant claim"
+    },
+    {
+      "id": "claude",
+      "status": "blocked",
+      "reason": "host login, quota, runtime or provider availability blocked the probe",
+      "version": "2.1.310 (Claude Code)",
+      "exit_code": 1,
+      "observed": false,
+      "config_mutation": false,
+      "cleanup": "root invocation returned; no descendant claim"
+    }
+  ]
+}

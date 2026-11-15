@@ -1,185 +1,119 @@
 # Reverse Fusion 部署与使用指南
 
-这份指南是交给任意 Codex、Pi、Claude Code 或兼容 coding agent 的部署契约。
-它不假设固定盘符、固定用户目录、固定 shell、固定 Python 路径、固定智能体
-工作区或固定模型。智能体必须先发现本机能力，再选择本机可用的命令和 provider。
+把仓库链接交给正在使用的 Codex、Pi、Claude Code 或兼容 coding agent，并说
+“部署到当前工作区”即可。完整部署动作只在
+[AGENT-BOOTSTRAP.md](AGENT-BOOTSTRAP.md) 维护；这份指南解释使用与维护逻辑。
+无需用户另存长提示词。所有路径根据当前 checkout 计算，不固定盘符、用户目录、
+shell、模型或工具安装路径。
 
-## 产品边界
+## 部署范围与顺序
 
-Reverse Fusion 是一个独立的 GitHub 产品仓库。它拥有 Reverse 路由、case
-生命周期、宿主适配、Builder transport、Evidence/Spec/acceptance 合同、
-runner、文档和状态记录。REA、Spec Kit、JADX MCP、WABT 等官方组件保留
-官方身份，通过 manifest、bootstrap 和 adapter 接入。旧 reverse-skill、旧
-installer、旧 REA/Craft/Spec Kit 安装及宿主全局配置是只读外部环境。
-
-模型、账号和 provider 始终属于当前宿主：
-
-- Codex 使用当前 Codex 登录状态和当前模型。
-- Pi 使用当前 Pi provider、账号和模型。
-- Claude 使用当前 Claude 登录状态、provider 和模型。
-
-仓库不选择模型、不下载模型、不把模型名称写入路由条件。provider 或登录
-缺失时，智能体记录 `blocked`、`unsupported` 或 `unknown`，继续完成与该能力
-无关的工作。
-
-## 给任意智能体的部署提示词
-
-把仓库 URL 和下面的指令一起交给智能体：
-
-```text
-把这个 GitHub 仓库部署到当前工作区：
-https://github.com/gthubtom1/reverse-fusion
-
-先读取 README.md、AGENTS.md、docs/DEPLOYMENT-GUIDE.md、
-docs/PRODUCT-GOAL.md、docs/CURRENT-STATE.md、docs/DECISIONS.md、
-docs/PROVIDER-STATUS.md、docs/TARGET-CAPABILITY-MATRIX.md、
-SOURCE-MANIFEST.json、components/official/manifest.json 和最新 checkpoint。
-
-先发现当前 OS、架构、shell、Python、Node、Java、.NET、Android SDK、
-Codex/Pi/Claude CLI 和可用 provider。不要假设固定路径；所有路径使用当前
-工作区的绝对路径计算。
-
-先执行仓库本地的 contracts、plan、doctor 和 handoff 检查，再按当前宿主
-选择可用安装入口。安装只写仓库自己的虚拟环境、vendor、state 和 case 目录，
-不修改旧仓库、旧安装、宿主凭据或全局配置。
-
-normal-dev 是主项目的默认基线。开发过程中如果需要研究另一个网站、APK、
-桌面软件、API、协议或其他项目，创建隔离的 analysis/reconstruction subcase；
-不要把 subcase 的临时 candidate 写回主项目。只有经过 Evidence 支持的结论、
-接口约束或 Spec tasks 才能回到主项目。
-
-不要把逆向工作固定成单一顺序。根据目标能力选择静态分析、动态观察、dump、
-脱壳、hook、模拟、设备或其他 provider；Reverse 路由负责分类和上下文，REA
-负责证据，Builder 只执行冻结任务，acceptance 保留 pass/fail/unknown。
-
-不要把工具可见、exit 0、Craft Ready 或模型自述写成业务通过。
-完成部署后报告实际工作区、安装入口、provider 状态、未满足能力和下一步操作。
-```
-
-## 智能体部署步骤
-
-1. **发现工作区和宿主**
-
-   智能体先确定当前仓库根目录、OS、架构、shell 和可用命令。仓库脚本使用
-   当前脚本位置计算相对路径；不要把 `C:\...`、`/home/...` 或某个固定用户目录
-   写进项目配置。
-
-2. **运行只读检查**
+1. 智能体读取 README、AGENTS 和 `docs/AGENT-BOOTSTRAP.md`，发现 OS、架构、
+   shell 和 Python 3.11+ launcher。正在对话的宿主即 `[selected-host]`，无需为
+   本产品另选模型或账号。发现其他 CLI 不代表安装或登录。
+2. Windows 先 dry-run `scripts/install.ps1 -DryRun -Python [launcher]`，再运行
+   `scripts/install.ps1 -Python [launcher]`。POSIX 先
+   `RF_PYTHON=[launcher] RF_DRY_RUN=1 ./scripts/install.sh`，再
+   `RF_PYTHON=[launcher] ./scripts/install.sh`。这创建本 checkout 的 `.venv` 并
+   安装本地包。脚本不是部署其他全局宿主的入口。
+3. 从此使用 `[venv-python]`：Windows 为 `[repo]/.venv/Scripts/python.exe`，
+   POSIX 为 `[repo]/.venv/bin/python`。依次执行：
 
    ```text
-   python -m reverse_fusion contracts
-   python -m reverse_fusion plan --client auto --intent normal-dev --format json
-   python -m reverse_fusion doctor --format json
-   python -m reverse_fusion handoff --check --format json
+   [venv-python] -m reverse_fusion contracts
+   [venv-python] -m reverse_fusion plan --client [selected-host] --intent normal-dev
+   [venv-python] -m reverse_fusion doctor
+   [venv-python] -m reverse_fusion handoff --check
+   [venv-python] -m reverse_fusion install --apply --client [selected-host]
    ```
 
-   如果系统没有 `python` 这个命令，智能体使用本机对应的 Python launcher，
-   并把实际命令记录在部署报告中。Plan 和 doctor 不启动 provider，也不写全局
-   配置。
+4. 读取 `state/install.json`，确认 selected host 和版本；确认当前 agent 已读取
+   仓库规则及一次本地 route 的 `skill`、`required_reads`。receipt 是仓库内状态，
+   不是宿主全局注册，也不是业务验收。
+5. 需要独立 CLI transport 时，才对选定宿主执行
+   `handshake --client [selected-host] --timeout 45 --record`。固定 sentinel 只
+   证明最终 assistant 应答；它不证明目标业务、完整领域加载或所有工具健康。
+   缺登录、额度或 provider 时如实记录 blocked/unknown，仍可使用已运行的当前
+   会话 agent。无需为了默认 Builder 再启动一个 CLI。
+6. REA、WABT、JADX 等按具体任务需要 bootstrap 到本仓库 `vendor/`，不在基础
+   安装时下载全部工具。保存实际能力、缺失项和下一步；任何旧安装和全局配置均
+   不写入。Craft companion 的 `--all-tools` 保持原样。
 
-3. **创建仓库本地安装环境**
-
-   Windows 使用 `scripts/install.ps1`，Linux/macOS 使用 `scripts/install.sh`。
-   两个入口默认只使用仓库内的虚拟环境；先 dry-run，再根据宿主实际情况执行
-   apply。Linux/macOS 如果默认命令名不是 `python`，可通过 `RF_PYTHON` 指向
-   当前 Python 3.11+ launcher。REA、WABT、JADX 等较大的 provider 由各自
-   bootstrap 按 manifest 校验，只落在仓库 `vendor/`；当前 WABT/APK/REA
-   vertical runner 以 PowerShell 为主，POSIX 宿主由 agent 选择等价的本机
-   provider 命令，或明确记录 `unsupported`/`blocked`。核心路由、领域技能、
-   contracts、case 和普通开发仍可独立使用。
-
-4. **完成正常开发部署**
-
-   部署完成后，智能体可以直接在当前工作区和用户对话。普通开发不强制创建
-   Reverse case，也不强制启动 REA 或 Builder。需要时再创建嵌套 subcase。
-
-5. **创建嵌套分析或复刻 subcase**
-
-   路由后读取 `RULES.md`、返回的 `skill` 和 `required_reads`。
-   `missing_support` 非空时处理缺失资源。困难迹象来自任务文本或后续证据时，
-   按 `components/reverse-core/runtime.json` 加载资料，不固定工具顺序。
-   `contracts` 同时核对来源文件和有意适配清单。CTF/Burp 源码随仓库保留，
-   运行工具按需准备；本机生成的工具索引属于被忽略的本地状态。
-
-   ```text
-   当前主项目继续保持 normal-dev。
-   创建一个隔离 subcase：
-   - 目标：[target path or URL]
-   - 目的：[analysis / reconstruction / comparison]
-   - 需要回到主项目的结果：[接口、行为、设计经验、Spec task 或 candidate]
-   只把经过 Evidence 支持的结果带回主项目。
-   ```
-
-   subcase 使用独立的 case root、route、Evidence、Spec tasks、candidate 和
-   ledger。需要持久化路由和恢复点时使用 `bridge --record`；它会在仓库内的
-   case root 写入 `case.json`，并拒绝越过仓库边界的路径。主项目源代码、构建
-   目录和工作树保持隔离。
+本 checkout 的规则加载只作用于当前工作区。另一个项目需要显式让 agent 读取
+本 checkout 的 `AGENTS.md` 和 `docs/AGENT-BOOTSTRAP.md`，或在该工作区部署
+自己的 checkout。项目不会暗中全局注入所有其他会话。
 
 ## 对话中的动态工作方式
 
-Reverse Fusion 不是一条强制的“每次都要走完整逆向流程”的流水线。智能体根据
-   用户目标和当前证据动态组合能力：
+- **normal-dev**：普通网站、APK、桌面软件、服务端或其他项目开发；不强制 case、
+  REA、Spec、proof 或 ledger。
+- **analysis**：按需建立隔离 subcase，保留目标、route、原版 Evidence/观察、限制
+  和结论。未要求复刻时不强制 Spec tasks 或候选。
+- **reconstruction**：在分析基础上冻结 spec/tasks，限定单一 Builder workspace
+  和 allowed outputs，再独立执行 build/run、comparison、proof 和 ledger。
+- **follow-up**：恢复现有 case 与来源引用，按新的证据修订结论或继续任务。
 
-- 只想了解外部网站行为：创建 analysis subcase，只做静态/动态观察和报告。
-- 想学习一个参考项目的接口：先做 analysis subcase，再把已确认的接口约束转成
-  主项目 Spec task。
-- 想复刻某个功能：升级为 reconstruction subcase，冻结任务后调用 Builder、
-  构建 candidate、运行和 comparison。
-- 正在开发 APK、桌面软件或服务端项目，中途发现相关依赖：创建对应目标族的
-  subcase，不要求主项目整体切换成 APK 或 Native 模式。
-- 遇到壳、混淆、反调试或 provider 缺失：选择合适 probe；若仍缺证据，留下
-  unknown 和下一步 probe，不把静态相似度当成等价结论。
+例如开发网站中途需要研究另一个站点，或开发 APK 时发现相关桌面工具，均创建
+自己的 analysis/reconstruction subcase。主项目继续 normal-dev；只有经过审查、
+Evidence 支持的结论或候选才能带回主项目，临时候选不覆盖主项目源代码。
 
-## 组件调用关系
+先调用 `bridge --source local --hint [task]`，读取返回的 `skill`、
+`required_reads`、`hard_target` 和 `missing_support`。需要持久恢复点时增加
+`--case-root [repo-relative-case] --mode analysis --record`。资料缺失即
+unavailable，不用旧 receipt 假装具备能力。
+
+遇到加壳、混淆、反调试、反 VM、动态加载、反 Hook 或工具触发早退时，按
+`RULES.md` 和 runtime manifest 加载困难目标资料。静态、动态、dump、脱壳、
+hook、模拟及设备的顺序由目标证据决定；路由和技能辅助模型判断，不限制为固定
+流水线。保全方法与 helper 不等于提前验证所有保护器。
+
+## 当前会话 Builder
+
+默认 writer 就是用户正在对话的宿主 agent。冻结目标任务、研究文件与输出白名单
+后，让它用已有工具编写候选，不启动另一个账号、模型或 CLI。示意命令：
 
 ```text
-主项目对话
-  -> normal-dev host-native baseline
-  -> 按需创建 subcase
-       -> Reverse local route/case
-       -> REA official Evidence
-       -> Spec Kit project tasks
-       -> 当前宿主 Builder/model
-       -> candidate build/run
-       -> original/candidate comparison
-       -> proof + obligation ledger
-  -> reviewed result 回到主项目
+[venv-python] -m reverse_fusion session prepare --receipt work/[case]/session.json --workspace work/[case]/candidate --tasks T-001 --task-file specs/[feature]/tasks.md --research-file work/[case]/accepted-research.json --allowed-output src/main.ext
+# 当前宿主读取冻结文件，实际编写白名单内的候选
+[venv-python] -m reverse_fusion session check --receipt work/[case]/session.json
+# 当前宿主审查候选，必要时只修改白名单内文件
+[venv-python] -m reverse_fusion session refine --receipt work/[case]/session.json
+[venv-python] -m reverse_fusion session finish --receipt work/[case]/session.json
 ```
 
-Reverse 是唯一的 route/case owner；REA 是 Evidence owner；Spec Kit 是任务和
-项目意图 owner；Builder 是单一 candidate writer；acceptance 是独立验证面。
-这种职责划分防止多个上游工具争夺同一个主项目路由。
+`--allowed-output` 相对于 candidate workspace，可重复。receipt 必须在 workspace
+外。该观察器核对冻结输入和文件边界，不能阻止 agent 自己工具的越界操作，也不
+证明候选行为正确。随后必须独立构建、运行或明确记 unknown，再做原版/候选对比
+和 ledger。可选 `build --host ...` 是独立子 CLI transport；`craft --source ...`
+是离线确定性复制 worker，均不可替代真实业务证明。
 
-## 二开、增强和上游更新
+## 组件与目标边界
 
-本项目不要求永远保持上游原样，也不要求上游每次更新都同步。更新流程是选择性
-的，而不是定时镜像：
+Reverse 是唯一 route/case owner；REA 管理 Evidence/comparison/ledger；Spec
+管理任务与来源引用；当前宿主 Builder 是单一 candidate writer；独立 verifier
+负责业务验收。Craft 当前只分发 bounded interface，历史 patch 名称未分发或
+replay，native R46 unsupported。模型、provider 和登录始终属于当前宿主。
 
-1. 用户提出“检查上游更新”时，智能体读取 `SOURCE-MANIFEST.json` 和
-   `components/official/manifest.json`，记录当前 pin。
-2. 智能体只读比较上游 commit、release、schema、API、provider 行为和 changelog，
-   不直接合并。
-3. 对每个上游变化回答：它是否解决本项目真实 capability gap？是否改善当前目标
-   族？是否会破坏本地 route、Evidence、Spec、Builder 或 ledger 合同？
-4. 没有帮助的上游变化保持原 pin，不做更新。
-5. 有帮助的变化先建立 detached comparison 或本地 patch，运行 focused tests、
-   代表性 acceptance、fresh-clone 检查和 rollback 检查。
-6. 只有结果改善且合同保持兼容时，才更新本地 manifest、adapter、checkpoint、
-   provider status 和 handoff。
+REA pin 为 `6.9.0`，Node engine 精确为 `^22.23.4 || ^24.22.1 || >=26.12.1`。
+WABT pin `1.0.42`，JADX headless MCP pin `0.7.1`。Spec source 为
+`1.4.1.dev0`，历史 CLI execution 为 `1.4.0`；本地任务文件不要求每次装 Spec CLI。
+实际现场可用性看 `PROVIDER-STATUS.md` 和当前 checkpoint，不从 source pin 推断。
 
-当前策略：
+当前代表性范围是 WASM 有限执行、Web answer 有限重放、.NET 有限方法执行，
+以及 APK 构建/manifest/member 静态对比。完整 Web graph 有 4 个 required open
+义务，Android 设备运行未知。PowerShell provider runner 已在审计机执行；POSIX
+agent 选择等价本机命令或记录 unsupported/blocked，不能把 Git Bash 当成原生
+Linux/macOS 实机验收。
 
-- Reverse core 已经是本仓库拥有的增强实现，可直接继续二开。
-- REA 默认保持官方；出现重复且有 Evidence 的能力缺口时，再做本地 adapter 或
-  受控 fork。
-- Spec Kit 默认保持官方 CLI；项目级 artifacts 和连接逻辑由本仓库维护。
-- Craft 使用本仓库的 bounded adapter、patch identity 和 host-owned Builder；
-  native backend 只有在实际资格化后才提升为产品路径。
-- JADX/WABT 使用官方版本和 checksum manifest；需要更新时选择性比较并重新验收。
+## 维护、卸载与回滚
 
-## 卸载和回滚
+上游更新只读比较 `SOURCE-MANIFEST.json`、official manifest 和实际变化，只有
+改善真实 capability gap 时才在本仓库选择性吸收；无需跟随每次上游发布。
+允许受控 adapter、patch 或 fork，保留 source identity、focused checks 和回滚点。
+完整过程见 [UPSTREAM-MAINTENANCE.md](UPSTREAM-MAINTENANCE.md)。
 
-卸载默认只生成计划。apply 模式只删除或更新仓库自己的 state、虚拟环境和
-vendor 资产；宿主凭据、旧项目和全局配置保持原样。回滚优先恢复最近一次
-reverse-fusion Git commit，再恢复对应的 manifest、checkpoint 和 provider
-状态记录。
+CLI `uninstall --apply` 只删 receipt；Windows `scripts/uninstall.ps1 -Apply`
+或 POSIX `scripts/uninstall.sh` 删除仓库 venv 和 receipt，vendor 资产保留。
+案例、原版 Evidence、Spec 与候选不属于通用卸载垃圾。回滚按 Git revision 和
+provider manifest 处理，项目没有自动全局恢复或 receipt transaction journal。
+具体边界见 [ROLLBACK.md](ROLLBACK.md)。

@@ -3,10 +3,10 @@
 ## Source references
 
 - Reverse route: `R1` (`components/reverse-core/routes/R1.md`)
-- Original REA Evidence: `state/rea-apk-original.json` and
-  `state/rea-apk-original-class.json`
-- Candidate REA Evidence: `state/rea-apk-candidate.json` and
-  `state/rea-apk-candidate-class.json`
+- Original REA Evidence: `evidence/rf22/apk/original.json` and
+  `evidence/rf22/apk/original-class.json`
+- Candidate REA Evidence: `evidence/rf22/apk/candidate.json` and
+  `evidence/rf22/apk/candidate-class.json`
 - Provider: `jadx-headless-mcp@0.7.1`, pinned by
   `vendor/jadx-headless-mcp/0.7.1/manifest.json`
 

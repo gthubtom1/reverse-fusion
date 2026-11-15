@@ -38,6 +38,8 @@ def is_safe_relative_path(value: str) -> bool:
     """Reject POSIX and Windows absolute/traversal paths on every host."""
     if not isinstance(value, str) or not value.strip():
         return False
+    if not PurePosixPath(value).parts or PureWindowsPath(value).drive or PureWindowsPath(value).root:
+        return False
     for path_type in (PurePosixPath, PureWindowsPath):
         path = path_type(value)
         if path.is_absolute() or any(part in {"", ".", ".."} for part in path.parts):
@@ -52,6 +54,8 @@ def _is_relative_safe(value: str) -> bool:
 def _check_unique_ids(items: Iterable[dict[str, Any]], label: str) -> None:
     seen: set[str] = set()
     for index, item in enumerate(items):
+        if not isinstance(item, dict):
+            raise ContractError(f"{label}[{index}] must be an object")
         item_id = item.get("id")
         if not isinstance(item_id, str) or not item_id:
             raise ContractError(f"{label}[{index}].id must be a non-empty string")
@@ -66,7 +70,10 @@ def validate_external_baseline(value: dict[str, Any]) -> dict[str, Any]:
     unknown = sorted(set(value) - allowed)
     if missing or unknown:
         raise ContractError(f"external baseline contract missing={missing} unknown={unknown}")
-    if value["version"] != 1 or not isinstance(value["root"], str) or not isinstance(value["artifacts"], list):
+    if (type(value["version"]) is not int or value["version"] != 1
+            or not isinstance(value["root"], str) or not value["root"]
+            or not isinstance(value["artifacts"], list)
+            or any(not isinstance(artifact, dict) for artifact in value["artifacts"])):
         raise ContractError("external baseline has invalid version/root/artifacts")
     digest = value["bundle_sha256"]
     if not isinstance(digest, str) or len(digest) != 64 or any(char not in "0123456789abcdef" for char in digest):
@@ -76,10 +83,14 @@ def validate_external_baseline(value: dict[str, Any]) -> dict[str, Any]:
 
 def validate_candidate_result(value: dict[str, Any]) -> dict[str, Any]:
     required = {"version", "disposition", "tasks", "checks", "cleanup"}
-    allowed = required | {"reason", "result", "task_digest", "model_id", "research_ref", "backend", "host", "host_result", "output", "candidate_sha256", "refine_result"}
+    allowed = required | {
+        "reason", "result", "task_digest", "model_id", "research_ref", "backend", "host",
+        "host_result", "output", "candidate_sha256", "source_sha256", "refine_result",
+        "operation", "source", "workspace", "model_selection",
+    }
     missing = sorted(required - value.keys())
     unknown = sorted(set(value) - allowed)
-    if missing or unknown or value.get("version") != 1:
+    if missing or unknown or type(value.get("version")) is not int or value.get("version") != 1:
         raise ContractError(f"candidate result missing={missing} unknown={unknown} or version is not 1")
     if value["disposition"] not in {"candidate", "needs-evidence", "needs-spec", "needs-scope", "unsupported", "failed", "blocked", "blocked-cleanup"}:
         raise ContractError("candidate result has invalid disposition")
@@ -92,14 +103,32 @@ def validate_candidate_result(value: dict[str, Any]) -> dict[str, Any]:
             raise ContractError("candidate result checks must contain id and status strings")
     if not isinstance(value["cleanup"].get("status"), str):
         raise ContractError("candidate result cleanup must contain a status string")
+    string_fields = {
+        "task_digest", "model_id", "research_ref", "backend", "host", "output",
+        "operation", "source", "workspace", "model_selection",
+    }
+    for key in string_fields & value.keys():
+        if not isinstance(value[key], str):
+            raise ContractError(f"candidate result {key} must be a string")
+    if "reason" in value and value["reason"] is not None and not isinstance(value["reason"], str):
+        raise ContractError("candidate result reason must be a string or null")
+    for key in {"host_result", "refine_result"} & value.keys():
+        if not isinstance(value[key], dict):
+            raise ContractError(f"candidate result {key} must be an object")
+    for key in {"candidate_sha256", "source_sha256"} & value.keys():
+        digest = value[key]
+        if not isinstance(digest, str) or not re.fullmatch(r"[0-9a-f]{64}", digest):
+            raise ContractError(f"candidate result {key} must be lowercase SHA-256")
     return value
 
 
 def validate_handoff(value: dict[str, Any]) -> dict[str, Any]:
     required = {"version", "case", "original", "implementation", "baseline", "checks", "builder", "owner"}
+    allowed = required
     missing = sorted(required - value.keys())
-    if missing or value.get("version") != 1:
-        raise ContractError(f"handoff missing={missing} or version is not 1")
+    unknown = sorted(set(value) - allowed)
+    if missing or unknown or type(value.get("version")) is not int or value.get("version") != 1:
+        raise ContractError(f"handoff missing={missing} unknown={unknown} or version is not 1")
     if any(not isinstance(value[key], dict) for key in required - {"version"}):
         raise ContractError("handoff sections must be objects")
     return value
@@ -150,6 +179,16 @@ def _check_reverse_support(root: Path, route_ids: set[str]) -> dict[str, Any]:
     files = preserved.get("files")
     if preserved.get("schema_version") != 1 or not isinstance(files, dict) or not files:
         raise ContractError("reverse preservation manifest is invalid")
+    expected_groups = preserved.get("groups")
+    if not isinstance(expected_groups, dict) or set(expected_groups) != {"skills", "CTF-Sandbox-Orchestrator", "burp-mcp-full"}:
+        raise ContractError("reverse preservation groups are invalid")
+    actual_groups = {
+        "skills": sum(name.startswith("skills/") for name in files),
+        "CTF-Sandbox-Orchestrator": sum(name.startswith("CTF-Sandbox-Orchestrator/") for name in files),
+        "burp-mcp-full": sum(name.startswith("burp-mcp-full/") for name in files),
+    }
+    if actual_groups != expected_groups or sum(expected_groups.values()) != len(files):
+        raise ContractError(f"reverse preservation group counts drift: expected={expected_groups} actual={actual_groups}")
     sources = read_json(root / "SOURCE-MANIFEST.json")["components"]
     origin = next((item for item in sources if item.get("id") == "reverse-domain-skills"), {})
     if preserved.get("source") != origin.get("source") or preserved.get("commit") != origin.get("commit"):
@@ -182,6 +221,8 @@ def check_contracts(root: Path) -> dict[str, Any]:
             raise ContractError("official manifest has invalid project/components")
         _check_unique_ids(manifest["components"], "official manifest components")
         for component in manifest["components"]:
+            if not isinstance(component, dict):
+                raise ContractError("official manifest components must be objects")
             for key in ("id", "kind", "source", "policy"):
                 if not isinstance(component.get(key), str) or not component[key]:
                     raise ContractError(f"official manifest component {component.get('id')!r} missing {key}")
@@ -196,6 +237,8 @@ def check_contracts(root: Path) -> dict[str, Any]:
         if source_manifest["project"] != "reverse-fusion" or not isinstance(source_manifest["components"], list):
             raise ContractError("SOURCE-MANIFEST.json has invalid project/components")
         _check_unique_ids(source_manifest["components"], "source manifest components")
+        if any(not isinstance(component, dict) for component in source_manifest["components"]):
+            raise ContractError("source manifest components must be objects")
         if {item.get("id") for item in source_manifest["components"]} != {item.get("id") for item in manifest["components"]}:
             raise ContractError("source manifest component ids drift from official manifest")
         checks.append({"id": "source-manifest", "status": "pass"})
@@ -208,10 +251,24 @@ def check_contracts(root: Path) -> dict[str, Any]:
         for route_id, route in routes.items():
             if not isinstance(route, dict) or not isinstance(route.get("skill"), str):
                 raise ContractError(f"reverse route {route_id} is missing a local skill reference")
-            if not (root / "components" / "reverse-core" / "routes" / f"{route_id}.md").is_file():
+            descriptor_path = root / "components" / "reverse-core" / "routes" / f"{route_id}.md"
+            if not descriptor_path.is_file():
                 raise ContractError(f"reverse route descriptor missing: {route_id}")
             if not (root / "skills" / route["skill"]).is_file():
                 raise ContractError(f"reverse domain skill missing: {route['skill']}")
+            try:
+                descriptor = descriptor_path.read_text(encoding="utf-8")
+            except (OSError, UnicodeError) as exc:
+                raise ContractError(f"reverse route descriptor unreadable: {route_id}: {exc}") from exc
+            expected_heading = f"# {route_id}: {route.get('label', '')}"
+            if expected_heading not in descriptor:
+                raise ContractError(f"reverse route descriptor identity drift: {route_id}")
+            expected_route_id = f"- Route id: `{route_id}`"
+            if expected_route_id not in descriptor:
+                raise ContractError(f"reverse route descriptor id drift: {route_id}")
+            expected_skill = f"- Local skill: `skills/{route['skill']}`"
+            if expected_skill not in descriptor:
+                raise ContractError(f"reverse route descriptor skill drift: {route_id}")
         checks.append({"id": "reverse-routing-and-skills", "status": "pass", "routes": len(routes)})
         checks.append(_check_reverse_support(root, set(routes)))
         for rel in (
@@ -228,8 +285,10 @@ def check_contracts(root: Path) -> dict[str, Any]:
         required_capabilities = ["prepare", "build", "check", "refine", "return_summary", "cleanup"]
         if craft.get("version") != 1 or craft.get("required_capabilities") != required_capabilities:
             raise ContractError("Craft bundle manifest does not contain the exact six-tool gate")
-        if not isinstance(craft.get("patch_series"), list) or len(craft["patch_series"]) != 4:
-            raise ContractError("Craft bundle manifest must pin four ordered patches")
+        if craft.get("distribution") != "repository-interface-only" or craft.get("patch_series") != []:
+            raise ContractError("Craft native patches must not be represented as a distributed backend")
+        if len(craft.get("historical_patch_series", [])) != 4:
+            raise ContractError("Craft adapter must preserve the four historical patch references")
         checks.append({"id": "craft-bundle-manifest", "status": "pass"})
         wabt = read_json(root / "vendor" / "wabt" / "1.0.42" / "manifest.json")
         if wabt.get("version") != "1.0.42" or wabt.get("platform") != "windows-x64":
@@ -257,6 +316,8 @@ def check_contracts(root: Path) -> dict[str, Any]:
             raise ContractError("REA local manifest identity mismatch")
         if not isinstance(rea_manifest.get("integrity"), str) or not rea_manifest["integrity"].startswith("sha512-"):
             raise ContractError("REA local manifest integrity missing")
+        if rea_manifest.get("node_engine") != "^22.23.4 || ^24.22.1 || >=26.12.1":
+            raise ContractError("REA Node engine differs from the official pinned package")
         checks.append({"id": "rea-reproducibility", "status": "pass"})
         for rel in ("docs/TARGET-CAPABILITY-MATRIX.md", "docs/FINAL-COMPLETION-SPEC.md", "docs/FINAL-RELEASE-ACCEPTANCE.md", "docs/DEPLOYMENT-GUIDE.md"):
             if not (root / rel).is_file():
@@ -272,7 +333,8 @@ def check_contracts(root: Path) -> dict[str, Any]:
                 raise ContractError(f"RF-22 evidence manifest has no files for {target}")
             for name, metadata in files.items():
                 path = root / "evidence" / "rf22" / target / name
-                if not path.is_file() or not isinstance(metadata, dict) or metadata.get("sha256") != sha256_file(path):
+                if (not is_safe_relative_path(name) or not path.resolve().is_relative_to(root.resolve())
+                        or not path.is_file() or not isinstance(metadata, dict) or metadata.get("sha256") != sha256_file(path)):
                     raise ContractError(f"RF-22 evidence hash mismatch: {target}/{name}")
         checks.append({"id": "rf22-evidence-manifest", "status": "pass"})
         for rel in (

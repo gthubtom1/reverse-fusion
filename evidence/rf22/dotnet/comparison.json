@@ -1,14 +1,156 @@
 {
+  "ok": true,
   "data": {
+    "evidence_id": "ev_1ab1bd44ad56b9732b467cba874f11d0904f7859cf15eced62868059bbc43291",
+    "subject": null,
+    "provider": {
+      "id": "rea-dotnet-workflows",
+      "name": "REA managed-code workflows",
+      "version": "1"
+    },
     "analysis_profile": null,
-    "authority": "analyst-inference",
+    "predicate_type": "rea.managed-member-comparison",
+    "operation": "compare_managed_members",
+    "parameters": {
+      "left_evidence_id": "ev_ad5eba07846da562efac582bf35b3f14a069af941b122762d2c9f8651187da28",
+      "right_evidence_id": "ev_24aee65a3c5405256369eee76c97549629f7c7ca025822498213420a5ae99918"
+    },
+    "raw_result": null,
+    "normalized_result": {
+      "comparison_id": "mmc_05c71ffbb63d150e9668f2fb66df214311ec5adc433f0dcd375d6509b8c2b73c",
+      "algorithm": {
+        "name": "rea-managed-member-comparison",
+        "token_identity": "build-local",
+        "name_matching": "exact-signature-fallback"
+      },
+      "left": {
+        "evidence_id": "ev_ad5eba07846da562efac582bf35b3f14a069af941b122762d2c9f8651187da28",
+        "artifact_sha256": "dc76cabb5f5e7e6268e9c83dcc8f29eae213e4a095f22e9e9f10acbc3c57c21f",
+        "mvid": "39d19578-d5ca-432f-9473-a4db7938c28b",
+        "module_name": "ReverseFixture.dll",
+        "metadata_status": "complete",
+        "methods_total": 2,
+        "fields_total": 0,
+        "resource_limits": []
+      },
+      "right": {
+        "evidence_id": "ev_24aee65a3c5405256369eee76c97549629f7c7ca025822498213420a5ae99918",
+        "artifact_sha256": "71e405642efde44d442c4bb12753192cca17b47543f32d570511acc64c3d9a0e",
+        "mvid": "09f63b41-dce9-46ea-9065-213ba288bca1",
+        "module_name": "ReverseFixture.dll",
+        "metadata_status": "complete",
+        "methods_total": 2,
+        "fields_total": 0,
+        "resource_limits": []
+      },
+      "summary": {
+        "unchanged": 0,
+        "changed": 2,
+        "added": 0,
+        "removed": 0,
+        "unknown": 0
+      },
+      "matching": {
+        "exact_il_signature": 0,
+        "exact_signature": 2,
+        "structural_method_shape": 0,
+        "field_signature": 0,
+        "ambiguous": 0,
+        "unmatched": 0
+      },
+      "methods": [
+        {
+          "evidence_links": [
+            "ev_ad5eba07846da562efac582bf35b3f14a069af941b122762d2c9f8651187da28",
+            "ev_24aee65a3c5405256369eee76c97549629f7c7ca025822498213420a5ae99918"
+          ],
+          "limitations": [],
+          "item_id": "mmc_method_c1e2857772be1d52178dcaedecb6c77c5621fb40bd0860cab3f390b90deb1f1e",
+          "dimensions": [
+            "metadata",
+            "cil",
+            "opcode-shape"
+          ],
+          "status": "changed",
+          "left": {
+            "token": "0x06000001",
+            "declaring_type": "Program",
+            "name": "Answer",
+            "signature_sha256": "f4fc6e914c3f39dea20cedc5015dcee8a18aa00ee5a983e7ff0527dc64dc3028",
+            "normalized_il_sha256": "c25ac7606086b766774c6a33d8a478bc642363b112a6552fd616a063ca933c98"
+          },
+          "right": {
+            "token": "0x06000001",
+            "declaring_type": "Program",
+            "name": "Answer",
+            "signature_sha256": "f4fc6e914c3f39dea20cedc5015dcee8a18aa00ee5a983e7ff0527dc64dc3028",
+            "normalized_il_sha256": "89c59030e01b83f530d784ce27bf03fe5847c6017cc66d3c8e79945e2634348f"
+          },
+          "match": {
+            "status": "matched",
+            "basis": "exact-signature",
+            "confidence": "exact",
+            "candidate_left_tokens": [],
+            "candidate_right_tokens": []
+          }
+        },
+        {
+          "evidence_links": [
+            "ev_ad5eba07846da562efac582bf35b3f14a069af941b122762d2c9f8651187da28",
+            "ev_24aee65a3c5405256369eee76c97549629f7c7ca025822498213420a5ae99918"
+          ],
+          "limitations": [],
+          "item_id": "mmc_method_5ff6679039a3d73915ab2cf89da29d07146eb102c97af81dd076bb80adb110eb",
+          "dimensions": [
+            "cil",
+            "opcode-shape",
+            "field-shape"
+          ],
+          "status": "changed",
+          "left": {
+            "token": "0x06000002",
+            "declaring_type": "Program",
+            "name": "Main",
+            "signature_sha256": "807699fcdf98b6674a8081ad707088ec859d5d71737ad4ea8bb251d224f73869",
+            "normalized_il_sha256": "0f740cea75350bfbec5ef0960b9a5779ce1b76da7c871d2f0f9e81bf8baf81e7"
+          },
+          "right": {
+            "token": "0x06000002",
+            "declaring_type": "Program",
+            "name": "Main",
+            "signature_sha256": "807699fcdf98b6674a8081ad707088ec859d5d71737ad4ea8bb251d224f73869",
+            "normalized_il_sha256": "dc44b5a8353c69252fefe9f8be144366f55cbff4c63521ef482980f82e790f8b"
+          },
+          "match": {
+            "status": "matched",
+            "basis": "exact-signature",
+            "confidence": "exact",
+            "candidate_left_tokens": [],
+            "candidate_right_tokens": []
+          }
+        }
+      ],
+      "fields": [],
+      "coverage": {
+        "status": "complete-within-inputs",
+        "left_status": "complete",
+        "right_status": "complete"
+      },
+      "evidence_links": [
+        "ev_ad5eba07846da562efac582bf35b3f14a069af941b122762d2c9f8651187da28",
+        "ev_24aee65a3c5405256369eee76c97549629f7c7ca025822498213420a5ae99918"
+      ],
+      "limitations": [
+        "Metadata tokens are build-local coordinates; matched pairs are remaps, not persistent identities.",
+        "Methods pair within one declared type and name by exact CIL/signature, then signature, then structural shape; only then may exact CIL/signature or structural shape alone remap across declared types or names, never taking a member whose own declared type and name remain unpaired on the other side or whose declaring type is unresolved. Names alone are never a matching basis.",
+        "Fields pair by declared type, name, and signature, then remap by exact decoded signature alone under the same rule; an undecoded signature is compared only for an exact signature match, and an unmatched member with one stays unknown.",
+        "Both observations cover only the selected declaring types (Program); member totals and statuses describe those types, not the whole assembly.",
+        "ldstr literals are not compared; normalized CIL keeps #US tokens rather than decoded text, so an unchanged method does not establish unchanged string literals."
+      ]
+    },
     "confidence": "inferred",
+    "authority": "analyst-inference",
     "environment": null,
-    "evidence_id": "ev_8204b1f0b84f883aec5b4480f78865ffbf2faff7ad35c0919e156e96326e5832",
-    "evidence_links": [
-      "ev_6631df310840fd04ac859124df1cef5dfce77b6740cac4339f4ae0d3a6629f62",
-      "ev_85358c4a7ba79f317c39847183d0492c2d7ae6a9cf589102f3869b985ecb2f38"
-    ],
     "limitations": [
       "Artifact identity is unavailable for this observation.",
       "Metadata tokens are build-local coordinates; matched pairs are remaps, not persistent identities.",
@@ -17,166 +159,11 @@
       "Both observations cover only the selected declaring types (Program); member totals and statuses describe those types, not the whole assembly.",
       "ldstr literals are not compared; normalized CIL keeps #US tokens rather than decoded text, so an unchanged method does not establish unchanged string literals."
     ],
-    "locations": [
-      {
-        "kind": "artifact-path",
-        "path": "<workspace>\\fixtures\\dotnet-original\\bin\\Release\\net8.0\\ReverseFixture.dll"
-      },
-      {
-        "kind": "artifact-path",
-        "path": "<workspace>\\state\\dotnet-candidate\\bin\\Release\\net8.0\\ReverseFixture.dll"
-      }
-    ],
-    "normalized_result": {
-      "algorithm": {
-        "name": "rea-managed-member-comparison",
-        "name_matching": "exact-signature-fallback",
-        "token_identity": "build-local"
-      },
-      "comparison_id": "mmc_2a47a98cfaf7e66315e691e2d0964e7548ceec71b078f9ef706eb1be60f4042e",
-      "coverage": {
-        "left_status": "complete",
-        "right_status": "complete",
-        "status": "complete-within-inputs"
-      },
-      "evidence_links": [
-        "ev_6631df310840fd04ac859124df1cef5dfce77b6740cac4339f4ae0d3a6629f62",
-        "ev_85358c4a7ba79f317c39847183d0492c2d7ae6a9cf589102f3869b985ecb2f38"
-      ],
-      "fields": [],
-      "left": {
-        "artifact_sha256": "8b7dba42b57ddc5066da7ecb6e99d1655d54b4e29800f867b7dc72de9f635ef9",
-        "evidence_id": "ev_6631df310840fd04ac859124df1cef5dfce77b6740cac4339f4ae0d3a6629f62",
-        "fields_total": 0,
-        "metadata_status": "complete",
-        "methods_total": 2,
-        "module_name": "ReverseFixture.dll",
-        "mvid": "a3f5dff7-b04f-4f9d-bc76-feaee1646d74",
-        "resource_limits": []
-      },
-      "limitations": [
-        "Metadata tokens are build-local coordinates; matched pairs are remaps, not persistent identities.",
-        "Methods pair within one declared type and name by exact CIL/signature, then signature, then structural shape; only then may exact CIL/signature or structural shape alone remap across declared types or names, never taking a member whose own declared type and name remain unpaired on the other side or whose declaring type is unresolved. Names alone are never a matching basis.",
-        "Fields pair by declared type, name, and signature, then remap by exact decoded signature alone under the same rule; an undecoded signature is compared only for an exact signature match, and an unmatched member with one stays unknown.",
-        "Both observations cover only the selected declaring types (Program); member totals and statuses describe those types, not the whole assembly.",
-        "ldstr literals are not compared; normalized CIL keeps #US tokens rather than decoded text, so an unchanged method does not establish unchanged string literals."
-      ],
-      "matching": {
-        "ambiguous": 0,
-        "exact_il_signature": 1,
-        "exact_signature": 1,
-        "field_signature": 0,
-        "structural_method_shape": 0,
-        "unmatched": 0
-      },
-      "methods": [
-        {
-          "dimensions": [],
-          "evidence_links": [
-            "ev_6631df310840fd04ac859124df1cef5dfce77b6740cac4339f4ae0d3a6629f62",
-            "ev_85358c4a7ba79f317c39847183d0492c2d7ae6a9cf589102f3869b985ecb2f38"
-          ],
-          "item_id": "mmc_method_cf55ce21884b80043608742e7b775dd628d80951a50d7843030e3c1e08432c3f",
-          "left": {
-            "declaring_type": "Program",
-            "name": "Answer",
-            "normalized_il_sha256": "c25ac7606086b766774c6a33d8a478bc642363b112a6552fd616a063ca933c98",
-            "signature_sha256": "f4fc6e914c3f39dea20cedc5015dcee8a18aa00ee5a983e7ff0527dc64dc3028",
-            "token": "0x06000001"
-          },
-          "limitations": [],
-          "match": {
-            "basis": "exact-il-signature",
-            "candidate_left_tokens": [],
-            "candidate_right_tokens": [],
-            "confidence": "exact",
-            "status": "matched"
-          },
-          "right": {
-            "declaring_type": "Program",
-            "name": "Answer",
-            "normalized_il_sha256": "c25ac7606086b766774c6a33d8a478bc642363b112a6552fd616a063ca933c98",
-            "signature_sha256": "f4fc6e914c3f39dea20cedc5015dcee8a18aa00ee5a983e7ff0527dc64dc3028",
-            "token": "0x06000001"
-          },
-          "status": "unchanged"
-        },
-        {
-          "dimensions": [
-            "cil",
-            "opcode-shape"
-          ],
-          "evidence_links": [
-            "ev_6631df310840fd04ac859124df1cef5dfce77b6740cac4339f4ae0d3a6629f62",
-            "ev_85358c4a7ba79f317c39847183d0492c2d7ae6a9cf589102f3869b985ecb2f38"
-          ],
-          "item_id": "mmc_method_5ff6679039a3d73915ab2cf89da29d07146eb102c97af81dd076bb80adb110eb",
-          "left": {
-            "declaring_type": "Program",
-            "name": "Main",
-            "normalized_il_sha256": "0f740cea75350bfbec5ef0960b9a5779ce1b76da7c871d2f0f9e81bf8baf81e7",
-            "signature_sha256": "807699fcdf98b6674a8081ad707088ec859d5d71737ad4ea8bb251d224f73869",
-            "token": "0x06000002"
-          },
-          "limitations": [],
-          "match": {
-            "basis": "exact-signature",
-            "candidate_left_tokens": [],
-            "candidate_right_tokens": [],
-            "confidence": "exact",
-            "status": "matched"
-          },
-          "right": {
-            "declaring_type": "Program",
-            "name": "Main",
-            "normalized_il_sha256": "13fd6957061b79c752a35fdfd0c4511c1dd01e3b7218b3ff7003ba6188976134",
-            "signature_sha256": "807699fcdf98b6674a8081ad707088ec859d5d71737ad4ea8bb251d224f73869",
-            "token": "0x06000002"
-          },
-          "status": "changed"
-        }
-      ],
-      "right": {
-        "artifact_sha256": "08c9c1500f51db2908b745d0b6899c586d06688b3df057a23b28410a2b2e516b",
-        "evidence_id": "ev_85358c4a7ba79f317c39847183d0492c2d7ae6a9cf589102f3869b985ecb2f38",
-        "fields_total": 0,
-        "metadata_status": "complete",
-        "methods_total": 2,
-        "module_name": "ReverseFixture.dll",
-        "mvid": "7e2fe036-7270-4d2f-a429-b1c89a04c234",
-        "resource_limits": []
-      },
-      "summary": {
-        "added": 0,
-        "changed": 1,
-        "removed": 0,
-        "unchanged": 1,
-        "unknown": 0
-      }
-    },
-    "operation": "compare_managed_members",
-    "parameters": {
-      "left_evidence_id": "ev_6631df310840fd04ac859124df1cef5dfce77b6740cac4339f4ae0d3a6629f62",
-      "left_path": "<workspace>\\fixtures\\dotnet-original\\bin\\Release\\net8.0\\ReverseFixture.dll",
-      "right_evidence_id": "ev_85358c4a7ba79f317c39847183d0492c2d7ae6a9cf589102f3869b985ecb2f38",
-      "right_path": "<workspace>\\state\\dotnet-candidate\\bin\\Release\\net8.0\\ReverseFixture.dll",
-      "type_names": [
-        "Program"
-      ]
-    },
-    "predicate_type": "rea.managed-member-comparison",
-    "provider": {
-      "id": "rea-dotnet-workflows",
-      "name": "REA managed-code workflows",
-      "version": "1"
-    },
-    "raw_result": null,
     "relationship_coverage": null,
-    "subject": null
-  },
-  "meta": {
-    "command": "compare-managed-members",
-    "duration": "39ms"
-  },
-  "ok": true
+    "locations": [],
+    "evidence_links": [
+      "ev_ad5eba07846da562efac582bf35b3f14a069af941b122762d2c9f8651187da28",
+      "ev_24aee65a3c5405256369eee76c97549629f7c7ca025822498213420a5ae99918"
+    ]
+  }
 }

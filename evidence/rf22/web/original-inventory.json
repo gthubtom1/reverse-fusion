@@ -1,0 +1,89 @@
+{
+  "ok": true,
+  "data": {
+    "evidence_id": "ev_69eb317314a704762508dc8c719cbe1bb0e9c08545609b51cd4ed3b1dbaf797a",
+    "subject": {
+      "name": "app.js",
+      "digest": {
+        "sha256": "79d3dee73319624d7f902fdc5c497dfdbe2c683cfed7ac2989dcdd682dddfec1"
+      },
+      "local_path": "C:\\Users\\toti\\Documents\\Codex\\2026-11-14\\c-users-toti-pi-agent-sessions\\work\\reverse-fusion\\fixtures\\web-original\\app.js",
+      "format": "javascript-bundle",
+      "architecture": null
+    },
+    "provider": {
+      "id": "rea-artifact-graph",
+      "name": "REA safe artifact graph provider",
+      "version": "1"
+    },
+    "analysis_profile": null,
+    "predicate_type": "rea.analysis",
+    "operation": "inventory_artifact",
+    "parameters": {
+      "integrity_policy": "fail"
+    },
+    "raw_result": null,
+    "normalized_result": {
+      "manifest": {
+        "manifest_id": "agm_f9f13606a5403545adf63b878aa9c8a30b7c9a3af1941736d4c45c041f86df13",
+        "root_artifact_id": "art_a5cae6313bbf33d71391d5e7590837152eda83fba789b16b8ef1c69b63e85771",
+        "root_sha256": "79d3dee73319624d7f902fdc5c497dfdbe2c683cfed7ac2989dcdd682dddfec1",
+        "root_format": "javascript-bundle",
+        "graph_sha256": "0684828aba7e0115c53253a5acf2cf681f65eb99e9a8cfbcbd4a636a871df652",
+        "node_count": 1,
+        "occurrence_count": 1,
+        "edge_count": 0
+      },
+      "nodes": [
+        {
+          "artifact_id": "art_a5cae6313bbf33d71391d5e7590837152eda83fba789b16b8ef1c69b63e85771",
+          "format": "file",
+          "sha256": "79d3dee73319624d7f902fdc5c497dfdbe2c683cfed7ac2989dcdd682dddfec1",
+          "size": 88,
+          "media_type": null,
+          "architecture": null,
+          "content_state": "materialized",
+          "limitations": []
+        }
+      ],
+      "occurrences": [
+        {
+          "occurrence_id": "occ_9c93ebb7d9930892d05d2d1ca544882e0f95c536be51cb9b5a3938dd77544d2f",
+          "artifact_id": "art_a5cae6313bbf33d71391d5e7590837152eda83fba789b16b8ef1c69b63e85771",
+          "parent_occurrence_id": null,
+          "relationship_coverage": "complete",
+          "logical_path": ".",
+          "entry_kind": "file",
+          "artifact_kind": "javascript",
+          "artifact_format": "javascript-bundle",
+          "declared_size": 88,
+          "compressed_size": null,
+          "executable": false,
+          "encrypted": false,
+          "hash_status": "verified",
+          "source_location": null,
+          "limitations": []
+        }
+      ],
+      "edges": [],
+      "provenance": [],
+      "integrity_contradictions": [],
+      "coverage": {
+        "scope": "root",
+        "status": "complete"
+      },
+      "limitations": [
+        "Inventory covers root bytes only; child container entries were not examined."
+      ]
+    },
+    "confidence": "observed",
+    "authority": "shipped-artifact",
+    "environment": null,
+    "limitations": [
+      "Inventory covers root bytes only; child container entries were not examined."
+    ],
+    "relationship_coverage": null,
+    "locations": [],
+    "evidence_links": []
+  }
+}

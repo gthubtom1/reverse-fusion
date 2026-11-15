@@ -40,9 +40,9 @@ Reverse Fusion 不跟随上游自动滚动更新。上游更新是一次由用�
 | Reverse core | 本仓库拥有，选择性吸收 reverse-skill 的领域改进 | `components/reverse-core/` |
 | REA | 官方 pin，先 adapter，能力缺口重复出现后再 fork | `reverse_fusion/adapters.py`、runner、vendor manifest |
 | Spec Kit | 官方 CLI，项目级 artifacts 由本仓库维护 | `specs/`、Spec pointer |
-| Craft | upstream identity + patch series + bounded adapter | `components/craft-bounded/`、host Builder |
+| Craft | interface-only adapter + upstream reference；历史 patch 名称不代表分发 | `components/craft-bounded/`、current-session Builder |
 | JADX MCP/WABT | 官方 provider + checksum/bootstrap | `vendor/*/manifest.json`、`scripts/bootstrap-*` |
-| Host adapters | 本仓库完全拥有 | `reverse_fusion/builder.py`、`cli.py`、profiles |
+| Host adapters | 本仓库完全拥有；当前会话为默认，子 CLI 可选 | `reverse_fusion/session_builder.py`、`builder.py`、`host.py`、`cli.py`、profiles |
 
 ## 完成标准
 

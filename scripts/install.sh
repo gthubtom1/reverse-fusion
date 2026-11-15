@@ -1,8 +1,6 @@
 #!/usr/bin/env sh
 set -eu
-repo=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)
-venv=${1:-"$repo/.venv"}
-case "$venv" in "$repo"/*) ;; *) echo "venv must stay inside repository" >&2; exit 2 ;; esac
+repo=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd -P)
 python_bin=${RF_PYTHON:-}
 if [ -z "$python_bin" ]; then
   if command -v python >/dev/null 2>&1; then
@@ -14,10 +12,16 @@ if [ -z "$python_bin" ]; then
     exit 2
   fi
 fi
+venv=${1:-"$repo/.venv"}
+venv=$("$python_bin" -c 'import os,sys; print(os.path.realpath(sys.argv[1]))' "$venv")
+if command -v cygpath >/dev/null 2>&1; then venv=$(cygpath -u "$venv"); fi
+case "$venv" in "$repo"/*) ;; *) echo "venv must stay inside repository" >&2; exit 2 ;; esac
 if [ "${RF_DRY_RUN:-0}" = 1 ]; then
   printf '%s\n' "$python_bin -m venv $venv" "$venv/bin/python -m pip install --no-deps -e $repo"
   exit 0
 fi
 "$python_bin" -m venv "$venv"
-"$venv/bin/python" -m pip install --no-deps -e "$repo"
+venv_python="$venv/bin/python"
+if [ -x "$venv/Scripts/python.exe" ]; then venv_python="$venv/Scripts/python.exe"; fi
+"$venv_python" -m pip install --no-deps -e "$repo"
 printf '%s\n' '{"status":"installed","global_config_mutation":false}'

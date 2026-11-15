@@ -1,23 +1,38 @@
 # Provider and host status
 
-Recorded 2026-11-15 for RF-17 through RF-22. These observations describe this
-host and do not claim identical provider availability on another computer.
+Recorded for RF-25 on 2026-11-15. These are bounded observations on the audit
+host. Another computer discovers its own providers; previous success is not a
+new installation's credential, loading or runtime qualification.
 
-| Surface | Observed result | State | Boundary or next action |
-|---|---|---|---|
-| Repository-owned Reverse router | `bridge --source local` resolves fixed `routing.json` and local `routes/R*.md` without an old receipt; Web=`R3`, PE/.NET=`R5`, APK/DEX=`R1` | verified | carry the selected route into each new target case |
-| Enhanced Reverse preservation (RF-24) | 453 inherited skills files compared; 603 source files retained with seven integration and four whitespace-only patches; required hard-target context is carried to cases; missing/tampered content is detected | content and handoff verified | specific packers, devices and analysis tools still need target-level runtime Evidence; see REVERSE-CAPABILITY-AUDIT.md |
-| Spec Kit | `specify 1.4.0`, project-local artifacts and reconstruction task files | verified | keep feature tasks and converge records append-only |
-| REA MCP runtime | official `rea-agents@6.9.0`, pinned integrity, process-local doctor passed | verified | bootstrap a supported Node 22.23.4+/24.22.1+ path on a fresh host |
-| WABT/REA WASM | WABT `1.0.42`; original/candidate/comparison/proof; ledger `rol_09e99625528899bcc2b492bdc7b2811b44fb573c13418ff80af0404548039928`, `required_open=0` | verified for bounded fixture | reuse proof contract for future WASM cases |
-| REA Web/JavaScript | original `ev_d42bef240bdf9e48b3444a5bb947adcc5bb30257a8e492115e421e9cac1e3955`, candidate `ev_ff3486e9a5d5cb34105392e5bdfbb2388d416d8c2028ab75ad8ecad4eaa55ed1`, runtime proof and ledger `rol_39c38b659a45e5b080c5dc55870f154eb17b9e484fb998aacba88d07cd579c48` | verified for reviewed export; static partial | package/parser obligations remain explicit unknown scope |
-| REA PE/.NET | original/candidate managed artifacts and members, exact comparison, four runtime traces; ledger `rol_53dd8e6683c0351977afc491a5c50863e56a390e5925d0c6d63fde1372bebba9` | verified for bounded method | build larger managed targets with the same exact-signature contract |
-| JADX/REA APK/DEX | official `jadx-headless-mcp@0.7.1` downloaded only by `bootstrap-jadx.ps1`, SHA-256 `6e5eacf500b64292bfb73c49797c1958f6ee44646e43e868039ae7feb573ff75`; static package/class comparison; ledger `rol_b9833a0dd114ad263d96217960a2990d87c9e3629048488d3f4f2379f93762b` | static verified; Android runtime unknown | rerun with adb/emulator to close runtime boundary |
-| REA process capture | Windows PTY provider returned `capability_unavailable` because descendant cleanup is not verified | unsupported on this host | use Linux/macOS or a qualified Windows PTY provider |
-| Craft companion | upstream 0.6.1 MCP retains required `--all-tools`; native R46 backend receipt remains unqualified | companion healthy; native backend unsupported | keep host-owned Builder as the real model transport; fallback is offline-only |
-| Host-owned Builder | Codex generated APK candidate; six checks `prepare/build/check/refine/return_summary/cleanup` pass, no `--model`, `config_mutation=false` | verified for this case | use host-provided current model/provider; never select one in the repository |
-| Host handshakes | Codex and Pi fixed sentinels pass; Claude CLI starts and returns missing-login boundary; known Codex/Pi/Claude config file hashes are equal before/after each probe | Codex/Pi verified; Claude blocked; config snapshot observed | authenticate Claude on a future host and rerun the read-only probe |
+| Surface | RF-25 observation | State and boundary |
+|---|---|---|
+| Repository Reverse | local route, descriptor and domain skills; required-read and preservation checks | available without old receipt; target-level success remains separate |
+| Enhanced Reverse | 603 source files retained from the pinned enhanced reverse-skill; methods/helpers and hard-target context remain connected | content and handoff preserved; exact adaptation records in preservation manifest |
+| Current-session Builder | current host generated eight Web/.NET/APK source files from frozen tasks/research; `prepare/check/refine/finish` observed | candidate file boundary observed; independent business checks below |
+| Optional Codex child CLI | actual RF-25 build invocation returned `out of credits` | blocked; default current-session Builder does not depend on it |
+| Optional Pi child CLI | Pi 1.4.0 returned the exact final assistant sentinel, exit 0 | pass for transport only; known config hashes unchanged |
+| Optional Claude child CLI | Claude Code 2.1.310 started but required login, exit 1 | blocked; known config hashes unchanged |
+| REA | official `rea-agents@6.9.0`, integrity-checked repository-local package | current representative analysis runs executed; exact Node engine range is `^22.23.4`, `^24.22.1` or `>=26.12.1` |
+| WABT/REA WASM | official WABT `1.0.42`, interpreter/hash verification, correct/wrong/missing cases | bounded correct pass, wrong fail, missing unknown; official ledger ready |
+| REA Web/JavaScript | full application analysis and separate real artifact inventory; four finite export replay traces | bounded runtime pass/ledger ready; full graph ledger unknown, 4 required open (2 packaging, 2 application/parser) |
+| REA PE/.NET | .NET 8 build, managed artifact/member analysis, exact comparison and finite executable replay | bounded method pass/ledger ready; not qualification of all .NET/native targets |
+| JADX/REA APK/DEX | official headless MCP `0.7.1`, pinned JAR checksum, Java release-8 compilation, D8/AAPT and package/member observations | static pass/ledger ready; Android runtime unknown; fixture MainActivity is not a working Android Activity |
+| Spec Kit | source pin `1.4.1.dev0`; reconstruction spec/plan/tasks/converge files | artifacts available; historical CLI check/init used `1.4.0`, not a current CLI health claim |
+| Craft interface | `components/craft-bounded/bundle-manifest.json` declares `repository-interface-only`; historical patch names are not patch files | current-session writer is the product path; native R46 unsupported |
+| Craft companion | manifest retains upstream `0.6.1` reference and required `--all-tools` | unobserved on current host; do not infer healthy from an installation reference |
+| REA process capture | Windows PTY descendant cleanup not qualified | unsupported on this host |
+| Other tools/devices | IDA, Frida, adb/emulator, browser authority, commercial tools | discover for the actual target; absence is blocked/unsupported/unknown, not pass |
 
-All provider failures, login gaps and device gaps remain typed as
-`blocked`, `unsupported` or `unknown`; none is converted into business
-acceptance by exit code or tool visibility.
+Current Evidence identities and file digests live in
+`evidence/rf22/manifest.json`; exact finite checks and host probe results live in
+`checkpoints/RF-25-20261115-001.md`. Proof adapters are repository-owned bounded
+integration verifiers using REA's official serializer, not REA's native process
+verification authority. A fixed sentinel proves an assistant transport response
+only; instruction loading and business acceptance need their own observations.
+The compact current probe observations are also tracked at
+`evidence/deployment/rf25-host-probes.json`; raw CLI output is not published.
+
+Known host configuration files are hash-compared around optional child calls.
+An unobservable/changed snapshot or uncertain timeout cleanup is not reported
+as verified cleanup. No model, credential or global configuration is installed
+by Reverse Fusion.

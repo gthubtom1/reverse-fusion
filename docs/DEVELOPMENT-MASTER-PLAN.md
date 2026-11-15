@@ -1,45 +1,44 @@
 # Development Plan
 
-RF-01: contracts and static doctor (accepted)
-RF-02: reverse case bridge (accepted at dry-run pointer level)
-RF-03: official REA adapter (accepted at typed contract level)
-RF-04: REA-only vertical slice (accepted with deterministic console fixture)
-RF-05: Craft bounded bundle (contract-complete; runtime unsupported on current host)
-RF-06: Spec Kit integration (official CLI/init verified)
-RF-07: acceptance plane (deterministic fixture accepted)
-RF-08: host profiles (discovery verified; loading unverified)
-RF-09: hard-target evals (provider limitations recorded)
-RF-10: release and maintenance (ready after final push)
-RF-11: reproducible WABT/REA Evidence slice (accepted for local WASM fixture)
-RF-12: real original/candidate Evidence vertical chain (accepted)
-RF-13: repository-owned bounded fallback writer (verified; upstream Craft R46 remains qualification-dependent)
-RF-14: formal REA reconstruction-proof Evidence and obligation ledger closure (accepted for the WASM fixture)
-RF-15: final release acceptance and fresh-clone closure (accepted)
-RF-16: real host handshake and Craft agent-cli transport probes (accepted with Claude credential boundary)
+RF-25 is the current full-audit and repair stage. Earlier stages are historical
+work records, not instructions to repeat them or claims of current host health.
+The final product contract remains `docs/PRODUCT-GOAL.md`.
 
-Reconstruction-product work after RF-16:
+| Stage | Delivered responsibility | Historical boundary / RF-25 correction |
+|---|---|---|
+| RF-01–RF-04 | typed contracts, case bridge, REA adapter, console slice | contract/fixture scope only |
+| RF-05–RF-10 | bounded interface, Spec artifacts, acceptance, profiles, hard-target rules, lifecycle | native Craft not qualified; host loading separate from discovery |
+| RF-11–RF-15 | pinned WABT/REA, original/candidate analysis, bounded fallback, proof/ledger, clone checks | copy fallback and catalog visibility are not business acceptance |
+| RF-16 | host CLI transport probes | observed historical Codex/Pi pass and Claude login boundary; no guarantee of today's credits/login |
+| RF-17 | local Reverse route without old receipt | retain descriptor, skill body and required support |
+| RF-18 | host writer transport | earlier candidate.txt was text smoke; RF-25 current-session writer generates real source candidates |
+| RF-19 | Web representative chain | finite answer scope; full graph retains open obligations |
+| RF-20 | .NET representative chain | bounded managed method build/run |
+| RF-21 | APK/DEX representative chain | static package/member scope; Android runtime unknown |
+| RF-22 | historical product acceptance | revisited by RF-25 where evidence or claims were wrong |
+| RF-23 | independent-audit hardening | path-normalized archive later found identity-invalid, superseded by raw RF-25 records |
+| RF-24 | enhanced Reverse preservation | 603 source files and hard-target handoff retained |
 
-- RF-17: repository-local Reverse route that works without an old receipt (completed).
-- RF-18: real host-owned Builder output under the six-tool contract (completed;
-  Codex candidate plus refine/cleanup evidence).
-- RF-19: one real Web/JavaScript reconstruction vertical slice (completed;
-  reviewed export ledger ready, conservative unknown scope retained).
-- RF-20: one real PE/.NET reconstruction vertical slice (completed; managed
-  comparison, runtime proof and ledger ready).
-- RF-21: one real APK/DEX reconstruction vertical slice (completed; pinned
-  JADX provider, static proof and ledger ready; device runtime unknown).
-- RF-22: final reconstruction-product acceptance (completed after every
-  `docs/PRODUCT-GOAL.md` gate was directly checked; completion means the shared
-  product logic is closed, while future target variants use new cases and
-  probes rather than requiring exhaustive pre-execution).
-- RF-23: independent audit hardening (completed; local domain skill bodies,
-  canonical Evidence artifacts, cross-platform path boundaries, persistent case
-  records, WABT runtime hashing and observed host-config snapshots are now part
-  of the contracts).
+## RF-25 finite closure plan
 
-- RF-24: enhanced Reverse capability preservation (completed; all 453 skills
-  files compared, missing CTF/Burp resources restored, portable rules and
-  difficulty handoff connected, native routing aligned, and a 603-file content
-  inventory checked inside the existing contracts).
+1. Inventory-read all tracked content and partition semantic review among
+   independent reviewers. Record byte/hash coverage separately from semantic
+   review; do not claim every line received equivalent human-depth inspection.
+2. Fix reproduced deployment, file-boundary, frozen-input, native-exit,
+   Evidence-identity, link-closure and provider-state defects in this repository.
+3. Use the current host session to generate real bounded Web/.NET/APK candidates;
+   keep optional child CLI blocks separate. Run the representative target checks
+   once after the final relevant change, preserving unknown boundaries.
+4. Authenticate raw archived Evidence with official REA parsing, complete links,
+   file digests and a real tamper counterexample. Preserve full Web graph unknowns
+   alongside the separately bounded answer ledger.
+5. Unify README/current docs/manifests and repository-stored deployment handoff.
+   Run focused tests, contracts, route and path checks, diff/link checks.
+6. Commit/push, clone the remote revision, create a new local venv and check the
+   finite core lifecycle without old receipts. Record exact result/commit, push
+   the final checkpoint and stop with a clean synchronized checkout.
 
-Each phase requires a checkpoint, focused tests, a current-state update and a rollback path before the next phase starts.
+The latest checkpoint is `checkpoints/RF-25-20261115-001.md`. Any incomplete
+check remains explicit there and in CURRENT-STATE. After closure, subsequent
+work is a new target or selective upstream maintenance, not another endless
+retest of unrelated future variants.

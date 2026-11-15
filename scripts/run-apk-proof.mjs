@@ -1,17 +1,18 @@
 import fs from "node:fs";
 import path from "node:path";
-import { createEvidence } from "../vendor/rea/package/dist/domain/evidence.js";
-import { createEvidenceBundle } from "../vendor/rea/package/dist/domain/evidenceBundle.js";
+import { readEvidence, assertArtifact, sha256, createEvidence, bundle as createEvidenceBundle } from "./proof-support.mjs";
 
 const [originalPackagePath, originalClassPath, candidatePackagePath, candidateClassPath, outputDir] = process.argv.slice(2);
 if (![originalPackagePath, originalClassPath, candidatePackagePath, candidateClassPath, outputDir].every(Boolean)) {
   throw new Error("usage: run-apk-proof.mjs original-package.json original-class.json candidate-package.json candidate-class.json output-dir");
 }
-const read = (file) => JSON.parse(fs.readFileSync(file, "utf8").replace(/^\uFEFF/u, ""));
-const originalPackage = read(originalPackagePath).data;
-const originalClass = read(originalClassPath).data;
-const candidatePackage = read(candidatePackagePath).data;
-const candidateClass = read(candidateClassPath).data;
+const originalPackage = readEvidence(originalPackagePath);
+const originalClass = readEvidence(originalClassPath);
+const candidatePackage = readEvidence(candidatePackagePath);
+const candidateClass = readEvidence(candidateClassPath);
+assertArtifact(originalPackage, originalPackage.subject.local_path);
+assertArtifact(candidatePackage, candidatePackage.subject.local_path);
+if (originalClass.subject.digest.sha256 !== originalPackage.subject.digest.sha256 || candidateClass.subject.digest.sha256 !== candidatePackage.subject.digest.sha256) throw new Error("Package and class Evidence must refer to the same artifact on each side");
 
 const componentProjection = (record) => (record.normalized_result?.components?.items ?? []).map((item) => ({
   kind: item.kind,
@@ -32,6 +33,7 @@ const classEqual = originalClass.normalized_result?.class_name === candidateClas
   && JSON.stringify(methodProjection(originalClass)) === JSON.stringify(methodProjection(candidateClass))
   && JSON.stringify(originalClass.normalized_result?.fields ?? []) === JSON.stringify(candidateClass.normalized_result?.fields ?? []);
 const staticPass = packageEqual && classEqual;
+if (!originalClass.normalized_result?.methods?.length || !candidateClass.normalized_result?.methods?.length) throw new Error("Missing class member observations cannot establish static equality");
 const comparison = createEvidence(
   undefined,
   { id: "reverse-fusion-apk-comparator", name: "Reverse Fusion APK comparator", version: "1" },
@@ -53,7 +55,7 @@ const comparison = createEvidence(
       package_equal: packageEqual,
       class_equal: classEqual,
     },
-    confidence: staticPass ? "observed" : "contradicted",
+    confidence: "derived",
     authority: "shipped-artifact",
     limitations: [
       "The comparison covers the declared manifest projection and Answer class member inventory only.",
@@ -74,6 +76,9 @@ const proof = createEvidence(
       fixture_id: "apk-answer-static-fixture",
       verifier_id: "apk-static-comparison",
       toolchain: "jadx-headless-mcp@0.7.1",
+      original_sha256: sha256(originalPackage.subject.local_path),
+      candidate_sha256: sha256(candidatePackage.subject.local_path),
+      verifier_sha256: sha256(new URL(import.meta.url)),
     },
     rawResult: {
       operation: "apk-answer-static",
@@ -89,7 +94,7 @@ const proof = createEvidence(
         verifiers: [{ verifier_id: "apk-static-comparison", claim_id: "apk-answer-static", passed: staticPass }],
       }],
     },
-    confidence: staticPass ? "observed" : "contradicted",
+    confidence: "observed",
     authority: "controlled-replay",
     limitations: [
       "The proof establishes static APK/package and DEX member equivalence within the selected inputs.",
@@ -117,7 +122,7 @@ write("apk-acceptance.json", {
   proof_evidence_id: proof.evidence_id,
   build: { status: "pass", artifact: candidatePackage.subject.local_path },
   run: { status: "unknown", reason: "No adb device or emulator was available on this host" },
-  cleanup: { status: "verified" },
+  cleanup: { status: "observed", scope: "REA inspection invocations returned; this adapter starts no target application." },
 });
 write("apk-ledger-input.json", {
   manifest: {

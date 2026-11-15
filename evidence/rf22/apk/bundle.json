@@ -1,0 +1,879 @@
+{
+  "artifacts": [
+    {
+      "digest": {
+        "sha256": "bd1a8b5d238ea24e3e792bf2b90c16244d6acf9e56a18cb6a80d9cd94c1dd431"
+      },
+      "format": "apk",
+      "architecture": null
+    },
+    {
+      "digest": {
+        "sha256": "e8b1f58cd20b2abbfa24fc03a6b0091292a0c634b74d365162271b2217e530ef"
+      },
+      "format": "apk",
+      "architecture": null
+    }
+  ],
+  "providers": [
+    {
+      "id": "jadx",
+      "name": "JADX headless",
+      "version": "0.7.1"
+    },
+    {
+      "id": "reverse-fusion-apk-comparator",
+      "name": "Reverse Fusion APK comparator",
+      "version": "1"
+    },
+    {
+      "id": "reverse-fusion-apk-verifier",
+      "name": "Reverse Fusion APK verifier",
+      "version": "1"
+    }
+  ],
+  "environments": [],
+  "scenarios": [
+    {
+      "evidence_id": "ev_78f43d34ad47b3941e621fcba168883fdf69af0964402b0bebe82bfb60e397c8",
+      "operation": "verify_reconstruction_obligations",
+      "authority": "controlled-replay"
+    }
+  ],
+  "captures": [],
+  "unknowns": [],
+  "records": [
+    {
+      "evidence_id": "ev_018979598cec4cf2f980c15aaf03764c847c93884a213383a125b5bab119ae4f",
+      "subject": {
+        "name": "fixture.apk",
+        "digest": {
+          "sha256": "e8b1f58cd20b2abbfa24fc03a6b0091292a0c634b74d365162271b2217e530ef"
+        },
+        "local_path": "C:\\Users\\toti\\Documents\\Codex\\2026-11-14\\c-users-toti-pi-agent-sessions\\work\\reverse-fusion\\state\\apk-candidate\\build\\fixture.apk",
+        "format": "apk",
+        "architecture": null
+      },
+      "provider": {
+        "id": "jadx",
+        "name": "JADX headless",
+        "version": "0.7.1"
+      },
+      "analysis_profile": null,
+      "predicate_type": "rea.analysis",
+      "operation": "inspect_android_class",
+      "parameters": {
+        "path": "C:\\Users\\toti\\Documents\\Codex\\2026-11-14\\c-users-toti-pi-agent-sessions\\work\\reverse-fusion\\state\\apk-candidate\\build\\fixture.apk",
+        "class_name": "com.reversefusion.Answer"
+      },
+      "caller_input_path": "C:\\Users\\toti\\Documents\\Codex\\2026-11-14\\c-users-toti-pi-agent-sessions\\work\\reverse-fusion\\state\\apk-candidate\\build\\fixture.apk",
+      "raw_result": {
+        "server": {
+          "name": "rea-jadx-bridge",
+          "version": "10"
+        },
+        "bridge_sha256": "f9d6d68eadd3d51a89e2debda359454c20534560080d4438f9b9cfe5a19f0b2e",
+        "jar_sha256": "6e5eacf500b64292bfb73c49797c1958f6ee44646e43e868039ae7feb573ff75",
+        "loaded": {
+          "state": "LOADED",
+          "apk_path": "D:\\tmp\\rea-android-7c28eed5a218f6ec0b2559e076c5a1ea\\target.apk",
+          "class_count": 2,
+          "resource_count": 2,
+          "threads": 1,
+          "resources": "full"
+        },
+        "calls": [
+          {
+            "operation": "rea_jvm_status",
+            "input": {},
+            "response": {
+              "content": [
+                {
+                  "type": "text",
+                  "text": "{\"engine_reported_version\":\"0.7.1\",\"available_processors\":20,\"java_version\":\"21.0.12.1\",\"max_heap_bytes\":4219469824,\"metadata_scope\":\"parsed_members\"}"
+                }
+              ],
+              "isError": false
+            }
+          },
+          {
+            "operation": "load_apk",
+            "input": {
+              "path": "D:\\tmp\\rea-android-7c28eed5a218f6ec0b2559e076c5a1ea\\target.apk",
+              "threads": 1,
+              "resources": "full"
+            },
+            "response": {
+              "content": [
+                {
+                  "type": "text",
+                  "text": "{\"state\":\"LOADED\",\"apk_path\":\"D:\\\\tmp\\\\rea-android-7c28eed5a218f6ec0b2559e076c5a1ea\\\\target.apk\",\"class_count\":2,\"raw_class_count\":2,\"resource_count\":2,\"load_duration_ms\":368,\"decompile_timeout_ms\":90000,\"threads\":1,\"code_cache_size\":64,\"resources\":\"full\"}"
+                }
+              ],
+              "isError": false
+            }
+          },
+          {
+            "operation": "get_class_summary",
+            "input": {
+              "class_name": "com.reversefusion.Answer",
+              "dex_static_values": true
+            },
+            "response": {
+              "content": [
+                {
+                  "type": "text",
+                  "text": "{\"fields\":[],\"methods\":[{\"raw_name\":\"\\u003cinit\\u003e\",\"def_pos\":0,\"is_constructor\":true,\"name\":\"\\u003cinit\\u003e\",\"signature\":\"\\u003cinit\\u003e(): void\",\"dex_descriptor\":\"()V\"},{\"raw_name\":\"answer\",\"def_pos\":0,\"is_constructor\":false,\"name\":\"answer\",\"signature\":\"answer(java.lang.String): java.lang.String\",\"dex_descriptor\":\"(Ljava/lang/String;)Ljava/lang/String;\"}],\"full_name\":\"com.reversefusion.Answer\",\"inner_classes\":[],\"field_count\":0,\"method_count\":2,\"raw_name\":\"com.reversefusion.Answer\",\"name\":\"Answer\",\"inner_class_count\":0,\"inner_class_raw_names\":[]}"
+                }
+              ],
+              "isError": false
+            }
+          }
+        ]
+      },
+      "normalized_result": {
+        "engine": {
+          "name": "jadx-headless-mcp",
+          "version": "0.7.1",
+          "artifact_sha256": "6e5eacf500b64292bfb73c49797c1958f6ee44646e43e868039ae7feb573ff75",
+          "source_revision": "5844800a486d2248fa949b74c9896285f5b54de2",
+          "worker_count": 1,
+          "heap_limit_mib": 4024
+        },
+        "class_name": "com.reversefusion.Answer",
+        "methods": [
+          {
+            "name": "<init>",
+            "reported_signature": "<init>(): void",
+            "overload_index": 0,
+            "is_constructor": true,
+            "dex_descriptor": "()V"
+          },
+          {
+            "name": "answer",
+            "reported_signature": "answer(java.lang.String): java.lang.String",
+            "overload_index": 0,
+            "is_constructor": false,
+            "dex_descriptor": "(Ljava/lang/String;)Ljava/lang/String;"
+          }
+        ],
+        "fields": [],
+        "inner_classes": []
+      },
+      "confidence": "observed",
+      "authority": "shipped-artifact",
+      "environment": null,
+      "limitations": [
+        "Static decompiler observations do not establish runtime behavior; the APK is never executed.",
+        "Method signatures use provider display types; DEX prototypes come from frozen JADX metadata. Display names may be aliases, and overload indices are local to this engine and artifact.",
+        "Class inventories use parsed metadata before code generation, including synthetic members that may be omitted from decompiled source. Source positions remain unknown.",
+        "Incoming reference totals count JADX using nodes. Direct invoke entries within a using method report raw DEX code-unit offsets and method indexes, but coverage is limited to those nodes and directly matched invokes; it does not establish every possible dynamic or reflective call site.",
+        "Manifest summaries are parsed once by REA's bridge from the exact root AndroidManifest.xml resource, using namespace-aware XML attributes; decoded XML is retained. These summaries do not verify APK signatures, split APKs or Android runtime capture."
+      ],
+      "relationship_coverage": null,
+      "locations": [],
+      "evidence_links": []
+    },
+    {
+      "evidence_id": "ev_11a4236680c29b296e2748af9b437d87ca7ab0b9fcf2a3e7abbf814738327f2d",
+      "subject": {
+        "name": "fixture.apk",
+        "digest": {
+          "sha256": "bd1a8b5d238ea24e3e792bf2b90c16244d6acf9e56a18cb6a80d9cd94c1dd431"
+        },
+        "local_path": "C:\\Users\\toti\\Documents\\Codex\\2026-11-14\\c-users-toti-pi-agent-sessions\\work\\reverse-fusion\\fixtures\\apk-original\\build\\fixture.apk",
+        "format": "apk",
+        "architecture": null
+      },
+      "provider": {
+        "id": "jadx",
+        "name": "JADX headless",
+        "version": "0.7.1"
+      },
+      "analysis_profile": null,
+      "predicate_type": "rea.analysis",
+      "operation": "inspect_android_class",
+      "parameters": {
+        "path": "C:\\Users\\toti\\Documents\\Codex\\2026-11-14\\c-users-toti-pi-agent-sessions\\work\\reverse-fusion\\fixtures\\apk-original\\build\\fixture.apk",
+        "class_name": "com.reversefusion.Answer"
+      },
+      "caller_input_path": "C:\\Users\\toti\\Documents\\Codex\\2026-11-14\\c-users-toti-pi-agent-sessions\\work\\reverse-fusion\\fixtures\\apk-original\\build\\fixture.apk",
+      "raw_result": {
+        "server": {
+          "name": "rea-jadx-bridge",
+          "version": "10"
+        },
+        "bridge_sha256": "f9d6d68eadd3d51a89e2debda359454c20534560080d4438f9b9cfe5a19f0b2e",
+        "jar_sha256": "6e5eacf500b64292bfb73c49797c1958f6ee44646e43e868039ae7feb573ff75",
+        "loaded": {
+          "state": "LOADED",
+          "apk_path": "D:\\tmp\\rea-android-588def9f5613be7027e30873f971fd96\\target.apk",
+          "class_count": 2,
+          "resource_count": 2,
+          "threads": 1,
+          "resources": "full"
+        },
+        "calls": [
+          {
+            "operation": "rea_jvm_status",
+            "input": {},
+            "response": {
+              "content": [
+                {
+                  "type": "text",
+                  "text": "{\"max_heap_bytes\":4219469824,\"metadata_scope\":\"parsed_members\",\"engine_reported_version\":\"0.7.1\",\"available_processors\":20,\"java_version\":\"21.0.12.1\"}"
+                }
+              ],
+              "isError": false
+            }
+          },
+          {
+            "operation": "load_apk",
+            "input": {
+              "path": "D:\\tmp\\rea-android-588def9f5613be7027e30873f971fd96\\target.apk",
+              "threads": 1,
+              "resources": "full"
+            },
+            "response": {
+              "content": [
+                {
+                  "type": "text",
+                  "text": "{\"state\":\"LOADED\",\"apk_path\":\"D:\\\\tmp\\\\rea-android-588def9f5613be7027e30873f971fd96\\\\target.apk\",\"class_count\":2,\"raw_class_count\":2,\"resource_count\":2,\"load_duration_ms\":427,\"decompile_timeout_ms\":90000,\"threads\":1,\"code_cache_size\":64,\"resources\":\"full\"}"
+                }
+              ],
+              "isError": false
+            }
+          },
+          {
+            "operation": "get_class_summary",
+            "input": {
+              "class_name": "com.reversefusion.Answer",
+              "dex_static_values": true
+            },
+            "response": {
+              "content": [
+                {
+                  "type": "text",
+                  "text": "{\"field_count\":0,\"method_count\":2,\"raw_name\":\"com.reversefusion.Answer\",\"name\":\"Answer\",\"inner_class_count\":0,\"inner_class_raw_names\":[],\"fields\":[],\"methods\":[{\"name\":\"\\u003cinit\\u003e\",\"signature\":\"\\u003cinit\\u003e(): void\",\"dex_descriptor\":\"()V\",\"raw_name\":\"\\u003cinit\\u003e\",\"def_pos\":0,\"is_constructor\":true},{\"name\":\"answer\",\"signature\":\"answer(java.lang.String): java.lang.String\",\"dex_descriptor\":\"(Ljava/lang/String;)Ljava/lang/String;\",\"raw_name\":\"answer\",\"def_pos\":0,\"is_constructor\":false}],\"full_name\":\"com.reversefusion.Answer\",\"inner_classes\":[]}"
+                }
+              ],
+              "isError": false
+            }
+          }
+        ]
+      },
+      "normalized_result": {
+        "engine": {
+          "name": "jadx-headless-mcp",
+          "version": "0.7.1",
+          "artifact_sha256": "6e5eacf500b64292bfb73c49797c1958f6ee44646e43e868039ae7feb573ff75",
+          "source_revision": "5844800a486d2248fa949b74c9896285f5b54de2",
+          "worker_count": 1,
+          "heap_limit_mib": 4024
+        },
+        "class_name": "com.reversefusion.Answer",
+        "methods": [
+          {
+            "name": "<init>",
+            "reported_signature": "<init>(): void",
+            "overload_index": 0,
+            "is_constructor": true,
+            "dex_descriptor": "()V"
+          },
+          {
+            "name": "answer",
+            "reported_signature": "answer(java.lang.String): java.lang.String",
+            "overload_index": 0,
+            "is_constructor": false,
+            "dex_descriptor": "(Ljava/lang/String;)Ljava/lang/String;"
+          }
+        ],
+        "fields": [],
+        "inner_classes": []
+      },
+      "confidence": "observed",
+      "authority": "shipped-artifact",
+      "environment": null,
+      "limitations": [
+        "Static decompiler observations do not establish runtime behavior; the APK is never executed.",
+        "Method signatures use provider display types; DEX prototypes come from frozen JADX metadata. Display names may be aliases, and overload indices are local to this engine and artifact.",
+        "Class inventories use parsed metadata before code generation, including synthetic members that may be omitted from decompiled source. Source positions remain unknown.",
+        "Incoming reference totals count JADX using nodes. Direct invoke entries within a using method report raw DEX code-unit offsets and method indexes, but coverage is limited to those nodes and directly matched invokes; it does not establish every possible dynamic or reflective call site.",
+        "Manifest summaries are parsed once by REA's bridge from the exact root AndroidManifest.xml resource, using namespace-aware XML attributes; decoded XML is retained. These summaries do not verify APK signatures, split APKs or Android runtime capture."
+      ],
+      "relationship_coverage": null,
+      "locations": [],
+      "evidence_links": []
+    },
+    {
+      "evidence_id": "ev_78f43d34ad47b3941e621fcba168883fdf69af0964402b0bebe82bfb60e397c8",
+      "subject": null,
+      "provider": {
+        "id": "reverse-fusion-apk-verifier",
+        "name": "Reverse Fusion APK verifier",
+        "version": "1"
+      },
+      "analysis_profile": null,
+      "predicate_type": "rea.reconstruction-proof",
+      "operation": "verify_reconstruction_obligations",
+      "parameters": {
+        "obligation_id": "apk-answer-static",
+        "fixture_id": "apk-answer-static-fixture",
+        "verifier_id": "apk-static-comparison",
+        "toolchain": "jadx-headless-mcp@0.7.1",
+        "original_sha256": "bd1a8b5d238ea24e3e792bf2b90c16244d6acf9e56a18cb6a80d9cd94c1dd431",
+        "candidate_sha256": "e8b1f58cd20b2abbfa24fc03a6b0091292a0c634b74d365162271b2217e530ef",
+        "verifier_sha256": "3907505e9633a91adb5670f10fee317c8c836eaeb9e8a9b742d914a089ed913a"
+      },
+      "raw_result": {
+        "operation": "apk-answer-static",
+        "static": {
+          "status": "pass",
+          "comparison_evidence_id": "ev_f6bd401451d226dbf7c6cf316aca902162674f5aac791234e71d9278b4116ded"
+        },
+        "android_runtime": {
+          "status": "unknown",
+          "reason": "No adb device or emulator was available on this host"
+        }
+      },
+      "normalized_result": {
+        "bindings": [
+          {
+            "obligation_id": "apk-answer-static",
+            "obligation_version": 1,
+            "owner_sha256": "bd1a8b5d238ea24e3e792bf2b90c16244d6acf9e56a18cb6a80d9cd94c1dd431",
+            "fixtures": [
+              {
+                "fixture_id": "apk-answer-static-fixture",
+                "case_kind": "positive",
+                "passed": true
+              }
+            ],
+            "verifiers": [
+              {
+                "verifier_id": "apk-static-comparison",
+                "claim_id": "apk-answer-static",
+                "passed": true
+              }
+            ]
+          }
+        ]
+      },
+      "confidence": "observed",
+      "authority": "controlled-replay",
+      "environment": null,
+      "limitations": [
+        "Artifact identity is unavailable for this observation.",
+        "The proof establishes static APK/package and DEX member equivalence within the selected inputs.",
+        "Android device/emulator runtime remains unknown and is retained as a separate acceptance field."
+      ],
+      "relationship_coverage": null,
+      "locations": [],
+      "evidence_links": [
+        "ev_ff88919c8e55454e743b06904a676e7b34ffab93b52612607ca8fe21ef857f23",
+        "ev_11a4236680c29b296e2748af9b437d87ca7ab0b9fcf2a3e7abbf814738327f2d",
+        "ev_f5385a0f23667ad3eb4f47d2342cda8cfc6b2dd31a772958dd4d96bee7045dc6",
+        "ev_018979598cec4cf2f980c15aaf03764c847c93884a213383a125b5bab119ae4f",
+        "ev_f6bd401451d226dbf7c6cf316aca902162674f5aac791234e71d9278b4116ded"
+      ]
+    },
+    {
+      "evidence_id": "ev_f5385a0f23667ad3eb4f47d2342cda8cfc6b2dd31a772958dd4d96bee7045dc6",
+      "subject": {
+        "name": "fixture.apk",
+        "digest": {
+          "sha256": "e8b1f58cd20b2abbfa24fc03a6b0091292a0c634b74d365162271b2217e530ef"
+        },
+        "local_path": "C:\\Users\\toti\\Documents\\Codex\\2026-11-14\\c-users-toti-pi-agent-sessions\\work\\reverse-fusion\\state\\apk-candidate\\build\\fixture.apk",
+        "format": "apk",
+        "architecture": null
+      },
+      "provider": {
+        "id": "jadx",
+        "name": "JADX headless",
+        "version": "0.7.1"
+      },
+      "analysis_profile": null,
+      "predicate_type": "rea.analysis",
+      "operation": "inspect_android_package",
+      "parameters": {
+        "path": "C:\\Users\\toti\\Documents\\Codex\\2026-11-14\\c-users-toti-pi-agent-sessions\\work\\reverse-fusion\\state\\apk-candidate\\build\\fixture.apk"
+      },
+      "caller_input_path": "C:\\Users\\toti\\Documents\\Codex\\2026-11-14\\c-users-toti-pi-agent-sessions\\work\\reverse-fusion\\state\\apk-candidate\\build\\fixture.apk",
+      "raw_result": {
+        "server": {
+          "name": "rea-jadx-bridge",
+          "version": "10"
+        },
+        "bridge_sha256": "f9d6d68eadd3d51a89e2debda359454c20534560080d4438f9b9cfe5a19f0b2e",
+        "jar_sha256": "6e5eacf500b64292bfb73c49797c1958f6ee44646e43e868039ae7feb573ff75",
+        "loaded": {
+          "state": "LOADED",
+          "apk_path": "D:\\tmp\\rea-android-d7fc3b8ba05ac247cc6ac6c103ef648c\\target.apk",
+          "class_count": 2,
+          "resource_count": 2,
+          "threads": 1,
+          "resources": "full"
+        },
+        "calls": [
+          {
+            "operation": "rea_jvm_status",
+            "input": {},
+            "response": {
+              "content": [
+                {
+                  "type": "text",
+                  "text": "{\"metadata_scope\":\"parsed_members\",\"max_heap_bytes\":4219469824,\"java_version\":\"21.0.12.1\",\"available_processors\":20,\"engine_reported_version\":\"0.7.1\"}"
+                }
+              ],
+              "isError": false
+            }
+          },
+          {
+            "operation": "load_apk",
+            "input": {
+              "path": "D:\\tmp\\rea-android-d7fc3b8ba05ac247cc6ac6c103ef648c\\target.apk",
+              "threads": 1,
+              "resources": "full"
+            },
+            "response": {
+              "content": [
+                {
+                  "type": "text",
+                  "text": "{\"state\":\"LOADED\",\"apk_path\":\"D:\\\\tmp\\\\rea-android-d7fc3b8ba05ac247cc6ac6c103ef648c\\\\target.apk\",\"class_count\":2,\"raw_class_count\":2,\"resource_count\":2,\"load_duration_ms\":358,\"decompile_timeout_ms\":90000,\"threads\":1,\"code_cache_size\":64,\"resources\":\"full\"}"
+                }
+              ],
+              "isError": false
+            }
+          },
+          {
+            "operation": "get_app_info",
+            "input": {},
+            "response": {
+              "content": [
+                {
+                  "type": "text",
+                  "text": "{\"package\":\"com.reversefusion.fixture\",\"version_name\":\"\",\"version_code\":\"\",\"min_sdk\":\"\",\"target_sdk\":\"\",\"permissions\":[]}"
+                }
+              ],
+              "isError": false
+            }
+          },
+          {
+            "operation": "get_android_manifest",
+            "input": {},
+            "response": {
+              "content": [
+                {
+                  "type": "text",
+                  "text": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<manifest xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    android:compileSdkVersion=\"28\"\r\n    android:compileSdkVersionCodename=\"9\"\r\n    package=\"com.reversefusion.fixture\"\r\n    platformBuildVersionCode=\"28\"\r\n    platformBuildVersionName=\"9\">\r\n    <application\r\n        android:theme=\"@android:style/Theme.Material.Light\"\r\n        android:label=\"Reverse Fusion Fixture\">\r\n        <activity\r\n            android:name=\".MainActivity\"\r\n            android:exported=\"true\">\r\n            <intent-filter>\r\n                <action android:name=\"android.intent.action.MAIN\"/>\r\n                <category android:name=\"android.intent.category.LAUNCHER\"/>\r\n            </intent-filter>\r\n        </activity>\r\n    </application>\r\n</manifest>"
+                }
+              ],
+              "isError": false
+            }
+          }
+        ]
+      },
+      "normalized_result": {
+        "engine": {
+          "name": "jadx-headless-mcp",
+          "version": "0.7.1",
+          "artifact_sha256": "6e5eacf500b64292bfb73c49797c1958f6ee44646e43e868039ae7feb573ff75",
+          "source_revision": "5844800a486d2248fa949b74c9896285f5b54de2",
+          "worker_count": 1,
+          "heap_limit_mib": 4024
+        },
+        "package_name": "com.reversefusion.fixture",
+        "version_name": null,
+        "version_code": null,
+        "min_sdk": null,
+        "target_sdk": null,
+        "permissions": [],
+        "manifest": {
+          "status": "complete",
+          "text": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<manifest xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    android:compileSdkVersion=\"28\"\r\n    android:compileSdkVersionCodename=\"9\"\r\n    package=\"com.reversefusion.fixture\"\r\n    platformBuildVersionCode=\"28\"\r\n    platformBuildVersionName=\"9\">\r\n    <application\r\n        android:theme=\"@android:style/Theme.Material.Light\"\r\n        android:label=\"Reverse Fusion Fixture\">\r\n        <activity\r\n            android:name=\".MainActivity\"\r\n            android:exported=\"true\">\r\n            <intent-filter>\r\n                <action android:name=\"android.intent.action.MAIN\"/>\r\n                <category android:name=\"android.intent.category.LAUNCHER\"/>\r\n            </intent-filter>\r\n        </activity>\r\n    </application>\r\n</manifest>",
+          "reported_total_bytes": null
+        },
+        "components": {
+          "status": "complete",
+          "items": [
+            {
+              "kind": "activity",
+              "declared_name": ".MainActivity",
+              "name": "com.reversefusion.fixture.MainActivity",
+              "exported": true,
+              "exported_default": true,
+              "permission": null,
+              "permission_source": "none",
+              "intent_filter_count": 1,
+              "actions": [
+                "android.intent.action.MAIN"
+              ],
+              "categories": [
+                "android.intent.category.LAUNCHER"
+              ],
+              "foreground_service_type": null,
+              "authorities": null,
+              "target_activity": null,
+              "declaration_coverage": "complete",
+              "declaration_index": 0,
+              "location": {
+                "line": 11,
+                "column": 9,
+                "offset": 436
+              },
+              "enabled": null,
+              "enabled_declaration": null,
+              "process": null,
+              "grant_uri_permissions": null,
+              "grant_uri_permissions_declaration": null,
+              "intent_filters": [
+                {
+                  "source_index": 0,
+                  "location": {
+                    "line": 14,
+                    "column": 13,
+                    "offset": 539
+                  },
+                  "priority": null,
+                  "actions": [
+                    "android.intent.action.MAIN"
+                  ],
+                  "categories": [
+                    "android.intent.category.LAUNCHER"
+                  ],
+                  "data": [],
+                  "coverage": "complete"
+                }
+              ],
+              "meta_data": []
+            }
+          ],
+          "limitations": []
+        },
+        "class_count": 2,
+        "resource_count": 2,
+        "signature_verification": "not_performed"
+      },
+      "confidence": "observed",
+      "authority": "shipped-artifact",
+      "environment": null,
+      "limitations": [
+        "Static decompiler observations do not establish runtime behavior; the APK is never executed.",
+        "Method signatures use provider display types; DEX prototypes come from frozen JADX metadata. Display names may be aliases, and overload indices are local to this engine and artifact.",
+        "Class inventories use parsed metadata before code generation, including synthetic members that may be omitted from decompiled source. Source positions remain unknown.",
+        "Incoming reference totals count JADX using nodes. Direct invoke entries within a using method report raw DEX code-unit offsets and method indexes, but coverage is limited to those nodes and directly matched invokes; it does not establish every possible dynamic or reflective call site.",
+        "Manifest summaries are parsed once by REA's bridge from the exact root AndroidManifest.xml resource, using namespace-aware XML attributes; decoded XML is retained. These summaries do not verify APK signatures, split APKs or Android runtime capture."
+      ],
+      "relationship_coverage": null,
+      "locations": [
+        {
+          "kind": "artifact-path",
+          "path": "AndroidManifest.xml"
+        }
+      ],
+      "evidence_links": []
+    },
+    {
+      "evidence_id": "ev_f6bd401451d226dbf7c6cf316aca902162674f5aac791234e71d9278b4116ded",
+      "subject": null,
+      "provider": {
+        "id": "reverse-fusion-apk-comparator",
+        "name": "Reverse Fusion APK comparator",
+        "version": "1"
+      },
+      "analysis_profile": null,
+      "predicate_type": "rea.comparison",
+      "operation": "compare_android_reconstruction",
+      "parameters": {
+        "class_name": "com.reversefusion.Answer",
+        "scope": "manifest-and-class-members"
+      },
+      "raw_result": {
+        "package_equal": true,
+        "class_equal": true,
+        "original_package": [
+          {
+            "kind": "activity",
+            "name": "com.reversefusion.fixture.MainActivity",
+            "exported": true,
+            "actions": [
+              "android.intent.action.MAIN"
+            ],
+            "categories": [
+              "android.intent.category.LAUNCHER"
+            ]
+          }
+        ],
+        "candidate_package": [
+          {
+            "kind": "activity",
+            "name": "com.reversefusion.fixture.MainActivity",
+            "exported": true,
+            "actions": [
+              "android.intent.action.MAIN"
+            ],
+            "categories": [
+              "android.intent.category.LAUNCHER"
+            ]
+          }
+        ],
+        "original_methods": [
+          {
+            "name": "<init>",
+            "reported_signature": "<init>(): void",
+            "dex_descriptor": "()V",
+            "is_constructor": true
+          },
+          {
+            "name": "answer",
+            "reported_signature": "answer(java.lang.String): java.lang.String",
+            "dex_descriptor": "(Ljava/lang/String;)Ljava/lang/String;",
+            "is_constructor": false
+          }
+        ],
+        "candidate_methods": [
+          {
+            "name": "<init>",
+            "reported_signature": "<init>(): void",
+            "dex_descriptor": "()V",
+            "is_constructor": true
+          },
+          {
+            "name": "answer",
+            "reported_signature": "answer(java.lang.String): java.lang.String",
+            "dex_descriptor": "(Ljava/lang/String;)Ljava/lang/String;",
+            "is_constructor": false
+          }
+        ]
+      },
+      "normalized_result": {
+        "summary": {
+          "unchanged": 1,
+          "changed": 0,
+          "added": 0,
+          "removed": 0,
+          "unknown": 0
+        },
+        "coverage": {
+          "status": "complete-within-inputs"
+        },
+        "package_equal": true,
+        "class_equal": true
+      },
+      "confidence": "derived",
+      "authority": "shipped-artifact",
+      "environment": null,
+      "limitations": [
+        "Artifact identity is unavailable for this observation.",
+        "The comparison covers the declared manifest projection and Answer class member inventory only.",
+        "Android runtime behavior is not established without a device or emulator capture."
+      ],
+      "relationship_coverage": null,
+      "locations": [],
+      "evidence_links": [
+        "ev_ff88919c8e55454e743b06904a676e7b34ffab93b52612607ca8fe21ef857f23",
+        "ev_11a4236680c29b296e2748af9b437d87ca7ab0b9fcf2a3e7abbf814738327f2d",
+        "ev_f5385a0f23667ad3eb4f47d2342cda8cfc6b2dd31a772958dd4d96bee7045dc6",
+        "ev_018979598cec4cf2f980c15aaf03764c847c93884a213383a125b5bab119ae4f"
+      ]
+    },
+    {
+      "evidence_id": "ev_ff88919c8e55454e743b06904a676e7b34ffab93b52612607ca8fe21ef857f23",
+      "subject": {
+        "name": "fixture.apk",
+        "digest": {
+          "sha256": "bd1a8b5d238ea24e3e792bf2b90c16244d6acf9e56a18cb6a80d9cd94c1dd431"
+        },
+        "local_path": "C:\\Users\\toti\\Documents\\Codex\\2026-11-14\\c-users-toti-pi-agent-sessions\\work\\reverse-fusion\\fixtures\\apk-original\\build\\fixture.apk",
+        "format": "apk",
+        "architecture": null
+      },
+      "provider": {
+        "id": "jadx",
+        "name": "JADX headless",
+        "version": "0.7.1"
+      },
+      "analysis_profile": null,
+      "predicate_type": "rea.analysis",
+      "operation": "inspect_android_package",
+      "parameters": {
+        "path": "C:\\Users\\toti\\Documents\\Codex\\2026-11-14\\c-users-toti-pi-agent-sessions\\work\\reverse-fusion\\fixtures\\apk-original\\build\\fixture.apk"
+      },
+      "caller_input_path": "C:\\Users\\toti\\Documents\\Codex\\2026-11-14\\c-users-toti-pi-agent-sessions\\work\\reverse-fusion\\fixtures\\apk-original\\build\\fixture.apk",
+      "raw_result": {
+        "server": {
+          "name": "rea-jadx-bridge",
+          "version": "10"
+        },
+        "bridge_sha256": "f9d6d68eadd3d51a89e2debda359454c20534560080d4438f9b9cfe5a19f0b2e",
+        "jar_sha256": "6e5eacf500b64292bfb73c49797c1958f6ee44646e43e868039ae7feb573ff75",
+        "loaded": {
+          "state": "LOADED",
+          "apk_path": "D:\\tmp\\rea-android-006d0f79ff7fcb8781e7b7e832c12686\\target.apk",
+          "class_count": 2,
+          "resource_count": 2,
+          "threads": 1,
+          "resources": "full"
+        },
+        "calls": [
+          {
+            "operation": "rea_jvm_status",
+            "input": {},
+            "response": {
+              "content": [
+                {
+                  "type": "text",
+                  "text": "{\"engine_reported_version\":\"0.7.1\",\"metadata_scope\":\"parsed_members\",\"max_heap_bytes\":4219469824,\"java_version\":\"21.0.12.1\",\"available_processors\":20}"
+                }
+              ],
+              "isError": false
+            }
+          },
+          {
+            "operation": "load_apk",
+            "input": {
+              "path": "D:\\tmp\\rea-android-006d0f79ff7fcb8781e7b7e832c12686\\target.apk",
+              "threads": 1,
+              "resources": "full"
+            },
+            "response": {
+              "content": [
+                {
+                  "type": "text",
+                  "text": "{\"state\":\"LOADED\",\"apk_path\":\"D:\\\\tmp\\\\rea-android-006d0f79ff7fcb8781e7b7e832c12686\\\\target.apk\",\"class_count\":2,\"raw_class_count\":2,\"resource_count\":2,\"load_duration_ms\":513,\"decompile_timeout_ms\":90000,\"threads\":1,\"code_cache_size\":64,\"resources\":\"full\"}"
+                }
+              ],
+              "isError": false
+            }
+          },
+          {
+            "operation": "get_app_info",
+            "input": {},
+            "response": {
+              "content": [
+                {
+                  "type": "text",
+                  "text": "{\"package\":\"com.reversefusion.fixture\",\"version_name\":\"\",\"version_code\":\"\",\"min_sdk\":\"\",\"target_sdk\":\"\",\"permissions\":[]}"
+                }
+              ],
+              "isError": false
+            }
+          },
+          {
+            "operation": "get_android_manifest",
+            "input": {},
+            "response": {
+              "content": [
+                {
+                  "type": "text",
+                  "text": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<manifest xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    android:compileSdkVersion=\"28\"\r\n    android:compileSdkVersionCodename=\"9\"\r\n    package=\"com.reversefusion.fixture\"\r\n    platformBuildVersionCode=\"28\"\r\n    platformBuildVersionName=\"9\">\r\n    <application\r\n        android:theme=\"@android:style/Theme.Material.Light\"\r\n        android:label=\"Reverse Fusion Fixture\">\r\n        <activity\r\n            android:name=\".MainActivity\"\r\n            android:exported=\"true\">\r\n            <intent-filter>\r\n                <action android:name=\"android.intent.action.MAIN\"/>\r\n                <category android:name=\"android.intent.category.LAUNCHER\"/>\r\n            </intent-filter>\r\n        </activity>\r\n    </application>\r\n</manifest>"
+                }
+              ],
+              "isError": false
+            }
+          }
+        ]
+      },
+      "normalized_result": {
+        "engine": {
+          "name": "jadx-headless-mcp",
+          "version": "0.7.1",
+          "artifact_sha256": "6e5eacf500b64292bfb73c49797c1958f6ee44646e43e868039ae7feb573ff75",
+          "source_revision": "5844800a486d2248fa949b74c9896285f5b54de2",
+          "worker_count": 1,
+          "heap_limit_mib": 4024
+        },
+        "package_name": "com.reversefusion.fixture",
+        "version_name": null,
+        "version_code": null,
+        "min_sdk": null,
+        "target_sdk": null,
+        "permissions": [],
+        "manifest": {
+          "status": "complete",
+          "text": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<manifest xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    android:compileSdkVersion=\"28\"\r\n    android:compileSdkVersionCodename=\"9\"\r\n    package=\"com.reversefusion.fixture\"\r\n    platformBuildVersionCode=\"28\"\r\n    platformBuildVersionName=\"9\">\r\n    <application\r\n        android:theme=\"@android:style/Theme.Material.Light\"\r\n        android:label=\"Reverse Fusion Fixture\">\r\n        <activity\r\n            android:name=\".MainActivity\"\r\n            android:exported=\"true\">\r\n            <intent-filter>\r\n                <action android:name=\"android.intent.action.MAIN\"/>\r\n                <category android:name=\"android.intent.category.LAUNCHER\"/>\r\n            </intent-filter>\r\n        </activity>\r\n    </application>\r\n</manifest>",
+          "reported_total_bytes": null
+        },
+        "components": {
+          "status": "complete",
+          "items": [
+            {
+              "kind": "activity",
+              "declared_name": ".MainActivity",
+              "name": "com.reversefusion.fixture.MainActivity",
+              "exported": true,
+              "exported_default": true,
+              "permission": null,
+              "permission_source": "none",
+              "intent_filter_count": 1,
+              "actions": [
+                "android.intent.action.MAIN"
+              ],
+              "categories": [
+                "android.intent.category.LAUNCHER"
+              ],
+              "foreground_service_type": null,
+              "authorities": null,
+              "target_activity": null,
+              "declaration_coverage": "complete",
+              "declaration_index": 0,
+              "location": {
+                "line": 11,
+                "column": 9,
+                "offset": 436
+              },
+              "enabled": null,
+              "enabled_declaration": null,
+              "process": null,
+              "grant_uri_permissions": null,
+              "grant_uri_permissions_declaration": null,
+              "intent_filters": [
+                {
+                  "source_index": 0,
+                  "location": {
+                    "line": 14,
+                    "column": 13,
+                    "offset": 539
+                  },
+                  "priority": null,
+                  "actions": [
+                    "android.intent.action.MAIN"
+                  ],
+                  "categories": [
+                    "android.intent.category.LAUNCHER"
+                  ],
+                  "data": [],
+                  "coverage": "complete"
+                }
+              ],
+              "meta_data": []
+            }
+          ],
+          "limitations": []
+        },
+        "class_count": 2,
+        "resource_count": 2,
+        "signature_verification": "not_performed"
+      },
+      "confidence": "observed",
+      "authority": "shipped-artifact",
+      "environment": null,
+      "limitations": [
+        "Static decompiler observations do not establish runtime behavior; the APK is never executed.",
+        "Method signatures use provider display types; DEX prototypes come from frozen JADX metadata. Display names may be aliases, and overload indices are local to this engine and artifact.",
+        "Class inventories use parsed metadata before code generation, including synthetic members that may be omitted from decompiled source. Source positions remain unknown.",
+        "Incoming reference totals count JADX using nodes. Direct invoke entries within a using method report raw DEX code-unit offsets and method indexes, but coverage is limited to those nodes and directly matched invokes; it does not establish every possible dynamic or reflective call site.",
+        "Manifest summaries are parsed once by REA's bridge from the exact root AndroidManifest.xml resource, using namespace-aware XML attributes; decoded XML is retained. These summaries do not verify APK signatures, split APKs or Android runtime capture."
+      ],
+      "relationship_coverage": null,
+      "locations": [
+        {
+          "kind": "artifact-path",
+          "path": "AndroidManifest.xml"
+        }
+      ],
+      "evidence_links": []
+    }
+  ]
+}

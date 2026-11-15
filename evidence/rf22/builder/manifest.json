@@ -1,0 +1,45 @@
+{
+  "backend": "current-session",
+  "record": "builder/session.json",
+  "frozen_input_archive": {
+    "specs/reconstruction-web/tasks.md": "builder/frozen/specs/reconstruction-web/tasks.md",
+    "specs/reconstruction-dotnet/tasks.md": "builder/frozen/specs/reconstruction-dotnet/tasks.md",
+    "specs/reconstruction-apk/tasks.md": "builder/frozen/specs/reconstruction-apk/tasks.md",
+    "state/rf25-accepted-research.json": "builder/frozen/state/rf25-accepted-research.json"
+  },
+  "outputs": {
+    "apk/AndroidManifest.xml": {
+      "path": "builder/candidate/apk/AndroidManifest.xml",
+      "sha256": "bd3a0deebdc28c48dc2897b06f1f14296494d480980faeb10251382367a2c75c"
+    },
+    "apk/src/com/reversefusion/Answer.java": {
+      "path": "builder/candidate/apk/src/com/reversefusion/Answer.java",
+      "sha256": "54a67064c4b2368f4ae3a809aa6f0dbeb5cd4dc5d2e82f04f0df40c975de55e0"
+    },
+    "apk/src/com/reversefusion/MainActivity.java": {
+      "path": "builder/candidate/apk/src/com/reversefusion/MainActivity.java",
+      "sha256": "db324cea6708e99a054d5400ba982e9b2109adfca8b0d107eab5ce06ca0097c5"
+    },
+    "dotnet/Program.cs": {
+      "path": "builder/candidate/dotnet/Program.cs",
+      "sha256": "d7b5532731703fecd1eb07d07ab279b699b39b302a520834848a27e27f5da742"
+    },
+    "dotnet/ReverseFixture.csproj": {
+      "path": "builder/candidate/dotnet/ReverseFixture.csproj",
+      "sha256": "031da6a6f6d810b9f23ffe7818f3acefb7b0ff54b0eb8c6752735ad58d254904"
+    },
+    "web/app.js": {
+      "path": "builder/candidate/web/app.js",
+      "sha256": "9b5f571b8b57281fd38a0e8b478d99ae33251ff28f86e47853a505bcd7b8ca1c"
+    },
+    "web/index.html": {
+      "path": "builder/candidate/web/index.html",
+      "sha256": "30417a713f4440c1040366270a7f180ca83481e3e3096bf64c03e8ce7678f94d"
+    },
+    "web/package.json": {
+      "path": "builder/candidate/web/package.json",
+      "sha256": "d3da82842a63fce36668a116d33378a4692eedf1c4833a4fdeef239b6f19c98c"
+    }
+  },
+  "business_acceptance": "See independent target acceptance/proof/ledger, not this boundary receipt."
+}

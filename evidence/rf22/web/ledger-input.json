@@ -1,0 +1,416 @@
+{
+  "manifest": {
+    "bindings": [
+      {
+        "owner": {
+          "symbol": "answer",
+          "module_path": "app.js",
+          "owner_sha256": "79d3dee73319624d7f902fdc5c497dfdbe2c683cfed7ac2989dcdd682dddfec1"
+        },
+        "obligation_id": "web-answer",
+        "fixtures": [
+          {
+            "fixture_id": "web-answer-fixture",
+            "evidence_ids": [
+              "ev_a998afc32bc3bb688a0f381db87a3c6db3291e735e62ae9dabf1bb79e4b470ce"
+            ],
+            "authority": "integration",
+            "case_kind": "positive"
+          }
+        ],
+        "verifier": {
+          "verifier_id": "node-runtime",
+          "enumerated_obligation_ids": [
+            "web-answer"
+          ],
+          "command": "node web-answer-fixture",
+          "status": "pass",
+          "result_evidence_id": "ev_a998afc32bc3bb688a0f381db87a3c6db3291e735e62ae9dabf1bb79e4b470ce",
+          "authority": "integration",
+          "claim_id": "web-answer",
+          "nondeterminism": {
+            "mode": "finite-traces",
+            "specification": "answer(value) trims, uppercases and prefixes rf:"
+          }
+        },
+        "parser_type": null,
+        "original_cases": [
+          {
+            "location": "app.js export answer runtime trace",
+            "kind": "positive",
+            "evidence_id": "ev_a998afc32bc3bb688a0f381db87a3c6db3291e735e62ae9dabf1bb79e4b470ce"
+          }
+        ]
+      }
+    ],
+    "contradictions": []
+  },
+  "evidence_bundle": {
+    "artifacts": [
+      {
+        "digest": {
+          "sha256": "79d3dee73319624d7f902fdc5c497dfdbe2c683cfed7ac2989dcdd682dddfec1"
+        },
+        "format": "javascript-bundle",
+        "architecture": null
+      },
+      {
+        "digest": {
+          "sha256": "9b5f571b8b57281fd38a0e8b478d99ae33251ff28f86e47853a505bcd7b8ca1c"
+        },
+        "format": "javascript-bundle",
+        "architecture": null
+      }
+    ],
+    "providers": [
+      {
+        "id": "rea-artifact-graph",
+        "name": "REA safe artifact graph provider",
+        "version": "1"
+      },
+      {
+        "id": "reverse-fusion-web-verifier",
+        "name": "Reverse Fusion Web verifier",
+        "version": "1"
+      }
+    ],
+    "environments": [],
+    "scenarios": [
+      {
+        "evidence_id": "ev_a998afc32bc3bb688a0f381db87a3c6db3291e735e62ae9dabf1bb79e4b470ce",
+        "operation": "verify_reconstruction_obligations",
+        "authority": "controlled-replay"
+      }
+    ],
+    "captures": [],
+    "unknowns": [],
+    "records": [
+      {
+        "evidence_id": "ev_69eb317314a704762508dc8c719cbe1bb0e9c08545609b51cd4ed3b1dbaf797a",
+        "subject": {
+          "name": "app.js",
+          "digest": {
+            "sha256": "79d3dee73319624d7f902fdc5c497dfdbe2c683cfed7ac2989dcdd682dddfec1"
+          },
+          "local_path": "C:\\Users\\toti\\Documents\\Codex\\2026-11-14\\c-users-toti-pi-agent-sessions\\work\\reverse-fusion\\fixtures\\web-original\\app.js",
+          "format": "javascript-bundle",
+          "architecture": null
+        },
+        "provider": {
+          "id": "rea-artifact-graph",
+          "name": "REA safe artifact graph provider",
+          "version": "1"
+        },
+        "analysis_profile": null,
+        "predicate_type": "rea.analysis",
+        "operation": "inventory_artifact",
+        "parameters": {
+          "integrity_policy": "fail"
+        },
+        "raw_result": null,
+        "normalized_result": {
+          "manifest": {
+            "manifest_id": "agm_f9f13606a5403545adf63b878aa9c8a30b7c9a3af1941736d4c45c041f86df13",
+            "root_artifact_id": "art_a5cae6313bbf33d71391d5e7590837152eda83fba789b16b8ef1c69b63e85771",
+            "root_sha256": "79d3dee73319624d7f902fdc5c497dfdbe2c683cfed7ac2989dcdd682dddfec1",
+            "root_format": "javascript-bundle",
+            "graph_sha256": "0684828aba7e0115c53253a5acf2cf681f65eb99e9a8cfbcbd4a636a871df652",
+            "node_count": 1,
+            "occurrence_count": 1,
+            "edge_count": 0
+          },
+          "nodes": [
+            {
+              "artifact_id": "art_a5cae6313bbf33d71391d5e7590837152eda83fba789b16b8ef1c69b63e85771",
+              "format": "file",
+              "sha256": "79d3dee73319624d7f902fdc5c497dfdbe2c683cfed7ac2989dcdd682dddfec1",
+              "size": 88,
+              "media_type": null,
+              "architecture": null,
+              "content_state": "materialized",
+              "limitations": []
+            }
+          ],
+          "occurrences": [
+            {
+              "occurrence_id": "occ_9c93ebb7d9930892d05d2d1ca544882e0f95c536be51cb9b5a3938dd77544d2f",
+              "artifact_id": "art_a5cae6313bbf33d71391d5e7590837152eda83fba789b16b8ef1c69b63e85771",
+              "parent_occurrence_id": null,
+              "relationship_coverage": "complete",
+              "logical_path": ".",
+              "entry_kind": "file",
+              "artifact_kind": "javascript",
+              "artifact_format": "javascript-bundle",
+              "declared_size": 88,
+              "compressed_size": null,
+              "executable": false,
+              "encrypted": false,
+              "hash_status": "verified",
+              "source_location": null,
+              "limitations": []
+            }
+          ],
+          "edges": [],
+          "provenance": [],
+          "integrity_contradictions": [],
+          "coverage": {
+            "scope": "root",
+            "status": "complete"
+          },
+          "limitations": [
+            "Inventory covers root bytes only; child container entries were not examined."
+          ]
+        },
+        "confidence": "observed",
+        "authority": "shipped-artifact",
+        "environment": null,
+        "limitations": [
+          "Inventory covers root bytes only; child container entries were not examined."
+        ],
+        "relationship_coverage": null,
+        "locations": [],
+        "evidence_links": []
+      },
+      {
+        "evidence_id": "ev_a998afc32bc3bb688a0f381db87a3c6db3291e735e62ae9dabf1bb79e4b470ce",
+        "subject": null,
+        "provider": {
+          "id": "reverse-fusion-web-verifier",
+          "name": "Reverse Fusion Web verifier",
+          "version": "1"
+        },
+        "analysis_profile": null,
+        "predicate_type": "rea.reconstruction-proof",
+        "operation": "verify_reconstruction_obligations",
+        "parameters": {
+          "obligation_id": "web-answer",
+          "fixture_id": "web-answer-fixture",
+          "verifier_id": "node-runtime",
+          "toolchain": "v24.22.1",
+          "original_sha256": "79d3dee73319624d7f902fdc5c497dfdbe2c683cfed7ac2989dcdd682dddfec1",
+          "candidate_sha256": "9b5f571b8b57281fd38a0e8b478d99ae33251ff28f86e47853a505bcd7b8ca1c",
+          "verifier_sha256": "968217443534690fa88fbe620dc5f71ab7e2458ffb58018707286fac23e349d2"
+        },
+        "raw_result": {
+          "operation": "web-answer",
+          "runtime": {
+            "status": "pass",
+            "traces": [
+              {
+                "input": " hello ",
+                "original": {
+                  "status": "observed",
+                  "value": "rf:HELLO",
+                  "exit_code": 0
+                },
+                "candidate": {
+                  "status": "observed",
+                  "value": "rf:HELLO",
+                  "exit_code": 0
+                },
+                "equal": true
+              },
+              {
+                "input": "",
+                "original": {
+                  "status": "observed",
+                  "value": "rf:",
+                  "exit_code": 0
+                },
+                "candidate": {
+                  "status": "observed",
+                  "value": "rf:",
+                  "exit_code": 0
+                },
+                "equal": true
+              },
+              {
+                "input": "\tMixed  text\n",
+                "original": {
+                  "status": "observed",
+                  "value": "rf:MIXED  TEXT",
+                  "exit_code": 0
+                },
+                "candidate": {
+                  "status": "observed",
+                  "value": "rf:MIXED  TEXT",
+                  "exit_code": 0
+                },
+                "equal": true
+              },
+              {
+                "input": "reverse-fusion",
+                "original": {
+                  "status": "observed",
+                  "value": "rf:REVERSE-FUSION",
+                  "exit_code": 0
+                },
+                "candidate": {
+                  "status": "observed",
+                  "value": "rf:REVERSE-FUSION",
+                  "exit_code": 0
+                },
+                "equal": true
+              }
+            ]
+          }
+        },
+        "normalized_result": {
+          "bindings": [
+            {
+              "obligation_id": "web-answer",
+              "obligation_version": 1,
+              "owner_sha256": "79d3dee73319624d7f902fdc5c497dfdbe2c683cfed7ac2989dcdd682dddfec1",
+              "fixtures": [
+                {
+                  "fixture_id": "web-answer-fixture",
+                  "case_kind": "positive",
+                  "passed": true
+                }
+              ],
+              "verifiers": [
+                {
+                  "verifier_id": "node-runtime",
+                  "claim_id": "web-answer",
+                  "passed": true
+                }
+              ]
+            }
+          ]
+        },
+        "confidence": "observed",
+        "authority": "controlled-replay",
+        "environment": null,
+        "limitations": [
+          "Artifact identity is unavailable for this observation.",
+          "The runtime proof covers the declared answer inputs only.",
+          "REA static return-shape comparison remains conservative and may report unknown for dynamic expressions.",
+          "This fixture does not claim browser rendering, network, or framework equivalence."
+        ],
+        "relationship_coverage": null,
+        "locations": [],
+        "evidence_links": [
+          "ev_69eb317314a704762508dc8c719cbe1bb0e9c08545609b51cd4ed3b1dbaf797a",
+          "ev_d92308771ecbaa4848ca978c6a043ec84c715086be960f1aa12d81b532e224d8"
+        ]
+      },
+      {
+        "evidence_id": "ev_d92308771ecbaa4848ca978c6a043ec84c715086be960f1aa12d81b532e224d8",
+        "subject": {
+          "name": "app.js",
+          "digest": {
+            "sha256": "9b5f571b8b57281fd38a0e8b478d99ae33251ff28f86e47853a505bcd7b8ca1c"
+          },
+          "local_path": "C:\\Users\\toti\\Documents\\Codex\\2026-11-14\\c-users-toti-pi-agent-sessions\\work\\reverse-fusion\\state\\web-candidate\\app.js",
+          "format": "javascript-bundle",
+          "architecture": null
+        },
+        "provider": {
+          "id": "rea-artifact-graph",
+          "name": "REA safe artifact graph provider",
+          "version": "1"
+        },
+        "analysis_profile": null,
+        "predicate_type": "rea.analysis",
+        "operation": "inventory_artifact",
+        "parameters": {
+          "integrity_policy": "fail"
+        },
+        "raw_result": null,
+        "normalized_result": {
+          "manifest": {
+            "manifest_id": "agm_040b0bbfd5fdfe842ff0beff85f9adff818736821a6cf88580a3e08ab8e96cbf",
+            "root_artifact_id": "art_76e3bb9bcb6bfad96382b9cd2ae6fcc663bf3a8dabcb5cbd8f92a1ece71d37ae",
+            "root_sha256": "9b5f571b8b57281fd38a0e8b478d99ae33251ff28f86e47853a505bcd7b8ca1c",
+            "root_format": "javascript-bundle",
+            "graph_sha256": "bc26c17794e732d04000355b199887f070232811ec7870a3e06ec59e9b6fba65",
+            "node_count": 1,
+            "occurrence_count": 1,
+            "edge_count": 0
+          },
+          "nodes": [
+            {
+              "artifact_id": "art_76e3bb9bcb6bfad96382b9cd2ae6fcc663bf3a8dabcb5cbd8f92a1ece71d37ae",
+              "format": "file",
+              "sha256": "9b5f571b8b57281fd38a0e8b478d99ae33251ff28f86e47853a505bcd7b8ca1c",
+              "size": 120,
+              "media_type": null,
+              "architecture": null,
+              "content_state": "materialized",
+              "limitations": []
+            }
+          ],
+          "occurrences": [
+            {
+              "occurrence_id": "occ_97535fb9ee2b709b59fb321f10a77eb4bc18ea0799aa72840477c7c6e952f038",
+              "artifact_id": "art_76e3bb9bcb6bfad96382b9cd2ae6fcc663bf3a8dabcb5cbd8f92a1ece71d37ae",
+              "parent_occurrence_id": null,
+              "relationship_coverage": "complete",
+              "logical_path": ".",
+              "entry_kind": "file",
+              "artifact_kind": "javascript",
+              "artifact_format": "javascript-bundle",
+              "declared_size": 120,
+              "compressed_size": null,
+              "executable": false,
+              "encrypted": false,
+              "hash_status": "verified",
+              "source_location": null,
+              "limitations": []
+            }
+          ],
+          "edges": [],
+          "provenance": [],
+          "integrity_contradictions": [],
+          "coverage": {
+            "scope": "root",
+            "status": "complete"
+          },
+          "limitations": [
+            "Inventory covers root bytes only; child container entries were not examined."
+          ]
+        },
+        "confidence": "observed",
+        "authority": "shipped-artifact",
+        "environment": null,
+        "limitations": [
+          "Inventory covers root bytes only; child container entries were not examined."
+        ],
+        "relationship_coverage": null,
+        "locations": [],
+        "evidence_links": []
+      }
+    ]
+  },
+  "reviewed_obligations": [
+    {
+      "disposition": "active",
+      "required": true,
+      "family": "javascript-export",
+      "residual_unknown_ids": [],
+      "unavailable_authority": [],
+      "requires_parser_type": false,
+      "application_layer": "runtime",
+      "obligation_version": 1,
+      "obligation_id": "web-answer",
+      "required_fixture_authority": "integration",
+      "required_verifier_authority": "integration",
+      "required_case_kinds": [
+        "positive"
+      ],
+      "dependency_obligation_ids": [],
+      "target": {
+        "semantic_node_id": null,
+        "location": "app.js export answer",
+        "artifact_sha256": "79d3dee73319624d7f902fdc5c497dfdbe2c683cfed7ac2989dcdd682dddfec1",
+        "application_node_id": null
+      },
+      "required_next_evidence": [],
+      "review_evidence_ids": [
+        "ev_a998afc32bc3bb688a0f381db87a3c6db3291e735e62ae9dabf1bb79e4b470ce"
+      ],
+      "required_original_authority": "runtime",
+      "title": "Web answer export matches the observed finite runtime traces"
+    }
+  ]
+}

@@ -1,16 +1,22 @@
-# PR Plan
+# Change plan
 
-PR-00 docs and skeleton (merged)
-PR-01 contracts and static checker (merged)
-PR-02 Reverse case bridge (merged at dry-run pointer level)
-PR-03 official REA adapter (merged at typed contract level)
-PR-04 REA-only vertical slice (merged deterministic fixture)
-PR-05 Craft bounded bundle
-PR-06 Spec Kit integration
-PR-07 acceptance plane
-PR-08 host profiles
-PR-09 hard-target evals
-PR-10 release/update/uninstall
-PR-11 formal REA reconstruction-proof and obligation-ledger closure
+RF-01 through RF-24 identify historical implementation increments, not a claim
+that separate GitHub pull requests were created or merged. Their scope is
+summarized in `docs/DEVELOPMENT-MASTER-PLAN.md` and preserved checkpoints.
 
-Each PR must include source identities, checks, unknowns and rollback.
+The current change is RF-25: full repository audit and repair for product 1.0.0.
+It combines the reproduced fixes needed for coherent deployment, a real
+current-session Builder, authenticated representative Evidence and truthful
+provider/documentation state. No old repository or global install is in scope.
+
+The change description must include:
+
+- Concrete pre-change defects and resulting behavior.
+- Current source/provider identities and any intentional skill adaptations.
+- Real candidate generation and independent finite business verification.
+- Evidence identity/link/tamper checks and retained open/unknown obligations.
+- Selected-host deployment, remote fresh-clone result, actual commit and rollback.
+
+Exact final results belong to `checkpoints/RF-25-20261115-001.md` and
+`docs/FINAL-RELEASE-ACCEPTANCE.md`. Do not mark an unrun check passed, reuse old
+host success as current health or add validation unrelated to the changed scope.

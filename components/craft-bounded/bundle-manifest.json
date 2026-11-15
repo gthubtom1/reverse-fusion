@@ -5,25 +5,45 @@
     "commit": "8374ad71544f2cc44698ea74ef990aa31600bac6",
     "release": "0.6.1"
   },
-  "installed_companion": {
-    "version": "0.6.1",
-    "source_commit": "48a9c5a60ff83ff620f98661339be6281a7debc6",
-    "mcp_args": ["mcp", "--all-tools"],
-    "native_r46_backend_qualified": false,
-    "qualification_status": "unsupported-until-native-owner-and-cleanup-probe"
-  },
-  "patch_series": [
-    "0001-engine-contract-and-dispatch.patch",
-    "0002-bounded-worker-and-checks.patch",
-    "0003-bounded-mcp-exposure.patch",
-    "0004-integration-and-build-support.patch"
+  "patch_series": [],
+  "required_seams": [
+    "accepted-research",
+    "external-baseline",
+    "policy-runtime",
+    "source-lease"
   ],
-  "required_seams": ["accepted-research", "external-baseline", "policy-runtime", "source-lease"],
-  "required_capabilities": ["prepare", "build", "check", "refine", "return_summary", "cleanup"],
+  "required_capabilities": [
+    "prepare",
+    "build",
+    "check",
+    "refine",
+    "return_summary",
+    "cleanup"
+  ],
   "policy": {
     "single_writer": true,
     "bounded_execution": true,
     "cleanup_required": true,
     "consent_flag_never_implicit": true
-  }
+  },
+  "distribution": "repository-interface-only",
+  "companion_reference": {
+    "version": "0.6.1",
+    "source_commit": "48a9c5a60ff83ff620f98661339be6281a7debc6",
+    "mcp_args": [
+      "mcp",
+      "--all-tools"
+    ],
+    "native_r46_backend_qualified": false,
+    "qualification_status": "unsupported-until-native-owner-and-cleanup-probe",
+    "observed_status": "unobserved-on-current-host"
+  },
+  "historical_patch_series": [
+    "0001-engine-contract-and-dispatch.patch",
+    "0002-bounded-worker-and-checks.patch",
+    "0003-bounded-mcp-exposure.patch",
+    "0004-integration-and-build-support.patch"
+  ],
+  "patch_series_status": "historical names only; not distributed, replayed or qualified by this repository",
+  "runtime_backend": "current-session; optional host CLI; native Craft R46 unsupported until independently qualified"
 }

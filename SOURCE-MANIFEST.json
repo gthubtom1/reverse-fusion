@@ -47,14 +47,16 @@
       "kind": "official",
       "source": "https://github.com/github/spec-kit",
       "commit": "2ee2b1e8005905db05f5717300a469b3068b908f",
-      "role": "project-local specification and task contract"
+      "role": "project-local specification and task contract",
+      "source_version": "1.4.1.dev0",
+      "historical_execution_version": "1.4.0"
     },
     {
       "id": "craft-bounded",
       "kind": "owned-adapter",
       "source": "https://github.com/storytold/craft-anything",
       "commit": "8374ad71544f2cc44698ea74ef990aa31600bac6",
-      "role": "bounded single-writer candidate builder"
+      "role": "interface-only bounded adapter; current-session Builder is the default candidate writer"
     },
     {
       "id": "host-adapters",

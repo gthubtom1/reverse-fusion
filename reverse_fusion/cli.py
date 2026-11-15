@@ -14,9 +14,10 @@ from .adapters import CraftAdapter, LocalBoundedWorker, spec_pointer
 from .builder import HostBuilder
 from .case_bridge import build_case_pointer, dry_run_route, locate_reverse_root, record_case_pointer, resolve_case_root
 from .contracts import ContractError, check_contracts, read_json, sha256_file
-from .host import adapter_plan, detect_hosts, read_handshake_record
+from .host import adapter_plan, detect_hosts, read_handshake_record, probe_hosts
 from .vertical import correct_candidate, evaluate_console, wrong_candidate
 from .wasm_vertical import evaluate_wasm
+from .session_builder import prepare_session, check_session
 
 ROOT = Path(__file__).resolve().parents[1]
 MANIFEST = ROOT / "components" / "official" / "manifest.json"
@@ -44,6 +45,10 @@ def cmd_contracts(args: argparse.Namespace) -> int:
 
 
 def cmd_plan(args: argparse.Namespace) -> int:
+    contract = check_contracts(ROOT)
+    if contract["status"] != "pass":
+        _print({"operation": "plan", "status": "blocked", "reason": "repository contracts failed", "checks": contract["checks"]}, args.format)
+        return 2
     manifest = read_json(MANIFEST)
     profile = args.profile or ("normal-dev" if args.intent == "normal-dev" else args.intent)
     profile_path = PROFILES / f"{profile}.json"
@@ -95,18 +100,34 @@ def cmd_handoff(args: argparse.Namespace) -> int:
     required = ("Stage:", "Status:", "Next", "Acceptance")
     text = handoff.read_text(encoding="utf-8") if handoff.is_file() else ""
     missing = [marker for marker in required if marker.lower() not in text.lower()]
-    result = {"operation": "handoff", "status": "pass" if handoff.is_file() and not missing else "fail", "file": str(handoff), "missing": missing}
+    for relative in ("docs/AGENT-BOOTSTRAP.md", "AGENTS.md", "SOURCE-MANIFEST.json", "components/official/manifest.json"):
+        if not (ROOT / relative).is_file():
+            missing.append(relative)
+    contract = check_contracts(ROOT)
+    result = {"operation": "handoff", "status": "pass" if handoff.is_file() and not missing and contract["status"] == "pass" else "fail", "file": str(handoff), "missing": missing, "contracts": contract["status"]}
     _print(result, args.format)
     return 0 if result["status"] == "pass" else 1
 
 
 def _write_state(name: str, payload: dict[str, Any]) -> None:
     state = ROOT / "state"
+    target = _state_path(name)
     state.mkdir(exist_ok=True)
-    (state / f"{name}.json").write_text(json.dumps(payload, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    target.write_text(json.dumps(payload, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+
+
+def _state_path(name: str) -> Path:
+    target = ROOT / 'state' / f'{name}.json'
+    if not target.resolve().is_relative_to(ROOT.resolve()):
+        raise ValueError('State path escapes the repository')
+    return target
 
 
 def cmd_install(args: argparse.Namespace) -> int:
+    contract = check_contracts(ROOT)
+    if contract["status"] != "pass":
+        _print({"operation": "install", "status": "blocked", "reason": "repository contracts failed", "checks": contract["checks"]}, args.format)
+        return 2
     plan = {
         "operation": "install",
         "mode": "apply" if args.apply else "dry-run",
@@ -123,10 +144,10 @@ def cmd_install(args: argparse.Namespace) -> int:
 
 
 def cmd_uninstall(args: argparse.Namespace) -> int:
-    path = ROOT / "state" / "install.json"
+    path = _state_path("install")
     if args.apply and path.exists():
         path.unlink()
-    result = {"operation": "uninstall", "mode": "apply" if args.apply else "dry-run", "status": "uninstalled" if args.apply else "ready", "state_file": str(path)}
+    result = {"operation": "uninstall", "mode": "apply" if args.apply else "dry-run", "status": "uninstalled" if args.apply else "ready", "state_file": str(path), "venv": str(ROOT / ".venv"), "vendor": "retained; remove explicitly if a provider asset is no longer wanted", "global_config_mutation": False}
     _print(result, args.format)
     return 0
 
@@ -226,10 +247,34 @@ def cmd_build(args: argparse.Namespace) -> int:
     return 0 if result["disposition"] == "candidate" else 2
 
 
+def cmd_session(args: argparse.Namespace) -> int:
+    try:
+        if args.phase == "prepare":
+            result = prepare_session(ROOT, workspace=args.workspace, receipt=args.receipt,
+                                     tasks=args.tasks, task_files=args.task_file,
+                                     research_files=args.research_file, allowed_outputs=args.allowed_output)
+        else:
+            result = check_session(ROOT, receipt=args.receipt, phase=args.phase)
+    except (ValueError, OSError, KeyError, TypeError) as exc:
+        result = {"operation": "session", "status": "blocked", "reason": str(exc)}
+    _print(result, args.format)
+    return 2 if result["status"] == "blocked" else 0
+
+
+def cmd_handshake(args: argparse.Namespace) -> int:
+    result = probe_hosts(ROOT, client=args.client, timeout_seconds=args.timeout)
+    if args.record:
+        _write_state("host-handshakes", result)
+    _print(result, args.format)
+    # A completed probe can legitimately report blocked/unavailable. Callers
+    # read typed per-host results instead of treating this exit code as pass.
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="reverse-fusion", description="Reverse Fusion evidence-driven reconstruction entry")
     sub = parser.add_subparsers(dest="command", required=True)
-    for name, fn in (("contracts", cmd_contracts), ("doctor", cmd_doctor), ("plan", cmd_plan), ("handoff", cmd_handoff), ("install", cmd_install), ("uninstall", cmd_uninstall), ("update", cmd_update), ("accept", cmd_accept), ("bridge", cmd_bridge), ("craft", cmd_craft), ("build", cmd_build)):
+    for name, fn in (("contracts", cmd_contracts), ("doctor", cmd_doctor), ("plan", cmd_plan), ("handoff", cmd_handoff), ("install", cmd_install), ("uninstall", cmd_uninstall), ("update", cmd_update), ("accept", cmd_accept), ("bridge", cmd_bridge), ("craft", cmd_craft), ("build", cmd_build), ("session", cmd_session), ("handshake", cmd_handshake)):
         p = sub.add_parser(name)
         p.add_argument("--format", choices=("json", "markdown"), default="json")
         if name == "handoff":
@@ -272,13 +317,29 @@ def build_parser() -> argparse.ArgumentParser:
             p.add_argument("--prompt", required=True)
             p.add_argument("--timeout", type=int, default=180)
             p.add_argument("--record", action="store_true")
+        if name == "session":
+            p.add_argument("phase", choices=("prepare", "check", "refine", "finish"))
+            p.add_argument("--receipt", default="state/current-builder-session.json")
+            p.add_argument("--workspace", default="state/current-candidate")
+            p.add_argument("--tasks", nargs="+", default=[])
+            p.add_argument("--task-file", action="append", default=[])
+            p.add_argument("--research-file", action="append", default=[])
+            p.add_argument("--allowed-output", action="append", default=[])
+        if name == "handshake":
+            p.add_argument("--client", choices=("auto", "codex", "pi", "claude"), default="auto")
+            p.add_argument("--timeout", type=int, default=45)
+            p.add_argument("--record", action="store_true")
         p.set_defaults(handler=fn)
     return parser
 
 
 def main(argv: list[str] | None = None) -> int:
     args = build_parser().parse_args(argv)
-    return args.handler(args)
+    try:
+        return args.handler(args)
+    except (ValueError, OSError) as exc:
+        _print({'operation': args.command, 'status': 'blocked', 'reason': str(exc)}, args.format)
+        return 2
 
 
 if __name__ == "__main__":

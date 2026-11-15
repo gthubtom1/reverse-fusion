@@ -1,105 +1,209 @@
 {
   "product": "reconstruction-product-v1",
   "schema_version": 1,
-  "source": "normalized state artifacts from RF-22 representative runs",
+  "source": "RF-25 authenticated original semantic fields; supersedes the RF-22 path-rewritten archive. Historical local paths are observations, never deployment settings.",
   "targets": {
-    "apk": {
-      "files": {
-        "candidate.json": {
-          "sha256": "10ed1301af7bf637824b44ad28a910f2e9350e72ed0d2ea96a06157e9aafa49a",
-          "source_state": "rea-apk-candidate.json"
-        },
-        "comparison.json": {
-          "sha256": "996dab951b81d92a693e1363940b41b3469d8def40a536f25198153e78750e99",
-          "source_state": "rea-apk-comparison.json"
-        },
-        "ledger.json": {
-          "sha256": "f0b67351b49b3058c14a436ee2cd29b0894ae2cc0455484a664b738581a8e6ed",
-          "source_state": "rea-apk-ledger.json"
-        },
-        "original.json": {
-          "sha256": "99efba7ce94e467537fecee9d42dbb399c94cd9fc9112f9e1c77edacfd4b1e38",
-          "source_state": "rea-apk-original.json"
-        },
-        "proof.json": {
-          "sha256": "ac6517e400e66362fceb4701c45ce2f9b5d8578953a15da79d59880bd0c12655",
-          "source_state": "rea-apk-proof-evidence.json"
-        }
-      }
-    },
-    "dotnet": {
-      "files": {
-        "candidate.json": {
-          "sha256": "ba2dc9fa4d6a73bf3a8a9e8ae242a9e84c5d24dbe83da467f0509c318da8c40a",
-          "source_state": "rea-dotnet-candidate.json"
-        },
-        "comparison.json": {
-          "sha256": "5c95cd4a66530703aa3d22fe48bcc0f12b901b6f1570e6959cce137db6d5ba6d",
-          "source_state": "rea-dotnet-comparison.json"
-        },
-        "ledger.json": {
-          "sha256": "341139f7546bdcb02941e9fb7bcd0dd0a2d3039b465b4e3e06a6a7b2ff3ee66a",
-          "source_state": "rea-dotnet-ledger.json"
-        },
-        "original.json": {
-          "sha256": "f9be2de7e2244937d66292e33f1f5a8c5dd5c3e770c4314fcb1bc9d3ee0ea79d",
-          "source_state": "rea-dotnet-original.json"
-        },
-        "proof.json": {
-          "sha256": "e7494cbcdd95b5e4bf39f016b77ffabeada35acc866c8effa86db5f4a650f0d7",
-          "source_state": "rea-dotnet-proof-evidence.json"
-        }
-      }
-    },
     "wasm": {
       "files": {
-        "candidate.json": {
-          "sha256": "cfda9415d35e651984feda0d4373cb71b864c306d9b526eeb2b47001d3f626b4",
-          "source_state": "rea-wasm-candidate-evidence.json"
-        },
-        "comparison.json": {
-          "sha256": "82147932428d2a9fd28874e155dc76b1a0066983703c9f6b4b3283dbde8d7ef1",
-          "source_state": "rea-wasm-comparison-evidence.json"
-        },
-        "ledger.json": {
-          "sha256": "9798bd7fd640f94d9c7b78cfaa25427c1e909385b3ee886f295b3b098bbc212a",
-          "source_state": "ledger-output.json"
-        },
         "original.json": {
-          "sha256": "4c291517a3979bc6e03194324592b3bc65444a4c584f3ef7697035717426faaf",
-          "source_state": "rea-wasm-evidence.json"
+          "sha256": "b0836a1db66359cdc24e14ee5187bbded9e68966b7f43a3d42a883c4b56a2296",
+          "source_state": "rea-wasm-evidence.json",
+          "evidence_id": "ev_d6ed8f580f5b6d7fb001de26c8b8b6732fd32308f8aeb6eeb624738209e35f96"
         },
-        "proof.json": {
-          "sha256": "b78a54c22ea98cbe406a7bde39b3145f4f29cb31dcca767c8156d5c8500e14a4",
-          "source_state": "rea-wasm-proof-evidence.json"
+        "candidate.json": {
+          "sha256": "0a10fe2440844db7dfee0be70e2372e46d5c7866ffa0d0341acf90bff427d4cf",
+          "source_state": "rea-wasm-candidate-evidence.json",
+          "evidence_id": "ev_85ebdcc34c5cb2ad48b8b5ed7760bcba11c1ff9fcf4fd09db0507872f42325f6"
         },
         "wrong-candidate.json": {
-          "sha256": "b5fb596ad6ab7abfa669deb7f2e1054bb5b2711df12d76bc4facb918bf336961",
-          "source_state": "rea-wasm-wrong-evidence.json"
+          "sha256": "f54a952aa0c7b51ce4baddf4c4ee3233c301a8de72ed2410e33e4dacefea07ad",
+          "source_state": "rea-wasm-wrong-evidence.json",
+          "evidence_id": "ev_cedc85b38d8f32880336028cf449293f3008d6529cc2756baf47a8232488efba"
+        },
+        "comparison.json": {
+          "sha256": "cddc5c3df5693c063dc4ce9770884c71b9b7f37d7b3f399f24e195a6aa89e26a",
+          "source_state": "rea-wasm-comparison-evidence.json",
+          "evidence_id": "ev_7feb4947e20562d5adf55dd6f5ad98a58a8e29516c5eeb82bf7b29e691ec6249"
+        },
+        "proof.json": {
+          "sha256": "77c2fcde88df09a53b3708ac1844e74e4c2bb96ea4556959115e606c5499f391",
+          "source_state": "rea-wasm-proof-evidence.json",
+          "evidence_id": "ev_4eb5fa35dbf3017b8f8815b24b870ba0f4824341bd0f6181383125673fe2634c"
+        },
+        "ledger.json": {
+          "sha256": "d6644b16f65cbb23ad4f532c9bd7a095844924aab5f190a1c89f1804cf4161d8",
+          "source_state": "ledger-output.json",
+          "evidence_id": "ev_e50f92ad737fd0f009db411638ede3abd818ffb1218d3cc0d5797e49b6b0a04c"
+        },
+        "bundle.json": {
+          "sha256": "8dca34158c2a7f490a2884f1069d150088c5bfdfc15c0f862fcb46afb47b9bef",
+          "source_state": "rea-bundle.json"
+        },
+        "ledger-input.json": {
+          "sha256": "556c64911c01670e2b7cfa25abf23149c168e09cb733a40ed3444ce063f05828",
+          "source_state": "ledger-input.json"
         }
       }
     },
     "web": {
       "files": {
+        "original.json": {
+          "sha256": "ced345ea0f8bfe14028171474742ffc7009e10e793209f427c8265d9da3e8189",
+          "source_state": "rea-web-original.json",
+          "evidence_id": "ev_d42bef240bdf9e48b3444a5bb947adcc5bb30257a8e492115e421e9cac1e3955"
+        },
         "candidate.json": {
-          "sha256": "42d5a1537d64537b39c941cd7712b1b7a52313c7791917ebb7614481d638b8c5",
-          "source_state": "rea-web-candidate.json"
+          "sha256": "af720a76b047ae04fc8748ba0bc5dd4ad5252d3d6e535e87d022d75695c87c8c",
+          "source_state": "rea-web-candidate.json",
+          "evidence_id": "ev_b5ce4ec44f15f7e39c13a139c282fa5c2f0a0833c469e733a52e742653f97c37"
         },
         "comparison.json": {
-          "sha256": "f06ddf7f2b9583a5d122d6cac89b4e84a1adec139748051c7f6a9f6fdf1cec93",
-          "source_state": "rea-web-comparison.json"
-        },
-        "ledger.json": {
-          "sha256": "f9d1ac15f70c8d10aef7491d6dd11e5b338dc94c984525a7fd6bdfae0915cc2b",
-          "source_state": "rea-web-ledger.json"
-        },
-        "original.json": {
-          "sha256": "009a15c1c4b1c49eeca8827625a6f0384c810ff51151519ccfeb8299886d4bf4",
-          "source_state": "rea-web-original.json"
+          "sha256": "dda27e6bcede5b4ab9d515f302529a0f21e9117ba7aea30da4b1f55789b14d4c",
+          "source_state": "rea-web-comparison.json",
+          "evidence_id": "ev_2dc205d0f86be7b5d075474bc7d1afadb01be9c672390eabbc142e41c975748f"
         },
         "proof.json": {
-          "sha256": "a3e554511725dd69c7e8bd3de1ee5d9986d90d67de7a9b4bc274653cbf2e7c97",
-          "source_state": "rea-web-proof-evidence.json"
+          "sha256": "a011898db4005e7ebcd190c56490807f030392d86424d3e4c13aca5966f5543c",
+          "source_state": "rea-web-proof-evidence.json",
+          "evidence_id": "ev_a998afc32bc3bb688a0f381db87a3c6db3291e735e62ae9dabf1bb79e4b470ce"
+        },
+        "ledger.json": {
+          "sha256": "d579fe4c46103bbb8b1b7da9518d79b7f765c2861b8b85df7e2b06265414bfa6",
+          "source_state": "rea-web-ledger.json",
+          "evidence_id": "ev_68ce43208a0b5303080eb9b26e3680c2042004a3cf03d0ef20af110a6dfc23a7"
+        },
+        "full-ledger.json": {
+          "sha256": "7cd2bb85d936c17c01696fd35f37c10cc11485998a08529aa0ab97df986bc122",
+          "source_state": "rea-web-full-ledger.json",
+          "evidence_id": "ev_53fa5e17ffc0c8a29cf4645c2f0a4747f81619f0a53e496d0eed124e0691e12d"
+        },
+        "bundle.json": {
+          "sha256": "0aa1cf5e68221705d974b90bb86f8d6cba087a20f4fdb47a54c5222bd6cedf44",
+          "source_state": "rea-web-bundle.json"
+        },
+        "original-inventory.json": {
+          "sha256": "2f9b34b5b4459063fe00b7c8f016ce7e33e4f6b909eca4ebfa0b2e4501d371c0",
+          "source_state": "rea-web-original-inventory.json",
+          "evidence_id": "ev_69eb317314a704762508dc8c719cbe1bb0e9c08545609b51cd4ed3b1dbaf797a"
+        },
+        "candidate-inventory.json": {
+          "sha256": "6b80955dcfebd71c1286f20f6f9ab23615ed4d5f2dc2feac3422986d2edf600a",
+          "source_state": "rea-web-candidate-inventory.json",
+          "evidence_id": "ev_d92308771ecbaa4848ca978c6a043ec84c715086be960f1aa12d81b532e224d8"
+        },
+        "acceptance.json": {
+          "sha256": "83b3811a8f00a32f601f53d65bc2bb7cda2c622735e360b395773ee7be4c44a8",
+          "source_state": "web-acceptance.json"
+        },
+        "ledger-input.json": {
+          "sha256": "ef4c996255ba122ba22d2f50b4a8cb572ed06b39353c20b709215302454278f2",
+          "source_state": "web-ledger-input.json"
+        },
+        "full-ledger-input.json": {
+          "sha256": "0075aaa1b3773d830485e5dc38806cb0b913f6d67cc84e436e8880b600468e2d",
+          "source_state": "web-full-ledger-input.json"
+        }
+      }
+    },
+    "dotnet": {
+      "files": {
+        "original.json": {
+          "sha256": "cc8c8c7bb66a9332bdb44102b32fdd71e9b10ae1052c625ca65761b8e2e8f4aa",
+          "source_state": "rea-dotnet-original.json",
+          "evidence_id": "ev_46f34b29169f2d2c94b63c10e235e666be935547ada46c6bbf002d1aa1e81ecd"
+        },
+        "candidate.json": {
+          "sha256": "866b738d3f59a9ea564f204ac09293c3fc5db455448954953709bf9a66532c29",
+          "source_state": "rea-dotnet-candidate.json",
+          "evidence_id": "ev_fa3d5e411a26c307330294c3723193a533dabad6ea8ffdd1ed929fd89981369e"
+        },
+        "original-members.json": {
+          "sha256": "46315643f7a820cd15e1495d9b480e0a288e06283452564e09859dc1c13ab6aa",
+          "source_state": "rea-dotnet-original-members.json",
+          "evidence_id": "ev_ad5eba07846da562efac582bf35b3f14a069af941b122762d2c9f8651187da28"
+        },
+        "candidate-members.json": {
+          "sha256": "f8082dc1a69498a0f00cb70a9dcf139b6ecca18c4b7c1f1c928e2b190fa8c2a2",
+          "source_state": "rea-dotnet-candidate-members.json",
+          "evidence_id": "ev_24aee65a3c5405256369eee76c97549629f7c7ca025822498213420a5ae99918"
+        },
+        "comparison.json": {
+          "sha256": "256a704beb9ace3b24c8cabd5616f422de3c82e1b267bf220736bf042a41b6d7",
+          "source_state": "rea-dotnet-comparison.json",
+          "evidence_id": "ev_1ab1bd44ad56b9732b467cba874f11d0904f7859cf15eced62868059bbc43291"
+        },
+        "proof.json": {
+          "sha256": "b131f4f8a7b811656fe9619cac15f9faa34c3b8c648e5ed81dd1f6168e12b75c",
+          "source_state": "rea-dotnet-proof-evidence.json",
+          "evidence_id": "ev_49ba9007e221598d3ed39de4b3d4c84e6b3d43e2a527aedde911a883147e0e87"
+        },
+        "ledger.json": {
+          "sha256": "9485e5060a215b568ca749dd34c84f93be2624885d22ab578b437e87004a72cb",
+          "source_state": "rea-dotnet-ledger.json",
+          "evidence_id": "ev_95973d4e9b08812dde0634abd086b06bc40cbbf97036108f106bebc3edf800f2"
+        },
+        "bundle.json": {
+          "sha256": "cd84f4dbbb38b1c4c3fc97154e3ba2533a9a7f062939366eb3e052d8fb5c8caf",
+          "source_state": "rea-dotnet-bundle.json"
+        },
+        "acceptance.json": {
+          "sha256": "5f0d45ef2143cc06af058f1e9b741f5a79259ebc43c7708398daa12a6576c7f1",
+          "source_state": "dotnet-acceptance.json"
+        },
+        "ledger-input.json": {
+          "sha256": "3f0b1daac76fa95b664c4d60606cd7ad768503490edcf9f9e474cf013121fb4b",
+          "source_state": "dotnet-ledger-input.json"
+        }
+      }
+    },
+    "apk": {
+      "files": {
+        "original.json": {
+          "sha256": "56e31ccaf82ba092a0ab583aec402bc8f63e94a0d3790dccb0a868a3972e19c8",
+          "source_state": "rea-apk-original.json",
+          "evidence_id": "ev_ff88919c8e55454e743b06904a676e7b34ffab93b52612607ca8fe21ef857f23"
+        },
+        "candidate.json": {
+          "sha256": "79bf1788995bee517dcf468175e2788c9eb9567a9838ca80626a83b2511829b8",
+          "source_state": "rea-apk-candidate.json",
+          "evidence_id": "ev_f5385a0f23667ad3eb4f47d2342cda8cfc6b2dd31a772958dd4d96bee7045dc6"
+        },
+        "original-class.json": {
+          "sha256": "6fa1a3d9b412726d275844bea74f7965238e8754bba968a4c64d2deb9cb0044b",
+          "source_state": "rea-apk-original-class.json",
+          "evidence_id": "ev_11a4236680c29b296e2748af9b437d87ca7ab0b9fcf2a3e7abbf814738327f2d"
+        },
+        "candidate-class.json": {
+          "sha256": "58122084603c7644a5f048a4bc0b5905007f0a88c7090def78e49b583d5b4946",
+          "source_state": "rea-apk-candidate-class.json",
+          "evidence_id": "ev_018979598cec4cf2f980c15aaf03764c847c93884a213383a125b5bab119ae4f"
+        },
+        "comparison.json": {
+          "sha256": "8032db8e79ee4fa3644eb988e4df14eac9ba9293520bbd9fc8eaaf54af01eb96",
+          "source_state": "rea-apk-comparison.json",
+          "evidence_id": "ev_f6bd401451d226dbf7c6cf316aca902162674f5aac791234e71d9278b4116ded"
+        },
+        "proof.json": {
+          "sha256": "9b0cf5f8ce32d8e825f6cfeaeebdc2de39757a2c49a9da9c45254bf915297cad",
+          "source_state": "rea-apk-proof-evidence.json",
+          "evidence_id": "ev_78f43d34ad47b3941e621fcba168883fdf69af0964402b0bebe82bfb60e397c8"
+        },
+        "ledger.json": {
+          "sha256": "cb28a263c44a7a3473cdee84b1e98cebfceddce7461b7a169c64957a5c6b18d8",
+          "source_state": "rea-apk-ledger.json",
+          "evidence_id": "ev_3bf4823d45946c95d22f729317033e612e3b08432575548c3ddb58aae155a156"
+        },
+        "bundle.json": {
+          "sha256": "0ea9230cf90418ee127d07d3bcce5d7a957da5f1d9bf88968629d7237bb618fb",
+          "source_state": "rea-apk-bundle.json"
+        },
+        "acceptance.json": {
+          "sha256": "cb12bdf4f0427e67337c76bf717d1253124ed46e657b2c0dc7252e90258fa0d2",
+          "source_state": "apk-acceptance.json"
+        },
+        "ledger-input.json": {
+          "sha256": "8569bb0aa01a14fec7a20dd371d36311a96c0794817fae8bd8b3a29f980e3689",
+          "source_state": "apk-ledger-input.json"
         }
       }
     }

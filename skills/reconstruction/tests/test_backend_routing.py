@@ -41,7 +41,9 @@ class BackendRoutingTests(unittest.TestCase):
             self.assertEqual(descriptor[key], 1)
         self.assertEqual(descriptor["contract_id"], "reverse.r46.execution-backend")
         self.assertEqual(descriptor["min_reverse_version"], "1.9.0")
-        version = (ROOT / "VERSION").read_text(encoding="utf-8").strip()
+        # The embedded Reverse contract has its own compatibility version;
+        # Reverse Fusion's product release version is not a Reverse version.
+        version = (ROOT / "components/reverse-core/VERSION").read_text(encoding="utf-8").strip()
         self.assertRegex(version, r"^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$")
         self.assertGreaterEqual(tuple(map(int, version.split("."))),
                                 tuple(map(int, descriptor["min_reverse_version"].split("."))))

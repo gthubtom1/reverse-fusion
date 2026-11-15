@@ -1,0 +1,10 @@
+# Hash-bearing JSON, skills and shell launchers must have stable checkout bytes
+# even when the host's core.autocrlf setting is enabled.
+* text=auto eol=lf
+*.jar binary
+*.wasm binary
+*.png binary
+*.jpg binary
+*.ico binary
+# This frozen handoff is a byte-hashed historical input, including its newline.
+evidence/rf22/builder/frozen/state/*.json binary

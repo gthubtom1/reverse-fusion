@@ -8,7 +8,34 @@
     "version": {"const": 1},
     "disposition": {"enum": ["candidate", "needs-evidence", "needs-spec", "needs-scope", "unsupported", "failed", "blocked", "blocked-cleanup"]},
     "tasks": {"type": "array", "items": {"type": "string"}},
-    "checks": {"type": "array", "items": {"type": "object"}},
-    "cleanup": {"type": "object"}
+    "checks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "status"],
+        "properties": {"id": {"type": "string"}, "status": {"type": "string"}}
+      }
+    },
+    "cleanup": {
+      "type": "object",
+      "required": ["status"],
+      "properties": {"status": {"type": "string"}}
+    },
+    "reason": {"type": ["string", "null"]},
+    "result": {},
+    "task_digest": {"type": "string"},
+    "model_id": {"type": "string"},
+    "research_ref": {"type": "string"},
+    "backend": {"type": "string"},
+    "host": {"type": "string"},
+    "host_result": {"type": "object"},
+    "output": {"type": "string"},
+    "candidate_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "source_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "refine_result": {"type": "object"},
+    "operation": {"type": "string"},
+    "source": {"type": "string"},
+    "workspace": {"type": "string"},
+    "model_selection": {"type": "string"}
   }
 }

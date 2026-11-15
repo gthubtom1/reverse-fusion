@@ -1,182 +1,143 @@
 # Reverse Fusion
 
-证据驱动的逆向分析、独立复刻和多宿主部署编排器。
+给当前 coding agent 使用的普通开发、逆向分析与独立复刻工具集。
+仓库：<https://github.com/gthubtom1/reverse-fusion>。
 
-这个仓库是一个独立项目。它不修改旧的 `reverse-skill`、旧 installer、当前 REA 安装、当前 Craft 安装或当前 Codex 配置。
+产品版本 `1.0.0`，当前复核阶段 `RF-25`。准确的验收结果、现场 provider 状态和
+未覆盖范围分别保存在 [当前状态](docs/CURRENT-STATE.md)、
+[发布验收](docs/FINAL-RELEASE-ACCEPTANCE.md) 与
+[最新 checkpoint](checkpoints/RF-25-20261115-001.md)。历史 final 标签不覆盖这些记录。
 
-GitHub：<https://github.com/gthubtom1/reverse-fusion>
+## 换电脑，只给仓库链接
 
-## 当前状态
+把仓库链接交给当前 Codex、Pi、Claude Code 或兼容 coding agent，说：
 
-仓库已完成 `RF-24`，状态为 `reconstruction-product-v1-final`。WASM、Web/JavaScript、PE/.NET 和 APK/DEX 都有独立的原版 Evidence、Spec tasks、宿主 Builder candidate、构建/运行观察、差分、proof、cleanup 和 obligation ledger。代表性目标用于验证统一逻辑，未来目标通过同一套 pipeline 进入新 case；未知能力仍按 REA 的边界保留为 `unknown`，不会被静态相似度升级成通过。RF-23 还补齐了 fresh clone 的本地领域技能正文、跨平台路径边界、持久化 case 指针、规范化 Evidence 和宿主配置快照。
+> 把这个仓库部署到当前工作区，按仓库内的部署入口安装并报告实际验证结果。
 
-RF-24 已逐文件复核旧增强版的 453 个 skills 文件，并补齐根规则、困难目标上下文交接及 CTF/Burp 辅助资源。603 个来源文件的摘要与 11 个有意适配记录在 `components/reverse-core/preservation.json`；详见 [Reverse 能力迁移审计](docs/REVERSE-CAPABILITY-AUDIT.md)。内容保全与接入检查不等于已运行所有保护器或设备。
-
-已经提供：
-
-- 单仓库项目结构。
-- 官方组件 source manifest。
-- 版本化 handoff、external baseline、candidate result 合同。
-- `plan`、`doctor`、`contracts`、`handoff` 静态入口。
-- `install`、`update`、`uninstall` 生命周期入口（默认 dry-run，`--apply` 只写本仓库 `state/`）。
-- `bridge` 默认调用仓库自己的 portable Reverse 路由；已安装 enhanced reverse router 只在显式 `--source external` 时作为只读兼容来源，结果区分 `local-route-pass`、`external-route-pass`、`unavailable` 和 `blocked`。
-- REA evidence/bundle、Spec Kit pointer、Craft bounded candidate 的 typed adapter。
-- `accept --fixture console` 纵向切片：正确候选通过、故意错误候选失败、缺证据返回 unknown。
-- `accept --fixture wasm` 纵向切片：REA 原版 Evidence、正确候选通过、错误候选失败、缺证据 unknown。
-- `craft --source ... --output ...` 使用 `local-bounded-worker` 生成 typed candidate，官方 Craft backend 资格化后可由原 runner 替换。
-- `docs/PROVIDER-STATUS.md` 持久化记录每个 provider 的 verified、unsupported 和 unverified 状态。
-- `scripts/bootstrap-wabt.ps1` 和 `scripts/run-rea-wasm.ps1` 提供进程级 WABT/REA 复现入口，不写全局配置。
-- `scripts/bootstrap-jadx.ps1` 固定并校验官方 `jadx-headless-mcp 0.7.1`，只写仓库 `vendor/`，用于 APK/DEX REA 分析。
-- `scripts/run-wasm-vertical.ps1` 自动重建原版/正确候选/错误候选 Evidence 并运行三态验收。
-- `scripts/run-web-vertical.ps1`、`scripts/run-dotnet-vertical.ps1` 和 `scripts/run-apk-vertical.ps1` 分别复现三条真实目标链；它们只在仓库 `state/` 写入运行产物。
-- `scripts/run-web-proof.mjs`、`scripts/run-dotnet-proof.mjs` 和 `scripts/run-apk-proof.mjs` 生成 canonical `rea.reconstruction-proof` 与对应 ledger input。
-- `scripts/run-rea-ledger.ps1` 将原版/候选 Evidence、接口比较和 WABT 运行结果组装为正式 `rea.reconstruction-proof`，再调用官方 REA ledger 做 fail-closed 闭环。
-- `scripts/run-host-handshakes.ps1` 对 Codex、Pi、Claude 执行只读固定 sentinel 探针，记录真实加载、退出码、阻塞原因和 `config_mutation=false`。
-- `docs/PRODUCT-GOAL.md` 是最终产品合同；`docs/HANDOFF-PROMPT.md` 是交给下一位智能体的持续交接提示词。
-- `docs/DEPLOYMENT-GUIDE.md` 是交给任意 Codex、Pi、Claude Code 或兼容 agent 的宿主无关部署、嵌套 subcase 和选择性上游更新指南。
-- `skills/` 保存 Reverse Skills 的本地领域正文；`evidence/rf22/` 保存去除宿主绝对路径后的代表性 Evidence、proof 和 ledger，可在 fresh clone 中复核。
-- normal-dev、analysis、reconstruction、follow-up profiles。normal-dev 是轻量主项目模式，但 Reverse/REA/Spec/Builder 可以在开发中途按需创建隔离 subcase，再把经过 Evidence 支持的结论带回主项目。
-- 上游更新和上下文交接文档。
-
-当前宿主事实仍单独记录：Codex/Pi 握手通过，Claude CLI 可启动但当前主机没有登录凭据；Craft 原生 R46 backend 未资格化，但真实 Codex host-owned Builder 已完成六项 transport。模型始终属于当前宿主，仓库不选择或下载模型。
-
-## 实际使用逻辑
-
-部署完成后，用户只需要在当前 Codex、Pi、Claude Code 或其他兼容 agent 的工作区
-里正常对话。Reverse Fusion 是 agent 的能力层，不是一个要求用户手动选择模型或
-逐步点击的独立工作台：宿主负责理解当前意图和调用本仓库，仓库负责路由、case
-边界、证据引用、任务冻结、候选输出范围和验收记录。
-
-正常开发从 `normal-dev` 开始。这个模式不会因为仓库已安装就强制启动 REA、Spec
-或 Builder；用户可以一直把它当作普通项目开发环境。当开发中途需要研究一个网站、
-APK、桌面软件、协议或参考项目时，agent 在当前主项目下创建隔离的
-`analysis`/`reconstruction` subcase。subcase 有自己的目标、Reverse route、
-原版 Evidence、Spec tasks、candidate、build/run、comparison、proof 和 ledger；
-只有经过 Evidence 支持的接口约束、行为结论或任务才回到主项目。这样“开发一个
-网站时研究另一个网站”与“开发 APK 时分析一个桌面程序”都走同一个产品边界，
-不会把主项目强行改成某一种目标类型。
-
-逆向顺序由 agent 根据目标和证据动态决定。无壳目标可能从静态分析和运行观察开始，
-带壳、混淆、反调试或设备依赖目标则可以按需选择 dump、脱壳、hook、模拟、设备或
-其他 provider；Reverse 只负责选择并记录上下文，REA 负责 Evidence，Builder 只
-执行冻结任务，acceptance 负责保留 `pass`、`fail`、`unknown`、`blocked` 或
-`unsupported`。这套仓库不会用固定顺序限制模型，也不会把工具可见、exit 0 或模型
-自述当作业务等价。
-
-组件的维护边界如下：
-
-| 组件 | 默认身份 | 本仓库拥有的增强 |
-|---|---|---|
-| Reverse core | 本仓库实现 | 路由、case、模式、subcase 生命周期和领域路由描述 |
-| REA | 官方 pin | Evidence/比较/ledger 的 typed adapter、runner 和本地合同 |
-| Spec Kit | 官方 CLI | 项目级 spec/plan/tasks/converge、来源引用和复刻任务边界 |
-| Craft | 官方 identity + bounded adapter | patch identity、六项 Builder 合同和宿主 Builder transport |
-| WABT/JADX | 官方 provider | 版本、checksum、bootstrap 和 provider 状态记录 |
-| Host adapters | 本仓库实现 | Codex/Pi/Claude 探针、动态工作区发现和配置不变性 |
-
-因此本项目既可以继续使用官方 REA、Spec Kit 和 Craft，也可以在出现真实能力缺口
-时对对应组件做本地 adapter、受控 patch 或 fork。上游不会自动同步：先只读比较，
-再把变化映射到本项目的 capability gap，只有验收改善且合同兼容时才吸收。详见
-`docs/UPSTREAM-MAINTENANCE.md`。
-
-“最终完成”表示这条可迁移的分析到复刻产品链已经闭合，并不表示提前测试了所有
-未来软件、架构、壳、混淆和设备组合。新目标按同一套 case/Evidence/Spec/Builder/
-comparison/ledger 合同进入，目标级结果仍然单独记录；产品完成后主要进行 provider、
-probe、规则和部署适配的小版本演进。
-
-仓库自己的 Reverse 路由不依赖旧 `reverse-workflow` receipt。它从
-`components/reverse-core/routing.json` 读取固定版本的声明式规则，并把
-PRIMARY 映射到 `components/reverse-core/routes/` 下的本地描述。旧路由包
-仍可用下面的显式命令做只读对照：
-
-```text
-python -m reverse_fusion bridge --hint "APK reverse" --source local
-python -m reverse_fusion bridge --hint "APK reverse" --source external
-python -m reverse_fusion bridge --hint "APK reverse reconstruction" --source local --case-root work/apk-case --record
-```
-
-## 给智能体的快速开始
-
-把本仓库 URL 交给任意智能体，然后使用下面的宿主无关提示词。它不指定固定
-盘符、用户目录、shell、Python、Node、模型或 provider：
-
-```text
-读取 README.md、AGENTS.md、docs/DEPLOYMENT-GUIDE.md、docs/PRODUCT-GOAL.md、
-docs/PROJECT-CONTEXT.md、docs/CURRENT-STATE.md、docs/DECISIONS.md、
-docs/PROVIDER-STATUS.md、SOURCE-MANIFEST.json、components/official/manifest.json
-和最新 checkpoint。
-发现当前工作区、OS、架构、shell、Python、Node、Java、.NET、Android SDK、
-Codex/Pi/Claude CLI 和 provider，再运行 contracts、plan、doctor、handoff。
-所有路径根据当前工作区动态计算，不写固定路径；只写仓库自己的 venv、vendor、
-state 和 case 目录。
-normal-dev 是主项目基线，但可以在开发中途创建隔离 analysis/reconstruction
-subcase，把经过 Evidence 支持的结论带回主项目。不要修改旧 reverse-workflow
-安装，不复制凭据；如果真实能力缺口需要二开，先记录 upstream identity 和
-patch/fork 边界，再只修改本仓库自己的增强内容。
-```
-
-本地运行：
-
-```text
-python -m reverse_fusion contracts
-python -m reverse_fusion plan --client auto --format markdown
-python -m reverse_fusion doctor --format markdown
-python -m reverse_fusion handoff --check
-python -m reverse_fusion install --client auto
-python -m reverse_fusion accept --fixture console --candidate correct --record
-python -m reverse_fusion accept --fixture wasm --candidate correct --record
-
-# 目标链（先准备对应宿主 Builder candidate）
-.\scripts\run-web-vertical.ps1
-.\scripts\run-dotnet-vertical.ps1
-.\scripts\run-apk-vertical.ps1
-
-# 在已准备好本地 REA/WABT 后生成正式 obligation ledger
-.\scripts\run-rea-ledger.ps1
-```
-
-在新电脑上的最短部署路径：
+**部署交接已保存在 [docs/AGENT-BOOTSTRAP.md](docs/AGENT-BOOTSTRAP.md)**，并由
+`AGENTS.md` 指向。用户无需保存聊天里的长提示词。agent 克隆后读取当前 checkout，
+发现 OS、shell、Python 和当前宿主，再创建本地 `.venv`、检查合同并写当前宿主的
+安装 receipt。部署流程不写固定盘符、用户名或模型名称。
 
 ```text
 git clone https://github.com/gthubtom1/reverse-fusion.git
 cd reverse-fusion
-.\scripts\install.ps1 -DryRun
-.\scripts\install.ps1
-python -m reverse_fusion plan --client auto --intent analysis --format markdown
-python -m reverse_fusion doctor --format markdown
-python -m reverse_fusion handoff --check --format json
+让当前智能体读取 AGENTS.md 和 docs/AGENT-BOOTSTRAP.md 并执行
 ```
 
-Linux/macOS 使用 `RF_DRY_RUN=1 ./scripts/install.sh` 预览，或直接执行
-`./scripts/install.sh`；如果系统没有 `python` 这个命令，设置
-`RF_PYTHON=python3`（或当前 Python 3.11+ launcher）。卸载 Windows 使用
-`scripts/uninstall.ps1 -Apply`，
-Linux/macOS 删除仓库内 `.venv` 即可。所有入口都限制在仓库目录内，不写宿主全局配置。
+基础安装需要 Python 3.11+；具体目标需要的 Node、Java、.NET、设备和其他工具按需
+发现、准备。REA/WABT/JADX 的固定资产只写本仓库 `vendor/`，不要求首次安装就
+下载所有 provider。模型、账号、登录和 provider 属于当前宿主，项目不选择或下载模型。
 
-`install`、`update`、`uninstall` 默认只生成计划；需要写入本仓库状态时显式增加 `--apply`。目标链 runner 对 provider、登录和设备缺失返回 `blocked`、`unsupported` 或 `unknown`，不会把 exit 0、工具可见或模型自述写成业务验收。
+安装只作用于这个 checkout，不自动全局注入其他工作区。在另一个项目使用时，
+让该项目的 agent 显式读取这个 checkout 的入口，或在那里克隆部署。详细的发现、
+安装、使用与卸载步骤见 [部署指南](docs/DEPLOYMENT-GUIDE.md)。
 
-## 单仓库边界
+## 在对话中怎么用
 
-- Reverse core、schemas、host adapters、installer、docs 和 evals 由本仓库维护。
-- REA 和 Spec Kit 默认通过官方来源和版本 manifest 获取。
-- Craft bounded 能力通过固定 upstream identity、patch series、bundle manifest 和 executor 接入。
-- 只有真实能力缺口出现后，才把具体 upstream 组件提升成同仓库内的增强 fork。
+- **正常开发**：直接描述要开发的网站、应用或其他项目。默认 `normal-dev`，
+  不强制建立逆向 case，也不强制启动 REA、Spec、Builder 或 ledger。
+- **分析**：需要研究目标时，agent 选择专业领域，建立或恢复隔离 subcase，保存
+  目标身份、Evidence、观察、未知项和结论。只要求分析时不进入复刻验收。
+- **复刻**：分析结果足够支持选定功能后，冻结 Spec tasks，由当前会话的 agent
+  编码，再独立构建、运行、比较原版与候选，保留 proof、cleanup 和 obligation ledger。
+- **开发中途研究参考项目**：在主项目中创建隔离 analysis/reconstruction subcase，
+  将审查后的事实和候选整合回来；主项目不需要变成一种固定逆向流程。
 
-## 文档入口
+专业任务的入口是：
 
-- `docs/PROJECT-CONTEXT.md`
-- `docs/DEPLOYMENT-GUIDE.md`
-- `THIRD-PARTY-NOTICES.md`
-- `evidence/rf22/README.md`
-- `docs/CURRENT-STATE.md`
-- `docs/DECISIONS.md`
-- `docs/DEVELOPMENT-MASTER-PLAN.md`
-- `docs/PR-PLAN.md`
-- `docs/UPSTREAM-MAINTENANCE.md`
-- `docs/TARGET-CAPABILITY-MATRIX.md`
-- `docs/FINAL-COMPLETION-SPEC.md`
-- `docs/FINAL-RELEASE-ACCEPTANCE.md`
-- `docs/PRODUCT-GOAL.md`
-- `docs/HANDOFF-PROMPT.md`
-- `docs/CONTEXT-HANDOFF.md`
-- `docs/ACCEPTANCE-MATRIX.md`
+```text
+[venv-python] -m reverse_fusion bridge --source local --hint "目标与问题"
+```
+
+读取返回的 `skill`、`required_reads` 和 `hard_target`；`missing_support` 应为空。
+困难特征也可以在后续观察中发现。加壳、混淆、反调试、动态 DEX、JNI、JS VM/WASM
+等资料按证据加载，静态分析、运行、dump、脱壳、hook 和设备观察的顺序由 agent
+判断。缺工具或关键事实时保留 `unknown`、`blocked` 或 `unsupported`，不靠固定
+工具顺序或模型自述把未知项变成通过。
+
+## 融合了什么，哪些由本仓库维护
+
+| 部分 | 当前职责与实现 |
+|---|---|
+| Enhanced Reverse | 从我们二开版 `reverse-skill` 固定来源保留 603 个文件；本仓库维护路由、恢复指针、困难目标交接与有意适配 |
+| REA | 官方 `6.9.0`，负责原生分析、Evidence、比较和 ledger；本仓库有 typed adapter、runner 与明确归属的有限 integration verifier |
+| Spec | 需求、plan、tasks、来源引用与 converge；正式任务文件可直接使用，官方 CLI 按需准备 |
+| Craft/Builder | 当前分发 bounded interface，默认 writer 为当前会话 agent；子 CLI transport 可选，Craft native R46 尚未资格化 |
+| 宿主与安装 | 本仓库的本地安装、发现、只读握手、当前会话 Builder 和配置摘要观察；不更改旧仓库、旧安装或全局配置 |
+
+这是一套有本地代码、技能正文、合同与验收的独立仓库。REA 等固定运行时按 manifest
+获取；Craft 的四个历史补丁名称仅是来源参考，未分发可重放补丁。已有 companion 的
+`--all-tools` 参数保持原样，安装引用不代表当前健康。来源见
+[SOURCE-MANIFEST.json](SOURCE-MANIFEST.json) 与
+[组件清单](components/official/manifest.json)。
+
+Reverse 的保全清单含 skills 453、CTF sidecar 136、Burp 14 个文件，记录本地与上游
+摘要及 13 个有意适配。加壳、反调试、OLLVM、Android 动态 DEX/JNI/反 Frida、
+.NET 混淆和 JS VM/WASM 的方法与 helper 已保留；内容和路由可达不等于所有保护器
+已实测。详见 [能力迁移审计](docs/REVERSE-CAPABILITY-AUDIT.md)。
+
+## 当前会话就是 Builder
+
+当前 Codex、Pi 或 Claude agent 读取冻结任务与研究，用它现有的工具写候选。
+`session prepare/check/refine/finish` 只冻结输入并观察文件边界，不启动第二个 CLI、
+账号或模型；文件观察与业务验收分开。完整命令见部署指南的“当前会话 Builder”。
+
+```text
+[venv-python] -m reverse_fusion session prepare --receipt work/demo/session.json --workspace work/demo/candidate --tasks T-001 --task-file specs/demo/tasks.md --research-file work/demo/research.json --allowed-output src/main.ext
+# 当前 agent 实际读取输入、编写并审查候选
+[venv-python] -m reverse_fusion session check --receipt work/demo/session.json
+[venv-python] -m reverse_fusion session refine --receipt work/demo/session.json
+[venv-python] -m reverse_fusion session finish --receipt work/demo/session.json
+```
+
+观察器不充当操作系统沙箱，不能阻止 agent 工具本身在工作区外写入；当前 host
+仍负责写入范围。`build --host ...` 是独立资格化的可选子 CLI；`craft --source ...`
+只是离线复制 worker。旧文本 smoke、文件存在、工具可见、exit 0 或 Craft Ready
+都不是业务验收。
+
+## 有限验收与实际边界
+
+RF-25 重建并认证了 [代表性归档](evidence/rf22/README.md)，身份与文件摘要由
+[manifest](evidence/rf22/manifest.json) 索引；保留原始 hash 覆盖字段，历史绝对路径
+是当时运行的观察值，不是新电脑的安装配置。
+
+| 链路 | 已观察的范围 | 保留的范围限制 |
+|---|---|---|
+| WASM | 真实 WABT 运行、REA 分析/接口比较/proof/ledger；正确 pass、错误 fail、缺证据 unknown | 有限 answer fixture |
+| Web/JavaScript | 原版/候选分析，四组 Node export 重放，有限 answer ledger ready | 静态 shape partial；完整 graph ledger unknown，4 个 required open |
+| PE/.NET | 两侧 .NET8 构建与运行、真实成员比较、四组输入、proof/ledger | 有限 Answer 方法范围 |
+| APK/DEX | javac/D8/AAPT 构建、真实 package/class 分析、manifest/member 投影与静态 ledger | 方法体等价与 Android 设备运行 unknown；fixture MainActivity 不是可启动 Activity |
+
+当前额外 CLI 探针：Pi sentinel 通过；Codex 子 CLI 因 credits 阻塞，Claude 因登录
+阻塞。默认当前会话路径不依赖额外子 CLI。Craft companion 当前健康未观测，native
+R46 与 Windows REA PTY descendant cleanup 仍 unsupported。详见
+[provider 状态](docs/PROVIDER-STATUS.md)。每个实际目标有自己的验收范围。
+
+## 维护、验证与卸载
+
+基础检查始终使用仓库 `.venv` 中的 Python：
+
+```text
+[venv-python] -m reverse_fusion contracts --format json
+[venv-python] -m reverse_fusion plan --client [selected-host] --intent normal-dev --format json
+[venv-python] -m reverse_fusion doctor --format json
+[venv-python] -m reverse_fusion handoff --check --format json
+```
+
+需要复现 provider 链时，使用 `scripts/bootstrap-*.ps1` 与 `scripts/run-*-vertical.ps1`；
+先按目标准备候选和对应运行时。基础安装不要求每次跑完全部代表性链。归档认证可在
+准备 REA 后运行 `node scripts/verify-evidence.mjs`，Node 须满足 REA 的精确 engine。
+
+CLI 生命周期默认 dry-run；`install --apply --client [selected-host]` 只写安装 receipt，
+`uninstall --apply` 只移除该 receipt。Windows 的 `scripts/uninstall.ps1 -Apply` 与
+POSIX 的 `scripts/uninstall.sh` 移除本仓库 venv 和 receipt，保留 vendor、case 与成果。
+项目没有自动全局回滚或 receipt transaction journal。
+
+以后想更新时，让 agent 按 [上游维护流程](docs/UPSTREAM-MAINTENANCE.md) 读取
+manifest、比较上游变化、评估实际收益，再选择性适配本仓库增强版；无需跟随每次发布。
+
+更多入口：[产品目标](docs/PRODUCT-GOAL.md)、[维护交接](docs/HANDOFF-PROMPT.md)、
+[决策](docs/DECISIONS.md)、[全量复核](docs/FULL-AUDIT.md)、
+[能力矩阵](docs/TARGET-CAPABILITY-MATRIX.md)、[回滚](docs/ROLLBACK.md)、
+[第三方声明](THIRD-PARTY-NOTICES.md)。

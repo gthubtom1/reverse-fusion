@@ -3,10 +3,10 @@
 ## Source references
 
 - Reverse route: `R5` (`components/reverse-core/routes/R5.md`)
-- Original REA Evidence: `state/rea-dotnet-original.json` and
-  `state/rea-dotnet-original-members.json`
-- Candidate REA Evidence: `state/rea-dotnet-candidate.json` and
-  `state/rea-dotnet-candidate-members.json`
+- Original REA Evidence: `evidence/rf22/dotnet/original.json` and
+  `evidence/rf22/dotnet/original-members.json`
+- Candidate REA Evidence: `evidence/rf22/dotnet/candidate.json` and
+  `evidence/rf22/dotnet/candidate-members.json`
 
 ## Functional requirements
 
