@@ -21,8 +21,8 @@
 - 每个阶段只有一个下一步动作。
 - 任何来源、schema、scope、baseline、model、provider 或 writer 变化都要更新 checkpoint。
 - 不把安装成功、工具可见、Craft Ready、exit 0 或模型自述写成业务 acceptance。
-- 当前阶段是 RF-25 全量审计修复中；RF-22 的 final 是历史发布标签，当前完成声明以
-  `docs/CURRENT-STATE.md` 和最新 RF-25 checkpoint 的未决项为准。
+- RF-25 全量审计与有限发布验收已闭合；当前完成范围和保留边界以
+  `docs/CURRENT-STATE.md`、`docs/FINAL-RELEASE-ACCEPTANCE.md` 和最新 checkpoint 为准。
 - 安装只面向当前选定的一个宿主，并使用仓库 `.venv` 的 Python。宿主发现不等于安装；
   本仓库不会全局注册到其他工作区，其他项目必须显式让 agent 读取本仓库入口。
 - fresh clone 必须同时拥有 route descriptor 和对应的 `skills/<domain>/SKILL.md`；

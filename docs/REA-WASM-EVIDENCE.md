@@ -13,9 +13,9 @@ Choose a local Node path satisfying the pinned REA engine range
 
 ```powershell
 $env:REVERSE_FUSION_NODE = "[supported Node absolute path]"
-.\scriptsun-rea-doctor.ps1
-.\scriptsun-wasm-vertical.ps1
-.\scriptsun-rea-ledger.ps1
+./scripts/run-rea-doctor.ps1
+./scripts/run-wasm-vertical.ps1
+./scripts/run-rea-ledger.ps1
 ```
 
 The bootstrap scripts fetch the official `rea-agents@6.9.0` and WABT `1.0.42`

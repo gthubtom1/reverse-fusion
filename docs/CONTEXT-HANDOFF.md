@@ -36,6 +36,6 @@ Current handoff: RF-25, product `1.0.0`, 2026-11-15.
   restore is implemented. Old installs and global configuration stay outside
   this repository's write scope.
 
-After RF-25 closes, the next action is a user target case or selective upstream
+RF-25 is closed; the next action is a user target case or selective upstream
 review. New observations can supersede historical results; never rewrite a
 historical checkpoint to imply it measured a later checkout or host state.

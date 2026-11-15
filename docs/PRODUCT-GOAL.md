@@ -77,9 +77,9 @@ Reverse Fusion 不选择、不绑定、不下载模型，也不把某个模型�
 
 RF-22 的 `reconstruction-product-v1-final` 是历史标签，RF-23/RF-24 随后增加
 部署和 Reverse 保全。RF-25 全量审计发现旧 Builder/归档/runner/文档结论仍需
-修正，故当前状态以 `docs/CURRENT-STATE.md` 与
-`checkpoints/RF-25-20261115-001.md` 为准，不根据历史 final 推断本轮已经通过。
-产品版本为 `1.0.0`；本轮所有有限完成门闭合后才恢复当前发布完成声明。
+修正；这些问题已修复并通过独立复审、有限真实链及远端 fresh-clone 验收。
+当前状态以 `docs/CURRENT-STATE.md` 与 `checkpoints/RF-25-20261115-001.md` 为准。
+产品版本为 `1.0.0`，声明范围内的本轮有限门已闭合；下列目标/provider 边界继续保留。
 
 本轮声明范围：WASM 有限执行与三态；Web answer 有限重放 ledger ready，而完整
 graph ledger 为 unknown、4 个 required open（2 packaging、2 application/parser）；

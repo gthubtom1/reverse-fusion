@@ -56,8 +56,8 @@ agent 读取本 checkout 的 `AGENTS.md` 和本文件，或在那个工作区重
    固定 sentinel 只证明 assistant 应答，不等于领域加载或业务成功；登录/额度阻塞如实
    记录，当前会话仍可使用已有工具开发。具体冻结任务和候选观察流程见部署指南。
 8. 完成后报告实际 checkout、commit、venv Python、selected host、receipt、当前实际
-   provider 状态、未验证能力、`blocked`/`unsupported`/`unknown` 和下一步。RF-25
-   审计完成前，不把旧握手、旧 smoke 或历史 release 表改写成当前验收。
+   provider 状态、未验证能力、`blocked`/`unsupported`/`unknown` 和下一步。
+   只记录本次观察，不把旧握手、旧 smoke 或历史 release 表改写成当前验收。
 
 ## 对话中的使用
 

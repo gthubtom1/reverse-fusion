@@ -1,7 +1,7 @@
 # Current State
 
 Stage: RF-25
-Status: audit-remediation-in-progress
+Status: reconstruction-product-v1-final
 
 Product version: `1.0.0`. The retained Reverse domain contract version is
 `components/reverse-core/VERSION` (`1.9.0`); these are separate identities.
@@ -9,8 +9,8 @@ Product version: `1.0.0`. The retained Reverse domain contract version is
 RF-25 rechecks the RF-22 product claim and RF-23/RF-24 hardening against actual
 code, source files and execution. Historical checkpoints remain historical;
 the current acceptance is this file, `docs/FINAL-RELEASE-ACCEPTANCE.md` and
-`checkpoints/RF-25-20261115-001.md`. Pending checks must close before this audit
-is marked complete. Future target variants are new cases, not a requirement to
+`checkpoints/RF-25-20261115-001.md`. The finite audit and declared integration
+release gates are closed. Future target variants are new cases, not a requirement to
 pre-execute every possible program, architecture or protector.
 
 ## Current implementation and observations
@@ -60,7 +60,7 @@ configuration and must not be substituted while retaining an Evidence ID.
 
 The integration proof adapters use the pinned official REA serializer, validate
 artifact SHA-256 and retain Evidence links. They are repository-owned bounded
-verifiers, not REA's native process verifier. Archive admission must pass the
+verifiers, not REA's native process verifier. Archive admission passed the
 official `parseEvidence`, bundle-link and tamper-rejection checks; the previous
 path-normalized archive is superseded because its IDs no longer authenticated.
 The full Web graph ledger is archived separately as `evidence/rf22/web/full-ledger.json`.
@@ -92,10 +92,18 @@ The full Web graph ledger is archived separately as `evidence/rf22/web/full-ledg
 
 ## Next action
 
-Finish the finite RF-25 validation, archive admission, documentation/link checks
-and remote fresh-clone lifecycle check; record exact results and commit in the
-RF-25 checkpoint, then close this audit and push. Subsequent work is a new
-target case or selective upstream review under `docs/UPSTREAM-MAINTENANCE.md`.
+No audit implementation task remains. Use the deployed checkout for normal
+development or a new target case; selective upstream review follows
+`docs/UPSTREAM-MAINTENANCE.md` when requested.
+
+The remote clone of `a643b958774dc8d90b3be29f68aff5d5d0f0b91a` started without
+old state, installed product 1.0.0 into a new venv, passed contracts/plan/doctor/
+handoff, selected-host receipt, hard-target route, 37 product tests and 39
+reconstruction tests. Native provider failure stopped before stale acceptance,
+POSIX traversal was rejected, and Node 24.20.0 was rejected by the precise
+REA engine gate. Final documentation closure follows that source commit; its
+checkpoint records this tested code identity rather than claiming another
+machine or every provider was executed.
 
 Old repositories, old installations, host credentials and global configuration
 are outside this repository's write scope.
