@@ -4,17 +4,20 @@ Before ending a session or compressing context, update `docs/CURRENT-STATE.md`
 and the current checkpoint. Recover state from the checkout and execution
 records rather than chat history.
 
-Current handoff: RF-26, product `1.0.0`, 2026-11-15.
+Current handoff: RF-27, product `1.0.0`, 2026-11-16.
 
 - Repository: <https://github.com/gthubtom1/reverse-fusion>, branch `master`.
 - Deployment entry: `docs/AGENT-BOOTSTRAP.md`. This travels with the repository;
   the user does not need to keep or repeatedly paste a chat prompt.
 - Current status and next action: `docs/CURRENT-STATE.md`. Audit closure and
-  exact final counts/commit: `checkpoints/RF-26-20261115-001.md`.
+  exact scope and checks: `checkpoints/RF-27-20261116-001.md`.
 - Product contract: `docs/PRODUCT-GOAL.md`. Architecture is an adaptive helper
   for the current host, not a model choice or fixed reverse-engineering order.
 - Default writer: current-session Builder. Frozen tasks/research and allowed
   candidate writes are observed by `session prepare/check/refine/finish`.
+  Task commands use the outcome project's `--project-root` (default cwd).
+  Case-bound prepare reuses the handoff checker and freezes the semantic review;
+  it cannot prove semantic readiness or discover omitted dependencies.
   Business proof remains independent. Optional child Codex currently has a
   credits block; earlier text smoke is not an APK candidate.
 - Archive: `evidence/rf22/manifest.json` indexes current raw representative
@@ -36,6 +39,6 @@ Current handoff: RF-26, product `1.0.0`, 2026-11-15.
   restore is implemented. Old installs and host runtime configuration stay outside
   this repository's write scope; the managed Codex adapter is removed by receipt.
 
-RF-26 is closed; the next action is a user target case or selective upstream
+RF-27 corrects gaps not covered by RF-26's local contract closure. The next action is a user target case or selective upstream
 review. New observations can supersede historical results; never rewrite a
 historical checkpoint to imply it measured a later checkout or host state.

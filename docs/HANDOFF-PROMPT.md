@@ -14,9 +14,9 @@
 `components/reverse-core/preservation.json`、当前 checkpoint 和 Git 状态。
 具体目标还要读取本地路由返回的 `skill`、`required_reads` 和当前 case。
 
-当前维护阶段是 RF-26，产品版本为 `1.0.0`，Reverse 领域合同版本为 `1.9.0`。
+当前维护阶段是 RF-27，产品版本为 `1.0.0`，Reverse 领域合同版本为 `1.9.0`。
 是否已完成本轮审计，以 `CURRENT-STATE.md` 和
-`checkpoints/RF-26-20261115-001.md` 为准。RF-22/RF-23/RF-24 的历史 final
+`checkpoints/RF-27-20261116-001.md` 为准。RF-22/RF-23/RF-24/RF-26 的历史 final
 标签不覆盖本轮发现的问题或当前 provider 阻塞。
 
 ## 保持的职责与边界
@@ -41,10 +41,11 @@
 
 1. 按部署入口使用仓库 venv Python，运行 `contracts`、当前 host 的 `plan`、
    `doctor` 和 `handoff --check`。doctor 的 provider 状态不是现场业务证明。
-2. normal-dev 继续普通开发。需要研究外部项目时，在仓库内建立隔离 analysis
+2. normal-dev 继续普通开发。需要研究外部项目时，在成果项目内建立隔离 analysis
    subcase；读取路由和困难目标资料，保留原版 Evidence、限制及下一步 probe。
 3. 只有用户要求复刻时升级为 reconstruction，冻结 tasks/research，准备唯一
-   writer 和明确 allowed outputs。使用 `session prepare`，让当前宿主写候选，
+   writer 和明确 allowed outputs。按 `CROSS-PROJECT-WORKFLOW.md` 传入 `--project-root`，
+   绑定同一 case、原 handoff 与语义审查记录后使用 `session prepare`，让当前宿主写候选，
    再 `check`、审查/refine、`finish`。文件观察通过后仍需独立 build/run 和对比。
 4. 记录原版/候选分析、comparison、有限 proof、清理与 obligation ledger。
    证据、登录、设备或工具缺失时保留 `unknown`、`blocked`、`unsupported`。

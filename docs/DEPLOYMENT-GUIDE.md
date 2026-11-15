@@ -73,8 +73,12 @@ Evidence 支持的结论或候选才能带回主项目，临时候选不覆盖�
 `related_routes`、`next_stage`、`required_reads`、`hard_target` 和
 `missing_support`。普通开发的默认结果是 `workflow.stage=host-native`；需要
 逆向时显式使用 `--mode analysis` 或 `--mode reconstruction`。需要持久恢复点时增加
-`--case-root [repo-relative-case] --mode analysis --record`。资料缺失即
+`--project-root [当前项目] --case-root [project-relative-case] --mode analysis --record`。资料缺失即
 unavailable，不用旧 receipt 假装具备能力。
+
+任务命令默认以调用时当前目录为成果项目；技能资料仍以共享 checkout 为根。
+`required_read_paths` 给出绝对资料路径。跨项目冻结/恢复/验证步骤及组件执行含义见
+[CROSS-PROJECT-WORKFLOW.md](CROSS-PROJECT-WORKFLOW.md)。
 
 遇到加壳、混淆、反调试、反 VM、动态加载、反 Hook 或工具触发早退时，按
 `RULES.md` 和 runtime manifest 加载困难目标资料。静态、动态、dump、脱壳、

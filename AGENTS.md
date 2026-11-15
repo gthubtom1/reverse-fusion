@@ -13,6 +13,7 @@
 9. 当前阶段对应的 `docs/DEVELOPMENT-MASTER-PLAN.md` 和 checkpoint
 10. `RULES.md`；调用本地路由后读取返回的 `skill` 和 `required_reads`
 11. `docs/AGENT-BOOTSTRAP.md`；只给仓库 URL 时，以此文件作为唯一部署入口
+12. 跨项目分析/复刻读取 `docs/CROSS-PROJECT-WORKFLOW.md`
 
 工作规则：
 
@@ -42,3 +43,6 @@
 - `bridge` 返回 `workflow`、`related_routes` 和 `next_stage`；普通开发保持
   `host-native`，follow-up 必须从现有开放 case 恢复。不要把一次 route pass 当成
   REA、Builder 或业务等价通过。
+- `bridge/session/build/craft --project-root` 指向当前成果项目，默认当前目录；共享仓库
+  只提供代码和资料。复刻案例进入 `session prepare` 时绑定原 handoff 与语义审查记录，
+  关键未知项阻断受影响功能，不能在编码后补造冻结记录或自行缩减原定交付范围。

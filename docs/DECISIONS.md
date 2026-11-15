@@ -123,3 +123,19 @@ They must recheck artifact hashes, perform the declared finite observations and
 retain links. They do not impersonate REA native process verification. Web's
 bounded answer ledger is separate from its complete graph's open obligations;
 APK manifest/member equality does not prove method-body or device equivalence.
+
+## RF-018 Explicit task project boundary
+
+The shared checkout owns code, skills and provider installation; the caller's
+project owns cases, tasks, candidates and task receipts. Task commands default to
+cwd and accept `--project-root`. Lifecycle and fixture acceptance commands remain
+tool-checkout operations. A successful route is not a completed component run.
+
+## RF-019 Case-bound implementation handoff
+
+Before implementation in a recorded reconstruction case, Builder prepare reuses
+the inherited handoff checker and freezes its dependency files and a separate
+semantic review record. Declared critical unknowns and stale references block it.
+No new Evidence or obligation ledger is created. Mechanical PASS cannot discover
+omitted dependencies or validate a caller's scope decision; a generic unbound
+session only observes file boundaries and cannot certify reconstruction readiness.

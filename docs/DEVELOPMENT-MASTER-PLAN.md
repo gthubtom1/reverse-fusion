@@ -1,6 +1,11 @@
 # Development Plan
 
-RF-26 is the current aggregation architecture closure after the RF-25 full-audit
+RF-27 repairs cross-project integration after the RF-26 architecture review and RF-25 full-audit.
+The previous RF-26 closure was scoped to local contracts; it did not establish
+external-project end-to-end reconstruction. See `CROSS-PROJECT-WORKFLOW.md` and
+`checkpoints/RF-27-20261116-001.md` for the corrected acceptance boundary.
+
+RF-26 was the aggregation architecture review after the RF-25 full-audit
 and repair stage. Earlier stages are historical
 work records, not instructions to repeat them or claims of current host health.
 The final product contract remains `docs/PRODUCT-GOAL.md`.
@@ -39,7 +44,7 @@ The final product contract remains `docs/PRODUCT-GOAL.md`.
    finite core lifecycle without old receipts. Record exact result/commit, push
    the final checkpoint and stop with a clean synchronized checkout.
 
-The latest checkpoint is `checkpoints/RF-26-20261115-001.md`. Any incomplete
+The latest checkpoint is `checkpoints/RF-27-20261116-001.md`. Any incomplete
 check remains explicit there and in CURRENT-STATE. After closure, subsequent
 work is a new target or selective upstream maintenance, not another endless
 retest of unrelated future variants.

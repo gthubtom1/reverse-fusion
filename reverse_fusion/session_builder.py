@@ -7,20 +7,22 @@ Business acceptance remains the independent build/comparison/ledger's job.
 from __future__ import annotations
 
 import json
+import runpy
 from hashlib import sha256
 from pathlib import Path
 from typing import Any
 
 from .builder import HostBuilder
 from .contracts import is_safe_relative_path
+from .case_bridge import load_case_record
 
 
 def _inside(root: Path, relative: str) -> Path:
     if not is_safe_relative_path(relative):
-        raise ValueError(f"Expected a repository-relative path: {relative}")
+        raise ValueError(f"Expected a project-relative path: {relative}")
     path = (root / relative).resolve()
     if not path.is_relative_to(root):
-        raise ValueError(f"Path escapes the repository: {relative}")
+        raise ValueError(f"Path escapes the selected project: {relative}")
     return path
 
 
@@ -31,6 +33,8 @@ def _digest(path: Path) -> str:
 def prepare_session(
     root: Path, *, workspace: str, receipt: str, tasks: list[str],
     task_files: list[str], research_files: list[str], allowed_outputs: list[str],
+    case_root: str | None = None, handoff_manifest: str | None = None,
+    review_file: str | None = None,
 ) -> dict[str, Any]:
     root = root.resolve()
     area = _inside(root, workspace)
@@ -43,7 +47,39 @@ def prepare_session(
         raise ValueError("Frozen tasks, task documents, research and candidate outputs are required")
     for relative in allowed_outputs:
         _inside(area, relative)
-    refs = {name: _digest(_inside(root, name)) for name in dict.fromkeys(task_files + research_files)}
+    frozen = list(task_files + research_files)
+    handoff = {"assessment_scope": "not-assessed", "semantic_verification": "not-performed"}
+    if not case_root:
+        for parent in record_path.parents:
+            if parent == root:
+                break
+            if (parent / 'case.json').is_file():
+                case_root = parent.relative_to(root).as_posix()
+                break
+    if case_root:
+        case = load_case_record(root, case_root)
+        if not case or case['pointer'].get('workflow', {}).get('stage') != 'reconstruction':
+            raise ValueError("Record the evidence-to-reconstruction transition in the same case before implementation")
+        if not handoff_manifest or not review_file:
+            raise ValueError("Reconstruction requires --handoff-manifest and --review-file before implementation")
+        # Reuse the inherited checker, not a second Evidence/obligation ledger.
+        check = runpy.run_path(str(Path(__file__).resolve().parents[1] /
+                                  'skills/reconstruction/scripts/check_handoff.py'))['check_handoff']
+        handoff = check(root, handoff_manifest)
+        if handoff['status'] != 'PASS':
+            raise ValueError(f"Reconstruction handoff blocked: {handoff['issues']}")
+        manifest = json.loads(_inside(root, handoff_manifest).read_text(encoding='utf-8-sig'))
+        if _inside(root, manifest['case_root']) != _inside(root, case_root):
+            raise ValueError("Handoff belongs to a different case")
+        task_path = _inside(root, manifest['feature_refs']['tasks']['path'])
+        if task_path not in {_inside(root, name) for name in task_files}:
+            raise ValueError("Frozen tasks must include the handoff feature's tasks file")
+        if not _inside(root, review_file).read_text(encoding='utf-8-sig').strip():
+            raise ValueError("Independent semantic review record is empty")
+        frozen.extend([handoff_manifest, review_file, f'{case_root}/case.json', *handoff['checked_files']])
+    elif handoff_manifest or review_file:
+        raise ValueError("Handoff and review must be bound to --case-root")
+    refs = {name: _digest(_inside(root, name)) for name in dict.fromkeys(frozen)}
     task_text = "\n".join(_inside(root, name).read_text(encoding="utf-8-sig") for name in task_files)
     if any(task not in task_text for task in tasks):
         raise ValueError("A selected task ID is absent from the frozen task documents")
@@ -54,6 +90,8 @@ def prepare_session(
         raise ValueError("Candidate workspace contains a symbolic link or junction")
     record = {
         "version": 1, "backend": "current-session", "workspace": workspace,
+        "project_root": str(root),
+        "handoff": handoff,
         "tasks": tasks, "frozen_refs": refs, "allowed_outputs": allowed_outputs,
         "before": before, "phase": "prepared", "events": [],
         "model_selection": "current-host-owned", "business_acceptance": "not-performed",
@@ -61,6 +99,8 @@ def prepare_session(
     record_path.parent.mkdir(parents=True, exist_ok=True)
     record_path.write_text(json.dumps(record, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     return {"status": "prepared", "receipt": receipt, "workspace": workspace,
+            "handoff_assessment": handoff['assessment_scope'],
+            "semantic_verification": "not-performed; review record supplied by the caller" if case_root else "not-performed",
             "read": list(refs), "tasks": tasks, "allowed_outputs": allowed_outputs,
             "action": "The current host reads the frozen files, writes only allowed candidate outputs, then records check/refine/finish.",
             "model_selection": "current-host-owned", "business_acceptance": "not-performed"}
@@ -72,6 +112,8 @@ def check_session(root: Path, *, receipt: str, phase: str) -> dict[str, Any]:
     record = json.loads(record_path.read_text(encoding="utf-8"))
     if record.get("backend") != "current-session" or record.get("version") != 1:
         raise ValueError("Unsupported session record")
+    if record.get("project_root") and Path(record['project_root']).resolve() != root:
+        raise ValueError("Session belongs to a different project; prepare a fresh frozen run")
     if record.get("phase") == "finished":
         raise ValueError("Session already finished; new work requires a new frozen run")
     area = _inside(root, record["workspace"])
@@ -106,6 +148,8 @@ def check_session(root: Path, *, receipt: str, phase: str) -> dict[str, Any]:
     record_path.write_text(json.dumps(record, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     return {"version": 1, "status": "candidate" if phase == "finish" else "observed",
             "backend": "current-session", "tasks": record["tasks"], "phase": phase,
+            "handoff_assessment": record.get('handoff', {}).get('assessment_scope', 'not-assessed'),
+            "semantic_verification": "not-performed",
             "outputs": outputs, "business_acceptance": "not-performed",
             "cleanup": {"status": "observed", "child_processes_started": 0,
                         "reason": "Current host tools own execution; this adapter starts no helper processes."}}

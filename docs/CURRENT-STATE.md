@@ -1,7 +1,7 @@
 # Current State
 
-Stage: RF-26
-Status: reconstruction-product-v1-final
+Stage: RF-27
+Status: cross-project-integration-repaired-with-declared-boundaries
 
 Product version: `1.0.0`. The retained Reverse domain contract version is
 `components/reverse-core/VERSION` (`1.9.0`); these are separate identities.
@@ -13,6 +13,33 @@ the current acceptance is this file, `docs/FINAL-RELEASE-ACCEPTANCE.md` and
 `checkpoints/RF-26-20261115-001.md`. The finite audit and declared integration
 release gates are closed. Future target variants are new cases, not a requirement to
 pre-execute every possible program, architecture or protector.
+
+## RF-27 integration correction
+
+The first user-level adapter successfully routed an external project, but that
+did not validate a complete cross-project reconstruction. Task CLI commands still
+used the tool checkout as their output root, and the observed host started writing
+before freezing tasks or reviewing an important licensing dependency. Post-hoc
+spec files did not satisfy an implementation-before-review boundary.
+
+- `bridge/session/build/craft` now take `--project-root` (default cwd). Case history,
+  frozen inputs, candidates and task receipts stay in that project; route read paths
+  are absolute references to the shared skill checkout. Follow-up retains the
+  prior reconstruction requirements.
+- Case-bound Builder prepare reuses the existing handoff checker, rejects declared
+  critical unknowns/mismatched hashes/cases/tasks and freezes the review plus all
+  referenced files. It reports machine-check-only, never semantic readiness.
+- The user adapter links `CROSS-PROJECT-WORKFLOW.md` and requires pre-implementation
+  handoff review, domain refinement and reporting actual component execution.
+- `doctor` labels the scope of its overall pass and separately exposes REA package
+  presence/identity, Spec CLI presence, the current-session Builder interface and
+  the unsupported native Craft backend. It performs no automatic provider launch.
+- Global adapter updates honor CODEX_HOME and reject broken markers; uninstalling
+  a previously installed checkout cannot remove a newer checkout's shared pointer.
+
+The bounded RF-25/RF-26 target evidence below remains historical. RF-27 does not
+reclassify it as live health or target acceptance. See
+`checkpoints/RF-27-20261116-001.md` for the new external-project verification scope.
 
 ## Current implementation and observations
 

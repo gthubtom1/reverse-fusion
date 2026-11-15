@@ -16,6 +16,10 @@ activate every analysis tool or require a reverse case for ordinary development.
    main agent owns route, case, scope, work items and promotion of observations.
    In inherited documents, “Pi lead” means this current host's lead; another
    host or model is not a prerequisite.
+   For cross-project use, pass the active outcome project's `--project-root` to
+   task commands. Skill references belong to the shared checkout; case/task/
+   candidate files belong to the outcome project. Read
+   `docs/CROSS-PROJECT-WORKFLOW.md` before handing analysis into implementation.
 3. Keep the original target read-only and put derived artifacts in the active
    repository-local case. `bridge --record` saves a recovery pointer, not
    permission, a completed scope, work items, Evidence or business acceptance.

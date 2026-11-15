@@ -40,6 +40,8 @@ class CasePointer:
 
 
 def resolve_case_root(repo_root: Path, case_root: str) -> Path:
+    if not is_safe_relative_path(case_root):
+        raise ValueError("case root must be a safe project-relative path")
     candidate = (repo_root / case_root).resolve()
     try:
         candidate.relative_to(repo_root.resolve())
@@ -196,10 +198,12 @@ def load_case_record(repo_root: Path, case_root: str) -> dict[str, Any] | None:
         record = json.loads(path.read_text(encoding="utf-8"))
     except (OSError, json.JSONDecodeError) as exc:
         raise ValueError(f"existing case record is unreadable: {exc}") from exc
-    if not isinstance(record, dict) or record.get("status") != "open":
+    if not isinstance(record, dict) or record.get("schema_version") != 1 or record.get("status") != "open":
         raise ValueError("existing case record is not open")
     pointer = record.get("pointer")
     _validate_pointer(pointer, "existing case pointer")
+    if resolve_case_root(repo_root, pointer['case_root']) != root:
+        raise ValueError("existing case pointer belongs to another case root")
     return record
 
 

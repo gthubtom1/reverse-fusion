@@ -8,6 +8,7 @@ workspace where the user opened them.
 from __future__ import annotations
 
 from pathlib import Path
+import os
 
 
 MARKER_START = "<!-- reverse-fusion:begin -->"
@@ -18,9 +19,11 @@ SKILL_MARKER = "# Reverse Fusion cross-project adapter"
 
 def adapter_paths(home: Path | None = None) -> dict[str, Path]:
     root = (home or Path.home()).expanduser()
+    codex_root = (Path(os.environ['CODEX_HOME']).expanduser()
+                  if home is None and os.environ.get('CODEX_HOME') else root / '.codex')
     return {
         "skill": root / ".agents" / "skills" / "reverse-fusion" / "SKILL.md",
-        "agents": root / ".codex" / "AGENTS.md",
+        "agents": codex_root / "AGENTS.md",
     }
 
 
@@ -44,11 +47,15 @@ The canonical checkout is `{repo}`. Keep the user's current project as the worki
 Before choosing a specialist workflow, verify the checkout and invoke its local router with the repository venv:
 
 ```text
-Windows: {repo}/.venv/Scripts/python.exe -m reverse_fusion bridge --source local --hint "<the user's task>" --format json
-POSIX:   {repo}/.venv/bin/python -m reverse_fusion bridge --source local --hint "<the user's task>" --format json
+Windows PowerShell: & "{repo}/.venv/Scripts/python.exe" -m reverse_fusion bridge --project-root "<current project absolute path>" --source local --hint "<the user's task>" --format json
+POSIX: "{repo}/.venv/bin/python" -m reverse_fusion bridge --project-root "<current project absolute path>" --source local --hint "<the user's task>" --format json
 ```
 
 Read the returned `workflow`, `skill`, `required_reads`, `related_routes`, `next_stage`, `hard_target`, and `missing_support`. Read the returned local `SKILL.md` and required references before acting. If the task is ordinary software development without reverse or reconstruction intent, keep the normal host-native workflow and do not activate Reverse Fusion just because this skill exists.
+
+For analysis or reconstruction, read [the cross-project handoff guide]({repo}/docs/CROSS-PROJECT-WORKFLOW.md) before starting implementation. `required_read_paths` are absolute skill-checkout paths; cases, task files, candidate outputs and session receipts belong to `project_root`. Do not change cwd to the tool checkout to make a task command work. After identifying the real technology, refine the same case's domain route rather than staying on an initial generic route.
+
+Reconstruction requires evidence-linked spec/tasks and review of critical dependencies, then `session prepare --case-root "work/<case>" --handoff-manifest "<project-relative handoff>" --review-file "<project-relative semantic review>"` before candidate edits, followed by `check/refine/finish` and independent behavior validation. Pass the same `--project-root` on every task command and record the bridge with `--case-root "work/<case>" --record` after identifying the target. The handoff checker blocks declared critical unknowns; it cannot detect omitted licensing/state dependencies or prove semantic readiness. Do not silently remove an observed licensing dependency or redefine the delivery as a standalone local subset. Missing REA permits raw-tool analysis, but not fabricated native proof. Native Craft is currently unsupported; the current host is the default writer. A route pass is not execution of REA, Spec, Craft or Builder: report which parts actually ran.
 
 Use `--mode analysis` for evidence-backed analysis and `--mode reconstruction` for an explicit reimplementation/equivalence task. Preserve `pass`, `fail`, `unknown`, `blocked`, and `unsupported` honestly. Do not select or download models, change host runtime configuration, start every provider, or claim target acceptance from route selection alone.
 
@@ -64,13 +71,20 @@ def agents_block(repo_root: Path) -> str:
 {MARKER_END}"""
 
 
+def _check_markers(text: str) -> None:
+    if (text.count(MARKER_START), text.count(MARKER_END)) not in {(0, 0), (1, 1)}:
+        raise ValueError("Global AGENTS.md has incomplete or duplicate Reverse Fusion markers")
+    if text.find(MARKER_END) >= 0 and text.find(MARKER_END) < text.find(MARKER_START):
+        raise ValueError("Global AGENTS.md has reversed Reverse Fusion markers")
+
+
 def _replace_agents_block(text: str, block: str) -> str:
+    _check_markers(text)
     start = text.find(MARKER_START)
     end = text.find(MARKER_END)
     if start >= 0 and end >= start:
         end += len(MARKER_END)
-        updated = text[:start].rstrip() + "\n\n" + block + text[end:]
-        return updated.rstrip() + "\n"
+        return text[:start] + block + text[end:]
 
     # Convert the adapter written by the first manual deployment into the
     # managed block without touching any unrelated user instructions.
@@ -91,11 +105,12 @@ def install_global_adapter(repo_root: Path, home: Path | None = None) -> dict[st
         existing_skill = paths["skill"].read_text(encoding="utf-8")
         if SKILL_MARKER not in existing_skill:
             raise ValueError(f"Existing user skill is not managed by Reverse Fusion: {paths['skill']}")
+    existing = paths["agents"].read_text(encoding="utf-8") if paths["agents"].is_file() else ""
+    updated = _replace_agents_block(existing, agents_block(repo))
     paths["skill"].parent.mkdir(parents=True, exist_ok=True)
     paths["agents"].parent.mkdir(parents=True, exist_ok=True)
     paths["skill"].write_text(skill_text(repo), encoding="utf-8")
-    existing = paths["agents"].read_text(encoding="utf-8") if paths["agents"].is_file() else ""
-    paths["agents"].write_text(_replace_agents_block(existing, agents_block(repo)), encoding="utf-8")
+    paths["agents"].write_text(updated, encoding="utf-8")
     return {
         "enabled": True,
         "skill": str(paths["skill"]),
@@ -104,12 +119,15 @@ def install_global_adapter(repo_root: Path, home: Path | None = None) -> dict[st
     }
 
 
-def remove_global_adapter(home: Path | None = None) -> dict[str, object]:
+def remove_global_adapter(home: Path | None = None, *, repo_root: Path | None = None) -> dict[str, object]:
     paths = adapter_paths(home)
+    agents_text = paths['agents'].read_text(encoding='utf-8') if paths['agents'].is_file() else ''
+    _check_markers(agents_text)
     removed: list[str] = []
     if paths["skill"].is_file():
         text = paths["skill"].read_text(encoding="utf-8")
-        if SKILL_MARKER in text:
+        owned = repo_root is None or f'The canonical checkout is `{_repo_display(repo_root)}`.' in text
+        if SKILL_MARKER in text and owned:
             paths["skill"].unlink()
             removed.append(str(paths["skill"]))
             try:
@@ -117,14 +135,16 @@ def remove_global_adapter(home: Path | None = None) -> dict[str, object]:
             except OSError:
                 pass
     if paths["agents"].is_file():
-        text = paths["agents"].read_text(encoding="utf-8")
+        text = agents_text
         start = text.find(MARKER_START)
         end = text.find(MARKER_END)
         if start >= 0 and end >= start:
             end += len(MARKER_END)
-            updated = (text[:start].rstrip() + text[end:].lstrip()).rstrip()
-            if updated:
-                paths["agents"].write_text(updated + "\n", encoding="utf-8")
+            if repo_root is not None and text[start:end] != agents_block(repo_root):
+                return {"enabled": False, "removed": removed, "retained": "another checkout owns the global pointer"}
+            updated = text[:start] + text[end:]
+            if updated.strip():
+                paths["agents"].write_text(updated, encoding="utf-8")
             else:
                 paths["agents"].unlink()
             removed.append(str(paths["agents"]))

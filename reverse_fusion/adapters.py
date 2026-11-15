@@ -19,7 +19,7 @@ class EvidenceRecord:
     evidence_id: str
     question: str
     status: str = "observed"
-    provider: str = "rea"
+    provider: str = "reverse-fusion-local"
     artifacts: list[str] = field(default_factory=list)
     unknowns: list[str] = field(default_factory=list)
 
@@ -35,10 +35,12 @@ class EvidenceRecord:
 
 
 def rea_bundle(records: list[EvidenceRecord], *, bundle_sha256: str | None = None) -> dict[str, Any]:
+    """Legacy adapter summary, never an authenticated native REA bundle."""
     unknowns = [unknown for record in records for unknown in record.unknowns]
     return {
-        "provider": "rea",
-        "status": "ready" if records else "unknown",
+        "provider": "reverse-fusion-local",
+        "status": "observed" if records else "unknown",
+        "native_rea_authentication": "not-performed",
         "evidence": [record.to_dict() for record in records],
         "unknowns": unknowns,
         "bundle_sha256": bundle_sha256,
@@ -241,7 +243,10 @@ class LocalBoundedWorker:
         )
         if prepared.get("disposition") != "ready":
             return {"version": 1, "disposition": prepared["disposition"], "tasks": tasks, "checks": [], "cleanup": {"status": "not-started"}, "reason": prepared.get("reason")}
-        output = workspace / Path(output_relative)
+        output = (workspace / Path(output_relative)).resolve()
+        if not output.is_relative_to(workspace):
+            return {"version": 1, "disposition": "needs-scope", "tasks": tasks, "checks": [],
+                    "cleanup": {"status": "not-started"}, "reason": "output fixture escapes project through a link"}
         output.parent.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(source_path, output)
         output_digest = sha256(output.read_bytes()).hexdigest()

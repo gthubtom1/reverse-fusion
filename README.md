@@ -3,10 +3,10 @@
 给当前 coding agent 使用的普通开发、逆向分析与独立复刻工具集。
 仓库：<https://github.com/gthubtom1/reverse-fusion>。
 
-产品版本 `1.0.0`，当前复核阶段 `RF-26`。准确的验收结果、现场 provider 状态和
+产品版本 `1.0.0`，当前修复阶段 `RF-27`（跨项目集成与复刻交接）。准确的验收结果、现场 provider 状态和
 未覆盖范围分别保存在 [当前状态](docs/CURRENT-STATE.md)、
 [发布验收](docs/FINAL-RELEASE-ACCEPTANCE.md) 与
-[最新 checkpoint](checkpoints/RF-26-20261115-001.md)。历史 final 标签不覆盖这些记录。
+[最新 checkpoint](checkpoints/RF-27-20261116-001.md)。历史 final 标签不覆盖这些记录。
 
 ## 换电脑，只给仓库链接
 
@@ -49,7 +49,7 @@ cd reverse-fusion
 聚合架构、阶段交接和各组件边界见 [架构说明](docs/ARCHITECTURE.md)。专业任务的入口是：
 
 ```text
-[venv-python] -m reverse_fusion bridge --source local --hint "目标与问题"
+[venv-python] -m reverse_fusion bridge --project-root "[当前项目绝对路径]" --source local --hint "目标与问题"
 ```
 
 读取返回的 `workflow`、`skill`、`related_routes`、`next_stage`、`required_reads` 和
@@ -57,6 +57,10 @@ cd reverse-fusion
 `workflow.stage=host-native`，不会抢占 Reverse；分析或复刻才显式使用相应的
 `--mode`。混合目标的 secondary skill 通过 `related_routes` 和 case refs 保留，
 不要求一次性加载所有 45 个领域。
+完整的证据→规格→Builder→独立验收流程见
+[跨项目交接](docs/CROSS-PROJECT-WORKFLOW.md)。路由成功不表示 REA、Spec、Craft 已执行。
+已记录复刻 case 的 Builder prepare 会绑定原交接清单和语义审查记录，关键未知项或
+摘要不一致会阻断；不绑定 case 的通用 session 只证明文件边界观察。
 困难特征也可以在后续观察中发现。加壳、混淆、反调试、动态 DEX、JNI、JS VM/WASM
 等资料按证据加载，静态分析、运行、dump、脱壳、hook 和设备观察的顺序由 agent
 判断。缺工具或关键事实时保留 `unknown`、`blocked` 或 `unsupported`，不靠固定
@@ -130,6 +134,9 @@ R46 与 Windows REA PTY descendant cleanup 仍 unsupported。详见
 [venv-python] -m reverse_fusion doctor --format json
 [venv-python] -m reverse_fusion handoff --check --format json
 ```
+
+`doctor.status=pass` 仅表示仓库合同检查通过。查看 `components` 中的现场组件状态：
+REA 的 source pin 不是安装，入口存在不是握手；当前宿主 Builder 与原生 Craft 是不同后端。
 
 需要复现 provider 链时，使用 `scripts/bootstrap-*.ps1` 与 `scripts/run-*-vertical.ps1`；
 先按目标准备候选和对应运行时。基础安装不要求每次跑完全部代表性链。归档认证可在

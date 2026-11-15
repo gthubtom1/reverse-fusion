@@ -1,5 +1,11 @@
 # Provider and host status
 
+RF-27 current machine observation (2026-11-16): local REA entry/package is not
+installed, Node is v24.20.0 and does not satisfy the pin, and `specify` is absent
+from PATH. The current host remains the writer; native Craft R46 is unsupported.
+`doctor.components` reports these separately from its repository-contract pass.
+The table below is historical RF-25 evidence, not this machine's runtime status.
+
 Recorded for RF-25 provider runs and the RF-26 architecture review on 2026-11-15. These are bounded observations on the audit
 host. Another computer discovers its own providers; previous success is not a
 new installation's credential, loading or runtime qualification.

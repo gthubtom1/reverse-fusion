@@ -32,6 +32,12 @@ class ContractTests(unittest.TestCase):
         result = check_contracts(ROOT)
         self.assertEqual(result["status"], "pass", result)
 
+    def test_console_fixture_does_not_claim_native_rea_execution(self):
+        result = evaluate_console(correct_candidate, ['a'])
+        self.assertEqual(result.evidence['provider'], 'reverse-fusion-local')
+        self.assertEqual(result.evidence['native_rea_authentication'], 'not-performed')
+        self.assertNotEqual(result.evidence['status'], 'ready')
+
     def test_manifest_is_single_repository(self):
         data = json.loads((ROOT / "components/official/manifest.json").read_text(encoding="utf-8"))
         self.assertEqual(data["project"], "reverse-fusion")

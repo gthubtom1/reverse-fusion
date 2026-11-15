@@ -13,6 +13,9 @@ agent 克隆或定位仓库后，以本文件的当前 checkout 版本为准。
 仓库地址：<https://github.com/gthubtom1/reverse-fusion>
 
 Codex 跨项目接入的文件和生命周期见 [CODEX-INTEGRATION.md](CODEX-INTEGRATION.md)。
+部署验证还必须在 checkout 外的独立临时项目运行
+`[venv-python] -m unittest tests.test_cross_project -v`，验证外部项目的案例记录/恢复、
+session 冻结与路径边界。仅从外部目录运行一次无写入的 bridge 不够。
 
 智能体克隆或定位仓库后，必须以当前 checkout 的文件为准，先读取：
 
@@ -52,8 +55,8 @@ Codex 跨项目接入的文件和生命周期见 [CODEX-INTEGRATION.md](CODEX-IN
    中发现到的其他 CLI 只属于环境观察，不代表它们已安装、已登录、已加载本仓库或通过握手。
 5. 安装写仓库自己的 `.venv`、`state/install.json`，并在 Codex 选择下写入用户级适配层。
    REA、WABT、JADX 等 provider
-   仅在具体任务需要时由对应 bootstrap 写入仓库 `vendor/`；case 仅在用户开始目标时写入
-   仓库 `work/` 或明确的仓库内 case root。
+   仅在具体任务需要时由对应 bootstrap 写入工具仓库 `vendor/`；case 仅在用户开始目标时
+   写入 `--project-root` 选定成果项目的 `work/`，不会集中写回共享工具仓库。
 6. 模型、账号和 provider 由 `[selected-host]` 拥有。项目不选择、下载、切换或绑定
    模型，不复制凭据，也不修改宿主运行配置。Codex 适配层只增加路由指引；Craft
    companion 的 `--all-tools` 参数保持不变。
@@ -74,11 +77,14 @@ Codex 跨项目接入的文件和生命周期见 [CODEX-INTEGRATION.md](CODEX-IN
   没有复刻请求时，不要求 Spec tasks、candidate、comparison、proof 或 ledger。
 - `reconstruction` 目标才要求冻结 Spec tasks、受限 Builder candidate、build/run、
   original/candidate comparison、integration proof、cleanup 和 obligation ledger。
-- 研究外部网站、EXE、APK、协议、依赖或参考项目时，在仓库内创建隔离的
+- 研究外部网站、EXE、APK、协议、依赖或参考项目时，在当前成果项目内创建隔离的
   `analysis` 或 `reconstruction` subcase，不把临时 candidate 写回主项目。
 - 对目标先调用本地 `bridge --source local`；读取返回的 `skill`、
   `required_reads`、`hard_target` 和 `missing_support`。缺少必需资料时状态为
   `unavailable`，不能用旧 receipt 替代。
+- 跨项目任务命令传入 `--project-root [当前成果项目绝对路径]`，并按
+  [CROSS-PROJECT-WORKFLOW.md](CROSS-PROJECT-WORKFLOW.md) 接续证据、规格、Builder
+  和独立验收；不要把工具 checkout 当作所有项目的输出目录。
 - 任务出现加壳、混淆、反调试、反虚拟机、反 Hook、动态加载、早退或自校验时，
   按 `RULES.md` 和 `components/reverse-core/runtime.json` 加载困难目标资料；
   工具顺序由证据决定，不固定成一条流水线。

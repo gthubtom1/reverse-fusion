@@ -29,6 +29,7 @@ from .vertical import correct_candidate, evaluate_console, wrong_candidate
 from .wasm_vertical import evaluate_wasm
 from .session_builder import prepare_session, check_session
 from .global_adapter import install_global_adapter, remove_global_adapter, adapter_paths
+from .component_status import component_status
 
 ROOT = Path(__file__).resolve().parents[1]
 MANIFEST = ROOT / "components" / "official" / "manifest.json"
@@ -90,6 +91,7 @@ def cmd_doctor(args: argparse.Namespace) -> int:
         "schema_version": 1,
         "project": "reverse-fusion",
         "operation": "doctor",
+        "status_scope": "repository-contracts-only; component presence and target acceptance are separate",
         "status": "pass" if contract["status"] == "pass" else "fail",
         "checks": contract["checks"],
         "host": {**detect_hosts(), "python": platform.python_version()},
@@ -101,6 +103,7 @@ def cmd_doctor(args: argparse.Namespace) -> int:
         "handshakes": read_handshake_record(ROOT),
         "source_manifest_sha256": sha256_file(ROOT / "SOURCE-MANIFEST.json"),
         "provider_status": str(ROOT / "docs" / "PROVIDER-STATUS.md"),
+        "components": component_status(ROOT),
     }
     _print(result, args.format)
     return 0 if result["status"] == "pass" else 1
@@ -120,17 +123,26 @@ def cmd_handoff(args: argparse.Namespace) -> int:
     return 0 if result["status"] == "pass" else 1
 
 
-def _write_state(name: str, payload: dict[str, Any]) -> None:
-    state = ROOT / "state"
-    target = _state_path(name)
+def _project_root(args: argparse.Namespace) -> Path:
+    """Task output belongs to the caller's project, not the installed package."""
+    root = Path(args.project_root).expanduser().resolve() if args.project_root else Path.cwd().resolve()
+    if not root.is_dir():
+        raise ValueError(f"Project root does not exist: {root}")
+    return root
+
+
+def _write_state(name: str, payload: dict[str, Any], *, root: Path | None = None) -> None:
+    state = (root or ROOT) / "state"
+    target = _state_path(name, root=root)
     state.mkdir(exist_ok=True)
     target.write_text(json.dumps(payload, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")
 
 
-def _state_path(name: str) -> Path:
-    target = ROOT / 'state' / f'{name}.json'
-    if not target.resolve().is_relative_to(ROOT.resolve()):
-        raise ValueError('State path escapes the repository')
+def _state_path(name: str, *, root: Path | None = None) -> Path:
+    base = (root or ROOT).resolve()
+    target = base / 'state' / f'{name}.json'
+    if not target.resolve().is_relative_to(base):
+        raise ValueError('State path escapes the repository or selected project')
     return target
 
 
@@ -140,6 +152,8 @@ def cmd_install(args: argparse.Namespace) -> int:
         _print({"operation": "install", "status": "blocked", "reason": "repository contracts failed", "checks": contract["checks"]}, args.format)
         return 2
     enable_global_adapter = args.global_adapter if args.global_adapter is not None else args.client == "codex"
+    if enable_global_adapter and args.client != 'codex':
+        raise ValueError('The global Codex adapter requires --client codex')
     adapter_preview = {
         "enabled": bool(enable_global_adapter),
         "skill": str(adapter_paths()["skill"]),
@@ -157,8 +171,16 @@ def cmd_install(args: argparse.Namespace) -> int:
         "status": "ready",
     }
     if args.apply:
+        _state_path("install")  # Validate the receipt boundary before any user-level writes.
         if enable_global_adapter:
             plan["global_adapter"] = install_global_adapter(ROOT)
+        elif (ROOT / 'state/install.json').is_file():
+            previous = read_json(ROOT / 'state/install.json')
+            previous_adapter = previous.get('global_adapter')
+            if isinstance(previous_adapter, dict) and previous_adapter.get('enabled'):
+                removal = remove_global_adapter(repo_root=ROOT)
+                plan['global_config_mutation'] = bool(removal.get('removed'))
+                plan['effects'].append('remove this checkout user-level adapter')
         plan["status"] = "installed"
         _write_state("install", {**plan, "installed": True, "version": __version__})
     _print(plan, args.format)
@@ -169,13 +191,10 @@ def cmd_uninstall(args: argparse.Namespace) -> int:
     path = _state_path("install")
     adapter = {"enabled": False, "removed": []}
     if args.apply and path.exists():
-        try:
-            prior = json.loads(path.read_text(encoding="utf-8"))
-        except (OSError, json.JSONDecodeError):
-            prior = {}
+        prior = read_json(path)
         adapter_state = prior.get("global_adapter") if isinstance(prior, dict) else None
         if isinstance(adapter_state, dict) and adapter_state.get("enabled"):
-            adapter = remove_global_adapter()
+            adapter = remove_global_adapter(repo_root=ROOT)
     if args.apply and path.exists():
         path.unlink()
     result = {"operation": "uninstall", "mode": "apply" if args.apply else "dry-run", "status": "uninstalled" if args.apply else "ready", "state_file": str(path), "venv": str(ROOT / ".venv"), "vendor": "retained; remove explicitly if a provider asset is no longer wanted", "global_adapter": adapter, "global_config_mutation": bool(adapter.get("removed"))}
@@ -206,7 +225,8 @@ def cmd_accept(args: argparse.Namespace) -> int:
         return 2
     candidate = {"correct": correct_candidate, "wrong": wrong_candidate, "missing": None}[args.candidate]
     result = evaluate_console(candidate, args.argv, evidence=args.candidate != "missing").to_dict()
-    result.update({"operation": "accept", "fixture": args.fixture, "candidate_kind": args.candidate})
+    result.update({"operation": "accept", "fixture": args.fixture, "candidate_kind": args.candidate,
+                   "assessment_scope": "synthetic-console-fixture-only; no native REA or user target acceptance"})
     if args.record:
         _write_state("acceptance", result)
     _print(result, args.format)
@@ -214,6 +234,7 @@ def cmd_accept(args: argparse.Namespace) -> int:
 
 
 def cmd_bridge(args: argparse.Namespace) -> int:
+    project = _project_root(args)
     # normal-dev is host-native by default.  Reverse is activated only by an
     # explicit reverse/analysis/reconstruction request, so a frontend or API
     # implementation task is not silently claimed by a security route.
@@ -227,6 +248,8 @@ def cmd_bridge(args: argparse.Namespace) -> int:
             "workflow": workflow_contract({}, "normal-dev"),
             "activation_required": "use --mode analysis or --mode reconstruction when Reverse is requested",
             "recorded": False,
+            "project_root": str(project),
+            "repository_root": str(ROOT),
         }
         _print(result, args.format)
         return 0
@@ -234,7 +257,7 @@ def cmd_bridge(args: argparse.Namespace) -> int:
     existing = None
     if effective_mode == "follow-up":
         try:
-            existing = load_case_record(ROOT, args.case_root)
+            existing = load_case_record(project, args.case_root)
         except ValueError as exc:
             _print({"operation": "case-bridge", "status": "blocked", "reason": str(exc)}, args.format)
             return 2
@@ -251,13 +274,17 @@ def cmd_bridge(args: argparse.Namespace) -> int:
     routed = route.get("status") in {"local-route-pass", "external-route-pass"}
     owner = "reverse-fusion.local-router" if route.get("source") == "local" else "reverse.native-router"
     try:
-        case_root = resolve_case_root(ROOT, args.case_root)
+        case_root = resolve_case_root(project, args.case_root)
     except ValueError as exc:
         _print({"operation": "case-bridge", "status": "blocked", "reason": str(exc)}, args.format)
         return 2
     workflow = workflow_contract(route, effective_mode, follow_up=existing is not None)
+    if existing and existing["pointer"].get("workflow"):
+        # Resuming a reconstruction must not discard its specification and
+        # verification obligations just because this turn is called follow-up.
+        workflow = {**existing["pointer"]["workflow"], "mode": "follow-up"}
     pointer = build_case_pointer(
-        case_root.relative_to(ROOT),
+        case_root.relative_to(project),
         route.get("primary") or "unresolved",
         effective_mode,
         delta=[f"route resolved by {route.get('source', 'unknown')} router"] if routed else ["route unresolved"],
@@ -268,6 +295,8 @@ def cmd_bridge(args: argparse.Namespace) -> int:
     )
     result = {
         "operation": "case-bridge",
+        "repository_root": str(ROOT),
+        "project_root": str(project),
         "route": route,
         "mode": effective_mode,
         "requested_mode": args.mode,
@@ -276,16 +305,40 @@ def cmd_bridge(args: argparse.Namespace) -> int:
         "pointer": pointer.to_dict(),
         "recorded": False,
     }
+    reference_root = locate_reverse_root() if route.get("source") == "external" else ROOT
+    # Route refs are relative to the skill checkout, never to the caller's cwd.
+    reads = list(route.get("required_reads", []))
+    for related in route.get("related_routes", []):
+        reads.extend(related.get("required_reads", []))
+    if route.get("next_stage"):
+        reads.extend(route["next_stage"].get("required_reads", []))
+        if route["next_stage"].get("skill"):
+            reads.append(route["next_stage"]["skill"])
+    result["required_read_paths"] = [str((reference_root / name).resolve()) for name in dict.fromkeys(reads)] if reference_root else []
+    result["execution_guide"] = str(ROOT / "docs" / "CROSS-PROJECT-WORKFLOW.md")
+    result["business_acceptance"] = "not-performed"
+    if workflow['stage'] == 'reconstruction':
+        result['implementation_gate'] = {
+            'status': 'not-assessed',
+            'next_step': 'session prepare with --case-root, --handoff-manifest and --review-file',
+            'boundary': 'reconstruction is the requested workflow, not a finding that analysis is complete',
+        }
+    result["next_action"] = (
+        "Resume the recorded case and its original stage requirements."
+        if existing else
+        "Identify the original target, reroute with its actual technology, record this case in project_root, and collect evidence before freezing implementation tasks."
+    )
     if args.record and routed:
-        result["case_file"] = str(record_case_pointer(ROOT, pointer))
+        result["case_file"] = str(record_case_pointer(project, pointer))
         result["recorded"] = True
     _print(result, args.format)
     return 0 if routed else 2
 
 
 def cmd_craft(args: argparse.Namespace) -> int:
-    source = (ROOT / args.source).resolve()
-    worker = LocalBoundedWorker(ROOT)
+    project = _project_root(args)
+    source = (project / args.source).resolve()
+    worker = LocalBoundedWorker(project)
     result = worker.run(
         source=source,
         output_relative=args.output,
@@ -295,17 +348,18 @@ def cmd_craft(args: argparse.Namespace) -> int:
     )
     result.update({"operation": "craft", "source": str(source), "backend": "local-bounded-worker"})
     if args.record:
-        _write_state("craft-candidate", result)
+        _write_state("craft-candidate", result, root=project)
     _print(result, args.format)
     return 0 if result["disposition"] == "candidate" else 2
 
 
 def cmd_build(args: argparse.Namespace) -> int:
-    workspace = (ROOT / args.workspace).resolve()
+    project = _project_root(args)
+    workspace = (project / args.workspace).resolve()
     try:
-        workspace.relative_to(ROOT)
+        workspace.relative_to(project)
     except ValueError:
-        _print({"operation": "build", "status": "blocked", "reason": "workspace must stay inside this repository"}, args.format)
+        _print({"operation": "build", "status": "blocked", "reason": "workspace must stay inside the selected project"}, args.format)
         return 2
     result = HostBuilder(workspace, host=args.host, timeout_seconds=args.timeout).run(
         baseline={"bundle_sha256": args.baseline_sha256},
@@ -317,19 +371,22 @@ def cmd_build(args: argparse.Namespace) -> int:
     )
     result.update({"operation": "build", "workspace": str(workspace), "model_selection": "host-owned"})
     if args.record:
-        _write_state("host-builder", result)
+        _write_state("host-builder", result, root=project)
     _print(result, args.format)
     return 0 if result["disposition"] == "candidate" else 2
 
 
 def cmd_session(args: argparse.Namespace) -> int:
     try:
+        project = _project_root(args)
         if args.phase == "prepare":
-            result = prepare_session(ROOT, workspace=args.workspace, receipt=args.receipt,
+            result = prepare_session(project, workspace=args.workspace, receipt=args.receipt,
                                      tasks=args.tasks, task_files=args.task_file,
-                                     research_files=args.research_file, allowed_outputs=args.allowed_output)
+                                     research_files=args.research_file, allowed_outputs=args.allowed_output,
+                                     case_root=args.case_root, handoff_manifest=args.handoff_manifest,
+                                     review_file=args.review_file)
         else:
-            result = check_session(ROOT, receipt=args.receipt, phase=args.phase)
+            result = check_session(project, receipt=args.receipt, phase=args.phase)
     except (ValueError, OSError, KeyError, TypeError) as exc:
         result = {"operation": "session", "status": "blocked", "reason": str(exc)}
     _print(result, args.format)
@@ -357,6 +414,8 @@ def build_parser() -> argparse.ArgumentParser:
     for name, fn in (("contracts", cmd_contracts), ("doctor", cmd_doctor), ("plan", cmd_plan), ("handoff", cmd_handoff), ("install", cmd_install), ("uninstall", cmd_uninstall), ("update", cmd_update), ("accept", cmd_accept), ("bridge", cmd_bridge), ("craft", cmd_craft), ("build", cmd_build), ("session", cmd_session), ("handshake", cmd_handshake)):
         p = sub.add_parser(name)
         p.add_argument("--format", choices=("json", "markdown"), default="json")
+        if name in {"bridge", "session", "build", "craft"}:
+            p.add_argument("--project-root", help="task project directory; defaults to the current working directory, not the tool checkout")
         if name == "handoff":
             p.add_argument("--check", action="store_true")
         if name == "plan":
@@ -364,7 +423,7 @@ def build_parser() -> argparse.ArgumentParser:
             p.add_argument("--intent", choices=("normal-dev", "analysis", "reconstruction", "follow-up"), default="normal-dev")
             p.add_argument("--profile")
         if name in {"install", "uninstall", "update"}:
-            p.add_argument("--apply", action="store_true", help="write only this repository's state")
+            p.add_argument("--apply", action="store_true", help="apply lifecycle changes; Codex install/uninstall also manages the user adapter")
         if name == "install":
             p.add_argument("--client", choices=("codex", "pi", "claude"), required=True)
             p.add_argument("--global-adapter", dest="global_adapter", action="store_true", default=None, help="install the user-level Codex adapter (default for codex)")
@@ -407,6 +466,9 @@ def build_parser() -> argparse.ArgumentParser:
             p.add_argument("--task-file", action="append", default=[])
             p.add_argument("--research-file", action="append", default=[])
             p.add_argument("--allowed-output", action="append", default=[])
+            p.add_argument("--case-root", help="bind reconstruction prepare to its recorded case and checked handoff")
+            p.add_argument("--handoff-manifest", help="project-relative existing reconstruction handoff manifest")
+            p.add_argument("--review-file", help="project-relative independent semantic review record; not machine proof")
         if name == "handshake":
             p.add_argument("--client", choices=("codex", "pi", "claude"), required=True)
             p.add_argument("--timeout", type=int, default=45)

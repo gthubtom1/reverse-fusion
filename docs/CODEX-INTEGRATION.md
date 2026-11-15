@@ -5,7 +5,7 @@ Reverse Fusion 的路由器和领域资料保留在当前 checkout。Codex 选�
 
 - `~/.agents/skills/reverse-fusion/SKILL.md`：说明何时启用 Reverse Fusion，以及如何调用
   当前 checkout 的 `.venv` 路由器。
-- `~/.codex/AGENTS.md` 中的 `reverse-fusion:begin/end` 标记块：要求涉及逆向、保护分析、
+- `~/.codex/AGENTS.md`（设置 `CODEX_HOME` 时使用该目录）中的 `reverse-fusion:begin/end` 标记块：要求涉及逆向、保护分析、
   协议复刻或行为重建的任务先使用这个技能。
 
 这两项内容只保存 checkout 路径和调用规则，不复制 `skills/` 正文，不选择模型，不启动
@@ -19,6 +19,11 @@ POSIX:   [checkout]/.venv/bin/python -m reverse_fusion bridge --source local --h
 
 然后读取返回的 `workflow`、`skill`、`required_reads`、`related_routes`、`next_stage`、
 `hard_target` 和 `missing_support`。
+
+完整的跨项目交接见 [CROSS-PROJECT-WORKFLOW.md](CROSS-PROJECT-WORKFLOW.md)。任务命令
+使用 `--project-root` 指向当前软件项目，省略时使用当前目录；不得为了调用共享工具切换到
+工具仓库后再隐式保存 case。`required_read_paths` 指向共享技能资料，输出与 session 留在
+成果项目。一次路由成功不等于 REA、Spec、Craft 或 Builder 已执行。
 
 ## 安装和卸载
 
