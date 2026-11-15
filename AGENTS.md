@@ -21,7 +21,7 @@
 - 每个阶段只有一个下一步动作。
 - 任何来源、schema、scope、baseline、model、provider 或 writer 变化都要更新 checkpoint。
 - 不把安装成功、工具可见、Craft Ready、exit 0 或模型自述写成业务 acceptance。
-- RF-25 全量审计与有限发布验收已闭合；当前完成范围和保留边界以
+- RF-25 全量审计与 RF-26 聚合架构复核已闭合；当前完成范围和保留边界以
   `docs/CURRENT-STATE.md`、`docs/FINAL-RELEASE-ACCEPTANCE.md` 和最新 checkpoint 为准。
 - 安装只面向当前选定的一个宿主，并使用仓库 `.venv` 的 Python。宿主发现不等于安装；
   本仓库不会全局注册到其他工作区，其他项目必须显式让 agent 读取本仓库入口。
@@ -37,3 +37,6 @@
   支持的结果带回主项目。
 - analysis case 不强制 Spec、candidate、proof 或 ledger；只有 reconstruction case
   才进入冻结 tasks、Builder、comparison、proof 和 ledger 完成门。
+- `bridge` 返回 `workflow`、`related_routes` 和 `next_stage`；普通开发保持
+  `host-native`，follow-up 必须从现有开放 case 恢复。不要把一次 route pass 当成
+  REA、Builder 或业务等价通过。

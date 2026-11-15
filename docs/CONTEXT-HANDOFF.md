@@ -4,13 +4,13 @@ Before ending a session or compressing context, update `docs/CURRENT-STATE.md`
 and the current checkpoint. Recover state from the checkout and execution
 records rather than chat history.
 
-Current handoff: RF-25, product `1.0.0`, 2026-11-15.
+Current handoff: RF-26, product `1.0.0`, 2026-11-15.
 
 - Repository: <https://github.com/gthubtom1/reverse-fusion>, branch `master`.
 - Deployment entry: `docs/AGENT-BOOTSTRAP.md`. This travels with the repository;
   the user does not need to keep or repeatedly paste a chat prompt.
 - Current status and next action: `docs/CURRENT-STATE.md`. Audit closure and
-  exact final counts/commit: `checkpoints/RF-25-20261115-001.md`.
+  exact final counts/commit: `checkpoints/RF-26-20261115-001.md`.
 - Product contract: `docs/PRODUCT-GOAL.md`. Architecture is an adaptive helper
   for the current host, not a model choice or fixed reverse-engineering order.
 - Default writer: current-session Builder. Frozen tasks/research and allowed
@@ -36,6 +36,6 @@ Current handoff: RF-25, product `1.0.0`, 2026-11-15.
   restore is implemented. Old installs and global configuration stay outside
   this repository's write scope.
 
-RF-25 is closed; the next action is a user target case or selective upstream
+RF-26 is closed; the next action is a user target case or selective upstream
 review. New observations can supersede historical results; never rewrite a
 historical checkpoint to imply it measured a later checkout or host state.

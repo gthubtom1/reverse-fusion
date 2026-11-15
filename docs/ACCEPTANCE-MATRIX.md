@@ -24,6 +24,7 @@ pass labels are not current provider health or proof of a later checkout.
 | RF-23 | domain bodies, persisted case, boundary and config checks | old path-normalized archive had invalid Evidence identities; RF-25 replaces it with raw records |
 | RF-24 | enhanced Reverse preservation | 603-file inventory and difficulty handoff; current exact adaptations in preservation manifest |
 | RF-25 | full inventory read, independent partition review, code/archive/runner/docs repair, finite checks, remote fresh clone | current status in CURRENT-STATE; exact results and commit in RF-25 checkpoint |
+| RF-26 | observable multi-route aggregation, R46 next-stage handoff, normal-dev guard, selected-host enforcement and follow-up resume | current status in CURRENT-STATE; exact route/workflow results in RF-26 checkpoint |
 
 Business acceptance is independent of installation, tool visibility, exit 0,
 Craft Ready and model self-report. Archive file checks, official Evidence

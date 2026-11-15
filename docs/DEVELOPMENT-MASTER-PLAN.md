@@ -1,6 +1,7 @@
 # Development Plan
 
-RF-25 is the current full-audit and repair stage. Earlier stages are historical
+RF-26 is the current aggregation architecture closure after the RF-25 full-audit
+and repair stage. Earlier stages are historical
 work records, not instructions to repeat them or claims of current host health.
 The final product contract remains `docs/PRODUCT-GOAL.md`.
 
@@ -38,7 +39,7 @@ The final product contract remains `docs/PRODUCT-GOAL.md`.
    finite core lifecycle without old receipts. Record exact result/commit, push
    the final checkpoint and stop with a clean synchronized checkout.
 
-The latest checkpoint is `checkpoints/RF-25-20261115-001.md`. Any incomplete
+The latest checkpoint is `checkpoints/RF-26-20261115-001.md`. Any incomplete
 check remains explicit there and in CURRENT-STATE. After closure, subsequent
 work is a new target or selective upstream maintenance, not another endless
 retest of unrelated future variants.

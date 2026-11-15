@@ -8,7 +8,7 @@ remote fresh clone of the audited source commit; runtime boundaries remain expli
 
 | Gate | Direct record / scope | Current result |
 |---|---|---|
-| URL-only deployment | `docs/AGENT-BOOTSTRAP.md`, linked by README and AGENTS; current selected host, local venv/receipt | implemented; final remote fresh-clone check recorded in RF-25 checkpoint |
+| URL-only deployment | `docs/AGENT-BOOTSTRAP.md`, linked by README and AGENTS; current selected host, local venv/receipt | implemented; RF-25 provider clone and RF-26 architecture clone recorded |
 | One Reverse owner | local routing JSON, descriptors, domain bodies and required reads; no old receipt needed | contracts and hard-target route pass in remote clone |
 | Observable aggregation handoff | local primary plus related routes, R46 next stage, normal-dev guard and follow-up case resume | focused route/workflow tests pass; downstream providers remain on-demand |
 | Retained enhanced domains | 603-file preservation inventory, upstream/local SHA and reasons for adaptations | 603/603 source and local digests pass, 13 recorded adaptations |

@@ -14,9 +14,9 @@
 `components/reverse-core/preservation.json`、当前 checkpoint 和 Git 状态。
 具体目标还要读取本地路由返回的 `skill`、`required_reads` 和当前 case。
 
-当前维护阶段是 RF-25，产品版本为 `1.0.0`，Reverse 领域合同版本为 `1.9.0`。
+当前维护阶段是 RF-26，产品版本为 `1.0.0`，Reverse 领域合同版本为 `1.9.0`。
 是否已完成本轮审计，以 `CURRENT-STATE.md` 和
-`checkpoints/RF-25-20261115-001.md` 为准。RF-22/RF-23/RF-24 的历史 final
+`checkpoints/RF-26-20261115-001.md` 为准。RF-22/RF-23/RF-24 的历史 final
 标签不覆盖本轮发现的问题或当前 provider 阻塞。
 
 ## 保持的职责与边界
@@ -62,5 +62,6 @@ APK 只有构建和 manifest/member 静态证明，设备运行及方法体等�
 上游更新按 `docs/UPSTREAM-MAINTENANCE.md` 做只读比较。只吸收改善真实缺口的
 变化，记录 source/patch/fork 身份、影响、focused checks 和回滚点；无需跟随
 每次上游发布。交付写明实际范围、结果状态、cleanup、commit、GitHub 链接和
-尚存 provider 边界。验收记录与仓库状态一致后停止，不把未来每种目标都变成
+尚存 provider 边界。RF-26 还要求阅读 bridge 的 workflow、related_routes 和
+next_stage，以便混合任务和 follow-up 不依赖聊天记忆。验收记录与仓库状态一致后停止，不把未来每种目标都变成
 本次发布的必做测试。

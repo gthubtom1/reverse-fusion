@@ -30,3 +30,8 @@ packing/unpacking, anti-analysis, OLLVM, .NET obfuscation, Android dynamic DEX/J
 and JS/WASM context. Routes expose their required reads and fail when required
 support is missing. Content preservation and decision-contract tests do not
 qualify every protector or dynamic provider; see `REVERSE-CAPABILITY-AUDIT.md`.
+
+RF-26 adds observable aggregation handoff: mixed targets retain secondary route
+reads, reconstruction requests expose R46 as the next stage, normal development
+stays host-native, and follow-up resumes an existing case. This is an orchestration
+contract; it does not upgrade planned provider rows into target-level passes.
