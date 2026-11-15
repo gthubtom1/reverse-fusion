@@ -1,0 +1,47 @@
+{
+  "stage": "RF-28",
+  "state": "runtime-deployment-verified; external candidate comparison pending",
+  "repository_commit": "95c93d9",
+  "clean_remote_base_commit": "7380242",
+  "clean_remote_verified_commit": "95c93d9",
+  "core_deployment": {
+    "missing": [],
+    "scope": "required runtime installation; generated workflow and target acceptance remain separate",
+    "status": "installed"
+  },
+  "rea": {
+    "version": "6.9.0",
+    "node": "v24.22.1",
+    "runtime_source": "fresh checkout local pinned Node, not global PATH",
+    "catalog_tools": 255,
+    "catalog_prompts": 6,
+    "catalog_digest": "2c725b48818ac5266198069330907c657f0fa2b6b8236065e5a191e20d95c2d7"
+  },
+  "spec": {
+    "version": "1.4.1.dev0",
+    "source_commit": "2ee2b1e8005905db05f5717300a469b3068b908f",
+    "external_generated_workflow": "constitution/specify/clarify/plan/tasks/analyze actually executed; implementation pending"
+  },
+  "craft": {
+    "engine_source_commit": "8374ad71544f2cc44698ea74ef990aa31600bac6",
+    "adapter_version": "0.1.0",
+    "binary_sha256": "a25aa377931267e3bd6082889e0eb529d497bbc72e8147ae9b1e4c321400a5d9",
+    "archive_sha256": "3b1711a13daa835d73b7d4987ab28248eac7f60d1b1fb2cc88ed2cbb03f92b0f",
+    "release": "https://github.com/gthubtom1/reverse-fusion/releases/tag/craft-native-v0.1.0-rf28.1",
+    "fresh_download_verified": true,
+    "source_patch_replay": "pass LF-normalized",
+    "real_native_tests": 4,
+    "upstream_quoted_command_regression": 1
+  },
+  "tests": {
+    "product": 69,
+    "inherited_reconstruction": 39,
+    "clean_checkout_cross_project_native_core": 13
+  },
+  "host_install": {
+    "client": "codex",
+    "global_adapter_in_clean_test": false,
+    "status": "installed"
+  },
+  "business_acceptance": "not-performed; runtime checks and synthetic lifecycle are not target equivalence"
+}

@@ -35,3 +35,10 @@ RF-26 adds observable aggregation handoff: mixed targets retain secondary route
 reads, reconstruction requests expose R46 as the next stage, normal development
 stays host-native, and follow-up resumes an existing case. This is an orchestration
 contract; it does not upgrade planned provider rows into target-level passes.
+
+RF-28 adds a real external-workspace K/q/R JavaScript integration slice: official
+Spec workflow, pinned native Craft writes/checks and finite 49+79 original/
+candidate replay with seven negative variants. This is a component-composition
+qualification, not an upgrade of every family row above. Static REA comparisons
+retain partial coverage and whole-application obligations remain unknown. See
+[NATIVE-COMPONENTS.md](NATIVE-COMPONENTS.md) and the RF-28 checkpoint.

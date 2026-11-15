@@ -1,0 +1,272 @@
+{
+  "stage": "RF-28",
+  "scope": "worker K/q/R finite integration slice only; whole application remains unknown",
+  "original_worker_sha256": "9219fce4e182f2f52d4009955099bf6d0cfc71e9a52af775e6f89a10e64dc849",
+  "candidate_sha256": "e56f763198367f7ab9c764c633c574d607638ac0c6858cb07090fd41028bed43",
+  "fixture_commitment": "d3e7248bcbd5700645b6953780fdf3ca078a54d195dccb2c9c921e029eecd0a7",
+  "comparator_commitment": "1a3544acc188423dda2651c55b8fc8bc888c872f92863bd6745570079db027aa",
+  "finite_runtime": {
+    "status": "pass",
+    "cases": 79,
+    "matches": 79,
+    "node": "v24.22.1",
+    "icu": "78.3"
+  },
+  "negative_controls": [
+    {
+      "variant": "base-inversion",
+      "status": "expected-fail",
+      "matches": 70,
+      "mismatches": 9,
+      "report_sha256": "cae8eae0c20a3bf6bf723827a62e530ab601f9ce1701b09d0f56c1d4677807de"
+    },
+    {
+      "variant": "reverse-filter-order",
+      "status": "expected-fail",
+      "matches": 78,
+      "mismatches": 1,
+      "report_sha256": "258ff4423467165e23b724001d2b7abd21a21731e2df63fa8da91c099d7ed95a"
+    },
+    {
+      "variant": "stringify-ids",
+      "status": "expected-fail",
+      "matches": 24,
+      "mismatches": 55,
+      "report_sha256": "4fb831111f9853dcc06aa7270d7fec63e289a6ed8df73cb54863d29d67e3ab5a"
+    },
+    {
+      "variant": "fallback-deduplicate",
+      "status": "expected-fail",
+      "matches": 65,
+      "mismatches": 14,
+      "report_sha256": "f6bb8fc50fc79bb663dd8224ae7b1ce2554c3121097a85cc036f4e7b245ebcdf"
+    },
+    {
+      "variant": "reverse-child-sort",
+      "status": "expected-fail",
+      "matches": 53,
+      "mismatches": 26,
+      "report_sha256": "1e6f6c03bfc5e1e81a4e1cd9dd6aa4d1e062d4a1cc8a448abfd98bf9df0c575f"
+    },
+    {
+      "variant": "deep-clone-alias",
+      "status": "expected-fail",
+      "matches": 27,
+      "mismatches": 52,
+      "report_sha256": "497cc51e9ed0bd855ab346e4a63c476eec8603d57068b84a2e89064632f31a44"
+    },
+    {
+      "variant": "swallow-errors",
+      "status": "expected-fail",
+      "matches": 73,
+      "mismatches": 6,
+      "report_sha256": "a3830110db9f39d20341ded87215770294480b094b1f37b2c28b1a0b81b002f0"
+    }
+  ],
+  "native_craft": {
+    "session_phase": "finished",
+    "frozen_inputs": 50,
+    "operations": [
+      {
+        "op": "prepare",
+        "returncode": 0
+      },
+      {
+        "op": "build",
+        "returncode": 0
+      },
+      {
+        "op": "check",
+        "returncode": 0,
+        "check_succeeded": false
+      },
+      {
+        "op": "build",
+        "returncode": 0
+      },
+      {
+        "op": "check",
+        "returncode": 0,
+        "check_succeeded": true
+      },
+      {
+        "op": "refine",
+        "returncode": 0
+      },
+      {
+        "op": "check",
+        "returncode": 0,
+        "check_succeeded": false
+      },
+      {
+        "op": "refine",
+        "returncode": 0
+      },
+      {
+        "op": "check",
+        "returncode": 0,
+        "check_succeeded": true
+      },
+      {
+        "op": "return_summary",
+        "returncode": 0
+      },
+      {
+        "op": "cleanup",
+        "returncode": 0
+      }
+    ],
+    "final_contract_tests": {
+      "passed": 52,
+      "total": 52
+    }
+  },
+  "official_rea_static": {
+    "authority": "official REA static shape comparison, no runtime equivalence claim",
+    "left_bundle_sha256": "8053e0609889425997c3b45164f13fb79f89b28d86d5047c6c489fbf51a26f37",
+    "right_bundle_sha256": "0bd243b0a9e1b07bd209e6d110830a97a080b67588444542036e46c78d845e72",
+    "results": [
+      {
+        "export": "K",
+        "evidence_id": "ev_899a8205bf8d8aebd0f0dd0a3c24f2ee38903b18a7c018ed01f0a42362a4873c",
+        "coverage": {
+          "status": "partial",
+          "left_graph_status": "partial",
+          "right_graph_status": "partial",
+          "paired_variants": 0,
+          "unpaired_left_variants": 1,
+          "unpaired_right_variants": 4,
+          "omitted_left_variants": 0,
+          "omitted_right_variants": 0,
+          "left_source_omitted_variants": 0,
+          "right_source_omitted_variants": 0,
+          "left_omitted_fields": 0,
+          "right_omitted_fields": 0,
+          "left_omitted_property_coverage": 0,
+          "right_omitted_property_coverage": 0,
+          "omitted_candidates": 0,
+          "omitted_changes": 0
+        },
+        "business_acceptance": "not-performed"
+      },
+      {
+        "export": "q",
+        "evidence_id": "ev_524e1e4a11bc2892aed3e46bcc78b0579e0c1e71213e4b9786910c7590bf35e1",
+        "coverage": {
+          "status": "partial",
+          "left_graph_status": "partial",
+          "right_graph_status": "partial",
+          "paired_variants": 0,
+          "unpaired_left_variants": 1,
+          "unpaired_right_variants": 1,
+          "omitted_left_variants": 0,
+          "omitted_right_variants": 0,
+          "left_source_omitted_variants": 0,
+          "right_source_omitted_variants": 0,
+          "left_omitted_fields": 0,
+          "right_omitted_fields": 0,
+          "left_omitted_property_coverage": 0,
+          "right_omitted_property_coverage": 0,
+          "omitted_candidates": 0,
+          "omitted_changes": 0
+        },
+        "business_acceptance": "not-performed"
+      },
+      {
+        "export": "R",
+        "evidence_id": "ev_703e44eda7f7e91d9e1a63ea14332797a5aadbd0163496ff1b6ef6a78c87429b",
+        "coverage": {
+          "status": "partial",
+          "left_graph_status": "partial",
+          "right_graph_status": "partial",
+          "paired_variants": 0,
+          "unpaired_left_variants": 1,
+          "unpaired_right_variants": 1,
+          "omitted_left_variants": 0,
+          "omitted_right_variants": 0,
+          "left_source_omitted_variants": 0,
+          "right_source_omitted_variants": 0,
+          "left_omitted_fields": 0,
+          "right_omitted_fields": 0,
+          "left_omitted_property_coverage": 0,
+          "right_omitted_property_coverage": 0,
+          "omitted_candidates": 0,
+          "omitted_changes": 0
+        },
+        "business_acceptance": "not-performed"
+      }
+    ]
+  },
+  "external_chat": "01a1e105-b6fb-7012-a05a-4f7aa34ac2e6",
+  "evidence_authority": "finite runtime is independent maintainer replay, not native REA process proof; static results retain canonical official Evidence IDs",
+  "unknowns": [
+    "whole application license/server/game",
+    "arbitrary inputs and other runtimes",
+    "full semantic graph obligations"
+  ],
+  "spec_converge": {
+    "status": "converged within finite feature",
+    "workflow": "official generated speckit-converge",
+    "report_sha256": "e616f50687e0cb8b4afa7d303e6bc31e8c44916e6fafee5a05c40036d2e03f58",
+    "source_commit": "2ee2b1e8005905db05f5717300a469b3068b908f",
+    "tasks_with_execution_basis": 22
+  },
+  "development_runtime": {
+    "cases": 49,
+    "matches": 49,
+    "passed": true
+  },
+  "native_rea_coverage": {
+    "status": "unknown",
+    "reasons": [
+      {
+        "code": "owner-distribution-unknown",
+        "subject_id": "surface:worker:K",
+        "detail": "Owner distribution state is unknown."
+      },
+      {
+        "code": "owner-distribution-unknown",
+        "subject_id": "surface:worker:R",
+        "detail": "Owner distribution state is unknown."
+      },
+      {
+        "code": "owner-distribution-unknown",
+        "subject_id": "surface:worker:q",
+        "detail": "Owner distribution state is unknown."
+      },
+      {
+        "code": "package-proof-missing",
+        "subject_id": "authority-independence",
+        "detail": "Required package or integration proof is missing."
+      },
+      {
+        "code": "package-proof-missing",
+        "subject_id": "build",
+        "detail": "Required package or integration proof is missing."
+      },
+      {
+        "code": "verifier-missing",
+        "subject_id": "claim:worker:K",
+        "detail": "No verifier contract covers this claim."
+      },
+      {
+        "code": "verifier-missing",
+        "subject_id": "claim:worker:R",
+        "detail": "No verifier contract covers this claim."
+      },
+      {
+        "code": "verifier-missing",
+        "subject_id": "claim:worker:q",
+        "detail": "No verifier contract covers this claim."
+      }
+    ],
+    "ledger_required_open": 33,
+    "ledger_verified": 0
+  },
+  "final_case_review": {
+    "status": "PASS",
+    "evidence": 37,
+    "errors": 0,
+    "warnings": 0
+  }
+}

@@ -1,0 +1,103 @@
+{
+  "ok": true,
+  "data": {
+    "boundary_id": "worker-finite-49-plus-79",
+    "status": "unknown",
+    "summary": {
+      "required_surfaces": 3,
+      "required_claims": 3,
+      "reasons": 8
+    },
+    "reasons": [
+      {
+        "code": "owner-distribution-unknown",
+        "subject_id": "surface:worker:K",
+        "detail": "Owner distribution state is unknown."
+      },
+      {
+        "code": "owner-distribution-unknown",
+        "subject_id": "surface:worker:R",
+        "detail": "Owner distribution state is unknown."
+      },
+      {
+        "code": "owner-distribution-unknown",
+        "subject_id": "surface:worker:q",
+        "detail": "Owner distribution state is unknown."
+      },
+      {
+        "code": "package-proof-missing",
+        "subject_id": "authority-independence",
+        "detail": "Required package or integration proof is missing."
+      },
+      {
+        "code": "package-proof-missing",
+        "subject_id": "build",
+        "detail": "Required package or integration proof is missing."
+      },
+      {
+        "code": "verifier-missing",
+        "subject_id": "claim:worker:K",
+        "detail": "No verifier contract covers this claim."
+      },
+      {
+        "code": "verifier-missing",
+        "subject_id": "claim:worker:R",
+        "detail": "No verifier contract covers this claim."
+      },
+      {
+        "code": "verifier-missing",
+        "subject_id": "claim:worker:q",
+        "detail": "No verifier contract covers this claim."
+      }
+    ],
+    "recommended_probes": [
+      {
+        "operation": "reconcile_reconstruction_owner",
+        "subject_id": "surface:worker:K",
+        "rationale": "Owner distribution state is unknown."
+      },
+      {
+        "operation": "reconcile_reconstruction_owner",
+        "subject_id": "surface:worker:R",
+        "rationale": "Owner distribution state is unknown."
+      },
+      {
+        "operation": "reconcile_reconstruction_owner",
+        "subject_id": "surface:worker:q",
+        "rationale": "Owner distribution state is unknown."
+      },
+      {
+        "operation": "verify_reconstruction_package",
+        "subject_id": "authority-independence",
+        "rationale": "Required package or integration proof is missing."
+      },
+      {
+        "operation": "verify_reconstruction_package",
+        "subject_id": "build",
+        "rationale": "Required package or integration proof is missing."
+      },
+      {
+        "operation": "run_reconstruction_verifier",
+        "subject_id": "claim:worker:K",
+        "rationale": "No verifier contract covers this claim."
+      },
+      {
+        "operation": "run_reconstruction_verifier",
+        "subject_id": "claim:worker:R",
+        "rationale": "No verifier contract covers this claim."
+      },
+      {
+        "operation": "run_reconstruction_verifier",
+        "subject_id": "claim:worker:q",
+        "rationale": "No verifier contract covers this claim."
+      }
+    ],
+    "evidence_ids": [
+      "ev_ef8d80bbe9b06decc99164939e9e320a82c2996a82568c4a8843c8efa44eb74f"
+    ]
+  },
+  "meta": {
+    "command": "evaluate-reconstruction-coverage",
+    "duration": "1449ms"
+  }
+}

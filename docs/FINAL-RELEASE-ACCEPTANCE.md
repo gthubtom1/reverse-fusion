@@ -1,9 +1,26 @@
 # v1 release acceptance
 
+RF-28 supersedes the former interface-only deployment criterion. Real REA 6.9.0,
+official Spec Kit 1.4.1.dev0 and the actual pinned Craft engine adapter are installed.
+The published Windows x64 component archive was downloaded and verified by a
+fresh remote clone through the DEFAULT installation path, including local Node
+fallback. Thirteen clean-checkout integration tests passed. Detailed runtime
+records: [deployment](../evidence/rf28/deployment.json).
+
+The external outcome project executed official generated Spec workflow, native
+Craft prepare/build/check/refine/summary/cleanup and the additional session finish.
+Its selected K/q/R candidate matched 49 development cases and 79 precommitted
+maintainer inputs; seven deliberately wrong variants all failed comparison.
+Official REA candidate analysis and three static export comparisons actually ran;
+static coverage remains partial. Official Spec converge completed; real coverage remains unknown and the ledger
+retains 33 required_open/0verified, as recorded in checkpoint002; none of these facts establishes whole-app equivalence.
+See [finite integration](../evidence/rf28/finite-worker-integration.json) and
+[RF-28 checkpoint](../checkpoints/RF-28-20261116-002.md).
+
 The table below is the historical RF-25/RF-26 release baseline of product `1.0.0`.
 RF-27 reopened cross-project execution, implementation handoff and live runtime
 integration after an actual external chat exposed gaps. Current repair status
-comes from `docs/CURRENT-STATE.md` and the latest RF-27 checkpoint, not from this
+comes from `docs/CURRENT-STATE.md` and the latest RF-28 checkpoint, not from this
 baseline's closure. Historical fixture results do not certify a new user target.
 The baseline included a remote fresh clone of its audited source commit; its
 finite runtime boundaries remain explicit.
@@ -31,7 +48,7 @@ The canonical IDs are in `evidence/rf22/manifest.json`; this table does not keep
 a second independently edited list of IDs. The RF-25 and RF-26 checkpoints record exact
 test counts, clone commit and remaining provider boundaries after final checks.
 
-## Retained runtime boundaries
+## Historical RF-25/RF-26 runtime boundaries
 
 - Current-session Builder uses the already active host and adds no CLI account
   or model dependency. Optional CLI transport has its own live status.

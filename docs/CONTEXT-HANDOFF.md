@@ -10,7 +10,7 @@ Current handoff: RF-28, product `1.0.0`, 2026-11-16.
 - Deployment entry: `docs/AGENT-BOOTSTRAP.md`. This travels with the repository;
   the user does not need to keep or repeatedly paste a chat prompt.
 - Current status and next action: `docs/CURRENT-STATE.md`. Audit closure and
-  exact scope and checks: `checkpoints/RF-28-20261116-001.md`.
+  exact scope and checks: `checkpoints/RF-28-20261116-002.md`.
 - Product contract: `docs/PRODUCT-GOAL.md`. Architecture is an adaptive helper
   for the current host, not a model choice or fixed reverse-engineering order.
 - Default reconstruction writer: actual Craft engine, with current host reasoning.
@@ -42,6 +42,8 @@ Current handoff: RF-28, product `1.0.0`, 2026-11-16.
   restore is implemented. Old installs and host runtime configuration stay outside
   this repository's write scope; the managed Codex adapter is removed by receipt.
 
-RF-27 corrects gaps not covered by RF-26's local contract closure. RF-28 requires real component installation and composition; the next action is
-external official Spec → native Craft → independent comparison acceptance. New observations can supersede historical results; never rewrite a
+RF-27 corrects gaps not covered by RF-26's local contract closure. RF-28 requires real component installation and composition; that finite external Spec → native Craft → independent comparison chain is
+verified at49+79inputs, with seven negative variants detected. Official coverage
+remains unknown and33open obligations persist; resume a target case at its actual
+unknowns rather than calling the whole application complete. New observations can supersede historical results; never rewrite a
 historical checkpoint to imply it measured a later checkout or host state.

@@ -1,13 +1,29 @@
 # Current State
 
 Stage: RF-28
-Status: required-component-composition-in-progress
+Status: real-core-deployment-and-finite-external-composition-verified
 
-The user requires real REA, Spec Kit and Craft deployment and participation.
-Host-authored tasks and a current-session boundary observer do not replace
-missing Spec/Craft components. Product acceptance is reopened; see
-`checkpoints/RF-28-20261116-001.md`. The earlier finite checks below remain
-valid at their stated scope, but are not completion of this requirement.
+Real REA 6.9.0, official Spec Kit 1.4.1.dev0 and the pinned actual Craft engine
+adapter are installed and participate in the external outcome project. The
+DEFAULT installation succeeded in a fresh remote clone, including local
+compatible Node and the digest-verified published Windows x64 Craft archive.
+Missing real components now block install success before global adapter writes.
+
+The independent outcome chat executed official Spec constitution/specify/clarify/
+plan/tasks/analyze/implement/converge, actual Craft native write/edit/commands/
+checks/summary/cleanup plus session observation, and actual REA analysis/static
+comparison/coverage/ledger calls. The finite K/q/R candidate matched49 development
+and79 precommitted maintainer inputs; seven wrong mutants were all detected.
+Final strict case review:37 Evidence,0errors/0warnings; handoff check PASS.
+These are finite component-composition results. Static coverage is partial;
+real native coverage is unknown and33required_open/0verified remain. Whole
+software license/server/game behavior and arbitrary target equivalence are not
+claimed. See `checkpoints/RF-28-20261116-002.md`, `docs/NATIVE-COMPONENTS.md`,
+`evidence/rf28/deployment.json` and `evidence/rf28/finite-worker-integration.json`.
+
+The earlier interface-only product completion claim did not meet the user's
+required component composition. This stage corrects that criterion and retains
+historical checks only at their actual scope.
 
 Product version: `1.0.0`. The retained Reverse domain contract version is
 `components/reverse-core/VERSION` (`1.9.0`); these are separate identities.
@@ -147,10 +163,11 @@ The full Web graph ledger is archived separately as `evidence/rf22/web/full-ledg
 
 ## Next action
 
-Finish RF-28 external official Spec → native Craft → independent original/candidate
-comparison and REA obligation integration, publish the verified component distribution,
-then deploy and check a fresh clone. Product acceptance remains reopened until these
-required operations complete. See `docs/NATIVE-COMPONENTS.md`.
+Use the deployed components for a new bounded target case, or resume the user's
+whole-application analysis with its retained unknowns. Runtime and workflow
+installation no longer require a missing-core workaround. For a new language,
+protector/device/site, collect target Evidence and adapt only demonstrated gaps;
+retain pass/fail/unknown/blocked at the actual target scope.
 
 The RF-25 remote clone started without
 old state, installed product 1.0.0 into a new venv, passed contracts/plan/doctor/

@@ -57,6 +57,9 @@ check request 为 `{"command":"与冻结清单完全相同的命令","timeout_se
 是 Craft workspace 的 `app/`。不把原版源码复制冒充独立实现。必要时 `refine` request 为
 `{"path":"app/main.ext","old_text":"原候选片段","new_text":"修改后片段"}`。
 修改会撤销过去检查的资格；重跑全部冻结检查后才能 `return_summary`、`cleanup`。
+官方 implement 的 hooks、checklists、任务依赖、失败检查和最终检查仍需执行。一个租约
+期间 Spec 输入保持冻结，逐任务结果先写该批独立日志；session finish 后才更新 tasks
+勾选和 converge。后续改规格或研究需要新批次，不能边改冻结任务边继续旧租约。
 失败退出/超时不通过，操作系统锁拒绝同一工作区并发写入。构建命令有真实 shell 效果，
 清单是审查边界，不是通用 OS 沙箱。不要将目标文本直接拼成命令。
 
@@ -64,3 +67,16 @@ check request 为 `{"command":"与冻结清单完全相同的命令","timeout_se
 结果、二进制摘要及请求摘要；`candidate` 仍不代表等价。独立比较原版/候选、故意错误
 对照、实际 REA comparison/proof/ledger 以及 Spec converge 分别记录实际范围和未决义务。
 某个纯函数切片通过不表示整个软件、在线授权、设备或游戏运行通过。
+
+REA 原生 JSON/bundle 按 UTF-8 读取（Python 显式 `encoding="utf-8-sig"`，Node 显式
+UTF-8），不要用 Windows 默认代码页重存证据。中文可能变成另一段合法文本，随后原生
+Evidence ID 完整性校验会正确拒绝它；不能刷新 ID 把误读内容伪装成原事实。
+已有两侧真实 application bundle 的 JS 导出静态比较可运行
+`[兼容Node] scripts/compare-js-exports.mjs [左bundle] [右bundle] [左模块] [右模块] [新输出目录] K q R`。
+该工具保留 UTF-8、原生结果和输入摘要；`coverage=partial` 继续保持 partial，不由
+exit 0 提升为运行等价。派生的原版导出 wrapper 要单独保留其源跨度与适配身份。
+
+需要把 scope 等活动文档作为带摘要的 Evidence 引用时，保留不可变版本快照，活动范围
+另存当前文档。后续范围追加不刷新旧 Evidence 的摘要或重写原生对象；历史指针迁移
+必须记录旧路径、相同字节摘要和原因，当前范围另立引用。用户已允许的同范围技术步骤
+无需每轮制造一次新的授权决定或重写 scope。

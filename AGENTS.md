@@ -14,6 +14,7 @@
 10. `RULES.md`；调用本地路由后读取返回的 `skill` 和 `required_reads`
 11. `docs/AGENT-BOOTSTRAP.md`；只给仓库 URL 时，以此文件作为唯一部署入口
 12. 跨项目分析/复刻读取 `docs/CROSS-PROJECT-WORKFLOW.md`
+13. 核心部署与真实 Spec/Craft 交接读取 `docs/NATIVE-COMPONENTS.md`
 
 工作规则：
 
@@ -23,6 +24,9 @@
 - 每个阶段只有一个下一步动作。
 - 任何来源、schema、scope、baseline、model、provider 或 writer 变化都要更新 checkpoint。
 - 不把安装成功、工具可见、Craft Ready、exit 0 或模型自述写成业务 acceptance。
+- 完整部署必须实际安装 REA、官方 Spec Kit 和原生 Craft engine；缺核心组件即部署未完成。
+  复刻实现执行官方生成的 Spec 工作流，并通过真实 Craft 工具写入、编辑、运行检查；
+  手写同名规格、session 观察器和离线复制不能替代实际组件。当前宿主负责推理，不另启模型。
 - RF-25 全量审计与 RF-26 聚合架构复核已闭合；当前完成范围和保留边界以
   `docs/CURRENT-STATE.md`、`docs/FINAL-RELEASE-ACCEPTANCE.md` 和最新 checkpoint 为准。
 - 安装只面向当前选定的一个宿主，并使用仓库 `.venv` 的 Python。Codex 部署还会写入
@@ -43,6 +47,6 @@
 - `bridge` 返回 `workflow`、`related_routes` 和 `next_stage`；普通开发保持
   `host-native`，follow-up 必须从现有开放 case 恢复。不要把一次 route pass 当成
   REA、Builder 或业务等价通过。
-- `bridge/session/build/craft --project-root` 指向当前成果项目，默认当前目录；共享仓库
-  只提供代码和资料。复刻案例进入 `session prepare` 时绑定原 handoff 与语义审查记录，
+- `bridge/session/build/craft/native-craft --project-root` 指向当前成果项目，默认当前目录；共享仓库
+  只提供代码和资料。复刻案例进入 `native-craft prepare` 时绑定原 handoff 与语义审查记录，
   关键未知项阻断受影响功能，不能在编码后补造冻结记录或自行缩减原定交付范围。
