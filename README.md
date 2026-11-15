@@ -3,10 +3,10 @@
 给当前 coding agent 使用的普通开发、逆向分析与独立复刻工具集。
 仓库：<https://github.com/gthubtom1/reverse-fusion>。
 
-产品版本 `1.0.0`，当前修复阶段 `RF-28`（真实核心组件部署与集成）。准确的验收结果、现场 provider 状态和
+产品版本 `1.0.0`，当前修复阶段 `RF-29`（白话入口、完整目标保留与新手实测）。准确的验收结果、现场 provider 状态和
 未覆盖范围分别保存在 [当前状态](docs/CURRENT-STATE.md)、
 [发布验收](docs/FINAL-RELEASE-ACCEPTANCE.md) 与
-[最新 checkpoint](checkpoints/RF-28-20261116-002.md)。历史 final 标签不覆盖这些记录。
+[最新 checkpoint](checkpoints/RF-29-20261116-001.md)。历史 final 标签不覆盖这些记录。
 
 ## 换电脑，只给仓库链接
 
@@ -36,6 +36,9 @@ cd reverse-fusion
 步骤见 [部署指南](docs/DEPLOYMENT-GUIDE.md) 和 [Codex 跨项目接入](docs/CODEX-INTEGRATION.md)。
 
 ## 在对话中怎么用
+
+**零基础先看 [白话使用指南](docs/BEGINNER-GUIDE.md)**。你说目标，智能体负责选领域、
+判断缺什么、调用组件并比较结果；不需要你编写专业流程提示词。
 
 - **正常开发**：直接描述要开发的网站、应用或其他项目。默认 `normal-dev`，
   不强制建立逆向 case，也不强制启动 REA、Spec、Builder 或 ledger。
@@ -83,30 +86,17 @@ cd reverse-fusion
 [组件清单](components/official/manifest.json)。
 
 Reverse 的保全清单含 skills 453、CTF sidecar 136、Burp 14 个文件，记录本地与上游
-摘要及 13 个有意适配。加壳、反调试、OLLVM、Android 动态 DEX/JNI/反 Frida、
+摘要及有意适配原因（准确数量以清单为准）。加壳、反调试、OLLVM、Android 动态 DEX/JNI/反 Frida、
 .NET 混淆和 JS VM/WASM 的方法与 helper 已保留；内容和路由可达不等于所有保护器
 已实测。详见 [能力迁移审计](docs/REVERSE-CAPABILITY-AUDIT.md)。
 
 ## 当前会话推理，Craft 实际执行
 
-当前 Codex、Pi 或 Claude agent 读取冻结任务与研究，通过真实 Craft engine 工具写候选，
-完整 `native-craft` 参数和 Spec 交接见 [真实组件](docs/NATIVE-COMPONENTS.md)。下面的 `session`
-仅是附加文件边界观察，不构成完整复刻路径。
-`session prepare/check/refine/finish` 只冻结输入并观察文件边界，不启动第二个 CLI、
-账号或模型；文件观察与业务验收分开。完整命令见部署指南的“当前会话 Builder”。
-
-```text
-[venv-python] -m reverse_fusion session prepare --receipt work/demo/session.json --workspace work/demo/candidate --tasks T-001 --task-file specs/demo/tasks.md --research-file work/demo/research.json --allowed-output src/main.ext
-# 当前 agent 实际读取输入、编写并审查候选
-[venv-python] -m reverse_fusion session check --receipt work/demo/session.json
-[venv-python] -m reverse_fusion session refine --receipt work/demo/session.json
-[venv-python] -m reverse_fusion session finish --receipt work/demo/session.json
-```
-
-观察器不充当操作系统沙箱，不能阻止 agent 工具本身在工作区外写入；当前 host
-仍负责写入范围。`build --host ...` 是独立资格化的可选子 CLI；`craft --source ...`
-只是离线复制 worker。旧文本 smoke、文件存在、工具可见、exit 0 或 Craft Ready
-都不是业务验收。
+当前宿主读取 [智能体工作合同](docs/AGENT-WORKFLOW.md)，按实际证据判断分析何时足以
+支持本批实现。执行官方 Spec 工作流并审查交接后，通过真实 Craft engine 写入/编辑
+候选和运行检查。实际参数见 [真实组件交接](docs/NATIVE-COMPONENTS.md)。
+`session` 仅是附加文件边界观察；`craft --source` 仅是离线夹具复制，均不替代真实实现。
+工具可见、文件存在、exit 0 或 Craft 状态都不等于原版功能已经复刻。
 
 ## 有限验收与实际边界
 

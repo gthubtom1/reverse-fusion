@@ -1,7 +1,15 @@
 # Current State
 
-Stage: RF-28
-Status: real-core-deployment-and-finite-external-composition-verified
+Stage: RF-29
+Status: novice-entry-repair-in-progress; RF-28 real-component qualification retained
+
+The user requires plain-language use by a novice, preservation of the whole
+product goal, adaptive investigation before implementation, and real components
+at the appropriate stages. RF-28's coached test does not establish this entry
+behavior. RF-29 adds a persisted original request and delivery objective separate
+from the current stage, domain-first routing, local-case continuation and the
+agent workflow plus beginner guide. A new uncoached chat test is still pending.
+Current checkpoint: `checkpoints/RF-29-20261116-001.md`.
 
 Real REA 6.9.0, official Spec Kit 1.4.1.dev0 and the pinned actual Craft engine
 adapter are installed and participate in the external outcome project. The
@@ -31,7 +39,7 @@ Product version: `1.0.0`. The retained Reverse domain contract version is
 RF-26 rechecked the RF-25 product claim and added a machine-readable aggregation
 handoff. That finite baseline is preserved in `docs/FINAL-RELEASE-ACCEPTANCE.md`;
 RF-27 reopened external-project integration based on real target observations.
-This file and the latest RF-28 checkpoint define the current repaired scope and
+This file and the latest RF-29 checkpoint define the current repaired scope and
 unresolved boundaries. Future target variants are new cases, not a requirement
 to pre-execute every possible program, architecture or protector.
 
@@ -92,9 +100,12 @@ code pages without requiring callers to set UTF-8 flags.
 - Normal development does not force a case. Analysis cases retain route,
   Evidence, limitations and conclusions. Reconstruction adds frozen tasks,
   a candidate, build/run, comparison, proof, cleanup and an obligation ledger.
-- The default Builder is the agent in the current conversation. `session
+- The host in the current conversation supplies reasoning to actual native Craft.
+  Native prepare/build/check/refine/summary/cleanup own the bounded candidate.
+  The separate `session
   prepare/check/refine/finish` freezes task/research hashes and observes allowed
-  candidate writes. These observations are not business acceptance. The current
+  candidate writes as an auxiliary observer. It does not replace native Craft.
+  These observations are not business acceptance. The historical RF-25
   host generated eight source files for Web, .NET and APK, then checked,
   reviewed/refined and finished that bounded session. No child CLI, account,
   provider or model is required for this path.

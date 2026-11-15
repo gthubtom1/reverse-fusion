@@ -14,9 +14,9 @@
 `components/reverse-core/preservation.json`、当前 checkpoint 和 Git 状态。
 具体目标还要读取本地路由返回的 `skill`、`required_reads` 和当前 case。
 
-当前维护阶段是 RF-28，产品版本为 `1.0.0`，Reverse 领域合同版本为 `1.9.0`。
+当前维护阶段是 RF-29，产品版本为 `1.0.0`，Reverse 领域合同版本为 `1.9.0`。
 是否已完成本轮审计，以 `CURRENT-STATE.md` 和
-`checkpoints/RF-28-20261116-002.md` 为准。RF-22/RF-23/RF-24/RF-26 的历史 final
+`checkpoints/RF-29-20261116-001.md` 为准。读取 `docs/AGENT-WORKFLOW.md` 和 `docs/BEGINNER-GUIDE.md`，从白话入口验收。RF-22/RF-23/RF-24/RF-26 的历史 final
 标签不覆盖本轮发现的问题或当前 provider 阻塞。
 
 ## 保持的职责与边界

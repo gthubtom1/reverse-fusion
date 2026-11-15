@@ -89,23 +89,13 @@ hook、模拟及设备的顺序由目标证据决定；路由和技能辅助模�
 ## 实际 Craft Builder 与附加观察
 
 宿主负责推理，通过真实 Craft engine 写候选并运行冻结的检查命令；必须先执行官方 Spec
-生成的工作流。完整 `native-craft` 接入见 [真实组件](NATIVE-COMPONENTS.md)。下列 session
-只做附加观察，不能替代正式 Spec 或 Craft。
+生成的工作流与交接审查。完整 `native-craft prepare/build/check/refine/return_summary/cleanup`
+命令见 [真实组件交接](NATIVE-COMPONENTS.md)。prepare 自带附加 session，不重复创建；
+检查完成后对同一 receipt 执行 session check/refine/finish，退出后再更新任务进度。
+文件边界观察与业务行为验收分别记录。选定路径限制不构成通用 OS 隔离。
 
-```text
-[venv-python] -m reverse_fusion session prepare --receipt work/[case]/session.json --workspace work/[case]/candidate --tasks T-001 --task-file specs/[feature]/tasks.md --research-file work/[case]/accepted-research.json --allowed-output src/main.ext
-# 当前宿主读取冻结文件，实际编写白名单内的候选
-[venv-python] -m reverse_fusion session check --receipt work/[case]/session.json
-# 当前宿主审查候选，必要时只修改白名单内文件
-[venv-python] -m reverse_fusion session refine --receipt work/[case]/session.json
-[venv-python] -m reverse_fusion session finish --receipt work/[case]/session.json
-```
-
-`--allowed-output` 相对于 candidate workspace，可重复。receipt 必须在 workspace
-外。该观察器核对冻结输入和文件边界，不能阻止 agent 自己工具的越界操作，也不
-证明候选行为正确。随后必须独立构建、运行或明确记 unknown，再做原版/候选对比
-和 ledger。可选 `build --host ...` 是独立子 CLI transport；`craft --source ...`
-是离线确定性复制 worker，均不可替代真实业务证明。
+面向用户的说法与开场示例见 [白话使用指南](BEGINNER-GUIDE.md)，智能体的选择依据见
+[工作合同](AGENT-WORKFLOW.md)。不要让新用户通过专业术语手工接线。
 
 ## 组件与目标边界
 

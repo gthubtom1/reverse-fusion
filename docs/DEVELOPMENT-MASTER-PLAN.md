@@ -1,5 +1,11 @@
 # Development Plan
 
+RF-29 now validates the ordinary-language entry, full-goal preservation and
+adaptive analysis-to-delivery contract. RF-28's coached external run qualifies
+real component composition, not novice use. Fix and deploy the shared entry,
+then create a new chat and project with only the original installer and a short
+ordinary request. Keep observations and any repair in the RF-29 checkpoint.
+
 RF-28 reopens product acceptance for required real REA, official Spec Kit and
 native Craft installation and composition. Default fresh-clone deployment and the external generated Spec workflow → actual
 native Craft candidate → independent finite comparison are verified. Full target
@@ -50,7 +56,7 @@ The final product contract remains `docs/PRODUCT-GOAL.md`.
    finite core lifecycle without old receipts. Record exact result/commit, push
    the final checkpoint and stop with a clean synchronized checkout.
 
-The current checkpoint is `checkpoints/RF-28-20261116-002.md`. Any incomplete
+The current checkpoint is `checkpoints/RF-29-20261116-001.md`. Any incomplete
 check remains explicit there and in CURRENT-STATE. After closure, subsequent
 work is a new target or selective upstream maintenance, not another endless
 retest of unrelated future variants.

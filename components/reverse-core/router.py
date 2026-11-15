@@ -181,6 +181,16 @@ def route(hint: str, *, primary: str | None = None) -> LocalRoute:
         else:
             confidence = "high" if len(scores) == 1 else "medium"
 
+    # A bare request to recreate an unidentified target is a delivery objective,
+    # not evidence that the reconstruction implementation stage is ready.
+    # Keep explicit R46 and existing-implementation verification workflows.
+    if (not primary and selected == 'R46'
+            and re.search(r'复刻|仿制|reconstruct|replica|re-?implement', text, re.I)
+            and not re.search(r'已确认|已审查|验收|验证|追版|回归|reviewed|verification|equivalence|(?:reconstruction|replica)\s+implementation|verify.{0,12}existing|existing.{0,12}verif|upstream.{0,6}update', text, re.I)):
+        domains = [item for item in data['priority'] if item != 'R46' and item in scores]
+        selected = max(domains, key=lambda item: scores[item]) if domains else data['meta']['fallbackId']
+        notes.append('Reconstruction intent starts with domain analysis; refine the domain from actual artifacts before R46 implementation.')
+
     selected_data = data["routes"][selected]
     descriptor = _descriptor(selected, selected_data)
     skill, skill_available = _local_skill(selected_data)
@@ -208,7 +218,7 @@ def route(hint: str, *, primary: str | None = None) -> LocalRoute:
             "activation": "explicit-secondary-route",
         })
     next_stage = None
-    if selected != "R46" and ("R46" in scores or re.search(r"复刻|reconstruct|replica|behavior.?equivalence", text, flags=re.IGNORECASE)):
+    if selected != "R46" and ("R46" in scores or re.search(r"复刻|仿制|照着.{0,10}(?:做|开发)|做(?:个|一[个份套])?.{0,8}一(?:模一样|样)|reconstruct|replica|re-?implement|behavio[u]?r.?equivalence", text, flags=re.IGNORECASE)):
         recon = data["routes"]["R46"]
         recon_skill, recon_available = _local_skill(recon)
         _, recon_reads, recon_missing = runtime_context("R46", hint, recon_skill)

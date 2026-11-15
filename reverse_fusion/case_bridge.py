@@ -130,7 +130,8 @@ def _validate_workflow(value: Any, label: str = "workflow") -> None:
         "next_stage", "required_artifacts", "activation_required",
         "business_acceptance_boundary",
     }
-    if not isinstance(value, dict) or set(value) != required:
+    optional = {'objective', 'user_request'}
+    if not isinstance(value, dict) or not required <= set(value) or set(value) - required - optional:
         raise ValueError(f"{label} is malformed")
     if value["schema_version"] != 1 or value["mode"] not in {"analysis", "reconstruction", "follow-up", "normal-dev"}:
         raise ValueError(f"{label} has an invalid schema or mode")
@@ -143,9 +144,14 @@ def _validate_workflow(value: Any, label: str = "workflow") -> None:
             raise ValueError(f"{label}.{key} must be a list")
     if not isinstance(value["next_stage"], (dict, type(None))):
         raise ValueError(f"{label}.next_stage must be an object or null")
+    if 'objective' in value and value['objective'] not in {'analysis', 'reconstruction', 'normal-dev'}:
+        raise ValueError(f'{label}.objective is invalid')
+    if 'user_request' in value and (not isinstance(value['user_request'], str) or not value['user_request'].strip()):
+        raise ValueError(f'{label}.user_request must retain the original nonempty request')
 
 
-def workflow_contract(route: dict[str, Any], mode: str, *, follow_up: bool = False) -> dict[str, Any]:
+def workflow_contract(route: dict[str, Any], mode: str, *, follow_up: bool = False,
+                      objective: str | None = None, user_request: str | None = None) -> dict[str, Any]:
     """Build the explicit handoff without eagerly loading downstream tools."""
     if mode == "normal-dev":
         stage = "host-native"
@@ -168,7 +174,7 @@ def workflow_contract(route: dict[str, Any], mode: str, *, follow_up: bool = Fal
         activation = ["load existing case.json", "resume only from recorded refs"]
         boundary = ["missing case is blocked", "do not recreate a new route silently"]
     primary = route.get("primary") or route.get("primary_id")
-    return {
+    result = {
         "schema_version": 1,
         "mode": mode,
         "stage": stage,
@@ -179,11 +185,46 @@ def workflow_contract(route: dict[str, Any], mode: str, *, follow_up: bool = Fal
         "activation_required": activation,
         "business_acceptance_boundary": boundary,
     }
+    if objective:
+        result['objective'] = objective
+    if user_request and user_request.strip():
+        result['user_request'] = user_request
+    return result
+
+
+def request_intent(hint: str) -> str:
+    """Conservative entry hints; the host refines these from conversation/evidence.
+
+    Delivery intent does not establish analysis readiness or permission to code.
+    """
+    text = hint or ''
+    if re.fullmatch(r'\s*(?:继续(?:吧|做|分析|上次的|刚才那个项目[，,]?接着没完成的地方做)?|接着(?:做|来)?|恢复(?:上次)?|continue|resume)[。.!！\s]*', text, re.I):
+        return 'follow-up'
+    if re.search(r'(?:只|仅|先).{0,4}(?:分析|研究|看懂).{0,16}(?:不(?:要|用)?|别|暂不).{0,4}(?:复刻|实现|写|开发)|(?:不要|不用|暂不|别).{0,3}(?:复刻|实现|写代码)', text):
+        return 'analysis'
+    if re.search(r'复刻|仿制|照着.{0,10}(?:做|开发)|做(?:个|一[个份套])?.{0,8}一(?:模一样|样)|reconstruct|replica|re-?implement|clone.?behavior|behavio[u]?r.?equivalence', text, re.I):
+        return 'reconstruction'
+    return 'analysis' if _reverse_intent(text) else 'normal-dev'
+
+
+def discover_open_cases(project: Path) -> list[str]:
+    """Find project-local direct cases for a plain 'continue', never old projects."""
+    found = []
+    for record in sorted((project / 'work').glob('*/case.json')):
+        if record.is_symlink() or record.parent.is_symlink() or not record.resolve().is_relative_to(project.resolve()):
+            continue
+        try:
+            name = record.parent.relative_to(project).as_posix()
+            if load_case_record(project, name):
+                found.append(name)
+        except (ValueError, OSError):
+            continue
+    return found
 
 
 def _reverse_intent(hint: str) -> bool:
     return bool(re.search(
-        r"逆向|反编译|脱壳|复刻|重构目标|reverse|decompil|reconstruct|replica|reimplement|re-?implement|clone.?behavior|implementation.?equivalence|obfuscat|anti[- ]?(debug|analysis|vm|hook)|packed|protected|binary analysis|apk analysis|\.exe|\.apk",
+        r"逆向|反编译|脱壳|复刻|重构目标|看懂.{0,8}(?:软件|程序|网站|算法|APK)|分析.{0,8}(?:软件|程序|安装包|网站|APK|抓包|协议)|取证|渗透测试|漏洞审计|reverse|decompil|reconstruct|replica|reimplement|re-?implement|clone.?behavior|implementation.?equivalence|obfuscat|anti[- ]?(debug|analysis|vm|hook)|packed|protected|binary analysis|apk analysis|forensic|penetration test|\.exe|\.apk",
         hint or "", flags=re.IGNORECASE,
     ))
 

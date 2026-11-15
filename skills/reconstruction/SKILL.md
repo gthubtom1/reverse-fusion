@@ -3,14 +3,17 @@ name: reconstruction
 description: >-
   证据驱动的独立功能复刻、复刻验收与已复刻项目跟随上游更新。
   在同一授权 case 内衔接原生分析、REA Evidence、Spec Kit 规格/实现及原版行为对照；
-  支持保留我方界面的 O/C/N 三方追版，不承诺恢复原作者源码或任意程序全局等价。
+  支持保留我方界面的 O/C/N 三方追版，以用户要求的交付行为、使用效果和真实比较为准。
 ---
 
 # 独立复刻与追版 / Reconstruction
 
 ## Reverse Fusion 当前宿主适配
 
-在本仓库内，先以根 `RULES.md` 和 `docs/AGENT-BOOTSTRAP.md` 解释下列继承流程。
+在本仓库内，先读工具仓库 `docs/AGENT-WORKFLOW.md`，保留用户原话与最终交付目标。
+白话复刻请求先分析；不得把界面提取或有限演示自行替代整个产品。先调查行为依赖、
+错误和状态，证据足够才进入本批实现；有缺口回相关领域补证，不用默认值猜测。
+先以根 `RULES.md` 和 `docs/AGENT-BOOTSTRAP.md` 解释下列继承流程。
 当前宿主负责推理与候选内容；复刻实现必须通过已安装的真实 Craft engine 执行
 workspace、build_file_write/edit、build_command_run 和检查生命周期。先执行安装的官方
 Spec Kit 在成果项目生成的 constitution/specify/clarify/plan/tasks/analyze 工作流，再经

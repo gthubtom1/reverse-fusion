@@ -2,10 +2,9 @@
 
 本文件是项目的最高层产品目标。它高于阶段性 checkpoint、fixture 通过记录和 provider 的当前状态。任何阶段都不能用“框架合同通过”替代本文件定义的产品完成。
 
-RF-28 用户明确重申：Reverse、REA、Spec Kit、Craft 必须真实部署并参与聚合。
-允许为能力缺口维护受控适配或 fork；宿主手写文件、fixture copy 和 session 文件
-观察不能替代缺失组件。下文历史 current-session 默认路径只能作为宿主编码 transport，
-不能再被解释为原生 Craft 已完成。当前产品完成门重新打开，实际修复见最新 checkpoint。
+RF-29 将零基础用户的真实使用作为验收：白话目标应触发领域调查和适用组件协作，
+保持最终交付意图、按证据调整路线并在必要处请求具体帮助。受控专业提示下的组件
+测试不能代替这种验证。当前阶段以 CURRENT-STATE 和最新 checkpoint 为准。
 
 ## 产品要解决的问题
 
@@ -22,7 +21,7 @@ Reverse Fusion 最终要提供一套可迁移的智能体工作流：用户把�
   -> 候选构建与运行
   -> 原版/候选差分
   -> 修正任务
-  -> obligation ledger 闭合
+  -> 原目标范围验收与 obligation ledger；未决项保留补证/修正路径
 ```
 
 WASM fixture 只能证明这条链的一个最小样本，不能代表任意目标已经完成。
@@ -80,16 +79,14 @@ Reverse Fusion 不选择、不绑定、不下载模型，也不把某个模型�
 
 ## 当前版本的正确标签
 
-RF-22 的 `reconstruction-product-v1-final` 是历史标签，RF-23/RF-24 随后增加
-部署和 Reverse 保全。RF-25 全量审计修复了 Builder/归档/runner/文档问题；RF-26
-又把混合领域、R46 复刻阶段、normal-dev 防侵入和 follow-up 恢复做成可观察合同，
-并通过 focused route/workflow 测试。当前状态以 `docs/CURRENT-STATE.md` 与
-`checkpoints/RF-26-20261115-001.md` 为准。
-产品版本为 `1.0.0`，声明范围内的本轮有限门已闭合；下列目标/provider 边界继续保留。
+RF-25/RF-26 的历史合同结果与 RF-28 的真实组件部署/有限链路结果，分别保留各自范围。
+RF-29 在此基础上验证自然用户入口、自适应方法、目标保持和新工作区真实对话。
+未完成这些检验前不宣称完整产品已经满足零基础使用要求。组件安装、有限测试和
+用户整个目标的完成是不同的声明，不能互相代替。
 
-本轮声明范围：WASM 有限执行与三态；Web answer 有限重放 ledger ready，而完整
-graph ledger 为 unknown、4 个 required open（2 packaging、2 application/parser）；
-PE/.NET 有限方法运行 ledger ready；APK 构建与 manifest/member 投影 ledger ready。
-APK 的设备运行、方法体等价和有效 Activity 启动均不由静态证明建立。未知项保留，
-不靠移除 comparison links 或缩写报告把它们升级成完整目标等价。未来目标沿用
-同一合同建立 case、probe 或 provider，无需预先穷举每种变体。
+面向用户的入口见 [白话指南](BEGINNER-GUIDE.md)，宿主执行依据见
+[智能体工作合同](AGENT-WORKFLOW.md)。产品目标是按用户要求尽力完成可观察的产品
+行为与使用效果；依赖或环境不足时说明影响、继续可行调查并请求必要帮助，不能把
+未证实的行为写成默认实现。新案例不要求预先跑遍所有未来程序，但必须有正确的
+调查、适配、比较和恢复路径。当前主要验证环境为 Windows x64 + Codex，其他宿主
+和系统的可用性按实测报告，不从文档设计推定通过。

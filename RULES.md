@@ -20,6 +20,9 @@ activate every analysis tool or require a reverse case for ordinary development.
    task commands. Skill references belong to the shared checkout; case/task/
    candidate files belong to the outcome project. Read
    `docs/CROSS-PROJECT-WORKFLOW.md` before handing analysis into implementation.
+   Read `docs/AGENT-WORKFLOW.md` for ordinary-language entry, preserving the
+   complete delivery objective, semantic readiness and useful user questions.
+   A reconstruction objective begins with analysis; a route is not readiness.
 3. Keep the original target read-only and put derived artifacts in the active
    repository-local case. `bridge --record` saves a recovery pointer, not
    permission, a completed scope, work items, Evidence or business acceptance.

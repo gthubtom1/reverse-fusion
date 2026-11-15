@@ -22,6 +22,8 @@ from .case_bridge import (
     record_case_pointer,
     resolve_case_root,
     workflow_contract,
+    request_intent,
+    discover_open_cases,
 )
 from .contracts import ContractError, check_contracts, read_json, sha256_file
 from .host import adapter_plan, detect_hosts, read_handshake_record, probe_hosts
@@ -250,7 +252,24 @@ def cmd_bridge(args: argparse.Namespace) -> int:
     # normal-dev is host-native by default.  Reverse is activated only by an
     # explicit reverse/analysis/reconstruction request, so a frontend or API
     # implementation task is not silently claimed by a security route.
-    effective_mode = "analysis" if args.mode == "normal-dev" and _reverse_intent(args.hint) else args.mode
+    intent = request_intent(args.hint)
+    effective_mode = args.mode
+    if args.mode == 'normal-dev':
+        if intent == 'follow-up':
+            cases = discover_open_cases(project)
+            requested = resolve_case_root(project, args.case_root)
+            if (requested / 'case.json').is_file():
+                effective_mode = 'follow-up'
+            elif len(cases) == 1:
+                args.case_root = cases[0]
+                effective_mode = 'follow-up'
+            elif len(cases) > 1:
+                _print({'operation': 'case-bridge', 'status': 'needs-case-selection',
+                        'cases': cases, 'project_root': str(project),
+                        'next_action': 'Read the project cases and recent conversation to identify the intended target; ask a plain target question only if it remains ambiguous.'}, args.format)
+                return 2
+        elif intent in {'analysis', 'reconstruction'}:
+            effective_mode = 'analysis'
     if effective_mode == "normal-dev":
         result = {
             "operation": "case-bridge",
@@ -267,6 +286,15 @@ def cmd_bridge(args: argparse.Namespace) -> int:
         return 0
 
     existing = None
+    objective = 'reconstruction' if intent == 'reconstruction' or effective_mode == 'reconstruction' else 'analysis'
+    if effective_mode != 'follow-up':
+        try:
+            candidate_case = resolve_case_root(project, args.case_root)
+            if (candidate_case / 'case.json').is_file():
+                existing = load_case_record(project, args.case_root)
+        except ValueError as exc:
+            _print({'operation': 'case-bridge', 'status': 'blocked', 'reason': str(exc)}, args.format)
+            return 2
     if effective_mode == "follow-up":
         try:
             existing = load_case_record(project, args.case_root)
@@ -290,17 +318,22 @@ def cmd_bridge(args: argparse.Namespace) -> int:
     except ValueError as exc:
         _print({"operation": "case-bridge", "status": "blocked", "reason": str(exc)}, args.format)
         return 2
-    workflow = workflow_contract(route, effective_mode, follow_up=existing is not None)
-    if existing and existing["pointer"].get("workflow"):
+    prior_workflow = existing['pointer'].get('workflow', {}) if existing else {}
+    if effective_mode != 'reconstruction' and intent != 'reconstruction':
+        objective = prior_workflow.get('objective', 'reconstruction' if prior_workflow.get('stage') == 'reconstruction' else objective)
+    original_request = prior_workflow.get('user_request', args.hint)
+    workflow = workflow_contract(route, effective_mode, follow_up=existing is not None,
+                                 objective=objective, user_request=original_request)
+    if effective_mode == 'follow-up' and prior_workflow:
         # Resuming a reconstruction must not discard its specification and
         # verification obligations just because this turn is called follow-up.
-        workflow = {**existing["pointer"]["workflow"], "mode": "follow-up"}
+        workflow = {**prior_workflow, 'objective': objective, 'user_request': original_request, "mode": "follow-up"}
     pointer = build_case_pointer(
         case_root.relative_to(project),
         route.get("primary") or "unresolved",
         effective_mode,
-        delta=[f"route resolved by {route.get('source', 'unknown')} router"] if routed else ["route unresolved"],
-        refs=[owner, *route.get("required_reads", []), *[str(item.get("skill")) for item in route.get("related_routes", []) if isinstance(item, dict) and item.get("skill")]],
+        delta=[f"route resolved by {route.get('source', 'unknown')} router" if routed else 'route unresolved', f'Current request: {args.hint}'],
+        refs=list(dict.fromkeys([*(existing['pointer']['carry_forward_refs'] if existing else []), owner, *route.get("required_reads", []), *[str(item.get("skill")) for item in route.get("related_routes", []) if isinstance(item, dict) and item.get("skill")]])),
         route_owner=owner,
         route_source=route.get("source", "unknown"),
         workflow=workflow,
@@ -328,6 +361,9 @@ def cmd_bridge(args: argparse.Namespace) -> int:
             reads.append(route["next_stage"]["skill"])
     result["required_read_paths"] = [str((reference_root / name).resolve()) for name in dict.fromkeys(reads)] if reference_root else []
     result["execution_guide"] = str(ROOT / "docs" / "CROSS-PROJECT-WORKFLOW.md")
+    result['agent_guide'] = str(ROOT / 'docs/AGENT-WORKFLOW.md')
+    result['delivery_objective'] = objective
+    result['required_read_paths'].append(result['agent_guide'])
     result["business_acceptance"] = "not-performed"
     if workflow['stage'] == 'reconstruction':
         result['implementation_gate'] = {
@@ -336,9 +372,9 @@ def cmd_bridge(args: argparse.Namespace) -> int:
             'boundary': 'reconstruction is the requested workflow, not a finding that analysis is complete',
         }
     result["next_action"] = (
-        "Resume the recorded case and its original stage requirements."
+        "Resume the recorded case, original user objective, evidence and unresolved work; retain the identified technology and investigate only what the next decision requires."
         if existing else
-        "Identify the original target, reroute with its actual technology, record this case in project_root, and collect evidence before freezing implementation tasks."
+        "Identify the original target and actual technology, preserve the user's delivery objective, and collect evidence about behavior and dependencies before preparing implementation tasks. Read agent_guide; a reconstruction request starts with analysis, not candidate coding."
     )
     if args.record and routed:
         result["case_file"] = str(record_case_pointer(project, pointer))

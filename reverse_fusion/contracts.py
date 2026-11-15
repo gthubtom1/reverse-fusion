@@ -336,7 +336,7 @@ def check_contracts(root: Path) -> dict[str, Any]:
         if rea_manifest.get("node_engine") != "^22.23.4 || ^24.22.1 || >=26.12.1":
             raise ContractError("REA Node engine differs from the official pinned package")
         checks.append({"id": "rea-reproducibility", "status": "pass"})
-        for rel in ("docs/TARGET-CAPABILITY-MATRIX.md", "docs/FINAL-COMPLETION-SPEC.md", "docs/FINAL-RELEASE-ACCEPTANCE.md", "docs/DEPLOYMENT-GUIDE.md"):
+        for rel in ("docs/TARGET-CAPABILITY-MATRIX.md", "docs/FINAL-COMPLETION-SPEC.md", "docs/FINAL-RELEASE-ACCEPTANCE.md", "docs/DEPLOYMENT-GUIDE.md", "docs/AGENT-WORKFLOW.md", "docs/BEGINNER-GUIDE.md"):
             if not (root / rel).is_file():
                 raise ContractError(f"final v1 document missing: {rel}")
         checks.append({"id": "final-v1-documents", "status": "pass"})

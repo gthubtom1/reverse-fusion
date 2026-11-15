@@ -13,6 +13,60 @@ TOOL_ROOT = Path(__file__).resolve().parents[1]
 
 
 class CrossProjectTests(unittest.TestCase):
+    def test_novice_request_preserves_delivery_goal_through_refinement_and_continue(self):
+        with tempfile.TemporaryDirectory(prefix='rf novice 项目 ') as directory:
+            project = Path(directory).resolve()
+            prompt = '帮我分析这个软件，然后复刻出一个界面和功能都一样、能实际使用的版本。'
+            initial = self.invoke(project, 'bridge', '--hint', prompt,
+                                  '--case-root', 'work/target', '--record')
+            self.assertEqual(initial['workflow']['stage'], 'analysis')
+            self.assertEqual(initial['workflow']['objective'], 'reconstruction')
+            self.assertEqual(initial['route']['primary_id'], 'R0')
+            self.assertEqual(initial['route']['next_stage']['id'], 'R46')
+            self.assertTrue(Path(initial['agent_guide']).is_file())
+            case_file = project / 'work/target/case.json'
+            record = json.loads(case_file.read_text(encoding='utf-8'))
+            record['pointer']['carry_forward_refs'].append('notes/original-behavior.md')
+            case_file.write_text(json.dumps(record), encoding='utf-8')
+            refined = self.invoke(project, 'bridge', '--hint', 'JavaScript WASM analysis',
+                                  '--mode', 'analysis', '--case-root', 'work/target', '--record')
+            self.assertEqual(refined['workflow']['user_request'], prompt)
+            self.assertEqual(refined['workflow']['objective'], 'reconstruction')
+            self.assertIn('notes/original-behavior.md', refined['pointer']['carry_forward_refs'])
+            resumed = self.invoke(project, 'bridge', '--hint', '继续')
+            self.assertEqual(resumed['mode'], 'follow-up')
+            self.assertEqual(resumed['workflow']['user_request'], prompt)
+            self.assertEqual(resumed['route']['primary_id'], refined['route']['primary_id'])
+            self.assertEqual(Path(resumed['pointer']['case_root']), Path('work/target'))
+            self.assertEqual(resumed['workflow']['stage'], 'analysis')
+            self.assertEqual(json.loads(case_file.read_text(encoding='utf-8'))['revision'], 2)
+
+    def test_continue_ambiguity_never_overwrites_a_case(self):
+        with tempfile.TemporaryDirectory() as directory:
+            project = Path(directory).resolve()
+            for name in ('first', 'second'):
+                self.invoke(project, 'bridge', '--hint', '分析这个软件',
+                            '--case-root', f'work/{name}', '--record')
+            before = {p: p.read_bytes() for p in project.rglob('case.json')}
+            result = self.invoke(project, 'bridge', '--hint', '继续', '--record', code=2)
+            self.assertEqual(result['status'], 'needs-case-selection')
+            self.assertEqual({p: p.read_bytes() for p in before}, before)
+
+    def test_plain_analysis_recreation_and_normal_development_are_distinct(self):
+        with tempfile.TemporaryDirectory() as directory:
+            project = Path(directory).resolve()
+            for prompt in ('先分析这个软件，暂时不要写复刻版', '帮我看懂这个 APK', '分析这份抓包里客户端和服务器怎么交互'):
+                result = self.invoke(project, 'bridge', '--hint', prompt)
+                self.assertEqual(result['workflow']['objective'], 'analysis')
+                self.assertEqual(result['workflow']['stage'], 'analysis')
+            recreated = self.invoke(project, 'bridge', '--hint', '照着这个网站做一样的使用效果')
+            self.assertEqual(recreated['workflow']['objective'], 'reconstruction')
+            self.assertEqual(recreated['route']['next_stage']['id'], 'R46')
+            for prompt in ('开发一个待办事项网站', '修复我们应用的登录按钮', 'continue'):
+                result = self.invoke(project, 'bridge', '--hint', prompt)
+                self.assertEqual(result['status'], 'host-native')
+            self.assertFalse((project / 'work').exists())
+
     def test_json_transport_preserves_unicode_without_utf8_caller_override(self):
         with tempfile.TemporaryDirectory(prefix='rf 项目 🧪 ') as directory:
             project = Path(directory).resolve()

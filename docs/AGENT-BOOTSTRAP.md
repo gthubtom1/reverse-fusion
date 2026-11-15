@@ -79,6 +79,11 @@ session 冻结与路径边界。仅从外部目录运行一次无写入的 bridg
 
 ## 对话中的使用
 
+先读 [智能体工作合同](AGENT-WORKFLOW.md)，向用户提供
+[白话使用指南](BEGINNER-GUIDE.md)。用户不需要专业提示词；宿主负责从目标和证据
+选择领域、保存完整交付要求、调查依赖，并在就绪后交给真实 Spec/Craft。
+新目录里的普通请求才是入口验收；预先指定内部路线的测试只验证组件衔接。
+
 - `normal-dev` 是默认模式，不强制创建 case，也不强制启动 REA、Spec Kit、Builder、
   proof 或 ledger。
 - `analysis` 目标只要求隔离 case、可恢复 route、原版 Evidence/观察、限制与结论；

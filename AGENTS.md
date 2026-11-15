@@ -15,6 +15,7 @@
 11. `docs/AGENT-BOOTSTRAP.md`；只给仓库 URL 时，以此文件作为唯一部署入口
 12. 跨项目分析/复刻读取 `docs/CROSS-PROJECT-WORKFLOW.md`
 13. 核心部署与真实 Spec/Craft 交接读取 `docs/NATIVE-COMPONENTS.md`
+14. 白话任务承接、目标保留与自适应分析/交付读取 `docs/AGENT-WORKFLOW.md`；用户使用说明见 `docs/BEGINNER-GUIDE.md`
 
 工作规则：
 
