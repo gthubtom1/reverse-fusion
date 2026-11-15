@@ -53,8 +53,11 @@ session 冻结与路径边界。仅从外部目录运行一次无写入的 bridg
    `[selected-host]`。选择 Codex 时还确认 `global_adapter.enabled` 为 `true`，并检查
    receipt 中记录的 `global_adapter.skill` 和 `global_adapter.agents` 路径存在。receipt
    中发现到的其他 CLI 只属于环境观察，不代表它们已安装、已登录、已加载本仓库或通过握手。
-5. 安装写仓库自己的 `.venv`、`state/install.json`，并在 Codex 选择下写入用户级适配层。
-   REA、WABT、JADX 等 provider
+5. 默认 Windows 安装会执行 `scripts/bootstrap-core.ps1`，实际安装固定 REA、官方 Spec Kit
+   和原生 Craft adapter。缺组件时安装不能完成；`doctor.core_deployment` 必须为 installed。
+   真实版本、补丁、构建和工作流见 [NATIVE-COMPONENTS.md](NATIVE-COMPONENTS.md)。
+   安装写仓库自己的 `.venv`、`state/install.json`，并在 Codex 选择下写入用户级适配层。
+   WABT、JADX 等目标 provider
    仅在具体任务需要时由对应 bootstrap 写入工具仓库 `vendor/`；case 仅在用户开始目标时
    写入 `--project-root` 选定成果项目的 `work/`，不会集中写回共享工具仓库。
 6. 模型、账号和 provider 由 `[selected-host]` 拥有。项目不选择、下载、切换或绑定
@@ -64,7 +67,8 @@ session 冻结与路径边界。仅从外部目录运行一次无写入的 bridg
    Node，可将其绝对路径交给 `scripts/bootstrap-rea.ps1 -NodePath [路径]`。bootstrap
    校验后保存本 checkout 的运行时 receipt，后续命令可恢复；不要把本机路径提交到 Git，
    不要为此覆盖宿主或全局 Node。具体选择顺序见部署指南。
-7. 当前对话中的 agent 就是默认 Builder，不为了使用本仓库另启一个 CLI、账号或模型。
+7. 当前对话中的 agent 负责推理，真实 Craft engine 负责受限候选写入和构建检查；
+   不另启一个模型或重复 Study。正式 Spec 工作流和 native-craft 接入是复刻实现必需步骤。
    只有需要独立 transport 时，才对 `[selected-host]` 执行
    `[venv-python] -m reverse_fusion handshake --client [selected-host] --timeout 45 --record`。
    固定 sentinel 只证明 assistant 应答，不等于领域加载或业务成功；登录/额度阻塞如实
@@ -99,7 +103,9 @@ session 冻结与路径边界。仅从外部目录运行一次无写入的 bridg
 
 ## 完成和停止标准
 
-部署完成表示当前 checkout 的 venv、selected-host receipt、Codex 用户级适配层（若启用）、
+部署完成首先要求真实 REA、Spec Kit、Craft 均安装且核心探针已运行；只装 Python 包不算。
+当前预编译 Craft 只资格化 Windows x64；其他平台必须完成源码适配实测，否则明确部署未完成。
+此外要求当前 checkout 的 venv、selected-host receipt、Codex 用户级适配层（若启用）、
 `contracts`、`plan`、`doctor`、`handoff` 和本地路由边界已记录。它不表示其他宿主或项目
 已经通过业务验收，也不表示当前电脑具备所有 REA、IDA、Frida、Android 设备或商业工具能力。
 

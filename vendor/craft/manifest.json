@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "version": "0.6.1",
+  "release_commit": "48a9c5a60ff83ff620f98661339be6281a7debc6",
+  "source": "https://github.com/storytold/craft-anything",
+  "windows-x64": {
+    "url": "https://github.com/storytold/craft-anything/releases/download/v0.6.1/craft-anything-0.6.1-windows-x64-portable.zip",
+    "sha256": "bd370fbaa2b44dbc13581db5ffd2bf66924ed40e433c7902212aa17ca781de54",
+    "entry": "craft-anything-0.6.1-windows-x64-portable/craft-anything-cli.exe"
+  }
+}

@@ -1,12 +1,14 @@
 # v1 release acceptance
 
-RF-26 is the current architecture audit of product `1.0.0`. Its completion status is read
-from `docs/CURRENT-STATE.md` and `checkpoints/RF-26-20261115-001.md`; RF-22,
-RF-23 and RF-24 checkpoints preserve historical observations and do not
-override this audit. The declared finite gates below passed, including a
-remote fresh clone of the audited source commit; runtime boundaries remain explicit.
+The table below is the historical RF-25/RF-26 release baseline of product `1.0.0`.
+RF-27 reopened cross-project execution, implementation handoff and live runtime
+integration after an actual external chat exposed gaps. Current repair status
+comes from `docs/CURRENT-STATE.md` and the latest RF-27 checkpoint, not from this
+baseline's closure. Historical fixture results do not certify a new user target.
+The baseline included a remote fresh clone of its audited source commit; its
+finite runtime boundaries remain explicit.
 
-| Gate | Direct record / scope | Current result |
+| Gate | Direct record / scope | RF-25/RF-26 baseline result |
 |---|---|---|
 | URL-only deployment | `docs/AGENT-BOOTSTRAP.md`, linked by README and AGENTS; current selected host, local venv/receipt | implemented; RF-25 provider clone and RF-26 architecture clone recorded |
 | One Reverse owner | local routing JSON, descriptors, domain bodies and required reads; no old receipt needed | contracts and hard-target route pass in remote clone |

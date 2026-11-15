@@ -1,18 +1,23 @@
 # Current State
 
-Stage: RF-27
-Status: cross-project-integration-repaired-with-declared-boundaries
+Stage: RF-28
+Status: required-component-composition-in-progress
+
+The user requires real REA, Spec Kit and Craft deployment and participation.
+Host-authored tasks and a current-session boundary observer do not replace
+missing Spec/Craft components. Product acceptance is reopened; see
+`checkpoints/RF-28-20261116-001.md`. The earlier finite checks below remain
+valid at their stated scope, but are not completion of this requirement.
 
 Product version: `1.0.0`. The retained Reverse domain contract version is
 `components/reverse-core/VERSION` (`1.9.0`); these are separate identities.
 
-RF-26 rechecks the RF-25 product claim and adds the machine-readable aggregation
-handoff against actual
-code, source files and execution. Historical checkpoints remain historical;
-the current acceptance is this file, `docs/FINAL-RELEASE-ACCEPTANCE.md` and
-`checkpoints/RF-26-20261115-001.md`. The finite audit and declared integration
-release gates are closed. Future target variants are new cases, not a requirement to
-pre-execute every possible program, architecture or protector.
+RF-26 rechecked the RF-25 product claim and added a machine-readable aggregation
+handoff. That finite baseline is preserved in `docs/FINAL-RELEASE-ACCEPTANCE.md`;
+RF-27 reopened external-project integration based on real target observations.
+This file and the latest RF-28 checkpoint define the current repaired scope and
+unresolved boundaries. Future target variants are new cases, not a requirement
+to pre-execute every possible program, architecture or protector.
 
 ## RF-27 integration correction
 
@@ -32,8 +37,9 @@ spec files did not satisfy an implementation-before-review boundary.
 - The user adapter links `CROSS-PROJECT-WORKFLOW.md` and requires pre-implementation
   handoff review, domain refinement and reporting actual component execution.
 - `doctor` labels the scope of its overall pass and separately exposes REA package
-  presence/identity, Spec CLI presence, the current-session Builder interface and
-  the unsupported native Craft backend. It performs no automatic provider launch.
+  presence/identity, Spec local venv identity, the boundary observer and
+  the source-bound native Craft installation. RF-28 adds core_deployment and rejects
+  install success when a required component is absent. It performs no automatic provider launch.
 - Global adapter updates honor CODEX_HOME and reject broken markers; uninstalling
   a previously installed checkout cannot remove a newer checkout's shared pointer.
 
@@ -125,12 +131,13 @@ The full Web graph ledger is archived separately as `evidence/rf22/web/full-ledg
   details and the limits of its live catalog check are in the latest checkpoint.
   WABT is `1.0.42`; JADX headless MCP is `0.7.1`.
 - Spec Kit source pin reports `1.4.1.dev0`; the earlier CLI execution receipt
-  reports `1.4.0`. Task artifacts can be used without installing the CLI for
-  every deployment; source identity and a local CLI execution are distinct.
-- Craft is `repository-interface-only`. The four historical patch names are
-  references, not distributed or replayed patches. The companion's
-  `--all-tools` argument is preserved. Current companion health is unobserved;
-  native R46 qualification remains `unsupported`.
+  reports `1.4.0`. RF-28 installs 1.4.1.dev0 in the repository venv and requires
+  the official generated workflow for reconstruction; handwritten tasks are insufficient.
+- Craft now uses the actual pinned engine with a repository-owned external-writer
+  seam. A replayable Windows Process command patch is distributed alongside Rust
+  source and a verified Windows x64 archive. Four old patch names remain historical
+  references; companion configuration remains unchanged. Engine lifecycle and
+  failure/timeout/writer tests passed; target composition remains separately tracked.
 - Windows REA PTY descendant cleanup remains unsupported. Android device
   runtime and Web graph obligations retain their explicit unknown states.
 - Uninstall removes the repository venv and installation receipt, and the CLI removes
@@ -140,10 +147,10 @@ The full Web graph ledger is archived separately as `evidence/rf22/web/full-ledg
 
 ## Next action
 
-Use the deployed checkout for normal development or a new target case. For a
-mixed task, read the bridge `workflow` and activate only the related route or
-`next_stage` that the evidence requires. Selective upstream review follows
-`docs/UPSTREAM-MAINTENANCE.md` when requested.
+Finish RF-28 external official Spec → native Craft → independent original/candidate
+comparison and REA obligation integration, publish the verified component distribution,
+then deploy and check a fresh clone. Product acceptance remains reopened until these
+required operations complete. See `docs/NATIVE-COMPONENTS.md`.
 
 The RF-25 remote clone started without
 old state, installed product 1.0.0 into a new venv, passed contracts/plan/doctor/

@@ -5,7 +5,9 @@
     "commit": "8374ad71544f2cc44698ea74ef990aa31600bac6",
     "release": "0.6.1"
   },
-  "patch_series": [],
+  "patch_series": [
+    "components/craft-native/patches/0001-windows-quoted-command-tail.patch"
+  ],
   "required_seams": [
     "accepted-research",
     "external-baseline",
@@ -26,7 +28,7 @@
     "cleanup_required": true,
     "consent_flag_never_implicit": true
   },
-  "distribution": "repository-interface-only",
+  "distribution": "pinned-native-engine-adapter",
   "companion_reference": {
     "version": "0.6.1",
     "source_commit": "48a9c5a60ff83ff620f98661339be6281a7debc6",
@@ -44,6 +46,7 @@
     "0003-bounded-mcp-exposure.patch",
     "0004-integration-and-build-support.patch"
   ],
-  "patch_series_status": "historical names only; not distributed, replayed or qualified by this repository",
-  "runtime_backend": "current-session; optional host CLI; native Craft R46 unsupported until independently qualified"
+  "patch_series_status": "RF-28 replayable Windows Process adaptation; historical four names remain references only",
+  "runtime_backend": "native Craft engine with host-owned reasoning and one bounded writer",
+  "native_manifest": "components/craft-native/manifest.json"
 }

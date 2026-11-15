@@ -45,7 +45,7 @@ class ComponentStatusTests(unittest.TestCase):
             status = component_status(root)
             self.assertEqual(status['rea']['status'], 'not-installed')
             self.assertEqual(status['rea']['handshake'], 'unverified')
-            self.assertEqual(status['craft']['native_backend'], 'unsupported')
+            self.assertEqual(status['craft']['native_backend'], 'not-installed')
             package = vendor / 'package'
             (package / 'scripts').mkdir(parents=True)
             (package / 'scripts/rea.mjs').write_text('// synthetic presence fixture', encoding='utf-8')

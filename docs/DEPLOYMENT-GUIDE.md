@@ -45,8 +45,9 @@ shell、模型或工具安装路径。
    证明最终 assistant 应答；它不证明目标业务、完整领域加载或所有工具健康。
    缺登录、额度或 provider 时如实记录 blocked/unknown，仍可使用已运行的当前
    会话 agent。无需为了默认 Builder 再启动一个 CLI。
-6. REA、WABT、JADX 等按具体任务需要 bootstrap 到本仓库 `vendor/`，不在基础
-   安装时下载全部工具。保存实际能力、缺失项和下一步；不写旧安装、模型、凭据或
+6. REA、官方 Spec Kit 和真实 Craft 是基础部署必需组件，默认 Windows install 自动运行
+   `bootstrap-core.ps1`。WABT、JADX 等按目标需要准备。原生组件交接及当前平台范围见
+   [NATIVE-COMPONENTS.md](NATIVE-COMPONENTS.md)。保存实际能力、缺失项和下一步；不写旧安装、模型、凭据或
    provider 运行配置。Codex 的受控适配层只写路由指引。Craft companion 的
    `--all-tools` 保持原样。
 
@@ -85,10 +86,11 @@ unavailable，不用旧 receipt 假装具备能力。
 hook、模拟及设备的顺序由目标证据决定；路由和技能辅助模型判断，不限制为固定
 流水线。保全方法与 helper 不等于提前验证所有保护器。
 
-## 当前会话 Builder
+## 实际 Craft Builder 与附加观察
 
-默认 writer 就是用户正在对话的宿主 agent。冻结目标任务、研究文件与输出白名单
-后，让它用已有工具编写候选，不启动另一个账号、模型或 CLI。示意命令：
+宿主负责推理，通过真实 Craft engine 写候选并运行冻结的检查命令；必须先执行官方 Spec
+生成的工作流。完整 `native-craft` 接入见 [真实组件](NATIVE-COMPONENTS.md)。下列 session
+只做附加观察，不能替代正式 Spec 或 Craft。
 
 ```text
 [venv-python] -m reverse_fusion session prepare --receipt work/[case]/session.json --workspace work/[case]/candidate --tasks T-001 --task-file specs/[feature]/tasks.md --research-file work/[case]/accepted-research.json --allowed-output src/main.ext
@@ -108,9 +110,9 @@ hook、模拟及设备的顺序由目标证据决定；路由和技能辅助模�
 ## 组件与目标边界
 
 Reverse 是唯一 route/case owner；REA 管理 Evidence/comparison/ledger；Spec
-管理任务与来源引用；当前宿主 Builder 是单一 candidate writer；独立 verifier
-负责业务验收。Craft 当前只分发 bounded interface，历史 patch 名称未分发或
-replay，native R46 unsupported。模型、provider 和登录始终属于当前宿主。
+管理任务与来源引用；宿主推理通过原生 Craft 单一写入候选；独立 verifier
+负责业务验收。Craft 当前分发真实固定 engine 的接入源码、可重放补丁和已核验 Windows x64 原生包；
+四个旧 patch 名称仅作历史参考。模型、provider 和登录始终属于当前宿主。
 
 REA pin 为 `6.9.0`，Node engine 精确为 `^22.23.4 || ^24.22.1 || >=26.12.1`。
 如果 PATH 中的 Node 过旧，可以向 `scripts/bootstrap-rea.ps1 -NodePath [绝对路径]`
@@ -121,7 +123,7 @@ Windows provider runner 和 WASM 验收按“显式参数/环境变量、有效�
 另一个 checkout 时回退到本机 PATH。缓存路径仍存在但版本变化时，doctor 会重新核版本，
 bootstrap 仍执行精确 engine 门。receipt 不代表 provider 健康或目标验收。
 WABT pin `1.0.42`，JADX headless MCP pin `0.7.1`。Spec source 为
-`1.4.1.dev0`，历史 CLI execution 为 `1.4.0`；本地任务文件不要求每次装 Spec CLI。
+`1.4.1.dev0`，历史 CLI execution 为 `1.4.0`；RF-28 实际安装 1.4.1.dev0，并要求正式生成工作流参与。
 实际现场可用性看 `PROVIDER-STATUS.md` 和当前 checkpoint，不从 source pin 推断。
 
 当前代表性范围是 WASM 有限执行、Web answer 有限重放、.NET 有限方法执行，

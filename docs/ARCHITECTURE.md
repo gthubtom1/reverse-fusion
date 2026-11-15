@@ -20,8 +20,12 @@ repository-local case.json + workflow contract
 REA 原版 Evidence / comparison / ledger
         │
         ▼
-当前对话中的宿主 agent（默认 Builder）
-        │ session prepare → check → refine → finish
+官方 Spec Kit 生成工作流 → 冻结任务与研究
+        │
+        ▼
+当前宿主推理 → 真实 Craft engine（唯一候选写入者）
+        │ native prepare → build/check/refine → summary/cleanup
+        │ session 仅附加文件边界观察
         ▼
 候选 build/run、独立 proof、差分验收、obligation ledger、cleanup
 ```
@@ -34,7 +38,7 @@ REA 原版 Evidence / comparison / ledger
 
 分析使用 `--mode analysis`。primary domain skill 是当前入口，混合请求的 secondary route 会出现在 `related_routes`，其 skill 和 required reads 同时写入 case 的 `carry_forward_refs`。这样开发中的“研究另一个 APK、网站、桌面客户端或协议”可以作为隔离 subcase 接入，审查后的事实再回到主项目。
 
-复刻使用 `--mode reconstruction`。目标专业 route 仍然负责先分析；如果请求包含复刻语义，route 返回 `next_stage.id=R46`，并提供 `skills/reconstruction/SKILL.md`。进入 R46 后才冻结 Spec tasks、启动当前会话 Builder、构建/运行候选并执行比较。普通开发不会因为存在 R46 而自动进入复刻。
+复刻使用 `--mode reconstruction`。目标专业 route 仍然负责先分析；如果请求包含复刻语义，route 返回 `next_stage.id=R46`，并提供 `skills/reconstruction/SKILL.md`。进入 R46 后才冻结 Spec tasks、启动真实 Craft engine Builder、构建/运行候选并执行比较。普通开发不会因为存在 R46 而自动进入复刻。
 
 `--mode follow-up` 必须找到同一 case root 下的开放 `case.json`，然后沿用已记录的 primary、workflow 和 refs。缺少 case 时返回 typed `blocked`，不会按新 hint 伪造一次“恢复”。
 
@@ -46,6 +50,8 @@ REA 原版 Evidence / comparison / ledger
 
 Reverse Skills 的 603 个增强来源文件已保全，包含加壳/脱壳、反调试/反 VM/反 Hook、OLLVM、动态 DEX/JNI/反 Frida、.NET 混淆和 JS VM/WASM 方法。保全证明内容和入口存在；具体目标仍由 Evidence、provider 和设备状态决定。缺少工具索引、登录、额度、设备或商业工具时，保留 `unknown`、`blocked` 或 `unsupported`。
 
-REA 保持官方版本，Spec 任务是复刻阶段的冻结来源，Craft 当前只提供 bounded interface；默认 writer 是当前对话里的宿主 agent。项目不选择模型、不下载模型、不复制凭据，也不修改旧仓库或宿主运行配置；Codex 安装只写一个指向当前 checkout 的受控用户级路由适配层。
+REA 保持官方版本；Spec 是实际安装的官方 CLI 及生成的项目工作流；Craft 是固定原生 engine
+加仓库自有接缝和可重放补丁。宿主推理通过 Craft 原生工具写候选和运行检查。
+完整部署要求全部核心组件安装，真实参数和当前平台范围见 [NATIVE-COMPONENTS.md](NATIVE-COMPONENTS.md)。项目不选择模型、不下载模型、不复制凭据，也不修改旧仓库或宿主运行配置；Codex 安装只写一个指向当前 checkout 的受控用户级路由适配层。
 
 安装和卸载只处理当前 checkout 的 `.venv`、repository-local receipt 及按需生成的 vendor/case 内容。换电脑时只需给当前宿主仓库链接；宿主读取本文件和 `docs/AGENT-BOOTSTRAP.md` 后，会按本机 OS、Python、selected host 和 provider 状态完成适配。

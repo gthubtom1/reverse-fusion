@@ -1,7 +1,7 @@
 # 共享工具仓库与当前成果项目
 
 工具 checkout 提供路由、领域技能、provider bootstrap 和代码；当前成果项目提供目标、
-case、规格、候选及测试。`bridge`、`session`、`build`、`craft` 的 `--project-root`
+case、规格、候选及测试。`bridge`、`session`、`build`、`craft`、`native-craft` 的 `--project-root`
 指定成果项目，省略时使用调用时的当前目录。安装、contracts、provider bootstrap、
 宿主 handshake 以及 `accept --fixture ...` 仍属于工具仓库；fixture 验收不是用户目标验收。
 
@@ -32,14 +32,15 @@ case、规格、候选及测试。`bridge`、`session`、`build`、`craft` 的 `
    然后调用官方接口验证该目标支持的能力。
 
 3. **证据到规格**：选定被证据支持的功能，写 feature 的 spec/plan/tasks，任务引用原
-   Evidence、观察与 unknown。区分 observed/inferred/designed。需要官方 Spec CLI 时按
-   实际安装版命令执行；当前宿主可编写和冻结任务文件，但这不等于官方 CLI 执行。
+   Evidence、观察与 unknown。区分 observed/inferred/designed。必须执行已安装官方 Spec Kit 的生成工作流与脚本，不能只手写同名任务。
+   按 [真实组件交接](NATIVE-COMPONENTS.md) 继续 native-craft，实现后完成 implement/converge。
    阅读 reconstruction 技能的交接检查和验收规则。关键未知项只阻断依赖它的任务。
    授权/设备标识、启动状态、功能放行、服务端调用、持久化和错误路径属于行为依赖：
    不能因为恢复了 UI 或资源格式就假定它们与所选功能无关。若原本交付是复刻原软件，
    不得自行改成无授权依赖的本地资源管理器；交付差异需有用户的范围决定和来源引用。
 
-4. **冻结后再实现**：切到 reconstruction 仍记录在同一 case。先运行：
+4. **冻结后再实现**：切到 reconstruction 仍记录在同一 case。先完成真实 Spec 工作流与语义交接，再按 [native-craft 参数](NATIVE-COMPONENTS.md) prepare。
+   以下 session 命令仅展示附加文件边界观察，不替代 native-craft：
 
    ```text
    [python] -m reverse_fusion bridge --project-root "[project]" --source local --hint "已选定功能的独立实现" --mode reconstruction --case-root work/case --record
@@ -87,8 +88,13 @@ case、规格、候选及测试。`bridge`、`session`、`build`、`craft` 的 `
 |---|---|---|
 | Reverse | 调用路由、读领域正文并执行分析方法 | 仅目录存在不能算已执行分析 |
 | REA | 调用真实官方接口，留存该目标的原生输出 | 原生工具 fallback 可继续，REA 验收仍未验证 |
-| Spec | 证据引用的需求/任务已产生并冻结；官方 CLI 执行另行记录 | 仅阅读技能、普通待办列表不算已完成规格交接 |
-| Craft/Builder | 默认使用当前宿主并执行 session 生命周期 | 原生 Craft R46 仍 unsupported；直接编辑不算 session；`craft` fixture copy 不算原生 Craft |
+| Spec | 已安装官方 CLI，执行实际生成的项目工作流/脚本，引用证据并冻结任务 | 仅手写同名文档或 init 不算完整工作流 |
+| Craft/Builder | native-craft 调用真实 engine 完成 workspace/write/edit/command/check/summary/cleanup | session 只是附加观察，直接编辑及 fixture copy 不算原生 Craft |
 
-不用为了“四合一”强行启动四个程序。按阶段启用，并在交付中报告实际执行的部分；
-当前产品的可验证路径是 Reverse + 按需 REA + 证据化 Spec 文件 + 当前会话 Builder。
+核心组件全部安装，按阶段真实调用。普通开发不强制跑逆向流程；分析不强制编码。
+复刻实现必须有 Reverse 分析、真实 REA Evidence、官方 Spec 工作流和真实 Craft 执行，
+随后独立比较验收。组件参与不等于整个目标已经复刻完成。
+
+安装后的真实宿主测试与跨目标缺陷分类见
+[真实工作区验证](REAL-WORKSPACE-VALIDATION.md)。受控的逐阶段测试不等于所有自然任务
+都会自动遵守，也不能代替每个新目标的业务观察。

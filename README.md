@@ -3,10 +3,10 @@
 给当前 coding agent 使用的普通开发、逆向分析与独立复刻工具集。
 仓库：<https://github.com/gthubtom1/reverse-fusion>。
 
-产品版本 `1.0.0`，当前修复阶段 `RF-27`（跨项目集成与复刻交接）。准确的验收结果、现场 provider 状态和
+产品版本 `1.0.0`，当前修复阶段 `RF-28`（真实核心组件部署与集成）。准确的验收结果、现场 provider 状态和
 未覆盖范围分别保存在 [当前状态](docs/CURRENT-STATE.md)、
 [发布验收](docs/FINAL-RELEASE-ACCEPTANCE.md) 与
-[最新 checkpoint](checkpoints/RF-27-20261116-002.md)。历史 final 标签不覆盖这些记录。
+[最新 checkpoint](checkpoints/RF-28-20261116-001.md)。历史 final 标签不覆盖这些记录。
 
 ## 换电脑，只给仓库链接
 
@@ -26,8 +26,8 @@ cd reverse-fusion
 ```
 
 基础安装需要 Python 3.11+；具体目标需要的 Node、Java、.NET、设备和其他工具按需
-发现、准备。REA/WABT/JADX 的固定资产只写本仓库 `vendor/`，不要求首次安装就
-下载所有 provider。模型、账号、登录和 provider 属于当前宿主，项目不选择或下载模型。
+发现、准备。REA、Spec Kit 和 Craft engine 是完整部署必需组件；固定资产写本仓库 `vendor/`
+或 `.venv`。WABT/JADX、设备等按目标准备。真实组件交接见 [组件部署](docs/NATIVE-COMPONENTS.md)。模型、账号、登录和 provider 属于当前宿主，项目不选择或下载模型。
 
 仓库正文和运行时只保留在这个 checkout；选择 Codex 的安装还会在用户级
 `~/.agents/skills/reverse-fusion/SKILL.md` 与 `~/.codex/AGENTS.md` 写入薄适配层。
@@ -41,7 +41,7 @@ cd reverse-fusion
   不强制建立逆向 case，也不强制启动 REA、Spec、Builder 或 ledger。
 - **分析**：需要研究目标时，agent 选择专业领域，建立或恢复隔离 subcase，保存
   目标身份、Evidence、观察、未知项和结论。只要求分析时不进入复刻验收。
-- **复刻**：分析结果足够支持选定功能后，冻结 Spec tasks，由当前会话的 agent
+- **复刻**：分析结果足够支持选定功能后，执行官方 Spec 工作流并冻结 tasks，由当前会话推理并通过真实 Craft engine
   编码，再独立构建、运行、比较原版与候选，保留 proof、cleanup 和 obligation ledger。
 - **开发中途研究参考项目**：在主项目中创建隔离 analysis/reconstruction subcase，
   将审查后的事实和候选整合回来；主项目不需要变成一种固定逆向流程。
@@ -72,12 +72,12 @@ cd reverse-fusion
 |---|---|
 | Enhanced Reverse | 从我们二开版 `reverse-skill` 固定来源保留 603 个文件；本仓库维护路由、恢复指针、困难目标交接与有意适配 |
 | REA | 官方 `6.9.0`，负责原生分析、Evidence、比较和 ledger；本仓库有 typed adapter、runner 与明确归属的有限 integration verifier |
-| Spec | 需求、plan、tasks、来源引用与 converge；正式任务文件可直接使用，官方 CLI 按需准备 |
-| Craft/Builder | 当前分发 bounded interface，默认 writer 为当前会话 agent；子 CLI transport 可选，Craft native R46 尚未资格化 |
+| Spec | 需求、plan、tasks、来源引用与 converge；官方固定版本 CLI 必须安装，并执行其生成的项目工作流 |
+| Craft/Builder | 固定真实 Rust engine + 本仓库外部写入接缝；当前会话推理，原生 Craft 执行写入、命令和检查 |
 | 宿主与安装 | 本仓库的本地安装、Codex 用户级路由适配、发现、只读握手、当前会话 Builder 和配置摘要观察；不更改旧仓库、旧安装、模型、凭据或 provider 配置 |
 
 这是一套有本地代码、技能正文、合同与验收的独立仓库。REA 等固定运行时按 manifest
-获取；Craft 的四个历史补丁名称仅是来源参考，未分发可重放补丁。已有 companion 的
+获取；Craft 的四个历史补丁名称仍仅作来源参考；RF-28 另有可重放 Windows 命令补丁及原生适配源码。已有 companion 的
 `--all-tools` 参数保持原样，安装引用不代表当前健康。来源见
 [SOURCE-MANIFEST.json](SOURCE-MANIFEST.json) 与
 [组件清单](components/official/manifest.json)。
@@ -87,9 +87,11 @@ Reverse 的保全清单含 skills 453、CTF sidecar 136、Burp 14 个文件，�
 .NET 混淆和 JS VM/WASM 的方法与 helper 已保留；内容和路由可达不等于所有保护器
 已实测。详见 [能力迁移审计](docs/REVERSE-CAPABILITY-AUDIT.md)。
 
-## 当前会话就是 Builder
+## 当前会话推理，Craft 实际执行
 
-当前 Codex、Pi 或 Claude agent 读取冻结任务与研究，用它现有的工具写候选。
+当前 Codex、Pi 或 Claude agent 读取冻结任务与研究，通过真实 Craft engine 工具写候选，
+完整 `native-craft` 参数和 Spec 交接见 [真实组件](docs/NATIVE-COMPONENTS.md)。下面的 `session`
+仅是附加文件边界观察，不构成完整复刻路径。
 `session prepare/check/refine/finish` 只冻结输入并观察文件边界，不启动第二个 CLI、
 账号或模型；文件观察与业务验收分开。完整命令见部署指南的“当前会话 Builder”。
 
@@ -120,8 +122,8 @@ RF-25 重建并认证了 [代表性归档](evidence/rf22/README.md)，身份与�
 | APK/DEX | javac/D8/AAPT 构建、真实 package/class 分析、manifest/member 投影与静态 ledger | 方法体等价与 Android 设备运行 unknown；fixture MainActivity 不是可启动 Activity |
 
 当前额外 CLI 探针：Pi sentinel 通过；Codex 子 CLI 因 credits 阻塞，Claude 因登录
-阻塞。默认当前会话路径不依赖额外子 CLI。Craft companion 当前健康未观测，native
-R46 与 Windows REA PTY descendant cleanup 仍 unsupported。详见
+阻塞。默认当前会话路径不依赖额外子 CLI。RF-28 原生 Craft 接入已验证写入、引号命令、非零退出、超时子进程清理和单写锁；
+旧 companion 与 Windows REA PTY cleanup 的历史边界保留，不由新 adapter 结果覆盖。详见
 [provider 状态](docs/PROVIDER-STATUS.md)。每个实际目标有自己的验收范围。
 
 ## 维护、验证与卸载
@@ -136,7 +138,7 @@ R46 与 Windows REA PTY descendant cleanup 仍 unsupported。详见
 ```
 
 `doctor.status=pass` 仅表示仓库合同检查通过。查看 `components` 中的现场组件状态：
-REA 的 source pin 不是安装，入口存在不是握手；当前宿主 Builder 与原生 Craft 是不同后端。
+REA 的 source pin 不是安装，入口存在不是握手；检查 `core_deployment`，缺少核心组件时不能报告完整部署。
 
 需要复现 provider 链时，使用 `scripts/bootstrap-*.ps1` 与 `scripts/run-*-vertical.ps1`；
 先按目标准备候选和对应运行时。基础安装不要求每次跑完全部代表性链。归档认证可在

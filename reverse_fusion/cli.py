@@ -29,7 +29,8 @@ from .vertical import correct_candidate, evaluate_console, wrong_candidate
 from .wasm_vertical import evaluate_wasm
 from .session_builder import prepare_session, check_session
 from .global_adapter import install_global_adapter, remove_global_adapter, adapter_paths
-from .component_status import component_status
+from .component_status import component_status, core_deployment
+from .craft_native import prepare_native, invoke_native
 
 ROOT = Path(__file__).resolve().parents[1]
 MANIFEST = ROOT / "components" / "official" / "manifest.json"
@@ -90,6 +91,7 @@ def cmd_plan(args: argparse.Namespace) -> int:
 
 def cmd_doctor(args: argparse.Namespace) -> int:
     contract = check_contracts(ROOT)
+    components = component_status(ROOT)
     result = {
         "schema_version": 1,
         "project": "reverse-fusion",
@@ -106,7 +108,8 @@ def cmd_doctor(args: argparse.Namespace) -> int:
         "handshakes": read_handshake_record(ROOT),
         "source_manifest_sha256": sha256_file(ROOT / "SOURCE-MANIFEST.json"),
         "provider_status": str(ROOT / "docs" / "PROVIDER-STATUS.md"),
-        "components": component_status(ROOT),
+        "components": components,
+        "core_deployment": core_deployment(components),
     }
     _print(result, args.format)
     return 0 if result["status"] == "pass" else 1
@@ -154,6 +157,11 @@ def cmd_install(args: argparse.Namespace) -> int:
     if contract["status"] != "pass":
         _print({"operation": "install", "status": "blocked", "reason": "repository contracts failed", "checks": contract["checks"]}, args.format)
         return 2
+    deployment = core_deployment(component_status(ROOT))
+    if args.apply and deployment['status'] != 'installed':
+        _print({'operation': 'install', 'status': 'blocked', 'core_deployment': deployment,
+                'reason': 'Required components are missing; run scripts/bootstrap-core.ps1 before deploying the global adapter'}, args.format)
+        return 2
     enable_global_adapter = args.global_adapter if args.global_adapter is not None else args.client == "codex"
     if enable_global_adapter and args.client != 'codex':
         raise ValueError('The global Codex adapter requires --client codex')
@@ -172,6 +180,7 @@ def cmd_install(args: argparse.Namespace) -> int:
         "global_adapter": adapter_preview,
         "global_config_mutation": bool(args.apply and enable_global_adapter),
         "status": "ready",
+        "core_deployment": deployment,
     }
     if args.apply:
         _state_path("install")  # Validate the receipt boundary before any user-level writes.
@@ -396,6 +405,28 @@ def cmd_session(args: argparse.Namespace) -> int:
     return 2 if result["status"] == "blocked" else 0
 
 
+def cmd_native_craft(args: argparse.Namespace) -> int:
+    project = _project_root(args)
+    if args.phase != 'capabilities' and not args.lease:
+        raise ValueError('Native operation requires its frozen --lease')
+    if args.phase == 'prepare':
+        result = prepare_native(project, lease=args.lease, workspace=args.workspace, receipt=args.receipt,
+                                tasks=args.tasks, task_files=args.task_file, research_files=args.research_file,
+                                allowed_outputs=args.allowed_output, check_commands=args.check_command,
+                                command_timeout_seconds=args.command_timeout, case_root=args.case_root,
+                                handoff_manifest=args.handoff_manifest, review_file=args.review_file)
+    else:
+        params = {}
+        if args.params_file:
+            from .session_builder import _inside
+            params = json.loads(_inside(project, args.params_file).read_text(encoding='utf-8-sig'))
+        result = invoke_native(project, lease=args.lease, operation=args.phase, params=params)
+    _print(result, args.format)
+    if args.phase == 'check' and result.get('data', {}).get('output', {}).get('result', {}).get('succeeded') is False:
+        return 1
+    return 0
+
+
 def cmd_handshake(args: argparse.Namespace) -> int:
     result = probe_hosts(ROOT, client=args.client, timeout_seconds=args.timeout)
     if args.record:
@@ -414,10 +445,10 @@ def cmd_handshake(args: argparse.Namespace) -> int:
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="reverse-fusion", description="Reverse Fusion evidence-driven reconstruction entry")
     sub = parser.add_subparsers(dest="command", required=True)
-    for name, fn in (("contracts", cmd_contracts), ("doctor", cmd_doctor), ("plan", cmd_plan), ("handoff", cmd_handoff), ("install", cmd_install), ("uninstall", cmd_uninstall), ("update", cmd_update), ("accept", cmd_accept), ("bridge", cmd_bridge), ("craft", cmd_craft), ("build", cmd_build), ("session", cmd_session), ("handshake", cmd_handshake)):
+    for name, fn in (("contracts", cmd_contracts), ("doctor", cmd_doctor), ("plan", cmd_plan), ("handoff", cmd_handoff), ("install", cmd_install), ("uninstall", cmd_uninstall), ("update", cmd_update), ("accept", cmd_accept), ("bridge", cmd_bridge), ("craft", cmd_craft), ("native-craft", cmd_native_craft), ("build", cmd_build), ("session", cmd_session), ("handshake", cmd_handshake)):
         p = sub.add_parser(name)
         p.add_argument("--format", choices=("json", "markdown"), default="json")
-        if name in {"bridge", "session", "build", "craft"}:
+        if name in {"bridge", "session", "build", "craft", "native-craft"}:
             p.add_argument("--project-root", help="task project directory; defaults to the current working directory, not the tool checkout")
         if name == "handoff":
             p.add_argument("--check", action="store_true")
@@ -472,6 +503,21 @@ def build_parser() -> argparse.ArgumentParser:
             p.add_argument("--case-root", help="bind reconstruction prepare to its recorded case and checked handoff")
             p.add_argument("--handoff-manifest", help="project-relative existing reconstruction handoff manifest")
             p.add_argument("--review-file", help="project-relative independent semantic review record; not machine proof")
+        if name == 'native-craft':
+            p.add_argument('phase', choices=('capabilities', 'prepare', 'build', 'check', 'refine', 'return_summary', 'cleanup'))
+            p.add_argument('--lease')
+            p.add_argument('--params-file', help='project-relative JSON for the real native tool')
+            p.add_argument('--workspace', default='work/native-craft')
+            p.add_argument('--receipt', default='work/native-craft-session.json')
+            p.add_argument('--tasks', nargs='+', default=[])
+            p.add_argument('--task-file', action='append', default=[])
+            p.add_argument('--research-file', action='append', default=[])
+            p.add_argument('--allowed-output', action='append', default=[])
+            p.add_argument('--check-command', action='append', default=[])
+            p.add_argument('--command-timeout', type=int, default=60)
+            p.add_argument('--case-root')
+            p.add_argument('--handoff-manifest')
+            p.add_argument('--review-file')
         if name == "handshake":
             p.add_argument("--client", choices=("codex", "pi", "claude"), required=True)
             p.add_argument("--timeout", type=int, default=45)

@@ -55,18 +55,22 @@
       "distribution": "official-cli",
       "policy": "official-default; project-local artifacts",
       "audit_commit": "2ee2b1e8005905db05f5717300a469b3068b908f",
-      "audit_version": "source 1.4.1.dev0; historical execution receipt 1.4.0",
+      "audit_version": "1.4.1.dev0",
       "source_version": "1.4.1.dev0",
-      "historical_execution_version": "1.4.0"
+      "historical_execution_version": "1.4.0",
+      "manifest": "vendor/spec-kit/manifest.json",
+      "role": "required installed official CLI and generated project workflow"
     },
     {
       "id": "craft-bounded",
       "kind": "owned-adapter",
       "source": "https://github.com/storytold/craft-anything",
-      "distribution": "repository-interface-only",
-      "policy": "owned adapter; upstream and historical patches are reference identities, not a native backend distribution",
+      "distribution": "pinned-native-engine-adapter",
+      "policy": "repository-owned external-writer seam over pinned Craft engine; replayable Windows Process patch",
       "audit_commit": "8374ad71544f2cc44698ea74ef990aa31600bac6",
-      "audit_version": "Craft upstream 0.6.1 workspace"
+      "audit_version": "Craft upstream 0.6.1 workspace",
+      "role": "actual Craft workspace/write/edit/command/check lifecycle with current host reasoning",
+      "manifest": "components/craft-native/manifest.json"
     },
     {
       "id": "host-adapters",

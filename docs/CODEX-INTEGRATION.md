@@ -27,7 +27,9 @@ POSIX:   [checkout]/.venv/bin/python -m reverse_fusion bridge --source local --h
 
 ## 安装和卸载
 
-Codex 的默认安装会启用适配层：
+先通过默认 `scripts/install.ps1` 或 `scripts/bootstrap-core.ps1` 安装真实 REA、Spec Kit、
+Craft。缺任何核心组件，CLI 都拒绝把适配层标为完整安装。真实工作流与平台范围见
+[NATIVE-COMPONENTS.md](NATIVE-COMPONENTS.md)。Codex 安装再启用适配层：
 
 ```text
 [venv-python] -m reverse_fusion install --apply --client codex

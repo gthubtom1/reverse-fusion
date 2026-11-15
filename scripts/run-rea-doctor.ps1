@@ -7,13 +7,12 @@ param(
 $ErrorActionPreference = 'Stop'
 . (Join-Path $PSScriptRoot 'lib\ScriptSupport.ps1')
 $repo = Get-CanonicalPath (Join-Path $PSScriptRoot '..')
+$NodePath = Resolve-ReaNodePath $repo $NodePath
 $reaBootstrap = Join-Path $PSScriptRoot 'bootstrap-rea.ps1'
 $rea = & powershell -NoProfile -File $reaBootstrap -NodePath $NodePath | ConvertFrom-Json
-if (-not $NodePath) { $NodePath = $rea.node }
+Assert-NativeExit $LASTEXITCODE 'REA bootstrap'
+$NodePath = $rea.node
 if (-not $ReaScript) { $ReaScript = $rea.script }
-$bootstrap = Join-Path $PSScriptRoot 'bootstrap-wabt.ps1'
-$bootstrapResult = & powershell -NoProfile -File $bootstrap | ConvertFrom-Json
-$env:REA_WABT_BIN_DIRECTORY = $bootstrapResult.bin
 $outputPath = Assert-RepositoryWritePath $repo $Output
 New-Item -ItemType Directory -Path ([IO.Path]::GetDirectoryName($outputPath)) -Force | Out-Null
 $started = Reset-OutputFile $repo $outputPath

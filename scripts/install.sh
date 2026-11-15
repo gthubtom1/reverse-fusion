@@ -24,4 +24,5 @@ fi
 venv_python="$venv/bin/python"
 if [ -x "$venv/Scripts/python.exe" ]; then venv_python="$venv/Scripts/python.exe"; fi
 "$venv_python" -m pip install --no-deps -e "$repo"
-printf '%s\n' '{"status":"installed","global_adapter":"deferred-to-reverse-fusion-install"}'
+printf '%s\n' '{"status":"package-only","core_deployment":"incomplete","reason":"Native Craft distribution currently qualified on Windows x64; port and verify core before deployment"}'
+if [ "${RF_PACKAGE_ONLY:-0}" != 1 ]; then exit 2; fi

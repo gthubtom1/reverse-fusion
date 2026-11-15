@@ -9,7 +9,13 @@ and extracted REA 6.9.0 into this checkout, and recorded the selected runtime in
 target providers, original behavior and reconstruction acceptance are separate.
 `doctor.components` rechecks the recorded executable's version and continues to
 report handshake/provider health as unverified rather than inferring it from a
-past probe. `specify` remains absent and native Craft R46 remains unsupported.
+past probe. RF-28 installed official Spec Kit 1.4.1.dev0 in the repository venv and a real
+Craft engine adapter over fixed source 8374ad7 with a replayable Windows command
+patch. Native workspace/write/edit/check/summary/cleanup, nonzero exit, stale-check
+invalidation, timeout descendant cleanup and concurrent writer exclusion have run.
+Official Craft quoted-command regression passed. Spec workflow and the real
+external target composition are separately recorded in the latest checkpoint.
+See [native component integration](NATIVE-COMPONENTS.md).
 The table below is historical RF-25 evidence, not this machine's runtime status.
 
 Recorded for RF-25 provider runs and the RF-26 architecture review on 2026-11-15. These are bounded observations on the audit

@@ -2,6 +2,11 @@
 
 本文件是项目的最高层产品目标。它高于阶段性 checkpoint、fixture 通过记录和 provider 的当前状态。任何阶段都不能用“框架合同通过”替代本文件定义的产品完成。
 
+RF-28 用户明确重申：Reverse、REA、Spec Kit、Craft 必须真实部署并参与聚合。
+允许为能力缺口维护受控适配或 fork；宿主手写文件、fixture copy 和 session 文件
+观察不能替代缺失组件。下文历史 current-session 默认路径只能作为宿主编码 transport，
+不能再被解释为原生 Craft 已完成。当前产品完成门重新打开，实际修复见最新 checkpoint。
+
 ## 产品要解决的问题
 
 Reverse Fusion 最终要提供一套可迁移的智能体工作流：用户把仓库地址交给 Codex、Pi、Claude 或兼容宿主，宿主按本机能力完成安装和适配；用户提供一个真实目标后，系统能够把逆向分析、证据整理、复刻任务、候选生成、运行和差分验收连成一条可恢复链路。

@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "repository": "https://github.com/github/spec-kit.git",
+  "commit": "2ee2b1e8005905db05f5717300a469b3068b908f",
+  "version": "1.4.1.dev0",
+  "dependency_lock": "vendor/spec-kit/requirements.lock",
+  "install_scope": "repository venv only",
+  "prerequisite_scripts": {
+    "scripts/powershell/check-prerequisites.ps1": "6763a899f957f8ca8e34973730871fee7621d7b17f722373345b57e175f48fce",
+    "scripts/powershell/common.ps1": "98b9b283aa29d90f98280fe28955a72cbf60aee9b4fcd147b712800ae9e27228"
+  }
+}

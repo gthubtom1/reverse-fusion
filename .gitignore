@@ -30,6 +30,14 @@ vendor/wabt/**
 vendor/rea/**
 !vendor/rea/README.md
 !vendor/rea/manifest.json
+vendor/craft/**
+!vendor/craft/README.md
+!vendor/craft/manifest.json
+vendor/spec-kit/upstream/
+vendor/node/**
+!vendor/node/manifest.json
+vendor/rust-tools/
+components/craft-native/target/
 vendor/jadx-headless-mcp/**
 !vendor/jadx-headless-mcp/README.md
 !vendor/jadx-headless-mcp/0.7.1/

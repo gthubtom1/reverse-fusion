@@ -1,0 +1,104 @@
+diff --git a/crates/engine/src/tools/build_tools.rs b/crates/engine/src/tools/build_tools.rs
+index da95cf5..1239800 100644
+--- a/crates/engine/src/tools/build_tools.rs
++++ b/crates/engine/src/tools/build_tools.rs
+@@ -26,6 +26,9 @@ const MAX_ENTRIES: usize = 2_000;
+ /// Output kept from a command (its tail, where errors are).
+ const OUTPUT_TAIL: usize = 24 * 1024;
+ 
++/// Version of the Windows interpreter-tail fix, available to native adapters.
++pub const WINDOWS_COMMAND_TAIL_VERSION: u32 = 1;
++
+ pub fn specs() -> Vec<ToolSpec> {
+     let spec = |id, title, summary, beginner, effects, schema, run| ToolSpec {
+         id,
+@@ -371,11 +374,13 @@ fn build_command_run(ctx: &mut Ctx<'_>, params: Value) -> Result<ToolOutput, Too
+     std::fs::create_dir_all(&app).map_err(|e| ToolError::io(app.display(), e))?;
+     let inner = app.join("app");
+     let had_inner = inner.is_dir();
+-    let (shell, flag) = if cfg!(windows) { ("cmd", "/C") } else { ("sh", "-c") };
++    #[cfg(windows)]
++    let command = Process::new("cmd").windows_raw_tail(format!("/D /S /C \"{}\"", p.command));
++    #[cfg(not(windows))]
++    let command = Process::new("sh").args(["-c", p.command.as_str()]);
+     let cancel = ctx.cancel.clone();
+     ctx.report(None, format!("Running {}", p.command.chars().take(120).collect::<String>()));
+-    let out = Process::new(shell)
+-        .args([flag, p.command.as_str()])
++    let out = command
+         .cwd(&app)
+         .timeout(Duration::from_secs(p.timeout_secs.unwrap_or(600).clamp(1, 7200)))
+         .stdout_cap(4 * 1024 * 1024)
+@@ -433,6 +438,23 @@ mod tests {
+         e.call(id, p, CallOptions::new(Caller::Mcp).with_consent(Consent::Granted)).map(|o| o.to_json()["result"].clone())
+     }
+ 
++    #[cfg(windows)]
++    #[test]
++    fn quoted_windows_programs_preserve_output_and_nonzero_exit() {
++        let (_d, _ws, e) = building();
++        let shell = std::env::var("COMSPEC").unwrap_or_else(|_| "C:\\Windows\\System32\\cmd.exe".into());
++        let success = call(&e, "build_command_run", json!({
++            "command": format!("\"{shell}\" /D /C \"echo quoted-ok\""), "timeout_secs":10
++        })).unwrap();
++        assert_eq!(success["succeeded"], true, "{success}");
++        assert!(success["stdout"].as_str().unwrap().contains("quoted-ok"));
++        let failure = call(&e, "build_command_run", json!({
++            "command": format!("\"{shell}\" /D /C \"exit 7\""), "timeout_secs":10
++        })).unwrap();
++        assert_eq!(failure["succeeded"], false);
++        assert_eq!(failure["exit_code"], 7, "{failure}");
++    }
++
+     #[test]
+     fn a_builder_reads_writes_and_edits_inside_its_project() {
+         let (_d, ws, e) = building();
+diff --git a/crates/platform/src/process.rs b/crates/platform/src/process.rs
+index a0d17fa..fa5a439 100644
+--- a/crates/platform/src/process.rs
++++ b/crates/platform/src/process.rs
+@@ -73,6 +73,8 @@ const MAX_LINE: usize = 16 * 1024 * 1024;
+ pub struct Process {
+     program: OsString,
+     args: Vec<OsString>,
++    #[cfg(windows)]
++    raw_tail: Option<OsString>,
+     env: Vec<(OsString, Option<OsString>)>,
+     env_clear: bool,
+     cwd: Option<PathBuf>,
+@@ -145,6 +147,8 @@ impl Process {
+         Process {
+             program: program.as_ref().to_owned(),
+             args: Vec::new(),
++            #[cfg(windows)]
++            raw_tail: None,
+             env: Vec::new(),
+             env_clear: false,
+             cwd: None,
+@@ -176,6 +180,14 @@ impl Process {
+         self
+     }
+ 
++    /// A caller-owned Windows command tail for interpreters such as cmd.exe,
++    /// whose quoting rules differ from the C runtime argv convention.
++    #[cfg(windows)]
++    pub fn windows_raw_tail(mut self, tail: impl AsRef<OsStr>) -> Self {
++        self.raw_tail = Some(tail.as_ref().to_owned());
++        self
++    }
++
+     pub fn env(mut self, k: impl AsRef<OsStr>, v: impl AsRef<OsStr>) -> Self {
+         self.env.push((k.as_ref().to_owned(), Some(v.as_ref().to_owned())));
+         self
+@@ -300,6 +312,11 @@ impl Process {
+         let (program, lead) = crate::which::launch_target(&self.program);
+         let mut wrap = CommandWrap::with_new(&program, |cmd| {
+             cmd.args(&lead).args(&self.args);
++            #[cfg(windows)]
++            if let Some(tail) = &self.raw_tail {
++                use std::os::windows::process::CommandExt;
++                cmd.raw_arg(tail);
++            }
+             if self.env_clear {
+                 cmd.env_clear();
+             } else {

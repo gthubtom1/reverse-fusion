@@ -11,11 +11,13 @@ description: >-
 ## Reverse Fusion 当前宿主适配
 
 在本仓库内，先以根 `RULES.md` 和 `docs/AGENT-BOOTSTRAP.md` 解释下列继承流程。
-默认编码者就是正在对话的宿主 agent；使用 `reverse_fusion session` 冻结任务、
-研究输入和写入边界，再由它现有的工具编码，不另启 Pi、Craft、账号或模型。
-Spec 文件保留正式需求与任务映射；只有需要官方命令自动化时才准备 Spec Kit CLI。
-`references/execution-backend.md` 的模型 pin、预算、租约及 native R46 资格规则
-仅用于显式选择该外部后端的任务，不是当前会话执行的额外安装条件。
+当前宿主负责推理与候选内容；复刻实现必须通过已安装的真实 Craft engine 执行
+workspace、build_file_write/edit、build_command_run 和检查生命周期。先执行安装的官方
+Spec Kit 在成果项目生成的 constitution/specify/clarify/plan/tasks/analyze 工作流，再经
+case-review 与交接审查冻结任务。用 `native-craft prepare/build/check/refine/return_summary/cleanup`
+接入；完整参数、租约和单写约束见 `docs/NATIVE-COMPONENTS.md`（相对于工具仓库）。
+`session` 只负责额外文件边界观察，不替代 Craft；手写同名 Spec 文档不替代官方工作流。
+不另启模型、账号或重复 Study。继承的独立外部模型后端合同只适用于显式选择该后端。
 本地工具索引缺失时，先按根规则刷新；工具和分析顺序由目标证据决定。
 当前会话的文件边界观察不替代任务验收，最终仍分别执行 build/run、comparison、
 有限 proof 和对应 ledger；缺设备或运行能力保留 unknown。
@@ -58,7 +60,7 @@ Levels 0–3 describe analysis progress, not a tested independent implementation
 |------|---------|------|-----------|
 | Python 3.9+ 标准库 | 是，机械检查 | 原 case-review 与本 skill 的只读脚本/测试 | 仅已登记并获授权的平台能力 |
 | REA 官方安装包与实际可用 provider | REA 声明验收必需 | 原生 Evidence 导出、有限 claim、obligation、coverage | 由独立 installer 协调官方发行；本 skill 不安装 |
-| Spec Kit 官方 `specify` 与项目原生命令 | 规格/实现阶段必需 | constitution、spec、plan、tasks、analyze、converge | 同上；MUST NOT 改官方库 |
+| Spec Kit 官方 `specify` 与项目原生命令 | 规格/实现阶段必需 | constitution、spec、plan、tasks、analyze、converge | 仓库自有固定副本可按记录的能力缺口适配；旧安装只读 |
 | 原专业分析工具 | 按目标需要 | APK、JS、PE 等分析及版本差分 | 只按 tool-index 与原 bootstrap 清单 |
 | 成果项目构建/测试运行时与隔离环境 | 真实验收必需 | 两侧实跑、留出、干净构建/回滚 | 遵守原 scope 和批准的副作用范围 |
 

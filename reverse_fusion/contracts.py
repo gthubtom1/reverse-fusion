@@ -285,8 +285,25 @@ def check_contracts(root: Path) -> dict[str, Any]:
         required_capabilities = ["prepare", "build", "check", "refine", "return_summary", "cleanup"]
         if craft.get("version") != 1 or craft.get("required_capabilities") != required_capabilities:
             raise ContractError("Craft bundle manifest does not contain the exact six-tool gate")
-        if craft.get("distribution") != "repository-interface-only" or craft.get("patch_series") != []:
-            raise ContractError("Craft native patches must not be represented as a distributed backend")
+        if craft.get("distribution") != "pinned-native-engine-adapter" or not craft.get("patch_series"):
+            raise ContractError("Craft must declare its actual engine adapter and replayable patches")
+        native = read_json(root / 'components/craft-native/manifest.json')
+        if native.get('upstream', {}).get('commit') != craft['upstream']['commit']:
+            raise ContractError('Craft adapter and upstream pins differ')
+        for patch in native.get('patches', []):
+            name = patch['path']
+            if not is_safe_relative_path(name) or sha256_file(root / name) != patch['sha256']:
+                raise ContractError('Craft replayable patch identity mismatch')
+        if [patch['path'] for patch in native.get('patches', [])] != craft['patch_series']:
+            raise ContractError('Craft patch series differs from native source manifest')
+        for asset in native.get('platforms', {}).values():
+            for field in ('binary_sha256', 'archive_sha256', 'notices_sha256'):
+                if not re.fullmatch('[a-f0-9]{64}', asset.get(field, '')):
+                    raise ContractError(f'Craft distribution digest missing: {field}')
+        for name in ('scripts/bootstrap-craft.ps1', 'scripts/bootstrap-spec.ps1', 'scripts/bootstrap-core.ps1',
+                     'components/craft-native/src/main.rs', 'components/craft-native/Cargo.lock'):
+            if not (root / name).is_file():
+                raise ContractError(f'Required native component distribution file missing: {name}')
         if len(craft.get("historical_patch_series", [])) != 4:
             raise ContractError("Craft adapter must preserve the four historical patch references")
         checks.append({"id": "craft-bundle-manifest", "status": "pass"})

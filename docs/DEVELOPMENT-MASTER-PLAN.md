@@ -1,5 +1,10 @@
 # Development Plan
 
+RF-28 reopens product acceptance for required real REA, official Spec Kit and
+native Craft installation and composition. Current action is reproducible deployment,
+external generated Spec workflow, native Craft candidate, and independent REA comparison.
+See `checkpoints/RF-28-20261116-001.md` and `NATIVE-COMPONENTS.md`.
+
 RF-27 repairs cross-project integration after the RF-26 architecture review and RF-25 full-audit.
 The previous RF-26 closure was scoped to local contracts; it did not establish
 external-project end-to-end reconstruction. See `CROSS-PROJECT-WORKFLOW.md` and
@@ -44,7 +49,7 @@ The final product contract remains `docs/PRODUCT-GOAL.md`.
    finite core lifecycle without old receipts. Record exact result/commit, push
    the final checkpoint and stop with a clean synchronized checkout.
 
-The latest checkpoint is `checkpoints/RF-27-20261116-002.md`. Any incomplete
+The current checkpoint is `checkpoints/RF-28-20261116-001.md`. Any incomplete
 check remains explicit there and in CURRENT-STATE. After closure, subsequent
 work is a new target or selective upstream maintenance, not another endless
 retest of unrelated future variants.

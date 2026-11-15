@@ -23,8 +23,7 @@ if ($manifest.node_engine -ne '^22.23.4 || ^24.22.1 || >=26.12.1' -or -not $supp
 }
 $archive = Assert-RepositoryWritePath $repo (Join-Path $destination ("{0}-{1}.tgz" -f $manifest.package, $manifest.version))
 if (-not (Test-Path -LiteralPath $archive)) {
-    npm pack ("{0}@{1}" -f $manifest.package, $manifest.version) --pack-destination $destination --loglevel error | Out-Null
-    Assert-NativeExit $LASTEXITCODE 'REA npm pack'
+    Invoke-WebRequest -Uri ("https://registry.npmjs.org/{0}/-/{0}-{1}.tgz" -f $manifest.package, $manifest.version) -OutFile $archive -UseBasicParsing
 }
 $hashHex = (Get-FileHash -Algorithm SHA512 -LiteralPath $archive).Hash
 $hashBytes = for ($index = 0; $index -lt $hashHex.Length; $index += 2) { [Convert]::ToByte($hashHex.Substring($index, 2), 16) }

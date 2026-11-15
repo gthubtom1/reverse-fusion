@@ -7,8 +7,10 @@ $ErrorActionPreference = 'Stop'
 . (Join-Path $PSScriptRoot 'lib\ScriptSupport.ps1')
 $repo = Get-CanonicalPath (Join-Path $PSScriptRoot '..')
 $bootstrap = Join-Path $PSScriptRoot 'bootstrap-rea.ps1'
+$NodePath = Resolve-ReaNodePath $repo $NodePath
 $rea = & powershell -NoProfile -File $bootstrap -NodePath $NodePath | ConvertFrom-Json
-if (-not $NodePath) { $NodePath = $rea.node }
+Assert-NativeExit $LASTEXITCODE 'REA bootstrap'
+$NodePath = $rea.node
 $outputPath = Assert-RepositoryWritePath $repo $Output
 New-Item -ItemType Directory -Path ([IO.Path]::GetDirectoryName($outputPath)) -Force | Out-Null
 $proofPath = Join-Path $repo 'state\rea-wasm-proof-evidence.json'

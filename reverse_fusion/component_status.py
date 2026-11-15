@@ -3,11 +3,58 @@ from __future__ import annotations
 
 import json
 import re
-import shutil
 import subprocess
+import os
 
 from .runtime import node_runtime
 from pathlib import Path
+from .craft_native import native_binary
+
+
+def core_deployment(components: dict) -> dict:
+    missing = []
+    if components['rea']['status'] != 'present-unverified' or components['rea']['node_engine_status'] != 'satisfied':
+        missing.append('rea')
+    if components['spec']['cli_status'] != 'installed':
+        missing.append('spec-kit')
+    if components['craft']['native_backend'] != 'installed-identity-verified':
+        missing.append('craft-native')
+    return {'status': 'installed' if not missing else 'incomplete', 'missing': missing,
+            'scope': 'required runtime installation; generated workflow and target acceptance remain separate'}
+
+
+def _spec_status(root: Path) -> dict:
+    scripts = root / '.venv' / ('Scripts' if os.name == 'nt' else 'bin')
+    cli = scripts / ('specify.exe' if os.name == 'nt' else 'specify')
+    python = scripts / ('python.exe' if os.name == 'nt' else 'python')
+    result = {'cli': str(cli), 'cli_status': 'not-installed', 'version': None,
+              'workflow_acceptance': 'not-performed',
+              'boundary': 'installed CLI is required; execute its generated project skills/scripts for actual Spec workflow'}
+    if cli.is_file() and python.is_file():
+        try:
+            pin = json.loads((root / 'vendor/spec-kit/manifest.json').read_text(encoding='utf-8'))
+            probe = subprocess.run([str(python), '-c', 'import importlib.metadata; print(importlib.metadata.version("specify-cli"))'],
+                                   capture_output=True, text=True, timeout=10)
+            version = probe.stdout.strip()
+            receipt = json.loads((root / 'state/spec-runtime.json').read_text(encoding='utf-8-sig'))
+            result['version'] = version
+            result['cli_status'] = 'installed' if (probe.returncode == 0 and version == pin['version']
+                and receipt['source_commit'] == pin['commit'] and Path(receipt['repository_root']).resolve() == root.resolve()) else 'identity-mismatch'
+        except (OSError, ValueError, KeyError, subprocess.SubprocessError):
+            result['cli_status'] = 'identity-unverified'
+    return result
+
+
+def _craft_status(root: Path) -> dict:
+    result = {'distribution': 'pinned-native-engine-adapter', 'native_backend': 'not-installed',
+              'handshake': 'unverified', 'business_acceptance': 'not-performed',
+              'boundary': 'native-craft drives actual Craft engine; the legacy craft copy command is not this backend'}
+    try:
+        binary = native_binary(root)
+        result.update({'native_backend': 'installed-identity-verified', 'binary': str(binary)})
+    except (OSError, ValueError, KeyError) as exc:
+        result['reason'] = str(exc)
+    return result
 
 
 def component_status(root: Path) -> dict:
@@ -24,7 +71,6 @@ def component_status(root: Path) -> dict:
             rea_status = 'present-unverified' if matches else 'identity-mismatch'
         except (OSError, ValueError, AttributeError):
             rea_status = 'identity-mismatch'
-    specify = shutil.which('specify')
     node, node_source = node_runtime(root)
     node_version, engine_status = None, 'missing'
     if node:
@@ -51,11 +97,8 @@ def component_status(root: Path) -> dict:
                 'node_version': node_version, 'node_engine_status': engine_status,
                 'handshake': 'unverified', 'provider_health': 'unverified',
                 'next_action': 'Use scripts/bootstrap-rea.ps1 on Windows when REA is needed; check the pinned Node engine and then the actual REA catalog/provider before use. A source manifest is not an installed runtime.'},
-        'spec': {'cli': specify, 'cli_status': 'present-unverified' if specify else 'not-installed',
-                 'task_files': 'authorable-by-current-host',
-                 'boundary': 'tasks must be evidence-linked and frozen before implementation; local files do not prove official Spec CLI execution'},
+        'spec': _spec_status(root),
         'builder': {'backend': 'current-session', 'status': 'available-interface',
                     'boundary': 'run session prepare/check/refine/finish in the selected project; direct host edits alone are not an observed Builder session'},
-        'craft': {'distribution': 'repository-interface-only', 'native_backend': 'unsupported',
-                  'boundary': 'the craft command copies a fixture; it does not start native Craft or implement an application'},
+        'craft': _craft_status(root),
     }

@@ -13,11 +13,14 @@ $evidencePath = Assert-RepositoryWritePath $repo $EvidenceOut
 if (-not (Test-Path -LiteralPath $fixturePath)) { throw "Fixture not found: $fixturePath" }
 
 $reaBootstrap = Join-Path $PSScriptRoot 'bootstrap-rea.ps1'
+$NodePath = Resolve-ReaNodePath $repo $NodePath
 $rea = & powershell -NoProfile -File $reaBootstrap -NodePath $NodePath | ConvertFrom-Json
-if (-not $NodePath) { $NodePath = $rea.node }
+Assert-NativeExit $LASTEXITCODE 'REA bootstrap'
+$NodePath = $rea.node
 if (-not $ReaScript) { $ReaScript = $rea.script }
 $bootstrap = Join-Path $PSScriptRoot 'bootstrap-wabt.ps1'
 $bootstrapResult = & powershell -NoProfile -File $bootstrap | ConvertFrom-Json
+Assert-NativeExit $LASTEXITCODE 'WABT bootstrap'
 $env:REA_WABT_BIN_DIRECTORY = $bootstrapResult.bin
 New-Item -ItemType Directory -Path ([IO.Path]::GetDirectoryName($evidencePath)) -Force | Out-Null
 $started = Reset-OutputFile $repo $evidencePath

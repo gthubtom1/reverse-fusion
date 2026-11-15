@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "adapter_version": "0.1.0",
+  "upstream": {
+    "repository": "https://github.com/storytold/craft-anything.git",
+    "commit": "8374ad71544f2cc44698ea74ef990aa31600bac6",
+    "version": "0.6.1"
+  },
+  "platforms": {
+    "windows-x64": {
+      "local_path": "vendor/craft/native/windows-x64/reverse-fusion-craft-native.exe",
+      "binary_sha256": "a25aa377931267e3bd6082889e0eb529d497bbc72e8147ae9b1e4c321400a5d9",
+      "archive_url": "https://github.com/gthubtom1/reverse-fusion/releases/download/craft-native-v0.1.0-rf28.1/craft-native-windows-x64.zip",
+      "archive_sha256": "3b1711a13daa835d73b7d4987ab28248eac7f60d1b1fb2cc88ed2cbb03f92b0f",
+      "notices_sha256": "d58a039adcd20c50ffecc2005af1861ab1f9926f77c7a0d6c971b73653d2fe19"
+    }
+  },
+  "qualification": "finite Windows x64 native engine lifecycle and failure controls verified; target acceptance separate",
+  "patches": [
+    {
+      "path": "components/craft-native/patches/0001-windows-quoted-command-tail.patch",
+      "sha256": "1bf216cdebb83f928f0f0059b52ed33c5206adb749937880e8cfe76f858f7585",
+      "reason": "Preserve quoted Windows command paths in native managed Process; retain Job Object cleanup and nonzero exit."
+    }
+  ],
+  "patched_files": {
+    "crates/platform/src/process.rs": "17c64d43c4a450e89f5095f9cc8ce18498d79a114a8dc51ee518cb16a86ca4c4",
+    "crates/engine/src/tools/build_tools.rs": "5a4eb3191d3f74171d81cdd7545d126d08aed3f7ae8406c88e36e4bb935d7ba0"
+  },
+  "patched_files_hash_mode": "UTF-8 LF-normalized content"
+}
