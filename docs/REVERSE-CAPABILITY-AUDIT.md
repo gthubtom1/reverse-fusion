@@ -86,6 +86,11 @@ wrapper 共同构成，并没有内置已验证能自动处理任意保护器的
 - 实际 bridge --record 将反调试、PE、OLLVM、provider/cleanup 引用写入本地 case。
 - Burp bridge 自带测试通过：loopback 假服务的断连恢复与工具调用；不等于
   真实 Burp 扩展已加载或目标业务通过。
+- 本机从提交 `4ccddf5eac2f14b31992fb21f574d9b77bd0dcc5` 建立干净副本，
+  重新创建本地虚拟环境、实际 install、contracts、doctor、handoff、22 个测试
+  和 APK/反 Frida 资料的 bridge record 均通过。该副本 `reverse_root=null`、
+  历史握手为 unrecorded，说明没有拿旧安装或旧宿主记录冒充此次迁移验证。
+  临时副本随后清理；这仍是本机的干净副本检查，不是另一台电脑实测。
 
 ## 环境与目标边界
 
