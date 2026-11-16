@@ -1,5 +1,12 @@
 # Current State
 
+Overall user-requirement acceptance: NOT FINAL. The 2026-11-16 retrospective
+review consolidates22requirements:13delivered at stated scope,8partial,1not
+completed. Core collaboration and uncoached full workflow remain partial;
+the number of delivered entries is not a completion percentage. See
+`docs/USER-REQUIREMENTS-REVIEW.md`. The sample need not be fully recreated to
+validate the product; its sensible request for user help is not full acceptance.
+
 Stage: RF-29
 Status: Windows-Codex-core-deployed; novice-entry-and-analysis-handoff-qualified-at-recorded-scope
 
