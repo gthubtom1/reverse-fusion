@@ -65,6 +65,18 @@
         ],
         "createdAt": "2026-11-16T03:28:09.073Z",
         "reason": "Agent review: intentional RF33 reconstruction fixture or archived comparison candidate. Background #f4f2ee matches fixtures/desk-original/index.html; preserve reference appearance and frozen evidence bytes, including negative-control and historical candidates."
+      },
+      {
+        "rule": "cream-palette",
+        "value": "*",
+        "files": [
+          "state/rf35-clean-install/evidence/rf33/owned-desk/outputs/标签收纳盒/index.html",
+          "state/rf35-final-qualified/capture/page.html",
+          "state/rf35-owned-final/capture/page.html",
+          "state/rf35-qualified/capture/page.html"
+        ],
+        "createdAt": "2026-11-16T11:41:40.606Z",
+        "reason": "Agent review: these exact files are archived reconstruction fixture or original-browser capture evidence matching fixtures/desk-original/index.html background #f4f2ee; preserve original appearance and evidence integrity."
       }
     ]
   }
