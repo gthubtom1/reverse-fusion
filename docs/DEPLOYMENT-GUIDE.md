@@ -1,8 +1,9 @@
 # Reverse Fusion 部署与使用指南
 
 1.2.0 完整工程分发的当前范围是 Windows x64 + Codex；安装不依赖用户样本。
-Pi项目接入已实际完成全程使用；Claude项目接入实现及官方Spec布局已检查，登录后
-运行验收待本机账号可用。其他系统按实际能力报告，不从CLI存在推定可用。
+Pi项目接入已实际完成全程使用；Claude项目适配及官方Spec布局检查完成，完整模型
+运行未实测。共用核心采用代表性完整运行，单个宿主适配无需登录并重复整段测试，
+验收条件见HOST-PROJECT-CONNECTION.md。其他系统按实际能力报告。
 工程发布门见 [RELEASE-1.2.md](RELEASE-1.2.md)。
 把仓库链接交给正在使用的 Codex、Pi、Claude Code 或兼容 coding agent，并说
 “部署到当前工作区”即可。完整部署动作只在

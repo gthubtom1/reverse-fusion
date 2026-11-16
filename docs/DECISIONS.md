@@ -1,5 +1,21 @@
 # Decisions
 
+## RF-025 Shared core with thin host adapters
+
+User clarified2026-11-16: host adaptation completion does not require logged-in
+full-model runs for every host. Qualify the common Reverse/REA/Spec/Craft and
+comparison/recovery core through representative Codex/Pi full use; check actual
+entry names, skill discovery, tool invocation/permissions, project cwd, official
+Spec layout and connection lifecycle for each adapter. Three-host connection/
+removal and actual generated Spec discovery regressions passed again. Claude
+project adapter is complete; full model-use observation remains unperformed.
+Do not turn that observation into a mandatory login request or release blocker.
+New hosts need concrete contract mapping and focused tests for changed protocol,
+permission or process semantics, not blanket automatic support or repeated full
+reconstruction. New operating-system distributions still need native/runtime
+qualification. Preserve past failures and do not fabricate host runtime results.
+Canonical criteria: docs/HOST-PROJECT-CONNECTION.md.
+
 ## RF-024 Completion requires executable failure exits
 
 RF-31 reopens the RF-30 engineering label for reproduced implementation gaps:

@@ -1,8 +1,10 @@
 # Current State
 
-Latest user decision (2026-11-16): defer Claude work and assess the delivered
-Codex aggregation. Claude model-use qualification is a retained follow-up,
-not a blocker for the current agreed delivery. Current Codex implementation,
+Latest user decision (2026-11-16): shared core plus thin host adapters, with
+representative complete runs. Each host needs entry/skill/tool/workflow contract
+checks, not mandatory logged-in full-model runs. See HOST-PROJECT-CONNECTION.md.
+Claude project adaptation is complete; full model-use testing is unperformed
+and optional, not an outstanding adaptation requirement. Current Codex implementation,
 local deployment, source-bound checks and real natural full-chain use are
 completed at the stated Windows scope; Pi use is also qualified. No universal
 future-target success or zero-defect guarantee is implied. See RF-33checkpoint.
@@ -31,17 +33,19 @@ ending exit0/session finished,6finite obligations verified/0open,108core cases,
 Raw239file snapshot and exact index: evidence/rf33/pi-owned-desk.zip and
 pi-full-use.json. Timeout history remains; this is not a one-shot speed claim.
 
-The current22item table is docs/USER-REQUIREMENTS-REVIEW.md:21implemented and
-qualified at the stated capability scope; item22 Pi complete, Claude project
-integration implemented but model-use qualification awaits login. Actual
+The current22item table is docs/USER-REQUIREMENTS-REVIEW.md:22completed at the
+stated feature/adapter scope and user-approved acceptance standard. Item22
+project entry/lifecycle and official Spec layouts passed for all3hosts; full
+use observed for Codex/Pi, not Claude. Actual
 Claude auth status is loggedIn=false. No credentials/models were installed or
 changed. Other OS/native distributions and arbitrary future target success are
 not inferred from this Windows qualification. Historical13/8/1is superseded by
 the current observations, not deleted or changed retrospectively.
 
 Persistent task details: docs/REMAINING-PRODUCT-WORK.md and RF-33checkpoint.
-The external action for future Claude use qualification is human login
-to that host; the user has now deferred it. Do not resume old target cases or request additional samples.
+Claude login is needed only if optional full-model use observation is requested.
+Do not poll login or reopen delivery for that unrequested observation.
+Do not resume old target cases or request additional samples.
 Final publication and remote identity are recorded in the RF-33checkpoint.
 
 ## Installed RF-31 baseline (historical closure, not the active task)

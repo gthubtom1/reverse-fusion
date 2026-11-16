@@ -1,5 +1,12 @@
 # Provider and host status
 
+Latest acceptance policy: host adaptation and model-use observations are separate.
+All3project-entry/lifecycle and official Spec layout checks pass. Representative
+Codex/Pi full runs qualify the shared core. Claude adapter complete; full model
+use untested and optional. Login state blocks an attempted model run, not adapter
+completion. Future hosts require actual contract mapping and focused checks;
+new tool/permission/process semantics must be checked, not assumed equivalent.
+
 Current RF-33 adds actual natural full-chain Codex owned-app qualification and
 project-local Pi/Claude adapters plus actual official three-host Spec layouts.
 Codex run completed full analysis/spec/native implementation/comparison/fix/

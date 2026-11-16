@@ -2,7 +2,8 @@
 
 1.2.0 当前完整交付为 Windows x64 + Codex。无需用户提供真实样本来完成工程安装；
 不要为完成安装新开目标对话或启动未知程序。Pi项目接入已完成实际全程使用，
-Claude接入实现/官方Spec布局已检查，账号未登录时明确阻断真实模型验收。
+Claude项目适配/官方Spec布局检查已完成；完整模型运行未实测，不作为适配发布门。
+共用核心以代表性运行验证，宿主差异按HOST-PROJECT-CONNECTION.md核对与检查。
 宿主项目接入见HOST-PROJECT-CONNECTION.md；其他操作系统按实际能力报告。
 组件和本地回归检查与软件业务验收分开，发布依据见 RELEASE-1.2.md。
 安装核心并更新全局入口后，用 `[venv-python] scripts/verify-engineering.py` 生成本机
