@@ -1,0 +1,71 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "cream-palette",
+        "value": "*",
+        "files": [
+          "state/rf33-clean-install/evidence/rf33/owned-desk/outputs/标签收纳盒/index.html"
+        ],
+        "createdAt": "2026-11-16T03:28:08.830Z",
+        "reason": "Agent review: intentional RF33 reconstruction fixture or archived comparison candidate. Background #f4f2ee matches fixtures/desk-original/index.html; preserve reference appearance and frozen evidence bytes, including negative-control and historical candidates."
+      },
+      {
+        "rule": "cream-palette",
+        "value": "*",
+        "files": [
+          "state/rf33-pi-entry/work/current-case/native-final/app/index.html"
+        ],
+        "createdAt": "2026-11-16T03:28:08.871Z",
+        "reason": "Agent review: intentional RF33 reconstruction fixture or archived comparison candidate. Background #f4f2ee matches fixtures/desk-original/index.html; preserve reference appearance and frozen evidence bytes, including negative-control and historical candidates."
+      },
+      {
+        "rule": "cream-palette",
+        "value": "*",
+        "files": [
+          "state/rf33-pi-entry/标签收纳盒/index.html"
+        ],
+        "createdAt": "2026-11-16T03:28:08.911Z",
+        "reason": "Agent review: intentional RF33 reconstruction fixture or archived comparison candidate. Background #f4f2ee matches fixtures/desk-original/index.html; preserve reference appearance and frozen evidence bytes, including negative-control and historical candidates."
+      },
+      {
+        "rule": "cream-palette",
+        "value": "*",
+        "files": [
+          "state/rf33-pi-entry/work/current-case/comparison/package-before-launch-fix/index.html"
+        ],
+        "createdAt": "2026-11-16T03:28:08.948Z",
+        "reason": "Agent review: intentional RF33 reconstruction fixture or archived comparison candidate. Background #f4f2ee matches fixtures/desk-original/index.html; preserve reference appearance and frozen evidence bytes, including negative-control and historical candidates."
+      },
+      {
+        "rule": "cream-palette",
+        "value": "*",
+        "files": [
+          "state/rf33-pi-entry/work/current-case/comparison/wrong-count/index.html"
+        ],
+        "createdAt": "2026-11-16T03:28:08.988Z",
+        "reason": "Agent review: intentional RF33 reconstruction fixture or archived comparison candidate. Background #f4f2ee matches fixtures/desk-original/index.html; preserve reference appearance and frozen evidence bytes, including negative-control and historical candidates."
+      },
+      {
+        "rule": "cream-palette",
+        "value": "*",
+        "files": [
+          "state/rf33-pi-entry/work/current-case/native-complete/app/index.html"
+        ],
+        "createdAt": "2026-11-16T03:28:09.031Z",
+        "reason": "Agent review: intentional RF33 reconstruction fixture or archived comparison candidate. Background #f4f2ee matches fixtures/desk-original/index.html; preserve reference appearance and frozen evidence bytes, including negative-control and historical candidates."
+      },
+      {
+        "rule": "cream-palette",
+        "value": "*",
+        "files": [
+          "state/rf33-pi-entry/work/current-case/native/app/index.html"
+        ],
+        "createdAt": "2026-11-16T03:28:09.073Z",
+        "reason": "Agent review: intentional RF33 reconstruction fixture or archived comparison candidate. Background #f4f2ee matches fixtures/desk-original/index.html; preserve reference appearance and frozen evidence bytes, including negative-control and historical candidates."
+      }
+    ]
+  }
+}
