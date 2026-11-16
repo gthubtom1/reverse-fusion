@@ -3,6 +3,13 @@
 Stage: RF-31
 Status: current Windows x64/Codex engineering delivery closed at1.1.1
 
+Functional-use acceptance is separate and remains partial:13 scoped delivered,
+8 partial,1 future-host incomplete; end-to-end stability/performance is not
+qualified. The user explicitly rechecked actual development use after RF-31.
+Read docs/FUNCTIONAL-ACCEPTANCE-REVIEW.md before explaining overall completion.
+The21requirements with engineering implementation/check support were not21
+fully accepted real-use requirements. No new target run is implied by this audit.
+
 Current version:1.1.1, Windows x64/Codex. The persistent user goal and
 `docs/COMPLETION-PLAN.md` retain the22requirements, ordered tasks, completion
 conditions and one next action across context compaction. Current checkpoint:

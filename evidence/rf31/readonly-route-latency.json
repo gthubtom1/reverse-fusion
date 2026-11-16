@@ -1,0 +1,44 @@
+{
+  "scope": "local Python process startup plus read-only bridge routing only; excludes model/network/REA analysis/Spec/Craft/full project",
+  "measurements": {
+    "normal-development": {
+      "runs": 5,
+      "median_ms": 101.3,
+      "max_ms": 139.82,
+      "samples_ms": [
+        83.76,
+        131.89,
+        139.82,
+        101.3,
+        99.94
+      ]
+    },
+    "plain-analysis-route": {
+      "runs": 5,
+      "median_ms": 106.81,
+      "max_ms": 116.97,
+      "samples_ms": [
+        116.97,
+        110.7,
+        106.64,
+        106.81,
+        99.99
+      ]
+    },
+    "hard-target-route": {
+      "runs": 5,
+      "median_ms": 102.59,
+      "max_ms": 103.06,
+      "samples_ms": [
+        102.8,
+        95.38,
+        103.06,
+        102.59,
+        102.22
+      ]
+    }
+  },
+  "writes_in_project": false,
+  "new_user_target": false,
+  "end_to_end_smoothness": "not-established"
+}
