@@ -1,0 +1,96 @@
+{
+  "schema_version": 1,
+  "scope": "Windows x64 selected Codex deployment and core probes; target acceptance separate",
+  "code_revision": "dc0a6a9d28d97ff84e55a6c585d1579b939f4d55",
+  "core_deployment": {
+    "missing": [],
+    "scope": "required runtime installation; generated workflow and target acceptance remain separate",
+    "status": "installed"
+  },
+  "components": {
+    "builder": {
+      "backend": "host-reasoning-with-native-craft",
+      "boundary": "review analysis and execute official Spec workflow before native-craft prepare/build/check/refine/return_summary/cleanup; session is an auxiliary boundary observer, not the implementation engine",
+      "status": "installed-identity-verified"
+    },
+    "craft": {
+      "binary": "D:\\Project\\reverse\\vendor\\craft\\native\\windows-x64\\reverse-fusion-craft-native.exe",
+      "boundary": "native-craft drives actual Craft engine; the legacy craft copy command is not this backend",
+      "business_acceptance": "not-performed",
+      "distribution": "pinned-native-engine-adapter",
+      "handshake": "unverified",
+      "native_backend": "installed-identity-verified"
+    },
+    "rea": {
+      "entry": "D:\\Project\\reverse\\vendor\\rea\\package\\scripts\\rea.mjs",
+      "handshake": "unverified",
+      "next_action": "Use scripts/bootstrap-rea.ps1 on Windows when REA is needed; check the pinned Node engine and then the actual REA catalog/provider before use. A source manifest is not an installed runtime.",
+      "node": "D:\\Project\\reverse\\vendor\\node\\node-v24.22.1-win-x64\\node.exe",
+      "node_engine": "^22.23.4 || ^24.22.1 || >=26.12.1",
+      "node_engine_status": "satisfied",
+      "node_source": "repository-receipt",
+      "node_version": "v24.22.1",
+      "provider_health": "unverified",
+      "status": "present-unverified",
+      "version_pin": "6.9.0"
+    },
+    "reverse": {
+      "boundary": "route availability is checked by contracts; target analysis is separate",
+      "router": "D:\\Project\\reverse\\components\\reverse-core\\router.py",
+      "status": "repository-local"
+    },
+    "spec": {
+      "boundary": "installed CLI is required; execute its generated project skills/scripts for actual Spec workflow",
+      "cli": "D:\\Project\\reverse\\.venv\\Scripts\\specify.exe",
+      "cli_status": "installed",
+      "version": "1.4.1.dev0",
+      "workflow_acceptance": "not-performed"
+    }
+  },
+  "global_adapter": {
+    "agents": "C:\\Users\\toti\\.codex\\AGENTS.md",
+    "enabled": true,
+    "repository": "D:\\Project\\reverse",
+    "skill": "C:\\Users\\toti\\.agents\\skills\\reverse-fusion\\SKILL.md"
+  },
+  "checks": {
+    "install": "pass",
+    "doctor": "pass",
+    "contracts": "pass",
+    "handoff": "pass",
+    "craft": "pass"
+  },
+  "rea_live_catalog": {
+    "status": "pass",
+    "tools": 255,
+    "prompts": 6,
+    "digest": "2c725b48818ac5266198069330907c657f0fa2b6b8236065e5a191e20d95c2d7"
+  },
+  "craft_live": {
+    "backend": "craft-anything-native-engine",
+    "data": {
+      "adapter_version": "0.1.0",
+      "backend": "craft-anything-native-engine",
+      "business_acceptance": "not-performed",
+      "capabilities": [
+        "prepare",
+        "build",
+        "check",
+        "refine",
+        "return_summary",
+        "cleanup"
+      ],
+      "engine_version": "0.6.1",
+      "upstream_commit": "8374ad71544f2cc44698ea74ef990aa31600bac6",
+      "windows_command_tail_version": 1,
+      "writer": "current-host via native build tools"
+    },
+    "ok": true
+  },
+  "regressions": {
+    "product": 73,
+    "inherited_reconstruction": 39
+  },
+  "qualified_component_composition": "evidence/rf28/finite-worker-integration.json",
+  "novice_entry_observation": "evidence/rf29/novice-run-b.json"
+}

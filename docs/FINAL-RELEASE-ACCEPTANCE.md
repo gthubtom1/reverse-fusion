@@ -1,5 +1,17 @@
 # v1 release acceptance
 
+RF-29 separately checks novice use through an ordinary request in a new chat and
+project. The first run exposed original-goal loss at first recorded refinement;
+it is a retained failure, repaired in the shared entry. Current retest status is
+in [RF-29 checkpoint](../checkpoints/RF-29-20261116-001.md) and
+[current state](CURRENT-STATE.md). Controlled component results below do not
+substitute for this natural entry observation or whole-target acceptance.
+The fresh identical-prompt retest passed the observed entry, goal retention,
+adaptive static-analysis and pre-implementation handoff checks. It naturally
+requested normal original-use observations and did not create a candidate.
+This establishes neither full target analysis nor uncoached implementation-stage
+completion; those remain separate from RF-28's real Spec/Craft qualification.
+
 RF-28 supersedes the former interface-only deployment criterion. Real REA 6.9.0,
 official Spec Kit 1.4.1.dev0 and the actual pinned Craft engine adapter are installed.
 The published Windows x64 component archive was downloaded and verified by a
@@ -20,7 +32,7 @@ See [finite integration](../evidence/rf28/finite-worker-integration.json) and
 The table below is the historical RF-25/RF-26 release baseline of product `1.0.0`.
 RF-27 reopened cross-project execution, implementation handoff and live runtime
 integration after an actual external chat exposed gaps. Current repair status
-comes from `docs/CURRENT-STATE.md` and the latest RF-28 checkpoint, not from this
+comes from `docs/CURRENT-STATE.md` and the latest RF-29 checkpoint, not from this
 baseline's closure. Historical fixture results do not certify a new user target.
 The baseline included a remote fresh clone of its audited source commit; its
 finite runtime boundaries remain explicit.

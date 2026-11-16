@@ -13,12 +13,14 @@ provider，也不改变当前项目的工作目录。模型在普通软件开发
 进入 Reverse Fusion 时先运行：
 
 ```text
-Windows: [checkout]\.venv\Scripts\python.exe -m reverse_fusion bridge --source local --hint "任务"
-POSIX:   [checkout]/.venv/bin/python -m reverse_fusion bridge --source local --hint "任务"
+Windows: [checkout]\.venv\Scripts\python.exe -m reverse_fusion bridge --source local --case-root work/current-case --hint "[用户原话]" --record
+POSIX:   [checkout]/.venv/bin/python -m reverse_fusion bridge --source local --case-root work/current-case --hint "[用户原话]" --record
 ```
 
 然后读取返回的 `workflow`、`skill`、`required_reads`、`related_routes`、`next_stage`、
 `hard_target` 和 `missing_support`。
+首次保存原始要求，识别技术后细化同一 case_root；最终 objective 与当前 stage 分开。
+已有案例按实际路径恢复。先只读探路后首次落盘时加 `--user-request "[用户原话]"`。
 
 完整的跨项目交接见 [CROSS-PROJECT-WORKFLOW.md](CROSS-PROJECT-WORKFLOW.md)。任务命令
 使用 `--project-root` 指向当前软件项目，省略时使用当前目录；不得为了调用共享工具切换到

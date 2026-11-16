@@ -1,7 +1,7 @@
 # Current State
 
 Stage: RF-29
-Status: novice-entry-repair-in-progress; RF-28 real-component qualification retained
+Status: Windows-Codex-core-deployed; novice-entry-and-analysis-handoff-qualified-at-recorded-scope
 
 The user requires plain-language use by a novice, preservation of the whole
 product goal, adaptive investigation before implementation, and real components
@@ -12,8 +12,25 @@ agent workflow plus beginner guide. The first uncoached chat found a gap between
 read-only initial routing and first recorded refinement: scope retained the
 whole goal but the machine pointer lost it. That chat is paused; the first-record
 adapter/CLI and next-stage handoff are repaired, with73 product tests passing.
-An independent fresh retest is pending. See `evidence/rf29/novice-run-a.json`.
+The independent fresh retest used the identical plain prompt with no maintainer
+follow-up. It recorded the goal on first call, refined R0 to R3/R32 in the same
+case, retained R46 next-stage, ran real REA and saved a readiness review before
+any candidate. It recognized a whole-source semantic worker heap failure despite
+exit zero, then analyzed exact provenance-backed source slices while retaining
+partial coverage. It asked for normal original-use observations at the licensing/
+game/service dependency boundary. The chat is idle awaiting that information;
+whole-target analysis/recreation and uncoached Spec/Craft execution beyond this
+point are not established. See `evidence/rf29/novice-run-a.json` (retained failure),
+`evidence/rf29/novice-run-b.json` (observed entry/handoff pass), and the remote
+fresh-code check. Real Spec/Craft composition remains separately qualified by
+RF-28. There is no pending reproduced shared-entry defect in these observations.
 Current checkpoint: `checkpoints/RF-29-20261116-001.md`.
+
+Local REA now explicitly selects the repository's pinned Node24.22.1 rather than
+the desktop runtime cache. Its live catalog probe passed (255 tools/6 prompts),
+actual Craft reported all six lifecycle capabilities, and core_deployment has
+no missing components. These are deployment checks, not universal provider or
+new target acceptance.
 
 Real REA 6.9.0, official Spec Kit 1.4.1.dev0 and the pinned actual Craft engine
 adapter are installed and participate in the external outcome project. The

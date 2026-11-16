@@ -51,7 +51,7 @@ shell、模型或工具安装路径。
    provider 运行配置。Codex 的受控适配层只写路由指引。Craft companion 的
    `--all-tools` 保持原样。
 
-Reverse Fusion 的正文和 case 仍属于当前 checkout。Codex 的用户级适配层只在任务涉及
+Reverse Fusion 的正文属于共享 checkout，case 属于当前成果项目。Codex 的用户级适配层在任务涉及
 逆向、保护分析、协议复刻、行为重建或用户明确要求 Reverse Fusion 时触发；普通软件
 开发保持 `host-native`。当前项目目录始终是输出和候选的工作区，不会被共享 checkout
 替代。
@@ -70,11 +70,12 @@ Reverse Fusion 的正文和 case 仍属于当前 checkout。Codex 的用户级�
 自己的 analysis/reconstruction subcase。主项目继续 normal-dev；只有经过审查、
 Evidence 支持的结论或候选才能带回主项目，临时候选不覆盖主项目源代码。
 
-先调用 `bridge --source local --hint [task]`，读取返回的 `workflow`、`skill`、
+先用用户原话调用 `bridge --source local --hint [task] --record`，读取返回的 `workflow`、`skill`、
 `related_routes`、`next_stage`、`required_reads`、`hard_target` 和
 `missing_support`。普通开发的默认结果是 `workflow.stage=host-native`；需要
-逆向时显式使用 `--mode analysis` 或 `--mode reconstruction`。需要持久恢复点时增加
-`--project-root [当前项目] --case-root [project-relative-case] --mode analysis --record`。资料缺失即
+逆向时进入 analysis，复刻目标也先分析并保留最终意图，就绪后才切换 reconstruction。
+首次指定 `--project-root [当前项目] --case-root [project-relative-case]`，后续细化用同一 case。
+若首次只读探路，第一次落盘传 `--user-request [用户原话]`。资料缺失即
 unavailable，不用旧 receipt 假装具备能力。
 
 任务命令默认以调用时当前目录为成果项目；技能资料仍以共享 checkout 为根。

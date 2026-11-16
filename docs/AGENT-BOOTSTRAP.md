@@ -92,7 +92,9 @@ session 冻结与路径边界。仅从外部目录运行一次无写入的 bridg
   original/candidate comparison、integration proof、cleanup 和 obligation ledger。
 - 研究外部网站、EXE、APK、协议、依赖或参考项目时，在当前成果项目内创建隔离的
   `analysis` 或 `reconstruction` subcase，不把临时 candidate 写回主项目。
-- 对目标先调用本地 `bridge --source local`；读取返回的 `skill`、
+- 对目标首次用用户原话调用本地 `bridge --source local --hint [用户原话] --record`，
+  指定当前成果项目和同一 case_root 后保留。首次只读探路后落盘时使用
+  `--user-request [用户原话]`，不以技术 hint 覆盖最终目标。读取返回的 `skill`、
   `required_reads`、`hard_target` 和 `missing_support`。缺少必需资料时状态为
   `unavailable`，不能用旧 receipt 替代。
 - 跨项目任务命令传入 `--project-root [当前成果项目绝对路径]`，并按

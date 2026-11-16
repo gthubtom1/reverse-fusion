@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "scope": "ordinary-language entry, technical rerouting, adaptive analysis and pre-implementation user handoff only",
+  "status": "pass-at-observed-scope",
+  "code_revision": "dc0a6a9d28d97ff84e55a6c585d1579b939f4d55",
+  "thread_id": "01a1e19a-b433-7d51-9c48-f75506a358d4",
+  "thread_title": "白话分析并复刻软件复测",
+  "project_root": "C:\\Users\\toti\\Documents\\Codex\\2026-11-16\\reverse-fusion-novice-retest",
+  "prompt": "帮我分析这个文件夹里的软件，然后复刻出一个界面和功能都一样、能实际使用的版本。我不懂技术，需要我提供什么就直接告诉我。",
+  "initial_material": "only original installer; no old analysis/candidate; app-created empty directories",
+  "sample_sha256": "bf6534e176d5665433ad925d18ddc9db3949b42b60d8e8b2c7d666acfdf3837b",
+  "sample_bytes": 188398963,
+  "maintainer_followup_prompts": [],
+  "final_state": "idle; asked whether original can be activated/used and for a normal use recording or blocked-page/error; not resumed",
+  "observed_components": {
+    "reverse": "read installed user-level skill; record original request; generic R0 refined to R3 with R32; same case, revision2; R46 next-stage retained",
+    "rea": [
+      "inspect-artifact produced original payload bundle",
+      "analyze-javascript-application on recovered full source produced partial/OOM evidence, not reclassified as successful analysis",
+      "exact original-function slices with provenance analyzed by real REA after broad-worker heap failure;1280 AST nodes,1 parsed source; static semantics remain partial"
+    ],
+    "spec": "not invoked: case remains analysis, implementation readiness explicitly not established",
+    "craft": "not invoked: no implementation batch or candidate written"
+  },
+  "recovery_probe": "read-only plain continue on actual project resumed R3, analysis stage and original reconstruction goal",
+  "observations": [
+    "Recovered28 original assets, recorded source offsets/digests; original assets clearly labeled research, not independent recreation",
+    "Identified game/native/licensing/server/config/state dependencies",
+    "Reviewed UI gate separately from native license-expiry task-stop indicators; native call-flow and runtime remain unknown",
+    "Persisted incomplete dependency/readiness review before any candidate",
+    "No silent offline-subset substitution; no guess implementation",
+    "User question names normal operations and concrete missing conditions, not route/tool choices",
+    "No original/game execution or discovered-service requests; original hash unchanged; observed REA processes exited"
+  ],
+  "not_established": [
+    "Complete target analysis",
+    "Original runtime or game behavior",
+    "Full native call-flow or authorization/server equivalence",
+    "Independent usable recreation",
+    "Uncoached natural-language Spec/Craft execution beyond this handoff point",
+    "All future target or host behavior"
+  ],
+  "records": [
+    {
+      "path": "work/current-case/case.json",
+      "sha256": "d5ee802424ba05be1ad8784f2e89cc681a53337bd6163e98d9504aad8e0b96d0"
+    },
+    {
+      "path": "work/current-case/scope.md",
+      "sha256": "4e796649f1a50f301dd91771169ef9b32bbb5802cf1380046e8362274be22130"
+    },
+    {
+      "path": "work/current-case/timeline.md",
+      "sha256": "75a12859f97713875d46370fd91ca3904fdcd63219a0998ded95cf57d85fee0e"
+    },
+    {
+      "path": "work/current-case/workitems.md",
+      "sha256": "851d508bbf9a8420776ef3fdc95c2897842037e780294e170bbcf818012fe647"
+    },
+    {
+      "path": "work/current-case/notes/readiness-review.md",
+      "sha256": "94c2ef9d11607c3a2935bd63cb6132d8d2f99a0f866303b0de5be3d2106282a1"
+    },
+    {
+      "path": "work/current-case/evidence/rea-payload.json",
+      "sha256": "20c74eb6d5949562b8113923b9933c9954ace1e390c3eaf2b6506be1d19779fc"
+    },
+    {
+      "path": "work/current-case/evidence/rea-frontend.json",
+      "sha256": "9964d34c9130e073da623ffdf6883f2377fef47a7376e6c0d0382aea45b9ac85"
+    },
+    {
+      "path": "work/current-case/evidence/rea-license-functions.json",
+      "sha256": "3872790236823bf28ecc2f8f1a2c77684e35ba3fd9e7fc4bc07956f7768a815a"
+    },
+    {
+      "path": "work/current-case/evidence/selected-functions-provenance.json",
+      "sha256": "2b7b6b90aa4706ab834866aa4d836e47b25352298af2c69465c3dc83550108e2"
+    },
+    {
+      "path": "work/current-case/evidence/recovered-assets.json",
+      "sha256": "6e98d1f83c73baff1b5f796c5a6328a77eb5acdd43e5bc5360ee6814326dc291"
+    },
+    {
+      "path": "outputs/SkinForge-初步分析.txt",
+      "sha256": "48de424e24b91b29c94ca514bbcabe6a86e0db8cb6ff56c0b73d6e3dd4be608d"
+    }
+  ]
+}

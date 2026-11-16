@@ -4,6 +4,8 @@ Reverse Fusion 是独立 GitHub 项目，不是旧安装仓库的改版。它在
 中提供可恢复的普通开发、分析和复刻辅助能力：enhanced Reverse 领域技能、官方
 REA、官方 Spec 工作流、真实 Craft engine 接入、独立验收与仓库本地安装入口。
 部署交接保存在 `docs/AGENT-BOOTSTRAP.md`，用户只需仓库链接，无需另存聊天文本。
+白话任务承接由 `docs/AGENT-WORKFLOW.md` 约定；用户例子见 `docs/BEGINNER-GUIDE.md`。
+原始交付目标与当前分析/实现阶段分开持久保存，不因领域细化或“继续”而丢失。
 
 Reverse 是唯一 route/case owner；REA 管理 Evidence/comparison/ledger；Spec
 管理项目任务和来源引用；宿主负责推理，通过真实 Craft engine 写候选和运行检查；独立 verifier

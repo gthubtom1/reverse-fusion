@@ -52,13 +52,13 @@ cd reverse-fusion
 聚合架构、阶段交接和各组件边界见 [架构说明](docs/ARCHITECTURE.md)。专业任务的入口是：
 
 ```text
-[venv-python] -m reverse_fusion bridge --project-root "[当前项目绝对路径]" --source local --hint "目标与问题"
+[venv-python] -m reverse_fusion bridge --project-root "[当前项目绝对路径]" --source local --case-root work/current-case --hint "[用户原话]" --record
 ```
 
 读取返回的 `workflow`、`skill`、`related_routes`、`next_stage`、`required_reads` 和
 `hard_target`；`missing_support` 应为空。`normal-dev` 的普通开发返回
-`workflow.stage=host-native`，不会抢占 Reverse；分析或复刻才显式使用相应的
-`--mode`。混合目标的 secondary skill 通过 `related_routes` 和 case refs 保留，
+`workflow.stage=host-native`，不会抢占 Reverse。复刻目标首次仍进入 analysis，保存原话后
+在同一 case 细化；就绪后显式切换 `--mode reconstruction`。混合目标的 secondary skill 通过 `related_routes` 和 case refs 保留，
 不要求一次性加载所有 45 个领域。
 完整的证据→规格→Builder→独立验收流程见
 [跨项目交接](docs/CROSS-PROJECT-WORKFLOW.md)。路由成功不表示 REA、Spec、Craft 已执行。

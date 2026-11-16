@@ -166,3 +166,20 @@ Official generated Spec workflow and its prerequisites are executed in the
 outcome project. Tool/runtime qualification stays separate from original/candidate
 comparison, native REA evidence and finite target obligations. Historical RF-25
 interface checks remain historical, not the current product completion gate.
+
+## RF-022 Plain-language objective survives technical routing
+
+The user supplies the goal, not specialist commands. The first case record
+retains the original request and delivery objective independently from the
+current stage. A reconstruction request starts domain analysis; actual evidence
+refines that same case. Technical hints and a short continuation cannot replace
+the full objective or silently approve a subset. When the first route was only
+read-only, --user-request preserves the original goal at first record. Implicit
+continuation resumes a unique open local case and reports ambiguity otherwise.
+
+The real novice chat found the first-record gap after controlled component tests
+had passed. It is retained as a failed run; fixes are tested in another new chat
+without previous analysis or a specialist prompt. The agent workflow and beginner
+guide define useful user communication, evidence-based readiness and whole-goal
+preservation; they do not prescribe a fixed reverse tool sequence. Real component
+qualification and independent novice entry observations are reported separately.

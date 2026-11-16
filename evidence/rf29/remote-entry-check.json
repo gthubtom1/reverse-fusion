@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "scope": "fresh-remote-code-and-docs, existing interpreter; full runtime installation retained from RF28 clean-clone qualification",
+  "remote_revision": "dc0a6a9d28d97ff84e55a6c585d1579b939f4d55",
+  "checks": [
+    {
+      "command": [
+        "contracts",
+        "--format",
+        "json"
+      ],
+      "status": "pass"
+    },
+    {
+      "command": [
+        "bridge",
+        "--source",
+        "local",
+        "--hint",
+        "帮我分析这个软件然后复刻",
+        "--record",
+        "--format",
+        "json"
+      ],
+      "status": "pass"
+    },
+    {
+      "command": [
+        "bridge",
+        "--hint",
+        "继续",
+        "--format",
+        "json"
+      ],
+      "status": "pass"
+    }
+  ]
+}
