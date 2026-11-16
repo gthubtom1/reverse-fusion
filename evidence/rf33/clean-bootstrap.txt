@@ -1,0 +1,56 @@
+Obtaining file:///D:/Project/reverse/state/rf33-clean-install
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Checking if build backend supports build_editable: started
+  Checking if build backend supports build_editable: finished with status 'done'
+  Getting requirements to build editable: started
+  Getting requirements to build editable: finished with status 'done'
+  Preparing editable metadata (pyproject.toml): started
+  Preparing editable metadata (pyproject.toml): finished with status 'done'
+Building wheels for collected packages: reverse-fusion
+  Building editable for reverse-fusion (pyproject.toml): started
+  Building editable for reverse-fusion (pyproject.toml): finished with status 'done'
+  Created wheel for reverse-fusion: filename=reverse_fusion-1.2.0-0.editable-py3-none-any.whl size=9158 sha256=a53cdca793cd6c5a6289db427abebdf15bb6ca9bdff93d03d489e010857781f7
+  Stored in directory: D:\tmp\pip-ephem-wheel-cache-k_z46si7\wheels\f0\d5\4e\bd43ec58bfedfdb77985aed607190f837552bf610459c5e56d
+Successfully built reverse-fusion
+Installing collected packages: reverse-fusion
+Successfully installed reverse-fusion-1.2.0
+
+[notice] A new release of pip is available: 23.2.1 -> 26.3
+[notice] To update, run: D:\Project\reverse\state\rf33-clean-install\.venv\Scripts\python.exe -m pip install --upgrade pip
+{"version":"6.9.0","node_engine":"^22.23.4 || ^24.22.1 || \u003e=26.12.1","node":"D:\\Project\\reverse\\state\\rf33-clean-install\\vendor\\node\\node-v24.22.1-win-x64\\node.exe","status":"ready","package":"rea-agents","script":"D:\\Project\\reverse\\state\\rf33-clean-install\\vendor\\rea\\package\\scripts\\rea.mjs","node_version":"24.22.1","integrity":"sha512-KqDn1UR5BMqHoQ3MGAnPuWiSKwgdFaz1L/uUNgrKt+1W8kPtgYP8AWEOXIF1lDIOBVyPuYIIst2iamo1Wf3r8g=="}
+Cloning into 'D:\Project\reverse\state\rf33-clean-install\vendor\spec-kit\upstream'...
+HEAD is now at 2ee2b1e fix(powershell): treat bracketed project paths literally in create-new-feature (#5399)
+
+[notice] A new release of pip is available: 23.2.1 -> 26.3
+[notice] To update, run: D:\Project\reverse\state\rf33-clean-install\.venv\Scripts\python.exe -m pip install --upgrade pip
+
+[notice] A new release of pip is available: 23.2.1 -> 26.3
+[notice] To update, run: D:\Project\reverse\state\rf33-clean-install\.venv\Scripts\python.exe -m pip install --upgrade pip
+{"version":"1.4.1.dev0","dependency_lock_sha256":"511d91ff202bf06794bd4c0df2e23965cb9100ac4d5028ae778b2c56ceecd61f","schema_version":1,"python":"D:\\Project\\reverse\\state\\rf33-clean-install\\scripts\\..\\.venv\\Scripts\\python.exe","repository_root":"D:\\Project\\reverse\\state\\rf33-clean-install","status":"installed","workflow_acceptance":"not-performed","source_commit":"2ee2b1e8005905db05f5717300a469b3068b908f"}
+{"capabilities":{"adapter_version":"0.1.1","backend":"craft-anything-native-engine","business_acceptance":"not-performed","capabilities":["prepare","build","check","refine","return_summary","cleanup","abort"],"engine_version":"0.6.1","upstream_commit":"8374ad71544f2cc44698ea74ef990aa31600bac6","windows_command_tail_version":1,"writer":"current-host via native build tools"},"binary_sha256":"45108effa5ae6e6713c28c1193106984d630ad7bc6da9dd873203c7c263cbbe3","schema_version":1,"repository_root":"D:\\Project\\reverse\\state\\rf33-clean-install","status":"installed","distribution":"pinned-release","source_inputs":{"components/craft-native/Cargo.lock":"ea42025de12e21b77f584a46849150c6a5bf00fdf711a16604723ff95017996d","components/craft-native/manifest.json":"bd5c7360f4edcdd4be5ad56530eba108edd9b3d03d4718ecdc42d1c32e58163c","components/craft-native/patches/0001-windows-quoted-command-tail.patch":"1bf216cdebb83f928f0f0059b52ed33c5206adb749937880e8cfe76f858f7585","components/craft-native/src/main.rs":"79873371166bc3d1d0c7dd522ed61637c4170f27f469b418556af2a527ada496","components/craft-native/Cargo.toml":"9080664b994f577d4d9e5bd8b338a1060def2bb6ac458c9af19cc6397c228fb2"},"business_acceptance":"not-performed"}
+{"output":"D:\\Project\\reverse\\state\\rf33-clean-install\\state\\rea-mcp-doctor.json","prompts":6,"rea":"6.9.0","catalog_digest":"2c725b48818ac5266198069330907c657f0fa2b6b8236065e5a191e20d95c2d7","tools":255,"status":"pass"}
+{
+  "backend": "craft-anything-native-engine",
+  "data": {
+    "adapter_version": "0.1.1",
+    "backend": "craft-anything-native-engine",
+    "business_acceptance": "not-performed",
+    "capabilities": [
+      "prepare",
+      "build",
+      "check",
+      "refine",
+      "return_summary",
+      "cleanup",
+      "abort"
+    ],
+    "engine_version": "0.6.1",
+    "upstream_commit": "8374ad71544f2cc44698ea74ef990aa31600bac6",
+    "windows_command_tail_version": 1,
+    "writer": "current-host via native build tools"
+  },
+  "ok": true
+}
+{"core_deployment":"installed","business_acceptance":"not-performed"}
+{"venv":"D:\\Project\\reverse\\state\\rf33-clean-install\\.venv","status":"core-installed","global_adapter":"deferred-to-reverse-fusion-install"}

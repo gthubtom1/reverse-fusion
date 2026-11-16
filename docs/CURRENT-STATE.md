@@ -1,11 +1,41 @@
 # Current State
 
-Active work: RF-33 continues original product completion at explicit user request.
-The previous engineering release remains installed; original functional gaps are
-not closed. Persistent task order/criteria:docs/REMAINING-PRODUCT-WORK.md;
-checkpoint:checkpoints/RF-33-20261116-001.md. Do not stop at another acceptance
-summary or request user samples. Use owned repeatable material, actual component
-execution and recorded failures/corrections; preserve external host blockers.
+Current stage: RF-33 /1.2.0, Windows x64 with Codex deployed. The former missing
+natural full-chain use is now completed: an ordinary request in a new external
+chat independently led to Reverse/actual REA/official Spec/native Craft,
+comparison, correction and packaged delivery. Archive: evidence/rf33/owned-desk;
+summary: owned-desk-completion.json. Codex took26.2minutes; finite1416checks,
+independent precommitted UI comparison and final native lifecycle passed.
+
+Actual integration gaps repaired: official3host Spec layout resolution,
+project-local host entry, case initialization after recorded routing, selected
+independent requirement batches with full goal retained, bounded official REA,
+owned process stdin/output/memory/deadline/descendant control, and independent
+process comparison.104product+39reconstruction checks passed,0skips; a fresh
+GitHub clone at88d5b46 default-installed all cores and repeated all143checks
+with identical engineering source identities. Archived52native files retain
+their original bytes/IDs after clone. See evidence/rf33/clean-install.json.
+
+Pi now completed the same owned application through actual analysis, official
+Spec, native implementation/checks, comparison/correction, packaging and final
+response. Several deadline exits were resumed with ordinary continuation,
+ending exit0/session finished,6finite obligations verified/0open,108core cases,
+38browser checkpoints/images,9launch checks and independent held UI pass.
+Raw239file snapshot and exact index: evidence/rf33/pi-owned-desk.zip and
+pi-full-use.json. Timeout history remains; this is not a one-shot speed claim.
+
+The current22item table is docs/USER-REQUIREMENTS-REVIEW.md:21implemented and
+qualified at the stated capability scope; item22 Pi complete, Claude project
+integration implemented but model-use qualification awaits login. Actual
+Claude auth status is loggedIn=false. No credentials/models were installed or
+changed. Other OS/native distributions and arbitrary future target success are
+not inferred from this Windows qualification. Historical13/8/1is superseded by
+the current observations, not deleted or changed retrospectively.
+
+Persistent task details: docs/REMAINING-PRODUCT-WORK.md and RF-33checkpoint.
+The only external action for remaining Claude use qualification is human login
+to that host. Do not resume old target cases or request additional samples.
+Final publication and remote identity are recorded in the RF-33checkpoint.
 
 ## Installed RF-31 baseline (historical closure, not the active task)
 

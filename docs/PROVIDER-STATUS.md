@@ -4,9 +4,11 @@ Current RF-33 adds actual natural full-chain Codex owned-app qualification and
 project-local Pi/Claude adapters plus actual official three-host Spec layouts.
 Codex run completed full analysis/spec/native implementation/comparison/fix/
 delivery in26.2minutes. Actual Windows PE debugger-effect and protocol/HAR
-qualifications supplement the bounded domain matrix. Pi analysis and native
-implementation/packaging are observed; final resumed-run qualification stays in
-RF-33 checkpoint. Claude current auth status loggedIn=false; project code and
+qualifications supplement the bounded domain matrix. Pi completed analysis,
+official Spec/native implementation, comparison/correction and packaged delivery
+after multiple deadline resumptions; final call exit0/session finished, finite
+ledger6verified/0open and independent held UI checks pass. Full observations and
+timeout history are in evidence/rf33/pi-full-use.json. Claude current auth status loggedIn=false; project code and
 official layout tests do not imply logged-in runtime success. Old probe rows
 below remain historical; do not use them instead of current scoped records.
 

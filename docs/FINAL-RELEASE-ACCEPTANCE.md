@@ -1,5 +1,25 @@
 # Current release acceptance
 
+RF-33 /1.2.0 current additions replace the former missing natural full-chain
+evidence with an actual complete owned application run. Real Reverse/REA/
+official Spec/native Craft,1416finite comparisons, launcher correction/new
+batch, packaging, independent held UI checks and finite native ledger closure
+are archived under evidence/rf33. Shared host/FR-batch/case-init/execution-budget/
+comparison gaps are repaired;104product/39reconstruction checks passed,0skips.
+Local Codex1.2.0 deployment is updated. Exact current host outcomes, resource
+measurements and externally blocked Claude login stay in RF-33checkpoint and
+REMAINING-PRODUCT-WORK.md. Historical13/8/1orRF31engineering closure is not the
+current functional assessment. New cases keep actual limits rather than inheriting
+an all-input/all-provider pass. Fresh GitHub clone88d5b46 default-installed all
+cores and repeated104+39checks with identical source inputs;52archived native
+files retained exact bytes/IDs. Pi resumed to actual final response, exit0,
+session finished, finite6verified/0open and independent held UI pass;239raw
+files retained in pi-owned-desk.zip. Current22item assessment and outstanding
+Claude login are in USER-REQUIREMENTS-REVIEW.md; publication identity is in the
+RF-33checkpoint. No unexecuted Claude model result is classified as a pass.
+
+## Historical RF-31 release acceptance
+
 RF-31 /1.1.1 Windows x64/Codex implementation audit and source-bound regression
 checks are recorded in `docs/COMPLETION-PLAN.md`, `release/verification.json`,
 `evidence/rf31/` and `checkpoints/RF-31-20261116-001.md`.

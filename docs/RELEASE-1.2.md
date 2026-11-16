@@ -24,7 +24,14 @@ native Craft，实现、比较、发现并修正启动问题，再完成打包�
 项目指引：`HOST-PROJECT-CONNECTION.md`；执行：`BOUNDED-REA.md`；
 比较：`PROCESS-COMPARISON.md`；原需求进度：`REMAINING-PRODUCT-WORK.md`。
 所有声明以实际测试范围、当前宿主与账号状态为准。Claude目前未登录，不能虚构该
-宿主完整模型运行通过；Pi的完整运行/恢复结果在本轮checkpoint单独保存。
+宿主完整模型运行通过；Pi已实际完成全程，最后调用exit0、session finished，
+有限ledger6verified/0open，108核心对照、38浏览器状态/截图、9启动检查与独立留出
+UI核对通过。多次期限退出和恢复原样保留在`../evidence/rf33/pi-full-use.json`。
+
+主部署和GitHub全新克隆各104项产品+39项复刻检查通过，0跳过；新克隆默认安装
+使用自己的运行时和真实组件，52份原生归档字节/身份保持完整。记录见
+`../evidence/rf33/clean-install.json`。原22项最新结果见USER-REQUIREMENTS-REVIEW.md，
+不再以旧的13/8/1作为当前结果，也不将未登录Claude运行改成通过。
 
 仍使用已固定的官方REA6.9.0/Spec1.4.1.dev0及原生Craft0.1.1，不额外绑定模型。
 当前主部署为Windows x64/Codex；其他宿主项目适配与本机实际运行资格分别记录。

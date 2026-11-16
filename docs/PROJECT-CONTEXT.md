@@ -2,9 +2,10 @@
 
 当前交付为1.2.0 Windows x64/Codex工程版，当前阶段RF-33；按用户新指示，不再要求追加样本
 或实际软件复刻作为发布前提。工程功能、组件部署、异常恢复与有限检查完成后交付。
-具体目标的结果另有自身验收。当前合同见RELEASE-1.1.md与release/manifest.json。
-完整需求、未完成工作顺序及逐项完成条件见COMPLETION-PLAN.md；RF-31补齐正式中止、
-原生完成绑定与安装失败回退，检查日志和当前源码摘要绑定保存。
+具体目标的结果另有自身验收。当前合同见RELEASE-1.2.md与release/manifest.json。
+完整需求和最新结果见USER-REQUIREMENTS-REVIEW.md，工作顺序见REMAINING-PRODUCT-WORK.md。
+RF-33实际完成普通白话整段应用交付、共有失败/预算/依赖交接和Pi全程使用；
+Claude项目适配已实现，登录后运行待验。检查日志和当前源码摘要绑定保存。
 
 Reverse Fusion 是独立 GitHub 项目，不是旧安装仓库的改版。它在当前 coding agent
 中提供可恢复的普通开发、分析和复刻辅助能力：enhanced Reverse 领域技能、官方

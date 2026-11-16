@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "remote_commit": "88d5b46be4c4771f4631f00f8f63e3ec42696945",
+  "installation": "fresh remote clone; default install.ps1; new venv and own Node/REA/Spec plus pinned Craft release",
+  "global_adapter": "explicitly disabled for clone; main checkout retains global entry",
+  "rea": {
+    "healthy": true,
+    "version": "6.9.0",
+    "tools": 255,
+    "prompts": 6
+  },
+  "spec": {
+    "version": "1.4.1.dev0",
+    "commit": "2ee2b1e8005905db05f5717300a469b3068b908f"
+  },
+  "craft": {
+    "distribution": "pinned-release",
+    "binary_sha256": "45108effa5ae6e6713c28c1193106984d630ad7bc6da9dd873203c7c263cbbe3",
+    "capabilities": {
+      "adapter_version": "0.1.1",
+      "backend": "craft-anything-native-engine",
+      "business_acceptance": "not-performed",
+      "capabilities": [
+        "prepare",
+        "build",
+        "check",
+        "refine",
+        "return_summary",
+        "cleanup",
+        "abort"
+      ],
+      "engine_version": "0.6.1",
+      "upstream_commit": "8374ad71544f2cc44698ea74ef990aa31600bac6",
+      "windows_command_tail_version": 1,
+      "writer": "current-host via native build tools"
+    }
+  },
+  "regressions": {
+    "product": {
+      "returncode": 0,
+      "tests_run": 104,
+      "skipped": 0,
+      "log_sha256": "5ddc76c021b12101744a25c5cc643658052d84a6c63d315274f68cdc9e404eb8",
+      "log_path": "evidence/rf33/product-tests.txt"
+    },
+    "reconstruction": {
+      "returncode": 0,
+      "tests_run": 39,
+      "skipped": 0,
+      "log_sha256": "8262c0413dfc20c51ee11fd22c71fda13b4d192155b81f707a6365276bb17b95",
+      "log_path": "evidence/rf33/reconstruction-tests.txt"
+    }
+  },
+  "regression_status": "pass",
+  "source_release_status": "ready",
+  "same_engineering_source_inputs_as_main": true,
+  "archived_owned_native_bytes_verified": {
+    "files": 52,
+    "finite_verified": 1,
+    "required_open": 0
+  },
+  "logs": {
+    "clean-bootstrap.txt": "5b6867402526ed65ce760455044134c486a20ea1bdd7425b85099fc6ec8b6723",
+    "clean-product-tests.txt": "5ddc76c021b12101744a25c5cc643658052d84a6c63d315274f68cdc9e404eb8",
+    "clean-reconstruction-tests.txt": "8262c0413dfc20c51ee11fd22c71fda13b4d192155b81f707a6365276bb17b95"
+  },
+  "new_user_target_execution": false
+}

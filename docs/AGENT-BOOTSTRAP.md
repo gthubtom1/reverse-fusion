@@ -1,8 +1,10 @@
 # Reverse Fusion 宿主自动部署契约
 
 1.2.0 当前完整交付为 Windows x64 + Codex。无需用户提供真实样本来完成工程安装；
-不要为完成安装新开目标对话或启动未知程序。其他宿主/平台的旧发现入口不等于完整
-分发支持。组件和本地回归检查与软件业务验收分开，发布依据见 RELEASE-1.1.md。
+不要为完成安装新开目标对话或启动未知程序。Pi项目接入已完成实际全程使用，
+Claude接入实现/官方Spec布局已检查，账号未登录时明确阻断真实模型验收。
+宿主项目接入见HOST-PROJECT-CONNECTION.md；其他操作系统按实际能力报告。
+组件和本地回归检查与软件业务验收分开，发布依据见 RELEASE-1.2.md。
 安装核心并更新全局入口后，用 `[venv-python] scripts/verify-engineering.py` 生成本机
 代码摘要绑定的工程回归记录，再运行 `[venv-python] -m reverse_fusion release-check --deployed` 检查当前版本、
 真实核心和已部署全局入口；它不运行目标，也不要求再做一次软件复刻。

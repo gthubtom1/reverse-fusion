@@ -58,11 +58,11 @@ case、规格、候选及测试。`bridge`、`session`、`build`、`craft`、`na
    不得自行改成无授权依赖的本地资源管理器；交付差异需有用户的范围决定和来源引用。
 
 4. **冻结后再实现**：切到 reconstruction 仍记录在同一 case。先完成真实 Spec 工作流与语义交接，再按 [native-craft 参数](NATIVE-COMPONENTS.md) prepare。
-   以下 session 命令仅展示附加文件边界观察，不替代 native-craft：
+   原生prepare同时建立附加观察记录，不另外重复运行session prepare：
 
    ```text
    [python] -m reverse_fusion bridge --project-root "[project]" --source local --hint "已选定功能的独立实现" --mode reconstruction --case-root work/case --record
-   [python] -m reverse_fusion session prepare --project-root "[project]" --case-root work/case --handoff-manifest work/case/notes/handoff-manifest.json --review-file work/case/notes/semantic-review.md --receipt work/case/session.json --workspace candidate --tasks T-001 --task-file specs/feature/tasks.md --research-file work/case/research.json --allowed-output answer.py
+   [python] -m reverse_fusion native-craft prepare --project-root "[project]" --case-root work/case --handoff-manifest work/case/notes/handoff-manifest.json --review-file work/case/notes/semantic-review.md --lease work/case/native-lease.json --receipt work/case/session.json --workspace work/case/craft --tasks T001 --task-file specs/feature/tasks.md --research-file work/case/research.json --allowed-output app/answer.py --check-command "[实际构建/检查命令]"
    ```
 
    交接清单格式复用 [handoff-manifest](../skills/reconstruction/references/handoff-manifest.md)，
@@ -77,6 +77,7 @@ case、规格、候选及测试。`bridge`、`session`、`build`、`craft`、`na
    白名单先定义，再写候选。只运行 `session --help` 不算 prepare。已有输出采用下一批
    新 receipt，不补造“写入前”快照。`--allowed-output` 可以重复列出本批具体文件。
    不绑定 case 的通用 session 仅观察文件边界，不得作为复刻交接门已通过的证明。
+   实际build/check/refine/summary/cleanup按同一native租约执行完，再做以下附加观察：
 
    ```text
    [python] -m reverse_fusion session check --project-root "[project]" --receipt work/case/session.json

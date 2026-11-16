@@ -8,6 +8,12 @@ RF-33最新指示继续原始功能要求，不能停在RF-31工程整改完成�
 [RELEASE-1.2.md](RELEASE-1.2.md)和RF-33checkpoint。以下早期版本段落保留历史，
 不撤销当前继续任务，也不将未来目标未知重写成通过。
 
+当前逐项结果见[用户需求复核](USER-REQUIREMENTS-REVIEW.md)：Windows/Codex整段
+自然使用已完成，Pi整段使用及恢复也已完成；Claude接入代码已实现，但本机账号
+未登录，真实模型运行尚待验收。这里保留外部条件，不把它混写成缺失组件或全部通过。
+
+以下1.1.1及RF-29段落为历史交付口径：
+
 2026-11-16 用户进一步明确：要完整工程版本，不再以提供更多真实样本或完成特定
 软件复刻作为发布前提。**1.1.1 当前交付范围为 Windows x64 + Codex**，其有限工程
 交付门在 [RELEASE-1.1.md](RELEASE-1.1.md) 和 `release/manifest.json`。
@@ -91,7 +97,7 @@ Reverse Fusion 不选择、不绑定、不下载模型，也不把某个模型�
 9. `evidence/rf22/manifest.json` 对代表性 Evidence/proof/ledger 文件做 hash 校验；官方 REA 还要通过身份解析、bundle links 闭合与实际篡改反例。不得改写 hash 覆盖的绝对路径却保留旧 ID。`docs/CURRENT-STATE.md`、`docs/FINAL-RELEASE-ACCEPTANCE.md`、checkpoint、README、manifest、测试和 GitHub remote 对同一完成状态；历史记录不覆盖当前结论。
 10. 只有完成以上门后才允许写 `final product complete`。此前只能写 `framework-v1-baseline`、`reconstruction-v1-in-progress` 或明确的 `blocked/unsupported`。
 
-## 当前版本的正确标签
+## 历史阶段标签与当前新目标原则
 
 RF-25/RF-26 的历史合同结果与 RF-28 的真实组件部署/有限链路结果，分别保留各自范围。
 RF-29 在此基础上验证自然用户入口、自适应方法、目标保持和新工作区真实对话。
@@ -104,3 +110,7 @@ RF-29 在此基础上验证自然用户入口、自适应方法、目标保持�
 未证实的行为写成默认实现。新案例不要求预先跑遍所有未来程序，但必须有正确的
 调查、适配、比较和恢复路径。当前主要验证环境为 Windows x64 + Codex，其他宿主
 和系统的可用性按实测报告，不从文档设计推定通过。
+
+1.2.0当前结果以本文顶部指向的RF-33逐项表为准。新目标仍通过相同合同进入新case，
+实际目标结果由自身行为比较决定；历史样本未知不撤销已实现功能，已实现功能也不
+替新目标预先判成功。Claude登录后资格是当前明确的外部待办。

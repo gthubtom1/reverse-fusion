@@ -1,0 +1,424 @@
+{
+  "activation_required": "use --mode analysis or --mode reconstruction when Reverse is requested",
+  "mode": "normal-dev",
+  "operation": "case-bridge",
+  "project_root": "D:\\Project\\reverse\\state\\rf33-clean-install",
+  "recorded": false,
+  "repository_root": "D:\\Project\\reverse\\state\\rf33-clean-install",
+  "source": "host",
+  "status": "host-native",
+  "workflow": {
+    "activation_required": [
+      "reverse only when the user explicitly requests analysis or reconstruction"
+    ],
+    "business_acceptance_boundary": [
+      "host-native development remains the owner",
+      "no REA/Spec/Builder activation"
+    ],
+    "mode": "normal-dev",
+    "next_stage": null,
+    "primary_route": null,
+    "related_routes": [],
+    "required_artifacts": [],
+    "schema_version": 1,
+    "stage": "host-native"
+  }
+}
+{
+  "agent_guide": "D:\\Project\\reverse\\state\\rf33-clean-install\\docs\\AGENT-WORKFLOW.md",
+  "business_acceptance": "not-performed",
+  "component_entries": {
+    "argument_policy": "argv arrays; append reviewed arguments without shell interpolation; preserve original UTF-8 provider output",
+    "comparison": {
+      "argv": [
+        "D:\\Project\\reverse\\state\\rf33-clean-install\\.venv\\Scripts\\python.exe",
+        "-m",
+        "reverse_fusion",
+        "compare",
+        "--project-root",
+        "D:\\Project\\reverse\\state\\rf33-clean-install"
+      ],
+      "usage": "reviewed --plan and new --output; independent finite argv/stdin observations with owned process cleanup; not native REA proof"
+    },
+    "cwd": "D:\\Project\\reverse\\state\\rf33-clean-install",
+    "guides": [
+      "D:\\Project\\reverse\\state\\rf33-clean-install\\docs\\AGENT-WORKFLOW.md",
+      "D:\\Project\\reverse\\state\\rf33-clean-install\\docs\\NATIVE-COMPONENTS.md",
+      "D:\\Project\\reverse\\state\\rf33-clean-install\\docs\\CROSS-PROJECT-WORKFLOW.md",
+      "D:\\Project\\reverse\\state\\rf33-clean-install\\docs\\RECOVERY.md",
+      "D:\\Project\\reverse\\state\\rf33-clean-install\\docs\\PROCESS-COMPARISON.md"
+    ],
+    "native_craft": {
+      "argv": [
+        "D:\\Project\\reverse\\state\\rf33-clean-install\\.venv\\Scripts\\python.exe",
+        "-m",
+        "reverse_fusion",
+        "native-craft",
+        "<phase>",
+        "--project-root",
+        "D:\\Project\\reverse\\state\\rf33-clean-install"
+      ],
+      "usage": "prepare/build/check/refine/return_summary/cleanup with the same frozen lease; abort retains failed/interrupted work without acceptance"
+    },
+    "observer": {
+      "argv": [
+        "D:\\Project\\reverse\\state\\rf33-clean-install\\.venv\\Scripts\\python.exe",
+        "-m",
+        "reverse_fusion",
+        "session",
+        "<phase>",
+        "--project-root",
+        "D:\\Project\\reverse\\state\\rf33-clean-install"
+      ],
+      "usage": "additional check/refine/finish on the native prepare receipt, after native checks and cleanup"
+    },
+    "rea": {
+      "argv": [
+        "D:\\Project\\reverse\\state\\rf33-clean-install\\vendor\\node\\node-v24.22.1-win-x64\\node.exe",
+        "D:\\Project\\reverse\\state\\rf33-clean-install\\vendor\\rea\\package\\scripts\\rea.mjs"
+      ],
+      "bounded_argv": [
+        "D:\\Project\\reverse\\state\\rf33-clean-install\\.venv\\Scripts\\python.exe",
+        "-m",
+        "reverse_fusion",
+        "rea-run",
+        "--project-root",
+        "D:\\Project\\reverse\\state\\rf33-clean-install"
+      ],
+      "runtime_source": "repository-receipt",
+      "usage": "append the installed official command and its arguments; inspect its help/schema before using a new operation"
+    },
+    "spec": {
+      "argv": [
+        "D:\\Project\\reverse\\state\\rf33-clean-install\\.venv\\Scripts\\specify.exe"
+      ],
+      "generated_workflow": {
+        "client": null,
+        "missing_phases": [
+          "constitution",
+          "specify",
+          "clarify",
+          "plan",
+          "tasks",
+          "analyze",
+          "implement",
+          "converge"
+        ],
+        "refs": [],
+        "status": "not-initialized"
+      },
+      "usage": "initialize in the outcome project, then read and execute its generated speckit skills; init alone is not the workflow"
+    }
+  },
+  "delivery_objective": "reconstruction",
+  "execution_guide": "D:\\Project\\reverse\\state\\rf33-clean-install\\docs\\CROSS-PROJECT-WORKFLOW.md",
+  "mode": "analysis",
+  "next_action": "Identify the original target and actual technology, preserve the user's delivery objective, and collect evidence about behavior and dependencies before preparing implementation tasks. Read agent_guide; a reconstruction request starts with analysis, not candidate coding.",
+  "operation": "case-bridge",
+  "pointer": {
+    "carry_forward_refs": [
+      "reverse-fusion.local-router",
+      "RULES.md",
+      "skills/reverse-engineering/SKILL.md",
+      "skills/reconstruction/SKILL.md"
+    ],
+    "case_root": "work\\current-case",
+    "decision_delta": [
+      "route resolved by local router",
+      "Current request: reimplement behavior"
+    ],
+    "mode": "analysis",
+    "primary": "components/reverse-core/routes/R0.md",
+    "route_owner": "reverse-fusion.local-router",
+    "route_source": "local",
+    "workflow": {
+      "activation_required": [
+        "REA original Evidence",
+        "selected domain skill"
+      ],
+      "business_acceptance_boundary": [
+        "analysis conclusions require Evidence links",
+        "no candidate equivalence claim"
+      ],
+      "mode": "analysis",
+      "next_stage": {
+        "activation": "explicit-second-stage",
+        "hint": "reconstruction stage for the reviewed target behavior",
+        "id": "R46",
+        "label": "Evidence-driven reconstruction / verification",
+        "missing_support": [],
+        "required_reads": [
+          "RULES.md",
+          "skills/reconstruction/SKILL.md"
+        ],
+        "skill": "skills/reconstruction/SKILL.md",
+        "skill_available": true
+      },
+      "objective": "reconstruction",
+      "primary_route": "components/reverse-core/routes/R0.md",
+      "related_routes": [
+        {
+          "activation": "explicit-secondary-route",
+          "descriptor": "components/reverse-core/routes/R46.md",
+          "hard_target": false,
+          "id": "R46",
+          "label": "Evidence-driven reconstruction / verification",
+          "missing_support": [],
+          "required_reads": [
+            "RULES.md",
+            "skills/reconstruction/SKILL.md"
+          ],
+          "skill": "skills/reconstruction/SKILL.md",
+          "skill_available": true
+        }
+      ],
+      "required_artifacts": [
+        "original-evidence",
+        "observations",
+        "unknowns",
+        "limitations",
+        "conclusion"
+      ],
+      "schema_version": 1,
+      "stage": "analysis",
+      "user_request": "reimplement behavior"
+    }
+  },
+  "project_root": "D:\\Project\\reverse\\state\\rf33-clean-install",
+  "recorded": false,
+  "repository_root": "D:\\Project\\reverse\\state\\rf33-clean-install",
+  "requested_mode": "normal-dev",
+  "required_read_paths": [
+    "D:\\Project\\reverse\\state\\rf33-clean-install\\RULES.md",
+    "D:\\Project\\reverse\\state\\rf33-clean-install\\skills\\reverse-engineering\\SKILL.md",
+    "D:\\Project\\reverse\\state\\rf33-clean-install\\skills\\reconstruction\\SKILL.md",
+    "D:\\Project\\reverse\\state\\rf33-clean-install\\docs\\AGENT-WORKFLOW.md"
+  ],
+  "resume": null,
+  "route": {
+    "confidence": "high",
+    "hard_target": false,
+    "hint": "reimplement behavior",
+    "label": "General reverse-engineering",
+    "matches": [
+      "R46"
+    ],
+    "missing_support": [],
+    "next_stage": {
+      "activation": "explicit-second-stage",
+      "hint": "reconstruction stage for the reviewed target behavior",
+      "id": "R46",
+      "label": "Evidence-driven reconstruction / verification",
+      "missing_support": [],
+      "required_reads": [
+        "RULES.md",
+        "skills/reconstruction/SKILL.md"
+      ],
+      "skill": "skills/reconstruction/SKILL.md",
+      "skill_available": true
+    },
+    "notes": [
+      "Reconstruction intent starts with domain analysis; refine the domain from actual artifacts before R46 implementation."
+    ],
+    "primary": "components/reverse-core/routes/R0.md",
+    "primary_id": "R0",
+    "related_routes": [
+      {
+        "activation": "explicit-secondary-route",
+        "descriptor": "components/reverse-core/routes/R46.md",
+        "hard_target": false,
+        "id": "R46",
+        "label": "Evidence-driven reconstruction / verification",
+        "missing_support": [],
+        "required_reads": [
+          "RULES.md",
+          "skills/reconstruction/SKILL.md"
+        ],
+        "skill": "skills/reconstruction/SKILL.md",
+        "skill_available": true
+      }
+    ],
+    "required_reads": [
+      "RULES.md",
+      "skills/reverse-engineering/SKILL.md"
+    ],
+    "routing_sha256": "fd4cb5ad6127e270342ea44d351c84d02828a024a70558f14639b623003c51f4",
+    "skill": "skills/reverse-engineering/SKILL.md",
+    "skill_available": true,
+    "source": "local",
+    "status": "local-route-pass"
+  },
+  "workflow": {
+    "activation_required": [
+      "REA original Evidence",
+      "selected domain skill"
+    ],
+    "business_acceptance_boundary": [
+      "analysis conclusions require Evidence links",
+      "no candidate equivalence claim"
+    ],
+    "mode": "analysis",
+    "next_stage": {
+      "activation": "explicit-second-stage",
+      "hint": "reconstruction stage for the reviewed target behavior",
+      "id": "R46",
+      "label": "Evidence-driven reconstruction / verification",
+      "missing_support": [],
+      "required_reads": [
+        "RULES.md",
+        "skills/reconstruction/SKILL.md"
+      ],
+      "skill": "skills/reconstruction/SKILL.md",
+      "skill_available": true
+    },
+    "objective": "reconstruction",
+    "primary_route": "components/reverse-core/routes/R0.md",
+    "related_routes": [
+      {
+        "activation": "explicit-secondary-route",
+        "descriptor": "components/reverse-core/routes/R46.md",
+        "hard_target": false,
+        "id": "R46",
+        "label": "Evidence-driven reconstruction / verification",
+        "missing_support": [],
+        "required_reads": [
+          "RULES.md",
+          "skills/reconstruction/SKILL.md"
+        ],
+        "skill": "skills/reconstruction/SKILL.md",
+        "skill_available": true
+      }
+    ],
+    "required_artifacts": [
+      "original-evidence",
+      "observations",
+      "unknowns",
+      "limitations",
+      "conclusion"
+    ],
+    "schema_version": 1,
+    "stage": "analysis",
+    "user_request": "reimplement behavior"
+  }
+}
+{
+  "case_root": "work/tmpu6fydhez",
+  "operation": "case-bridge",
+  "reason": "follow-up requires an existing open case.json",
+  "status": "blocked"
+}
+{
+  "operation": "uninstall",
+  "reason": "State path escapes the repository or selected project",
+  "status": "blocked"
+}
+
+test_pin_does_not_masquerade_as_installed_or_healthy_rea (test_component_status.ComponentStatusTests.test_pin_does_not_masquerade_as_installed_or_healthy_rea) ... ok
+test_repository_runtime_survives_new_process_environment_and_rejects_copied_receipt (test_component_status.ComponentStatusTests.test_repository_runtime_survives_new_process_environment_and_rejects_copied_receipt) ... ok
+test_bridge_default_is_host_native_and_follow_up_requires_existing_case (test_contracts.ContractTests.test_bridge_default_is_host_native_and_follow_up_requires_existing_case) ... ok
+test_candidate_schema_covers_existing_producer_fields (test_contracts.ContractTests.test_candidate_schema_covers_existing_producer_fields) ... ok
+test_case_pointer_can_be_recorded_inside_repository_boundary (test_contracts.ContractTests.test_case_pointer_can_be_recorded_inside_repository_boundary) ... ok
+test_case_pointer_rejects_external_record_symlink (test_contracts.ContractTests.test_case_pointer_rejects_external_record_symlink) ... ok
+test_case_pointer_rejects_malformed_existing_history_without_overwrite (test_contracts.ContractTests.test_case_pointer_rejects_malformed_existing_history_without_overwrite) ... ok
+test_case_spec_and_craft_boundaries (test_contracts.ContractTests.test_case_spec_and_craft_boundaries) ... ok
+test_console_fixture_does_not_claim_native_rea_execution (test_contracts.ContractTests.test_console_fixture_does_not_claim_native_rea_execution) ... ok
+test_contracts_pass (test_contracts.ContractTests.test_contracts_pass) ... ok
+test_craft_gate_and_host_discovery (test_contracts.ContractTests.test_craft_gate_and_host_discovery) ... ok
+test_duplicate_and_path_boundary_rejected (test_contracts.ContractTests.test_duplicate_and_path_boundary_rejected) ... ok
+test_external_route_fails_when_skill_is_missing_or_primary_mismatches (test_contracts.ContractTests.test_external_route_fails_when_skill_is_missing_or_primary_mismatches) ... ok
+test_external_route_is_explicitly_unavailable_when_uninstalled (test_contracts.ContractTests.test_external_route_is_explicitly_unavailable_when_uninstalled) ... ok
+test_external_route_preserves_primary_and_returns_skill_reads (test_contracts.ContractTests.test_external_route_preserves_primary_and_returns_skill_reads) ... ok
+test_handoff_unknown_top_level_field_is_rejected (test_contracts.ContractTests.test_handoff_unknown_top_level_field_is_rejected) ... ok
+test_hash_and_version_contracts (test_contracts.ContractTests.test_hash_and_version_contracts) ... ok
+test_host_builder_does_not_select_a_model_and_fails_closed_without_host (test_contracts.ContractTests.test_host_builder_does_not_select_a_model_and_fails_closed_without_host) ... ok
+test_host_builder_rejects_existing_file_mutation_deletion_and_stale_candidate (test_contracts.ContractTests.test_host_builder_rejects_existing_file_mutation_deletion_and_stale_candidate) ... ok
+test_host_builder_rejects_workspace_symlink (test_contracts.ContractTests.test_host_builder_rejects_workspace_symlink) ... ok
+test_host_builder_uses_existing_candidate_as_baseline_and_carries_refine_context (test_contracts.ContractTests.test_host_builder_uses_existing_candidate_as_baseline_and_carries_refine_context) ... ok
+test_host_config_snapshot_detects_changes_without_reading_contents (test_contracts.ContractTests.test_host_config_snapshot_detects_changes_without_reading_contents) ... ok
+test_host_handshake_record_is_typed_and_fail_closed (test_contracts.ContractTests.test_host_handshake_record_is_typed_and_fail_closed) ... ok
+test_local_bounded_worker_candidate (test_contracts.ContractTests.test_local_bounded_worker_candidate) ... ok
+test_local_route_does_not_require_external_receipt (test_contracts.ContractTests.test_local_route_does_not_require_external_receipt) ... ok
+test_manifest_is_single_repository (test_contracts.ContractTests.test_manifest_is_single_repository) ... ok
+test_reverse_route_skill_drift_rejected (test_contracts.ContractTests.test_reverse_route_skill_drift_rejected) ... ok
+test_route_exposes_related_domains_and_reconstruction_stage (test_contracts.ContractTests.test_route_exposes_related_domains_and_reconstruction_stage) ... ok
+test_source_manifest_drift_rejected (test_contracts.ContractTests.test_source_manifest_drift_rejected) ... ok
+test_unknown_manifest_field_rejected (test_contracts.ContractTests.test_unknown_manifest_field_rejected) ... ok
+test_vertical_slice_pass_fail_unknown (test_contracts.ContractTests.test_vertical_slice_pass_fail_unknown) ... ok
+test_windows_absolute_and_traversal_outputs_are_rejected (test_contracts.ContractTests.test_windows_absolute_and_traversal_outputs_are_rejected) ... ok
+test_workflow_contract_keeps_normal_dev_light_and_reconstruction_explicit (test_contracts.ContractTests.test_workflow_contract_keeps_normal_dev_light_and_reconstruction_explicit) ... ok
+test_missing_real_component_blocks_install_before_global_writes (test_core_deployment.CoreDeploymentTests.test_missing_real_component_blocks_install_before_global_writes) ... ok
+test_published_binary_also_requires_matching_adapter_sources (test_core_deployment.CoreDeploymentTests.test_published_binary_also_requires_matching_adapter_sources) ... ok
+test_source_build_is_bound_to_checkout_binary_and_all_adapter_inputs (test_core_deployment.CoreDeploymentTests.test_source_build_is_bound_to_checkout_binary_and_all_adapter_inputs) ... ok
+test_binary_patch_and_hybrid_delivery_use_native_commands_and_preserve_original (test_craft_native.NativeCraftTests.test_binary_patch_and_hybrid_delivery_use_native_commands_and_preserve_original) ... ok
+test_existing_workspace_is_rejected_before_creating_another_batch (test_craft_native.NativeCraftTests.test_existing_workspace_is_rejected_before_creating_another_batch) ... ok
+test_external_edit_cannot_reuse_native_checks_or_finish_after_cleanup (test_craft_native.NativeCraftTests.test_external_edit_cannot_reuse_native_checks_or_finish_after_cleanup) ... ok
+test_failed_batch_can_abort_after_frozen_drift_and_retains_original_records (test_craft_native.NativeCraftTests.test_failed_batch_can_abort_after_frozen_drift_and_retains_original_records) ... ok
+test_native_boundary_rejects_output_escape_wrong_commands_and_changed_research (test_craft_native.NativeCraftTests.test_native_boundary_rejects_output_escape_wrong_commands_and_changed_research) ... ok
+test_nonzero_native_command_is_not_a_passing_check (test_craft_native.NativeCraftTests.test_nonzero_native_command_is_not_a_passing_check) ... ok
+test_real_native_lifecycle_invalidates_old_checks_and_keeps_business_acceptance_separate (test_craft_native.NativeCraftTests.test_real_native_lifecycle_invalidates_old_checks_and_keeps_business_acceptance_separate) ... ok
+test_timeout_stops_owned_descendant_and_serializes_writers (test_craft_native.NativeCraftTests.test_timeout_stops_owned_descendant_and_serializes_writers) ... ok
+test_continue_ambiguity_never_overwrites_a_case (test_cross_project.CrossProjectTests.test_continue_ambiguity_never_overwrites_a_case) ... ok
+test_explicit_root_and_traversal_cannot_write_into_shared_checkout (test_cross_project.CrossProjectTests.test_explicit_root_and_traversal_cannot_write_into_shared_checkout) ... ok
+test_external_project_route_record_resume_and_current_session (test_cross_project.CrossProjectTests.test_external_project_route_record_resume_and_current_session) ... ok
+test_external_session_runs_original_candidate_and_rejects_a_mutant (test_cross_project.CrossProjectTests.test_external_session_runs_original_candidate_and_rejects_a_mutant) ... ok
+test_first_record_after_read_only_probe_keeps_original_request (test_cross_project.CrossProjectTests.test_first_record_after_read_only_probe_keeps_original_request) ... ok
+test_frozen_input_change_is_detected_through_external_cli (test_cross_project.CrossProjectTests.test_frozen_input_change_is_detected_through_external_cli) ... ok
+test_json_transport_preserves_unicode_without_utf8_caller_override (test_cross_project.CrossProjectTests.test_json_transport_preserves_unicode_without_utf8_caller_override) ... ok
+test_novice_request_preserves_delivery_goal_through_refinement_and_continue (test_cross_project.CrossProjectTests.test_novice_request_preserves_delivery_goal_through_refinement_and_continue) ... ok
+test_offline_copy_stays_in_project_and_is_not_native_craft (test_cross_project.CrossProjectTests.test_offline_copy_stays_in_project_and_is_not_native_craft) ... ok
+test_plain_analysis_recreation_and_normal_development_are_distinct (test_cross_project.CrossProjectTests.test_plain_analysis_recreation_and_normal_development_are_distinct) ... ok
+test_resuming_a_copied_case_pointer_is_blocked (test_cross_project.CrossProjectTests.test_resuming_a_copied_case_pointer_is_blocked) ... ok
+test_independent_runs_pass_wrong_output_fails_and_same_source_is_rejected (test_differential.DifferentialTests.test_independent_runs_pass_wrong_output_fails_and_same_source_is_rejected) ... ok
+test_large_unread_stdin_does_not_block_outer_deadline (test_differential.DifferentialTests.test_large_unread_stdin_does_not_block_outer_deadline) ... ok
+test_missing_executable_and_timeout_cannot_be_pass (test_differential.DifferentialTests.test_missing_executable_and_timeout_cannot_be_pass) ... ok
+test_mutated_input_and_overwrite_are_rejected (test_differential.DifferentialTests.test_mutated_input_and_overwrite_are_rejected) ... ok
+test_timeout_and_success_close_owned_descendants (test_differential.DifferentialTests.test_timeout_and_success_close_owned_descendants) ... ok
+test_unbounded_output_is_not_loaded_or_accepted_as_complete (test_differential.DifferentialTests.test_unbounded_output_is_not_loaded_or_accepted_as_complete) ... ok
+test_custom_codex_home_is_respected (test_global_adapter.GlobalAdapterTests.test_custom_codex_home_is_respected) ... ok
+test_install_updates_only_managed_codex_surfaces (test_global_adapter.GlobalAdapterTests.test_install_updates_only_managed_codex_surfaces) ... ok
+test_malformed_markers_fail_without_replacing_existing_user_files (test_global_adapter.GlobalAdapterTests.test_malformed_markers_fail_without_replacing_existing_user_files) ... ok
+test_remove_preserves_unrelated_global_instructions (test_global_adapter.GlobalAdapterTests.test_remove_preserves_unrelated_global_instructions) ... ok
+test_uninstalling_old_checkout_cannot_remove_new_shared_pointer (test_global_adapter.GlobalAdapterTests.test_uninstalling_old_checkout_cannot_remove_new_shared_pointer) ... ok
+test_actual_official_spec_layouts_are_found_and_missing_phases_rejected (test_host_projects.HostProjectTests.test_actual_official_spec_layouts_are_found_and_missing_phases_rejected) ... ok
+test_inherited_case_initializer_can_complete_existing_bridge_pointer_without_overwrite (test_host_projects.HostProjectTests.test_inherited_case_initializer_can_complete_existing_bridge_pointer_without_overwrite) ... ok
+test_selected_host_pointer_is_project_local_and_removal_preserves_user_content (test_host_projects.HostProjectTests.test_selected_host_pointer_is_project_local_and_removal_preserves_user_content) ... ok
+test_unmanaged_project_file_and_other_checkout_removal_are_rejected (test_host_projects.HostProjectTests.test_unmanaged_project_file_and_other_checkout_removal_are_rejected) ... ok
+test_atomic_replace_failure_keeps_old_file_and_removes_temporary (test_install_failures.InstallFailureTests.test_atomic_replace_failure_keeps_old_file_and_removes_temporary) ... ok
+test_install_receipt_failure_rolls_back_both_global_entries (test_install_failures.InstallFailureTests.test_install_receipt_failure_rolls_back_both_global_entries) ... ok
+test_portable_paths_reject_windows_streams_and_control_characters (test_install_failures.InstallFailureTests.test_portable_paths_reject_windows_streams_and_control_characters) ... ok
+test_second_entry_write_failure_restores_the_first_file (test_install_failures.InstallFailureTests.test_second_entry_write_failure_restores_the_first_file) ... ok
+test_uninstall_receipt_failure_restores_removed_entries (test_install_failures.InstallFailureTests.test_uninstall_receipt_failure_restores_removed_entries) ... ok
+test_uninstall_script_keeps_receipt_when_python_is_missing (test_install_failures.InstallFailureTests.test_uninstall_script_keeps_receipt_when_python_is_missing) ... ok
+test_default_runtime_reaches_child_and_failed_bootstrap_stops_doctor (test_provider_wrappers.ProviderWrapperTests.test_default_runtime_reaches_child_and_failed_bootstrap_stops_doctor) ... ok
+test_partial_error_with_zero_exit_is_retained_and_never_complete (test_rea_runner.ReaRunnerTests.test_partial_error_with_zero_exit_is_retained_and_never_complete) ... ok
+test_real_official_schema_is_read_with_owned_process_and_recorded_budget (test_rea_runner.ReaRunnerTests.test_real_official_schema_is_read_with_owned_process_and_recorded_budget) ... ok
+test_analysis_case_cannot_silently_enter_implementation (test_reconstruction_gate.ReconstructionGateTests.test_analysis_case_cannot_silently_enter_implementation) ... ok
+test_checked_handoff_and_all_source_dependencies_are_frozen (test_reconstruction_gate.ReconstructionGateTests.test_checked_handoff_and_all_source_dependencies_are_frozen) ... ok
+test_critical_unknown_blocks_before_candidate_or_receipt_creation (test_reconstruction_gate.ReconstructionGateTests.test_critical_unknown_blocks_before_candidate_or_receipt_creation) ... ok
+test_evidence_and_review_changes_invalidate_prepared_candidate (test_reconstruction_gate.ReconstructionGateTests.test_evidence_and_review_changes_invalidate_prepared_candidate) ... ok
+test_independent_reviewed_batch_retains_deferred_critical_requirement (test_reconstruction_gate.ReconstructionGateTests.test_independent_reviewed_batch_retains_deferred_critical_requirement) ... ok
+test_installed_cli_binds_external_case_and_reports_only_mechanical_review (test_reconstruction_gate.ReconstructionGateTests.test_installed_cli_binds_external_case_and_reports_only_mechanical_review) ... ok
+test_omitted_review_and_different_task_file_cannot_pass (test_reconstruction_gate.ReconstructionGateTests.test_omitted_review_and_different_task_file_cannot_pass) ... ok
+test_omitting_case_flag_does_not_skip_gate_for_a_case_receipt (test_reconstruction_gate.ReconstructionGateTests.test_omitting_case_flag_does_not_skip_gate_for_a_case_receipt) ... ok
+test_selected_batch_cannot_omit_its_tasks_requirement (test_reconstruction_gate.ReconstructionGateTests.test_selected_batch_cannot_omit_its_tasks_requirement) ... ok
+test_all_inherited_routing_expectations_are_preserved (test_reverse_preservation.ReversePreservationTests.test_all_inherited_routing_expectations_are_preserved) ... ok
+test_hard_targets_carry_their_real_specialist_resources (test_reverse_preservation.ReversePreservationTests.test_hard_targets_carry_their_real_specialist_resources) ... ok
+test_missing_or_modified_support_is_not_reported_available (test_reverse_preservation.ReversePreservationTests.test_missing_or_modified_support_is_not_reported_available) ... ok
+test_plain_route_stays_light_and_ctf_sidecar_is_reachable (test_reverse_preservation.ReversePreservationTests.test_plain_route_stays_light_and_ctf_sidecar_is_reachable) ... ok
+test_builder_quota_and_timeout_are_serializable_blocked_results (test_session_and_handshake.HandshakeTests.test_builder_quota_and_timeout_are_serializable_blocked_results) ... ok
+test_echoed_prompt_is_not_an_assistant_handshake (test_session_and_handshake.HandshakeTests.test_echoed_prompt_is_not_an_assistant_handshake) ... ok
+test_state_symlink_cannot_write_or_remove_an_external_receipt (test_session_and_handshake.HandshakeTests.test_state_symlink_cannot_write_or_remove_an_external_receipt) ... ok
+test_current_host_can_complete_without_starting_a_cli (test_session_and_handshake.SessionTests.test_current_host_can_complete_without_starting_a_cli) ... ok
+test_phase_order_and_receipt_boundary_are_enforced (test_session_and_handshake.SessionTests.test_phase_order_and_receipt_boundary_are_enforced) ... ok
+test_stale_out_of_scope_and_frozen_drift_block_acceptance (test_session_and_handshake.SessionTests.test_stale_out_of_scope_and_frozen_drift_block_acceptance) ... ok
+test_source_drift_skipped_suite_and_log_drift_block_qualification (test_verification.VerificationTests.test_source_drift_skipped_suite_and_log_drift_block_qualification) ... ok
+test_deployed_release_rejects_stale_managed_entry (test_workflow_release.WorkflowReleaseTests.test_deployed_release_rejects_stale_managed_entry) ... ok
+test_multiple_cases_and_escape_never_select_or_read_an_outside_record (test_workflow_release.WorkflowReleaseTests.test_multiple_cases_and_escape_never_select_or_read_an_outside_record) ... ok
+test_receipt_drift_and_other_case_receipt_do_not_qualify_work (test_workflow_release.WorkflowReleaseTests.test_receipt_drift_and_other_case_receipt_do_not_qualify_work) ... ok
+test_release_is_finite_and_missing_release_contract_blocks_it (test_workflow_release.WorkflowReleaseTests.test_release_is_finite_and_missing_release_contract_blocks_it) ... ok
+test_workflow_recovers_referenced_material_without_writes_or_execution (test_workflow_release.WorkflowReleaseTests.test_workflow_recovers_referenced_material_without_writes_or_execution) ... ok
+
+----------------------------------------------------------------------
+Ran 104 tests in 40.266s
+
+OK
