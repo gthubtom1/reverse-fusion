@@ -2,6 +2,13 @@
 
 本文件是项目的最高层产品目标。它高于阶段性 checkpoint、fixture 通过记录和 provider 的当前状态。任何阶段都不能用“框架合同通过”替代本文件定义的产品完成。
 
+2026-11-16 用户进一步明确：要完整工程版本，不再以提供更多真实样本或完成特定
+软件复刻作为发布前提。**1.1.0 当前交付范围为 Windows x64 + Codex**，其有限工程
+交付门在 [RELEASE-1.1.md](RELEASE-1.1.md) 和 `release/manifest.json`。
+核心组件、工作流、比较修正与恢复的实现不能缺失；对特定目标的实际效果仍按案例
+验收。下述跨宿主/代表目标验证目标保留为资格范围，不再作为1.1.0无限延后的门。
+这项调整依据用户新指示，不重写历史实测、不把未验证目标改成通过。
+
 RF-29 将零基础用户的真实使用作为验收：白话目标应触发领域调查和适用组件协作，
 保持最终交付意图、按证据调整路线并在必要处请求具体帮助。受控专业提示下的组件
 测试不能代替这种验证。当前阶段以 CURRENT-STATE 和最新 checkpoint 为准。
@@ -62,9 +69,10 @@ Reverse Fusion 不选择、不绑定、不下载模型，也不把某个模型�
 - **Craft/Builder**：按冻结任务生成候选项目、执行构建、检查、修正和清理。真实 Craft engine 执行 Workspace、候选写入/编辑、受限命令与检查，当前宿主提供推理和内容；`session` 仅附加观察。固定 engine、接缝源码、可重放 Windows 补丁及构建身份随仓库保存。无需另启模型或重复 Study。离线复制只用于合同测试。
 - **Acceptance**：独立读取原版和候选 Evidence，输出 pass、fail、unknown、blocked 或 unsupported。模型自述、工具可见和 exit 0 都不属于业务验收。
 
-## 最终完成门
+## 历史完整资格目标与后续宿主范围
 
-只有以下条件全部成立，才能把项目标记为 `reconstruction-product-v1-final`：
+以下是原 `reconstruction-product-v1-final` 跨宿主/目标资格门，仍保留其证据要求；
+1.1.0 使用上述当前宿主工程交付标准，不能借新版本声称下列未测结果通过：
 
 1. fresh clone 在 Windows、Linux 或 macOS 的支持宿主上完成仓库本地安装、plan、doctor、update、uninstall；没有旧 reverse-workflow receipt 也能执行仓库自己的路由入口。
 2. Codex、Pi、Claude 至少完成宿主加载协议验证；每个宿主的登录缺失单独记录，不能把宿主阻塞伪造成通过。

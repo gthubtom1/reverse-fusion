@@ -10,6 +10,11 @@ case、规格、候选及测试。`bridge`、`session`、`build`、`craft`、`na
 
 ## 按实际阶段接续
 
+1.1.0 的 bridge 同时返回 `component_entries`，实际组件 argv 和 cwd 由安装位置计算。
+恢复用 `workflow --project-root [当前项目]`，需要时传原 case_root 和 session receipt；
+重要项目材料用 `bridge --ref [项目相对文件]` 保留原文件引用。具体失败分支与独立工作
+继续要求见 [RECOVERY.md](RECOVERY.md)。这些动作由智能体承担，用户不必学命令。
+
 1. **识别与分析**：首次用用户原话路由并落盘，再读取 `required_read_paths`。
    这些绝对路径指向技能仓库，不是软件A。尚未识别目标时可使用通用案例名：
 

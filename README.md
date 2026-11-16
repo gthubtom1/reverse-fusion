@@ -3,14 +3,17 @@
 给当前 coding agent 使用的普通开发、逆向分析与独立复刻工具集。
 仓库：<https://github.com/gthubtom1/reverse-fusion>。
 
-产品版本 `1.0.0`，当前修复阶段 `RF-29`（白话入口、完整目标保留与新手实测）。准确的验收结果、现场 provider 状态和
+产品版本 **`1.1.0`，Windows x64 / Codex 完整工程版**，当前交付阶段 `RF-30`。
+不需要用户继续提供样本才能安装或交付本版本。范围与有限发布门见
+[版本说明](docs/RELEASE-1.1.md)。准确的工程检查、历史实测和
 未覆盖范围分别保存在 [当前状态](docs/CURRENT-STATE.md)、
 [发布验收](docs/FINAL-RELEASE-ACCEPTANCE.md) 与
-[最新 checkpoint](checkpoints/RF-29-20261116-001.md)。历史 final 标签不覆盖这些记录。
+[最新 checkpoint](checkpoints/RF-30-20261116-001.md)。工程版本与具体软件的复刻结果分别报告。
 
 ## 换电脑，只给仓库链接
 
-把仓库链接交给当前 Codex、Pi、Claude Code 或兼容 coding agent，说：
+当前完整分发面向 Windows x64 + Codex；Pi/Claude 和其他平台保留后续适配入口，
+不把检测到 CLI 当成完整支持。把仓库链接交给当前 Codex，说：
 
 > 把这个仓库部署到当前工作区，按仓库内的部署入口安装并报告实际验证结果。
 
@@ -125,6 +128,7 @@ RF-25 重建并认证了 [代表性归档](evidence/rf22/README.md)，身份与�
 [venv-python] -m reverse_fusion plan --client [selected-host] --intent normal-dev --format json
 [venv-python] -m reverse_fusion doctor --format json
 [venv-python] -m reverse_fusion handoff --check --format json
+[venv-python] -m reverse_fusion release-check --deployed --format json
 ```
 
 `doctor.status=pass` 仅表示仓库合同检查通过。查看 `components` 中的现场组件状态：
@@ -139,6 +143,10 @@ CLI 生命周期默认 dry-run；`install --apply --client [selected-host]` 写�
 写入的适配层。Windows 的 `scripts/uninstall.ps1 -Apply` 与
 POSIX 的 `scripts/uninstall.sh` 移除本仓库 venv 和 receipt，保留 vendor、case 与成果。
 项目没有自动全局回滚或 receipt transaction journal。
+
+恢复已有项目可用 `workflow --project-root "[成果项目]"`，需要时指定原 case 和 session。
+它只读取当前状态、实际组件入口、引用和冻结变更，不执行目标或更改证据。具体失败
+处理及“缺资料时继续独立工作”见 [恢复说明](docs/RECOVERY.md)。
 
 以后想更新时，让 agent 按 [上游维护流程](docs/UPSTREAM-MAINTENANCE.md) 读取
 manifest、比较上游变化、评估实际收益，再选择性适配本仓库增强版；无需跟随每次发布。

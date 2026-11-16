@@ -1,5 +1,12 @@
 # Development Plan
 
+RF-30 is the finite1.1.0 engineering release for Windows x64/Codex. The user
+explicitly requests no more real-target runs or samples as a delivery condition.
+Complete implementation/entry/recovery, run repository regressions and the
+release manifest checks, redeploy and synchronize. Target qualification remains
+separate. Current checkpoint:`checkpoints/RF-30-20261116-001.md`.
+The older stage plans below are historical, not directions to start another test.
+
 RF-29 now validates the ordinary-language entry, full-goal preservation and
 adaptive analysis-to-delivery contract. RF-28's coached external run qualifies
 real component composition, not novice use. Fix and deploy the shared entry,
@@ -56,7 +63,7 @@ The final product contract remains `docs/PRODUCT-GOAL.md`.
    finite core lifecycle without old receipts. Record exact result/commit, push
    the final checkpoint and stop with a clean synchronized checkout.
 
-The current checkpoint is `checkpoints/RF-29-20261116-001.md`. Any incomplete
+The historical RF-29 checkpoint is `checkpoints/RF-29-20261116-001.md`. Any incomplete
 check remains explicit there and in CURRENT-STATE. After closure, subsequent
 work is a new target or selective upstream maintenance, not another endless
 retest of unrelated future variants.

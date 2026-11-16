@@ -1,5 +1,20 @@
 # v1 release acceptance
 
+Current release:1.1.0, RF-30, Windows x64 + Codex engineering edition.
+The user explicitly removed further real-target testing/sample provision as
+release prerequisites. The finite implementation/deployment contract is
+`release/manifest.json`; scope is `docs/RELEASE-1.1.md`. New read-only workflow
+recovery, installed component entry handoff and dependent-task-only blocking
+are part of this release. Final repository checks/deployment are recorded in
+`evidence/rf30/` and `checkpoints/RF-30-20261116-001.md`. The historical results
+below are unchanged and are not new-target acceptance for1.1.0.
+
+RF-30 engineering result: READY at the declared edition.78 product regressions,
+39 reconstruction regressions,18 deployed release gates, managed skill validation
+and63current-document local links passed. The installed editable package and
+selected Codex entry are1.1.0; core_deployment missing=[]. No new user target was
+executed. Current report:`evidence/rf30/engineering-delivery.json`.
+
 RF-29 separately checks novice use through an ordinary request in a new chat and
 project. The first run exposed original-goal loss at first recorded refinement;
 it is a retained failure, repaired in the shared entry. Current retest status is

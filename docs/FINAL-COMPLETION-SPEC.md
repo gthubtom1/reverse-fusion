@@ -1,5 +1,11 @@
 # Final v1 completion specification
 
+Current1.1.0 engineering completion follows `docs/RELEASE-1.1.md` and the
+machine-readable release manifest, as explicitly requested by the user in RF-30.
+No additional user sample or real-target run is required to ship that edition.
+The qualifications below retain their historical observed scope and do not
+claim that an untested target/host has passed after an engineering release.
+
 This is a completion contract, not an independent current-state declaration.
 Current release/audit status lives in `docs/CURRENT-STATE.md`; direct finite
 checks and remaining boundaries live in `docs/FINAL-RELEASE-ACCEPTANCE.md` and

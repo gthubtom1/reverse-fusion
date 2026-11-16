@@ -33,6 +33,7 @@ from .session_builder import prepare_session, check_session
 from .global_adapter import install_global_adapter, remove_global_adapter, adapter_paths
 from .component_status import component_status, core_deployment
 from .craft_native import prepare_native, invoke_native
+from .workflow import component_entries, inspect_workflow
 
 ROOT = Path(__file__).resolve().parents[1]
 MANIFEST = ROOT / "components" / "official" / "manifest.json"
@@ -60,6 +61,19 @@ def cmd_contracts(args: argparse.Namespace) -> int:
     result = check_contracts(ROOT)
     _print(result, args.format)
     return 0 if result["status"] == "pass" else 1
+
+
+def cmd_workflow(args: argparse.Namespace) -> int:
+    result = inspect_workflow(ROOT, _project_root(args), case_root=args.case_root, receipt=args.receipt)
+    _print(result, args.format)
+    return 0 if result['status'] == 'context-resolved' else 2
+
+
+def cmd_release(args: argparse.Namespace) -> int:
+    from .release import check_release
+    result = check_release(ROOT, deployed=args.deployed)
+    _print(result, args.format)
+    return 0 if result['status'] == 'ready' else 2
 
 
 def cmd_plan(args: argparse.Namespace) -> int:
@@ -335,12 +349,19 @@ def cmd_bridge(args: argparse.Namespace) -> int:
         # Resuming a reconstruction must not discard its specification and
         # verification obligations just because this turn is called follow-up.
         workflow = {**prior_workflow, 'objective': objective, 'user_request': original_request, "mode": "follow-up"}
+    from .session_builder import _inside
+    project_refs = []
+    for name in args.ref:
+        path = _inside(project, name)
+        if not path.is_file():
+            raise ValueError(f'Carry-forward reference is not a file: {name}')
+        project_refs.append('project:' + path.relative_to(project).as_posix())
     pointer = build_case_pointer(
         case_root.relative_to(project),
         route.get("primary") or "unresolved",
         effective_mode,
         delta=[f"route resolved by {route.get('source', 'unknown')} router" if routed else 'route unresolved', f'Current request: {args.hint}'],
-        refs=list(dict.fromkeys([*(existing['pointer']['carry_forward_refs'] if existing else []), owner, *route.get("required_reads", []), *[str(item.get("skill")) for item in route.get("related_routes", []) if isinstance(item, dict) and item.get("skill")]])),
+        refs=list(dict.fromkeys([*(existing['pointer']['carry_forward_refs'] if existing else []), *project_refs, owner, *route.get("required_reads", []), *[str(item.get("skill")) for item in route.get("related_routes", []) if isinstance(item, dict) and item.get("skill")]])),
         route_owner=owner,
         route_source=route.get("source", "unknown"),
         workflow=workflow,
@@ -371,6 +392,7 @@ def cmd_bridge(args: argparse.Namespace) -> int:
     result['agent_guide'] = str(ROOT / 'docs/AGENT-WORKFLOW.md')
     result['delivery_objective'] = objective
     result['required_read_paths'].append(result['agent_guide'])
+    result['component_entries'] = component_entries(ROOT, project)
     result["business_acceptance"] = "not-performed"
     if workflow['stage'] == 'reconstruction':
         result['implementation_gate'] = {
@@ -488,11 +510,16 @@ def cmd_handshake(args: argparse.Namespace) -> int:
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="reverse-fusion", description="Reverse Fusion evidence-driven reconstruction entry")
     sub = parser.add_subparsers(dest="command", required=True)
-    for name, fn in (("contracts", cmd_contracts), ("doctor", cmd_doctor), ("plan", cmd_plan), ("handoff", cmd_handoff), ("install", cmd_install), ("uninstall", cmd_uninstall), ("update", cmd_update), ("accept", cmd_accept), ("bridge", cmd_bridge), ("craft", cmd_craft), ("native-craft", cmd_native_craft), ("build", cmd_build), ("session", cmd_session), ("handshake", cmd_handshake)):
+    for name, fn in (("contracts", cmd_contracts), ("release-check", cmd_release), ("workflow", cmd_workflow), ("doctor", cmd_doctor), ("plan", cmd_plan), ("handoff", cmd_handoff), ("install", cmd_install), ("uninstall", cmd_uninstall), ("update", cmd_update), ("accept", cmd_accept), ("bridge", cmd_bridge), ("craft", cmd_craft), ("native-craft", cmd_native_craft), ("build", cmd_build), ("session", cmd_session), ("handshake", cmd_handshake)):
         p = sub.add_parser(name)
         p.add_argument("--format", choices=("json", "markdown"), default="json")
-        if name in {"bridge", "session", "build", "craft", "native-craft"}:
+        if name in {"bridge", "workflow", "session", "build", "craft", "native-craft"}:
             p.add_argument("--project-root", help="task project directory; defaults to the current working directory, not the tool checkout")
+        if name == 'release-check':
+            p.add_argument('--deployed', action='store_true', help='also inspect installed core identities, receipt and managed Codex entry; never execute a target')
+        if name == 'workflow':
+            p.add_argument('--case-root', help='existing case; default the unique local open case')
+            p.add_argument('--receipt', help='optional existing project-relative frozen session to inspect without changing it')
         if name == "handoff":
             p.add_argument("--check", action="store_true")
         if name == "plan":
@@ -514,6 +541,7 @@ def build_parser() -> argparse.ArgumentParser:
             p.add_argument("--hint", required=True)
             p.add_argument("--case-root", help="project-relative case; default work/current-case, or the unique existing case for a continuation")
             p.add_argument('--user-request', help='original user request when first recording after a separate read-only technical route probe')
+            p.add_argument('--ref', action='append', default=[], help='existing project-relative scope/workitems/evidence reference to carry forward without duplicating its content')
             p.add_argument("--mode", choices=("analysis", "reconstruction", "follow-up", "normal-dev"), default="normal-dev")
             p.add_argument("--source", choices=("local", "auto", "external"), default="local")
             p.add_argument("--primary", help="explicit local or upstream route id, for example R46")

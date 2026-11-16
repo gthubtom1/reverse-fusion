@@ -1,5 +1,9 @@
 # Project Context
 
+当前交付为1.1.0 Windows x64/Codex工程版；RF-30按用户新指示，不再要求追加样本
+或实际软件复刻作为发布前提。工程功能、组件部署、异常恢复与有限检查完成后交付。
+具体目标的结果另有自身验收。当前合同见RELEASE-1.1.md与release/manifest.json。
+
 Reverse Fusion 是独立 GitHub 项目，不是旧安装仓库的改版。它在当前 coding agent
 中提供可恢复的普通开发、分析和复刻辅助能力：enhanced Reverse 领域技能、官方
 REA、官方 Spec 工作流、真实 Craft engine 接入、独立验收与仓库本地安装入口。

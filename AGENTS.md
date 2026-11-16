@@ -16,6 +16,7 @@
 12. 跨项目分析/复刻读取 `docs/CROSS-PROJECT-WORKFLOW.md`
 13. 核心部署与真实 Spec/Craft 交接读取 `docs/NATIVE-COMPONENTS.md`
 14. 白话任务承接、目标保留与自适应分析/交付读取 `docs/AGENT-WORKFLOW.md`；用户使用说明见 `docs/BEGINNER-GUIDE.md`
+15. 当前完整工程版本范围与发布门读取 `docs/RELEASE-1.1.md`、`release/manifest.json`；错误恢复读取 `docs/RECOVERY.md`
 
 工作规则：
 
@@ -25,6 +26,9 @@
 - 每个阶段只有一个下一步动作。
 - 任何来源、schema、scope、baseline、model、provider 或 writer 变化都要更新 checkpoint。
 - 不把安装成功、工具可见、Craft Ready、exit 0 或模型自述写成业务 acceptance。
+- 当前1.1.0按用户新指示完成Windows/Codex工程交付，不以追加用户样本或完成某个软件
+  复刻作为发布前提。工程发布与具体案例验收分别记录，不为收口新增真实目标测试。
+- 缺资料只阻断依赖它的任务；向用户提问前继续可独立推进的工作，不能把整案例无条件停掉。
 - 完整部署必须实际安装 REA、官方 Spec Kit 和原生 Craft engine；缺核心组件即部署未完成。
   复刻实现执行官方生成的 Spec 工作流，并通过真实 Craft 工具写入、编辑、运行检查；
   手写同名规格、session 观察器和离线复制不能替代实际组件。当前宿主负责推理，不另启模型。

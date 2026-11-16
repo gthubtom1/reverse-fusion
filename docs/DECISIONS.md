@@ -1,5 +1,22 @@
 # Decisions
 
+## RF-023 Finite current-host engineering release
+
+The user's RF-30 instruction explicitly requests a full version without more
+samples/real-target testing as release prerequisites. Deliver1.1.0 for the
+already prioritized Windows x64/Codex host. Preserve real component ownership,
+semantic readiness, full user objective and actual target acceptance. Separate
+engineering completion from unexecuted target/host qualification; do not turn
+unknown future software into an infinite release gate or relabel it as passed.
+
+The read-only workflow view derives original goal, project refs, component argv
+and frozen session drift from existing records, without another Evidence ledger.
+Missing dependencies block only affected work. The finite manifest checks
+source/doc contracts and actual CLI handlers; --deployed also checks platform,
+core identities, current receipt and exact installed managed entry. It does not
+execute targets or pretend to verify model judgment. Existing real native tests
+and earlier finite composition remain separately scoped evidence.
+
 ## RF-001 Single repository
 
 This project is published as one GitHub repository. Official components are described by manifests and fetched through their official distribution; owned enhancements live in this repository.

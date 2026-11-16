@@ -1,5 +1,10 @@
 # Reverse Fusion 宿主自动部署契约
 
+1.1.0 当前完整交付为 Windows x64 + Codex。无需用户提供真实样本来完成工程安装；
+不要为完成安装新开目标对话或启动未知程序。其他宿主/平台的旧发现入口不等于完整
+分发支持。组件和本地回归检查与软件业务验收分开，发布依据见 RELEASE-1.1.md。
+安装结束运行 `[venv-python] -m reverse_fusion release-check --deployed` 检查当前版本、
+真实核心和已部署全局入口；它不运行目标，也不要求再做一次软件复刻。
 这是随仓库保存的唯一部署入口。把 GitHub 仓库链接交给当前的 Codex、Pi、
 Claude Code 或兼容 coding agent，并说“把这个仓库部署到当前工作区”即可；
 agent 克隆或定位仓库后，以本文件的当前 checkout 版本为准。

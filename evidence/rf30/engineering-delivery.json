@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "version": "1.1.0",
+  "edition": "Windows x64 + Codex",
+  "status": "engineering-delivery-complete",
+  "scope": "implemented current-host aggregation, deployment and recovery; no real-target acceptance performed",
+  "base_commit": "3ec4364ae3fd80f1c03ad358756545e966b9476a",
+  "verification": {
+    "product_regression_tests": 78,
+    "product_duration_seconds": 35.845,
+    "reconstruction_regression_tests": 39,
+    "deployed_release_gates": 18,
+    "current_document_links_resolved": 63,
+    "managed_skill_validation": "pass"
+  },
+  "installed_package_version": "1.1.0",
+  "core_deployment": {
+    "missing": [],
+    "scope": "required runtime installation; generated workflow and target acceptance remain separate",
+    "status": "installed"
+  },
+  "source_hash_mode": "LF-normalized SHA256",
+  "reviewed_implementation": {
+    "reverse_fusion/workflow.py": "45cd0b10e8e2106d4209a0277763a14ba9656d05f57e5eca7c0d6941f0bf83c2",
+    "reverse_fusion/release.py": "9854e3dec63672bbdcc71d3c44b436e84a35efc516ea111e75d66eaab6113e2c",
+    "reverse_fusion/cli.py": "373845392af42694bbb1cbfe1f935d6530f16bd428f1e8cda3446bfadb90ccf7",
+    "reverse_fusion/global_adapter.py": "27c29e8b2909c48deaed004b64b1cbda2aa9c16c96ffaf5435d05b4474a95cba",
+    "reverse_fusion/session_builder.py": "cb51584188bf0e6aa89d02e32ffd40eae46898d9614a5a0b65a947b5b4aea2ae",
+    "release/manifest.json": "ff865b74b33d4d51ee1783496497446e5b5058082338964f7b368491099669bc",
+    "tests/test_workflow_release.py": "09edb47deade710e44bbccee7d6cca519895d4ee9c78567ebd02aaefe396ea0c",
+    "docs/RECOVERY.md": "549207aa8a9e0809fe7cba1f27262aaac5a724c778889917d9f87322c6857437",
+    "docs/RELEASE-1.1.md": "de02f7a5baedbb1ecdd748c5e37b17d8d8232370858b45b87cb0a2e17fdcb14a",
+    "docs/AGENT-WORKFLOW.md": "4773d89c16bc88c6d144edc1cfb5d2f181160500c2e5e8e1eda1f2d51e5985d3"
+  },
+  "new_capabilities": [
+    "read-only case and frozen-session workflow recovery",
+    "current installed component argv/cwd supplied by bridge",
+    "project material carry-forward refs without another ledger",
+    "finite source and deployed release checks"
+  ],
+  "delivered_existing_chain": [
+    "domain methods and hard-target routing",
+    "real official REA",
+    "official generated Spec workflow",
+    "actual native Craft engine",
+    "review and frozen-input gate",
+    "independent comparison and feedback",
+    "managed global entry, installation, selective update and removal"
+  ],
+  "new_user_targets_executed": 0,
+  "new_target_chats": 0,
+  "additional_user_samples_required": false,
+  "historical_qualification": [
+    "evidence/rf28/finite-worker-integration.json",
+    "evidence/rf29/novice-run-b.json"
+  ],
+  "not_claimed": [
+    "every future target has passed",
+    "all model decisions are mechanically guaranteed",
+    "Pi/Claude complete integration",
+    "non-Windows full distribution"
+  ],
+  "records": [
+    "evidence/rf30/release-source.json",
+    "evidence/rf30/release-deployed.json",
+    "evidence/rf30/doctor.json",
+    "evidence/rf30/handoff.json"
+  ]
+}

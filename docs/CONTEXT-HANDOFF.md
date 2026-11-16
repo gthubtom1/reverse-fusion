@@ -4,13 +4,16 @@ Before ending a session or compressing context, update `docs/CURRENT-STATE.md`
 and the current checkpoint. Recover state from the checkout and execution
 records rather than chat history.
 
-Current handoff: RF-28, product `1.0.0`, 2026-11-16.
+Current handoff: RF-30, product `1.1.0`, Windows x64/Codex engineering edition,
+2026-11-16. The user requires finite full engineering delivery without more
+samples or real-target tests. Do not resume target chats to release this version.
+Read `docs/RELEASE-1.1.md`, `release/manifest.json` and `docs/RECOVERY.md`.
 
 - Repository: <https://github.com/gthubtom1/reverse-fusion>, branch `master`.
 - Deployment entry: `docs/AGENT-BOOTSTRAP.md`. This travels with the repository;
   the user does not need to keep or repeatedly paste a chat prompt.
 - Current status and next action: `docs/CURRENT-STATE.md`. Audit closure and
-  exact scope and checks: `checkpoints/RF-28-20261116-002.md`.
+  exact scope and checks: `checkpoints/RF-30-20261116-001.md`.
 - Product contract: `docs/PRODUCT-GOAL.md`. Architecture is an adaptive helper
   for the current host, not a model choice or fixed reverse-engineering order.
 - Default reconstruction writer: actual Craft engine, with current host reasoning.

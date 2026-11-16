@@ -1,7 +1,7 @@
 """A bounded handoff for the agent already running the current conversation.
 
-No child CLI, account, provider or model is started. The active host writes the
-candidate with its existing tools; this module observes file boundaries only.
+No child CLI, account, provider or model is started. For reconstruction the host
+supplies content through actual native Craft; this module observes file boundaries only.
 Business acceptance remains the independent build/comparison/ledger's job.
 """
 from __future__ import annotations

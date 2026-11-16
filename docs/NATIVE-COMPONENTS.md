@@ -3,6 +3,9 @@
 RF-28 起，完整部署要求实际安装 REA、Spec Kit 和 Craft engine。路由、手写规格、
 `session` 文件观察器和 `craft --source` 离线复制均不能替代这些组件。
 普通开发仍使用宿主原有工具；分析不强制进入规格或编码阶段。
+1.1.0 的 bridge 会返回当前项目 cwd 和组件 argv；恢复同一案例/批次用只读
+`workflow --project-root [当前项目] --case-root [原case] --receipt [原session]`。
+中断、失败和独立任务继续规则见 [RECOVERY.md](RECOVERY.md)，不需要另找用户样本。
 
 ## 部署
 

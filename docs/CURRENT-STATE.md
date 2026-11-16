@@ -1,5 +1,36 @@
 # Current State
 
+Stage: RF-30
+Status: 1.1.0 engineering delivery complete for Windows x64/Codex
+
+Current product version:1.1.0. Current edition:Windows x64 + Codex.
+The user's latest instruction separates full engineering delivery from actual
+recreation of a particular sample. Complete the implemented aggregation and its
+finite checks without opening another real-target test or asking for samples.
+The release contract is `release/manifest.json` and `docs/RELEASE-1.1.md`.
+New `workflow` provides read-only case/receipt recovery and installed component
+entries; bridge carries these entries and can retain project material references.
+Missing information blocks dependent tasks only; independent work continues.
+Release checks and deployment are recorded in `checkpoints/RF-30-20261116-001.md`
+and `evidence/rf30/`:78product regressions and39reconstruction regressions passed;
+18 deployed release gates passed, current documentation links resolved, global
+skill validation passed. The editable package and Codex entry are installed as
+1.1.0; real core component installation has no missing items. No additional
+real-target run, user sample or sample-chat follow-up was used for this release.
+
+Acceptance: engineering delivery is finite and separate from target acceptance.
+Existing target unknowns and historical qualifications below are unchanged.
+Pi/Claude complete integration and non-Windows distributions are future editions.
+Next: use the released version in the user's own outcome projects. Future target
+work and provider improvements use their own cases/maintenance records; do not
+reopen this engineering release simply because an untested target is unknown.
+Do not resume any paused/idle sample chat without the user's next instruction.
+
+## Historical RF-29 requirements audit and observations
+
+The following records describe the previous acceptance instruction; RF-30's
+explicit latest user instruction supersedes its sample-dependent release gate.
+
 Overall user-requirement acceptance: NOT FINAL. The 2026-11-16 retrospective
 review consolidates22requirements:13delivered at stated scope,8partial,1not
 completed. Core collaboration and uncoached full workflow remain partial;
@@ -31,7 +62,7 @@ point are not established. See `evidence/rf29/novice-run-a.json` (retained failu
 `evidence/rf29/novice-run-b.json` (observed entry/handoff pass), and the remote
 fresh-code check. Real Spec/Craft composition remains separately qualified by
 RF-28. There is no pending reproduced shared-entry defect in these observations.
-Current checkpoint: `checkpoints/RF-29-20261116-001.md`.
+RF-29 checkpoint: `checkpoints/RF-29-20261116-001.md`.
 
 Local REA now explicitly selects the repository's pinned Node24.22.1 rather than
 the desktop runtime cache. Its live catalog probe passed (255 tools/6 prompts),
