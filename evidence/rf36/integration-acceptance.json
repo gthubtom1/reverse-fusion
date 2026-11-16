@@ -221,11 +221,15 @@
   "source_regression_report": "release/verification.json",
   "final_deployment": "evidence/rf36/deployed-release.json",
   "remote_install": "evidence/rf36/clean-install.json",
-  "status": "local-qualified; remote-install-pending",
+  "status": "qualified",
   "regressions": {
     "product": 176,
     "reconstruction": 39,
     "skipped": 0
   },
-  "local_deployed_gates": 23
+  "local_deployed_gates": 23,
+  "remote_commit": "ceca524580adfdcb8f337fbce30e86c84d24fff3",
+  "fresh_default_install": "pass",
+  "fresh_source_inputs_match_main": true,
+  "remote_deployed_gates": 23
 }

@@ -1,9 +1,9 @@
 # Current State
 
 当前版本：**1.4.0**。当前维护阶段：**RF-36 原版职责与实际工具闭环**。
-Stage: RF-36. Status: source-bound regressions and local deployment qualified; remote default installation in progress.
+Stage: RF-36. Status: implementation, source-bound regressions, local deployment and fresh remote default installation qualified; release 1.4.0.
 Acceptance: original-role integration, actual tools and durable native records; external provider and target behavior remain separately scoped.
-Next action: publish the source-bound Craft asset and qualify a fresh remote default installation.
+Next action: use the current installed entry in an outcome project; reconnect older desktop MCP connections to load the updated launcher.
 
 RF-35登记了两个MCP，但其有限资格没有发现桌面进程漏掉本地分析器配置、Craft未绑定
 原生Project、白话/嵌套case续作及无receipt卸载等缺口。RF-36已实际修复这些问题，
@@ -52,8 +52,24 @@ RF-35登记了两个MCP，但其有限资格没有发现桌面进程漏掉本地
 本轮真实调用与源码绑定结果归档到`evidence/rf36/`，回归数量以
 `release/verification.json`实际值为准。最终176项产品与39项复刻检查通过、0跳过，`release/verification.json`绑定源码与日志；
 本机23项部署门ready，真实登记协议、用户技能、handoff/doctor均通过。无关config5221字节与
-AGENTS原内容精确保留。远端新克隆结果尚待写入，不预写通过；MCP登记更新不等于当前旧连接自动重连。
+AGENTS原内容精确保留。远端全新克隆ceca524按默认步骤安装固定组件，在隔离用户目录真实登记并连接MCP，
+同样176+39零跳过、23部署门ready，源码摘要与主安装一致，主用户配置未改变。
+具体记录见[evidence/rf36/clean-install.json](../evidence/rf36/clean-install.json)。这是本机的新克隆，
+不冒称另一台物理电脑实测。MCP登记更新不等于当前旧连接自动重连；旧聊天重新连接后加载新入口。
 当前完整预编译分发为Windows x64；其他平台及外部设备/provider按实际条件准备。
 
 RF-35及更早版本说明、checkpoint和原始Evidence按需追溯，历史“下一步”不驱动
 当前安装。原始ID、摘要、旧绝对路径、错误和unknown不为清理而改写。
+
+## 当前收尾结论
+
+本轮已复现的必需实现缺口已关闭，20项原版职责承接、原22项需求、本机部署、
+源码绑定检查和远端默认安装有记录。总索引为
+[集成验收](../evidence/rf36/integration-acceptance.json)。发布为`v1.4.0`，
+固定Craft资产为`craft-mcp-v0.1.1-rf36`，来源和摘要保存在manifest及checkpoint。
+正常使用无需重做这轮开发或历史样本。新机按唯一安装入口重建本机组件/路径并检查。
+
+外部使用条件仍明确保留：真实设备/商业工具/特定平台必须实际具备；付费图片/3D
+需要专用key、额度和本次操作允许，服务效果另验。本轮使用原producer的本地模拟服务
+验证接线，未调用付费服务。这些条件不改写成已安装设备或已生成商业模型。
+具体软件的行为、保护和复刻效果按自己的case验收，不从发布标签预判成功。

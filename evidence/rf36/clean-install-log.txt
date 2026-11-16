@@ -1,0 +1,699 @@
+Cloning into 'D:\Project\reverse\state\rf36-clean-install-final'...
+
+STEP fresh-remote-clone
+Obtaining file:///D:/Project/reverse/state/rf36-clean-install-final
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Checking if build backend supports build_editable: started
+  Checking if build backend supports build_editable: finished with status 'done'
+  Getting requirements to build editable: started
+  Getting requirements to build editable: finished with status 'done'
+  Preparing editable metadata (pyproject.toml): started
+  Preparing editable metadata (pyproject.toml): finished with status 'done'
+Building wheels for collected packages: reverse-fusion
+  Building editable for reverse-fusion (pyproject.toml): started
+  Building editable for reverse-fusion (pyproject.toml): finished with status 'done'
+  Created wheel for reverse-fusion: filename=reverse_fusion-1.4.0-0.editable-py3-none-any.whl size=9695 sha256=1da619563cf192d9112408355625ec5d35bd28766d52afe9528e81a18cb89b37
+  Stored in directory: D:\tmp\pip-ephem-wheel-cache-q400q2cs\wheels\e9\7e\d0\4f0434a893ede129196bf405e5fc990397843e84eb7fb4abaf
+Successfully built reverse-fusion
+Installing collected packages: reverse-fusion
+Successfully installed reverse-fusion-1.4.0
+
+[notice] A new release of pip is available: 23.2.1 -> 26.3
+[notice] To update, run: D:\Project\reverse\state\rf36-clean-install-final\.venv\Scripts\python.exe -m pip install --upgrade pip
+{"version":"6.9.0","node_engine":"^22.23.4 || ^24.22.1 || \u003e=26.12.1","node":"D:\\Project\\reverse\\state\\rf36-clean-install-final\\vendor\\node\\node-v24.22.1-win-x64\\node.exe","status":"ready","package":"rea-agents","script":"D:\\Project\\reverse\\state\\rf36-clean-install-final\\vendor\\rea\\package\\scripts\\rea.mjs","node_version":"24.22.1","integrity":"sha512-KqDn1UR5BMqHoQ3MGAnPuWiSKwgdFaz1L/uUNgrKt+1W8kPtgYP8AWEOXIF1lDIOBVyPuYIIst2iamo1Wf3r8g=="}
+Cloning into 'D:\Project\reverse\state\rf36-clean-install-final\vendor\spec-kit\upstream'...
+HEAD is now at 2ee2b1e fix(powershell): treat bracketed project paths literally in create-new-feature (#5399)
+
+[notice] A new release of pip is available: 23.2.1 -> 26.3
+[notice] To update, run: D:\Project\reverse\state\rf36-clean-install-final\.venv\Scripts\python.exe -m pip install --upgrade pip
+
+[notice] A new release of pip is available: 23.2.1 -> 26.3
+[notice] To update, run: D:\Project\reverse\state\rf36-clean-install-final\.venv\Scripts\python.exe -m pip install --upgrade pip
+{"version":"1.4.1.dev0","dependency_lock_sha256":"511d91ff202bf06794bd4c0df2e23965cb9100ac4d5028ae778b2c56ceecd61f","schema_version":1,"python":"D:\\Project\\reverse\\state\\rf36-clean-install-final\\scripts\\..\\.venv\\Scripts\\python.exe","repository_root":"D:\\Project\\reverse\\state\\rf36-clean-install-final","status":"installed","workflow_acceptance":"not-performed","source_commit":"2ee2b1e8005905db05f5717300a469b3068b908f"}
+{"capabilities":{"adapter_version":"0.1.1","backend":"craft-anything-native-engine","business_acceptance":"not-performed","capabilities":["prepare","build","check","refine","return_summary","cleanup","abort"],"engine_version":"0.6.1","upstream_commit":"8374ad71544f2cc44698ea74ef990aa31600bac6","windows_command_tail_version":1,"writer":"current-host via native build tools"},"binary_sha256":"45108effa5ae6e6713c28c1193106984d630ad7bc6da9dd873203c7c263cbbe3","schema_version":1,"repository_root":"D:\\Project\\reverse\\state\\rf36-clean-install-final","status":"installed","distribution":"pinned-release","source_inputs":{"components/craft-native/Cargo.lock":"ea42025de12e21b77f584a46849150c6a5bf00fdf711a16604723ff95017996d","components/craft-native/manifest.json":"bd5c7360f4edcdd4be5ad56530eba108edd9b3d03d4718ecdc42d1c32e58163c","components/craft-native/patches/0001-windows-quoted-command-tail.patch":"1bf216cdebb83f928f0f0059b52ed33c5206adb749937880e8cfe76f858f7585","components/craft-native/src/main.rs":"79873371166bc3d1d0c7dd522ed61637c4170f27f469b418556af2a527ada496","components/craft-native/Cargo.toml":"9080664b994f577d4d9e5bd8b338a1060def2bb6ac458c9af19cc6397c228fb2"},"business_acceptance":"not-performed"}
+{"distribution":"pinned-release","schema_version":1,"version":"reverse-fusion-craft-mcp 0.1.1 / Craft engine 0.6.1 / 8374ad71544f2cc44698ea74ef990aa31600bac6","source_inputs":{"components/craft-mcp/Cargo.lock":"4c84a7cbafe783bd0db67fe3baaeeb8abc2d2184b4e2c81ce5186f6d2cdcb46e","components/craft-native/patches/0001-windows-quoted-command-tail.patch":"1bf216cdebb83f928f0f0059b52ed33c5206adb749937880e8cfe76f858f7585","components/craft-mcp/src/main.rs":"80c1c7b00038b74bf35bc56a4978fcdc9e9e2141e9de566ae6fe02868c4cd7c0","components/craft-mcp/patches/0003-owned-asset-qualification-transport.patch":"e1ae5e8965c5721e00fd11b8eac3b0aac9b375043e67ea604268dd9d0bd5cfed","components/craft-mcp/manifest.json":"4901ae720113c8258c1e8a9a6c715a7e79db4961f3e113d262431023f33dd4e9","components/craft-mcp/Cargo.toml":"d51b9b3a8b0eb8178cbded689be7ab7418473cdb4087358a4ab6184677b7c17f","components/craft-mcp/src/assets.rs":"9d0be1d065b50ec92ca55da62e82dea5c619f7c2931ce1191096cae8bba94ffd","components/craft-mcp/patches/0002-bound-analysis-project-and-effective-mode.patch":"8a63ce2ccff39c0a3e36235cd96f0907cd3d11157670db63890b8f443b9fee59"},"upstream_commit":"8374ad71544f2cc44698ea74ef990aa31600bac6","business_acceptance":"not-performed","binary_sha256":"f6a9e75145670051515a4560c64b76534d4706e8eeda42b0be3e213a310b2242","status":"installed","protocol":"stdio","repository_root":"D:\\Project\\reverse\\state\\rf36-clean-install-final"}
+{"output":"D:\\Project\\reverse\\state\\rf36-clean-install-final\\state\\rea-mcp-doctor.json","prompts":6,"rea":"6.9.0","catalog_digest":"2c725b48818ac5266198069330907c657f0fa2b6b8236065e5a191e20d95c2d7","tools":255,"status":"pass"}
+{
+  "backend": "craft-anything-native-engine",
+  "data": {
+    "adapter_version": "0.1.1",
+    "backend": "craft-anything-native-engine",
+    "business_acceptance": "not-performed",
+    "capabilities": [
+      "prepare",
+      "build",
+      "check",
+      "refine",
+      "return_summary",
+      "cleanup",
+      "abort"
+    ],
+    "engine_version": "0.6.1",
+    "upstream_commit": "8374ad71544f2cc44698ea74ef990aa31600bac6",
+    "windows_command_tail_version": 1,
+    "writer": "current-host via native build tools"
+  },
+  "ok": true
+}
+{"core_deployment":"installed","business_acceptance":"not-performed"}
+{"status":"core-installed","global_adapter":"deferred-to-reverse-fusion-install","venv":"D:\\Project\\reverse\\state\\rf36-clean-install-final\\.venv"}
+
+STEP default-required-core-install
+
+STEP isolated-home-assert
+{
+  "core_deployment": {
+    "missing": [],
+    "scope": "required runtime installation; generated workflow and target acceptance remain separate",
+    "status": "installed"
+  },
+  "effects": [
+    "write repository state/install.json",
+    "write user-level Codex adapter",
+    "register owned REA/Craft MCP servers"
+  ],
+  "global_adapter": {
+    "agents": "D:\\Project\\reverse\\state\\rf36-clean-install-final\\state\\isolated-user\\.codex\\AGENTS.md",
+    "enabled": true,
+    "repository": "D:\\Project\\reverse\\state\\rf36-clean-install-final",
+    "skill": "D:\\Project\\reverse\\state\\rf36-clean-install-final\\state\\isolated-user\\.agents\\skills\\reverse-fusion\\SKILL.md"
+  },
+  "global_config_mutation": true,
+  "host": {
+    "arch": "amd64",
+    "available": [
+      "claude",
+      "codex",
+      "pi"
+    ],
+    "client": "codex",
+    "global_config_mutation": false,
+    "hosts": {
+      "claude": "D:\\Tools\\Node\\claude",
+      "codex": "C:\\Users\\toti\\AppData\\Local\\OpenAI\\Codex\\bin\\c38161ad8494f88c\\codex.EXE",
+      "pi": "C:\\Users\\toti\\.pi\\agent\\bin\\pi"
+    },
+    "os": "windows"
+  },
+  "mcp": {
+    "changed": true,
+    "config": "D:\\Project\\reverse\\state\\rf36-clean-install-final\\state\\isolated-user\\.codex\\config.toml",
+    "enabled": true,
+    "reload_required": true,
+    "repository": "D:\\Project\\reverse\\state\\rf36-clean-install-final",
+    "runtime_acceptance": "not-performed",
+    "servers": [
+      "reverse-fusion-rea",
+      "reverse-fusion-craft"
+    ],
+    "status": "registered"
+  },
+  "mode": "apply",
+  "operation": "install",
+  "project": "reverse-fusion",
+  "provider_paths": {
+    "paths": {
+      "GHIDRA_INSTALL_DIR": "D:\\Tools\\Ghidra",
+      "JAVA_HOME": "D:\\Tools\\runtime\\jdk21\\jdk-21.0.12.1+1",
+      "REA_ADB_PATH": "C:\\Users\\toti\\AppData\\Local\\Microsoft\\WinGet\\Packages\\Genymobile.scrcpy_Microsoft.Winget.Source_8wekyb3d8bbwe\\scrcpy-win64-v4.1\\adb.exe",
+      "REA_BROWSER_EXECUTABLE": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+      "REA_CAPINFOS_COMMAND": "D:\\Tools\\Wireshark\\capinfos.exe",
+      "REA_GDB_COMMAND": "D:\\Tools\\runtime\\mingw64\\bin\\gdb.exe",
+      "REA_ILSPY_CMD_PATH": "C:\\Users\\toti\\.dotnet\\tools\\ilspycmd.exe",
+      "REA_MITMDUMP_COMMAND": "D:\\EXE\\python\\Scripts\\mitmdump.exe",
+      "REA_OBJDUMP_COMMAND": "D:\\Tools\\runtime\\mingw64\\bin\\objdump.exe",
+      "REA_TSHARK_COMMAND": "D:\\Tools\\Wireshark\\tshark.exe",
+      "REVERSE_FUSION_CRAFT_TOOL_ADB": "C:\\Users\\toti\\AppData\\Local\\Microsoft\\WinGet\\Packages\\Genymobile.scrcpy_Microsoft.Winget.Source_8wekyb3d8bbwe\\scrcpy-win64-v4.1\\adb.exe",
+      "REVERSE_FUSION_CRAFT_TOOL_BINWALK": "C:\\Users\\toti\\.cargo\\bin\\binwalk.exe",
+      "REVERSE_FUSION_CRAFT_TOOL_CHROMIUM": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+      "REVERSE_FUSION_CRAFT_TOOL_FRIDA": "D:\\EXE\\python\\Scripts\\frida.exe",
+      "REVERSE_FUSION_CRAFT_TOOL_GDB": "D:\\Tools\\runtime\\mingw64\\bin\\gdb.exe",
+      "REVERSE_FUSION_CRAFT_TOOL_ILSPY": "C:\\Users\\toti\\.dotnet\\tools\\ilspycmd.exe",
+      "REVERSE_FUSION_CRAFT_TOOL_JAVA": "D:\\Tools\\runtime\\jdk21\\jdk-21.0.12.1+1\\bin\\java.exe",
+      "REVERSE_FUSION_CRAFT_TOOL_MITMDUMP": "D:\\EXE\\python\\Scripts\\mitmdump.exe",
+      "REVERSE_FUSION_CRAFT_TOOL_OBJDUMP": "D:\\Tools\\runtime\\mingw64\\bin\\objdump.exe",
+      "REVERSE_FUSION_CRAFT_TOOL_TSHARK": "D:\\Tools\\Wireshark\\tshark.exe"
+    },
+    "removed_unavailable_paths": {},
+    "repository_root": "D:\\Project\\reverse\\state\\rf36-clean-install-final",
+    "schema_version": 1,
+    "scope": "existing tool paths; actual provider compatibility and operations require native observations",
+    "sources": {
+      "GHIDRA_INSTALL_DIR": "deployment-environment",
+      "JAVA_HOME": "deployment-environment",
+      "REA_ADB_PATH": "deployment-path",
+      "REA_BROWSER_EXECUTABLE": "installed-browser",
+      "REA_CAPINFOS_COMMAND": "deployment-path",
+      "REA_GDB_COMMAND": "deployment-path",
+      "REA_ILSPY_CMD_PATH": "deployment-path",
+      "REA_MITMDUMP_COMMAND": "deployment-path",
+      "REA_OBJDUMP_COMMAND": "deployment-path",
+      "REA_TSHARK_COMMAND": "deployment-path",
+      "REVERSE_FUSION_CRAFT_TOOL_ADB": "shared-provider-path",
+      "REVERSE_FUSION_CRAFT_TOOL_BINWALK": "deployment-path",
+      "REVERSE_FUSION_CRAFT_TOOL_CHROMIUM": "shared-provider-path",
+      "REVERSE_FUSION_CRAFT_TOOL_FRIDA": "deployment-path",
+      "REVERSE_FUSION_CRAFT_TOOL_GDB": "shared-provider-path",
+      "REVERSE_FUSION_CRAFT_TOOL_ILSPY": "shared-provider-path",
+      "REVERSE_FUSION_CRAFT_TOOL_JAVA": "shared-provider-path",
+      "REVERSE_FUSION_CRAFT_TOOL_MITMDUMP": "shared-provider-path",
+      "REVERSE_FUSION_CRAFT_TOOL_OBJDUMP": "shared-provider-path",
+      "REVERSE_FUSION_CRAFT_TOOL_TSHARK": "shared-provider-path"
+    },
+    "status": "configured"
+  },
+  "status": "installed"
+}
+
+STEP isolated-selected-codex-registration
+{
+  "scope": "exact registered stdio initialize/catalog/target-free call; not desktop hot-load, every provider or target acceptance",
+  "servers": [
+    {
+      "called": "binary_session",
+      "prompts": 6,
+      "server": "reverse-fusion-rea",
+      "server_info": {
+        "name": "rea",
+        "version": "6.9.0"
+      },
+      "tools": 255
+    },
+    {
+      "called": "core_session_show",
+      "prompts": 6,
+      "server": "reverse-fusion-craft",
+      "server_info": {
+        "name": "craft-anything",
+        "title": "Craft Anything",
+        "version": "0.6.1"
+      },
+      "tools": 305
+    }
+  ],
+  "status": "pass"
+}
+
+STEP real-registered-mcp-and-provider-check
+{"product": {"returncode": 0, "tests_run": 176, "skipped": 0, "log_sha256": "722ac106357b6b273ef8b9a6bc66ba3132b77f5bf0966c3ae43170f836e5e0bf", "log_path": "evidence/rf36/product-tests.txt"}}
+{"reconstruction": {"returncode": 0, "tests_run": 39, "skipped": 0, "log_sha256": "26b9a7afbc3f5d24cf89c378f7323149eef8978e14ef44c3a861039e832f4bcc", "log_path": "evidence/rf36/reconstruction-tests.txt"}}
+
+STEP fresh-source-bound-regressions
+{
+  "checks": [
+    {
+      "detail": [
+        {
+          "id": "official-manifest",
+          "status": "pass"
+        },
+        {
+          "id": "source-manifest",
+          "status": "pass"
+        },
+        {
+          "declared_checks": 43,
+          "id": "integration-responsibilities",
+          "required_file_references": 69,
+          "responsibilities": 20,
+          "roles": [
+            "craft",
+            "host",
+            "rea",
+            "reverse",
+            "spec"
+          ],
+          "runtime_acceptance": "not-evaluated",
+          "scope": "static declarations, source-pin consistency and repository path integrity",
+          "status": "pass"
+        },
+        {
+          "id": "reverse-routing-and-skills",
+          "routes": 45,
+          "status": "pass"
+        },
+        {
+          "files": 603,
+          "id": "reverse-support-preservation",
+          "status": "pass"
+        },
+        {
+          "id": "schemas/handoff-v1.schema.json",
+          "status": "pass"
+        },
+        {
+          "id": "schemas/external-baseline-v1.schema.json",
+          "status": "pass"
+        },
+        {
+          "id": "schemas/candidate-result-v1.schema.json",
+          "status": "pass"
+        },
+        {
+          "id": "schemas/source-manifest-v1.schema.json",
+          "status": "pass"
+        },
+        {
+          "id": "craft-bundle-manifest",
+          "status": "pass"
+        },
+        {
+          "id": "wabt-reproducibility",
+          "status": "pass"
+        },
+        {
+          "id": "jadx-reproducibility",
+          "status": "pass"
+        },
+        {
+          "id": "rea-reproducibility",
+          "status": "pass"
+        },
+        {
+          "id": "final-v1-documents",
+          "status": "pass"
+        },
+        {
+          "id": "rf22-evidence-manifest",
+          "status": "pass"
+        },
+        {
+          "id": "spec-kit-project",
+          "status": "pass"
+        },
+        {
+          "id": "profile:normal-dev",
+          "status": "pass"
+        },
+        {
+          "id": "profile:analysis",
+          "status": "pass"
+        },
+        {
+          "id": "profile:reconstruction",
+          "status": "pass"
+        },
+        {
+          "id": "profile:follow-up",
+          "status": "pass"
+        }
+      ],
+      "id": "repository-contracts",
+      "status": "pass"
+    },
+    {
+      "detail": "1.4.0",
+      "id": "version",
+      "status": "pass"
+    },
+    {
+      "detail": "windows-x64-codex",
+      "id": "edition",
+      "status": "pass"
+    },
+    {
+      "detail": "finite code/document/installation scope; no target-equivalence claim",
+      "id": "delivery-contract",
+      "status": "pass"
+    },
+    {
+      "detail": {
+        "files": [
+          "reverse_fusion/global_adapter.py",
+          "reverse_fusion/case_bridge.py",
+          "components/reverse-core/router.py",
+          "tests/test_cross_project.py",
+          "tests/test_request_recovery.py"
+        ],
+        "responsibility": "plain-language entry, preserved original goal, domain refinement and project-local continuation"
+      },
+      "id": "entry-and-routing",
+      "status": "pass"
+    },
+    {
+      "detail": {
+        "files": [
+          "vendor/rea/manifest.json",
+          "vendor/node/manifest.json",
+          "reverse_fusion/runtime.py",
+          "scripts/bootstrap-rea.ps1",
+          "scripts/run-rea-doctor.ps1",
+          "reverse_fusion/rea_runner.py",
+          "tests/test_rea_runner.py",
+          "docs/BOUNDED-REA.md",
+          "reverse_fusion/provider_runtime.py",
+          "tests/test_provider_runtime.py",
+          "tests/test_component_status.py"
+        ],
+        "responsibility": "pinned compatible runtime, actual official analysis and unchanged native Evidence"
+      },
+      "id": "real-rea",
+      "status": "pass"
+    },
+    {
+      "detail": {
+        "files": [
+          "vendor/spec-kit/manifest.json",
+          "scripts/bootstrap-spec.ps1",
+          "skills/reconstruction/references/spec-kit-workflow.md",
+          "reverse_fusion/craft_native.py",
+          "reverse_fusion/spec_support.py",
+          "tests/test_host_projects.py"
+        ],
+        "responsibility": "installed official generated workflow, implementation prerequisites and frozen project artifacts"
+      },
+      "id": "official-spec",
+      "status": "pass"
+    },
+    {
+      "detail": {
+        "files": [
+          "components/craft-native/manifest.json",
+          "components/craft-native/src/main.rs",
+          "components/craft-native/patches/0001-windows-quoted-command-tail.patch",
+          "scripts/bootstrap-craft.ps1",
+          "tests/test_craft_native.py"
+        ],
+        "responsibility": "real native engine, owned seam/patch, single writer, write/edit/commands/checks/cleanup"
+      },
+      "id": "actual-craft",
+      "status": "pass"
+    },
+    {
+      "detail": {
+        "files": [
+          "reverse_fusion/session_builder.py",
+          "skills/reconstruction/scripts/check_handoff.py",
+          "tests/test_reconstruction_gate.py"
+        ],
+        "responsibility": "critical dependency and hash gates before implementation; mechanical and semantic review remain separate"
+      },
+      "id": "evidence-handoff",
+      "status": "pass"
+    },
+    {
+      "detail": {
+        "files": [
+          "skills/reconstruction/references/differential-validation.md",
+          "scripts/compare-js-exports.mjs",
+          "reverse_fusion/adapters.py",
+          "docs/AGENT-WORKFLOW.md",
+          "reverse_fusion/differential.py",
+          "reverse_fusion/owned_process.py",
+          "tests/test_differential.py",
+          "scripts/qualify-desk-ui.cjs"
+        ],
+        "responsibility": "original/candidate comparison, incorrect candidate rejection, return to analysis/spec/candidate as appropriate"
+      },
+      "id": "comparison-and-feedback",
+      "status": "pass"
+    },
+    {
+      "detail": {
+        "files": [
+          "reverse_fusion/workflow.py",
+          "docs/RECOVERY.md",
+          "tests/test_workflow_release.py",
+          "reverse_fusion/verification.py",
+          "scripts/verify-engineering.py",
+          "tests/test_verification.py",
+          "docs/COMPLETION-PLAN.md",
+          "reverse_fusion/project_adapter.py",
+          "docs/HOST-PROJECT-CONNECTION.md"
+        ],
+        "responsibility": "one authoritative case, readable component entries, frozen-input drift, failed provider/check and missing-input continuation"
+      },
+      "id": "continuation-and-recovery",
+      "status": "pass"
+    },
+    {
+      "detail": {
+        "files": [
+          "scripts/install.ps1",
+          "scripts/bootstrap-core.ps1",
+          "scripts/uninstall.ps1",
+          "docs/UPSTREAM-MAINTENANCE.md",
+          "docs/ROLLBACK.md",
+          "tests/test_core_deployment.py",
+          "reverse_fusion/file_updates.py",
+          "tests/test_install_failures.py"
+        ],
+        "responsibility": "default core deployment, managed global entry, selective updates and scoped removal"
+      },
+      "id": "install-maintain-remove",
+      "status": "pass"
+    },
+    {
+      "detail": {
+        "files": [
+          "docs/BEGINNER-GUIDE.md",
+          "docs/AGENT-WORKFLOW.md",
+          "docs/NATIVE-COMPONENTS.md",
+          "docs/RELEASE-1.4.md",
+          "docs/FINAL-CLOSEOUT.md",
+          "docs/PRODUCT-GOAL.md"
+        ],
+        "responsibility": "ordinary-language use, whole goal, necessary questions, independent progress and adaptive method selection"
+      },
+      "id": "user-and-agent-contract",
+      "status": "pass"
+    },
+    {
+      "detail": {
+        "files": [
+          "reverse_fusion/mcp_adapter.py",
+          "reverse_fusion/mcp_probe.py",
+          "reverse_fusion/craft_mcp.py",
+          "components/craft-mcp/manifest.json",
+          "components/craft-mcp/src/main.rs",
+          "scripts/bootstrap-craft-mcp.ps1",
+          "scripts/qualify-mcp.py",
+          "tests/test_mcp_adapter.py",
+          "tests/test_mcp_protocol.py",
+          "docs/MCP-INTEGRATION.md",
+          "scripts/mcp-launch.py",
+          "scripts/qualify-craft-memory.py",
+          "scripts/qualify-provider-binding.py",
+          "tests/test_provider_integration.py",
+          "components/craft-mcp/src/assets.rs",
+          "scripts/qualify-craft-assets.py"
+        ],
+        "responsibility": "official REA and original Craft engine MCP, owned Codex registration lifecycle and real protocol/tools validation"
+      },
+      "id": "real-mcp-tools",
+      "status": "pass"
+    },
+    {
+      "detail": {
+        "files": [
+          "components/integration-contract.json",
+          "docs/INTEGRATION-CONTRACT.md",
+          "tests/test_integration_contract.py"
+        ],
+        "responsibility": "explicit original responsibilities, active owner and entry, required evidence propositions and negative checks; structural availability is distinct from execution"
+      },
+      "id": "original-capability-contract",
+      "status": "pass"
+    },
+    {
+      "detail": [
+        [
+          "bridge",
+          "--hint",
+          "\u5206\u6790\u8fd9\u4e2a\u8f6f\u4ef6\u7136\u540e\u590d\u523b"
+        ],
+        [
+          "workflow"
+        ],
+        [
+          "native-craft",
+          "prepare"
+        ],
+        [
+          "native-craft",
+          "build"
+        ],
+        [
+          "native-craft",
+          "check"
+        ],
+        [
+          "native-craft",
+          "refine"
+        ],
+        [
+          "native-craft",
+          "return_summary"
+        ],
+        [
+          "native-craft",
+          "cleanup"
+        ],
+        [
+          "native-craft",
+          "abort"
+        ],
+        [
+          "session",
+          "finish"
+        ],
+        [
+          "install",
+          "--client",
+          "codex"
+        ],
+        [
+          "uninstall"
+        ],
+        [
+          "release-check",
+          "--deployed"
+        ],
+        [
+          "connect",
+          "--client",
+          "pi"
+        ],
+        [
+          "connect",
+          "--client",
+          "claude"
+        ],
+        [
+          "compare",
+          "--plan",
+          "plan.json",
+          "--output",
+          "new-run"
+        ],
+        [
+          "rea-run",
+          "--operation",
+          "inspect-artifact",
+          "--args-file",
+          "args.json",
+          "--output",
+          "new-run"
+        ],
+        [
+          "mcp-check"
+        ],
+        [
+          "providers",
+          "--refresh"
+        ]
+      ],
+      "id": "executable-handoffs",
+      "status": "pass"
+    },
+    {
+      "detail": {
+        "scope": "recorded repository regressions with matching source; no new user target",
+        "status": "pass",
+        "suites": {
+          "product": 176,
+          "reconstruction": 39
+        }
+      },
+      "id": "source-bound-regressions",
+      "status": "pass"
+    },
+    {
+      "detail": "current release deployment is Windows x64 + Codex",
+      "id": "supported-host",
+      "status": "pass"
+    },
+    {
+      "detail": {
+        "missing": [],
+        "scope": "required runtime installation; generated workflow and target acceptance remain separate",
+        "status": "installed"
+      },
+      "id": "installed-core",
+      "status": "pass"
+    },
+    {
+      "detail": {
+        "config": "D:\\Project\\reverse\\state\\rf36-clean-install-final\\state\\isolated-user\\.codex\\config.toml",
+        "enabled": true,
+        "reload_required": true,
+        "repository": "D:\\Project\\reverse\\state\\rf36-clean-install-final",
+        "runtime_acceptance": "not-performed",
+        "servers": [
+          "reverse-fusion-rea",
+          "reverse-fusion-craft"
+        ],
+        "status": "registered"
+      },
+      "id": "deployed-mcp",
+      "status": "pass"
+    },
+    {
+      "detail": {
+        "scope": "exact registered stdio initialize/catalog/target-free call; not desktop hot-load, every provider or target acceptance",
+        "servers": [
+          {
+            "called": "binary_session",
+            "prompts": 6,
+            "server": "reverse-fusion-rea",
+            "server_info": {
+              "name": "rea",
+              "version": "6.9.0"
+            },
+            "tools": 255
+          },
+          {
+            "called": "core_session_show",
+            "prompts": 6,
+            "server": "reverse-fusion-craft",
+            "server_info": {
+              "name": "craft-anything",
+              "title": "Craft Anything",
+              "version": "0.6.1"
+            },
+            "tools": 305
+          }
+        ],
+        "status": "pass"
+      },
+      "id": "mcp-protocol-calls",
+      "status": "pass"
+    },
+    {
+      "detail": "current version, this checkout, selected Codex host and global adapter",
+      "id": "selected-host-install",
+      "status": "pass"
+    },
+    {
+      "detail": {
+        "agents": "D:\\Project\\reverse\\state\\rf36-clean-install-final\\state\\isolated-user\\.codex\\AGENTS.md",
+        "skill": "D:\\Project\\reverse\\state\\rf36-clean-install-final\\state\\isolated-user\\.agents\\skills\\reverse-fusion\\SKILL.md"
+      },
+      "id": "deployed-entry",
+      "status": "pass"
+    }
+  ],
+  "edition": "windows-x64-codex",
+  "future_hosts": [
+    "additional host adapters",
+    "non-Windows Craft distributions"
+  ],
+  "host_adaptation": {
+    "acceptance": "shared core representative runs plus per-host entry/tool/workflow contract checks",
+    "clients": [
+      "codex",
+      "pi",
+      "claude"
+    ],
+    "deployed_check_scope": "Windows x64/Codex global entry; Pi/Claude require explicit outcome-project connection",
+    "full_model_run_required_per_host": false
+  },
+  "operation": "release-check",
+  "scope": "engineering delivery and optional installed identities; no real-target execution",
+  "status": "ready",
+  "target_acceptance": "not-performed",
+  "version": "1.4.0"
+}
+
+STEP fresh-deployed-release

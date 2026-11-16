@@ -67,3 +67,12 @@ key只取服务进程显式`REVERSE_FUSION_CRAFT_FAL_KEY`，不进工具参数/�
 实际产物质量按目标验收。本轮没有付费生成，也不要求用户追加软件样本来交付该接线。
 若具体交付需要3D资产，使用真实通路并核实效果，不能静默交付占位物。
 使用和新机安装入口分别见[白话指南](BEGINNER-GUIDE.md)与[AGENT-BOOTSTRAP](AGENT-BOOTSTRAP.md)。
+
+## 最终发布资格
+
+176项产品检查及39项复刻检查零跳过通过，本机23项部署门ready。远端ceca524全新
+克隆按默认步骤获取自己的固定Node/REA/Spec/native/MCP资产，隔离USERPROFILE与
+CODEX_HOME真实登记、连接及重复回归，同样176+39/23门通过；源码摘要与主安装一致，
+主用户配置保持不变。记录见[clean-install](../evidence/rf36/clean-install.json)、
+[本机部署](../evidence/rf36/deployed-release.json)和[集成验收](../evidence/rf36/integration-acceptance.json)。
+首次远端安装暴露的PowerShell模块发现失败及修复前日志保留，不覆盖历史失败。

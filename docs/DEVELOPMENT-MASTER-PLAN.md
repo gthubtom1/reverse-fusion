@@ -5,7 +5,7 @@
 [20项职责合同](INTEGRATION-CONTRACT.md)定义每项负责人、入口、完成条件和反例；
 [22条原需求](USER-REQUIREMENTS-REVIEW.md)保留用户目标。
 
-**当前唯一下一步：完成本轮最终源码绑定回归、本机部署与远端默认安装，保存发布身份。**
+**本轮实现与最终门已闭合；当前下一步：在成果项目使用1.4.0，按实际缺陷或新需求维护。**
 执行状态和准确剩余项以[CURRENT-STATE](CURRENT-STATE.md)、
 [REMAINING-PRODUCT-WORK](REMAINING-PRODUCT-WORK.md)和
 [RF-36 checkpoint](../checkpoints/RF-36-20261116-001.md)为准。

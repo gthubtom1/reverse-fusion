@@ -2,9 +2,10 @@
 
 当前版本为 **1.4.0 / RF-36**。本轮按[原版职责合同](INTEGRATION-CONTRACT.md)检查
 实际承接：有工具入口还要有本地后端、原版方法、持久研究和可执行的宿主替代。
-最终回归、本机部署、远端新克隆及版本发布正在收尾，实际结果统一读取
+最终回归、本机部署与远端默认安装已通过，发布为1.4.0，结果统一读取
 [CURRENT-STATE](CURRENT-STATE.md)和[RF-36 checkpoint](../checkpoints/RF-36-20261116-001.md)。
-本页定义完成门，不能自行把尚未写入的检查判为通过。
+本机和远端各176产品+39复刻零跳过、23部署门ready；远端源码摘要与主安装一致。
+证据见`evidence/rf36/clean-install.json`、`deployed-release.json`与`release/verification.json`。
 
 ## 必须成立的发布门
 

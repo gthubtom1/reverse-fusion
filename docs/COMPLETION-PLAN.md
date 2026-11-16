@@ -9,8 +9,8 @@
   [RF-36 checkpoint](../checkpoints/RF-36-20261116-001.md)。
 - 新电脑唯一默认入口：[AGENT-BOOTSTRAP](AGENT-BOOTSTRAP.md)。
 
-当前下一步按当前状态完成本轮最终门；不能把旧版本的安装或有限工具成功当成新版本
-已发布，也不能把具体新目标的未知混作本轮工程尚未安装。
+本轮最终门已按当前源码与远端默认安装关闭；当前下一步是在成果项目使用本版本。
+具体新目标仍按自身Evidence与比较验收，不与工具的发布状态混写。
 宿主适配按[共用核心合同](HOST-PROJECT-CONNECTION.md)检查，Claude完整模型运行不是强制待办。
 
 RF-31六项整改及当时映射保存在[历史整改快照](history/COMPLETION-PLAN.md)，

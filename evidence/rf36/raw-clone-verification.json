@@ -1,0 +1,7 @@
+{
+  "status": "pass",
+  "raw_records": 18,
+  "main_and_fresh_clone_exact_raw_bytes": true,
+  "scope": "archived raw result hashes; record IDs/provenance use native export/import qualification",
+  "new_remote_revision": "ceca524580adfdcb8f337fbce30e86c84d24fff3"
+}
