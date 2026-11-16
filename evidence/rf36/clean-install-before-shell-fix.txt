@@ -1,0 +1,47 @@
+Cloning into 'D:\Project\reverse\state\rf36-clean-install'...
+
+STEP fresh-remote-clone
+Obtaining file:///D:/Project/reverse/state/rf36-clean-install
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Checking if build backend supports build_editable: started
+  Checking if build backend supports build_editable: finished with status 'done'
+  Getting requirements to build editable: started
+  Getting requirements to build editable: finished with status 'done'
+  Preparing editable metadata (pyproject.toml): started
+  Preparing editable metadata (pyproject.toml): finished with status 'done'
+Building wheels for collected packages: reverse-fusion
+  Building editable for reverse-fusion (pyproject.toml): started
+  Building editable for reverse-fusion (pyproject.toml): finished with status 'done'
+  Created wheel for reverse-fusion: filename=reverse_fusion-1.4.0-0.editable-py3-none-any.whl size=9689 sha256=2d46e5024d9b51565448820fcec32e6eaffe34ebbb034c6c11f3ff16d97956bc
+  Stored in directory: D:\tmp\pip-ephem-wheel-cache-ozee7slw\wheels\b0\33\13\030554e3ab9a70fe485792c51a92086e409e4a7d22fbdfb958
+Successfully built reverse-fusion
+Installing collected packages: reverse-fusion
+Successfully installed reverse-fusion-1.4.0
+
+[notice] A new release of pip is available: 23.2.1 -> 26.3
+[notice] To update, run: D:\Project\reverse\state\rf36-clean-install\.venv\Scripts\python.exe -m pip install --upgrade pip
+Get-FileHash : The term 'Get-FileHash' is not recognized as the name of a cmdlet, function, script file, or operable pr
+ogram. Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+At D:\Project\reverse\state\rf36-clean-install\scripts\bootstrap-node.ps1:14 char:10
++     if ((Get-FileHash -LiteralPath $archive -Algorithm SHA256).Hash.T ...
++          ~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (Get-FileHash:String) [], ParentContainsErrorRecordException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+Repository-local compatible Node returned exit code 1; expected 0
+At D:\Project\reverse\state\rf36-clean-install\scripts\lib\ScriptSupport.ps1:89 char:9
++         throw "$Operation returned exit code $ExitCode; expected $($E ...
++         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (Repository-loca...e 1; expected 0:String) [], RuntimeException
+    + FullyQualifiedErrorId : Repository-local compatible Node returned exit code 1; expected 0
+ 
+Required core deployment returned exit code 1; expected 0
+At D:\Project\reverse\state\rf36-clean-install\scripts\lib\ScriptSupport.ps1:89 char:9
++         throw "$Operation returned exit code $ExitCode; expected $($E ...
++         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (Required core d...e 1; expected 0:String) [], RuntimeException
+    + FullyQualifiedErrorId : Required core deployment returned exit code 1; expected 0
+ 
+
+STEP default-required-core-install

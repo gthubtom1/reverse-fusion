@@ -40,6 +40,6 @@ test_unknown_pointer_must_select_an_object_not_null_or_scalar (test_check_handof
 test_wrong_evidence_heading_rejected (test_check_handoff.HandoffTests.test_wrong_evidence_heading_rejected) ... ok
 
 ----------------------------------------------------------------------
-Ran 39 tests in 2.502s
+Ran 39 tests in 2.633s
 
 OK

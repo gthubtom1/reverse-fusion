@@ -1,0 +1,15 @@
+{
+  "status": "fail",
+  "reason": "default-required-core-install failed; inspect retained log",
+  "steps": [
+    {
+      "name": "fresh-remote-clone",
+      "returncode": 0
+    },
+    {
+      "name": "default-required-core-install",
+      "returncode": 1
+    }
+  ],
+  "main_configuration_unchanged": true
+}

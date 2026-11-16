@@ -26,16 +26,16 @@
   "suites": {
     "product": {
       "returncode": 0,
-      "tests_run": 175,
+      "tests_run": 176,
       "skipped": 0,
-      "log_sha256": "816bfe49540aff156b12ac77fa51c5d35a0394982ee726d8a5310835e6178e67",
+      "log_sha256": "5a03a63886f41f323efbc433d88f312cc7c5d9633813dbfac757f8dd27ce6693",
       "log_path": "evidence/rf36/product-tests.txt"
     },
     "reconstruction": {
       "returncode": 0,
       "tests_run": 39,
       "skipped": 0,
-      "log_sha256": "fb45d36696535dee70b1572924906ff315a54d9a4132d172e12b90627d348c75",
+      "log_sha256": "bf71ae537c5eb591d7eae98e0a799ba95e167fc1dc304bd8cc8f118f54e1faa8",
       "log_path": "evidence/rf36/reconstruction-tests.txt"
     }
   },
@@ -183,7 +183,7 @@
     "scripts/compare-managed-evidence.mjs": "011c269bdf7f6a929ae44b61cdee422ac6256e24e0d57a9285c88edd7a4a69da",
     "scripts/install.ps1": "87ab87b5e846af83c8476920ca896928f5e57c3db6c0d6deb99a792bc17b37dc",
     "scripts/install.sh": "6bc51e260cc873c5316dcc4460f7b1126e2af9b9ea601c31d0c9585deee6887f",
-    "scripts/lib/ScriptSupport.ps1": "b29be7de6342bebe1421aa3756fcb3c43edc6650543eb155903cc0a9f328da62",
+    "scripts/lib/ScriptSupport.ps1": "fadfc75cf0784230a15834989216f0ab0c6863f4c4203906e9a7d95b13fda02c",
     "scripts/mcp-launch.py": "cb739e3d776ae2b1e4d464377391ec257d19ea903cc8f48144bf86e97a04a7fb",
     "scripts/package-craft-mcp.py": "765aabdc644a17a415a8f72bed8f2d572cd6b9ced5adcb33eba1ad6163fd76fb",
     "scripts/package-craft.py": "42d9ed13c170da349f38e57ebf1f1ba19377a28857dd8e96a9414b304283413d",
@@ -230,7 +230,7 @@
     "tests/test_mcp_protocol.py": "2a37a53e9ec903d276ae871e3a939f2ce7dffdf94f9cec5d06f19ec131474494",
     "tests/test_provider_integration.py": "0e2587eb4ac41de0e09324ce1d5b2e214c2649e9fa52f6be3be5378f3d115e2c",
     "tests/test_provider_runtime.py": "96d5b63b908e200c229497d457e341e7ebfff88d5dd1d5057209d8319a804451",
-    "tests/test_provider_wrappers.py": "12f6ea806c59fc53f2f8cb352fb1e13aa5357f005bd8f275b48ef7f3e0c76576",
+    "tests/test_provider_wrappers.py": "17231829e2c7bc2e27a839548a0e29678dc808148addbed06117bac096324ff3",
     "tests/test_rea_runner.py": "7993adf8608ba7571292160fce56b8d46a257ec9de6e42c9c3951ca0697def7b",
     "tests/test_reconstruction_gate.py": "c4e6afa9a6dc01df7d82156336d2f7eb905e36c27a433e89c189817118fdc70a",
     "tests/test_request_recovery.py": "f4775135ab0d14bd5f7a1d0071654b7654b384e41f1df91206024f419470b153",

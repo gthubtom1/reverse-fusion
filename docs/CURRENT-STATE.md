@@ -50,7 +50,7 @@ RF-35登记了两个MCP，但其有限资格没有发现桌面进程漏掉本地
 ## 验收与发布记录
 
 本轮真实调用与源码绑定结果归档到`evidence/rf36/`，回归数量以
-`release/verification.json`实际值为准。最终175项产品与39项复刻检查通过、0跳过，`release/verification.json`绑定源码与日志；
+`release/verification.json`实际值为准。最终176项产品与39项复刻检查通过、0跳过，`release/verification.json`绑定源码与日志；
 本机23项部署门ready，真实登记协议、用户技能、handoff/doctor均通过。无关config5221字节与
 AGENTS原内容精确保留。远端新克隆结果尚待写入，不预写通过；MCP登记更新不等于当前旧连接自动重连。
 当前完整预编译分发为Windows x64；其他平台及外部设备/provider按实际条件准备。

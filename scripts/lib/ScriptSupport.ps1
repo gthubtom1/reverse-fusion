@@ -1,3 +1,18 @@
+# A Python/agent process can carry PowerShell 7's module search path into
+# Windows PowerShell 5. Each shell must discover its own built-in modules before
+# inherited modules; keep the inherited suffix and change this process only.
+# Use .NET here so recovery itself does not depend on module autoloading.
+$reverseFusionEngineModules = [IO.Path]::Combine($PSHOME, 'Modules')
+$reverseFusionInheritedModules = $env:PSModulePath
+$reverseFusionEngineModulePrefix = $reverseFusionEngineModules + [IO.Path]::PathSeparator
+$reverseFusionModulePathComparison = if ([IO.Path]::DirectorySeparatorChar -eq '\') { [StringComparison]::OrdinalIgnoreCase } else { [StringComparison]::Ordinal }
+if ([string]::IsNullOrEmpty($reverseFusionInheritedModules)) {
+    $env:PSModulePath = $reverseFusionEngineModules
+} elseif (-not $reverseFusionInheritedModules.Equals($reverseFusionEngineModules, $reverseFusionModulePathComparison) -and
+          -not $reverseFusionInheritedModules.StartsWith($reverseFusionEngineModulePrefix, $reverseFusionModulePathComparison)) {
+    $env:PSModulePath = $reverseFusionEngineModulePrefix + $reverseFusionInheritedModules
+}
+
 if (-not ('ReverseFusionPath.Native' -as [type])) {
     Add-Type -TypeDefinition @'
 using System;

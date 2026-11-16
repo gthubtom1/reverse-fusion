@@ -390,7 +390,7 @@
         "scope": "recorded repository regressions with matching source; no new user target",
         "status": "pass",
         "suites": {
-          "product": 175,
+          "product": 176,
           "reconstruction": 39
         }
       },

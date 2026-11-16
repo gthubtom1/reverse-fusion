@@ -223,7 +223,7 @@
   "remote_install": "evidence/rf36/clean-install.json",
   "status": "local-qualified; remote-install-pending",
   "regressions": {
-    "product": 175,
+    "product": 176,
     "reconstruction": 39,
     "skipped": 0
   },

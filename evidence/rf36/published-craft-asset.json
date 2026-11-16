@@ -1,0 +1,10 @@
+{
+  "adapter_version": "0.1.1",
+  "release_url": "https://github.com/gthubtom1/reverse-fusion/releases/tag/craft-mcp-v0.1.1-rf36",
+  "source_commit": "58d552778222c667731c91b8b726c54d7d8ed0e8",
+  "archive_sha256": "42e52b98ee9ef0ae660633db06afe7d28de6a2e5bff3881e66f0d2b11462d435",
+  "binary_sha256": "f6a9e75145670051515a4560c64b76534d4706e8eeda42b0be3e213a310b2242",
+  "source_patches": "components/craft-mcp/manifest.json",
+  "actual_qualified_tools": 305,
+  "native_writer": "unchanged 0.1.1 asset"
+}

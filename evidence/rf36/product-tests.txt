@@ -322,7 +322,7 @@
   }
 }
 {
-  "case_root": "work/tmpdu2uq7bq",
+  "case_root": "work/tmp5tpe1y4m",
   "operation": "case-bridge",
   "reason": "follow-up requires an existing open case.json",
   "status": "blocked"
@@ -467,6 +467,8 @@ test_receipt_from_another_checkout_and_unknown_or_relative_paths_fail (test_prov
 test_saved_tool_paths_survive_app_environment_without_importing_secrets (test_provider_runtime.ProviderRuntimeTests.test_saved_tool_paths_survive_app_environment_without_importing_secrets) ... ok
 test_shared_craft_paths_follow_source_refresh_but_independent_selection_survives (test_provider_runtime.ProviderRuntimeTests.test_shared_craft_paths_follow_source_refresh_but_independent_selection_survives) ... ok
 test_default_runtime_reaches_child_and_failed_bootstrap_stops_doctor (test_provider_wrappers.ProviderWrapperTests.test_default_runtime_reaches_child_and_failed_bootstrap_stops_doctor) ... ok
+test_ps5_python_inherited_module_path_restores_hash_and_archive_in_nested_shell (test_provider_wrappers.ProviderWrapperTests.test_ps5_python_inherited_module_path_restores_hash_and_archive_in_nested_shell)
+Exercise original cmdlets, with no profile or module-path cleanup. ... ok
 test_native_error_with_zero_exit_is_failed_and_retained (test_rea_runner.ReaRunnerTests.test_native_error_with_zero_exit_is_failed_and_retained) ... ok
 test_partial_error_with_zero_exit_is_retained_and_never_complete (test_rea_runner.ReaRunnerTests.test_partial_error_with_zero_exit_is_retained_and_never_complete) ... ok
 test_real_official_schema_is_read_with_owned_process_and_recorded_budget (test_rea_runner.ReaRunnerTests.test_real_official_schema_is_read_with_owned_process_and_recorded_budget) ... ok
@@ -510,6 +512,6 @@ test_release_is_finite_and_missing_release_contract_blocks_it (test_workflow_rel
 test_workflow_recovers_referenced_material_without_writes_or_execution (test_workflow_release.WorkflowReleaseTests.test_workflow_recovers_referenced_material_without_writes_or_execution) ... ok
 
 ----------------------------------------------------------------------
-Ran 175 tests in 76.865s
+Ran 176 tests in 75.524s
 
 OK
