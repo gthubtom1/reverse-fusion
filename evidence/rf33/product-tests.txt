@@ -302,7 +302,7 @@
   }
 }
 {
-  "case_root": "work/tmphjoslhli",
+  "case_root": "work/tmpbc1xx3e2",
   "operation": "case-bridge",
   "reason": "follow-up requires an existing open case.json",
   "status": "blocked"
@@ -419,6 +419,6 @@ test_release_is_finite_and_missing_release_contract_blocks_it (test_workflow_rel
 test_workflow_recovers_referenced_material_without_writes_or_execution (test_workflow_release.WorkflowReleaseTests.test_workflow_recovers_referenced_material_without_writes_or_execution) ... ok
 
 ----------------------------------------------------------------------
-Ran 104 tests in 44.985s
+Ran 104 tests in 52.967s
 
 OK

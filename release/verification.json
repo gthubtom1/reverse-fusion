@@ -28,14 +28,14 @@
       "returncode": 0,
       "tests_run": 104,
       "skipped": 0,
-      "log_sha256": "f16f70c4558783454f43ddc673a12ede7382a582560c68b9f74baf69da4c66c1",
+      "log_sha256": "7eb4c01f39284b00561ac25c9eb985c4cd8f753482539896d08d4561a80ebd37",
       "log_path": "evidence/rf33/product-tests.txt"
     },
     "reconstruction": {
       "returncode": 0,
       "tests_run": 39,
       "skipped": 0,
-      "log_sha256": "f43c0bc357d8cef59ba74617a53c150bb9e348d47dc19ca259292eeab6416831",
+      "log_sha256": "93d84c78adfe70e429f2fe708e4ea43f95b7b7a0324dd2552e7097c8bbb3503a",
       "log_path": "evidence/rf33/reconstruction-tests.txt"
     }
   },
@@ -148,7 +148,7 @@
     "reverse_fusion/owned_process.py": "c81ba01100e935a78fc52da28e0078f84f298166e3abc8d558dfa51a2846ea56",
     "reverse_fusion/project_adapter.py": "dceb900c4bc64619d5232cd14971686b0597e01e23cae102e35aa7310d35cb9b",
     "reverse_fusion/rea_runner.py": "50bf1b2727d7990b6df39127ef60f412235113f14a531e21e68e30b036a33785",
-    "reverse_fusion/release.py": "ef37382a2b774a0c3ff9ed6a7b03a04196129a28c66aad614edac8dff8210f76",
+    "reverse_fusion/release.py": "4e6d9ef4098c3c20b0a67e4ebc80a9f3b4536ec55ea626620ec0eda5e18d24f6",
     "reverse_fusion/runtime.py": "b282f0c3e552240813549cf0477c6a20d399287aced08ed6de02446e2e870f18",
     "reverse_fusion/session_builder.py": "a62b427ca650f71e4a0b660629ba09489ce47c23a7e25c887961ec8dbba2d3ab",
     "reverse_fusion/spec_support.py": "0a409d032fd65711fa2e915ce8ea7fcfc38e0f19adbd25d6489c84a6ed490846",

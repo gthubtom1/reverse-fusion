@@ -362,10 +362,19 @@
   ],
   "edition": "windows-x64-codex",
   "future_hosts": [
-    "Pi full integration",
-    "Claude full integration",
+    "additional host adapters",
     "non-Windows Craft distributions"
   ],
+  "host_adaptation": {
+    "acceptance": "shared core representative runs plus per-host entry/tool/workflow contract checks",
+    "clients": [
+      "codex",
+      "pi",
+      "claude"
+    ],
+    "deployed_check_scope": "Windows x64/Codex global entry; Pi/Claude require explicit outcome-project connection",
+    "full_model_run_required_per_host": false
+  },
   "operation": "release-check",
   "scope": "engineering delivery and optional installed identities; no real-target execution",
   "status": "ready",

@@ -7,8 +7,10 @@ Claude项目适配/官方Spec布局检查已完成；完整模型运行未实测
 宿主项目接入见HOST-PROJECT-CONNECTION.md；其他操作系统按实际能力报告。
 组件和本地回归检查与软件业务验收分开，发布依据见 RELEASE-1.2.md。
 安装核心并更新全局入口后，用 `[venv-python] scripts/verify-engineering.py` 生成本机
-代码摘要绑定的工程回归记录，再运行 `[venv-python] -m reverse_fusion release-check --deployed` 检查当前版本、
-真实核心和已部署全局入口；它不运行目标，也不要求再做一次软件复刻。
+代码摘要绑定的工程回归记录。Codex运行`release-check --deployed`检查当前版本、
+真实核心和全局入口；Pi/Claude使用`release-check`检查共用版本，并按下面第4步
+核实所选宿主的实际项目连接。`--deployed`是当前Codex全局入口检查，不能拿它
+检查Pi/Claude而误报适配失败。这些检查不运行目标，也不要求再做一次软件复刻。
 这是随仓库保存的唯一部署入口。把 GitHub 仓库链接交给当前的 Codex、Pi、
 Claude Code 或兼容 coding agent，并说“把这个仓库部署到当前工作区”即可；
 agent 克隆或定位仓库后，以本文件的当前 checkout 版本为准。
@@ -62,6 +64,19 @@ session 冻结与路径边界。仅从外部目录运行一次无写入的 bridg
    `[selected-host]`。选择 Codex 时还确认 `global_adapter.enabled` 为 `true`，并检查
    receipt 中记录的 `global_adapter.skill` 和 `global_adapter.agents` 路径存在。receipt
    中发现到的其他 CLI 只属于环境观察，不代表它们已安装、已登录、已加载本仓库或通过握手。
+   Pi/Claude的`install`只建立共享组件安装记录，不能据此声称成果项目已连接。
+   在用户选定的成果项目执行：
+
+   ```text
+   [venv-python] -m reverse_fusion connect --client [selected-host] --project-root [成果项目绝对路径]
+   [venv-python] -m reverse_fusion connect --client [selected-host] --project-root [成果项目绝对路径] --apply
+   ```
+
+   核对返回的技能文件、项目指引与`.reverse-fusion/[selected-host].json`均存在且
+   指向本checkout，宿主能按自身规则发现该入口。Pi检查`.pi/skills`和`AGENTS.md`，
+   Claude检查`.claude/skills`和`CLAUDE.md`。以后新成果项目执行同一连接步骤，
+   不重装核心。若当前只部署共享工具、尚无成果项目，明确报告“共享核心已安装，
+   项目入口待选择成果目录”，不能把工具仓库自身的连接当成所有项目都已连接。
 5. 默认 Windows 安装会执行 `scripts/bootstrap-core.ps1`，实际安装固定 REA、官方 Spec Kit
    和原生 Craft adapter。缺组件时安装不能完成；`doctor.core_deployment` 必须为 installed。
    真实版本、补丁、构建和工作流见 [NATIVE-COMPONENTS.md](NATIVE-COMPONENTS.md)。
@@ -124,6 +139,13 @@ session 冻结与路径边界。仅从外部目录运行一次无写入的 bridg
 此外要求当前 checkout 的 venv、selected-host receipt、Codex 用户级适配层（若启用）、
 `contracts`、`plan`、`doctor`、`handoff` 和本地路由边界已记录。它不表示其他宿主或项目
 已经通过业务验收，也不表示当前电脑具备所有 REA、IDA、Frida、Android 设备或商业工具能力。
+
+换电脑仍使用本流程：重建本机路径和运行时记录，安装固定核心，完成所选宿主入口，
+执行工程检查即可。禁止把`-PackageOnly`作为完整部署、跳过缺失核心后报完成，
+或要求用户重讲组件关系/提供样本/登录另一宿主才能完成安装。网络下载或环境条件
+失败时修复具体问题并重跑相关步骤；暂时失败应写“部署未完成”，不能交付残缺成功。
+此安装流程不需要重做产品设计或整段样本复刻。新操作系统涉及的原生分发仍按实际
+能力处理，不将Windows x64安装验证外推到所有平台。
 
 以后检查上游时，只读比较 `SOURCE-MANIFEST.json` 和
 `components/official/manifest.json`，只有真实 capability gap 得到改善才吸收，

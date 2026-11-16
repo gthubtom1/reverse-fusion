@@ -36,8 +36,12 @@ shell、模型或工具安装路径。
    [venv-python] -m reverse_fusion handoff --check
    [venv-python] -m reverse_fusion install --apply --client [selected-host]
    [venv-python] scripts/verify-engineering.py
-   [venv-python] -m reverse_fusion release-check --deployed
+   [venv-python] -m reverse_fusion release-check
    ```
+
+   Codex额外执行`release-check --deployed`检查用户级入口；Pi/Claude按唯一部署入口
+   第4步连接实际成果项目并核实技能、项目指引和连接记录，不能把Codex全局检查
+   用于其他宿主。连接新成果目录不需要重装共享核心。
 
 4. 读取 `state/install.json`，确认 selected host 和版本；选择 Codex 时确认
    `global_adapter.enabled=true` 以及用户级 `SKILL.md`、`AGENTS.md` 存在；确认当前

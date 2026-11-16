@@ -74,4 +74,10 @@ def check_release(root: Path, *, deployed: bool = False) -> dict:
             'edition': 'windows-x64-codex', 'status': 'ready' if all(g['status'] == 'pass' for g in gates) else 'blocked',
             'scope': 'engineering delivery and optional installed identities; no real-target execution',
             'target_acceptance': 'not-performed', 'checks': gates,
-            'future_hosts': ['Pi full integration', 'Claude full integration', 'non-Windows Craft distributions']}
+            'host_adaptation': {
+                'clients': ['codex', 'pi', 'claude'],
+                'acceptance': 'shared core representative runs plus per-host entry/tool/workflow contract checks',
+                'full_model_run_required_per_host': False,
+                'deployed_check_scope': 'Windows x64/Codex global entry; Pi/Claude require explicit outcome-project connection',
+            },
+            'future_hosts': ['additional host adapters', 'non-Windows Craft distributions']}
