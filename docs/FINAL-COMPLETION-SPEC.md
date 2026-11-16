@@ -1,10 +1,10 @@
 # Final v1 completion specification
 
-Current1.1.0 engineering completion follows `docs/RELEASE-1.1.md` and the
-machine-readable release manifest, as explicitly requested by the user in RF-30.
-No additional user sample or real-target run is required to ship that edition.
-The qualifications below retain their historical observed scope and do not
-claim that an untested target/host has passed after an engineering release.
+Current engineering completion follows `docs/RELEASE-1.2.md` and the
+machine-readable release manifest. The current22item feature/adapter result is
+in `docs/USER-REQUIREMENTS-REVIEW.md`. No additional user sample is required to
+install or ship the edition. Historical target qualifications retain their
+observed scope and do not imply untested target behavior has passed.
 
 This is a completion contract, not an independent current-state declaration.
 Current release/audit status lives in `docs/CURRENT-STATE.md`; direct finite
@@ -42,7 +42,10 @@ The product is ready within its declared integration scope only when:
    stale candidates, path escape and frozen-input drift fail closed.
 8. Host-owned accounts/models stay host-owned. Optional CLI probes do not mutate
    known global config and do not turn historical sentinels into current health.
-   Uncertain descendant cleanup is unknown/blocked.
+   Shared core is qualified by representative Codex/Pi complete use; each thin
+   host adapter needs actual entry/tool/workflow contract checks, not mandatory
+   logged-in complete model runs. Claude full-model observation is optional and
+   unperformed. Uncertain descendant cleanup is unknown/blocked.
 9. Rollback, selective upstream review and persistent deployment/maintenance
    handoff are documented using mechanisms actually implemented.
 10. Current docs, source manifests, tests, archive, checkpoint and GitHub remote

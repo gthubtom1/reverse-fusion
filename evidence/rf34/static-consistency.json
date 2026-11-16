@@ -1,0 +1,27 @@
+{
+  "scope": "static final file/link/source-identity consistency; no target execution",
+  "parsed_files": {
+    "python": 66,
+    "json": 178,
+    "jsonl": 2
+  },
+  "powershell_syntax": {
+    "scripts": 18,
+    "errors": []
+  },
+  "local_markdown_links_checked": 590,
+  "missing_real_links": [],
+  "code_snippet_false_positives": [
+    {
+      "file": "skills/pentest-tools/src-hunter/references/payloader/by-category/web/ssti模板注入.md",
+      "target": "\"child_process\""
+    },
+    {
+      "file": "skills/pentest-tools/src-hunter/references/payloader/by-category/web/ssti模板注入.md",
+      "target": "\"child_process\""
+    }
+  ],
+  "preservation_files": 603,
+  "execution_required_file_hashes": 4,
+  "status": "pass"
+}

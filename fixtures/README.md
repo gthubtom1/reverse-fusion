@@ -1,8 +1,12 @@
-# Local fixtures
+# 自有资格材料
 
-`answer.wasm` is a 39-byte deterministic smoke fixture used to probe the REA
-WASM adapter when a WABT 1.0.42-compatible directory is configured.
-`answer-candidate.wasm` is the correct independent candidate and
-`answer-wrong.wasm` returns 7 instead of 42 so the acceptance comparator has a
-known failing variant. These are controlled fixtures, not real targets, and
-carry no source-recovery claim.
+这些文件用于可重复的有限组件/比较资格检查，不是Reverse Fusion本身的业务功能，
+也不是用户真实软件。目录名中的`original`表示该自有比较材料的参考实现。
+
+当前安装不需要先运行这些材料，也不要求每新增宿主重跑一次完整复刻。共用核心
+已有代表性运行；宿主差异按[接入合同](../docs/HOST-PROJECT-CONNECTION.md)核对。
+执行样本时仍需记录实际范围、原件/候选身份、比较输入、错误候选和清理结果。
+自有保护/协议样本通过不表示任意第三方保护、服务或设备都已验证。
+
+既有实际结果存放在[evidence](../evidence/README.md)。样本的原始外观、故意错误
+候选以及负对照不可为了界面优化或清理历史而改变；修改样本需重新说明资格范围。

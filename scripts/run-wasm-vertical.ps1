@@ -4,7 +4,7 @@ param(
 $ErrorActionPreference = 'Stop'
 . (Join-Path $PSScriptRoot 'lib\ScriptSupport.ps1')
 $repo = Get-CanonicalPath (Join-Path $PSScriptRoot '..')
-if (-not $PythonPath) { $PythonPath = 'python' }
+if (-not $PythonPath) { $PythonPath = Join-Path $repo '.venv/Scripts/python.exe' }
 $acceptancePath = Join-Path $repo 'state\wasm-acceptance.json'
 [void](Reset-OutputFile $repo $acceptancePath)
 Push-Location $repo

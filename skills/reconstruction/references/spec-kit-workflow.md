@@ -1,6 +1,6 @@
 # Spec Kit 原生衔接 / Spec Kit workflow
 
-Spec Kit MUST 使用官方包，本 skill 只指导用户成果项目的 constitution、原生规格与任务；MUST NOT 修改 Spec Kit 库、模板主体或另建 SDD 系统。宿主命令安装/注册、版本解析与配置归独立 installer。
+Spec Kit MUST使用官方包，本skill指导成果项目的constitution、原生规格与任务，保留官方模板主体，不另建SDD系统。当前宿主命令安装/注册及版本解析归本仓库 [AGENT-BOOTSTRAP](../../../docs/AGENT-BOOTSTRAP.md)，项目入口归 [HOST-PROJECT-CONNECTION](../../../docs/HOST-PROJECT-CONNECTION.md)。旧安装只读，仓库自有受控适配按已记录能力缺口维护。
 
 ## 项目与授权边界
 
@@ -22,9 +22,9 @@ Spec Kit MUST 使用官方包，本 skill 只指导用户成果项目的 constit
 
 `implement runner` 是执行成果项目所生成官方完整 implement 指令的原宿主/owner，不是新增控制代理。MUST 读取 prerequisites、检查 feature/tasks 和 checklist 状态，按官方规则处理未完成 checklist；执行适用 hooks、依赖阶段、测试任务、同文件串行与阶段验证。不能因为已挑任务而跳过这些前置，before_implement hook 也不是替换整段 implement 的开关。
 
-runner 从原 tasks 选择依赖已满足的任务，每批只选现有 implementation-worker 或 [execution-backend version 1](execution-backend.md) 一个代码后端。后端须通过 [安装/准备与预算能力门](execution-backend.md)，prepare 与 typed return_summary 以实际 bundle entry-protocol 和已验 schema 为准；不支持则回现有 Worker，不以夹具代替准备。后端只写所选任务授权的成果代码，返回实际 diff、检查输出、失败/unknown 与清理证据；needs-spec 回 runner/lead，needs-scope 回 lead，required unknown 不取得 candidate 资格。runner 保留原 tasks 的唯一更新权。MUST 对照源码基准、task IDs 与 check plan 接收结果，失败、未执行或未验证的任务不得勾 `[X]`。批次返回 candidate、Craft Ready 或进程 exit 0 都不表示 implement 完成；runner 继续剩余任务，最后执行官方要求的全部 required tasks、规格、测试、计划与完成验证。
+runner从原tasks选择依赖已满足的任务；当前Reverse Fusion每批由同一宿主推理，通过 [当前native执行交接](execution-backend.md)的真实Craft工具写入与检查。prepare/return_summary/cleanup按本仓库实际native schema；缺核心或必需能力先修复当前部署，不能退回直接编辑、离线夹具或另启Pi模型替代Craft。后端只写授权成果代码，返回实际diff、检查、失败/unknown与清理记录；needs-spec回runner/lead，needs-scope回lead，required unknown不取得candidate资格。runner保留原tasks唯一更新权，核源码基准、task IDs和check plan后接收结果；失败、未执行或未验证任务不得勾`[X]`。candidate、Craft Ready或exit0都不表示implement完成；runner继续剩余任务，执行官方全部required tasks、规格、测试、计划与完成验证。
 
-converge MUST 单独读取当前 spec/plan/tasks 与代码，沿官方机制只追加带 source-ref 的缺项任务；该阶段不编码、不重写意图，没有缺项则 tasks 字节不变。新增任务再回 implement 选择后端。独立验证失败按原因回实现或补证，Converged 和后端局部 checks 不替代原版行为 proof。研究、task、scope、源码/基线/check plan 或模型身份在运行中改变时，MUST 停稳当前 writer，重新接收交接并使相关旧 proof 按适用性失效。
+converge MUST 单独读取当前 spec/plan/tasks 与代码，沿官方机制只追加带 source-ref 的缺项任务；该阶段不编码、不重写意图，没有缺项则 tasks 字节不变。新增任务再回implement准备新的native批次。独立验证失败按原因回实现或补证，Converged 和后端局部 checks 不替代原版行为 proof。研究、task、scope、源码/基线/check plan 或模型身份在运行中改变时，MUST 停稳当前 writer，重新接收交接并使相关旧 proof 按适用性失效。
 
 ## 追版与恢复
 

@@ -4,18 +4,18 @@ description: Routes reverse engineering, exploitation, penetration testing, malw
 ---
 # Reverse Engineering Skills Master Control
 
-本目录收录了一系列逆向工程相关的技能模块，每个子目录是一个独立模块，内含 `SKILL.md` 描述其适用场景、工具链和工作流程。
+本目录保留增强Reverse领域技能。当前默认入口是仓库venv的 `reverse_fusion bridge`，按根 `RULES.md` 读返回的领域正文。有效路由源为仓库根 `components/reverse-core/routing.json`，`skills/config/routing.json`只保留上游基线。原生master-route是兼容工具，不是第二默认入口。完整部署见 [AGENT-BOOTSTRAP](../docs/AGENT-BOOTSTRAP.md)，复刻实现见 [NATIVE-COMPONENTS](../docs/NATIVE-COMPONENTS.md)。
 
 ## CRITICAL: 路由执行契约（按任务模式执行）
 
 先判断当前请求是**只读审查/摘要/比较/维护设计**，还是要求对目标或仓库产生副作用。
 
 - 只读模式：读取规则、证据和代码；需要路由时仅调用原生 `-DryRun` / `--dry-run`，只输出 PRIMARY、零文件写入。不得创建 case、启动 provider、安装工具、写入 case/journal/index 或修改客户端配置。报告结论和未知项后停止在只读边界。
-- 执行模式：仅在用户明确激活本包并批准已披露的首个副作用计划后，按下列顺序执行。目标授权仍由 `scope.md` 独立控制。
+- 执行模式：当前任务与既有授权决定可执行范围，按下列顺序执行；已涵盖的可恢复技术动作连续推进，不重复索取首步批准。新增影响或缺少授权时才请求具体决定。目标授权仍由 `scope.md` 独立控制。
 
 ### 执行模式 hot path
 
-1. `NOW`：平台原生 router（Windows `scripts/master-route.ps1`；Linux/macOS/Kali `scripts/master-route.sh`），从 `config/routing.json` 定 PRIMARY；疑难再读 `routing.md` 三轴附录。
+1. `NOW`：先用共享 `reverse_fusion bridge` 定PRIMARY并保存原始目标；兼容的 `scripts/master-route.ps1` / `.sh`同样读取 `components/reverse-core/routing.json`。疑难再读 `routing.md` 三轴附录。
 2. `NEXT`：平台原生 `case-init` 落地当前分析项目的 `work/<case>/scope.md`；**auth 未 granted 禁止对目标 ACT**。本地离线样本使用 `offline-sample` preset + explicit sample；Force 不得绕过硬门。
 3. `ACT`：打开 PRIMARY `SKILL.md`，执行其 ACTION REQUIRED。
 4. `NEXT`：工具路径只认 `tool-index.md`；缺工具只在已批准的 bootstrap 计划内调用平台原生 bootstrap。
@@ -23,11 +23,11 @@ description: Routes reverse engineering, exploitation, penetration testing, malw
 
 **身份**：见 `ops/IDENTITY.md`（轻量路由包 + 工具自举 + journal；**不是** Z3r0 式平台）。
 
-如果路由无法命中，必须先联网补充方法论并提议新增 skill，禁止硬塞到不匹配模块。
+如果路由无法命中，保留低置信度并核对已有材料；联网补充仅在当前范围允许时执行，需要新能力再提议新增skill，禁止硬塞到不匹配模块。
 
 ## REA 委派与进程生命周期
 
-`reverse-skill` is the only router, case and Evidence authority. REA is a bounded post-PRIMARY execution backend. For authorization, licensing, entitlement, feature-gate or bypass work, use `skills/ops/authorization-coverage.md`: one patch or one working feature never closes an aggregate authorization goal; every required component needs its own Evidence and regression status.
+Reverse Fusion owns the only route and case. The current host lead owns acceptance of findings; official REA owns its native Evidence and proof records. REA is a bounded post-PRIMARY execution backend. For authorization, licensing, entitlement, feature-gate or bypass work, use `skills/ops/authorization-coverage.md`: one patch or one working feature never closes an aggregate authorization goal; every required component needs its own Evidence and regression status.
 
 - `skills/ops/rea-delegation-contract.md`
 - `skills/ops/process-lifecycle.md`
@@ -114,7 +114,7 @@ provider、工具、方法、子代理/委派、是否 fact-check、报告/汇�
 
 遇到逆向、CTF、抓包、前端签名、APK 改包、二进制分析类任务时，先按这个顺序进入：
 
-1. 平台原生 router（Windows `scripts/master-route.ps1`；Linux/macOS/Kali `scripts/master-route.sh`）→ PRIMARY（`config/routing.json`）
+1. 共享 `reverse_fusion bridge` → PRIMARY（`components/reverse-core/routing.json`）；原生master-route保留兼容入口
 2. 平台原生 `case-init` → `scope.md`
 3. 打开 PRIMARY `SKILL.md`
 4. 疑难时读 `routing.md`，需要本机路径时读 `tool-index.md`
@@ -166,7 +166,7 @@ provider、工具、方法、子代理/委派、是否 fact-check、报告/汇�
 
 ## 按需自举
 
-当 workflow 发现缺少工具时，不要直接报错。统一调用平台原生 bootstrap：
+当workflow发现缺少目标专用工具时，先核能力和实际副作用，再在既有授权内选择登记的bootstrap或替代方法。以下是可选目标工具准备示例；`-StartServices` / `--start-services`会启动服务，只有本次需要且授权涵盖时才添加。它们不是默认核心安装入口，不授权改宿主全局配置。默认核心安装始终走仓库AGENT-BOOTSTRAP：
 
 Windows：
 ```powershell
@@ -204,7 +204,7 @@ bash <package-root>/skills/scripts/bootstrap-reverse.sh 工具名 --mcp-host=non
 
 ## 持续维护与组合使用
 
-本增强版保留原生路由与扩展链。已有领域 PRIMARY 先完成分析，再用同一个 router 进入 [复刻技能](reconstruction/SKILL.md)；REA 只接受当前专业任务的具体分析委派。Pi/Codex 等安装与资源消歧统一由 [独立安装仓库](https://github.com/gthubtom1/reverse-workflow-installer) 维护，本核心不依赖某个宿主。
+本增强版保留领域方法与扩展链。已有PRIMARY先完成分析，再用同一个共享router进入 [复刻技能](reconstruction/SKILL.md)；REA接受具体分析委派。Pi/Codex/Claude安装与资源定位由本仓库 [部署入口](../docs/AGENT-BOOTSTRAP.md) 和 [宿主项目接入](../docs/HOST-PROJECT-CONNECTION.md) 维护，不调用旧外部安装仓库。当前宿主推理，真实native Craft负责复刻写入与检查。
 
 用户要求“到网上补充知识”时，先读 [知识可信等级](references/knowledge-confidence.md)、[领域覆盖基线](references/domain-coverage-baseline.md)、[第一批来源清单](references/distillation-sources.md) 与 [第二批高难领域来源登记](references/distillation-sources-batch-2.md)、[第三批高难逆向增量来源登记](references/distillation-sources-batch-3.md) 与 [外部蒸馏来源登记](references/distillation-sources-batch-4.md)，比较旧文再蒸馏到所属 references；实际研究经验沿原 field-journal 回写。来源核对、结构检查和技术复现分别记录。历史存量未复核，不以文件数量宣布全领域成功。
 

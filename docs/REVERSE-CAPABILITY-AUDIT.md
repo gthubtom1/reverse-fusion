@@ -1,5 +1,9 @@
 # Reverse 增强能力迁移审计
 
+历史迁移审计：以下文件数量、适配数量和工具边界以RF-24/RF-25当时为准。
+当前精确数量与摘要由`components/reverse-core/preservation.json`核算，
+当前完成状态由[CURRENT-STATE](CURRENT-STATE.md)负责；不把历史计数当作当前门禁。
+
 日期：2026-11-15。阶段：RF-24。范围：旧增强版的内容、辅助实现与新项目的
 接入关系；此次不运行受保护目标。
 
@@ -50,7 +54,7 @@ wrapper 共同构成，并没有内置已验证能自动处理任意保护器的
 `components/reverse-core/preservation.json` 固定 **603 个来源文件**：skills
 453、CTF sidecar 136、Burp 14。RF-24 时 592 个保持来源内容，7 个集成适配和
 4 个纯行尾空白清理。RF-25 又适配 reconstruction 的 backend descriptor 和版本测试，
-并明确当前会话 Builder 与有限 proof 适配边界；现在 590 个保持来源内容，9 个集成
+并明确当时会话Builder与有限proof适配边界；RF-25当时590个保持来源内容，9个集成
 适配与 4 个空白适配共 13 个均记录上游摘要、本地摘要及原因：
 
 - skills/SKILL.md、skills/reconstruction/SKILL.md：通用 shell 入口与本地部署边界。

@@ -1,0 +1,58 @@
+[
+  {
+    "path": "components/craft-bounded/README.md",
+    "lines": "6-25",
+    "severity": "current-document contradiction",
+    "finding": "Still says no replayable native patch bundle, native R46 unsupported, and recommends session prepare/direct host tools as default writer; current actual native engine and patch distribution have superseded this.",
+    "fix": "Rewrite as legacy typed-contract compatibility directory; point current implementation to components/craft-native/manifest.json and docs/NATIVE-COMPONENTS.md. Session auxiliary only. Keep bundle manifest historical companion reference explicitly historical."
+  },
+  {
+    "path": "components/host-adapters/README.md",
+    "lines": "3-6",
+    "severity": "current-document contradiction",
+    "finding": "Says adapter only needs identify host and call plan; no global writes; provider unverified until real handshake. Current Codex install writes managed user-level entry, Pi/Claude use connect project pointers, per-host full model test is optional.",
+    "fix": "Document actual install/connect lifecycle, host-owned credentials, separate handshake/actual model-use from completed adapter contract."
+  },
+  {
+    "path": "reverse_fusion/session_builder.py",
+    "lines": "121-127",
+    "severity": "stale caller guidance",
+    "finding": "prepare action says current host writes allowed outputs; when used through native-craft this may invite direct edits despite actual Craft requirement.",
+    "fix": "Return native Craft content/write/check action when native_lease present; observer-only guidance otherwise. This is wording metadata; changing code requires source-bound verification regeneration."
+  },
+  {
+    "path": "release/manifest.json",
+    "lines": "requirements.user-and-agent-contract.files",
+    "severity": "active release manifest stale doc requirement",
+    "finding": "Current 1.2.0 release gate still lists docs/RELEASE-1.1.md as user-and-agent contract required file. This forces the obsolete release doc into the current release contract.",
+    "fix": "Change the required file to docs/RELEASE-1.2.md; update source-bound report because manifest participates in engineering_inputs. No native binary rebuild."
+  },
+  {
+    "path": "scripts/run-wasm-vertical.ps1 and scripts/run-apk-vertical.ps1",
+    "lines": "default PythonPath",
+    "severity": "old maintainer wrapper default",
+    "finding": "Both default to bare python instead of repository venv; contradicts current AGENTS use-repo-venv and may use a different reverse_fusion install in manual qualification. Not used by default deployment.",
+    "fix": "Default to repo/.venv/Scripts/python.exe when explicit env/path not provided, or label historical maintainer wrappers; source-bound report changes if edited."
+  },
+  {
+    "path": "reverse_fusion/contracts.py",
+    "lines": "330-332",
+    "severity": "archive constraint",
+    "finding": "Current final-v1-documents check requires docs/FINAL-COMPLETION-SPEC.md and docs/FINAL-RELEASE-ACCEPTANCE.md. If legacy completion spec is archived, retain an explicit historical-pointer stub at the original path or update required refs; otherwise contracts fails.",
+    "fix": "Prefer stable stub plus current authority link; do not treat old body as live completion instructions."
+  },
+  {
+    "path": "reverse_fusion/cli.py",
+    "lines": "154-159 cmd_handoff",
+    "severity": "current-state marker constraint",
+    "finding": "handoff checker still requires Stage:, Status:, Next, Acceptance substrings in CURRENT-STATE. Current file passes partly because historical sections carry them. Moving history out can expose missing current explicit markers.",
+    "fix": "Ensure new current CURRENT-STATE explicitly includes Stage:, Status:, Next action:, Acceptance: rather than retaining history to satisfy it."
+  },
+  {
+    "path": "reverse_fusion/verification.py",
+    "lines": "engineering_inputs",
+    "severity": "source-hash maintenance constraint",
+    "finding": "engineering_inputs includes all files under components, including README.md. Therefore correcting stale components READMEs changes recorded source inputs even when runtime/native code is untouched.",
+    "fix": "Do not silently rebind old test results or claim current source pass after doc changes. Parent must keep qualification source-vs-doc scope explicit, or perform permitted required verification if user scope allows. No native rebuild is needed for component README edits."
+  }
+]

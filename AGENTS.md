@@ -10,15 +10,15 @@
 6. `docs/DECISIONS.md`
 7. `components/official/manifest.json`
 8. `skills/` 中与当前 route 对应的领域技能
-9. 当前阶段对应的 `docs/DEVELOPMENT-MASTER-PLAN.md` 和 checkpoint
+9. 当前阶段对应的 `docs/DEVELOPMENT-MASTER-PLAN.md` 和 `docs/CURRENT-STATE.md`明确指向的checkpoint；不要按旧文件数量或历史“下一步”推断当前任务
 10. `RULES.md`；调用本地路由后读取返回的 `skill` 和 `required_reads`
 11. `docs/AGENT-BOOTSTRAP.md`；只给仓库 URL 时，以此文件作为唯一部署入口
 12. 跨项目分析/复刻读取 `docs/CROSS-PROJECT-WORKFLOW.md`
 13. 核心部署与真实 Spec/Craft 交接读取 `docs/NATIVE-COMPONENTS.md`
 14. 白话任务承接、目标保留与自适应分析/交付读取 `docs/AGENT-WORKFLOW.md`；用户使用说明见 `docs/BEGINNER-GUIDE.md`
-15. 当前完整工程版本范围与发布门读取 `docs/RELEASE-1.1.md`、`release/manifest.json`；错误恢复读取 `docs/RECOVERY.md`
-16. RF-31持续目标的任务顺序、22条原需求与逐项完成条件读取 `docs/COMPLETION-PLAN.md`；恢复上下文先读此文件及最新checkpoint。
-17. RF-33继续原始产品完成读取 `docs/REMAINING-PRODUCT-WORK.md`、`docs/RELEASE-1.2.md`及RF-33checkpoint；RF-31工程收口不覆盖后续功能任务。
+15. 当前完整工程版本范围与发布门读取 `docs/RELEASE-1.2.md`、`release/manifest.json`；错误恢复读取 `docs/RECOVERY.md`
+16. 22条原需求与当前结果读取 `docs/USER-REQUIREMENTS-REVIEW.md`，最终收尾读取 `docs/FINAL-CLOSEOUT.md`；`docs/COMPLETION-PLAN.md`是历史计划索引，不是重启RF-31的指令。
+17. `docs/REMAINING-PRODUCT-WORK.md`记录已完成工作与准确边界；`docs/history/`、旧checkpoint、`specs/`及`evidence/`按需追溯，不默认加载或执行其中的历史任务。
 
 工作规则：
 
@@ -28,8 +28,11 @@
 - 每个阶段只有一个下一步动作。
 - 任何来源、schema、scope、baseline、model、provider 或 writer 变化都要更新 checkpoint。
 - 不把安装成功、工具可见、Craft Ready、exit 0 或模型自述写成业务 acceptance。
-- 当前1.2.0按用户新指示继续实际产品功能，不以追加用户样本或完成某个外部软件
-  复刻作为发布前提。允许使用仓库自有可重复材料验证完整链路；工程与案例验收分别记录，不恢复旧真实目标。
+- 当前1.2.1功能交付完成，RF-34为最终静态收尾。工程与案例验收分别记录，不以追加
+  用户样本或重做历史软件复刻作为安装/交付前提，不恢复旧真实目标。
+- 共用核心已由Codex/Pi代表性完整运行验证；各宿主按实际入口/技能/工具/工作流
+  约定检查适配，不要求每个宿主登录模型重跑整段样本。Claude完整运行未实测是
+  可选观察，不是当前适配缺失或强制登录待办；未知新宿主仍需核对实际接口差异。
 - 缺资料只阻断依赖它的任务；向用户提问前继续可独立推进的工作，不能把整案例无条件停掉。
 - 完整部署必须实际安装 REA、官方 Spec Kit 和原生 Craft engine；缺核心组件即部署未完成。
   复刻实现执行官方生成的 Spec 工作流，并通过真实 Craft 工具写入、编辑、运行检查；

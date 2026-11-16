@@ -10,7 +10,7 @@ case、规格、候选及测试。`bridge`、`session`、`build`、`craft`、`na
 
 ## 按实际阶段接续
 
-1.1.1 的 bridge 同时返回 `component_entries`，实际组件 argv 和 cwd 由安装位置计算。
+当前bridge返回`component_entries`，实际组件argv和cwd由安装位置计算。
 恢复用 `workflow --project-root [当前项目]`，需要时传原 case_root 和 session receipt；
 重要项目材料用 `bridge --ref [项目相对文件]` 保留原文件引用。具体失败分支与独立工作
 继续要求见 [RECOVERY.md](RECOVERY.md)。这些动作由智能体承担，用户不必学命令。
@@ -73,7 +73,7 @@ case、规格、候选及测试。`bridge`、`session`、`build`、`craft`、`na
    **机械 PASS 和审查记录存在均不证明语义正确**，遗漏关键依赖仍需独立审查发现。
    缺正式交接证据就继续分析，不伪造 REA 输出凑齐清单。
 
-   当前 Codex 是默认单一编码者，不需要第二个模型或 CLI。任务和研究输入先冻结、输出
+   当前选定宿主负责单一推理，通过真实Craft执行写入，不需要第二个模型或CLI。任务和研究输入先冻结、输出
    白名单先定义，再写候选。只运行 `session --help` 不算 prepare。已有输出采用下一批
    新 receipt，不补造“写入前”快照。`--allowed-output` 可以重复列出本批具体文件。
    不绑定 case 的通用 session 仅观察文件边界，不得作为复刻交接门已通过的证明。

@@ -126,7 +126,9 @@ def prepare_session(
             "handoff_assessment": handoff['assessment_scope'],
             "semantic_verification": "not-performed; review record supplied by the caller" if case_root else "not-performed",
             "read": list(refs), "tasks": tasks, "allowed_outputs": allowed_outputs,
-            "action": "The current host reads the frozen files, writes only allowed candidate outputs, then records check/refine/finish.",
+            "action": ("The current host reads the frozen files and supplies content through actual native Craft write/edit/check tools; this session only observes the boundary. Complete native summary/cleanup before session check/refine/finish."
+                       if native_lease else
+                       "The current host reads the frozen files, writes only allowed candidate outputs, then records check/refine/finish."),
             "model_selection": "current-host-owned", "business_acceptance": "not-performed"}
 
 

@@ -1,6 +1,6 @@
 # Reverse Fusion 部署与使用指南
 
-1.2.0 完整工程分发的当前范围是 Windows x64 + Codex；安装不依赖用户样本。
+1.2.1 完整工程分发的当前范围是 Windows x64 + Codex；安装不依赖用户样本。
 Pi项目接入已实际完成全程使用；Claude项目适配及官方Spec布局检查完成，完整模型
 运行未实测。共用核心采用代表性完整运行，单个宿主适配无需登录并重复整段测试，
 验收条件见HOST-PROJECT-CONNECTION.md。其他系统按实际能力报告。
@@ -128,9 +128,10 @@ WABT pin `1.0.42`，JADX headless MCP pin `0.7.1`。Spec source 为
 `1.4.1.dev0`，历史 CLI execution 为 `1.4.0`；RF-28 实际安装 1.4.1.dev0，并要求正式生成工作流参与。
 实际现场可用性看 `PROVIDER-STATUS.md` 和当前 checkpoint，不从 source pin 推断。
 
-当前代表性范围是 WASM 有限执行、Web answer 有限重放、.NET 有限方法执行，
-以及 APK 构建/manifest/member 静态对比。完整 Web graph 有 4 个 required open
-义务，Android 设备运行未知。PowerShell provider runner 已在审计机执行；POSIX
+当前代表性范围包括RF-33的完整自有Web应用交付、原生PE/调试影响、协议/HTTP状态，
+以及既有WASM/.NET有限执行与APK静态投影，见TARGET-CAPABILITY-MATRIX.md。
+RF-25旧Web完整graph的4项open及未测Android设备范围继续保留；不是当前产品待办。
+PowerShell provider runner已在审计机执行；POSIX
 agent 选择等价本机命令或记录 unsupported/blocked，不能把 Git Bash 当成原生
 Linux/macOS 实机验收。
 

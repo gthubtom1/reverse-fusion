@@ -3,7 +3,7 @@
 RF-28 起，完整部署要求实际安装 REA、Spec Kit 和 Craft engine。路由、手写规格、
 `session` 文件观察器和 `craft --source` 离线复制均不能替代这些组件。
 普通开发仍使用宿主原有工具；分析不强制进入规格或编码阶段。
-1.1.0 的 bridge 会返回当前项目 cwd 和组件 argv；恢复同一案例/批次用只读
+当前bridge返回当前项目cwd和组件argv；恢复同一案例/批次用只读
 `workflow --project-root [当前项目] --case-root [原case] --receipt [原session]`。
 中断、失败和独立任务继续规则见 [RECOVERY.md](RECOVERY.md)，不需要另找用户样本。
 
@@ -22,7 +22,7 @@ Windows x64 的 `scripts/install.ps1` 默认安装全部核心组件；默认运
 - Craft：固定源码 `8374ad71544f2cc44698ea74ef990aa31600bac6` 的真实 Rust engine，
   通过仓库自有 `components/craft-native` 接入，附可重放 Windows 命令补丁。
   发布包及源码身份在该目录 manifest；原版 GUI/CLI 的 0.6.1 release 是另一个 commit，
-  不能混用身份。本接入不启动原版 Study/模型会话，当前 Codex 提供推理和文件内容，
+  不能混用身份。本接入不启动原版 Study/模型会话，当前选定宿主提供推理和文件内容，
   实际 Workspace、写文件、编辑、运行检查由原生 Craft 工具执行。
 
 目前发布构建只资格化 Windows x64。其他平台不能声称完整安装；保留现有平台支持代码，
@@ -38,9 +38,11 @@ Windows x64 的 `scripts/install.ps1` 默认安装全部核心组件；默认运
 
 ## Spec 到真实 Craft
 
-在成果项目执行工具仓库的 `specify init --here --non-interactive --integration codex
---integration-options=--skills --script ps`。已有项目先检查冲突，保留原规格和证据。
-随后读取该项目真实生成的 `.agents/skills/speckit-*`，执行 constitution、specify、
+在成果项目执行工具仓库的`specify init`，选择当前宿主integration。
+Codex示例为`specify init --here --non-interactive --integration codex
+--integration-options=--skills --script ps`；Pi/Claude对应目录与参数见
+[HOST-PROJECT-CONNECTION](HOST-PROJECT-CONNECTION.md)。已有项目先检查冲突，保留原规格和证据。
+随后读取该项目真实生成的工作流（Codex为`.agents/skills/speckit-*`），执行constitution、specify、
 必要的 clarify、plan、tasks、analyze。这些大多是 agent 工作流，不是同名 CLI 子命令。
 记录真实脚本输出及 Evidence→需求→任务对应，关键未知回到分析；原生 prepare 还会运行固定官方 Spec prerequisites，并冻结实际 feature/spec/plan/tasks、
 constitution 和生成的技能；这一机械门不能证明需求语义充分。实现后继续 implement

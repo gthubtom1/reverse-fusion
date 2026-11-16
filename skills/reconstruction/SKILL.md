@@ -98,9 +98,9 @@ python -B skills/reconstruction/scripts/check_handoff.py <project> work/<case>/n
 
 实现缺项回 tasks；规格偏差回原专业 PRIMARY/REA；MUST NOT 修改预期让错误规格测试变绿。追版 MUST 使用版本化 feature，保留冻结旧版，我方 UI/特色默认保留，只有 scope 内新增/变化进入实现。
 
-每批 implement 只能选择现有 implementation-worker 或 [外部执行后端 version 1](references/execution-backend.md) 一个代码后端；静态能力与必需文件摘要见 [机读合同声明](references/execution-backend-contract.json)，它不授予 scope、不替代真实 Evidence/运行策略，也不参与路由。Craft 只承接依赖已满足的 selected task 的 build/check/有限 refine。MUST 绑定 lead 已接收的 research 引用、原 case/scope、feature/tasks、源码与外部基线、check plan、实际 provider/model/thinking、经能力门核准的预算模式/边界和单写租约。请求总 token/费用硬上限而后端不支持时 MUST 返回 unsupported；只有 lead 明确本批 budget-audit 模式才可按已验 wall/refine/per-response 硬界与 usage audit 选择。Spec runner 仍执行官方完整 prerequisites/checklists/hooks、依赖与阶段验证、任务进度和最终完成检查，并在本批结束后继续其余任务与 converge；不能把 before_implement hook 当替换开关或再派一个编码者。
+每批implement在当前宿主内保留一个写入owner，按 [当前native执行交接](references/execution-backend.md)使用真实Craft；当前宿主提供推理和内容，不另启Pi/其他模型，缺核心时不得回退直接编辑后称已执行Craft。MUST绑定已接收research、原case/scope、feature/tasks、源码与基线、check plan、实际执行限制和单写lease，使用native-craft prepare/build/check/refine/return_summary/cleanup及附加session完成检查。[来源合同声明](references/execution-backend-contract.json)只保留旧version1身份与文件摘要，不作为本机native能力或Pi session要求。实际参数/预算限制以当前工具为准，不把wall-time或usage审计冒称未具备的总token/费用硬上限。Spec runner仍执行官方完整prerequisites/checklists/hooks、依赖与阶段验证、任务进度和最终完成检查，继续其余任务与converge；不能用before_implement hook或局部候选替代完整流程。
 
-后端缺事实 MUST 返回 needs-evidence 给原链，不 Study、不猜测关闭 unknown、不写原账本或 spec/plan/tasks。Ready/Finished/TurnDone 只保留为原状态；候选 diff/checks/unknown/cleanup 经原 runner 与 lead 接收，并独立验证后才支持对应声明。运行中 task、scope、基线、检查或模型身份改变 MUST 停接新动作、经 owner 确认退出后重核新版交接，使相关旧 proof 按适用性失效。按实际 receipt、兼容摘要、bundle entry-protocol/capability inspect 与各角色实测核安装和运行资格；缺 receipt/兼容安装记 not-yet-installed，缺必需能力（含 prepare）返回 unsupported，沿现有 Worker，不凭文档事先判定已可用或永久未安装。
+后端缺事实MUST返回needs-evidence给原链，不重新Study、不猜测关闭unknown、不写原账本或spec/plan/tasks。Ready/Finished/TurnDone只保留原状态；实际diff/checks/unknown/cleanup经原runner与lead接收，独立验证后才支持对应声明。运行中task、scope、基线、检查或模型身份改变MUST停接新动作，经owner确认退出后重核新版交接，使相关旧proof按适用性失效。按本仓库实际native运行时记录、固定摘要、capabilities和prepare核资格；缺核心或必需能力明确阻断受影响实现并修复部署，不沿旧Worker/外接Pi路径绕过真实Craft。
 
 ### 4. 真实验证与失效回流
 
@@ -148,7 +148,7 @@ MUST 在同 case 的 timeline/workitems/notes 保存 feature、原 bundle、真�
 
 ## 路由上下文
 
-**上游入口**：原 `master-route`（唯一规则源 `../config/routing.json`）选定的复刻阶段子任务；分析证据来自原 APK/JS/native 等 PRIMARY。多意图先分析，将复刻记为同 case 待办；到交接点用明确复刻子任务 Hint 调用同一 master-route，结果保存在原 notes，MUST NOT 反复提交带原 APK 关键词的长 Hint 或另建分类器。
+**上游入口**：共享`reverse_fusion bridge`选定复刻阶段子任务，有效规则源是仓库根`components/reverse-core/routing.json`；原master-route保留兼容工具。分析证据来自原APK/JS/native等PRIMARY。多意图先分析，将复刻记为同case待办；到交接点细化同一case的阶段，结果保存在原notes，MUST NOT反复提交带原APK关键词的长Hint或另建分类器。
 
 **下游出口**：原专业 PRIMARY/REA 补证据；原 Spec Kit tasks 补实现；`case-review/` 审原图；`docs-generator/`、`diagram-generator/` 与 field-journal 收尾。阶段变化只追加 timeline，未变 scope/route/Evidence 用 `carry_forward_refs` 引用。
 
@@ -167,5 +167,5 @@ MUST 在同 case 的 timeline/workitems/notes 保存 feature、原 bundle、真�
 - [ ] 实际 analyze/converge、错误变体、原版对照与适用 REA 有限声明均有真实回执；缺失项逐项列出。
 - [ ] 追版保留我方 UI/特色、冻结旧版与回滚，新 scope 内功能无遗漏，失效 proof 已重做。
 - [ ] 规格符合/范围行为对照/隔离独立运行分别报告，未执行与 unsupported 未冒称通过。
-- [ ] 若选择外部执行后端，已核实际安装/能力、version 1 交接、单写租约与总预算；Spec 完整 implement/converge、独立接收和退出门未被候选状态替代。
+- [ ] 复刻实现已核真实native安装/能力、冻结交接、单写lease及check/cleanup/finish；当前宿主推理且未另启Pi模型，Spec完整implement/converge和独立接收未被候选状态替代。
 - [ ] 已完成授权范围内 RULES 的报告、图、脱敏经验、来源及索引 Checklist；范围外集成项已移交。

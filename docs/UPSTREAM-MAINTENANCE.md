@@ -28,8 +28,9 @@ Reverse Fusion 不跟随上游自动滚动更新。上游更新是一次由用�
    - 上游有明确缺口且本项目需要长期维护：建立本地 patch/fork，保留 upstream
      commit、patch series 和 rollback。
    - 没有实际帮助：保持当前版本，不更新。
-6. **验证**：运行 contracts、focused tests、代表性 target acceptance、fresh
-   clone lifecycle、cleanup 和 `git diff --check`。
+6. **验证**：先运行contracts、引用/摘要和`git diff --check`，再按改动影响选择
+   focused tests。核心行为变化才补相关代表性验收，安装/分发变化才补fresh clone
+   lifecycle，进程变化核cleanup；文档或薄入口变化不强制重做整段业务样本。
 7. **记录**：更新 SOURCE-MANIFEST、official manifest、PROVIDER-STATUS、
    CURRENT-STATE、checkpoint、rollback 和 handoff。
 
@@ -39,7 +40,7 @@ Reverse Fusion 不跟随上游自动滚动更新。上游更新是一次由用�
 |---|---|---|
 | Reverse core | 本仓库拥有，选择性吸收 reverse-skill 的领域改进 | `components/reverse-core/` |
 | REA | 官方 pin，先 adapter，能力缺口重复出现后再 fork | `reverse_fusion/adapters.py`、runner、vendor manifest |
-| Spec Kit | 官方 CLI，项目级 artifacts 由本仓库维护 | `specs/`、Spec pointer |
+| Spec Kit | 官方CLI与成果项目内实际生成工作流；仓库`specs/`为历史资格材料 | `reverse_fusion/spec_support.py`、成果项目`.specify/`与功能目录 |
 | Craft | 固定真实engine + 本仓库外部writer接缝；实际缺口使用可重放patch/受控fork | `components/craft-native/`、`reverse_fusion/craft_native.py` |
 | JADX MCP/WABT | 官方 provider + checksum/bootstrap | `vendor/*/manifest.json`、`scripts/bootstrap-*` |
 | Host adapters | 本仓库完全拥有；当前会话为默认，子 CLI 可选 | `reverse_fusion/session_builder.py`、`builder.py`、`host.py`、`cli.py`、profiles |
@@ -50,7 +51,7 @@ Reverse Fusion 不跟随上游自动滚动更新。上游更新是一次由用�
 
 - 有明确的真实需求或 capability gap。
 - 本地合同、路由 owner 和单一 Builder owner 保持清晰。
-- 代表性目标结果没有回归。
+- 受影响能力的检查没有回归；不把未执行的新目标或宿主模型任务写成通过。
 - provider、登录、cleanup 和全局配置边界保持明确。
 - 更新记录可以解释为什么吸收、为什么不吸收其他变化。
 - 有可回退的 commit、manifest 和 checkpoint。

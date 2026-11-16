@@ -1,23 +1,14 @@
-# Change plan
+# 变更交付约定
 
-RF-01 through RF-24 identify historical implementation increments, not a claim
-that separate GitHub pull requests were created or merged. Their scope is
-summarized in `docs/DEVELOPMENT-MASTER-PLAN.md` and preserved checkpoints.
+本文件不指定另一个“当前阶段”。当前阶段与版本以[CURRENT-STATE](CURRENT-STATE.md)、
+`VERSION`和最新checkpoint为准。RF-01等编号是历史实施阶段，不表示对应PR一定创建或合并。
 
-The current change is RF-26: observable aggregation architecture closure after
-the RF-25 full repository audit and repair for product 1.0.0.
-It combines the reproduced fixes needed for coherent deployment, a real
-current-session Builder, authenticated representative Evidence and truthful
-provider/documentation state. No old repository or global install is in scope.
+一次维护变更的交付描述应包括：
 
-The change description must include:
+- 具体问题、触发方式与修改后行为。
+- 涉及的实现/文档/配置，及有意适配的来源身份。
+- 实际执行的检查和有效范围；未执行的运行观察保持未实测。
+- 安装、回滚和用户操作是否受到影响；选定宿主入口与共享核心保持一致。
+- 最终提交、远端同步和必要的checkpoint；按实际范围停止，不扩张为所有未来目标验证。
 
-- Concrete pre-change defects and resulting behavior.
-- Current source/provider identities and any intentional skill adaptations.
-- Real candidate generation and independent finite business verification.
-- Evidence identity/link/tamper checks and retained open/unknown obligations.
-- Selected-host deployment, remote fresh-clone result, actual commit and rollback.
-
-Exact final results belong to `checkpoints/RF-26-20261115-001.md` and
-`docs/FINAL-RELEASE-ACCEPTANCE.md`. Do not mark an unrun check passed, reuse old
-host success as current health or add validation unrelated to the changed scope.
+RF-26旧变更计划完整保存在[历史快照](history/PR-PLAN.md)，不再作为当前交付指令。

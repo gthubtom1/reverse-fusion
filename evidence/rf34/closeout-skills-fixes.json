@@ -1,0 +1,139 @@
+{
+  "status": "fixed-and-static-identities-verified",
+  "scope": "inherited active instructions, navigation and source-contract boundary; no implementation logic changed",
+  "files": [
+    {
+      "path": "skills/SKILL.md",
+      "reason": "RF-34 closeout: make shared bridge/effective routing, existing user authorization, local core bootstrap and current-host/native ownership authoritative; remove external installer drift.",
+      "before_sha256": "42646e082cc89a5a1da3e2fd5e6c6165526b97bf04eac0151f009dee8a9b0c0d",
+      "after_sha256": "8dc3ef18d73f5d7d0d5556a62ff539a223370029cf94b2d214c4d9a12b92005f",
+      "upstream_sha256_retained": "24723a2f0fde33f5aff82e5f58288ff6cbefe8fc2c78b43ca30cfe3e27e7cb58",
+      "bytes": 20376,
+      "semantic_review": "Changed-file instruction semantics reviewed; historical original quoted explicitly where retained."
+    },
+    {
+      "path": "skills/INDEX.md",
+      "reason": "RF-34 closeout: correct active routing source and local deployment pointer in inherited navigation.",
+      "before_sha256": "a794ae8cc379ec4dcae89ae236d309457a6c606f00860937a75efff7300e92d9",
+      "after_sha256": "197dc67320782736b321c8cc0e8590f9af841a39378b78dd36d01e8f397a3719",
+      "upstream_sha256_retained": "a794ae8cc379ec4dcae89ae236d309457a6c606f00860937a75efff7300e92d9",
+      "bytes": 11839,
+      "semantic_review": "Changed-file instruction semantics reviewed; historical original quoted explicitly where retained."
+    },
+    {
+      "path": "skills/MASTER-ROUTING.md",
+      "reason": "RF-34 closeout: identify native router as compatibility entry, correct active source, required REA and local native deployment owner.",
+      "before_sha256": "936acd97ad21d324e7a966c3e97e27cbdd202d2c03803aaa1a5cf22e10bfaa66",
+      "after_sha256": "235d3ced59756efa089a96c3ac020bcbb455a3717b6bbbac070b3391a4dfc6af",
+      "upstream_sha256_retained": "936acd97ad21d324e7a966c3e97e27cbdd202d2c03803aaa1a5cf22e10bfaa66",
+      "bytes": 9608,
+      "semantic_review": "Changed-file instruction semantics reviewed; historical original quoted explicitly where retained."
+    },
+    {
+      "path": "skills/routing.md",
+      "reason": "RF-34 closeout: correct effective route authority and remove obsolete external installer ownership in English advisory matrix.",
+      "before_sha256": "6008faa8299c6a0eb228c10f9c1fa8e60ee6a5e0ea1ba8193d629197632c186a",
+      "after_sha256": "a69c6fb6c3baff56a79a2194ddff0ae6d94049dd7ee7d77083d1c75ef21b01d7",
+      "upstream_sha256_retained": "6008faa8299c6a0eb228c10f9c1fa8e60ee6a5e0ea1ba8193d629197632c186a",
+      "bytes": 28975,
+      "semantic_review": "Changed-file instruction semantics reviewed; historical original quoted explicitly where retained."
+    },
+    {
+      "path": "skills/routing_zh.md",
+      "reason": "RF-34 closeout: distinguish preserved upstream route baseline from effective shared source in Chinese matrix.",
+      "before_sha256": "ba124a60ad209fd10ff75ea3771c2346b6bd64e17183e6ee23b84012dfdb4aab",
+      "after_sha256": "51b0ed8a15eda13a4af75b490d82c0d421d41f5319904ce7eafe6371759f9f36",
+      "upstream_sha256_retained": "ba124a60ad209fd10ff75ea3771c2346b6bd64e17183e6ee23b84012dfdb4aab",
+      "bytes": 30619,
+      "semantic_review": "Changed-file instruction semantics reviewed; historical original quoted explicitly where retained."
+    },
+    {
+      "path": "skills/ops/IDENTITY.md",
+      "reason": "RF-34 closeout: retain upstream method-pack identity while requiring actual core deployment, not clone-only installation.",
+      "before_sha256": "b52a9980a076d01a16bd5f71e9d0cfc2be016b435274b7c38c4ebe97b7b29e46",
+      "after_sha256": "f31cc60270cf0230e5253aa168367b9ff7d18eec0c072ef115adfc1d180cb08d",
+      "upstream_sha256_retained": "b52a9980a076d01a16bd5f71e9d0cfc2be016b435274b7c38c4ebe97b7b29e46",
+      "bytes": 3012,
+      "semantic_review": "Changed-file instruction semantics reviewed; historical original quoted explicitly where retained."
+    },
+    {
+      "path": "skills/ops/rea-delegation-contract.md",
+      "reason": "RF-34 closeout: current-host lead rather than Pi-specific prerequisite; distinguish lead acceptance from official REA native record production.",
+      "before_sha256": "fcbb16063a350d33bbffc71a8ffa82fade74ae3e768d82a017c436f7bd81b221",
+      "after_sha256": "921f2fb97d3facbe4dd27d366eb4e708c99c483fbb565664aa94bddb860d17b7",
+      "upstream_sha256_retained": "fcbb16063a350d33bbffc71a8ffa82fade74ae3e768d82a017c436f7bd81b221",
+      "bytes": 7130,
+      "semantic_review": "Changed-file instruction semantics reviewed; historical original quoted explicitly where retained."
+    },
+    {
+      "path": "skills/ops/sandbox-profile.md",
+      "reason": "RF-34 closeout: optional target-tool/service bootstrap is not the default core installer or blanket global configuration authority.",
+      "before_sha256": "2d0b9ce7e1fa5833b741ecf66e6ab71b2f40d9e7c994891973ecac300c8f04fa",
+      "after_sha256": "9bf1b57710370993f4db5fab5730fa57e79cf3958e2272f2361a1372b22f78fc",
+      "upstream_sha256_retained": "2d0b9ce7e1fa5833b741ecf66e6ab71b2f40d9e7c994891973ecac300c8f04fa",
+      "bytes": 2406,
+      "semantic_review": "Changed-file instruction semantics reviewed; historical original quoted explicitly where retained."
+    },
+    {
+      "path": "skills/ops/role-map.md",
+      "reason": "RF-34 closeout: current-host single native writer; old Pi roles and external backend are provenance, not mandatory sessions or active fallback.",
+      "before_sha256": "ed1e9e5d31c9651eec5c261d0dd4acc3a63b5aa501cf79f4095a5f3a02b1ccf9",
+      "after_sha256": "6daf9207832df6a3305450b646458922cdd2f2fcd5a504cc49cfeecf0de35018",
+      "upstream_sha256_retained": "ed1e9e5d31c9651eec5c261d0dd4acc3a63b5aa501cf79f4095a5f3a02b1ccf9",
+      "bytes": 7122,
+      "semantic_review": "Changed-file instruction semantics reviewed; historical original quoted explicitly where retained."
+    },
+    {
+      "path": "skills/reconstruction/SKILL.md",
+      "reason": "RF-34 closeout: require true native Craft throughout current implementation; remove legacy direct Worker/external Pi fallback and route-source ambiguity.",
+      "before_sha256": "52b0c045b2068f9ddccc40e4286062ecfab67f1c2e4e1a9d564fdb3f61a7c2e3",
+      "after_sha256": "7769bbf5d320093f3d1e0e23ce9fe0407260a9a9f70b90a6cbed259af279ca24",
+      "upstream_sha256_retained": "86f2ac1e9c18e0d964e1f694a229484b93d6e9ba0c3a1346bd1c328de77dfe77",
+      "bytes": 20023,
+      "semantic_review": "Changed-file instruction semantics reviewed; historical original quoted explicitly where retained."
+    },
+    {
+      "path": "skills/reconstruction/references/spec-kit-workflow.md",
+      "reason": "RF-34 closeout: official Spec runner uses installed native Craft under current host; local deployment owner and full prerequisites remain explicit.",
+      "before_sha256": "9f681a12d8aac869ca59cfa5fdf026617914fbab7a6155724770380f4e7e603b",
+      "after_sha256": "9842ee46b0cbbab94dba6a5e5ac95291d8730c723cf2c7bbcb075fd45e35c43d",
+      "upstream_sha256_retained": "9f681a12d8aac869ca59cfa5fdf026617914fbab7a6155724770380f4e7e603b",
+      "bytes": 6904,
+      "semantic_review": "Changed-file instruction semantics reviewed; historical original quoted explicitly where retained."
+    },
+    {
+      "path": "skills/reconstruction/references/execution-backend.md",
+      "reason": "RF-34 closeout: current native handoff replaces active external Pi contract; full original contract retained as explicitly non-operative historical quote. Legacy capability ID remains compatibility provenance.",
+      "before_sha256": "56275a13f58d1501d340d3be9e6564a7c13e84cbc91e5eae237f181819f56de6",
+      "after_sha256": "2915af2472c92398e9ea18153ec2b8ed9e698fc7da64cdaa882c766d004ad379",
+      "upstream_sha256_retained": "56275a13f58d1501d340d3be9e6564a7c13e84cbc91e5eae237f181819f56de6",
+      "bytes": 21441,
+      "semantic_review": "Changed-file instruction semantics reviewed; historical original quoted explicitly where retained."
+    },
+    {
+      "path": "skills/CONTRIBUTING.md",
+      "reason": "RF-34 closeout: maintenance templates use effective shared source, pinned example versions, optional authorized registration and current shell paths; obsolete Kali tree explicitly historical.",
+      "before_sha256": "81151af7293bb9278111c7430724e1ee92a51110fddab06c58091aaf00176bd8",
+      "after_sha256": "8bbaf9620e7f8cdf58e58ec7a95e979b0a275f3d3ffbdda5e15332e79db56502",
+      "upstream_sha256_retained": "81151af7293bb9278111c7430724e1ee92a51110fddab06c58091aaf00176bd8",
+      "bytes": 22346,
+      "semantic_review": "Changed-file instruction semantics reviewed; historical original quoted explicitly where retained."
+    },
+    {
+      "path": "skills/reconstruction/references/execution-backend-contract.json",
+      "reason": "RF-34 closeout: synchronize four reviewed text identities after current/native and historical/Pi split; fixed upstream schema/version/capability IDs retained without runtime claim.",
+      "before_sha256": "6a68c2e73cc4befb085adeb6f131afbcc5690fcca4dcfc32dc2537979a2197c7",
+      "after_sha256": "af316f81599007649f3838de22437decc934c30f104e7f3976435c079dc24dea",
+      "upstream_sha256_retained": "d11c62d3fc41e628266da4d68f7ffb6d42e7f8f4be7c6c8858b2bea97d9c8146",
+      "bytes": 953,
+      "semantic_review": "Changed-file instruction semantics reviewed; historical original quoted explicitly where retained."
+    }
+  ],
+  "additional_manifest": "components/reverse-core/preservation.json",
+  "preservation_files_checked": 603,
+  "required_file_hashes_checked": 4,
+  "legacy_capability_ids_unchanged": true,
+  "tests_run": false,
+  "samples_run": false,
+  "followup_for_parent": "Run repository contracts and source-bound engineering qualification after all writers done; source fingerprint includes preservation.json."
+}

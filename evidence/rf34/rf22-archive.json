@@ -1,0 +1,36 @@
+{
+  "status": "pass",
+  "checks": [
+    {
+      "target": "wasm",
+      "authenticated_records": 6,
+      "linked_closure": "pass",
+      "tamper_control": "rejected"
+    },
+    {
+      "target": "web",
+      "authenticated_records": 8,
+      "linked_closure": "pass",
+      "tamper_control": "rejected"
+    },
+    {
+      "target": "dotnet",
+      "authenticated_records": 7,
+      "linked_closure": "pass",
+      "tamper_control": "rejected"
+    },
+    {
+      "target": "apk",
+      "authenticated_records": 7,
+      "linked_closure": "pass",
+      "tamper_control": "rejected"
+    },
+    {
+      "target": "current-session-builder",
+      "frozen_inputs": 4,
+      "candidate_files": 8,
+      "status": "pass",
+      "business_acceptance": "separate target proofs"
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "changes": [
+    {
+      "path": "components/craft-bounded/README.md",
+      "before_sha256": "e574538ffd189721d86c9ffdeacee4bafc819df021e179d3b37a59133c45110a",
+      "after_sha256": "502418ca4fd5e358dc6c52f676c16c5742baa0bb63a9e6c1c0d3feddf59460b2",
+      "bytes": 1624,
+      "reason": "Replaced obsolete native unsupported/direct session writer guidance with current actual native Craft role; compatibility and historical companion scope retained."
+    },
+    {
+      "path": "components/host-adapters/README.md",
+      "before_sha256": "a459bd2773567525c721734bc37685ab3f07a032acb6e62a8d279567442a4b40",
+      "after_sha256": "f4e53fb47f5e1c1f8c17f822772fa20b539da12eb99b2a3e1d53de02a3505230",
+      "bytes": 1197,
+      "reason": "Described actual managed Codex user entry and Pi/Claude project connection; separated adapter contract from optional model-use observation."
+    },
+    {
+      "path": "release/manifest.json",
+      "before_sha256": "afaaf9ea8e317a6cd9f917cd0a23ddc13be1c9281f0ab93900b83bf2e6b2e32d",
+      "after_sha256": "7bfff2492e282704996f0483899d94ad4f9ec0efbba6ce005ea649afaa720b66",
+      "bytes": 5562,
+      "reason": "Current release contract now requires RELEASE-1.2 and FINAL-CLOSEOUT current documents instead of RELEASE-1.1."
+    },
+    {
+      "path": "reverse_fusion/session_builder.py",
+      "before_sha256": "a62b427ca650f71e4a0b660629ba09489ce47c23a7e25c887961ec8dbba2d3ab",
+      "after_sha256": "1e41708b6616a488faf0f3a017d65a6e00ba3f652cf93740794f1bab3e0ebe78",
+      "bytes": 11382,
+      "reason": "Native-bound prepare output explicitly directs actual native Craft tools and auxiliary observer completion; generic session unchanged."
+    },
+    {
+      "path": "scripts/run-apk-vertical.ps1",
+      "before_sha256": "bf4e95724e9e876766e0390c5dface052d4a52e35fa296a2bb9c296a72a414d2",
+      "after_sha256": "6eb6b09f943f9d5e5003fa59bd9778b4bd1d1026cedaeae151cf40d458490ab3",
+      "bytes": 5511,
+      "reason": "Default Python now repository venv; explicit parameter/environment override preserved."
+    },
+    {
+      "path": "scripts/run-wasm-vertical.ps1",
+      "before_sha256": "ac18dda8c59e55d1cbde99fad6c326d25acbc5839071d810e2359880d91263eb",
+      "after_sha256": "402b263a5bb49c0bd260534875539f30c87f730cfa248efbeac067ff79c1a149",
+      "bytes": 2233,
+      "reason": "Default Python now repository venv; explicit parameter/environment override preserved."
+    }
+  ],
+  "tests_run": false,
+  "source_bound_report": "Parent owns static checks and required qualification scope update; no old test digest rebound by this agent."
+}

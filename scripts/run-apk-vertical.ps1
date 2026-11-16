@@ -12,7 +12,7 @@ Push-Location $repo
 try {
 $state = Join-Path $repo 'state'
 $NodePath = Resolve-ReaNodePath $repo $NodePath
-if (-not $PythonPath) { $PythonPath = 'python' }
+if (-not $PythonPath) { $PythonPath = Join-Path $repo '.venv/Scripts/python.exe' }
 if (-not $JavaHome) { throw 'Set JAVA_HOME to a JDK 21+ before running the APK vertical slice.' }
 if (-not $AndroidSdk) { throw 'Set ANDROID_HOME to an Android SDK before running the APK vertical slice.' }
 $bootstrap = & (Join-Path $PSScriptRoot 'bootstrap-jadx.ps1')

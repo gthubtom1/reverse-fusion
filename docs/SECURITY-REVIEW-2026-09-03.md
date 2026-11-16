@@ -7,8 +7,9 @@ This file preserves the security-review reference named by the inherited
 
 This is historical provenance, not a current Reverse Fusion security acceptance
 and not a claim that this repository has the upstream CI, Gradle wrapper or
-workflow files. Current RF-26 checks and open findings are recorded separately
-in `docs/CURRENT-STATE.md` and `checkpoints/RF-26-20261115-001.md`.
+workflow files. Current checks and findings are recorded separately
+in `docs/CURRENT-STATE.md` and the latest checkpoint. RF-26 observations remain
+dated in `checkpoints/RF-26-20261115-001.md`.
 
 The inherited review covered its source repository's passive payload corpus,
 executable-surface classification, provenance and bootstrap boundary. Reverse

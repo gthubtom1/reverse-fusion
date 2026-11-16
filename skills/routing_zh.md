@@ -1,10 +1,10 @@
 # 逆向技能路由矩阵
 
-按目标类型、用户意图和工具链整理的中文参考矩阵。机器路由唯一事实源是 `skills/config/routing.json`，由 `master-route` 读取；本表用于解释和人工补充，不覆盖 JSON 或 PRIMARY 输出。
+按目标类型、用户意图和工具链整理的中文参考矩阵。当前有效源为仓库根 `components/reverse-core/routing.json`，默认由 `reverse_fusion bridge`使用，兼容master-route也读取同一源；`skills/config/routing.json`只保留上游基线。本表用于解释和人工补充，不覆盖实际PRIMARY输出。
 
 ## CRITICAL: 路由判定执行协议
 
-1. `MUST` 先读取 `skills/config/routing.json`，或运行 `skills/scripts/master-route` 定 PRIMARY；本表只作人工补充。
+1. `MUST` 通过共享 `reverse_fusion bridge`定PRIMARY；兼容master-route使用同一有效源 `components/reverse-core/routing.json`。本表只作人工补充。
 2. `SHOULD` 先读 `MASTER-ROUTING.md` 或运行 `scripts/master-route.ps1` 定 PRIMARY；本表用于疑难补全。
 3. `MUST` 输出你的路由依据（目标类型/意图/工具链至少命中一项）。
 4. `MUST` 对目标 ACT 前完成 `case-init` / `scope.md`（`ops/scope-contract.md`）：`auth.status=granted` + `network_profile`。
@@ -163,7 +163,7 @@
 | "协议逆向/Protobuf/自定义协议" | `protocol-reverse/SKILL.md` |
 | "Ghidra/无 IDA" | `ghidra-reverse/SKILL.md` |
 | "Binary Ninja/Binja/HLIL/MLIL/Binary Ninja MCP" | `binary-ninja-reverse/SKILL.md` |
-| "K8s/容器逃逸/云安全" | 以 `skills/config/routing.json` 的 PRIMARY 输出为准；本表中的 `cloud-k8s` 仅是历史参考 |
+| "K8s/容器逃逸/云安全" | 以 `components/reverse-core/routing.json` 对应路由器的PRIMARY输出为准；本表中的 `cloud-k8s` 仅是历史参考 |
 | "域渗透/BloodHound/Certipy/Kerberoast" | `windows-ad/SKILL.md` |
 | "取证/Volatility/内存转储" | `digital-forensics/SKILL.md` |
 | "代码审计/SAST/Semgrep" | `code-audit/SKILL.md` |

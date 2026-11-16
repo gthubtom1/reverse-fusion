@@ -1,82 +1,29 @@
-# Provider and host status
+# 当前组件与宿主能力状态
 
-Latest acceptance policy: host adaptation and model-use observations are separate.
-All3project-entry/lifecycle and official Spec layout checks pass. Representative
-Codex/Pi full runs qualify the shared core. Claude adapter complete; full model
-use untested and optional. Login state blocks an attempted model run, not adapter
-completion. Future hosts require actual contract mapping and focused checks;
-new tool/permission/process semantics must be checked, not assumed equivalent.
+当前产品1.2.1以共享核心加薄宿主适配运行。实际本机状态由`doctor`、组件探针和
+安装/运行记录核实；下表总结已交付和已观察范围，不把旧主机观察当新电脑配置。
 
-Current RF-33 adds actual natural full-chain Codex owned-app qualification and
-project-local Pi/Claude adapters plus actual official three-host Spec layouts.
-Codex run completed full analysis/spec/native implementation/comparison/fix/
-delivery in26.2minutes. Actual Windows PE debugger-effect and protocol/HAR
-qualifications supplement the bounded domain matrix. Pi completed analysis,
-official Spec/native implementation, comparison/correction and packaged delivery
-after multiple deadline resumptions; final call exit0/session finished, finite
-ledger6verified/0open and independent held UI checks pass. Full observations and
-timeout history are in evidence/rf33/pi-full-use.json. Claude current auth status loggedIn=false; project code and
-official layout tests do not imply logged-in runtime success. Old probe rows
-below remain historical; do not use them instead of current scoped records.
-
-RF-27 initial machine observation (2026-11-16): REA was not installed, PATH Node
-was v24.20.0 (below the pin), and `specify` was absent. During the isolated live
-test, maintenance discovered the desktop-bundled Node v24.22.1, integrity-checked
-and extracted REA 6.9.0 into this checkout, and recorded the selected runtime in
-`state/rea-runtime.json`. Official `mcp doctor` reported healthy, 255/255 tools,
-6/6 prompts and a matching catalog digest. This is catalog qualification only;
-target providers, original behavior and reconstruction acceptance are separate.
-`doctor.components` rechecks the recorded executable's version and continues to
-report handshake/provider health as unverified rather than inferring it from a
-past probe. RF-28 installed official Spec Kit 1.4.1.dev0 in the repository venv and a real
-Craft engine adapter over fixed source 8374ad7 with a replayable Windows command
-patch. Native workspace/write/edit/check/summary/cleanup, nonzero exit, stale-check
-invalidation, timeout descendant cleanup and concurrent writer exclusion have run.
-Official Craft quoted-command regression passed. Spec workflow and the real
-external target composition are separately recorded in the latest checkpoint.
-See [native component integration](NATIVE-COMPONENTS.md).
-The table below is historical RF-25 evidence, not this machine's runtime status.
-
-Recorded for RF-25 provider runs and the RF-26 architecture review on 2026-11-15. These are bounded observations on the audit
-host. Another computer discovers its own providers; previous success is not a
-new installation's credential, loading or runtime qualification.
-
-| Surface | RF-25 observation | State and boundary |
+| 表面 | 当前交付/观察 | 边界 |
 |---|---|---|
-| Repository Reverse | local route, descriptor and domain skills; required-read and preservation checks | available without old receipt; target-level success remains separate |
-| Enhanced Reverse | 603 source files retained from the pinned enhanced reverse-skill; methods/helpers and hard-target context remain connected | content and handoff preserved; exact adaptation records in preservation manifest |
-| Current-session Builder | current host generated eight Web/.NET/APK source files from frozen tasks/research; `prepare/check/refine/finish` observed | candidate file boundary observed; independent business checks below |
-| Optional Codex child CLI | actual RF-25 build invocation returned `out of credits` | blocked; default current-session Builder does not depend on it |
-| Optional Pi child CLI | Pi 1.4.0 returned the exact final assistant sentinel, exit 0 | pass for transport only; known config hashes unchanged |
-| Optional Claude child CLI | Claude Code 2.1.310 started but required login, exit 1 | blocked; known config hashes unchanged |
-| REA | official `rea-agents@6.9.0`, integrity-checked repository-local package | current representative analysis runs executed; exact Node engine range is `^22.23.4`, `^24.22.1` or `>=26.12.1` |
-| WABT/REA WASM | official WABT `1.0.42`, interpreter/hash verification, correct/wrong/missing cases | bounded correct pass, wrong fail, missing unknown; official ledger ready |
-| REA Web/JavaScript | full application analysis and separate real artifact inventory; four finite export replay traces | bounded runtime pass/ledger ready; full graph ledger unknown, 4 required open (2 packaging, 2 application/parser) |
-| REA PE/.NET | .NET 8 build, managed artifact/member analysis, exact comparison and finite executable replay | bounded method pass/ledger ready; not qualification of all .NET/native targets |
-| JADX/REA APK/DEX | official headless MCP `0.7.1`, pinned JAR checksum, Java release-8 compilation, D8/AAPT and package/member observations | static pass/ledger ready; Android runtime unknown; fixture MainActivity is not a working Android Activity |
-| Spec Kit | source pin `1.4.1.dev0`; reconstruction spec/plan/tasks/converge files | artifacts available; historical CLI check/init used `1.4.0`, not a current CLI health claim |
-| Craft interface | `components/craft-bounded/bundle-manifest.json` declares `repository-interface-only`; historical patch names are not patch files | current-session writer is the product path; native R46 unsupported |
-| Craft companion | manifest retains upstream `0.6.1` reference and required `--all-tools` | unobserved on current host; do not infer healthy from an installation reference |
-| REA process capture | Windows PTY descendant cleanup not qualified | unsupported on this host |
-| Other tools/devices | IDA, Frida, adb/emulator, browser authority, commercial tools | discover for the actual target; absence is blocked/unsupported/unknown, not pass |
+| Reverse | 唯一本地route/case owner，45领域有正文、相关资料与困难目标转场 | 路由可达不等于该目标运行成功 |
+| REA | 官方6.9.0，固定Node兼容范围；本机与干净克隆真实MCP诊断，255工具/6提示 | 具体provider、设备与目标能力按case发现 |
+| Spec Kit | 官方1.4.1.dev0固定源码/依赖，实际生成8阶段工作流；Codex/Pi/Claude布局检查通过 | init或同名手写文档不代替真实阶段执行 |
+| Craft | 固定真实engine，仓库原生adapter0.1.1及可重放Windows补丁；真实写入/编辑/检查/中止/清理 | Windows x64当前分发；session观察器不是替代实现 |
+| Codex | 全局入口和工程部署检查；白话自有应用完整交付、比较、修正 | 完整运行是有限任务记录，不是所有模型行为保证 |
+| Pi | 项目适配完成；实际完整交付，期限中断后普通继续恢复，有限ledger6/0及独立UI通过 | 多次超时如实保留，不是一次流畅完成的声明 |
+| Claude | 项目连接/移除、路径与官方Spec布局检查通过，适配完成 | 完整模型运行未实测；非适配发布门，不自动轮询登录 |
+| 目标专用工具 | WABT/JADX有固定bootstrap；IDA/Frida/Android设备等按目标发现 | 缺工具按当前任务准备或保留blocked/unknown，不静默装全部工具 |
+| 受限进程执行 | 原生Craft及REA/比较runner拥有Windows Job、期限/输出/内存等检查 | 不是通用文件/网络隔离；旧process-lease和PTY能力有自己的边界 |
 
-Current Evidence identities and file digests live in
-`evidence/rf22/manifest.json`; exact finite checks and host probe results live in
-`checkpoints/RF-25-20261115-001.md` and `checkpoints/RF-26-20261115-001.md`. Proof adapters are repository-owned bounded
-integration verifiers using REA's official serializer, not REA's native process
-verification authority. A fixed sentinel proves an assistant transport response
-only; instruction loading and business acceptance need their own observations.
-The compact current probe observations are also tracked at
-`evidence/deployment/rf25-host-probes.json`; raw CLI output is not published.
+代表性当前运行记录：`evidence/rf33/owned-desk-completion.json`、`pi-full-use.json`、
+`native-qualification.json`、`protocol-qualification.json`和`clean-install.json`。
+原生Evidence绝对路径/ID与完整静态unknown保留；不可为迁移路径修改hash覆盖字段。
 
-Known host configuration files are hash-compared around optional child calls.
-An unobservable/changed snapshot or uncertain timeout cleanup is not reported
-as verified cleanup. No model, credential or host runtime configuration is installed
-by Reverse Fusion. A selected Codex installation may write the managed user-level
-`reverse-fusion` skill and `AGENTS.md` routing block recorded in `state/install.json`;
-unrelated global instructions are preserved.
+所有宿主使用自己的当前账号和模型；不复制凭据或修改无关宿主配置。
+新电脑按[部署契约](AGENT-BOOTSTRAP.md)安装固定核心并连接当前宿主，
+适配完成条件见[HOST-PROJECT-CONNECTION](HOST-PROJECT-CONNECTION.md)。
+新操作系统涉及原生运行时分发，不能从Windows检查推断通过。
 
-RF-26 adds no new provider qualification. It verifies that provider activation
-is explicit in the workflow contract: the current host remains the default
-Builder, REA/Spec/Craft are activated only by the selected stage, and a missing
-tool index or provider stays typed as `unknown`, `blocked` or `unsupported`.
+RF-25至RF-33的旧探针、额度/登录观察、当时Craft不支持和阶段修复过程移至
+[历史提供方快照](history/PROVIDER-STATUS.md)。历史限制不覆盖后来已完成的适配，
+后来成功也不改写历史失败。目标族详细观测见[TARGET-CAPABILITY-MATRIX](TARGET-CAPABILITY-MATRIX.md)。

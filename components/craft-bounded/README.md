@@ -1,31 +1,23 @@
-# Craft bounded adapter
+# Craft bounded contract and compatibility adapter
 
-上游 Craft Anything 0.6.1 不原生提供 AcceptedResearch/ExternalBaseline/bounded policy。
+本目录保存历史 typed candidate contract 与当前原生执行器的共同边界。
+`bundle-manifest.json` 固定上游身份、实际可重放的 Windows 命令补丁、
+single-writer/cleanup policy，以及六项生命周期能力。
 
-本目录保存接口身份与边界：
+当前复刻实现入口是实际 Craft engine adapter，身份和分发见
+[原生清单](../craft-native/manifest.json)，操作见
+[真实组件交接](../../docs/NATIVE-COMPONENTS.md)。当前宿主提供推理和内容，
+通过 `native-craft prepare/build/check/refine/return_summary/cleanup` 执行真实
+Workspace、候选写入/编辑与冻结检查。`session` 仅附加观察边界，不能替代原生
+写入、检查和清理；直接编辑候选或离线复制也不算实际 Craft 执行。
 
-- upstream identity。
-- 四个历史 patch 名称的参考身份；本仓库没有分发可重放的 native patch bundle。
-- bundle manifest。
-- host entry protocol。
-- source/lock/toolchain requirements。
-- update and rollback instructions。
+`CraftAdapter.prepare()` / `run()` 保留 typed boundary 供兼容与合同检查使用。
+`local-bounded-worker` 仅将明确选择的自有 fixture/source 复制到受限相对路径，
+用于可重复离线合同检查；它不调用模型，不替代当前真实原生执行器或业务验收。
+`build --host ...` 是可选子 CLI transport，不是默认当前会话实现入口；账号、
+额度或工具缺失按实际结果报告。
 
-当前仓库已经提供 `CraftAdapter.prepare()` / `run()` 的 typed boundary；没有
-provider/backend 时返回 `unsupported`，有 backend 时返回带 cleanup 状态的
-candidate。`bundle-manifest.json` 固定 upstream 参考 commit、四个历史 patch seam 和
-single-writer/cleanup policy，并要求 `prepare/build/check/refine/return_summary/cleanup`
-六项能力全部存在。`companion_reference` 是用户声明的历史 companion 身份，
-不作为当前安装或健康回执；保留其 `--all-tools` 参数。当前未观测到活动回执/注册，
-native R46 backend 资格仍为 unsupported。
-
-默认编码者是当前对话中已经运行的宿主 agent。`reverse_fusion session prepare`
-冻结任务、研究文件和写入白名单；当前宿主使用自身工具实现，`session check/refine/finish`
-记录边界观察。它不新开账号或模型，文件通过也不等于业务通过。`build --host ...`
-是可选的 CLI transport；额度、登录或工具缺失保留 blocked，不转成候选成功。
-
-项目同时提供 `local-bounded-worker` 作为仓库自有 fallback：它只把明确
-选定的 fixture/source 写入一个安全的仓库相对路径，校验任务 digest、
-baseline、single-writer 和 cleanup，并返回同一 typed candidate contract。
-它用于可重复的离线验收，不冒充真实模型 Builder；有合格 Craft backend
-时由原 runner 选择替换。
+清单中的 `historical_patch_series` 和 `companion_reference` 是历史身份记录，
+不是当前原生 adapter 的安装/健康状态。历史 companion 的未观测或 unsupported
+状态不能覆盖当前 adapter 的实际安装记录；保留其 `--all-tools` 参数。组件可用、
+候选文件存在或生命周期结束均不等于原版行为比较已经通过。

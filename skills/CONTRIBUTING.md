@@ -2,6 +2,12 @@
 
 本文档定义了向本包新增一个 skill 模块的标准流程。无论是人工新增还是 AI 在任务中发现需要新增，都按这个流程走。
 
+Reverse Fusion适配：当前有效路由是仓库根`components/reverse-core/routing.json`，
+`skills/config/routing.json`仅保留上游基线。核心和宿主部署归根AGENT-BOOTSTRAP；
+本文只指导领域内容维护。新增技能的执行、工具准备及经验回写服从当前用户授权，
+不能因模板要求自动联网、安装服务或改宿主配置。原生Craft的当前职责见
+[execution-backend](reconstruction/references/execution-backend.md)。
+
 ---
 
 ## 0. 服从性工程约束
@@ -11,7 +17,7 @@
 1. `MUST` 在 `SKILL.md` 顶部加入 `ACTION REQUIRED` 区块，写清楚读完后立刻执行的 3-5 步。
 2. `MUST` 在 `SKILL.md` 末尾加入“任务完成自检”区块，未通过不得宣称完成。
 3. `MUST` 使用 RFC 2119 术语（`MUST/MUST NOT/SHOULD/MAY`），避免建议式语气。
-4. `MUST` 明确“缺工具唯一动作是 bootstrap”，禁止猜路径与手工乱装。
+4. `MUST` 明确核实际工具路径和已登记准备方式；缺工具时按现有授权选择bootstrap、替代方法或具体补充动作，不猜路径或编造能力。
 5. `MUST` 明确“路由未命中时需要提议新增 skill”，不要硬塞现有模块。
 ## 1. 什么时候该新增 skill
 
@@ -248,7 +254,7 @@ if (-not $spec.Available) {
 ### 5.1 更新路由（只改 JSON）
 
 1. 在 `skills/tests/routing-benchmark.json` **先**加一条（最好中英各一）失败用例
-2. 只改 `skills/config/routing.json`（`routes` + `priority`）
+2. 更新仓库根有效源 `components/reverse-core/routing.json`（`routes` + `priority`），不改保留的`skills/config/routing.json`上游基线
 3. 同步 `skills/MASTER-ROUTING.md` 优先级表（顺序必须与 `priority` 一致）
 4. `routing.md` 是歧义附录，不是 SSoT；不要只改 markdown 表
 5. 跑 `test-routing.ps1` 与 `verify-routing-coherence.ps1`
@@ -259,9 +265,9 @@ if (-not $spec.Available) {
 
 打开 `skills/SKILL.md` 模块表；跑 `extract-summaries.ps1` 重生 `INDEX.md`。
 
-### 5.3 不要写客户端全局规则
+### 5.3 领域内容维护不直接写客户端全局规则
 
-禁止把路由表写入 `~/.claude` / `.kiro/steering` 作为本包默认步骤。客户端适配是可选的。
+领域维护不把路由表复制进宿主全局规则。产品部署由本仓库AGENT-BOOTSTRAP管理选定宿主薄入口；这与本节的技能内容维护是不同操作。
 
 ---
 
@@ -276,16 +282,17 @@ powershell -NoProfile -ExecutionPolicy Bypass -File "<SKILL_ROOT>\skills\scripts
 
 **Kali Linux**：
 ```bash
-bash "<项目根目录>/kali/scripts/refresh-tool-index.sh"
+bash "<项目根目录>/skills/scripts/refresh-tool-index.sh"
 ```
 
 确认新工具出现在 `tool-index.md` 和 `tool-index.json` 中。
 
 ---
 
-## 7. Kali 平台同步（如果项目支持双平台）
+## 7. 历史独立Kali树维护参考（当前不执行）
 
-新增 skill 后，如果项目包含 `kali/` 目录，还需要同步更新 Kali 版本：
+以下7.1–7.4保留旧项目独立`kali/`树的来源参考。当前仓库没有该依赖，Kali使用
+`skills/scripts/*.sh`与现有manifest；不要为照旧模板创建第二套安装/路由树。
 
 ### 7.1 在 Kali manifest 中注册
 
@@ -332,7 +339,7 @@ bash "<项目根目录>/kali/scripts/refresh-tool-index.sh"
 - [ ] `scripts/lib/ToolDiscovery.ps1` 已注册新工具（含 fallback path）
 - [ ] `skills/scripts/refresh-tool-index.ps1` 的 `$scriptRefs` 已更新
 
-**Kali 平台（如果有 kali/ 目录）**：
+**历史独立Kali项目（当前仓库不适用）**：
 - [ ] `kali/scripts/bootstrap-manifest.json` 已注册新工具
 - [ ] `kali/scripts/lib/tool-discovery.sh` 的 `TOOL_CATALOG` 和 `SCRIPT_REFS` 已更新
 - [ ] `kali/scripts/bootstrap-reverse.sh` 的 `ensure_capability()` 已添加安装逻辑
@@ -419,10 +426,10 @@ skills/ghidra-headless/
 {
   "name": "<mcp-name>",
   "bootstrapKind": "npm-mcp",
-  "npmPackage": "@scope/package@latest",
+  "npmPackage": "@scope/package@<reviewed-exact-version>",
   "mcpNames": ["<mcp-server-name-in-config>"],
   "mcpCommand": "npx",
-  "mcpArgs": ["-y", "@scope/package@latest"],
+  "mcpArgs": ["-y", "@scope/package@<reviewed-exact-version>"],
   "mcpEnv": {
     "ENV_VAR": "value"
   },
@@ -580,7 +587,8 @@ MCP 配置示例：
 | Cursor | Cursor Settings → MCP |
 | Cline | Cline 设置面板 |
 
-当前 bootstrap 脚本默认写入 Claude Code 的配置路径。如果用户使用其他客户端，AI 应在引导中说明对应的配置位置。
+当前bootstrap默认不写客户端配置；仅调用者明确要求注册并指定配置文件时进行受控合并。
+上表仅为来源示例，使用时核对所选宿主当前约定。领域内容维护不能推定全局配置写权。
 
 ### 10.7 完整示例：新增一个假设的 "sqlmap-mcp" skill
 
@@ -612,7 +620,7 @@ MCP 配置示例：
 
 | 能力 | 可自动安装 | 方式 | 说明 |
 |------|-----------|------|------|
-| sqlmap-mcp | ✗（需 Docker） | docker run | AI 会自动注册 MCP URL，但需要用户手动启动容器 |
+| sqlmap-mcp | ✗（需 Docker） | docker run | 仅显式请求注册时写MCP配置；容器启动另核当前授权与实际环境 |
 
 ### 手动启动
 \```powershell

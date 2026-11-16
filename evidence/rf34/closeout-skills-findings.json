@@ -1,0 +1,52 @@
+[
+  {
+    "severity": "high",
+    "paths": [
+      "skills/reconstruction/references/execution-backend.md:10-36,67-82",
+      "skills/reconstruction/SKILL.md:101-103",
+      "skills/ops/role-map.md:14",
+      "skills/reconstruction/references/spec-kit-workflow.md:3,58-64"
+    ],
+    "problem": "R46 currently links and normatively invokes an inherited external Craft/Pi execution-backend contract. That reference says Craft opt-in and existing implementation-worker default, installer adapters/craft-pi resources, pi-rpc-bounded-v1 and a designated Pi Builder session. Actual Reverse Fusion implementation requires current-host reasoning + native Craft, no second model/Pi prerequisite. Top SKILL adapter paragraph does not explicitly mark this linked legacy contract inactive; later MUST language can steer model back to old backend or report unsupported.",
+    "fix": "Make inherited external/Pi backend reference historical/source-contract only for this integration, with clear native-craft current path to docs/NATIVE-COMPONENTS.md. Update current SKILL/role-map/spec workflow references to distinguish current native writer from old optional external adapter. Preserve original detailed upstream contract as source reference if hash/link consumers require it; do not erase provenance. Update execution-backend-contract required hashes and preservation digest/reasons."
+  },
+  {
+    "severity": "medium",
+    "paths": [
+      "skills/INDEX.md:110",
+      "skills/routing.md:3-7",
+      "skills/routing_zh.md:3-7",
+      "skills/MASTER-ROUTING.md:84",
+      "skills/SKILL.md:18,117"
+    ],
+    "problem": "Inherited navigation labels skills/config/routing.json the unique effective route source, while RULES.md and patched master-route actually use components/reverse-core/routing.json. Direct readers can edit/read preserved baseline and create route drift.",
+    "fix": "Add concise integration precedence banner or change active source references to shared routing; retain baseline table as historical/advisory; update preservation hashes/reasons."
+  },
+  {
+    "severity": "medium",
+    "paths": [
+      "skills/SKILL.md:207",
+      "skills/MASTER-ROUTING.md:146",
+      "skills/routing.md:22"
+    ],
+    "problem": "Active inherited navigation sends Pi/Codex setup to external reverse-workflow-installer, contrary to canonical local AGENT-BOOTSTRAP. This is a concrete new-machine deployment drift path.",
+    "fix": "Replace active external installer instruction with docs/AGENT-BOOTSTRAP.md and NATIVE-COMPONENTS; optional historical source link must be labelled read-only history; update preservation hashes."
+  },
+  {
+    "severity": "medium",
+    "paths": [
+      "skills/ops/IDENTITY.md:14"
+    ],
+    "problem": "git clone is enough deployment claim is valid for old method pack but false for required real REA/Spec/nativeCraft deployment in this product.",
+    "fix": "Label upstream identity reference; actual deployment follow canonical bootstrap and required core checks."
+  },
+  {
+    "severity": "low",
+    "paths": [
+      "skills/SKILL.md:170-180",
+      "skills/ops/sandbox-profile.md:21"
+    ],
+    "problem": "Generic inherited bootstrap examples include StartServices. Root RULES limits these to optional authorized tool preparation, but direct navigation has no nearby local integration boundary.",
+    "fix": "Add same integration note that these examples are optional target-tool preparation with explicit effects, not default core install or global configuration authority."
+  }
+]

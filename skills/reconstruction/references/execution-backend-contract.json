@@ -12,19 +12,19 @@
   "required_files": [
     {
       "path": "skills/reconstruction/references/execution-backend.md",
-      "sha256": "56275a13f58d1501d340d3be9e6564a7c13e84cbc91e5eae237f181819f56de6"
+      "sha256": "2915af2472c92398e9ea18153ec2b8ed9e698fc7da64cdaa882c766d004ad379"
     },
     {
       "path": "skills/reconstruction/SKILL.md",
-      "sha256": "52b0c045b2068f9ddccc40e4286062ecfab67f1c2e4e1a9d564fdb3f61a7c2e3"
+      "sha256": "7769bbf5d320093f3d1e0e23ce9fe0407260a9a9f70b90a6cbed259af279ca24"
     },
     {
       "path": "skills/ops/role-map.md",
-      "sha256": "ed1e9e5d31c9651eec5c261d0dd4acc3a63b5aa501cf79f4095a5f3a02b1ccf9"
+      "sha256": "6daf9207832df6a3305450b646458922cdd2f2fcd5a504cc49cfeecf0de35018"
     },
     {
       "path": "skills/reconstruction/references/spec-kit-workflow.md",
-      "sha256": "9f681a12d8aac869ca59cfa5fdf026617914fbab7a6155724770380f4e7e603b"
+      "sha256": "9842ee46b0cbbab94dba6a5e5ac95291d8730c723cf2c7bbcb075fd45e35c43d"
     }
   ]
 }

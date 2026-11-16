@@ -1,5 +1,12 @@
 # Decisions
 
+This file is an architectural decision register, not a second current-state
+or task queue. Newer explicit decisions supersede older stage scopes where
+noted; current release/next action come from CURRENT-STATE and latest checkpoint.
+RF-025 supersedes old Pi/Claude deferral or mandatory model-run gates; RF-021
+supersedes the observer-only/interface-only implementation path. Historic
+results and source identities remain unchanged.
+
 ## RF-025 Shared core with thin host adapters
 
 User clarified2026-11-16: host adaptation completion does not require logged-in
@@ -78,8 +85,8 @@ fresh-clone receipt dependency without introducing a second runtime route owner.
 
 The repository owns task scope, output paths, checks and cleanup. The current
 Codex/Pi/Claude host owns its account, provider and model; no model is selected
-or downloaded by Reverse Fusion. The default Builder is that agent in the
-current conversation, not another CLI invocation. Frozen-input and allowed-write
+or downloaded by Reverse Fusion. The current host reasons and supplies content to actual native Craft tools;
+another model CLI is not the default writer. Frozen-input and allowed-write
 observations are separate from independent business acceptance. Child CLI
 transport is optional and has its own live login/quota/cleanup status.
 

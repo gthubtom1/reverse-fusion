@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "version": "1.2.0",
+  "version": "1.2.1",
   "edition": "windows-x64-codex",
   "target_execution_required": false,
   "requirements": [
@@ -110,7 +110,8 @@
         "docs/BEGINNER-GUIDE.md",
         "docs/AGENT-WORKFLOW.md",
         "docs/NATIVE-COMPONENTS.md",
-        "docs/RELEASE-1.1.md",
+        "docs/RELEASE-1.2.md",
+        "docs/FINAL-CLOSEOUT.md",
         "docs/PRODUCT-GOAL.md"
       ]
     }
@@ -195,5 +196,5 @@
       "new-run"
     ]
   ],
-  "engineering_evidence_directory": "evidence/rf33"
+  "engineering_evidence_directory": "evidence/rf34"
 }

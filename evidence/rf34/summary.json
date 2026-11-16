@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "version": "1.2.1",
+  "stage": "RF-34",
+  "scope": "all tracked-file static closeout and associated engineering regression; no new target/chat reproduction",
+  "baseline_commit": "faec0acb7ef9c50931a1ba20372cd883524bcbf8",
+  "baseline_files": 1091,
+  "covered_baseline_files": 1091,
+  "unread_files": [],
+  "reviewers": {
+    "child_agents": 3,
+    "primary": 1
+  },
+  "review_limits": [
+    "Complete byte reads and text/structure/static review across all files; active instructions received semantic review.",
+    "Large third-party payload/playbook corpus: full-content static scanning, not asserted line-by-line human semantic proof.",
+    "Binary JAR/ZIP: bytes, identities and archive structure; not textual semantic reading.",
+    "Evidence snapshots retain original absolute paths/statuses and are not executable current configuration."
+  ],
+  "fixed_groups": [
+    "current/history state and task separation",
+    "active native Craft versus legacy external Pi/Worker path",
+    "effective route source and canonical installer links",
+    "host adapter/current release contract and project lifecycle",
+    "venv defaults and native-bound observer message",
+    "evidence/spec/fixture archive boundaries",
+    "patch release/download and local version consistency"
+  ],
+  "static": {
+    "scope": "static final file/link/source-identity consistency; no target execution",
+    "parsed_files": {
+      "python": 66,
+      "json": 178,
+      "jsonl": 2
+    },
+    "powershell_syntax": {
+      "scripts": 18,
+      "errors": []
+    },
+    "local_markdown_links_checked": 590,
+    "missing_real_links": [],
+    "code_snippet_false_positives": [
+      {
+        "file": "skills/pentest-tools/src-hunter/references/payloader/by-category/web/ssti模板注入.md",
+        "target": "\"child_process\""
+      },
+      {
+        "file": "skills/pentest-tools/src-hunter/references/payloader/by-category/web/ssti模板注入.md",
+        "target": "\"child_process\""
+      }
+    ],
+    "preservation_files": 603,
+    "execution_required_file_hashes": 4,
+    "status": "pass"
+  },
+  "engineering": {
+    "product": 104,
+    "reconstruction": 39
+  },
+  "engineering_skips": 0,
+  "deployed": {
+    "version": "1.2.1",
+    "status": "ready",
+    "checks": 19
+  },
+  "confirmed_unresolved_current_findings": [],
+  "preserved_limits": [
+    "Claude full model run unperformed and not required for adapter completion",
+    "Non-Windows native distributions not qualified",
+    "Target-specific unknowns remain in their original cases/evidence",
+    "No universal zero-defect or arbitrary-protector success claim"
+  ],
+  "publication": "v1.2.1 includes closeout; retain old v1.2.0 tag unchanged"
+}

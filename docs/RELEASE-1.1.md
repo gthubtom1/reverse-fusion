@@ -1,4 +1,9 @@
-# Reverse Fusion 1.1.1 完整工程版
+# Reverse Fusion 1.1.1 历史版本说明
+
+这是RF-31/1.1.1当时的交付说明，不是当前安装入口或待办。当前版本与宿主适配范围
+见[RELEASE-1.2](RELEASE-1.2.md)、[CURRENT-STATE](CURRENT-STATE.md)和
+[AGENT-BOOTSTRAP](AGENT-BOOTSTRAP.md)。下面“本次/当前/后续”均指当时，
+不能用旧Pi/Claude延期决定覆盖现已完成的项目适配。
 
 本次交付范围为 **Windows x64 + Codex 桌面端**：安装实际 Reverse/REA/官方 Spec Kit/
 真实 Craft，提供跨项目入口、适用领域、分析到实现交接、比较修正、错误恢复、更新

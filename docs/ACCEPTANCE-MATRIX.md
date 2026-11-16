@@ -1,10 +1,12 @@
 # Acceptance Matrix
 
-RF-01 through RF-24 below describe historical implementation stages. The RF-25
-row and `docs/FINAL-RELEASE-ACCEPTANCE.md` govern the current audit; historical
-pass labels are not current provider health or proof of a later checkout.
+Current acceptance is defined by `docs/USER-REQUIREMENTS-REVIEW.md`,
+`docs/RELEASE-1.2.md`, `release/manifest.json` and
+`docs/FINAL-RELEASE-ACCEPTANCE.md`. RF-33 includes actual ordinary-language
+Codex/Pi full use and three-host adapter checks. Historical pass labels below
+are dated stage observations, not current provider health or later-checkout proof.
 
-| Stages | Contract / capability | Current interpretation |
+| Stages | Contract / capability | Historical stage interpretation |
 |---|---|---|
 | RF-01 | JSON, versions, schemas, profiles, source identity, path/hash checks | current contracts must pass; malformed inputs fail closed |
 | RF-02 / RF-17 | unique Reverse route owner, case pointers and local route without old receipt | descriptors, skill bodies and required reads must be present |
@@ -25,6 +27,9 @@ pass labels are not current provider health or proof of a later checkout.
 | RF-24 | enhanced Reverse preservation | 603-file inventory and difficulty handoff; current exact adaptations in preservation manifest |
 | RF-25 | full inventory read, independent partition review, code/archive/runner/docs repair, finite checks, remote fresh clone | current status in CURRENT-STATE; exact results and commit in RF-25 checkpoint |
 | RF-26 | observable multi-route aggregation, R46 next-stage handoff, normal-dev guard, selected-host enforcement and follow-up resume | current status in CURRENT-STATE; exact route/workflow results in RF-26 checkpoint |
+| RF-27–RF-29 | external project roots, readiness/critical dependency gates, installed official REA/Spec and real native Craft, original request retention | replaced observer-only paths; novice entry failures and corrections retained in their checkpoints |
+| RF-30–RF-31 | recoverable component entries, native abort and checked-output completion, atomic installation failure rollback | engineering qualification was finite and separate from the later full-use observation |
+| RF-32–RF-33 | functional audit, ordinary-language complete application delivery, bounded execution/comparison, independent task batches, three-host project/Spec layouts | latest completed feature/adapter scope is in the current requirement table; Claude full-model observation optional and unperformed |
 
 Business acceptance is independent of installation, tool visibility, exit 0,
 Craft Ready and model self-report. Archive file checks, official Evidence

@@ -2,7 +2,7 @@
 
 ## Purpose
 
-`reverse-skill` remains the only router and case authority. In a Pi session, the **Pi main agent / lead is the sole final authority** for route, scope, case, timeline, work item, Evidence, Finding, Path, budgets and replanning. Official REA is a bounded execution backend used after PRIMARY has selected a specialist workflow. REA does not create a second route, scope, case, or evidence graph.
+Reverse Fusion remains the only router and case owner. The **current host main agent / lead is the sole acceptance authority** for route, scope, case, timeline, work item, Evidence acceptance, Finding, Path, budgets and replanning. Official REA owns native Evidence/proof production and is a bounded backend after PRIMARY selects a specialist. It does not create another route, scope, case, or evidence graph.
 
 Every role handoff, including advisory and review handoffs, uses the same bounded envelope below. A Worker result is a proposal until the main agent accepts it into the existing case. For pre-case read-only planning/maintenance only, `case_id` may be `n/a` with a reason; this never authorizes target action or creating a synthetic case. Missing fields are a handoff failure, not permission to infer defaults.
 
@@ -105,12 +105,12 @@ A result without provider status or cleanup status is incomplete and MUST remain
 
 ## Ownership rules
 
-- The Pi main agent / lead owns route, scope, case, work item, timeline, Evidence, Finding, Path, budgets, acceptance and re-planning. It is the only authority that can promote a Worker result or close a phase.
+- The current host main agent / lead owns route, scope, case, work item, timeline, Evidence acceptance, Finding, Path, budgets and re-planning; official REA owns native record production. The lead alone promotes a Worker result or closes a phase.
 - `reverse-operator` / `cre` owns only the bounded provider operation described by its handoff. It may return raw artifacts and observations within `write_scope`, but it cannot recursively delegate or alter authoritative state.
 - `reverse-reviewer` is read-only. It may report review findings, but it cannot execute the target or write the case, Evidence ledger, source tree or reconstruction workspace.
 - `planner` / `scout` are advisory. Their suggestions do not create a route, scope, case, work item or Evidence item.
 - An implementation Worker may enter `reconstruction` only after the main agent has accepted a behavior Evidence handoff containing the target identity, observed behavior, success criteria and unknowns. The implementation Worker remains bounded by its new handoff and does not become a router.
-- `routing.json` remains the only route table; REA never becomes a PRIMARY. Client adapters and global MCP configuration are outside this contract.
+- Repository-root `components/reverse-core/routing.json` is the effective route table; `skills/config/routing.json` is preserved baseline only. REA never becomes a PRIMARY. Client adapters and global MCP configuration follow the repository deployment entry, outside this delegation contract.
 
 ## Provider rules
 

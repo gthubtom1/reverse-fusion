@@ -1,0 +1,83 @@
+{
+  "checks": [
+    {
+      "id": "official-manifest",
+      "status": "pass"
+    },
+    {
+      "id": "source-manifest",
+      "status": "pass"
+    },
+    {
+      "id": "reverse-routing-and-skills",
+      "routes": 45,
+      "status": "pass"
+    },
+    {
+      "files": 603,
+      "id": "reverse-support-preservation",
+      "status": "pass"
+    },
+    {
+      "id": "schemas/handoff-v1.schema.json",
+      "status": "pass"
+    },
+    {
+      "id": "schemas/external-baseline-v1.schema.json",
+      "status": "pass"
+    },
+    {
+      "id": "schemas/candidate-result-v1.schema.json",
+      "status": "pass"
+    },
+    {
+      "id": "schemas/source-manifest-v1.schema.json",
+      "status": "pass"
+    },
+    {
+      "id": "craft-bundle-manifest",
+      "status": "pass"
+    },
+    {
+      "id": "wabt-reproducibility",
+      "status": "pass"
+    },
+    {
+      "id": "jadx-reproducibility",
+      "status": "pass"
+    },
+    {
+      "id": "rea-reproducibility",
+      "status": "pass"
+    },
+    {
+      "id": "final-v1-documents",
+      "status": "pass"
+    },
+    {
+      "id": "rf22-evidence-manifest",
+      "status": "pass"
+    },
+    {
+      "id": "spec-kit-project",
+      "status": "pass"
+    },
+    {
+      "id": "profile:normal-dev",
+      "status": "pass"
+    },
+    {
+      "id": "profile:analysis",
+      "status": "pass"
+    },
+    {
+      "id": "profile:reconstruction",
+      "status": "pass"
+    },
+    {
+      "id": "profile:follow-up",
+      "status": "pass"
+    }
+  ],
+  "status": "pass"
+}

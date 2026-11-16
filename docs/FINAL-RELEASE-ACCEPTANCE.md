@@ -1,142 +1,33 @@
-# Current release acceptance
+# 当前发布验收
 
-Latest user acceptance decision: shared core is qualified by representative
-Codex/Pi complete runs; host-specific entry/skill/tool/workflow contract checks
-qualify the thin adapter. A logged-in full-model run is optional per host.
-All3project adapters and official Spec layouts passed; Claude full model use
-remains untested, not an incomplete adapter or release blocker. See
-HOST-PROJECT-CONNECTION.md and USER-REQUIREMENTS-REVIEW.md for current criteria.
+当前版本 **1.2.1**，Windows x64完整组件分发；Codex主部署，Pi/Claude按薄入口适配。
+当前功能、安装、任务交接和宿主适配按已约定范围完成。当前权威状态见
+[CURRENT-STATE.md](CURRENT-STATE.md)，逐项功能见[USER-REQUIREMENTS-REVIEW.md](USER-REQUIREMENTS-REVIEW.md)。
 
-RF-33 /1.2.0 current additions replace the former missing natural full-chain
-evidence with an actual complete owned application run. Real Reverse/REA/
-official Spec/native Craft,1416finite comparisons, launcher correction/new
-batch, packaging, independent held UI checks and finite native ledger closure
-are archived under evidence/rf33. Shared host/FR-batch/case-init/execution-budget/
-comparison gaps are repaired;104product/39reconstruction checks passed,0skips.
-Local Codex1.2.0 deployment is updated. Exact current host outcomes, resource
-measurements and unperformed optional Claude model-use observation stay in RF-33checkpoint and
-REMAINING-PRODUCT-WORK.md. Historical13/8/1orRF31engineering closure is not the
-current functional assessment. New cases keep actual limits rather than inheriting
-an all-input/all-provider pass. Fresh GitHub clone88d5b46 default-installed all
-cores and repeated104+39checks with identical source inputs;52archived native
-files retained exact bytes/IDs. Pi resumed to actual final response, exit0,
-session finished, finite6verified/0open and independent held UI pass;239raw
-files retained in pi-owned-desk.zip. Current22item assessment and outstanding
-optional Claude model-use observation are in USER-REQUIREMENTS-REVIEW.md; publication identity is in the
-RF-33checkpoint. No unexecuted Claude model result is classified as a pass.
+## 发布完成需要的依据
 
-## Historical RF-31 release acceptance
+1. 仓库本地路由、领域正文、保全/来源清单与合同一致，fresh clone不依赖旧安装记录。
+2. 默认安装真实REA、官方Spec和原生Craft；缺任何核心不得安装成功。
+3. 选定宿主完成正确入口：Codex用户级指引，Pi/Claude显式成果项目连接；
+   安装记录或发现CLI不能代替入口。命令仅由[唯一部署入口](AGENT-BOOTSTRAP.md)维护。
+4. 共用核心有代表性完整运行，宿主适配有实际接口合同检查；不强制每宿主完整模型实测。
+5. 当前工程检查与当前源码/日志绑定；本机部署检查、来源/二进制身份及路径边界可核实。
+6. 规格来源、冻结任务、真实Craft写入/检查/清理、独立比较、失败修正和恢复路径已连通；
+   组件参与、exit0或模型自述不能替代具体目标的行为验收。
+7. 当前入口只有一个有效版本；历史状态/失败/未知保留为有范围的档案；文档、代码、
+   清单与安装要求同步GitHub。最终静态收尾覆盖和修复见[FINAL-CLOSEOUT.md](FINAL-CLOSEOUT.md)。
 
-RF-31 /1.1.1 Windows x64/Codex implementation audit and source-bound regression
-checks are recorded in `docs/COMPLETION-PLAN.md`, `release/verification.json`,
-`evidence/rf31/` and `checkpoints/RF-31-20261116-001.md`.
-The current run has89product and39reconstruction checks passed without skips.
-Native abort, exact checked-candidate completion, installer failure rollback,
-missing-Python uninstall and published-native source binding are real repairs.
-Final deployed/source checks and remote revision remain in the RF-31 checkpoint.
-Local deployment passed19gates. Fresh remote code46afd6c default-installed
-its own core components including the published native0.1.1 archive, then passed
-89product/39reconstruction checks again with matching engineering source hashes.
-The existing main global pointer was retained; no target chat or user sample
-was started. Clean installation record:evidence/rf31/clean-install.json.
-These do not certify future target behavior or complete the deferred Pi/Claude
-edition. Historical closure labels below remain dated observations.
+## 实际记录
 
-## Historical1.1.0 release acceptance
+- `release/verification.json`：104产品+39复刻检查，0跳过，包含源码和日志摘要。
+- `evidence/rf33/deployment-final.json`：已记录本机19项部署检查；快照不是新机器证明。
+- `evidence/rf33/clean-install.json`：明确提交上的远端新克隆默认完整安装及重复检查。
+- `evidence/rf33/owned-desk-completion.json`：无维护者专业追加的Codex完整应用交付。
+- `evidence/rf33/pi-full-use.json`：Pi真实完整交付及多次期限退出后恢复；不宣称一次顺畅完成。
+- `evidence/rf33/pi-native-identity.json`及归档索引：原生记录身份和原始字节保留。
+- 三宿主项目入口/移除与官方Spec布局检查覆盖宿主接入；Claude完整模型运行未实测，
+  该事实仍保留，但不是适配未完成或强制登录待办。
 
-Current release:1.1.0, RF-30, Windows x64 + Codex engineering edition.
-The user explicitly removed further real-target testing/sample provision as
-release prerequisites. The finite implementation/deployment contract is
-`release/manifest.json`; scope is `docs/RELEASE-1.1.md`. New read-only workflow
-recovery, installed component entry handoff and dependent-task-only blocking
-are part of this release. Final repository checks/deployment are recorded in
-`evidence/rf30/` and `checkpoints/RF-30-20261116-001.md`. The historical results
-below are unchanged and are not new-target acceptance for1.1.0.
-
-RF-30 engineering result: READY at the declared edition.78 product regressions,
-39 reconstruction regressions,18 deployed release gates, managed skill validation
-and63current-document local links passed. The installed editable package and
-selected Codex entry are1.1.0; core_deployment missing=[]. No new user target was
-executed. Current report:`evidence/rf30/engineering-delivery.json`.
-
-RF-29 separately checks novice use through an ordinary request in a new chat and
-project. The first run exposed original-goal loss at first recorded refinement;
-it is a retained failure, repaired in the shared entry. Current retest status is
-in [RF-29 checkpoint](../checkpoints/RF-29-20261116-001.md) and
-[current state](CURRENT-STATE.md). Controlled component results below do not
-substitute for this natural entry observation or whole-target acceptance.
-The fresh identical-prompt retest passed the observed entry, goal retention,
-adaptive static-analysis and pre-implementation handoff checks. It naturally
-requested normal original-use observations and did not create a candidate.
-This establishes neither full target analysis nor uncoached implementation-stage
-completion; those remain separate from RF-28's real Spec/Craft qualification.
-
-RF-28 supersedes the former interface-only deployment criterion. Real REA 6.9.0,
-official Spec Kit 1.4.1.dev0 and the actual pinned Craft engine adapter are installed.
-The published Windows x64 component archive was downloaded and verified by a
-fresh remote clone through the DEFAULT installation path, including local Node
-fallback. Thirteen clean-checkout integration tests passed. Detailed runtime
-records: [deployment](../evidence/rf28/deployment.json).
-
-The external outcome project executed official generated Spec workflow, native
-Craft prepare/build/check/refine/summary/cleanup and the additional session finish.
-Its selected K/q/R candidate matched 49 development cases and 79 precommitted
-maintainer inputs; seven deliberately wrong variants all failed comparison.
-Official REA candidate analysis and three static export comparisons actually ran;
-static coverage remains partial. Official Spec converge completed; real coverage remains unknown and the ledger
-retains 33 required_open/0verified, as recorded in checkpoint002; none of these facts establishes whole-app equivalence.
-See [finite integration](../evidence/rf28/finite-worker-integration.json) and
-[RF-28 checkpoint](../checkpoints/RF-28-20261116-002.md).
-
-The table below is the historical RF-25/RF-26 release baseline of product `1.0.0`.
-RF-27 reopened cross-project execution, implementation handoff and live runtime
-integration after an actual external chat exposed gaps. Current repair status
-comes from `docs/CURRENT-STATE.md` and the latest RF-29 checkpoint, not from this
-baseline's closure. Historical fixture results do not certify a new user target.
-The baseline included a remote fresh clone of its audited source commit; its
-finite runtime boundaries remain explicit.
-
-| Gate | Direct record / scope | RF-25/RF-26 baseline result |
-|---|---|---|
-| URL-only deployment | `docs/AGENT-BOOTSTRAP.md`, linked by README and AGENTS; current selected host, local venv/receipt | implemented; RF-25 provider clone and RF-26 architecture clone recorded |
-| One Reverse owner | local routing JSON, descriptors, domain bodies and required reads; no old receipt needed | contracts and hard-target route pass in remote clone |
-| Observable aggregation handoff | local primary plus related routes, R46 next stage, normal-dev guard and follow-up case resume | focused route/workflow tests pass; downstream providers remain on-demand |
-| Retained enhanced domains | 603-file preservation inventory, upstream/local SHA and reasons for adaptations | 603/603 source and local digests pass, 13 recorded adaptations |
-| Component identities | REA 6.9.0; Spec source 1.4.1.dev0 vs historical CLI 1.4.0; WABT1.0.42; JADX0.7.1; interface-only Craft reference | explicit and separate from local provider health |
-| Real candidate writer | current conversation host freezes task/research hashes and generates eight source files; session check/refine/finish | observed; candidate writes are not business acceptance |
-| Child CLI boundary | actual Codex child build returned out of credits | blocked, not required by current-session path |
-| Evidence archive admission | raw RF-25 records under stable `evidence/rf22/` path; official identity parsing, link closure, tamper rejection and file digests | 28 records authenticated, links closed, 4 tamper controls rejected, 40 file hashes and Builder input/output hashes pass |
-| WASM | real interpreter values and official REA bounded ledger; correct/wrong/missing cases | pass/fail/unknown respectively |
-| Web/JavaScript | real original/candidate analysis, inventory, export replay, proof and bounded ledger | finite export pass; full graph ledger unknown with 4 required open |
-| PE/.NET | actual .NET8 build/run, managed member comparison, finite replay, proof and ledger | bounded method pass |
-| APK/DEX | actual build and real package/class inspection, manifest/member comparison, proof and static ledger | bounded static pass; Android runtime unknown |
-| Optional host probes | exact final assistant sentinel, selected client, config snapshots and finite deadline | Pi pass, Codex credits blocked, Claude login blocked; config digests unchanged |
-| Failure boundaries | stale candidates, existing-file edits/deletions, source/task drift, links/path traversal, provider failure | focused counterexamples pass; actual native failure and Node24.20 engine rejection observed |
-| Scope and cleanup | repository-local writes; global configuration snapshots where observed; ignored build outputs | per-run cleanup scope recorded; uncertain descendants remain unknown |
-| Documentation and release | current docs/manifests/checkpoint, tests, `git diff --check`, GitHub commit and remote fresh clone | RF-26 architecture closure; RF-25 finite provider evidence retained; route/workflow tests pass |
-
-The canonical IDs are in `evidence/rf22/manifest.json`; this table does not keep
-a second independently edited list of IDs. The RF-25 and RF-26 checkpoints record exact
-test counts, clone commit and remaining provider boundaries after final checks.
-
-## Historical RF-25/RF-26 runtime boundaries
-
-- Current-session Builder uses the already active host and adds no CLI account
-  or model dependency. Optional CLI transport has its own live status.
-- Craft native R46 is unsupported and the current companion is unobserved. The
-  repository does not distribute the four historical patches.
-- Windows REA PTY descendant cleanup remains unsupported.
-- Web runtime proof covers the declared finite answer cases. The complete graph
-  ledger is `unknown`: 5 total, 1 verified and 4 required open obligations (2
-  packaging and 2 application/parser); comparison links are retained. Its
-  archive is `evidence/rf22/web/full-ledger.json`.
-- APK proof covers manifest/member projections. It does not establish Answer
-  method body behavior, a launchable application or device execution. The
-  fixture MainActivity is not a functioning Android Activity.
-- PowerShell provider runners have been exercised on the audit host; Git Bash
-  checks do not claim native Linux or macOS hardware execution.
-
-These boundaries are valid operational states inside the declared integration
-scope. They do not establish full equivalence for a future target. A new target
-gets its own Evidence, frozen tasks when reconstructing, candidate, observations,
-comparison, cleanup and obligation ledger.
+不将这些有限记录扩张成任意软件必定复刻成功、所有保护器可处理、所有系统可安装，
+或永远无缺陷的承诺。当前边界由[能力矩阵](TARGET-CAPABILITY-MATRIX.md)和具体案例Evidence决定。
+历史版本的验收段落移至[历史档案](history/RF-33-STATE-AND-ACCEPTANCE.md)，不再整段注入当前入口。

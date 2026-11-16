@@ -28,21 +28,21 @@
       "returncode": 0,
       "tests_run": 104,
       "skipped": 0,
-      "log_sha256": "7eb4c01f39284b00561ac25c9eb985c4cd8f753482539896d08d4561a80ebd37",
-      "log_path": "evidence/rf33/product-tests.txt"
+      "log_sha256": "fc1456f34c341c0c7265bd0f9f74fb9ad4334ee6daab652546434a1fa0dd1ed5",
+      "log_path": "evidence/rf34/product-tests.txt"
     },
     "reconstruction": {
       "returncode": 0,
       "tests_run": 39,
       "skipped": 0,
-      "log_sha256": "93d84c78adfe70e429f2fe708e4ea43f95b7b7a0324dd2552e7097c8bbb3503a",
-      "log_path": "evidence/rf33/reconstruction-tests.txt"
+      "log_sha256": "55a24dd3f75a4fa71928dc45b70b47949c4c980f51e753cff3d67172ea065e1e",
+      "log_path": "evidence/rf34/reconstruction-tests.txt"
     }
   },
   "source_inputs": {
     ".gitattributes": "b2794e301bfe1441d77db9d559f401edb191230feae67922705501015cbc941a",
     "components/craft-bounded/bundle-manifest.json": "b0de467343f555a7096727c5e23a9a2a8d97b169ef3f2393f952c48c0fcbdf50",
-    "components/craft-bounded/README.md": "e574538ffd189721d86c9ffdeacee4bafc819df021e179d3b37a59133c45110a",
+    "components/craft-bounded/README.md": "502418ca4fd5e358dc6c52f676c16c5742baa0bb63a9e6c1c0d3feddf59460b2",
     "components/craft-native/Cargo.lock": "ea42025de12e21b77f584a46849150c6a5bf00fdf711a16604723ff95017996d",
     "components/craft-native/Cargo.toml": "9080664b994f577d4d9e5bd8b338a1060def2bb6ac458c9af19cc6397c228fb2",
     "components/craft-native/dependency-notices.json": "afa6afdb8565bf9827f7c03783fe27e9743c9bcff3aeeb1cda079b639f61ff56",
@@ -57,9 +57,9 @@
     "components/craft-native/manifest.json": "bd5c7360f4edcdd4be5ad56530eba108edd9b3d03d4718ecdc42d1c32e58163c",
     "components/craft-native/patches/0001-windows-quoted-command-tail.patch": "1bf216cdebb83f928f0f0059b52ed33c5206adb749937880e8cfe76f858f7585",
     "components/craft-native/src/main.rs": "79873371166bc3d1d0c7dd522ed61637c4170f27f469b418556af2a527ada496",
-    "components/host-adapters/README.md": "a459bd2773567525c721734bc37685ab3f07a032acb6e62a8d279567442a4b40",
+    "components/host-adapters/README.md": "f4e53fb47f5e1c1f8c17f822772fa20b539da12eb99b2a3e1d53de02a3505230",
     "components/official/manifest.json": "7adf13f0a802e65d12cd496061469f63c5f9939d74256caef05f6c6b68a8010a",
-    "components/reverse-core/preservation.json": "2516d8b3139cadac88ee75032659d609870737aed7e16c36f805a56215b8beb9",
+    "components/reverse-core/preservation.json": "ced973edfe63f2adc56ab2fa4c3b918547e4fd4ef6be4acd865fe3cc7d9cb750",
     "components/reverse-core/README.md": "614e9c3738719b73a3a4dfb33d4230b505b265907f246a0f6edb88304d2e9a84",
     "components/reverse-core/router.py": "267551377b45b662b0edb6e9312f9f03d55ef498fe34956339d7b3a8d5687af3",
     "components/reverse-core/routes/R0.md": "6c586d44ab90cadf5dfb7a5d9b5728f7fcaf22f1f394d6379c08d90c10ea49f6",
@@ -126,13 +126,13 @@
     "fixtures/owned-native/guarded.c": "f34348b53e3d862d44cad87490cf6e0a9919fafb2d45ec8252ed88fd0c6e1a96",
     "fixtures/owned-protocol/candidate.py": "be1273bb11908ce3b9e61004d7ce2dfd2512b5033cb2413dcaa1c618d9bfa96c",
     "fixtures/owned-protocol/original.py": "31c83fc1b4f012ad2c990dcad593a3951ab22e2128dbe1ab97d159e861363556",
-    "fixtures/README.md": "4663593b1d866a2ff8bfd55e6724c76bf8e0649c924209e719dd854a0f120f03",
+    "fixtures/README.md": "742a36753e9c79312d9a6353890086c3ee15cffcea9465f6ab533a34ced9882b",
     "fixtures/web-original/app.js": "9ffbb011960a91a287392fde806dc64e9bc16eafe39ff37cc4961e41de5c03bd",
     "fixtures/web-original/index.html": "c39ed8d0b18d4db823b1043c5c689ab2536023e091273d70b221321037dcf258",
     "fixtures/web-original/package.json": "fe3f849806aac6e59565812cf8a02225cb9151c27810ad2b6dcd0d4b1692f4c0",
-    "pyproject.toml": "3f101571e1aed6cc27d8216d8c8a36756e1cef2bc3d6b2a3e7c008d07f178c81",
-    "release/manifest.json": "3a34add4c1256273407e9b60e0746ff5d03a45bba294d02969b023b9aa7682ec",
-    "reverse_fusion/__init__.py": "9d706d68e8ccf6f3af981c54d2dc08cbcf4d3be34c7e2f971ba9ed4cd42a29e5",
+    "pyproject.toml": "cb8fbbc39fa390a2299cdb9d04dfeecbf550386426050f870ed1d414aa7c429f",
+    "release/manifest.json": "d92bca73bd97fad44b55cbc23598c9a3e89cef3ee456f1b7d07b5eec3da6e70e",
+    "reverse_fusion/__init__.py": "16cab5aff98201583e8a42cc412775cd69949177c8927484ef2471f14caa3905",
     "reverse_fusion/__main__.py": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d",
     "reverse_fusion/adapters.py": "3c29829ef5e114013e2398d79eb6ea3d6296ddfb6cfc0176bf9a37616d3db415",
     "reverse_fusion/builder.py": "2ee9f2124560ed53b127d8d4a61c06bca680bd2b4160f08f0647e5df67b37617",
@@ -150,7 +150,7 @@
     "reverse_fusion/rea_runner.py": "50bf1b2727d7990b6df39127ef60f412235113f14a531e21e68e30b036a33785",
     "reverse_fusion/release.py": "4e6d9ef4098c3c20b0a67e4ebc80a9f3b4536ec55ea626620ec0eda5e18d24f6",
     "reverse_fusion/runtime.py": "b282f0c3e552240813549cf0477c6a20d399287aced08ed6de02446e2e870f18",
-    "reverse_fusion/session_builder.py": "a62b427ca650f71e4a0b660629ba09489ce47c23a7e25c887961ec8dbba2d3ab",
+    "reverse_fusion/session_builder.py": "1e41708b6616a488faf0f3a017d65a6e00ba3f652cf93740794f1bab3e0ebe78",
     "reverse_fusion/spec_support.py": "0a409d032fd65711fa2e915ce8ea7fcfc38e0f19adbd25d6489c84a6ed490846",
     "reverse_fusion/verification.py": "358a120cafb3b047681049467f3bcd96092f6b404734df637102cbeb38a5125b",
     "reverse_fusion/vertical.py": "d7463520e1668a70ed063f6fe5db08747648625d8128ff39b1677036044c2b24",
@@ -175,7 +175,7 @@
     "scripts/qualify-owned-protocol.py": "8291169e1743fbf8bab00e8731d0e4430c65120954137b2dfd0700bd0a62b79d",
     "scripts/rf.py": "9762135cd53bb3f2a1bb04bb64d123413d9c237befbd44497637ad63374b214c",
     "scripts/run-apk-proof.mjs": "3907505e9633a91adb5670f10fee317c8c836eaeb9e8a9b742d914a089ed913a",
-    "scripts/run-apk-vertical.ps1": "bf4e95724e9e876766e0390c5dface052d4a52e35fa296a2bb9c296a72a414d2",
+    "scripts/run-apk-vertical.ps1": "6eb6b09f943f9d5e5003fa59bd9778b4bd1d1026cedaeae151cf40d458490ab3",
     "scripts/run-dotnet-proof.mjs": "1d73a92032f2aebe0f4493be1eddc474274411c4bbe2760c56281d71513faef1",
     "scripts/run-dotnet-vertical.ps1": "a43d269c93e950b37b1e21bb84b7dc18ab1c38a4d92a42bc342a9d86fb0a44ba",
     "scripts/run-host-handshakes.ps1": "d24599a9259e33c6a508b5dd9a85281231f59f504294d6a5e1e9904b746c6e3d",
@@ -183,7 +183,7 @@
     "scripts/run-rea-ledger.mjs": "0e40adba1fa5b47dab0c3eb0301f240f80f7c6927680dea17ac9d548bb4c6494",
     "scripts/run-rea-ledger.ps1": "f88455b9d37102a3576bbe2d7a27c239d5477227039765de39deaf9f8fe83ec7",
     "scripts/run-rea-wasm.ps1": "eb16c7920168857b13c50521797b72a2a004cfb19107b734474455f82ef7d40c",
-    "scripts/run-wasm-vertical.ps1": "ac18dda8c59e55d1cbde99fad6c326d25acbc5839071d810e2359880d91263eb",
+    "scripts/run-wasm-vertical.ps1": "402b263a5bb49c0bd260534875539f30c87f730cfa248efbeac067ff79c1a149",
     "scripts/run-web-proof.mjs": "968217443534690fa88fbe620dc5f71ab7e2458ffb58018707286fac23e349d2",
     "scripts/run-web-vertical.ps1": "d4c7e64068418f659d9ce29594c526a9af3e43bce987ca92c43e8e350595d5eb",
     "scripts/uninstall.ps1": "e0b2f64f5717981fc074f729eed325b94b91788033d077617c74a17f9ffbdd6c",
@@ -210,7 +210,7 @@
     "tests/test_session_and_handshake.py": "5d1ebf1fec05d79027cec4e3a7f85ea7b30ecca187802d9041dc362ec8199828",
     "tests/test_verification.py": "d550032c149e34579de5bb32c64ff4ba1adb08ade656731cbd0d06de86a54eb0",
     "tests/test_workflow_release.py": "0b40832a866d27bde58346b1af34be55b5e1468690abc1aca2bc9183203ff742",
-    "VERSION": "1e5b51cde515396a9fa762909cf8ca6584ccc564b325d2eebeea76175fe95c4d"
+    "VERSION": "6cf4e084b47f33c9b02ef79279d157833868f8f70514169a768be353ee328fea"
   },
   "status": "pass"
 }

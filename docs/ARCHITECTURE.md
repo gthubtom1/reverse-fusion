@@ -6,13 +6,13 @@ Reverse Fusion 是一个仓库级编排器，包含一份固定来源的 Reverse
 
 ```text
 当前宿主（Codex / Pi / Claude）
-        │ 读取 AGENTS.md、RULES.md 和本仓库入口
+        │ 按宿主读取 AGENTS.md / CLAUDE.md、技能和本仓库入口
         ▼
 Reverse Fusion local router（唯一默认路由事实源）
         │ 选择 primary，列出 related_routes 和 required_reads
         │ 困难目标追加 runtime hard-target reads
         ▼
-repository-local case.json + workflow contract
+当前成果项目内 case.json + workflow contract
         │ analysis：保存原版 Evidence、观察、未知项和结论
         │ reconstruction：进入 R46，冻结 Spec tasks
         │ follow-up：从既有 case.json 恢复，不静默新建 case

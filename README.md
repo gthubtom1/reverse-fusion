@@ -3,12 +3,13 @@
 给当前 coding agent 使用的普通开发、逆向分析与独立复刻工具集。
 仓库：<https://github.com/gthubtom1/reverse-fusion>。
 
-产品版本 **`1.2.0`，Windows x64 / Codex 完整工程版**，当前交付阶段 `RF-33`。
+产品版本 **`1.2.1`，Windows x64 / Codex 完整工程版**，当前维护阶段 `RF-34 最终收尾`。
 不需要用户继续提供样本才能安装或交付本版本。范围与有限发布门见
 [版本说明](docs/RELEASE-1.2.md)。准确的工程检查、历史实测和
 未覆盖范围分别保存在 [当前状态](docs/CURRENT-STATE.md)、
 [发布验收](docs/FINAL-RELEASE-ACCEPTANCE.md) 与
-[最新 checkpoint](checkpoints/RF-33-20261116-001.md)。工程版本与具体软件的复刻结果分别报告。
+[最终收尾](docs/FINAL-CLOSEOUT.md)与[最新 checkpoint](checkpoints/RF-34-20261116-001.md)。
+工程版本与具体软件的复刻结果分别报告。旧版本状态和执行记录按需追溯，不是当前下一步指令。
 
 ## 换电脑，只给仓库链接
 
@@ -48,7 +49,8 @@ cd reverse-fusion
 1.2.0新增的普通请求完整使用记录见[功能复核](docs/FUNCTIONAL-ACCEPTANCE-REVIEW.md)：
 仓库自有完整小应用已实际走完真实四组件、比较、修正和交付，保留各阶段原始记录。
 新增[有预算REA执行](docs/BOUNDED-REA.md)、[独立进程比较](docs/PROCESS-COMPARISON.md)
-及[Pi/Claude项目接入](docs/HOST-PROJECT-CONNECTION.md)。宿主登录/运行资格单列。
+及[Pi/Claude项目接入](docs/HOST-PROJECT-CONNECTION.md)。宿主适配与完整模型运行观察分别记录；
+每宿主完整模型实测不是接入发布前提。
 
 - **正常开发**：直接描述要开发的网站、应用或其他项目。默认 `normal-dev`，
   不强制建立逆向 case，也不强制启动 REA、Spec、Builder 或 ledger。
@@ -89,9 +91,9 @@ cd reverse-fusion
 | Craft/Builder | 固定真实 Rust engine + 本仓库外部写入接缝；当前会话推理，原生 Craft 执行写入、命令和检查 |
 | 宿主与安装 | 本仓库的本地安装、Codex 用户级路由适配、发现、只读握手、当前会话 Builder 和配置摘要观察；不更改旧仓库、旧安装、模型、凭据或 provider 配置 |
 
-这是一套有本地代码、技能正文、合同与验收的独立仓库。REA 等固定运行时按 manifest
-获取；Craft 的四个历史补丁名称仍仅作来源参考；RF-28 另有可重放 Windows 命令补丁及原生适配源码。已有 companion 的
-`--all-tools` 参数保持原样，安装引用不代表当前健康。来源见
+这是一套有本地代码、技能正文、合同与验收的独立仓库。REA等固定运行时按manifest
+获取；当前Craft engine接缝、可重放Windows补丁和原生身份由本仓库维护。
+旧companion配置保持只读，不是当前部署依赖。来源见
 [SOURCE-MANIFEST.json](SOURCE-MANIFEST.json) 与
 [组件清单](components/official/manifest.json)。
 
@@ -121,10 +123,10 @@ RF-25 重建并认证了 [代表性归档](evidence/rf22/README.md)，身份与�
 | PE/.NET | 两侧 .NET8 构建与运行、真实成员比较、四组输入、proof/ledger | 有限 Answer 方法范围 |
 | APK/DEX | javac/D8/AAPT 构建、真实 package/class 分析、manifest/member 投影与静态 ledger | 方法体等价与 Android 设备运行 unknown；fixture MainActivity 不是可启动 Activity |
 
-当前额外 CLI 探针：Pi sentinel 通过；Codex 子 CLI 因 credits 阻塞，Claude 因登录
-阻塞。默认当前会话路径不依赖额外子 CLI。RF-28 原生 Craft 接入已验证写入、引号命令、非零退出、超时子进程清理和单写锁；
-旧 companion 与 Windows REA PTY cleanup 的历史边界保留，不由新 adapter 结果覆盖。详见
-[provider 状态](docs/PROVIDER-STATUS.md)。每个实际目标有自己的验收范围。
+上表是有限代表材料的既有观察，完整应用与宿主结果见[当前状态](docs/CURRENT-STATE.md)。
+旧子CLI额度/登录探针、companion与PTY清理边界只作为历史记录，不代表当前会话
+不可用，也不要求安装时重做这些探针。实际记录由[evidence索引](evidence/README.md)
+及[provider状态](docs/PROVIDER-STATUS.md)定位。每个实际目标有自己的验收范围。
 
 ## 维护、验证与卸载
 
@@ -135,8 +137,11 @@ RF-25 重建并认证了 [代表性归档](evidence/rf22/README.md)，身份与�
 [venv-python] -m reverse_fusion plan --client [selected-host] --intent normal-dev --format json
 [venv-python] -m reverse_fusion doctor --format json
 [venv-python] -m reverse_fusion handoff --check --format json
-[venv-python] -m reverse_fusion release-check --deployed --format json
+[venv-python] -m reverse_fusion release-check --format json
 ```
+
+Codex额外使用`release-check --deployed`检查用户级入口；Pi/Claude核实当前成果项目
+的显式连接，不使用Codex全局入口检查。完整步骤仅由[安装入口](docs/AGENT-BOOTSTRAP.md)维护。
 
 `doctor.status=pass` 仅表示仓库合同检查通过。查看 `components` 中的现场组件状态：
 REA 的 source pin 不是安装，入口存在不是握手；检查 `core_deployment`，缺少核心组件时不能报告完整部署。

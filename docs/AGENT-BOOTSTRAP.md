@@ -1,6 +1,6 @@
 # Reverse Fusion 宿主自动部署契约
 
-1.2.0 当前完整交付为 Windows x64 + Codex。无需用户提供真实样本来完成工程安装；
+1.2.1 当前完整交付为 Windows x64 + Codex。无需用户提供真实样本来完成工程安装；
 不要为完成安装新开目标对话或启动未知程序。Pi项目接入已完成实际全程使用，
 Claude项目适配/官方Spec布局检查已完成；完整模型运行未实测，不作为适配发布门。
 共用核心以代表性运行验证，宿主差异按HOST-PROJECT-CONNECTION.md核对与检查。
@@ -28,15 +28,13 @@ Codex 跨项目接入的文件和生命周期见 [CODEX-INTEGRATION.md](CODEX-IN
 `[venv-python] -m unittest tests.test_cross_project -v`，验证外部项目的案例记录/恢复、
 session 冻结与路径边界。仅从外部目录运行一次无写入的 bridge 不够。
 
-智能体克隆或定位仓库后，必须以当前 checkout 的文件为准，先读取：
-
-`README.md`、`AGENTS.md`、`RULES.md`、`docs/DEPLOYMENT-GUIDE.md`、
-`docs/PRODUCT-GOAL.md`、`docs/PROJECT-CONTEXT.md`、`docs/CURRENT-STATE.md`、
-`docs/DECISIONS.md`、`docs/PROVIDER-STATUS.md`、
-`docs/TARGET-CAPABILITY-MATRIX.md`、`docs/REVERSE-CAPABILITY-AUDIT.md`、
-`SOURCE-MANIFEST.json`、`components/official/manifest.json`、
-`components/reverse-core/preservation.json`、
-`components/reverse-core/runtime.json` 和 `checkpoints/` 中最新 checkpoint。
+智能体克隆或定位仓库后，必须以当前checkout为准，先读`README.md`、`AGENTS.md`、
+`RULES.md`、本文件、`docs/CURRENT-STATE.md`、`docs/HOST-PROJECT-CONNECTION.md`、
+`SOURCE-MANIFEST.json`和`components/official/manifest.json`。具体组件安装读
+`docs/NATIVE-COMPONENTS.md`与固定manifest；Codex入口读`docs/CODEX-INTEGRATION.md`。
+合同检查负责核实领域保全和必需引用，不要求在默认安装时把所有领域正文、历史
+审计、checkpoint与Spec样本一次性放进模型上下文。需要追溯来源或解决具体问题时
+再读取当前状态指向的记录；历史资料中的旧“下一步”不构成本次安装要求。
 
 ## 部署动作
 

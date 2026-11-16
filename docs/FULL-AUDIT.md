@@ -1,5 +1,10 @@
 # RF-25 全量复核与修复
 
+历史审计报告：保留RF-25/RF-26当时的数量、限制与下一步，不作为当前部署/适配
+状态。当前完成范围见[CURRENT-STATE](CURRENT-STATE.md)和
+[USER-REQUIREMENTS-REVIEW](USER-REQUIREMENTS-REVIEW.md)；当前真实Craft、Spec与
+三宿主接入不能被下方当时的interface-only/unsupported文字覆盖。
+
 日期：2026-11-15。基线：`2bcb7d4bdc02b1edcde5855c40445590822d415c`。
 当前发布结果以 `CURRENT-STATE.md`、`FINAL-RELEASE-ACCEPTANCE.md` 和
 `checkpoints/RF-25-20261115-001.md` 为准。

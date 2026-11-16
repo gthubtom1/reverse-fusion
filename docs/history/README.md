@@ -1,0 +1,13 @@
+# 历史文档档案
+
+本目录是RF-34收尾时拆出的旧状态、计划和合同快照。保存它们是为了追溯当时的
+结论、失败、需求变化和修复依据；它们不是当前指令，也不表示今天仍有相同待办。
+
+当前状态只读[CURRENT-STATE](../CURRENT-STATE.md)，部署只用
+[AGENT-BOOTSTRAP](../AGENT-BOOTSTRAP.md)，当前22项结果只用
+[USER-REQUIREMENTS-REVIEW](../USER-REQUIREMENTS-REVIEW.md)。
+
+在明确需要了解演进或核对某条历史证据时，才读取相应快照。不要整目录加载，
+不要执行其中的旧“下一步”，不要按旧版本的未完成表恢复已结束的样本或登录等待。
+Markdown相对链接已按归档位置重定位；反引号路径和绝对路径属于原记录语境。
+原始checkpoint、Spec和Evidence各保留其来源、时间及范围，本文不重新裁定其结果。

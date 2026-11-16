@@ -4,7 +4,7 @@
 
 ## reverse-skill 可自动 bootstrap 的能力
 
-来源：`skills/scripts/bootstrap-manifest.json`（以文件为准）：
+来源：`skills/scripts/bootstrap-manifest.json`（以文件为准）。本节仅列可选目标工具准备，不替代 [完整核心部署](../../docs/AGENT-BOOTSTRAP.md)。`-StartServices`会启动服务，仅本次需要且既有授权涵盖时添加，不授权修改宿主全局配置：
 
 | 能力 | 典型场景 |
 |------|----------|

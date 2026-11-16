@@ -1,11 +1,15 @@
 # Rollback
 
 Rollback acts on this repository only. Inspect `git status`, save wanted local
-work and identify the exact commits before reverting. The pre-RF-25 baseline
-is `2bcb7d4bdc02b1edcde5855c40445590822d415c`; the RF-25 checkpoint records
-the audited replacement commit. Use `git log --oneline` and revert the relevant
-RF-25 changes in reverse order, or inspect the old revision in a separate
-checkout. Do not reset unrelated user changes.
+work and identify the exact current regression and affected commits before
+reverting. Use `git log --oneline` and revert only the relevant changes, or
+inspect the chosen old revision in a separate checkout. Do not reset unrelated
+user changes or automatically jump to a stage baseline because an old document
+names it. Re-run the affected installation/identity checks after a rollback.
+
+Historical reference: the pre-RF-25 baseline was
+`2bcb7d4bdc02b1edcde5855c40445590822d415c`; the RF-25 checkpoint records its
+replacement. This is not the default rollback target for the current release.
 
 The historical RF-24 changes are enumerated by
 `git log --reverse --oneline 481e936..2bcb7d4`. This is a source-history boundary,
