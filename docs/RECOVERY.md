@@ -60,8 +60,15 @@ session 的 phase 和已执行检查。先确认原生调用与其拥有的命�
   审查后创建新的 lease、receipt 和工作区。不能改旧摘要绕过冻结检查。
 - prepare 失败：保留失败输出，检查是否留下部分工作区、lease 或 session。未确认
   无活跃写入者前不删除；使用明确的新批次路径重试，不能把旧候选误当本次产物。
+- 批次需要放弃或冻结研究已改变：创建项目内请求文件 `{"reason":"本批中止的实际原因"}`，
+  调用 `native-craft abort --project-root [当前项目] --lease [原租约] --params-file [请求文件]`。
+  原生操作获取同一工作区写锁；活跃操作占锁时拒绝。它保留候选、旧摘要、失败记录和
+  改变的输入列表，将原session置为aborted；这不是成功候选，也不重新冻结研究。
+  此后旧批次不能继续写或finish，需要新审查/租约/工作区。租约本身被改动则仍拒绝，
+  先从不可变记录恢复租约身份；不能借中止修改原工作区归属。
 - 原生检查完成：执行 return_summary、cleanup，再对同一 receipt 做附加 session
   check/refine/finish；之后才更新官方 Spec tasks/converge，并独立比较实际结果。
+  finish会核对原生cleanup及其对应的精确候选摘要；绕过cleanup或随后修改候选均拒绝。
 - 批次 finished：后续候选修改创建新批次。finished 只结束该批工具交接，完整用户
   目标还要根据真实比较、尚未完成的需求和用户交付决定判断。
 

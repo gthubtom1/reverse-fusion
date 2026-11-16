@@ -61,7 +61,13 @@ def native_binary(root: Path = TOOL_ROOT) -> Path:
     if not binary.is_file():
         raise ValueError('Craft native binary is missing; run the component bootstrap')
     actual = sha256(binary.read_bytes()).hexdigest()
-    if actual != asset['binary_sha256']:
+    pinned_sources = manifest.get('adapter_source_sha256', {})
+    expected_sources = {'components/craft-native/src/main.rs', 'components/craft-native/Cargo.toml',
+                        'components/craft-native/Cargo.lock'}
+    source_matches = (set(pinned_sources) == expected_sources and all(
+        sha256((root / name).read_bytes().replace(b'\r\n', b'\n')).hexdigest() == digest
+        for name, digest in pinned_sources.items()))
+    if actual != asset['binary_sha256'] or not source_matches:
         try:
             receipt = json.loads((root / 'state/craft-runtime.json').read_text(encoding='utf-8-sig'))
             expected = {'components/craft-native/src/main.rs', 'components/craft-native/Cargo.toml',
@@ -96,6 +102,11 @@ def invoke_native(project: Path, *, lease: str | None = None, operation: str,
                              cwd=project, capture_output=True, timeout=deadline,
                              creationflags=getattr(subprocess, 'CREATE_NO_WINDOW', 0))
     except subprocess.TimeoutExpired as exc:
+        if lease_path:
+            with lease_path.with_suffix('.events.jsonl').open('a', encoding='utf-8') as stream:
+                stream.write(json.dumps({'operation': operation, 'started_at': started,
+                    'returncode': None, 'result': {'ok': False, 'error': 'outer deadline exceeded'},
+                    'cleanup': 'unknown; inspect owned command state before continuing'}) + '\n')
         raise ValueError('Native adapter exceeded its outer deadline; cleanup requires inspection') from exc
     try:
         result = json.loads(run.stdout.decode('utf-8'))
@@ -123,6 +134,9 @@ def prepare_native(project: Path, *, lease: str, workspace: str, receipt: str,
         raise ValueError('A frozen check-command list and a 1..600 second deadline are required')
     if any(not name.startswith('app/') for name in allowed_outputs):
         raise ValueError('Native candidate outputs must be under app/ in the Craft workspace')
+    area = _inside(project, workspace)
+    if area.is_dir() and any(area.iterdir()):
+        raise ValueError('Native prepare requires an empty new workspace; resume or abort the existing batch')
     inferred_case = case_root
     if not inferred_case:
         for parent in _inside(project, receipt).parents:
@@ -145,7 +159,7 @@ def prepare_native(project: Path, *, lease: str, workspace: str, receipt: str,
         observer = prepare_session(project, workspace=configuration['workspace'], receipt=configuration['receipt'],
                                    tasks=tasks, task_files=task_files, research_files=[*research_files, *spec_refs, lease],
                                    allowed_outputs=['craft.json', *allowed_outputs], case_root=case_root,
-                                   handoff_manifest=handoff_manifest, review_file=review_file)
+                                   handoff_manifest=handoff_manifest, review_file=review_file, native_lease=lease)
     except (ValueError, OSError):
         lease_path.unlink()  # Only the new file owned by this failed prepare.
         raise

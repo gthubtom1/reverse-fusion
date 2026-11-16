@@ -105,6 +105,7 @@ class WorkflowReleaseTests(unittest.TestCase):
                     return json.dumps(install)
                 return actual_read(path, *args, **kwargs)
             with patch('reverse_fusion.release.platform.system', return_value='Windows'), \
+                    patch('reverse_fusion.release.verification_status', return_value={'status': 'pass'}), \
                     patch('reverse_fusion.release.platform.machine', return_value='AMD64'), \
                     patch('reverse_fusion.release.component_status', return_value={}), \
                     patch('reverse_fusion.release.core_deployment', return_value={'status': 'installed', 'missing': []}), \

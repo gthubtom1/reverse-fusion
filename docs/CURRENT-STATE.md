@@ -1,5 +1,34 @@
 # Current State
 
+Stage: RF-31
+Status: implementation repaired;89 product +39 reconstruction checks passed; deployment/sync pending
+
+Current version:1.1.1, Windows x64/Codex. The persistent user goal and
+`docs/COMPLETION-PLAN.md` retain the22requirements, ordered tasks, completion
+conditions and one next action across context compaction. Current checkpoint:
+`checkpoints/RF-31-20261116-001.md`. No new user sample or target chat is needed;
+do not resume paused target cases.
+
+RF-31 repaired actual missing failure exits and consistency checks rather than
+relabeling RF-30: native abort with writer-lock ownership and retained outputs;
+check-to-candidate digest binding; native cleanup-to-observer finish binding;
+nonempty workspace rejection before prepare; atomic owned-file replacement and
+rollback on installation/uninstallation I/O failure; missing-Python uninstall
+protection; source-bound published native identity and regression qualification.
+Actual engine adapter0.1.1 is built and its updated Windows archive packaged.
+`release/verification.json` binds89product/39reconstruction passing checks with
+zero skips to current sources. It is finite engineering evidence, not new-target
+acceptance or a guarantee of model decisions. Pi/Claude full integration and
+non-Windows native distributions remain explicitly deferred.
+
+Single next action: deploy current local Codex entry, publish the native asset,
+verify its clean remote install, synchronize final records and release1.1.1.
+
+The following RF-30 and earlier material is historical. Its status/next-action
+paragraphs do not override the current plan or instruct a new sample run.
+
+## Historical RF-30 state
+
 Stage: RF-30
 Status: 1.1.0 engineering delivery complete for Windows x64/Codex
 

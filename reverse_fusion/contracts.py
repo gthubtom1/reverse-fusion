@@ -36,7 +36,8 @@ def sha256_file(path: Path) -> str:
 
 def is_safe_relative_path(value: str) -> bool:
     """Reject POSIX and Windows absolute/traversal paths on every host."""
-    if not isinstance(value, str) or not value.strip():
+    if (not isinstance(value, str) or not value.strip() or ':' in value
+            or any(ord(c) < 32 for c in value)):
         return False
     if not PurePosixPath(value).parts or PureWindowsPath(value).drive or PureWindowsPath(value).root:
         return False

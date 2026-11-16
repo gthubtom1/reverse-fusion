@@ -3,12 +3,12 @@
 给当前 coding agent 使用的普通开发、逆向分析与独立复刻工具集。
 仓库：<https://github.com/gthubtom1/reverse-fusion>。
 
-产品版本 **`1.1.0`，Windows x64 / Codex 完整工程版**，当前交付阶段 `RF-30`。
+产品版本 **`1.1.1`，Windows x64 / Codex 完整工程版**，当前交付阶段 `RF-31`。
 不需要用户继续提供样本才能安装或交付本版本。范围与有限发布门见
 [版本说明](docs/RELEASE-1.1.md)。准确的工程检查、历史实测和
 未覆盖范围分别保存在 [当前状态](docs/CURRENT-STATE.md)、
 [发布验收](docs/FINAL-RELEASE-ACCEPTANCE.md) 与
-[最新 checkpoint](checkpoints/RF-30-20261116-001.md)。工程版本与具体软件的复刻结果分别报告。
+[最新 checkpoint](checkpoints/RF-31-20261116-001.md)。工程版本与具体软件的复刻结果分别报告。
 
 ## 换电脑，只给仓库链接
 
@@ -142,7 +142,7 @@ CLI 生命周期默认 dry-run；`install --apply --client [selected-host]` 写�
 并在 Codex 选择下写入用户级适配层。`uninstall --apply` 会移除 receipt 和本次安装
 写入的适配层。Windows 的 `scripts/uninstall.ps1 -Apply` 与
 POSIX 的 `scripts/uninstall.sh` 移除本仓库 venv 和 receipt，保留 vendor、case 与成果。
-项目没有自动全局回滚或 receipt transaction journal。
+安装/卸载遇到已报告的文件写入失败会恢复受控入口和记录；没有跨进程崩溃恢复日志。
 
 恢复已有项目可用 `workflow --project-root "[成果项目]"`，需要时指定原 case 和 session。
 它只读取当前状态、实际组件入口、引用和冻结变更，不执行目标或更改证据。具体失败

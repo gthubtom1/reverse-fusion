@@ -60,12 +60,23 @@ fn relative(root: &Path, name: &str) -> Result<PathBuf, String> {
     Ok(path)
 }
 
+fn candidate_digests(root: &Path, allowed: &[Value]) -> Result<Value, String> {
+    let mut outputs = serde_json::Map::new();
+    for name in allowed.iter().filter_map(Value::as_str).filter(|s| s.starts_with("app/")) {
+        let path = root.join(name);
+        if path.is_file() {
+            outputs.insert(name.into(), Value::String(digest(&relative(root, name)?)?));
+        }
+    }
+    Ok(Value::Object(outputs))
+}
+
 fn run(request: Request) -> Result<Value, String> {
     if request.op == "capabilities" {
         return Ok(json!({"backend":"craft-anything-native-engine", "upstream_commit":UPSTREAM,
             "engine_version":"0.6.1", "adapter_version":env!("CARGO_PKG_VERSION"),
             "windows_command_tail_version":craft_anything_engine::tools::build_tools::WINDOWS_COMMAND_TAIL_VERSION,
-            "capabilities":["prepare","build","check","refine","return_summary","cleanup"],
+            "capabilities":["prepare","build","check","refine","return_summary","cleanup","abort"],
             "writer":"current-host via native build tools", "business_acceptance":"not-performed"}));
     }
     let lease_path = request.lease.ok_or("A frozen native lease is required")?.canonicalize().map_err(error)?;
@@ -75,20 +86,26 @@ fn run(request: Request) -> Result<Value, String> {
     }
     let root = lease.project_root.canonicalize().map_err(error)?;
     let receipt_path = relative(&root, &lease.receipt)?;
-    let receipt: Value = serde_json::from_slice(&fs::read(receipt_path).map_err(error)?).map_err(error)?;
+    let mut receipt: Value = serde_json::from_slice(&fs::read(&receipt_path).map_err(error)?).map_err(error)?;
     let project = receipt.get("project_root").and_then(Value::as_str).ok_or("Unbound session")?;
     if Path::new(project).canonicalize().map_err(error)? != root
         || receipt.get("backend").and_then(Value::as_str) != Some("current-session")
         || receipt.get("workspace").and_then(Value::as_str) != Some(lease.workspace.as_str())
-        || receipt.get("phase").and_then(Value::as_str) == Some("finished") {
+        || matches!(receipt.get("phase").and_then(Value::as_str), Some("finished" | "aborted")) {
         return Err("Session is closed or belongs to a different project/workspace".into());
     }
     let refs = receipt.get("frozen_refs").and_then(Value::as_object).ok_or("Missing frozen inputs")?;
     let mut lease_frozen = false;
+    let mut changed = Vec::new();
     for (name, expected) in refs {
-        let input = relative(&root, name)?;
-        if expected.as_str() != Some(digest(&input)?.as_str()) { return Err(format!("Frozen input changed: {name}")); }
-        lease_frozen |= input == lease_path;
+        let input = relative(&root, name);
+        let same_lease = input.as_ref().is_ok_and(|p| p == &lease_path);
+        let unchanged = input.and_then(|p| digest(&p)).is_ok_and(|hash| expected.as_str() == Some(hash.as_str()));
+        if !unchanged {
+            if request.op != "abort" || same_lease { return Err(format!("Frozen input changed: {name}")); }
+            changed.push(name.clone());
+        }
+        lease_frozen |= same_lease && unchanged;
     }
     if !lease_frozen { return Err("Native lease is not frozen by the session".into()); }
     let workspace_path = relative(&root, &lease.workspace)?;
@@ -115,6 +132,24 @@ fn run(request: Request) -> Result<Value, String> {
         return Ok(json!({"status":"prepared", "native_operation":"Workspace::create_at", "workspace":ws.root,
             "candidate":ws.app_dir(), "business_acceptance":"not-performed"}));
     }
+    if request.op == "abort" {
+        let reason = request.params.get("reason").and_then(Value::as_str)
+            .filter(|s| !s.trim().is_empty()).ok_or("Abort requires a recorded reason")?;
+        if workspace_path.join("craft.json").is_file() {
+            let mut ws = Workspace::open(&workspace_path).map_err(error)?;
+            ws.set_status(Status::Stopped, format!("Aborted, not accepted: {reason}")).map_err(error)?;
+        }
+        receipt["phase"] = json!("aborted");
+        receipt["events"].as_array_mut().ok_or("Missing session events")?.push(
+            json!({"phase":"abort", "reason":reason, "changed_frozen_refs":changed,
+                "business_acceptance":"not-performed"}));
+        let temporary = receipt_path.with_extension("abort.tmp");
+        fs::write(&temporary, serde_json::to_vec_pretty(&receipt).map_err(error)?).map_err(error)?;
+        fs::rename(&temporary, &receipt_path).map_err(error)?;
+        return Ok(json!({"status":"aborted", "outputs":"retained", "changed_frozen_refs":changed,
+            "cleanup":"Workspace writer lock acquired; no persistent adapter server; owned commands use Craft Process lifecycle",
+            "business_acceptance":"not-performed"}));
+    }
     let mut ws = Workspace::open(&workspace_path).map_err(error)?;
     let mut settings = Settings::default();
     settings.auto_mode = false;
@@ -127,9 +162,11 @@ fn run(request: Request) -> Result<Value, String> {
         "check" => "build_command_run",
         "return_summary" => "build_files_list",
         "cleanup" => {
+            let snapshot = candidate_digests(&workspace_path, allowed)?;
             let complete = lease.check_commands.iter().all(|command| {
                 let id = format!("external-check:{:x}", Sha256::digest(command.as_bytes()));
-                ws.manifest.checks.iter().rev().find(|c| c.check == id).is_some_and(|c| c.passed)
+                ws.manifest.checks.iter().rev().find(|c| c.check == id).is_some_and(|c|
+                    c.passed && c.note == snapshot.to_string())
             });
             let has_candidate = allowed.iter().filter_map(Value::as_str)
                 .any(|name| name.starts_with("app/") && workspace_path.join(name).is_file());
@@ -137,7 +174,10 @@ fn run(request: Request) -> Result<Value, String> {
                 return Err("Candidate needs all frozen native checks after its last write".into());
             }
             ws.set_status(Status::Stopped, "Native calls returned; candidate awaits independent acceptance").map_err(error)?;
+            let mut outputs = snapshot;
+            outputs["craft.json"] = json!(digest(&workspace_path.join("craft.json"))?);
             return Ok(json!({"status":"candidate", "native_operation":"Workspace::set_status",
+                "output_digests":outputs,
                 "cleanup":"No persistent server; owned build commands use Craft Process lifecycle",
                 "business_acceptance":"not-performed"}));
         }
@@ -171,7 +211,8 @@ fn run(request: Request) -> Result<Value, String> {
         let command = value.get("result").and_then(|r| r.get("command")).and_then(Value::as_str).ok_or("Native check omitted command identity")?;
         let passed = value.get("result").and_then(|r| r.get("succeeded")).and_then(Value::as_bool).ok_or("Native check omitted execution status")?;
         let id = format!("external-check:{:x}", Sha256::digest(command.as_bytes()));
-        ws.manifest.checks.push(CheckResult::new(&id, 0, passed, "Actual Craft build_command_run result"));
+        let snapshot = candidate_digests(&workspace_path, allowed)?.to_string();
+        ws.manifest.checks.push(CheckResult::new(&id, 0, passed, snapshot));
         ws.manifest.awaiting_check = !lease.check_commands.iter().all(|command| {
             let id = format!("external-check:{:x}", Sha256::digest(command.as_bytes()));
             ws.manifest.checks.iter().rev().find(|c| c.check == id).is_some_and(|c| c.passed)

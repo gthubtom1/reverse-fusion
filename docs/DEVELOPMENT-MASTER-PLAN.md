@@ -1,5 +1,11 @@
 # Development Plan
 
+RF-31 supersedes RF-30's closure after deeper implementation review. Read
+COMPLETION-PLAN.md and checkpoints/RF-31-20261116-001.md for task order,
+acceptance conditions and one next action. Repair failure exits and install
+rollback, bind regression evidence to current source, review the full chain,
+then deploy/synchronize1.1.1. No new user target or sample-chat run.
+
 RF-30 is the finite1.1.0 engineering release for Windows x64/Codex. The user
 explicitly requests no more real-target runs or samples as a delivery condition.
 Complete implementation/entry/recovery, run repository regressions and the

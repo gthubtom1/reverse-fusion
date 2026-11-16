@@ -96,7 +96,7 @@ if ($BuildFromSource) {
 $caps = '{"op":"capabilities"}' | & $binary
 Assert-NativeExit $LASTEXITCODE 'Craft native capabilities'
 $capability = $caps | ConvertFrom-Json
-if (-not $capability.ok -or $capability.data.upstream_commit -ne $manifest.upstream.commit -or $capability.data.windows_command_tail_version -ne 1) { throw 'Craft native engine identity mismatch' }
+if (-not $capability.ok -or $capability.data.upstream_commit -ne $manifest.upstream.commit -or $capability.data.windows_command_tail_version -ne 1 -or $capability.data.adapter_version -ne $manifest.adapter_version -or 'abort' -notin $capability.data.capabilities) { throw 'Craft native engine identity mismatch' }
 $inputs = @{}
 foreach ($name in @('components/craft-native/src/main.rs','components/craft-native/Cargo.toml','components/craft-native/Cargo.lock','components/craft-native/manifest.json') + @($manifest.patches.path)) {
     $inputs[$name] = (Get-FileHash -LiteralPath (Join-Path $repo $name) -Algorithm SHA256).Hash.ToLowerInvariant()

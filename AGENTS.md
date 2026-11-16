@@ -17,6 +17,7 @@
 13. 核心部署与真实 Spec/Craft 交接读取 `docs/NATIVE-COMPONENTS.md`
 14. 白话任务承接、目标保留与自适应分析/交付读取 `docs/AGENT-WORKFLOW.md`；用户使用说明见 `docs/BEGINNER-GUIDE.md`
 15. 当前完整工程版本范围与发布门读取 `docs/RELEASE-1.1.md`、`release/manifest.json`；错误恢复读取 `docs/RECOVERY.md`
+16. RF-31持续目标的任务顺序、22条原需求与逐项完成条件读取 `docs/COMPLETION-PLAN.md`；恢复上下文先读此文件及最新checkpoint。
 
 工作规则：
 

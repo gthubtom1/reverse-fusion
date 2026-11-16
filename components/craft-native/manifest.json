@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "adapter_version": "0.1.0",
+  "adapter_version": "0.1.1",
   "upstream": {
     "repository": "https://github.com/storytold/craft-anything.git",
     "commit": "8374ad71544f2cc44698ea74ef990aa31600bac6",
@@ -9,10 +9,10 @@
   "platforms": {
     "windows-x64": {
       "local_path": "vendor/craft/native/windows-x64/reverse-fusion-craft-native.exe",
-      "binary_sha256": "a25aa377931267e3bd6082889e0eb529d497bbc72e8147ae9b1e4c321400a5d9",
-      "archive_url": "https://github.com/gthubtom1/reverse-fusion/releases/download/craft-native-v0.1.0-rf28.1/craft-native-windows-x64.zip",
-      "archive_sha256": "3b1711a13daa835d73b7d4987ab28248eac7f60d1b1fb2cc88ed2cbb03f92b0f",
-      "notices_sha256": "d58a039adcd20c50ffecc2005af1861ab1f9926f77c7a0d6c971b73653d2fe19"
+      "binary_sha256": "45108effa5ae6e6713c28c1193106984d630ad7bc6da9dd873203c7c263cbbe3",
+      "archive_url": "https://github.com/gthubtom1/reverse-fusion/releases/download/craft-native-v0.1.1-rf31/craft-native-windows-x64.zip",
+      "archive_sha256": "0e58a1ed9154a69eadde1064042d5be93d7f23106c196f9a910a1731214428d8",
+      "notices_sha256": "30be9c9149c40cc6128a257ee89188f650b9abfc85aa44264cd21e51f8b367f7"
     }
   },
   "qualification": "finite Windows x64 native engine lifecycle and failure controls verified; target acceptance separate",
@@ -27,5 +27,10 @@
     "crates/platform/src/process.rs": "17c64d43c4a450e89f5095f9cc8ce18498d79a114a8dc51ee518cb16a86ca4c4",
     "crates/engine/src/tools/build_tools.rs": "5a4eb3191d3f74171d81cdd7545d126d08aed3f7ae8406c88e36e4bb935d7ba0"
   },
-  "patched_files_hash_mode": "UTF-8 LF-normalized content"
+  "patched_files_hash_mode": "UTF-8 LF-normalized content",
+  "adapter_source_sha256": {
+    "components/craft-native/src/main.rs": "79873371166bc3d1d0c7dd522ed61637c4170f27f469b418556af2a527ada496",
+    "components/craft-native/Cargo.toml": "9080664b994f577d4d9e5bd8b338a1060def2bb6ac458c9af19cc6397c228fb2",
+    "components/craft-native/Cargo.lock": "ea42025de12e21b77f584a46849150c6a5bf00fdf711a16604723ff95017996d"
+  }
 }

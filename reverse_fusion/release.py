@@ -10,6 +10,7 @@ from . import __version__
 from .component_status import component_status, core_deployment
 from .contracts import check_contracts, is_safe_relative_path
 from .global_adapter import adapter_paths, agents_block, skill_text
+from .verification import verification_status
 
 
 def check_release(root: Path, *, deployed: bool = False) -> dict:
@@ -49,6 +50,8 @@ def check_release(root: Path, *, deployed: bool = False) -> dict:
     except (OSError, ValueError, KeyError, TypeError, SystemExit) as exc:
         gate('release-contract', False, str(exc))
     if deployed:
+        verified = verification_status(root)
+        gate('source-bound-regressions', verified['status'] == 'pass', verified)
         gate('supported-host', platform.system() == 'Windows' and
              platform.machine().lower() in {'amd64', 'x86_64'}, 'current release deployment is Windows x64 + Codex')
         components = component_status(root)

@@ -67,6 +67,10 @@ with zipfile.ZipFile(archive, 'w', compression=zipfile.ZIP_DEFLATED, compresslev
 asset.update(binary_sha256=hashlib.sha256(binary.read_bytes()).hexdigest(),
              archive_sha256=hashlib.sha256(archive.read_bytes()).hexdigest(),
              notices_sha256=hashlib.sha256(notice.read_bytes()).hexdigest())
+manifest['adapter_source_sha256'] = {
+    name: hashlib.sha256((root / name).read_bytes().replace(b'\r\n', b'\n')).hexdigest()
+    for name in ('components/craft-native/src/main.rs', 'components/craft-native/Cargo.toml',
+                 'components/craft-native/Cargo.lock')}
 manifest_path.write_text(json.dumps(manifest, indent=2) + '\n', encoding='utf-8')
 (root / 'components/craft-native/dependency-notices.json').write_text(json.dumps(inventory, indent=2) + '\n')
 print(json.dumps({'archive': str(archive), 'sha256': asset['archive_sha256'], 'packages': len(inventory)}))

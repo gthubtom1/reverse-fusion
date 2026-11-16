@@ -1,4 +1,16 @@
-# v1 release acceptance
+# Current release acceptance
+
+RF-31 /1.1.1 Windows x64/Codex implementation audit and source-bound regression
+checks are recorded in `docs/COMPLETION-PLAN.md`, `release/verification.json`,
+`evidence/rf31/` and `checkpoints/RF-31-20261116-001.md`.
+The current run has89product and39reconstruction checks passed without skips.
+Native abort, exact checked-candidate completion, installer failure rollback,
+missing-Python uninstall and published-native source binding are real repairs.
+Final deployed/source checks and remote revision remain in the RF-31 checkpoint.
+These do not certify future target behavior or complete the deferred Pi/Claude
+edition. Historical closure labels below remain dated observations.
+
+## Historical1.1.0 release acceptance
 
 Current release:1.1.0, RF-30, Windows x64 + Codex engineering edition.
 The user explicitly removed further real-target testing/sample provision as

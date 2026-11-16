@@ -34,6 +34,7 @@ from .global_adapter import install_global_adapter, remove_global_adapter, adapt
 from .component_status import component_status, core_deployment
 from .craft_native import prepare_native, invoke_native
 from .workflow import component_entries, inspect_workflow
+from .file_updates import atomic_write, file_transaction
 
 ROOT = Path(__file__).resolve().parents[1]
 MANIFEST = ROOT / "components" / "official" / "manifest.json"
@@ -157,7 +158,7 @@ def _write_state(name: str, payload: dict[str, Any], *, root: Path | None = None
     state = (root or ROOT) / "state"
     target = _state_path(name, root=root)
     state.mkdir(exist_ok=True)
-    target.write_text(json.dumps(payload, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    atomic_write(target, (json.dumps(payload, ensure_ascii=False, indent=2, sort_keys=True) + "\n").encode('utf-8'))
 
 
 def _state_path(name: str, *, root: Path | None = None) -> Path:
@@ -199,18 +200,19 @@ def cmd_install(args: argparse.Namespace) -> int:
         "core_deployment": deployment,
     }
     if args.apply:
-        _state_path("install")  # Validate the receipt boundary before any user-level writes.
-        if enable_global_adapter:
-            plan["global_adapter"] = install_global_adapter(ROOT)
-        elif (ROOT / 'state/install.json').is_file():
-            previous = read_json(ROOT / 'state/install.json')
-            previous_adapter = previous.get('global_adapter')
-            if isinstance(previous_adapter, dict) and previous_adapter.get('enabled'):
-                removal = remove_global_adapter(repo_root=ROOT)
-                plan['global_config_mutation'] = bool(removal.get('removed'))
-                plan['effects'].append('remove this checkout user-level adapter')
-        plan["status"] = "installed"
-        _write_state("install", {**plan, "installed": True, "version": __version__})
+        path = _state_path("install")  # Validate before any user-level writes.
+        with file_transaction([*adapter_paths().values(), path]):
+            if enable_global_adapter:
+                plan["global_adapter"] = install_global_adapter(ROOT)
+            elif path.is_file():
+                previous = read_json(path)
+                previous_adapter = previous.get('global_adapter')
+                if isinstance(previous_adapter, dict) and previous_adapter.get('enabled'):
+                    removal = remove_global_adapter(repo_root=ROOT)
+                    plan['global_config_mutation'] = bool(removal.get('removed'))
+                    plan['effects'].append('remove this checkout user-level adapter')
+            plan["status"] = "installed"
+            _write_state("install", {**plan, "installed": True, "version": __version__})
     _print(plan, args.format)
     return 0
 
@@ -219,12 +221,12 @@ def cmd_uninstall(args: argparse.Namespace) -> int:
     path = _state_path("install")
     adapter = {"enabled": False, "removed": []}
     if args.apply and path.exists():
-        prior = read_json(path)
-        adapter_state = prior.get("global_adapter") if isinstance(prior, dict) else None
-        if isinstance(adapter_state, dict) and adapter_state.get("enabled"):
-            adapter = remove_global_adapter(repo_root=ROOT)
-    if args.apply and path.exists():
-        path.unlink()
+        with file_transaction([*adapter_paths().values(), path]):
+            prior = read_json(path)
+            adapter_state = prior.get("global_adapter") if isinstance(prior, dict) else None
+            if isinstance(adapter_state, dict) and adapter_state.get("enabled"):
+                adapter = remove_global_adapter(repo_root=ROOT)
+            path.unlink()
     result = {"operation": "uninstall", "mode": "apply" if args.apply else "dry-run", "status": "uninstalled" if args.apply else "ready", "state_file": str(path), "venv": str(ROOT / ".venv"), "vendor": "retained; remove explicitly if a provider asset is no longer wanted", "global_adapter": adapter, "global_config_mutation": bool(adapter.get("removed"))}
     _print(result, args.format)
     return 0
@@ -576,7 +578,7 @@ def build_parser() -> argparse.ArgumentParser:
             p.add_argument("--handoff-manifest", help="project-relative existing reconstruction handoff manifest")
             p.add_argument("--review-file", help="project-relative independent semantic review record; not machine proof")
         if name == 'native-craft':
-            p.add_argument('phase', choices=('capabilities', 'prepare', 'build', 'check', 'refine', 'return_summary', 'cleanup'))
+            p.add_argument('phase', choices=('capabilities', 'prepare', 'build', 'check', 'refine', 'return_summary', 'cleanup', 'abort'))
             p.add_argument('--lease')
             p.add_argument('--params-file', help='project-relative JSON for the real native tool')
             p.add_argument('--workspace', default='work/native-craft')

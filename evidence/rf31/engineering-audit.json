@@ -1,0 +1,123 @@
+{
+  "schema_version": 1,
+  "stage": "RF-31",
+  "base_commit": "f9cc9173e8a35a1e9c48c04e28b15d642268b270",
+  "scope": "Windows x64/Codex integration implementation review and finite repository checks; no new user target",
+  "reviewed_chain": [
+    {
+      "area": "global entry and cross-project continuation",
+      "implementation": [
+        "reverse_fusion/global_adapter.py",
+        "reverse_fusion/case_bridge.py",
+        "reverse_fusion/cli.py",
+        "reverse_fusion/workflow.py"
+      ],
+      "checks": [
+        "tests/test_cross_project.py",
+        "tests/test_workflow_release.py"
+      ],
+      "result": "original objective, case/refs, project-local output and domain refinement retained"
+    },
+    {
+      "area": "domains and difficult targets",
+      "implementation": [
+        "components/reverse-core/router.py",
+        "components/reverse-core/runtime.json",
+        "components/reverse-core/preservation.json"
+      ],
+      "checks": [
+        "tests/test_contracts.py"
+      ],
+      "result": "45 domains have local bodies/reads;603 preserved resources and declared adaptations checked; provider/target qualification distinct"
+    },
+    {
+      "area": "required components and official Spec handoff",
+      "implementation": [
+        "scripts/bootstrap-core.ps1",
+        "reverse_fusion/component_status.py",
+        "reverse_fusion/craft_native.py",
+        "skills/reconstruction/scripts/check_handoff.py"
+      ],
+      "checks": [
+        "tests/test_core_deployment.py",
+        "tests/test_reconstruction_gate.py"
+      ],
+      "result": "actual installed runtime identities, official prerequisites, project feature and handoff dependencies frozen; declared critical unknowns block"
+    },
+    {
+      "area": "actual Craft and interrupted batches",
+      "implementation": [
+        "components/craft-native/src/main.rs",
+        "reverse_fusion/craft_native.py",
+        "reverse_fusion/session_builder.py"
+      ],
+      "checks": [
+        "tests/test_craft_native.py"
+      ],
+      "result": "actual engine7tests: failed command, timeout/child cleanup, writer exclusion, abort, drift, stale output and successful native-to-observer lifecycle"
+    },
+    {
+      "area": "comparison and correction",
+      "implementation": [
+        "scripts/compare-js-exports.mjs",
+        "reverse_fusion/adapters.py",
+        "skills/reconstruction/references/differential-validation.md",
+        "docs/AGENT-WORKFLOW.md"
+      ],
+      "checks": [
+        "tests/test_cross_project.py",
+        "tests/test_contracts.py"
+      ],
+      "result": "finite original/candidate replay and wrong/missing candidate states retained; no new proof of arbitrary product equivalence"
+    },
+    {
+      "area": "installer failure and scoped removal",
+      "implementation": [
+        "reverse_fusion/file_updates.py",
+        "reverse_fusion/global_adapter.py",
+        "reverse_fusion/cli.py",
+        "scripts/uninstall.ps1",
+        "scripts/uninstall.sh"
+      ],
+      "checks": [
+        "tests/test_install_failures.py",
+        "tests/test_global_adapter.py"
+      ],
+      "result": "atomic owned-file replacement; I/O failure rollback; missing-Python removal fails before deletion; unrelated/current-other-checkout entry preserved"
+    },
+    {
+      "area": "release evidence",
+      "implementation": [
+        "reverse_fusion/release.py",
+        "reverse_fusion/verification.py",
+        "scripts/verify-engineering.py"
+      ],
+      "checks": [
+        "tests/test_verification.py"
+      ],
+      "result": "regression source/log hashes checked; altered source, skipped checks and altered logs reject deployed readiness"
+    }
+  ],
+  "reproduced_gaps_fixed": [
+    "no formal failed-batch abort",
+    "no native cleanup binding on observer finish",
+    "checked candidate could change outside native writer before cleanup",
+    "nonempty workspace could leave another failed observer/lease",
+    "installer multi-file I/O failure left inconsistent state",
+    "missing venv could discard uninstall receipt while global pointer remained",
+    "published binary allowed adapter source drift",
+    "release presence checks were disconnected from executed regressions",
+    "portable file paths allowed Windows alternate streams/control characters"
+  ],
+  "known_boundaries": [
+    "semantic readiness and omitted dependencies require host judgment; mechanical gates do not prove absence of omissions",
+    "Pi/Claude full integration and non-Windows native distributions deferred",
+    "REA Windows PTY descendant cleanup remains unsupported; choose qualified alternative methods and preserve unknown",
+    "target service/device/UI/algorithm behavior requires target-specific observations, not installation success",
+    "atomic rollback handles reported I/O failure, not durable multi-process or power-loss transactions"
+  ],
+  "new_user_samples": 0,
+  "new_or_resumed_target_chats": 0,
+  "regression_record": "release/verification.json",
+  "deployed_record": "evidence/rf31/release-deployed.json"
+}

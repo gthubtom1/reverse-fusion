@@ -15,6 +15,7 @@ from typing import Any
 from .builder import HostBuilder
 from .contracts import is_safe_relative_path
 from .case_bridge import load_case_record
+from .file_updates import atomic_write
 
 
 def _inside(root: Path, relative: str) -> Path:
@@ -35,6 +36,7 @@ def prepare_session(
     task_files: list[str], research_files: list[str], allowed_outputs: list[str],
     case_root: str | None = None, handoff_manifest: str | None = None,
     review_file: str | None = None,
+    native_lease: str | None = None,
 ) -> dict[str, Any]:
     root = root.resolve()
     area = _inside(root, workspace)
@@ -96,8 +98,12 @@ def prepare_session(
         "before": before, "phase": "prepared", "events": [],
         "model_selection": "current-host-owned", "business_acceptance": "not-performed",
     }
+    if native_lease:
+        if native_lease not in refs:
+            raise ValueError("Native lease must be frozen by its observer")
+        record['native_lease'] = native_lease
     record_path.parent.mkdir(parents=True, exist_ok=True)
-    record_path.write_text(json.dumps(record, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    atomic_write(record_path, (json.dumps(record, ensure_ascii=False, indent=2) + "\n").encode('utf-8'))
     return {"status": "prepared", "receipt": receipt, "workspace": workspace,
             "handoff_assessment": handoff['assessment_scope'],
             "semantic_verification": "not-performed; review record supplied by the caller" if case_root else "not-performed",
@@ -114,8 +120,8 @@ def check_session(root: Path, *, receipt: str, phase: str) -> dict[str, Any]:
         raise ValueError("Unsupported session record")
     if record.get("project_root") and Path(record['project_root']).resolve() != root:
         raise ValueError("Session belongs to a different project; prepare a fresh frozen run")
-    if record.get("phase") == "finished":
-        raise ValueError("Session already finished; new work requires a new frozen run")
+    if record.get("phase") in {"finished", "aborted"}:
+        raise ValueError("Session already finished or aborted; new work requires a new frozen run")
     area = _inside(root, record["workspace"])
     if record_path.is_relative_to(area):
         raise ValueError("Session receipt is inside the candidate workspace")
@@ -143,9 +149,18 @@ def check_session(root: Path, *, receipt: str, phase: str) -> dict[str, Any]:
     if phase == "finish" and ("check" not in phases or "refine" not in phases):
         raise ValueError("Observe check and refine before finishing the handoff")
     outputs = {name: after[name] for name in sorted(allowed)}
+    if phase == 'finish' and record.get('native_lease'):
+        events_path = _inside(root, record['native_lease']).with_suffix('.events.jsonl')
+        events = [json.loads(line) for line in events_path.read_text(encoding='utf-8').splitlines() if line.strip()] if events_path.is_file() else []
+        last = events[-1] if events else {}
+        cleanup = last.get('result', {}).get('data', {})
+        if (last.get('operation') != 'cleanup' or last.get('returncode') != 0
+                or last.get('result', {}).get('ok') is not True
+                or cleanup.get('status') != 'candidate' or cleanup.get('output_digests') != outputs):
+            raise ValueError('Native completion requires successful cleanup of these exact candidate outputs')
     record["events"].append({"phase": phase, "outputs": outputs, "snapshot_delta": delta})
     record["phase"] = "finished" if phase == "finish" else phase
-    record_path.write_text(json.dumps(record, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    atomic_write(record_path, (json.dumps(record, ensure_ascii=False, indent=2) + "\n").encode('utf-8'))
     return {"version": 1, "status": "candidate" if phase == "finish" else "observed",
             "backend": "current-session", "tasks": record["tasks"], "phase": phase,
             "handoff_assessment": record.get('handoff', {}).get('assessment_scope', 'not-assessed'),

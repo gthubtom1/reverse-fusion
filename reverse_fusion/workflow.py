@@ -28,7 +28,7 @@ def component_entries(tool: Path, project: Path) -> dict:
         'spec': {'argv': [str(scripts / ('specify.exe' if os.name == 'nt' else 'specify'))],
                  'usage': 'initialize in the outcome project, then read and execute its generated speckit skills; init alone is not the workflow'},
         'native_craft': {'argv': [*prefix, 'native-craft', '<phase>', '--project-root', str(project.resolve())],
-                         'usage': 'prepare/build/check/refine/return_summary/cleanup with the same frozen lease; failed checks do not qualify a candidate'},
+                         'usage': 'prepare/build/check/refine/return_summary/cleanup with the same frozen lease; abort retains failed/interrupted work without acceptance'},
         'observer': {'argv': [*prefix, 'session', '<phase>', '--project-root', str(project.resolve())],
                      'usage': 'additional check/refine/finish on the native prepare receipt, after native checks and cleanup'},
         'guides': [str(tool / 'docs' / name) for name in
@@ -93,6 +93,7 @@ def inspect_workflow(tool: Path, project: Path, *, case_root: str | None = None,
                              'workspace': session.get('workspace'),
                              'cleanup': 'not-inferred; inspect actual native events and owned processes',
                              'next_action': ('Keep old records; inspect/clean the old writer and prepare a new reviewed batch. Do not refresh hashes to hide changes.' if changed else
+                                             'Aborted batch: retain outputs and failure records; revise analysis/spec as needed and prepare a new reviewed workspace.' if session.get('phase') == 'aborted' else
                                              'Finished batch: compare independently and update Spec tasks/converge; new edits need a new batch.' if session.get('phase') == 'finished' else
                                              'Inspect native events and last check; continue the same valid lease only when cleanup and ownership are known. Failed checks return to correction; missing facts return to analysis.')}
         if changed:

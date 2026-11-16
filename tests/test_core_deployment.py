@@ -12,6 +12,28 @@ from reverse_fusion import cli
 
 
 class CoreDeploymentTests(unittest.TestCase):
+    def test_published_binary_also_requires_matching_adapter_sources(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory).resolve()
+            sources = ['components/craft-native/src/main.rs', 'components/craft-native/Cargo.toml',
+                       'components/craft-native/Cargo.lock']
+            for name in sources:
+                path = root / name
+                path.parent.mkdir(parents=True, exist_ok=True)
+                path.write_bytes(b'synthetic source, never executed')
+            binary = root / 'driver.exe'
+            binary.write_bytes(b'synthetic binary, never executed')
+            manifest = {'platforms': {'windows-x64': {'local_path': 'driver.exe',
+                         'binary_sha256': sha256(binary.read_bytes()).hexdigest()}}, 'patches': [],
+                        'adapter_source_sha256': {n: sha256((root / n).read_bytes()).hexdigest() for n in sources}}
+            (root / 'components/craft-native/manifest.json').write_text(json.dumps(manifest))
+            with patch('reverse_fusion.craft_native.platform.system', return_value='Windows'), \
+                    patch('reverse_fusion.craft_native.platform.machine', return_value='AMD64'):
+                self.assertEqual(native_binary(root), binary)
+                (root / sources[0]).write_bytes(b'adapter was edited without a rebuild')
+                with self.assertRaisesRegex(ValueError, 'source-bound'):
+                    native_binary(root)
+
     def test_missing_real_component_blocks_install_before_global_writes(self):
         components = {'rea': {'status': 'present-unverified', 'node_engine_status': 'satisfied'},
                       'spec': {'cli_status': 'installed'}, 'craft': {'native_backend': 'not-installed'}}

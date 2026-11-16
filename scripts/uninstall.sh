@@ -19,6 +19,10 @@ case "$receipt" in "$repo"/*) ;; *) echo "receipt must stay inside repository" >
 
 venv_python="$venv/bin/python"
 if [ -x "$venv/Scripts/python.exe" ]; then venv_python="$venv/Scripts/python.exe"; fi
+if [ -f "$receipt" ] && [ ! -x "$venv_python" ]; then
+  echo 'installation receipt exists but its Python is unavailable; restore venv before managed adapter removal; nothing removed' >&2
+  exit 2
+fi
 if [ -x "$venv_python" ]; then
   "$venv_python" -m reverse_fusion uninstall --apply --format json >/dev/null
 fi

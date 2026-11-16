@@ -29,8 +29,11 @@ restores that limitation and must not be called an authenticated archive.
   removed. Generated build/cache artifacts may be removed within the verified
   repository or named case path.
 
-There is no implemented receipt transaction journal, automatic global restore
-or universal process-termination guarantee. If a child call times out or
+RF-31 atomically replaces owned files and rolls back the managed skill, AGENTS
+and install receipt when install/uninstall reports an I/O failure. Fault-injection
+checks cover both entry updates and receipt failures. This is not a durable
+cross-process transaction journal or a machine-power-loss recovery guarantee.
+If a child call times out or
 descendant cleanup is uncertain, record cleanup as unknown/blocked and resolve
 that writer before starting a replacement. Do not promote a configuration
 snapshot or a returned root process into proof that all descendants ended.

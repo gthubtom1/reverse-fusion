@@ -79,6 +79,49 @@ class NativeCraftTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'needs all frozen'):
             self.call('cleanup')
 
+    def test_failed_batch_can_abort_after_frozen_drift_and_retains_original_records(self):
+        self.prepare()
+        self.call('build', path='app/main.py', content='raise SystemExit(7)\n')
+        original = json.loads((self.project / 'native/session.json').read_text())['frozen_refs']
+        (self.project / 'research.json').unlink()
+        result = self.call('abort', reason='Research needs a new reviewed batch')['data']
+        self.assertEqual(result['status'], 'aborted')
+        self.assertIn('research.json', result['changed_frozen_refs'])
+        record = json.loads((self.project / 'native/session.json').read_text())
+        self.assertEqual(record['frozen_refs'], original)
+        self.assertEqual(record['phase'], 'aborted')
+        self.assertTrue((self.project / 'native/workspace/app/main.py').is_file())
+        with self.assertRaisesRegex(ValueError, 'closed'):
+            self.call('build', path='app/main.py', content='must not resume an aborted batch')
+        with self.assertRaisesRegex(ValueError, 'aborted'):
+            check_session(self.project, receipt='native/session.json', phase='finish')
+
+    def test_external_edit_cannot_reuse_native_checks_or_finish_after_cleanup(self):
+        self.prepare()
+        self.call('build', path='app/main.py', content='print(42)\n')
+        self.call('check', command=self.command, timeout_secs=10)
+        candidate = self.project / 'native/workspace/app/main.py'
+        candidate.write_text('print(43)\n', encoding='utf-8')
+        with self.assertRaisesRegex(ValueError, 'needs all frozen'):
+            self.call('cleanup')
+        self.call('check', command=self.command, timeout_secs=10)
+        for phase in ('check', 'refine'):
+            check_session(self.project, receipt='native/session.json', phase=phase)
+        with self.assertRaisesRegex(ValueError, 'Native completion requires'):
+            check_session(self.project, receipt='native/session.json', phase='finish')
+        self.call('cleanup')
+        candidate.write_text('print(44)\n', encoding='utf-8')
+        with self.assertRaisesRegex(ValueError, 'Native completion requires'):
+            check_session(self.project, receipt='native/session.json', phase='finish')
+
+    def test_existing_workspace_is_rejected_before_creating_another_batch(self):
+        self.prepare()
+        with self.assertRaisesRegex(ValueError, 'empty new workspace'):
+            prepare_native(self.project, lease='new/lease.json', workspace='native/workspace',
+                receipt='new/session.json', tasks=['T001'], task_files=['tasks.md'],
+                research_files=['research.json'], allowed_outputs=['app/main.py'], check_commands=[self.command])
+        self.assertFalse((self.project / 'new').exists())
+
     def test_timeout_stops_owned_descendant_and_serializes_writers(self):
         self.prepare(timeout=2, extra_outputs=['app/owned-child.pid'])
         code = ('import subprocess,sys,time\nfrom pathlib import Path\n'
@@ -95,6 +138,8 @@ class NativeCraftTests(unittest.TestCase):
             self.assertTrue(pid_file.exists(), 'Native timeout fixture did not start')
             with self.assertRaisesRegex(ValueError, 'Another native Craft operation'):
                 self.call('build', path='app/main.py', content='should not write while check owns lease')
+            with self.assertRaisesRegex(ValueError, 'Another native Craft operation'):
+                self.call('abort', reason='Must not abort an active writer')
             with self.assertRaisesRegex(ValueError, 'timed out|timeout|time limit|deadline|took longer'):
                 future.result(timeout=12)
         child_pid = int(pid_file.read_text())

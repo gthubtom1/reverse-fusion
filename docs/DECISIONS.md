@@ -1,5 +1,16 @@
 # Decisions
 
+## RF-024 Completion requires executable failure exits
+
+RF-31 reopens the RF-30 engineering label for reproduced implementation gaps:
+formal failed-batch abort, native-to-observer completion binding, candidate
+fixity after checks, and installer I/O rollback. Native adapter0.1.1 still uses
+the same pinned upstream engine and host reasoning; its new distribution carries
+the updated source identity. Deployed release readiness additionally requires
+source-bound regression logs, not just nonempty files or parseable CLI handlers.
+The durable completion order and original22requirements are in COMPLETION-PLAN.md.
+No additional user target, sample chat or universal equivalence claim is required.
+
 ## RF-023 Finite current-host engineering release
 
 The user's RF-30 instruction explicitly requests a full version without more
@@ -24,9 +35,9 @@ This project is published as one GitHub repository. Official components are desc
 ## RF-002 Official by default
 
 REA and Spec Kit remain official until a documented capability gap justifies a
-local fork. Craft is currently a repository-owned bounded interface with an
-upstream reference, not an upstream-plus-patch distribution. The four historical
-patch names are provenance only; no patch is distributed or replayed here.
+local fork. RF-28 superseded the earlier interface-only Craft design: the current
+owned seam drives the real pinned engine and distributes a replayable Windows
+Process patch. The four older patch names remain historical provenance only.
 
 ## RF-003 Old projects are read-only
 

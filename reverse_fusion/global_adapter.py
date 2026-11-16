@@ -10,6 +10,8 @@ from __future__ import annotations
 from pathlib import Path
 import os
 
+from .file_updates import atomic_write, file_transaction
+
 
 MARKER_START = "<!-- reverse-fusion:begin -->"
 MARKER_END = "<!-- reverse-fusion:end -->"
@@ -60,6 +62,8 @@ Record the first original request before replacing it with a technical hint. Kee
 Bridge returns `component_entries`: installed REA, official Spec and native Craft argument arrays, current-project cwd and recovery guides. Use those entries instead of guessing executable paths from old chats. To recover an existing case or inspect a frozen batch, run the same venv's `-m reverse_fusion workflow --project-root "<current project>"` with the known `--case-root` and optionally `--receipt`. This is read-only context resolution, not readiness or acceptance. Attach important existing project material through bridge `--ref "<project-relative file>"`; it remains in its original file.
 
 Read the shared `docs/RECOVERY.md` when tools fail, evidence is partial, a batch is interrupted or user input is missing. Before ending a turn with a question, continue independent useful work within the existing scope; a missing dependency blocks only the affected tasks. Ask only for the concrete human action, unavailable information or product decision that cannot be resolved autonomously. Do not treat a target's remaining unknowns as an unimplemented Reverse Fusion release or require extra user samples to install/use this edition.
+
+For an abandoned or invalid frozen batch use the same lease's native-craft abort with a recorded reason; retain outputs and original commitments, then prepare a new reviewed batch when needed. Do not finish the observer without native cleanup. Native cleanup and finish bind actual candidate digests; changing a checked output requires replaying its frozen checks.
 
 For analysis or reconstruction, read [the cross-project handoff guide]({repo}/docs/CROSS-PROJECT-WORKFLOW.md) before starting implementation. `required_read_paths` are absolute skill-checkout paths; cases, task files, candidate outputs and session receipts belong to `project_root`. Do not change cwd to the tool checkout to make a task command work. After identifying the real technology, refine the same case's domain route rather than staying on an initial generic route.
 
@@ -117,8 +121,9 @@ def install_global_adapter(repo_root: Path, home: Path | None = None) -> dict[st
     updated = _replace_agents_block(existing, agents_block(repo))
     paths["skill"].parent.mkdir(parents=True, exist_ok=True)
     paths["agents"].parent.mkdir(parents=True, exist_ok=True)
-    paths["skill"].write_text(skill_text(repo), encoding="utf-8")
-    paths["agents"].write_text(updated, encoding="utf-8")
+    with file_transaction(paths.values()):
+        atomic_write(paths['skill'], skill_text(repo).encode('utf-8'))
+        atomic_write(paths['agents'], updated.encode('utf-8'))
     return {
         "enabled": True,
         "skill": str(paths["skill"]),
@@ -152,7 +157,7 @@ def remove_global_adapter(home: Path | None = None, *, repo_root: Path | None = 
                 return {"enabled": False, "removed": removed, "retained": "another checkout owns the global pointer"}
             updated = text[:start] + text[end:]
             if updated.strip():
-                paths["agents"].write_text(updated, encoding="utf-8")
+                atomic_write(paths['agents'], updated.encode('utf-8'))
             else:
                 paths["agents"].unlink()
             removed.append(str(paths["agents"]))

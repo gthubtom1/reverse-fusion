@@ -7,6 +7,9 @@ $ErrorActionPreference = 'Stop'
 $repo = Get-CanonicalPath (Join-Path $PSScriptRoot '..')
 $venv = Assert-RepositoryWritePath $repo $VenvPath
 $receipt = Assert-RepositoryWritePath $repo (Join-Path $repo 'state\install.json')
+if ($Apply -and (Test-Path -LiteralPath $receipt -PathType Leaf) -and -not (Test-Path -LiteralPath (Join-Path $venv 'Scripts\python.exe') -PathType Leaf)) {
+    throw 'Installation receipt exists but its Python is unavailable; restore the repository venv before removing its managed global adapter. No files were removed.'
+}
 if ($Apply -and (Test-Path -LiteralPath (Join-Path $venv 'Scripts\python.exe') -PathType Leaf)) {
     & (Join-Path $venv 'Scripts\python.exe') -m reverse_fusion uninstall --apply --format json | Out-Null
     Assert-NativeExit $LASTEXITCODE 'global adapter removal'

@@ -66,6 +66,14 @@ check request 为 `{"command":"与冻结清单完全相同的命令","timeout_se
 失败退出/超时不通过，操作系统锁拒绝同一工作区并发写入。构建命令有真实 shell 效果，
 清单是审查边界，不是通用 OS 沙箱。不要将目标文本直接拼成命令。
 
+RF-31的adapter0.1.1增加 `native-craft abort`，请求文件为
+`{"reason":"调查或规格变化，需要终止本批并保留现场"}`。它使用相同租约和OS写锁，
+保留文件和原冻结摘要，将session标为aborted，禁止后续写入/完成。研究缺失或改变
+仍能正式中止，租约本身必须保持原身份。prepare拒绝已有非空工作区，避免失败重试
+创建另一份指向旧候选的记录。完整处理步骤见RECOVERY.md。
+各检查记录候选摘要；cleanup要求最后通过的每项检查对应当前候选，session finish再
+绑定cleanup后的候选与craft.json摘要，防止检查后修改或仅完成文件观察就冒称原生交接。
+
 接着对同一 receipt 执行 `session check/refine/finish` 观察额外文件边界。日志保存原生调用、
 结果、二进制摘要及请求摘要；`candidate` 仍不代表等价。独立比较原版/候选、故意错误
 对照、实际 REA comparison/proof/ledger 以及 Spec converge 分别记录实际范围和未决义务。
