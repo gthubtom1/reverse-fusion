@@ -7,6 +7,11 @@ The current run has89product and39reconstruction checks passed without skips.
 Native abort, exact checked-candidate completion, installer failure rollback,
 missing-Python uninstall and published-native source binding are real repairs.
 Final deployed/source checks and remote revision remain in the RF-31 checkpoint.
+Local deployment passed19gates. Fresh remote code46afd6c default-installed
+its own core components including the published native0.1.1 archive, then passed
+89product/39reconstruction checks again with matching engineering source hashes.
+The existing main global pointer was retained; no target chat or user sample
+was started. Clean installation record:evidence/rf31/clean-install.json.
 These do not certify future target behavior or complete the deferred Pi/Claude
 edition. Historical closure labels below remain dated observations.
 

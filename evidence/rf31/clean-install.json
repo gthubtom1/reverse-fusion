@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "remote_commit": "46afd6c08686e168206dda6b84e4d669510677c6",
+  "installation": "fresh remote clone; default scripts/install.ps1; own new .venv/Node/REA/Spec and downloaded native release",
+  "global_adapter": "explicitly disabled on clone; main checkout remains sole global pointer",
+  "core_deployment": {
+    "missing": [],
+    "scope": "required runtime installation; generated workflow and target acceptance remain separate",
+    "status": "installed"
+  },
+  "rea": {
+    "healthy": true,
+    "version": "6.9.0",
+    "tools": 255,
+    "prompts": 6
+  },
+  "spec": {
+    "version": "1.4.1.dev0",
+    "commit": "2ee2b1e8005905db05f5717300a469b3068b908f"
+  },
+  "craft": {
+    "distribution": "pinned-release",
+    "binary_sha256": "45108effa5ae6e6713c28c1193106984d630ad7bc6da9dd873203c7c263cbbe3",
+    "capabilities": {
+      "adapter_version": "0.1.1",
+      "backend": "craft-anything-native-engine",
+      "business_acceptance": "not-performed",
+      "capabilities": [
+        "prepare",
+        "build",
+        "check",
+        "refine",
+        "return_summary",
+        "cleanup",
+        "abort"
+      ],
+      "engine_version": "0.6.1",
+      "upstream_commit": "8374ad71544f2cc44698ea74ef990aa31600bac6",
+      "windows_command_tail_version": 1,
+      "writer": "current-host via native build tools"
+    }
+  },
+  "regressions": {
+    "product": {
+      "returncode": 0,
+      "tests_run": 89,
+      "skipped": 0,
+      "log_sha256": "59e18d0aafb1d5aa38f7dace4fba4c1fccc1d51d436b1b3ff58304191c8cd48e"
+    },
+    "reconstruction": {
+      "returncode": 0,
+      "tests_run": 39,
+      "skipped": 0,
+      "log_sha256": "4395aad3fd2a49dae8759ea07e53dc09dfbc5b5010c4ed48bdd13ca42f19c2b7"
+    }
+  },
+  "regression_status": "pass",
+  "source_release_status": "ready",
+  "same_engineering_source_inputs_as_main": true,
+  "new_user_target_execution": false
+}

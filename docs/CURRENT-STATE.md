@@ -1,7 +1,7 @@
 # Current State
 
 Stage: RF-31
-Status: implementation repaired;89 product +39 reconstruction checks passed; deployment/sync pending
+Status: current Windows x64/Codex engineering delivery closed at1.1.1
 
 Current version:1.1.1, Windows x64/Codex. The persistent user goal and
 `docs/COMPLETION-PLAN.md` retain the22requirements, ordered tasks, completion
@@ -21,8 +21,20 @@ zero skips to current sources. It is finite engineering evidence, not new-target
 acceptance or a guarantee of model decisions. Pi/Claude full integration and
 non-Windows native distributions remain explicitly deferred.
 
-Single next action: deploy current local Codex entry, publish the native asset,
-verify its clean remote install, synchronize final records and release1.1.1.
+Local Codex deployment is updated with required cores installed and19deployed
+checks passed. Source repair46afd6c08686e168206dda6b84e4d669510677c6 was pushed,
+cloned from GitHub without old state, and default-installed with its own Node/
+REA/Spec plus the published native0.1.1 archive. REA catalog healthy255tools/
+6prompts, native identity verified, core missing=[]. The fresh installation
+again passed89product/39reconstruction regressions with zero skips and matching
+engineering source hashes. Records:evidence/rf31/clean-install.json and logs.
+Final1.1.1 publication synchronizes this record; product tag and master identify
+the release revision. Persistent plan has no remaining current-edition work.
+
+Next action: normal user-directed work in an outcome project; retain any actual
+target unknowns there. Do not resume a paused sample or request more samples to
+reopen the completed finite release. Reproduced new defects remain fixable in
+maintenance; this closure is not a claim that future bugs cannot exist.
 
 The following RF-30 and earlier material is historical. Its status/next-action
 paragraphs do not override the current plan or instruct a new sample run.

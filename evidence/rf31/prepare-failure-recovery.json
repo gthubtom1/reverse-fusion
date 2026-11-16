@@ -1,0 +1,9 @@
+{
+  "scope": "synthetic fault injection, no user target",
+  "injected_stage": "after observer prepared, before native prepare returned",
+  "actual_recovery_operation": "native-craft abort",
+  "status": "aborted",
+  "receipt_phase": "aborted",
+  "old_frozen_refs_retained": true,
+  "candidate_accepted": false
+}
