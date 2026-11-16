@@ -18,7 +18,7 @@
 以`CURRENT-STATE.md`、最新checkpoint及`docs/FINAL-CLOSEOUT.md`为准，
 不要从RF-33中间记录恢复已经结束的登录等待或旧样本任务。
 当前原始功能/适配范围已交付；以后新需求与具体目标按自己的范围推进，
-不再向用户要样本才能完成工具安装。读取`docs/RELEASE-1.2.md`、
+不再向用户要样本才能完成工具安装。读取`docs/RELEASE-1.3.md`、
 `docs/HOST-PROJECT-CONNECTION.md`和`docs/RECOVERY.md`了解当前合同。
 RF-22/RF-23/RF-24/RF-26 的历史 final
 标签不覆盖本轮发现的问题或当前 provider 阻塞。

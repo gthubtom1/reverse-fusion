@@ -5,7 +5,7 @@
 
 - 新电脑安装以[AGENT-BOOTSTRAP](AGENT-BOOTSTRAP.md)为唯一入口；先安装真实核心，再接所选宿主。
 - 当前功能与22条要求见[需求核对](USER-REQUIREMENTS-REVIEW.md)，发布门见
-  [版本说明](RELEASE-1.2.md)、`release/manifest.json`和`release/verification.json`。
+  [版本说明](RELEASE-1.3.md)、`release/manifest.json`和`release/verification.json`。
 - 共用核心已有Codex/Pi代表性完整运行；Codex/Pi/Claude项目适配检查已完成。
   Claude完整模型运行未实测且非适配发布门，不自动轮询登录或重新打开已交付目标。
 - 普通开发保持host-native；分析与复刻使用当前成果项目的同一case和原始目标。

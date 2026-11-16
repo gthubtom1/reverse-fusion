@@ -3,7 +3,7 @@
 本文件定义产品职责与完成含义；用户的新指示优先。当前版本读取`VERSION`，
 当前阶段/结果读取[CURRENT-STATE](CURRENT-STATE.md)和最新checkpoint。
 当前22项功能与适配结果见[USER-REQUIREMENTS-REVIEW](USER-REQUIREMENTS-REVIEW.md)，
-工程发布门见[RELEASE-1.2](RELEASE-1.2.md)及`release/manifest.json`。
+工程发布门见[RELEASE-1.3](RELEASE-1.3.md)及`release/manifest.json`。
 历史阶段的“final”“未完成”和旧资格门均不自动覆盖当前合同。
 
 ## 产品要解决的问题
@@ -16,7 +16,7 @@
 ```text
 当前宿主入口/技能
   -> Reverse唯一路由与成果项目case，保留原始目标和当前阶段
-  -> 领域方法与实际REA Evidence，调查行为、错误路径和依赖
+  -> 领域方法与REA/Craft实际MCP或CLI工具、原生Evidence，调查行为、错误路径和依赖
   -> 就绪审查与官方Spec项目工作流，冻结研究/任务
   -> 当前宿主推理 -> 真实Craft engine写入/编辑候选和执行检查
   -> 独立构建/运行/原版比较 -> 修候选或回分析/规格

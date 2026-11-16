@@ -13,10 +13,10 @@
 | 1 核心真实部署 | 默认核心增加固定Craft engine MCP启动器，Codex登记官方REA和Craft两项server | 本机真实initialize/list/call已通过；最终部署绑定以`evidence/rf35/deployed-release.json`为准 |
 | 2 真实聚合协作 | REA255/6、Craft303engine/6原目录可达；REA自有应用分析、Craft目标打开/应用图/provider、Chrome双尺寸捕获与关闭已执行 | 不是原CLI所有高层工具全加载，不提升原生partial/one_state为全行为验收；旧Spec/native链继续负责实现 |
 | 3/4 跨目录与归属 | 托管MCP命令使用固定checkout/运行时，保留成果项目路径；无关配置5189字节保留 | 当前聊天需重载后确认发现，不能声称热加载；具体目标仍落自己的case |
-| 6 新电脑完整安装 | 默认bootstrap含摘要固定MCP资产，Codex安装登记并要求mcp-check，不再只诊断未登记 | RF-35远端新克隆默认安装待最终记录，不用RF-33旧克隆替代 |
+| 6 新电脑完整安装 | 默认bootstrap含摘要固定MCP资产，Codex安装登记并要求mcp-check，不再只诊断未登记 | RF-35新克隆41ac0ba默认安装、隔离用户真实登记/协议、120+39检查与22门通过，记录clean-install.json |
 | 8 必要二开与能力保全 | 原版MCP协议＋303engine工具＋运行时plugin/provider扩展；AI17/setup4明确由宿主/自有installer替代 | README320宣传数不作减法统计，不另启第二模型或原setup重写别的宿主配置 |
 | 22 宿主适配 | Codex两项全局MCP登记实现且本机已真实连接；Pi/Claude已有项目adapter、官方Spec和CLI/native路径 | 没有自动登记Pi/Claude全局MCP，不标三宿主MCP全部完成；完整模型实测不是每宿主适配门 |
-| 发布与记录 | 本机协议、分析、浏览器及配置保留证据已在`evidence/rf35/` | 工程最终数量取`release/verification.json`；资产/源码发布和远端复现取最终checkpoint |
+| 发布与记录 | 本机协议、分析、浏览器及配置保留证据已在`evidence/rf35/` | 工程最终数量取`release/verification.json`；资产与源码已推送、远端复现已通过；最终版本标签取checkpoint |
 
 Ghidra/Chrome/adb现场被发现，JADX尚未发现、设备/外部引擎按任务准备；不写成所有
 provider ready。当前原始Evidence、目录、真实调用、模式和授权边界见

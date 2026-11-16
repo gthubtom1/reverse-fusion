@@ -26,3 +26,7 @@ provider发现、Chrome页面打开、双尺寸捕获与关闭。原生partial/u
 
 原版对照、工具选择和边界见[MCP接入](MCP-INTEGRATION.md)，唯一安装入口为
 [AGENT-BOOTSTRAP.md](AGENT-BOOTSTRAP.md)。
+
+本机与远端新克隆41ac0ba均120项产品+39项复刻检查通过、0跳过；两处22项部署门
+ready。新克隆在隔离用户目录完成真实登记和调用，不改主指针。详细结果见
+`../evidence/rf35/clean-install.json`，该记录不冒称另一台物理电脑或桌面旧聊天热加载。

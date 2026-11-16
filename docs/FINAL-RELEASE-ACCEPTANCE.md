@@ -38,7 +38,8 @@ RF-35补齐此前真实缺口：旧CLI/受控writer验证未证明REA/Craft MCP�
 - `evidence/rf35/config-preservation.json`：无关配置原5189字节完整保留，新增两项自有登记。
 - `evidence/rf35/provider-settings-restart.json`：独立state中的provider设置恢复，
   不证明未安装provider已就绪；JADX未被现场发现仍按需准备。
-- RF-35远端新克隆：待最终安装记录，以checkpoint指向的实际记录为准。
+- `evidence/rf35/clean-install.json`：远端新克隆41ac0ba按默认步骤下载固定组件，
+  120+39零跳过，隔离用户真实MCP登记/协议调用与22项部署门通过；主用户配置保持不变。
 
 ## 保留的历史资格
 

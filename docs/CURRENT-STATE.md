@@ -1,9 +1,9 @@
 # Current State
 
 当前版本：**1.3.0**。当前维护阶段：**RF-35 MCP真实工具接入修复**。
-Stage: RF-35. Status: implementation and local qualification complete; remote default-install verification in progress.
+Stage: RF-35. Status: MCP integration repair, local deployment and remote clean-install qualification complete.
 Acceptance: original-engine MCP tools and retained Spec/native writer; provider and target acceptance separate.
-Next action: verify remote default installation, then finalize publication records.
+Next action: use the registered servers after client reload; maintain reproduced issues with actual tool evidence.
 本轮确认旧融合只使用CLI/受控writer，未登记REA/Craft MCP；旧“完整”结论没有覆盖
 该真实缺口。新增范围见[版本说明](RELEASE-1.3.md)与[MCP接入](MCP-INTEGRATION.md)。
 收尾结果与覆盖清单见[FINAL-CLOSEOUT.md](FINAL-CLOSEOUT.md)，恢复记录见
@@ -38,8 +38,9 @@ Next action: verify remote default installation, then finalize publication recor
 - `release/verification.json`绑定当前工程源码与120项产品/39项复刻检查结果（0跳过）。
   收尾若改变检查绑定的源码或元数据，须按对应静态/工程检查更新资格，不冒充新业务运行。
 - 已记录的本机Codex部署检查为22项通过（含MCP登记和实际协议调用）；安装核心缺失或用户级入口陈旧时拒绝完成。
-- `evidence/rf33/clean-install.json`是提交88d5b46的全新GitHub克隆默认安装记录；
-  不是另一台物理电脑实测，也不冒充后来每一个提交都重新安装过。
+- `evidence/rf35/clean-install.json`是提交41ac0ba的全新GitHub克隆默认安装记录；
+  自有Node/REA/Spec/native/MCP从远端准备，隔离USERPROFILE/CODEX_HOME执行真实登记与协议调用，
+  120+39零跳过、22门ready；主用户配置未改变。不是另一台物理电脑实测。
 - Codex自有完整应用运行约26.2分钟，有限1416项比较；Pi曾多次达到期限后恢复，
   最终交付完成。归档身份、独立UI比对及准确限制见[evidence索引](../evidence/README.md)。
 - 非Windows原生分发、目标专用IDA/Frida/Android设备或其他商业工具按实际环境准备，
@@ -47,7 +48,8 @@ Next action: verify remote default installation, then finalize publication recor
 
 ## 后续动作
 
-本轮最后完成远端新克隆默认安装记录，然后在成果项目按用户目标工作。换电脑执行已保存安装流程，新Pi/Claude成果项目
+本轮远端新克隆默认安装及隔离用户登记、真实协议和22部署门已通过。
+当前桌面旧聊天仍需客户端重载后确认发现，不冒称本轮已热加载。正常在成果项目按用户目标工作。换电脑执行已保存安装流程，新Pi/Claude成果项目
 执行显式项目连接，均不需重做产品设计或历史样本。发现新缺陷时按证据维护共享实现；
 不要把某目标的未知解释为当前工程版本未安装完成，也不把工程完成当成目标成功。
 
