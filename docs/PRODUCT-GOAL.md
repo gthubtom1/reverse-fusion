@@ -3,7 +3,7 @@
 本文件定义产品职责与完成含义；用户的新指示优先。当前版本读取`VERSION`，
 当前阶段/结果读取[CURRENT-STATE](CURRENT-STATE.md)和最新checkpoint。
 当前22项功能与适配结果见[USER-REQUIREMENTS-REVIEW](USER-REQUIREMENTS-REVIEW.md)，
-工程发布门见[RELEASE-1.3](RELEASE-1.3.md)及`release/manifest.json`。
+工程发布门见[RELEASE-1.4](RELEASE-1.4.md)及`release/manifest.json`。
 历史阶段的“final”“未完成”和旧资格门均不自动覆盖当前合同。
 
 ## 产品要解决的问题

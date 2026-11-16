@@ -1,0 +1,50 @@
+[
+  {
+    "path": "/fal-ai/nano-banana-pro",
+    "body": {
+      "aspect_ratio": "1:1",
+      "num_images": 1,
+      "output_format": "png",
+      "prompt": "an owned transport fixture"
+    },
+    "synthetic_auth_verified": true
+  },
+  {
+    "path": "/fal-ai/nano-banana-pro",
+    "body": {
+      "aspect_ratio": "1:1",
+      "num_images": 1,
+      "output_format": "png",
+      "prompt": "one original wooden cube. One whole object, centred and fully in view, on a plain light-grey background, soft even lighting, three-quarter view, no text."
+    },
+    "synthetic_auth_verified": true
+  },
+  {
+    "path": "/tripo3d/p1/image-to-3d",
+    "body": {
+      "face_limit": 1000,
+      "image_url": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+aX1kAAAAASUVORK5CYII=",
+      "texture": true
+    },
+    "synthetic_auth_verified": true
+  },
+  {
+    "path": "/tripo3d/p1/image-to-3d",
+    "body": {
+      "face_limit": 500,
+      "image_url": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+aX1kAAAAASUVORK5CYII=",
+      "texture": false
+    },
+    "synthetic_auth_verified": true
+  },
+  {
+    "path": "/fal-ai/nano-banana-pro",
+    "body": {
+      "aspect_ratio": "1:1",
+      "num_images": 1,
+      "output_format": "png",
+      "prompt": "echo-failure"
+    },
+    "synthetic_auth_verified": true
+  }
+]

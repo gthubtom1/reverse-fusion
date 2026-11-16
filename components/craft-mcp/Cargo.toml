@@ -1,6 +1,6 @@
 [package]
 name = "reverse-fusion-craft-mcp"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2024"
 license = "MIT"
 publish = false
@@ -8,8 +8,13 @@ publish = false
 [workspace]
 
 [dependencies]
-craft-anything-engine = { path = "../../vendor/craft/upstream/crates/engine" }
-craft-anything-mcp = { path = "../../vendor/craft/upstream/crates/mcp" }
+craft-anything-engine = { path = "../../vendor/craft/mcp-upstream/crates/engine" }
+craft-anything-engines = { path = "../../vendor/craft/mcp-upstream/crates/engines" }
+craft-anything-mcp = { path = "../../vendor/craft/mcp-upstream/crates/mcp" }
+craft-anything-evidence = { path = "../../vendor/craft/mcp-upstream/crates/evidence" }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+schemars = "1"
 
 [profile.dev]
 debug = 0

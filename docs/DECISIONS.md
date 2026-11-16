@@ -238,3 +238,19 @@ qualification and independent novice entry observations are reported separately.
 ## RF-026 Original MCP engine plus host-owned reasoning
 
 RF35 confirms REA/Craft were not registered to Codex. Register official REA and pinned Craft engine/MCP/plugins through owned lifecycle-managed entries. Preserve original inspection/browser/device functionality; the upstream independent AI17/setup4 tools are replaced by host reasoning and this installer. Deep is process-only. Explicit upstream allow-run delegates invocation permissions to the external host; no duplicate GUI consent or hidden second AI loop. Candidate edits retain Spec/native leases. Config/call/catalog/provider/target acceptance remain distinct.
+
+
+## RF-027 Bind original responsibilities, providers and persistent projects
+
+RF36 found that catalog and finite tool calls missed operational dependencies.
+Map twenty original responsibilities to real owners, entries, prerequisites,
+checks and negative cases; validate mappings and fixed source pins in the
+existing contract gate. Static mapping is not runtime acceptance.
+MCP and exposed CLI share persisted allowlisted path selection and identities,
+without importing credentials or the desktop's stale startup environment.
+Craft analysis requires an explicitly bound outcome-case original Project;
+restarts reopen native records and case switches isolate sessions. REA exports
+and imports its original Evidence bundle. Missing receipts do not waive owned
+entry removal; missing maintenance Python blocks destructive uninstall.
+Upstream roles need an executable connector before they may be described as
+merely missing external keys or devices.

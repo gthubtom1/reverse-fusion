@@ -1,5 +1,6 @@
 import json
 import os
+import platform
 from pathlib import Path
 import tempfile
 import tomllib
@@ -25,17 +26,27 @@ class McpAdapterTests(unittest.TestCase):
     def make_repo(self, name):
         root = self.base / name
         for relative in ('vendor/node/node-pin/node.exe', 'vendor/rea/package/scripts/rea.mjs',
-                         'vendor/craft/mcp/windows-x64/reverse-fusion-craft-mcp.exe'):
+                         'vendor/craft/mcp/windows-x64/0.1.1/reverse-fusion-craft-mcp.exe',
+                         '.venv/' + ('Scripts/python.exe' if os.name == 'nt' else 'bin/python'), 'scripts/mcp-launch.py'):
             file = root / relative
             file.parent.mkdir(parents=True, exist_ok=True)
             file.write_bytes(b'owned test identity, never executed')
         (root / 'vendor/node/manifest.json').write_text(json.dumps({'entry': 'node-pin/node.exe'}), encoding='utf-8')
+        self.write_craft_manifest(root, 'vendor/craft/mcp/windows-x64/0.1.1/reverse-fusion-craft-mcp.exe')
         (root / 'state').mkdir()
         (root / 'state/rea-runtime.json').write_text(json.dumps({
             'schema_version': 1, 'repository_root': str(root),
             'node': str(root / 'vendor/node/node-pin/node.exe'),
         }), encoding='utf-8')
         return root
+
+    def write_craft_manifest(self, root, relative):
+        system = {'Windows': 'windows', 'Linux': 'linux', 'Darwin': 'macos'}.get(platform.system(), 'unknown')
+        machine = platform.machine().lower()
+        architecture = 'x64' if machine in {'amd64', 'x86_64'} else 'arm64' if machine in {'arm64', 'aarch64'} else machine
+        manifest = root/'components/craft-mcp/manifest.json'
+        manifest.parent.mkdir(parents=True, exist_ok=True)
+        manifest.write_text(json.dumps({'platforms': {f'{system}-{architecture}': {'local_path': relative}}}), encoding='utf-8')
 
     def write(self, data):
         self.config.parent.mkdir(parents=True, exist_ok=True)
@@ -53,10 +64,10 @@ class McpAdapterTests(unittest.TestCase):
                 self.assertTrue(self.config.read_bytes().startswith(original))
                 parsed = tomllib.loads(self.config.read_bytes().decode('utf-8-sig'))
                 rea = parsed['mcp_servers']['reverse-fusion-rea']
-                self.assertEqual(rea['args'], [str(self.root/'vendor/rea/package/scripts/rea.mjs'), 'mcp'])
+                self.assertEqual(rea['args'], [str(self.root/'scripts/mcp-launch.py'), 'rea'])
                 self.assertEqual(rea['env']['REA_MCP_OUTPUT_SCHEMA_PROFILE'], 'compact')
                 self.assertEqual(parsed['mcp_servers']['reverse-fusion-craft']['args'],
-                                 ['--all-tools', '--deep-mode', '--allow-run', '--state-dir', str(self.root/'state/craft-mcp')])
+                                 [str(self.root/'scripts/mcp-launch.py'),'craft'])
                 once = self.config.read_bytes()
                 self.assertFalse(install_mcp(self.root, self.home)['changed'])
                 self.assertEqual(self.config.read_bytes(), once)
@@ -111,7 +122,7 @@ class McpAdapterTests(unittest.TestCase):
         self.assertEqual(self.config.read_bytes(), altered)
 
     def test_missing_launcher_does_not_create_config_and_atomic_failure_keeps_user_bytes(self):
-        (self.root/'vendor/craft/mcp/windows-x64/reverse-fusion-craft-mcp.exe').unlink()
+        (self.root/'vendor/craft/mcp/windows-x64/0.1.1/reverse-fusion-craft-mcp.exe').unlink()
         with self.assertRaisesRegex(ValueError, 'missing'):
             install_mcp(self.root, self.home)
         self.assertFalse(self.config.exists())
@@ -122,6 +133,29 @@ class McpAdapterTests(unittest.TestCase):
             with self.assertRaises(OSError):
                 install_mcp(self.root, self.home)
         self.assertEqual(self.config.read_bytes(), original)
+
+    def test_manifest_versioned_asset_is_required_even_when_legacy_binary_exists(self):
+        legacy = self.root/'vendor/craft/mcp/windows-x64/reverse-fusion-craft-mcp.exe'
+        legacy.write_bytes(b'obsolete path must not satisfy selected distribution')
+        selected = self.root/'vendor/craft/mcp/windows-x64/0.1.1/reverse-fusion-craft-mcp.exe'
+        selected.unlink()
+        with self.assertRaisesRegex(ValueError, 'missing'):
+            install_mcp(self.root, self.home)
+        self.assertFalse(self.config.exists())
+        selected.write_bytes(b'inert selected versioned identity')
+        self.assertTrue(install_mcp(self.root, self.home)['enabled'])
+
+    def test_manifest_cannot_select_outside_checkout_or_traversal_path(self):
+        external = self.base/'outside.exe'
+        external.write_bytes(b'owned outside test identity, never executed')
+        original = b'# unchanged client config\r\n'
+        self.write(original)
+        for relative in (str(external), '../outside.exe', 'vendor/../outside.exe'):
+            with self.subTest(relative=relative):
+                self.write_craft_manifest(self.root, relative)
+                with self.assertRaisesRegex(ValueError, 'relative|leaves'):
+                    install_mcp(self.root, self.home)
+                self.assertEqual(self.config.read_bytes(), original)
 
     def test_custom_codex_home_controls_only_config_path(self):
         selected = self.base/'custom codex'
@@ -139,7 +173,10 @@ class McpAdapterTests(unittest.TestCase):
         receipt.write_text(json.dumps(value), encoding='utf-8')
         install_mcp(self.root, self.home)
         parsed = tomllib.loads(self.config.read_text(encoding='utf-8'))
-        self.assertEqual(parsed['mcp_servers']['reverse-fusion-rea']['command'], str(external))
+        self.assertEqual(parsed['mcp_servers']['reverse-fusion-rea']['command'],
+                         str(self.root/'.venv'/('Scripts/python.exe' if os.name == 'nt' else 'bin/python')))
+        from reverse_fusion.runtime import node_runtime
+        self.assertEqual(node_runtime(self.root)[0],str(external))
         self.assertTrue(inspect_mcp(self.root, self.home)['enabled'])
         before = self.config.read_bytes()
         with patch('reverse_fusion.mcp_adapter.node_runtime', return_value=(None, 'path')):

@@ -5,11 +5,17 @@
 产品目标与用户的新决定优先；本文件提供判断依据，不指定固定的逆向工具顺序。
 
 分析前先查现成工具：默认Codex安装提供`reverse-fusion-rea`与
-`reverse-fusion-craft` MCP。先看schema/provider状态，按问题调用现成反编译、
+`reverse-fusion-craft` MCP。REA先读取固定包内官方技能及所需references，
+不以服务目录代替原版使用方法。先看schema/provider状态，按问题调用现成反编译、
 应用分析、调试、浏览器或设备工具。补充脚本用于现成工具缺口或独立验证，保留
 原因和结果。CLI仍可用于预算执行或原版操作；CLI曾成功不证明宿主MCP已连接。
 真实入口见[MCP-INTEGRATION.md](MCP-INTEGRATION.md)。候选构建仍用Spec审查后的
 native租约，不启动另一个Craft模型循环。目标和输出用当前成果项目绝对路径。
+
+本地工具通过`providers`查看，`providers --refresh`更新本checkout中允许的实际路径。
+安装时的选择由同一Python launcher/CLI恢复，不依赖桌面应用继承某个终端后设的变量，
+不运行shell profile或搬运凭据。path配置、工具操作和目标验收分别判断；
+305个Craft工具可见不表示每个provider都可运行。确需缺失工具时按目标准备并保留实际理由。
 
 ## 接住目标并保存原意
 
@@ -20,6 +26,13 @@ native租约，不启动另一个Craft模型循环。目标和输出用当前成
 首次 bridge 就用用户原话和 `--record` 保存，识别技术后在返回的同一 case_root 细化。
 若先只读探路，首次落盘显式传 `--user-request "用户原话"`；不要把技术 hint 当原目标。
 案例有歧义时先看当前对话和项目材料，仍无法判定再用目标名称向用户确认。
+
+使用Craft分析前，以bridge的当前成果项目和现有case绝对路径调用`fusion_case_open`。
+这是原版分析Project的持久绑定，不能把共享工具目录当默认输出。重新连接同case恢复
+原Evidence ID、调查、unknown、annotation和journal；切换case不混入旧Session。
+目标变化/丢失按返回的`unavailable_targets`处理，保留旧研究，不假装恢复成功。
+REA需要跨连接恢复时，在当前case保存官方`export_evidence_bundle`原件，再用官方导入恢复；
+聊天摘要和临时ID不替代原生bundle，保持UTF-8、原ID、coverage及limitations。
 
 “复刻整个软件”的默认目标包括可观察界面、主要功能、配置、状态、错误行为和依赖。
 先调查功能边界及相互依赖，不把提取到的界面、静态资源或一个纯函数改称整个交付。
@@ -90,6 +103,17 @@ native租约，不启动另一个Craft模型循环。目标和输出用当前成
 宿主负责推理，真实 Craft engine 写入/编辑候选和执行检查；不以文件观察器或离线复制
 替代组件。实现中发现缺事实，结束/中止当前批次、保留结果、回原分析链补证；更新交接后
 开新批次，不能修改冻结研究或测试预期凑通过。
+
+当前分析MCP没有原版GUI Inbox。不要调用`core_person_ask`后把`feature_missing`
+当已向用户提问；用当前宿主输入机制问实际产品问题，用宿主权限机制处理实际操作决定。
+原版`build_*`所需Workspace/Inbox由native租约建立，分析Project不能替代。
+图片可按宿主真实图片工具生成并保留来源；需要原版图片/3D通路时使用`fusion_asset_generate`，
+它在已绑定case内创建单次暂存Workspace/Inbox并调用原版Fal producer。
+每次明确输出、预算及实际付费允许，专用key只在服务环境`REVERSE_FUSION_CRAFT_FAL_KEY`，
+不放入提示、工具参数、记录或旧keychain。结果先在case staging核格式/来源/效果，
+再经审查的Spec/native命令整合正式候选并检查，不能直接绕租约写候选。
+本版验证了本地模拟接口和失败控制，真实付费服务质量另按实际运行验收；
+宿主图片工具不能冒充3D，不以占位物默默替代目标。原版MCP插件与未编译的可选WASM组件插件分别说明。
 
 ## 比较、修正、交付与恢复
 

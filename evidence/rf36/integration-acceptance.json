@@ -1,0 +1,231 @@
+{
+  "schema_version": 1,
+  "version": "1.4.0",
+  "stage": "RF-36",
+  "classification": "engineering integration audit; not a target proof/ledger",
+  "original_roles": [
+    {
+      "id": "reverse-routing",
+      "owner": "Current host plus the owned router/case bridge",
+      "implementation": "present",
+      "basis": [
+        "tests/test_request_recovery.py",
+        "tests/test_cross_project.py"
+      ],
+      "boundary": "Routing is a decision entry, not tool execution or readiness to implement."
+    },
+    {
+      "id": "reverse-case-continuation",
+      "owner": "Case pointer as authority; bounded discovery index and current host for recovery",
+      "implementation": "present",
+      "basis": [
+        "tests/test_request_recovery.py",
+        "evidence/rf36/product-tests.txt"
+      ],
+      "boundary": "The index is rebuildable discovery metadata; case/Evidence/Spec remain authoritative. No recursive full-project scan or power-loss transaction guarantee."
+    },
+    {
+      "id": "reverse-domain-methods",
+      "owner": "Owned domain copies, routing runtime and current host analysis",
+      "implementation": "present",
+      "basis": [
+        "components/reverse-core/preservation.json",
+        "tests/test_reverse_preservation.py"
+      ],
+      "boundary": "Method availability is not proof of success against all protectors or platforms."
+    },
+    {
+      "id": "rea-official-methods",
+      "owner": "Current host reads the installed fixed package skill and selected references",
+      "implementation": "present",
+      "basis": [
+        "vendor/rea/manifest.json",
+        "evidence/rf36/rea-method-repair.json"
+      ],
+      "boundary": "Instructions guide correct use; loading their text does not prove a particular analysis completed."
+    },
+    {
+      "id": "rea-mcp-cli-providers",
+      "owner": "Official REA server/CLI with repository-selected Node and shared provider paths",
+      "implementation": "present",
+      "basis": [
+        "evidence/rf36/provider-report.json",
+        "evidence/rf36/raw/cli-cwd.json",
+        "tests/test_provider_integration.py"
+      ],
+      "boundary": "Each provider requires its own executable/runtime/device and actual selected-operation observation. This contract does not install every provider."
+    },
+    {
+      "id": "rea-evidence-persistence",
+      "owner": "Official REA export/import plus original case Evidence refs",
+      "implementation": "present",
+      "basis": [
+        "evidence/rf36/provider-report.json",
+        "evidence/rf36/provider-bundle.json"
+      ],
+      "boundary": "Handoff SHA checks prove supplied fixity, not native schema authentication or semantic truth; actual REA import/read is separate."
+    },
+    {
+      "id": "rea-comparison-proof-ledger",
+      "owner": "Official REA evidence/proof/ledger APIs; independently executed comparison producers",
+      "implementation": "present",
+      "basis": [
+        "evidence/rf33/owned-desk-completion.json",
+        "evidence/rf22/manifest.json"
+      ],
+      "boundary": "Native REA proof is not fabricated from local equality summaries; designed behavior remains distinguishable from observed original behavior."
+    },
+    {
+      "id": "spec-official-discovery",
+      "owner": "Installed official Spec CLI and integration-aware phase resolver",
+      "implementation": "present",
+      "basis": [
+        "tests/test_host_projects.py",
+        "reverse_fusion/spec_support.py"
+      ],
+      "boundary": "Phase discovery is distinct from completing its reasoning, scripts and hooks."
+    },
+    {
+      "id": "spec-evidence-native-gate",
+      "owner": "Official phase execution plus inherited case/handoff review and native prepare",
+      "implementation": "present",
+      "basis": [
+        "tests/test_reconstruction_gate.py",
+        "tests/test_craft_native.py"
+      ],
+      "boundary": "Semantic readiness remains the host/reviewer responsibility; mechanical checks do not discover every omitted dependency."
+    },
+    {
+      "id": "spec-converge-feedback",
+      "owner": "Current host executes official implement/converge against the actual candidate",
+      "implementation": "present",
+      "basis": [
+        "evidence/rf33/owned-desk-completion.json"
+      ],
+      "boundary": "No claim that every project has run converge merely because the generated phase exists."
+    },
+    {
+      "id": "craft-tools-modes-plugins",
+      "owner": "Pinned original engine/MCP plus owned thin launcher and current host permission decisions",
+      "implementation": "present",
+      "basis": [
+        "evidence/rf36/mcp-report.json",
+        "components/craft-mcp/manifest.json"
+      ],
+      "boundary": "AI/setup layers are deliberately reassigned; this is not a claim to expose every standalone CLI high-level tool or every external plugin."
+    },
+    {
+      "id": "craft-durable-case-project",
+      "owner": "Original Craft Project in the outcome case, bound by the owned case-opening adapter",
+      "implementation": "present",
+      "basis": [
+        "evidence/rf36/craft-memory-report.json",
+        "evidence/rf36/craft-memory-calls.json"
+      ],
+      "boundary": "The ownership marker is not the analysis authority; original Craft Project records remain native and unresolved target recovery is reported."
+    },
+    {
+      "id": "craft-provider-paths",
+      "owner": "Allowlisted shared provider discovery plus owned Craft state settings",
+      "implementation": "present",
+      "basis": [
+        "tests/test_provider_integration.py",
+        "tests/test_mcp_protocol.py",
+        "evidence/rf36/craft-memory-report.json"
+      ],
+      "boundary": "Devices, Java and commercial external tools are conditional resources, not automatically ready because core deployment passes."
+    },
+    {
+      "id": "craft-native-writer",
+      "owner": "Current host supplies content; actual native engine uses the reviewed single-writer lease",
+      "implementation": "present",
+      "basis": [
+        "tests/test_craft_native.py",
+        "evidence/rf33/owned-desk-completion.json"
+      ],
+      "boundary": "Commands have actual filesystem/network effects; this is reviewed ownership and process cleanup, not an OS sandbox or behavior-equivalence proof."
+    },
+    {
+      "id": "craft-host-build-orchestration",
+      "owner": "Current host conversation/progress plus official Spec and native writer; no duplicate upstream AI loop",
+      "implementation": "present",
+      "basis": [
+        "evidence/rf33/owned-desk-completion.json",
+        "tests/test_request_recovery.py"
+      ],
+      "boundary": "A new host requires actual entry/tool/permission mapping; it does not require another logged-in full-model sample run for every adapter."
+    },
+    {
+      "id": "craft-host-questions-consent",
+      "owner": "Current host user-input and permission flow; original tool effects/errors remain informative",
+      "implementation": "present",
+      "basis": [
+        "docs/AGENT-WORKFLOW.md",
+        "tests/test_mcp_protocol.py"
+      ],
+      "boundary": "The host permission system remains authoritative; catalog registration is not universal authorization."
+    },
+    {
+      "id": "craft-assets-and-3d",
+      "owner": "Current host media tools or an explicitly configured compatible external asset provider; native writer integrates resulting files",
+      "implementation": "present",
+      "basis": [
+        "evidence/rf36/craft-assets-report.json",
+        "evidence/rf36/craft-assets-calls.json"
+      ],
+      "boundary": "Executable original image/model connector qualified with local loopback provider and negative controls; dedicated external key, budget and host permission required for real paid generation, which was not performed. Formal candidates are integrated only through reviewed Spec/native commands."
+    },
+    {
+      "id": "independent-comparison",
+      "owner": "Current host plus independent process/UI/runtime comparators and official REA claims where applicable",
+      "implementation": "present",
+      "basis": [
+        "tests/test_differential.py",
+        "evidence/rf33/held-ui-comparison.json"
+      ],
+      "boundary": "Each comparison reports its actual finite scope; new targets are not declared accepted in advance."
+    },
+    {
+      "id": "failure-cleanup-recovery",
+      "owner": "Current host case recovery, official provider remediation and owned process runners",
+      "implementation": "present",
+      "basis": [
+        "tests/test_rea_runner.py",
+        "tests/test_mcp_protocol.py",
+        "tests/test_differential.py"
+      ],
+      "boundary": "Cleanup/telemetry establish process ownership at the checked platform scope, not file/network isolation or universal responsiveness."
+    },
+    {
+      "id": "deployment-ownership",
+      "owner": "Repository bootstrap/runtime identity checks plus owned selected-host lifecycle",
+      "implementation": "present",
+      "basis": [
+        "tests/test_install_failures.py",
+        "evidence/rf36/config-preservation.json"
+      ],
+      "boundary": "Windows x64 is the qualified native distribution. No new user target sample or full-model login/run per host is required to validate the shared installation contract."
+    }
+  ],
+  "current_required_implementation_gaps": [],
+  "external_execution_conditions": [
+    "real paid image/model generation needs a dedicated provider key, credits, explicit operation permission and per-asset quality checks; local loopback producer qualified only",
+    "device/commercial/native-platform operations need their actual supported tools/devices/OS; no all-providers acceptance",
+    "current old desktop connections require reconnect to load new launcher/tools; persisted registration and independent exact registered commands verified"
+  ],
+  "intended_host_substitutions": [
+    "standalone second AI/rebuild orchestration -> current host reasoning and official Spec/native tool lifecycle",
+    "GUI person questions/operation consent -> current host conversation/permissions",
+    "standalone setup/model-key management -> scoped installer and current host model/account"
+  ],
+  "source_regression_report": "release/verification.json",
+  "final_deployment": "evidence/rf36/deployed-release.json",
+  "remote_install": "evidence/rf36/clean-install.json",
+  "status": "local-qualified; remote-install-pending",
+  "regressions": {
+    "product": 175,
+    "reconstruction": 39,
+    "skipped": 0
+  },
+  "local_deployed_gates": 23
+}

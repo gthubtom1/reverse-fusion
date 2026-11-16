@@ -4,6 +4,7 @@ import tempfile
 import unittest
 from unittest.mock import patch
 import subprocess
+from hashlib import sha256
 
 from reverse_fusion.component_status import component_status
 from reverse_fusion.runtime import node_runtime
@@ -54,7 +55,16 @@ class ComponentStatusTests(unittest.TestCase):
             (package / 'scripts/rea.mjs').write_text('// synthetic presence fixture', encoding='utf-8')
             identity = {'name': 'rea-agents', 'version': '6.9.0', 'engines': {'node': pin['node_engine']}}
             (package / 'package.json').write_text(json.dumps(identity), encoding='utf-8')
+            self.assertEqual(component_status(root)['rea']['status'], 'methods-incomplete')
+            method = package / 'skills/reverse-engineer-anything/SKILL.md'
+            method.parent.mkdir(parents=True)
+            method.write_bytes(b'synthetic original method identity')
+            pin['method_files_sha256']={method.relative_to(vendor).as_posix():sha256(method.read_bytes()).hexdigest()}
+            (vendor / 'manifest.json').write_text(json.dumps(pin), encoding='utf-8')
             self.assertEqual(component_status(root)['rea']['status'], 'present-unverified')
+            method.write_bytes(b'changed method from a different package version')
+            self.assertEqual(component_status(root)['rea']['status'], 'methods-incomplete')
+            method.write_bytes(b'synthetic original method identity')
             identity['version'] = '0.0.0'
             (package / 'package.json').write_text(json.dumps(identity), encoding='utf-8')
             self.assertEqual(component_status(root)['rea']['status'], 'identity-mismatch')

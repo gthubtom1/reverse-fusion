@@ -34,9 +34,9 @@ for package in sorted(metadata['packages'], key=lambda item: (item['name'], item
     files = sorted({path for path in source.iterdir() if path.is_file()
                     and path.name.lower().startswith(('license', 'licence', 'copying', 'notice'))})
     if package['name'].startswith('craft-anything-') and not files:
-        files = sorted((root / 'vendor/craft/upstream').glob('LICENSE-*'))
+        files = sorted((root / 'vendor/craft/mcp-upstream').glob('LICENSE-*'))
     if package['name'] == 'reverse-fusion-craft-mcp':
-        files = [root / 'vendor/craft/upstream/LICENSE-MIT']
+        files = [root / 'vendor/craft/mcp-upstream/LICENSE-MIT']
     if not files:
         files = sorted(path for path in source.rglob('*') if path.is_file()
                        and path.name.lower().startswith(('license', 'licence', 'copying', 'notice')))
@@ -84,10 +84,11 @@ asset.update(binary_sha256=hashlib.sha256(binary.read_bytes()).hexdigest(),
              archive_sha256=hashlib.sha256(archive.read_bytes()).hexdigest(),
              notices_sha256=hashlib.sha256(notice.read_bytes()).hexdigest(),
              dependency_notices_sha256=hashlib.sha256(inventory_path.read_bytes()).hexdigest())
+source_names = sorted(path.relative_to(root).as_posix() for path in (root/'components/craft-mcp/src').rglob('*.rs'))
+source_names += ['components/craft-mcp/Cargo.toml', 'components/craft-mcp/Cargo.lock']
 manifest['adapter_source_sha256'] = {
     name: hashlib.sha256((root / name).read_bytes().replace(b'\r\n', b'\n')).hexdigest()
-    for name in ('components/craft-mcp/src/main.rs', 'components/craft-mcp/Cargo.toml',
-                 'components/craft-mcp/Cargo.lock')}
+    for name in source_names}
 manifest_path.write_bytes((json.dumps(manifest, indent=2) + '\n').encode('utf-8'))
 print(json.dumps({'archive': str(archive), 'sha256': asset['archive_sha256'],
                   'binary_sha256': asset['binary_sha256'], 'packages': len(inventory)}))

@@ -1,38 +1,50 @@
 # Project Context
 
-当前1.3.0/RF-35修复MCP接入缺口；默认Codex部署包含REA官方server和Craft原版engine工具。当前边界见MCP-INTEGRATION.md与CURRENT-STATE.md，旧CLI成功不能证明宿主已加载MCP。
+Reverse Fusion当前版本为 **1.4.0 / RF-36**，主要完整分发为Windows x64，主要本机宿主为Codex。
+本轮按原版职责修复provider接线、Craft分析持久化、续作与安装生命周期；
+最终源码回归、部署、远端安装和发布状态统一读取[CURRENT-STATE](CURRENT-STATE.md)及
+[本轮checkpoint](../checkpoints/RF-36-20261116-001.md)，不沿用旧版本“完整”结论。
+当前合同见[RELEASE-1.4](RELEASE-1.4.md)、[职责承接](INTEGRATION-CONTRACT.md)与
+[release/manifest.json](../release/manifest.json)。
 
-当前交付为1.3.0 Windows x64/Codex工程版；RF35补齐REA/Craft MCP接入。
-不再要求追加样本或实际软件复刻作为发布前提。工程功能、组件部署、异常恢复与有限检查已完成。
-具体目标的结果另有自身验收。当前合同见RELEASE-1.2.md与release/manifest.json。
-完整需求和最新结果见USER-REQUIREMENTS-REVIEW.md，工作顺序见REMAINING-PRODUCT-WORK.md。
-RF-33实际完成普通白话整段应用交付、共有失败/预算/依赖交接和Pi全程使用；
-Claude项目适配检查已完成；完整模型运行未实测且非适配发布门，不自动轮询登录。
-检查日志和当前源码摘要绑定保存。
+这是独立GitHub项目。只给仓库URL时，智能体从[AGENT-BOOTSTRAP](AGENT-BOOTSTRAP.md)
+安装固定真实组件和选定宿主入口，无需另存聊天或重做开发流程。
+普通使用见[BEGINNER-GUIDE](BEGINNER-GUIDE.md)，智能体责任见[AGENT-WORKFLOW](AGENT-WORKFLOW.md)。
+22条原需求及实际依据在[需求逐项表](USER-REQUIREMENTS-REVIEW.md)。
 
-Reverse Fusion 是独立 GitHub 项目，不是旧安装仓库的改版。它在当前 coding agent
-中提供可恢复的普通开发、分析和复刻辅助能力：enhanced Reverse 领域技能、官方
-REA、官方 Spec 工作流、真实 Craft engine 接入、独立验收与仓库本地安装入口。
-部署交接保存在 `docs/AGENT-BOOTSTRAP.md`，用户只需仓库链接，无需另存聊天文本。
-白话任务承接由 `docs/AGENT-WORKFLOW.md` 约定；用户例子见 `docs/BEGINNER-GUIDE.md`。
-原始交付目标与当前分析/实现阶段分开持久保存，不因领域细化或“继续”而丢失。
+## 实际分工
 
-Reverse 是唯一 route/case owner；REA 管理 Evidence/comparison/ledger；Spec
-管理项目任务和来源引用；宿主负责推理，通过真实 Craft engine 写候选和运行检查；独立 verifier
-负责业务验收。REA、Spec、Craft 是必装核心组件，Craft 原生接缝及可重放补丁由本仓库维护。
-不启动重复 Study 或另选模型。可选子 CLI transport 有独立的登录/额度状态。
+- Reverse是route/case owner，保留原话、交付目标、领域方法、引用和当前阶段；
+  case是权威，受控索引只负责发现和恢复，不授权加载越界内容。
+- REA使用同一固定安装包的原版技能、方法、官方MCP/CLI和原生Evidence/comparison/proof/ledger。
+  需要原生能力时调用真实工具，普通源码解释则使用现有源码工具，不为凑齐组件名称重复分析。
+- 官方Spec在成果项目生成并执行当前宿主工作流，管理证据支持的规格、计划、任务及converge反馈。
+  手写同名文档或只有init不能替代执行。
+- Craft原版engine/MCP提供分析、浏览器、原生/设备/provider及可用插件；
+  先通过fusion_case_open绑定成果case的原版Project，持久保存并恢复研究。
+  Project与构建Workspace不同，通用分析MCP不绕过正式候选门。
+- 当前宿主负责推理、用户问题、权限、进度和补充要求；通过真实native Craft冻结租约
+  执行候选write/edit/command/check/summary/cleanup。session观察器不替代实际writer。
+  图片/3D按真实producer、预算、密钥和输出条件处理，不用不存在的宿主能力作替代。
+- 独立原版/候选比较负责具体行为、状态、界面与副作用验收；REA原生proof/ledger结果
+  保留自身authority、coverage、limitations和未决项，局部通过不代替整个产品交付。
 
-normal-dev 默认不启动 REA 或 Builder。开发中途可建立隔离 analysis subcase，
-保留 route、原版 Evidence、限制和结论；只有 reconstruction 才冻结 tasks，
-生成候选并进行 build/run、comparison、proof、cleanup 和 ledger。只把审查后的
-Evidence 支持结论或候选带回主项目，避免子案例污染普通开发目录。
+## 路径、恢复与边界
 
-模型可根据目标自适应选择静态/动态、脱壳、dump、hook、模拟、设备及 provider。
-本仓库提供上下文、边界与证据恢复，不把逆向固定为单一路径。加壳、混淆、反调试
-能力的保全不等于所有变体已执行；未知项保留 unknown 和下一步 probe。
+MCP、普通REA CLI和有预算入口共享checkout保存的allowlist provider路径；
+部署发现、运行恢复与真实操作分别检查，不从终端后设环境推定桌面服务已接上后端。
+本机路径和配置receipt不作为另一台电脑的配置提交；新机重新发现现有工具。
+原版方法、固定资产、所选provider身份改变时，相关旧资格必须作废并重核。
 
-项目不选择或下载模型，不复制凭据，不写旧仓库/旧安装或宿主运行配置。选择 Codex
-安装时写入指向当前checkout的用户级路由适配层及两项自有MCP登记；其他工作区可通过该适配层
-使用共享路由，但输出仍留在当前项目。上游仅在实际有益时
-选择性吸收，不自动跟随每次发布。当前状态以 CURRENT-STATE 和最新 checkpoint
-为准，历史 final 标签不能覆盖后来发现的问题。
+成果留当前项目。normal-dev不强制创建reverse case；需要时建立隔离analysis subcase，
+只有reconstruction进入证据审查、官方Spec、冻结实现和独立比较。
+加壳、混淆、反调试、dump、hook、模拟和设备等方法从实际证据选择，不固定为单一路线。
+缺失资料只阻断依赖它的任务，恢复时继续原目标与有效批次。
+
+安装仅维护自有入口和托管组件：Codex用户级薄技能/指引及两项MCP指向当前checkout，
+保留无关配置与其他checkout指针；缺receipt仍按归属处理，缺维护Python拒绝删除runtime。
+旧安装、无关宿主设置、模型和凭据只读，不启动重复AI循环或原版setup越权改配置。
+
+共享核心已有Codex/Pi完整自然使用；Pi/Claude按项目入口、工具与官方Spec布局核适配。
+Claude完整模型运行未实测且非强制门；不轮询登录。新宿主或非Windows分发需核实际差异。
+历史Evidence、失败、原ID与旧绝对路径保留；历史final标签不覆盖后来发现并修复的问题。

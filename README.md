@@ -3,13 +3,18 @@
 给当前 coding agent 使用的普通开发、逆向分析与独立复刻工具集。
 仓库：<https://github.com/gthubtom1/reverse-fusion>。
 
-产品版本 **`1.3.0`，Windows x64 / Codex 完整工程版**，当前维护阶段 `RF-35 MCP 接入修复`。
+产品版本 **`1.4.0`，Windows x64 / Codex 完整工程版**，当前维护阶段 `RF-36 原版职责与实际工具闭环`。
 不需要用户继续提供样本才能安装或交付本版本。范围与有限发布门见
-[版本说明](docs/RELEASE-1.3.md)。准确的工程检查、历史实测和
+[版本说明](docs/RELEASE-1.4.md)。准确的工程检查、历史实测和
 未覆盖范围分别保存在 [当前状态](docs/CURRENT-STATE.md)、
 [发布验收](docs/FINAL-RELEASE-ACCEPTANCE.md) 与
-[最终收尾](docs/FINAL-CLOSEOUT.md)与[最新 checkpoint](checkpoints/RF-35-20261116-001.md)。
+[最终收尾](docs/FINAL-CLOSEOUT.md)与[最新 checkpoint](checkpoints/RF-36-20261116-001.md)。
 工程版本与具体软件的复刻结果分别报告。旧版本状态和执行记录按需追溯，不是当前下一步指令。
+
+1.4.0按[原版职责承接合同](docs/INTEGRATION-CONTRACT.md)补齐实际工具路径、原版使用
+方法与记录恢复：MCP和CLI共用已保存的本地分析器路径，Craft在成果case中打开原生
+Project，REA原生Evidence可导出并跨进程恢复。Ghidra、WABT、JADX与Craft重启/隔离
+已有真实调用记录；工具目录和功能效果分别验收，不用目录数量代替工具工作。
 
 ## 换电脑，只给仓库链接
 

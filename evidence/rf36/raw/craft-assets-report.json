@@ -1,0 +1,25 @@
+{
+  "status": "pass",
+  "scope": "actual original image/3D tool and Fal producer over explicit loopback HTTP; no paid service or quality claim",
+  "tools": 305,
+  "binary_sha256": "f6a9e75145670051515a4560c64b76534d4706e8eeda42b0be3e213a310b2242",
+  "case_root": "D:\\tmp\\rf36-craft-asset-outcome-vb12stxc\\work\\current-case",
+  "missing_key_refused": true,
+  "unprepared_original_route_refused": true,
+  "host_allow_required": true,
+  "budget_refused_before_network": true,
+  "path_escape_refused": true,
+  "png_generated": true,
+  "glb_generated": true,
+  "local_reference_generated": true,
+  "original_provider_error_preserved": true,
+  "credential_redacted": true,
+  "formal_candidate_unchanged": true,
+  "nonloopback_fixture_rejected": true,
+  "network_requests": 5,
+  "cleanup": {
+    "status": "verified",
+    "scope": "owned Windows Job active-process count zero before close",
+    "root_returncode": 0
+  }
+}

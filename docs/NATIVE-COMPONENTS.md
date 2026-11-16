@@ -1,7 +1,7 @@
 # 真实组件部署与实现交接
 
-RF-28 起，完整部署要求实际安装 REA、Spec Kit、Craft engine与原版MCP工具接入。
-RF-35默认Codex登记REA官方server与Craft engine MCP（303个engine工具）；原版层次、
+当前完整部署要求实际安装 REA、Spec Kit、Craft engine与原版MCP工具接入。
+RF-36/1.4.0默认Codex登记REA官方server与Craft MCP（303个engine工具加案例绑定与资产暂存两个自有工具）；原版层次、
 插件与现有冻结writer的协作见[MCP-INTEGRATION.md](MCP-INTEGRATION.md)。安装后执行
 `mcp-check`，不能以CLI运行或MCP doctor代替实际宿主登记。路由、手写规格、
 `session` 文件观察器和 `craft --source` 离线复制均不能替代这些组件。
@@ -28,6 +28,14 @@ Windows x64 的 `scripts/install.ps1` 默认安装全部核心组件；默认运
   不能混用身份。本接入不启动原版 Study/模型会话，当前选定宿主提供推理和文件内容，
   实际 Workspace、写文件、编辑、运行检查由原生 Craft 工具执行。
 
+REA和Craft MCP由仓库Python launcher启动固定原版，保持原始stdio协议并管理子进程。
+安装或`providers --refresh`把允许的现有工具路径保存在本checkout；MCP与`rea-run`
+从同一来源恢复，避免桌面服务遗漏终端后设置的Ghidra/Java/WABT/JADX路径。
+刷新不运行shell profile、不导入任意环境或凭据；路径存在仍须用原工具执行验证。
+实际WABT/JADX/Ghidra和原生bundle重启恢复记录见
+[provider-report](../evidence/rf36/provider-report.json)与
+[provider-calls](../evidence/rf36/provider-calls.json)。完整安装不等于自动安装所有目标专用工具。
+
 目前发布构建只资格化 Windows x64。其他平台不能声称完整安装；保留现有平台支持代码，
 通过源码适配和实机验证再增加对应分发。没有自动改变模型、账号、凭据或全局运行时。
 
@@ -38,6 +46,28 @@ Windows x64 的 `scripts/install.ps1` 默认安装全部核心组件；默认运
 冒充已安装。维护者格式化后重建，通过测试，再运行 `scripts/package-craft.py` 打包。
 打包需要 `RF_CARGO`、`RUSTC`、`RF_MINGW_LICENSES`，包含 267 个依赖包的声明及许可正文。
 预编译包的二进制/归档/声明摘要均固定；不把可重复构建等同于逐字节一致构建。
+
+Craft MCP0.1.1从独立`vendor/craft/mcp-upstream`构建，应用其manifest记录的案例绑定/
+有效模式补丁；native writer继续使用`vendor/craft/upstream`及原native manifest，
+避免MCP增强破坏旧writer的严格源码重建。两者都固定同一原版commit，职责和receipt分别核对。
+
+## 分析Project与构建Workspace
+
+使用Craft MCP分析前调用`fusion_case_open`，传当前成果项目及其现有case的绝对路径。
+bridge返回相对case_root时先解析。该工具在case内建立原版`craft-analysis.cany`，
+不是创建候选构建。它持久保存原版Evidence、unknowns、investigation、annotations、
+journal和目标上下文；服务重启后重新绑定同case恢复。切换case换新Session，
+目标丢失/变化明确返回而不抹除研究。未绑定分析会拒绝，诊断/设置仍可调用。
+实际恢复与隔离结果见[craft-memory-report](../evidence/rf36/craft-memory-report.json)。
+
+原版build工具依赖构建Workspace/Inbox，分析Project不提供这些条件。正式候选仍用
+下述native租约真实创建Workspace/Inbox，不能通过分析MCP绕过冻结交接。
+原版问答/审批卡片由当前宿主用户输入和权限承担；图片可用宿主图片工具。
+原版图片/3D producer通过`fusion_asset_generate`单次case内staging接通，显式
+`budget_usd`/`allow_paid`和服务环境`REVERSE_FUSION_CRAFT_FAL_KEY`；不读旧keychain。
+它调用原版资产工具、保存产物/费用/摘要，但不写正式候选；审查后通过冻结的native命令
+集成并重跑检查。实际loopback资格见[asset-report](../evidence/rf36/craft-assets-report.json)，
+未运行真实付费服务。参数、权限与失败规则见[MCP-INTEGRATION](MCP-INTEGRATION.md)。
 
 ## Spec 到真实 Craft
 

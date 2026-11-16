@@ -1,0 +1,73 @@
+diff --git a/crates/engine/src/clean_room.rs b/crates/engine/src/clean_room.rs
+index f3a6c93..b4aea4b 100644
+--- a/crates/engine/src/clean_room.rs
++++ b/crates/engine/src/clean_room.rs
+@@ -12,6 +12,9 @@ use craft_anything_evidence::{ErrorCode, ToolError};
+ 
+ /// The tools that run in Clean room, by id. Tools of the AI and setup layers are listed here too.
+ pub const TOOLS: &[&str] = &[
++    // The owned host adapter's context binding reads only its own case store.
++    "fusion_case_open",
++    "fusion_asset_generate",
+     // The session, its evidence and open questions, and the investigation memory.
+     "core_session_show",
+     "core_targets_list",
+diff --git a/crates/engine/src/lib.rs b/crates/engine/src/lib.rs
+index 0137fec..2de3b84 100644
+--- a/crates/engine/src/lib.rs
++++ b/crates/engine/src/lib.rs
+@@ -254,6 +254,14 @@ impl Engine {
+             }
+         };
+         session.label(spec.id);
++        if session.fusion_require_project && session.project.is_none()
++            && !matches!(spec.id, "fusion_case_open" | "core_session_show" | "settings_show"
++                | "settings_set" | "engines_list" | "plugins_list" | "plugins_add"
++                | "plugins_remove" | "plugins_refresh" | "engines_install" | "core_evidence_export") {
++            return Err(ToolError::new(ErrorCode::FeatureMissing,
++                "Bind the current outcome project and case with fusion_case_open before analysis or investigation updates.")
++                .with_remediation("Run the shared bridge for this outcome project, then pass its absolute project_root and case_root to fusion_case_open. Settings/provider setup and diagnostics remain available."));
++        }
+         if session.clean_room() && !clean_room::allows(spec.id) {
+             return Err(clean_room::refusal(spec.id));
+         }
+@@ -297,6 +305,11 @@ impl Engine {
+         if let ToolOutput::Evidence(ev) = &output {
+             session.record((**ev).clone())?;
+         }
++        if session.fusion_require_project && let Some(project) = &session.project {
++            let bytes = serde_json::to_vec_pretty(&session.shared_targets())
++                .map_err(|e| ToolError::internal(e.to_string()))?;
++            crate::project::write_atomic(&project.root.join("fusion-targets.json"), &bytes)?;
++        }
+         Ok(output)
+     }
+ }
+diff --git a/crates/engine/src/session.rs b/crates/engine/src/session.rs
+index 9ba383b..27c07f7 100644
+--- a/crates/engine/src/session.rs
++++ b/crates/engine/src/session.rs
+@@ -88,6 +88,9 @@ pub struct Session {
+     /// Deep mode (`true`) or Clean room (`false`) for this process only, over
+     /// `settings.deep_mode` and never saved: the CLI's `--deep` and `--clean-room`.
+     pub deep_for_run: Option<bool>,
++    /// Owned external-host integration: require an explicitly bound durable Project before
++    /// analysis/mutations. Defaults off for the original CLI, desktop and native writer.
++    pub fusion_require_project: bool,
+ }
+ 
+ impl Session {
+diff --git a/crates/engine/src/tools/setup_tools.rs b/crates/engine/src/tools/setup_tools.rs
+index fde9cc8..30057e0 100644
+--- a/crates/engine/src/tools/setup_tools.rs
++++ b/crates/engine/src/tools/setup_tools.rs
+@@ -413,7 +413,8 @@ fn engines_list(ctx: &mut Ctx<'_>, _params: Value) -> Result<ToolOutput, ToolErr
+     Ok(ToolOutput::Value(json!({
+         "engine_store": store.display().to_string(),
+         "engines": engines,
+-        "deep_mode": {"enabled": s.deep_mode, "ghidra": s.ghidra_launcher().map(|p| p.display().to_string())},
++        "deep_mode": {"enabled": !ctx.session.clean_room(), "saved_enabled": s.deep_mode,
++                      "ghidra": s.ghidra_launcher().map(|p| p.display().to_string())},
+         "game_engines": builders,
+     })))
+ }

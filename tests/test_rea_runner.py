@@ -11,6 +11,16 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 class ReaRunnerTests(unittest.TestCase):
+    def test_native_error_with_zero_exit_is_failed_and_retained(self):
+        with tempfile.TemporaryDirectory() as directory:
+            project=Path(directory).resolve();(project/'args.json').write_text('[]')
+            raw=b'{"error":"Analysis failed","code":"target_unavailable","retryable":false}'
+            fake={'status':'observed','exit_code':0,'output_truncated':False,'stdout':raw,'stderr':b''}
+            with patch('reverse_fusion.rea_runner.run_owned',return_value=fake):
+                report=run_rea(ROOT,project,operation='inspect-artifact',arguments='args.json',output='run')
+            self.assertEqual(report['execution_status'],'failed')
+            self.assertEqual((project/'run/stdout.json').read_bytes(),raw)
+
     def test_partial_error_with_zero_exit_is_retained_and_never_complete(self):
         with tempfile.TemporaryDirectory() as directory:
             project = Path(directory).resolve()

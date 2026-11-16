@@ -1,0 +1,58 @@
+{
+  "scope": "owned fixture real protocol/tools/browser, bound outcome Project and restart evidence; not every provider or target equivalence",
+  "outcome_project": "D:\\tmp\\rf36-mcp-outcome-atif59mm",
+  "case_root": "D:\\tmp\\rf36-mcp-outcome-atif59mm\\work\\owned-case",
+  "servers": {
+    "rea": {
+      "server": {
+        "name": "rea",
+        "version": "6.9.0"
+      },
+      "tools": 255,
+      "prompts": 6,
+      "binary_sha256": "d702daa815eabbff763c7d3808e235cf031cf2ca70211b56847bc72f51e240e5",
+      "called": [
+        "binary_session",
+        "analyze_javascript_application"
+      ],
+      "cleanup": {
+        "status": "verified",
+        "scope": "owned Windows Job active-process count zero before close",
+        "root_returncode": 0
+      }
+    },
+    "craft": {
+      "server": {
+        "name": "craft-anything",
+        "title": "Craft Anything",
+        "version": "0.6.1"
+      },
+      "tools": 305,
+      "prompts": 6,
+      "binary_sha256": "f6a9e75145670051515a4560c64b76534d4706e8eeda42b0be3e213a310b2242",
+      "called": [
+        "fusion_case_open",
+        "core_target_open",
+        "js_app_map",
+        "engines_list",
+        "web_site_open",
+        "web_site_capture",
+        "web_site_close"
+      ],
+      "cleanup": {
+        "status": "verified",
+        "scope": "owned Windows Job active-process count zero before close",
+        "root_returncode": 0
+      },
+      "evidence_id": "ev_5d9d494409c3e05e97739db0d63b250eda344de5732f915f8e433af07b2811bc",
+      "restart_evidence_restored": true,
+      "restart_cleanup": {
+        "status": "verified",
+        "scope": "owned Windows Job active-process count zero before close",
+        "root_returncode": 0
+      },
+      "capture_directory": "D:\\tmp\\rf36-mcp-outcome-atif59mm\\work\\owned-case\\capture"
+    }
+  },
+  "status": "pass"
+}

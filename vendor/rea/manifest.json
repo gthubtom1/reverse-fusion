@@ -4,5 +4,16 @@
   "source": "https://registry.npmjs.org/rea-agents/-/rea-agents-6.9.0.tgz",
   "integrity": "sha512-KqDn1UR5BMqHoQ3MGAnPuWiSKwgdFaz1L/uUNgrKt+1W8kPtgYP8AWEOXIF1lDIOBVyPuYIIst2iamo1Wf3r8g==",
   "entry": "package/scripts/rea.mjs",
-  "node_engine": "^22.23.4 || ^24.22.1 || >=26.12.1"
+  "node_engine": "^22.23.4 || ^24.22.1 || >=26.12.1",
+  "method_files_sha256": {
+    "package/skills/reverse-engineer-anything/SKILL.md": "9312fa145b251ea428809634f039fb4ac15f18d59a32d6004a638b2de7d22016",
+    "package/skills/reverse-engineer-anything/references/android-applications.md": "4fe894d463daaf9175192633186160fc50fb6718b5cc8186bf853377a9f72e7f",
+    "package/skills/reverse-engineer-anything/references/connection-and-recovery.md": "2d78f50f4bad6e50127647256ae89865ad6cc046d1fe460e53a13b830ce814aa",
+    "package/skills/reverse-engineer-anything/references/desktop-build.md": "7e0b1ab7ff7372d39681bc88e924b4afbabd95091d13aba72928f55668a82b17",
+    "package/skills/reverse-engineer-anything/references/environments.md": "1be68bc9b15e5ace9b731a64125b64eb457ab0276c7961a41b6fa1240d179007",
+    "package/skills/reverse-engineer-anything/references/evidence-workflows.md": "401e588eec730d26452a3b3ab9bb975a5153424b64643e72151f944cb290cf6f",
+    "package/skills/reverse-engineer-anything/references/javascript-applications.md": "4d1671a90634320724eb61b53e828c7faaadca77721798cef40e420357f5ff18",
+    "package/skills/reverse-engineer-anything/references/native-and-artifacts.md": "0943da927abb6f0b231ac609e8f333eaf50a05a0c889dcba41e58a3ba0472a1d",
+    "package/skills/reverse-engineer-anything/references/runtime-observation.md": "7f9263b9caea58864da3bc1980037ea399735b8f165d3b96e48e49503a6a1a70"
+  }
 }

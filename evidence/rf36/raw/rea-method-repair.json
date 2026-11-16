@@ -1,0 +1,102 @@
+{
+  "schema_version": 1,
+  "operation": "actual-isolated-rea-method-repair",
+  "recorded_at": "2026-11-16T12:38:37.873270+00:00",
+  "record_origin": "Compact transcription of the actual audit tool observation; not a new bootstrap run or reconstructed raw log.",
+  "source_tool_result_chunk_id": "01e7e4",
+  "fixture": {
+    "temporary_repository": "D:\\tmp\\rf36 bootstrap repair 15708xr5",
+    "disposed_after_observation": true,
+    "initial_package_identity": "Correct rea-agents 6.9.0 package metadata and entry placeholder; eight method files absent and connection-and-recovery.md replaced with owned incorrect fixture bytes.",
+    "copied_inputs": [
+      "scripts/bootstrap-rea.ps1",
+      "scripts/lib/ScriptSupport.ps1",
+      "vendor/rea/manifest.json",
+      "vendor/rea/rea-agents-6.9.0.tgz"
+    ]
+  },
+  "actual_invocation": {
+    "argv": [
+      "powershell",
+      "-NoProfile",
+      "-File",
+      "D:\\tmp\\rf36 bootstrap repair 15708xr5\\scripts\\bootstrap-rea.ps1",
+      "-NodePath",
+      "D:\\Project\\reverse\\vendor\\node\\node-v24.22.1-win-x64\\node.exe"
+    ],
+    "timeout_seconds": 60,
+    "environment_adjustment": "The Python harness removed PSMODULEPATH case-insensitively so Windows PowerShell used its own default modules. Initial harness invocations inherited PowerShell 7 module paths and failed to resolve Get-FileHash; no production script was changed.",
+    "exit_code": 0
+  },
+  "before": {
+    "status": "methods-incomplete",
+    "methods_status": "missing-or-changed"
+  },
+  "after": {
+    "status": "present-unverified",
+    "methods_status": "installed-identity-verified",
+    "node_engine_status": "satisfied"
+  },
+  "fixed_package": {
+    "package": "rea-agents",
+    "version": "6.9.0",
+    "integrity": "sha512-KqDn1UR5BMqHoQ3MGAnPuWiSKwgdFaz1L/uUNgrKt+1W8kPtgYP8AWEOXIF1lDIOBVyPuYIIst2iamo1Wf3r8g==",
+    "node_version": "24.22.1"
+  },
+  "hash_checks": {
+    "algorithm": "SHA-256",
+    "expected_count": 9,
+    "matched_count": 9,
+    "method_results": {
+      "package/skills/reverse-engineer-anything/SKILL.md": {
+        "expected_sha256": "9312fa145b251ea428809634f039fb4ac15f18d59a32d6004a638b2de7d22016",
+        "matched_during_actual_run": true
+      },
+      "package/skills/reverse-engineer-anything/references/android-applications.md": {
+        "expected_sha256": "4fe894d463daaf9175192633186160fc50fb6718b5cc8186bf853377a9f72e7f",
+        "matched_during_actual_run": true
+      },
+      "package/skills/reverse-engineer-anything/references/connection-and-recovery.md": {
+        "expected_sha256": "2d78f50f4bad6e50127647256ae89865ad6cc046d1fe460e53a13b830ce814aa",
+        "matched_during_actual_run": true
+      },
+      "package/skills/reverse-engineer-anything/references/desktop-build.md": {
+        "expected_sha256": "7e0b1ab7ff7372d39681bc88e924b4afbabd95091d13aba72928f55668a82b17",
+        "matched_during_actual_run": true
+      },
+      "package/skills/reverse-engineer-anything/references/environments.md": {
+        "expected_sha256": "1be68bc9b15e5ace9b731a64125b64eb457ab0276c7961a41b6fa1240d179007",
+        "matched_during_actual_run": true
+      },
+      "package/skills/reverse-engineer-anything/references/evidence-workflows.md": {
+        "expected_sha256": "401e588eec730d26452a3b3ab9bb975a5153424b64643e72151f944cb290cf6f",
+        "matched_during_actual_run": true
+      },
+      "package/skills/reverse-engineer-anything/references/javascript-applications.md": {
+        "expected_sha256": "4d1671a90634320724eb61b53e828c7faaadca77721798cef40e420357f5ff18",
+        "matched_during_actual_run": true
+      },
+      "package/skills/reverse-engineer-anything/references/native-and-artifacts.md": {
+        "expected_sha256": "0943da927abb6f0b231ac609e8f333eaf50a05a0c889dcba41e58a3ba0472a1d",
+        "matched_during_actual_run": true
+      },
+      "package/skills/reverse-engineer-anything/references/runtime-observation.md": {
+        "expected_sha256": "7f9263b9caea58864da3bc1980037ea399735b8f165d3b96e48e49503a6a1a70",
+        "matched_during_actual_run": true
+      }
+    },
+    "measurement": "Each actual extracted file was checked with sha256(read_bytes()).hexdigest() == the pinned method digest; the executed harness asserted count == 9 and all results true. Individual computed digest strings were not separately retained."
+  },
+  "raw_output": {
+    "saved_to_file": false,
+    "path": null,
+    "note": "Successful stdout/stderr were visible in the execution tool result only. No raw file existed; this record does not claim otherwise. Successful stderr was empty."
+  },
+  "production_changes": {
+    "runtime_receipt_changed": false,
+    "user_configuration_changed": false,
+    "basis": "The copied bootstrap derived its repository from the temporary script location; all script destinations and its runtime receipt were within that temporary repository. Production files and pinned Node/archive were read only.",
+    "full_production_tree_before_after_snapshot": "not-performed"
+  },
+  "acceptance_boundary": "Qualifies actual reconstruction of missing/changed official method files from the fixed package plus component identity refresh. Does not qualify every provider or a real target investigation."
+}

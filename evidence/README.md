@@ -1,6 +1,12 @@
+RF36当前能力接线证据：`rf36/provider-report.json`、`provider-calls.json`、
+`provider-bundle.json`记录保存配置下实际Ghidra/WABT/JADX和6条原生记录跨进程恢复；
+`rf36/raw/`保留精确原件，`raw-index.json`记录摘要。最终Craft恢复、资产接线、
+源码回归、本机部署与新克隆结果按该目录实际文件和当前checkpoint读取。
+路径可见、目录数量、本地假服务、真实provider操作与目标效果分别报告。
+
 # 执行记录与历史证据
 
-RF35当前MCP修复证据：`rf35/tool-qualification.json`、原始`*-mcp-calls.json`、工具目录、配置保全、provider设置重启恢复、source-bound回归。旧RF33/34记录不是MCP宿主登记证明。
+RF35历史MCP接入证据：`rf35/tool-qualification.json`、原始`*-mcp-calls.json`、工具目录、配置保全、provider设置重启恢复、source-bound回归。旧RF33/34记录不是MCP宿主登记证明。
 
 本目录保存**当时实际发生的观察**，不提供当前安装命令或未完成任务。当前版本、
 宿主适配和部署步骤以[当前状态](../docs/CURRENT-STATE.md)、
@@ -15,7 +21,7 @@ RF35当前MCP修复证据：`rf35/tool-qualification.json`、原始`*-mcp-calls.
 | `rf33/pi-full-use.json`、`pi-owned-desk.zip` | Pi完整运行、期限退出后恢复与最终交付；ZIP为原始字节快照 |
 | `rf33/clean-install.json` | 明确提交上的全新克隆默认安装，不能冒充最新提交或另一台物理电脑实测 |
 | `rf33/product-tests.txt`、`reconstruction-tests.txt`、`verification-before-rf34.json` | RF-33收尾前的工程资格与日志快照；保留原来的源码绑定 |
-| `rf34/` | 当前最终文件收尾覆盖、静态检查与对应工程资格；当前`release/verification.json`指向此处日志 |
+| `rf34/` | 1.2.1历史文件收尾覆盖、静态检查与对应工程资格；当前日志目录读取release manifest |
 | `rf33/deployment-final.json` | 收尾前最后一次部署检查快照；不是另一台电脑的安装记录 |
 | `rf33/release-*.json`、`doctor*.json`、`handoff*.json` | 各次检查快照；`final`与非`final`不是需要合并或改写的重复配置 |
 | `rf33/claude-*.json` | 当时未登录状态和可选运行准备；不表示Claude适配未完成，不要求继续轮询登录 |

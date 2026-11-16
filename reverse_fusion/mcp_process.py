@@ -14,7 +14,7 @@ import time
 
 
 class McpProcess:
-    def __init__(self, argv, *, cwd, env=None):
+    def __init__(self, argv, *, cwd, env=None, stdio=None):
         self.process = None
         self.job = None
         self.kernel = None
@@ -51,7 +51,7 @@ class McpProcess:
                     raise ctypes.WinError(ctypes.get_last_error())
                 flags = subprocess.CREATE_NO_WINDOW | 0x4  # CREATE_SUSPENDED
             self.process = subprocess.Popen(argv, cwd=cwd, env=env,
-                stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
+                **(stdio or {'stdin':subprocess.PIPE,'stdout':subprocess.PIPE,'stderr':subprocess.PIPE}),
                 **({'creationflags': flags} if os.name == 'nt' else {'start_new_session': True}))
             if self.job:
                 if not self.kernel.AssignProcessToJobObject(self.job, int(self.process._handle)):

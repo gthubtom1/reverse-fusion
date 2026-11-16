@@ -8,7 +8,10 @@ workspace where the user opened them.
 from __future__ import annotations
 
 from pathlib import Path
+from hashlib import sha256
+import json
 import os
+import re
 
 from .file_updates import atomic_write, file_transaction
 
@@ -17,6 +20,7 @@ MARKER_START = "<!-- reverse-fusion:begin -->"
 MARKER_END = "<!-- reverse-fusion:end -->"
 LEGACY_HEADER = "# Global Codex guidance"
 SKILL_MARKER = "# Reverse Fusion cross-project adapter"
+ADAPTER_STATE = b"<!-- reverse-fusion:adapter-state "
 
 
 def adapter_paths(home: Path | None = None) -> dict[str, Path]:
@@ -61,7 +65,11 @@ Record the first original request before replacing it with a technical hint. Kee
 
 Bridge returns `component_entries`: installed REA, official Spec and native Craft argument arrays, current-project cwd and recovery guides. Use those entries instead of guessing executable paths from old chats. To recover an existing case or inspect a frozen batch, run the same venv's `-m reverse_fusion workflow --project-root "<current project>"` with the known `--case-root` and optionally `--receipt`. This is read-only context resolution, not readiness or acceptance. Attach important existing project material through bridge `--ref "<project-relative file>"`; it remains in its original file.
 
-For Codex, default deployment also registers the official `reverse-fusion-rea` and original-engine `reverse-fusion-craft` MCP servers. Read `{repo}/docs/MCP-INTEGRATION.md` before choosing tool entry points. Prefer existing relevant MCP/provider tools over writing another parser, decompiler or browser driver; inspect current schemas and provider readiness, then call the tools appropriate to the evidence. Registration alone does not prove this chat has loaded them: if missing, run deployment mcp-check and report the required client reload. Keep using the verified official CLI when appropriate, with its actual records. Craft MCP supplies original inspection/browser/device tools; reconstruction candidate edits still use the reviewed native-craft lease. The host owns task permissions and reasoning; do not start Craft's separate model/rebuild loop or run its standalone setup over this installation. Use absolute target/output paths in the outcome project and preserve native Evidence in that case; an MCP session's memory is not durable case progress.
+For Codex, default deployment registers the official `reverse-fusion-rea` and original-engine `reverse-fusion-craft` MCP servers. Read `{repo}/docs/MCP-INTEGRATION.md` before choosing entry points. When using REA, read its installed official skill at `component_entries.rea.official_skill` and the relevant method/recovery reference from that same fixed package. Keep fusion as the case/deployment owner; do not run the standalone setup over it. Prefer the relevant existing MCP/provider tools; inspect actual schemas and readiness rather than writing another parser, decompiler or browser driver. Registration alone does not prove this chat loaded the tools: if missing, run mcp-check and report the required client reconnect. The returned CLI argv and bounded_argv restore the same saved provider paths as MCP. After preparing or moving a tool, run `providers --refresh` and mcp-check; path configuration alone is not successful analysis. A missing provider blocks affected operations while independent work continues.
+
+Before Craft target analysis, invoke `component_entries.craft_mcp.case_bind`: `fusion_case_open` with the absolute current project and existing case directory. It opens the original Craft Project at `<case>/craft-analysis.cany`; rebind that case after restart, inspect restored records and any target-drift report, and use a new binding when switching cases. The shared tool checkout is not an implicit target project. Save REA's original Evidence bundle in the same outcome case before clearing/ending its investigation and import it when resuming; REA connection memory alone is not persistent progress. Craft MCP supplies original inspection/browser/device tools; formal candidate writes use the reviewed native-craft lease. Host reasoning/questions/permissions and native writer operations supply the mapped standalone orchestration roles; do not start a second AI/rebuild loop. Use absolute paths and preserve native records, actual errors and cleanup.
+
+For requested images or 3D assets, use an available host media tool or Craft's `fusion_asset_generate` after case binding. The Craft entry invokes the original image/model producer with an explicit per-call budget and operation permission; its dedicated process-environment key is never a tool argument or saved receipt. Outputs stay in case asset staging for review, then enter the candidate through approved Spec/native commands. Read the asset section in MCP-INTEGRATION for actual dependencies; a local producer fixture is not paid-service execution, and an image tool does not provide 3D generation.
 
 Use the returned REA bounded_argv for heavy calls when execution telemetry/cleanup is needed; read `docs/BOUNDED-REA.md`. For finite argv/stdin behavior comparison use component_entries.comparison and `docs/PROCESS-COMPARISON.md`, keeping UI/storage effects independently observed. Official Spec entry discovery supports the selected project's Codex, Pi or Claude layout. Read only current-stage documents, retain unchanged references and reuse saved operation schemas rather than repeatedly emitting entire manuals.
 
@@ -111,7 +119,90 @@ def _replace_agents_block(text: str, block: str) -> str:
     )
     if legacy in text:
         text = text.replace(legacy, "")
-    return (text.rstrip() + "\n\n" + block + "\n") if text.strip() else block + "\n"
+    return (text + "\n\n" + block + "\n") if text else block + "\n"
+
+
+def _agents_region(payload: bytes) -> dict | None:
+    """Locate only our block; retain exact bytes outside its recorded appendage."""
+    text = payload.decode('utf-8')
+    _check_markers(text)
+    start = payload.find(MARKER_START.encode('ascii'))
+    count = payload.count(ADAPTER_STATE)
+    if start < 0:
+        if count:
+            raise ValueError('Global AGENTS.md has adapter metadata without its block')
+        return None
+    end = payload.index(MARKER_END.encode('ascii'), start) + len(MARKER_END)
+    block = payload[start:end]
+    if not count:
+        return {'start': start, 'end': end, 'block': block, 'metadata': None}
+    if count != 1:
+        raise ValueError('Global AGENTS.md has duplicate adapter metadata')
+    metadata_start = payload.index(ADAPTER_STATE)
+    match = re.match(rb'<!-- reverse-fusion:adapter-state ([^\r\n]*) -->\r?\n', payload[metadata_start:])
+    if match is None or metadata_start + match.end() != start:
+        raise ValueError('Global AGENTS.md adapter metadata is not adjacent to its block')
+    try:
+        metadata = json.loads(match[1].decode('ascii'))
+        if (set(metadata) != {'schema_version', 'repository', 'separator', 'trailing',
+                              'original_existed', 'block_sha256'}
+                or metadata['schema_version'] != 1
+                or not isinstance(metadata['repository'], str)
+                or not Path(metadata['repository']).is_absolute()
+                or type(metadata['original_existed']) is not bool
+                or not re.fullmatch('[a-f0-9]{64}', metadata['block_sha256'])):
+            raise ValueError('Invalid global adapter metadata')
+        separator = bytes.fromhex(metadata['separator'])
+        trailing = bytes.fromhex(metadata['trailing'])
+        if separator not in (b'', b'\n', b'\n\n', b'\r\n', b'\r\n\r\n') or trailing not in (b'', b'\n', b'\r\n'):
+            raise ValueError('Invalid global adapter separators')
+    except (ValueError, KeyError, TypeError, UnicodeError) as exc:
+        raise ValueError('Global AGENTS.md adapter metadata is malformed; preserve it for review') from exc
+    # A user's editor may convert the whole file's newline convention. Match
+    # only the recorded newline count in either spelling; keep all other bytes.
+    variants = lambda value: tuple(dict.fromkeys((value, value.replace(b'\r\n', b'\n'),
+                                                 value.replace(b'\r\n', b'\n').replace(b'\n', b'\r\n'))))
+    actual_separator = next((value for value in variants(separator)
+                             if metadata_start >= len(value) and payload[metadata_start-len(value):metadata_start] == value), None)
+    actual_trailing = next((value for value in variants(trailing) if payload[end:end+len(value)] == value), None)
+    if actual_separator is None or actual_trailing is None:
+        raise ValueError('Global AGENTS.md adapter separators changed; preserve it for review')
+    return {'start': metadata_start-len(actual_separator), 'end': end+len(actual_trailing),
+            'block': block, 'metadata': metadata, 'separator': actual_separator, 'trailing': actual_trailing}
+
+
+def _agents_digest(block: bytes) -> str:
+    return sha256(block.replace(b'\r\n', b'\n')).hexdigest()
+
+
+def _updated_agents(payload: bytes, block: str, repo: Path, *, original_existed: bool) -> bytes:
+    region = _agents_region(payload)
+    newline = b'\r\n' if b'\r\n' in payload else b'\n'
+    encoded = block.replace('\n', newline.decode('ascii')).encode('utf-8')
+    if region and region['metadata']:
+        previous = region['metadata']
+        if _agents_digest(region['block']) != previous['block_sha256']:
+            raise ValueError('Global AGENTS.md managed instructions changed; preserve them for review')
+        separator, trailing = region['separator'], region['trailing']
+        original_existed = previous['original_existed']
+    else:
+        # Old markers have no appendage identity: only replace their exact
+        # region, never infer or strip adjacent whitespace owned by the user.
+        separator = b'' if region or not payload else newline * 2
+        trailing = b'' if region else newline
+    metadata = {'schema_version': 1, 'repository': str(repo.resolve()),
+                'separator': separator.hex(), 'trailing': trailing.hex(),
+                'original_existed': original_existed, 'block_sha256': _agents_digest(encoded)}
+    header = ADAPTER_STATE + json.dumps(metadata, ensure_ascii=True, separators=(',', ':')).encode('ascii') + b' -->' + newline
+    replacement = separator + header + encoded + trailing
+    return payload[:region['start']] + replacement + payload[region['end']:] if region else payload + replacement
+
+
+def _block_repository(block: bytes) -> Path | None:
+    match = re.search(r'shared reference and router at `([^`]+)`', block.decode('utf-8'))
+    if match is None or not Path(match[1]).is_absolute():
+        return None
+    return Path(match[1]).resolve()
 
 
 def install_global_adapter(repo_root: Path, home: Path | None = None) -> dict[str, object]:
@@ -121,13 +212,13 @@ def install_global_adapter(repo_root: Path, home: Path | None = None) -> dict[st
         existing_skill = paths["skill"].read_text(encoding="utf-8")
         if SKILL_MARKER not in existing_skill:
             raise ValueError(f"Existing user skill is not managed by Reverse Fusion: {paths['skill']}")
-    existing = paths["agents"].read_text(encoding="utf-8") if paths["agents"].is_file() else ""
-    updated = _replace_agents_block(existing, agents_block(repo))
+    existing = paths["agents"].read_bytes() if paths["agents"].is_file() else b''
+    updated = _updated_agents(existing, agents_block(repo), repo, original_existed=paths['agents'].is_file())
     paths["skill"].parent.mkdir(parents=True, exist_ok=True)
     paths["agents"].parent.mkdir(parents=True, exist_ok=True)
     with file_transaction(paths.values()):
         atomic_write(paths['skill'], skill_text(repo).encode('utf-8'))
-        atomic_write(paths['agents'], updated.encode('utf-8'))
+        atomic_write(paths['agents'], updated)
     return {
         "enabled": True,
         "skill": str(paths["skill"]),
@@ -138,31 +229,57 @@ def install_global_adapter(repo_root: Path, home: Path | None = None) -> dict[st
 
 def remove_global_adapter(home: Path | None = None, *, repo_root: Path | None = None) -> dict[str, object]:
     paths = adapter_paths(home)
-    agents_text = paths['agents'].read_text(encoding='utf-8') if paths['agents'].is_file() else ''
-    _check_markers(agents_text)
+    payload = paths['agents'].read_bytes() if paths['agents'].is_file() else b''
+    region = _agents_region(payload)
+    selected = repo_root.resolve() if repo_root is not None else None
     removed: list[str] = []
+    retained: list[str] = []
+    remove_agents = False
+    if region is None and selected is not None:
+        spelling = payload.decode('utf-8').replace('\\', '/')
+        reference = _repo_display(selected)
+        if os.name == 'nt':
+            spelling, reference = spelling.casefold(), reference.casefold()
+        if reference in spelling:
+            raise ValueError('Unmanaged global instructions still refer to this checkout; retain runtime for review')
+    if region:
+        owner = _block_repository(region['block'])
+        metadata = region['metadata']
+        if metadata and owner != Path(metadata['repository']).resolve():
+            raise ValueError('Global AGENTS.md owner and instructions disagree; retain the runtime for review')
+        if owner is None:
+            raise ValueError('Global AGENTS.md ownership is unknown; retain the runtime for review')
+        if selected is not None and owner != selected:
+            retained.append('another checkout owns the global instructions')
+        else:
+            unchanged = (_agents_digest(region['block']) == metadata['block_sha256'] if metadata else
+                         region['block'].decode('utf-8').replace('\r\n', '\n') == agents_block(owner))
+            if not unchanged:
+                raise ValueError('Global AGENTS.md managed instructions changed; retain the runtime for review')
+            remove_agents = True
+    remove_skill = False
     if paths["skill"].is_file():
         text = paths["skill"].read_text(encoding="utf-8")
-        owned = repo_root is None or f'The canonical checkout is `{_repo_display(repo_root)}`.' in text
-        if SKILL_MARKER in text and owned:
-            paths["skill"].unlink()
-            removed.append(str(paths["skill"]))
-            try:
-                paths["skill"].parent.rmdir()
-            except OSError:
-                pass
-    if paths["agents"].is_file():
-        text = agents_text
-        start = text.find(MARKER_START)
-        end = text.find(MARKER_END)
-        if start >= 0 and end >= start:
-            end += len(MARKER_END)
-            if repo_root is not None and text[start:end] != agents_block(repo_root):
-                return {"enabled": False, "removed": removed, "retained": "another checkout owns the global pointer"}
-            updated = text[:start] + text[end:]
-            if updated.strip():
-                atomic_write(paths['agents'], updated.encode('utf-8'))
+        match = re.search(r'The canonical checkout is `([^`]+)`\.', text)
+        if SKILL_MARKER in text:
+            if match is None or not Path(match[1]).is_absolute():
+                raise ValueError('Global skill ownership is unknown; retain the runtime for review')
+            if selected is None or Path(match[1]).resolve() == selected:
+                remove_skill = True
             else:
-                paths["agents"].unlink()
-            removed.append(str(paths["agents"]))
-    return {"enabled": False, "removed": removed}
+                retained.append('another checkout owns the global skill')
+        elif selected is not None:
+            raise ValueError('Global skill ownership is unmanaged; retain runtime for review')
+    with file_transaction(paths.values()):
+        if remove_skill:
+            paths['skill'].unlink()
+            removed.append(str(paths['skill']))
+        if remove_agents:
+            updated = payload[:region['start']] + payload[region['end']:]
+            original_existed = region['metadata']['original_existed'] if region['metadata'] else True
+            if not updated and not original_existed:
+                paths['agents'].unlink()
+            else:
+                atomic_write(paths['agents'], updated)
+            removed.append(str(paths['agents']))
+    return {"enabled": False, "removed": removed, **({'retained': retained} if retained else {})}

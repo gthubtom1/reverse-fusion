@@ -1,0 +1,1903 @@
+[
+  {
+    "tool": "binary_session",
+    "arguments": {},
+    "result": {
+      "_meta": {
+        "provenance": {
+          "untrusted_content": true,
+          "source": "analysis_target"
+        }
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"result\":{\"open\":false,\"investigation\":{\"evidence_records\":0,\"unknown_revisions\":0,\"unknown_heads\":0,\"retained_representation_bytes\":0,\"maximum_representation_bytes\":1087877496,\"persistence\":\"memory\"},\"cleanup_pending\":false,\"capabilities\":[{\"provider\":{\"id\":\"native-macos\",\"name\":\"macOS native inspection utilities\",\"version\":null},\"shared_limitations\":[\"Availability and textual formats depend on the installed macOS/Xcode toolchain.\"],\"groups\":[{\"operations\":[\"capture_native_ui_scenario\",\"observe_native_calls\"],\"effects\":[\"launches_process\",\"may_show_ui\",\"may_access_network\",\"may_write_filesystem\"],\"limitations\":[],\"available\":false,\"reason\":\"Native macOS utilities require macOS.\",\"availability_code\":\"unsupported_host\"},{\"operations\":[\"demangle_swift\",\"inspect_plist\",\"list_architectures\"],\"effects\":[\"launches_process\"],\"limitations\":[],\"available\":false,\"reason\":\"Native macOS utilities require macOS.\",\"availability_code\":\"unsupported_host\"},{\"operations\":[\"inspect_macho\",\"inspect_signature\",\"observe_native_ui\"],\"effects\":[\"launches_process\",\"may_write_filesystem\"],\"limitations\":[],\"available\":false,\"reason\":\"Native macOS utilities require macOS.\",\"availability_code\":\"unsupported_host\"},{\"operations\":[\"inspect_native_dispatch_metadata\"],\"effects\":[],\"limitations\":[],\"available\":false,\"reason\":\"Native macOS utilities require macOS.\",\"availability_code\":\"unsupported_host\"}]},{\"provider\":{\"id\":\"rea-artifact-graph\",\"name\":\"REA safe artifact graph provider\",\"version\":\"1\"},\"shared_limitations\":[\"DMG child inventory automatically uses a read-only native macOS mount; PKG remains root-hash-only.\",\"ASAR files discovered in filesystem-backed inventories are expanded without bulk extraction; other nested containers remain recorded only.\"],\"groups\":[{\"operations\":[\"decode_interface_builder\",\"inspect_keyed_archive\",\"trace_dylib_resolution\"],\"effects\":[],\"limitations\":[],\"available\":true,\"reason\":null,\"availability_code\":null},{\"operations\":[\"extract_artifact\",\"inspect_artifact\"],\"effects\":[\"launches_process\",\"may_write_filesystem\"],\"limitations\":[],\"available\":true,\"reason\":null,\"availability_code\":null},{\"operations\":[\"inspect_asset_catalog\"],\"effects\":[\"launches_process\"],\"limitations\":[],\"available\":false,\"reason\":\"Apple asset catalogs require macOS assetutil.\",\"availability_code\":\"unsupported_host\"}]},{\"provider\":{\"id\":\"rea-dotnet-static\",\"name\":\"REA managed static analysis provider\",\"version\":\"1\"},\"shared_limitations\":[],\"groups\":[{\"operations\":[\"inspect_managed_artifact\"],\"effects\":[],\"limitations\":[\"This capability inventories PE/CLI identity only; inspect_managed_members admits metadata members, signatures, and CIL anchors.\",\"It never loads the target assembly, resolves dependencies through a CLR, decompiles C#, or executes target code.\"],\"available\":true,\"reason\":null,\"availability_code\":null},{\"operations\":[\"inspect_managed_members\"],\"effects\":[],\"limitations\":[\"This capability decodes PE/CLI metadata members, signatures, and file-backed method bodies; decompiled C# reconstruction and cross-build member comparison are separate operations.\",\"It never loads the target assembly, resolves dependencies through a CLR, decompiles C#, or executes target code.\"],\"available\":true,\"reason\":null,\"availability_code\":null},{\"operations\":[\"inspect_managed_native_boundaries\"],\"effects\":[],\"limitations\":[\"This capability inventories managed declarations for native boundaries only; native exports, thunks, and addresses require separate native-provider evidence.\",\"It never loads the target assembly, resolves dependencies through a CLR, decompiles C#, or executes target code.\"],\"available\":true,\"reason\":null,\"availability_code\":null}]}],\"analysis_provider_binding\":null,\"analysis_provider_candidates\":[{\"provider\":{\"id\":\"ghidra\",\"name\":\"Ghidra\",\"version\":null},\"availability\":{\"status\":\"available\",\"code\":null,\"reason\":null},\"target_support\":{\"status\":\"unknown\",\"code\":null,\"reason\":\"No target is open.\"},\"selected\":false,\"selection_source\":null,\"rejections\":[]},{\"provider\":{\"id\":\"hopper\",\"name\":\"Hopper Disassembler\",\"version\":null},\"availability\":{\"status\":\"unavailable\",\"code\":\"unsupported_host\",\"reason\":\"Hopper integration is not supported on win32.\"},\"target_support\":{\"status\":\"unknown\",\"code\":null,\"reason\":\"No target is open.\"},\"selected\":false,\"selection_source\":null,\"rejections\":[{\"provider_id\":\"hopper\",\"origin\":\"availability\",\"code\":\"unsupported_host\",\"reason\":\"Hopper integration is not supported on win32.\"}]},{\"provider\":{\"id\":\"ida\",\"name\":\"IDA MCP adapter\",\"version\":\"1\"},\"availability\":{\"status\":\"unavailable\",\"code\":\"not_configured\",\"reason\":\"REA configuration is invalid: Set REA_IDA_MCP_CONFIG to an upstream IDA MCP JSON registration; see docs/providers/ida-provider.md.\"},\"target_support\":{\"status\":\"unknown\",\"code\":null,\"reason\":\"No target is open.\"},\"selected\":false,\"selection_source\":null,\"rejections\":[{\"provider_id\":\"ida\",\"origin\":\"availability\",\"code\":\"not_configured\",\"reason\":\"REA configuration is invalid: Set REA_IDA_MCP_CONFIG to an upstream IDA MCP JSON registration; see docs/providers/ida-provider.md.\"}]},{\"provider\":{\"id\":\"kuna\",\"name\":\"Kuna\",\"version\":null},\"availability\":{\"status\":\"unavailable\",\"code\":\"not_configured\",\"reason\":\"Set REA_KUNA_COMMAND to the absolute path of a caller-supplied kuna executable (verified with 1.990). REA does not download, install or update Kuna.\"},\"target_support\":{\"status\":\"unknown\",\"code\":null,\"reason\":\"No target is open.\"},\"selected\":false,\"selection_source\":null,\"rejections\":[{\"provider_id\":\"kuna\",\"origin\":\"availability\",\"code\":\"not_configured\",\"reason\":\"Set REA_KUNA_COMMAND to the absolute path of a caller-supplied kuna executable (verified with 1.990). REA does not download, install or update Kuna.\"}]}],\"analysis_provider_candidates_observed\":\"status_request\",\"analysis_run\":null,\"analysis_activity\":{\"status\":\"not_observed\",\"providers\":[]},\"provider_operation_health\":null,\"detail\":\"summary\",\"omitted_fields\":[\"analysis_provider_candidates.availability.remediation\",\"analysis_provider_candidates.availability.diagnostics\",\"analysis_provider_candidates.target_support.diagnostics\",\"analysis_provider_candidates.rejections.remediation\",\"analysis_provider_candidates.rejections.diagnostics\",\"analysis_provider_candidates.capabilities\",\"tool_availability.groups.surface\",\"tool_availability.groups.effects\",\"tool_availability.groups.annotations\"],\"tool_availability\":{\"client_requirements\":{\"required\":[],\"optional\":[],\"missing_required\":[],\"missing_optional\":[]},\"groups\":[{\"names\":[\"act_on_build_computer\",\"analyze_javascript_application\",\"analyze_web_bundle\",\"audit_release_exposure\",\"binary_session\",\"build_call_path\",\"build_reconstruction_obligation_ledger\",\"capture_adb_screen\",\"capture_browser_scenario\",\"capture_electron_scenario\",\"capture_web_screenshot\",\"check_build_task\",\"close_binary\",\"close_build_computer\",\"close_frida_session\",\"close_gdb_session\",\"close_rizin_debug_session\",\"collect_adb_bugreport\",\"compare_application_versions\",\"compare_artifacts\",\"compare_bundles\",\"compare_functions\",\"compare_javascript_export_shapes\",\"compare_managed_members\",\"compare_process_captures\",\"compare_source_to_bundle\",\"compare_static_and_observed_endpoints\",\"compare_wasm_interfaces\",\"compare_web_captures\",\"compare_web_screenshots\",\"correlate_static_and_runtime\",\"cutter_command\",\"discover_webmcp_tools\",\"evaluate_reconstruction_coverage\",\"execute_rizin_command\",\"export_build_environment\",\"export_environment_bundle\",\"export_evidence_bundle\",\"export_web_scripts\",\"find_changed_behavior\",\"frida_session_status\",\"gdb_console\",\"gdb_session_status\",\"get_evidence_bundle\",\"guided_workflows\",\"identify_flutter_build\",\"import_evidence_bundle\",\"import_managed_reconstruction\",\"inspect_adb_client\",\"inspect_adb_device\",\"inspect_adb_display\",\"inspect_adb_package\",\"inspect_adb_window\",\"inspect_analysis_settings\",\"inspect_analysis_view\",\"inspect_android_class\",\"inspect_android_jni_bindings\",\"inspect_android_method\",\"inspect_android_package\",\"inspect_api_contract\",\"inspect_apk_signature\",\"inspect_apple_ips\",\"inspect_binary_hardening\",\"inspect_byte_entropy\",\"inspect_dart_aot\",\"inspect_desktop_application\",\"inspect_devicetree\",\"inspect_electron_fuses\",\"inspect_electron_page\",\"inspect_elf_notes\",\"inspect_elf_unwind_ranges\",\"inspect_erlang_beam\",\"inspect_go_binary\",\"inspect_gpu_code_objects\",\"inspect_il2cpp_metadata\",\"inspect_kernel_build_config\",\"inspect_kernel_module\",\"inspect_managed_artifact\",\"inspect_managed_members\",\"inspect_managed_native_boundaries\",\"inspect_model_artifact\",\"inspect_native_exports\",\"inspect_native_initializers\",\"inspect_ntfs_journal\",\"inspect_pcap_capture\",\"inspect_pcap_client\",\"inspect_pe_certificates\",\"inspect_pe_imports\",\"inspect_pe_load_config\",\"inspect_pe_resources\",\"inspect_playwright_trace\",\"inspect_python_pyc\",\"inspect_rust_binary\",\"inspect_sqlite_database\",\"inspect_v8_code_cache\",\"inspect_wasm_artifact\",\"inspect_web_event_listeners\",\"inspect_web_network_capture\",\"inspect_web_page\",\"inspect_windows_shortcut\",\"inspect_with_objdump\",\"install_adb_package\",\"instrument_with_frida\",\"list_adb_devices\",\"list_adb_directory\",\"list_adb_features\",\"list_adb_packages\",\"list_adb_processes\",\"list_adb_services\",\"list_browser_targets\",\"list_cutter_sessions\",\"list_electron_targets\",\"list_frida_devices\",\"list_frida_processes\",\"list_javascript_runtime_targets\",\"list_unknowns\",\"load_frida_script\",\"mark_build_checkpoint\",\"match_native_functions\",\"measure_build_task\",\"observe_javascript_runtime\",\"observe_web_execution\",\"observe_web_session\",\"open_binary\",\"open_bundle_resources\",\"project_android_application_graph\",\"project_apple_application_graph\",\"project_harmony_application_graph\",\"project_managed_application_graph\",\"pull_adb_file\",\"pull_adb_package\",\"push_adb_file\",\"read_adb_logcat\",\"read_adb_setting\",\"read_guidance_section\",\"reconcile_javascript_runtime\",\"record_build_consent\",\"record_unknown\",\"reset_investigation\",\"resolve_adb_packages\",\"resume_frida_session\",\"rizin_debug_command\",\"rizin_debug_session_status\",\"search_android_classes\",\"search_guidance\",\"start_adb_activity\",\"start_adb_app\",\"start_build_capture\",\"start_build_computer\",\"start_frida_session\",\"stop_adb_app\",\"stop_build_capture\",\"trace_android_references\",\"trace_application_feature\",\"trace_javascript_semantics\",\"trace_web_source_location\",\"uninstall_adb_package\",\"unload_frida_script\",\"update_analysis_settings\",\"update_unknown\",\"verify_managed_native_boundaries\",\"verify_reconstruction\",\"verify_unknown_resolution\"],\"available\":true,\"reason\":\"available\",\"remediation\":null},{\"names\":[\"address_name\",\"address_to_file_offset\",\"analyze_function\",\"analyze_swift_types\",\"annotate_native_function\",\"batch_decompile\",\"binary_overview\",\"comment\",\"current_address\",\"current_document\",\"current_procedure\",\"decode_interface_builder\",\"decompile_all\",\"extract_artifact\",\"find_xrefs_to_name\",\"get_call_graph\",\"get_objc_classes\",\"get_objc_protocols\",\"goto_address\",\"inline_comment\",\"inspect_address_context\",\"inspect_artifact\",\"inspect_keyed_archive\",\"inspect_native_api\",\"inspect_native_data_type\",\"inspect_native_dispatch_metadata\",\"inspect_native_instruction\",\"inspect_native_load_image\",\"list_bookmarks\",\"list_documents\",\"list_names\",\"list_procedures\",\"list_segments\",\"list_strings\",\"next_address\",\"prev_address\",\"procedure_address\",\"procedure_assembly\",\"procedure_callees\",\"procedure_callers\",\"procedure_info\",\"procedure_pseudo_code\",\"procedure_references\",\"read_bytes\",\"read_function_instructions\",\"resolve_containing_procedure\",\"resolve_native_call_targets\",\"search_bytes\",\"search_procedures\",\"search_strings\",\"set_address_name\",\"set_addresses_names\",\"set_bookmark\",\"set_comment\",\"set_inline_comment\",\"trace_call_path\",\"trace_dylib_resolution\",\"trace_feature\",\"trace_native_ui_action\",\"unset_bookmark\",\"xrefs\"],\"available\":false,\"reason\":\"target_required\",\"remediation\":\"Call open_binary with a supported local target.\"},{\"names\":[\"capture_native_ui_scenario\",\"demangle_swift\",\"inspect_macho\",\"inspect_plist\",\"inspect_signature\",\"list_architectures\",\"observe_native_calls\",\"observe_native_ui\"],\"available\":false,\"reason\":\"unsupported_host\",\"remediation\":\"Native macOS utilities require macOS.\"},{\"names\":[\"capture_process_scenario\"],\"available\":false,\"reason\":\"unsupported_host\",\"remediation\":\"Run process capture on a supported Linux or macOS host.\"},{\"names\":[\"decode_android_resources\",\"inspect_apktool_client\"],\"available\":false,\"reason\":\"provider_unavailable\",\"remediation\":\"Set REA_APKTOOL_COMMAND to an absolute apktool launcher, or add its directory and extension to PATH and PATHEXT.\"},{\"names\":[\"decode_signal_recording\",\"inspect_signal_decoders\"],\"available\":false,\"reason\":\"unsupported_host\",\"remediation\":\"On Linux, supply sigrok-cli 0.7.2 via absolute REA_SIGROK_COMMAND and util-linux prlimit (REA_SIGROK_PRLIMIT_COMMAND, default /usr/bin/prlimit). No active binary target or hardware is required; the tool is checked at execution.\"},{\"names\":[\"decompile_jeb_item\",\"inspect_jeb_client\",\"list_jeb_units\",\"open_jeb_project\"],\"available\":false,\"reason\":\"provider_missing\",\"remediation\":\"Start a JEB client serving MCP (default http://127.0.0.1:8425/mcp) or set REA_JEB_MCP_URL to the running endpoint.\"},{\"names\":[\"extract_firmware\"],\"available\":false,\"reason\":\"unsupported_host\",\"remediation\":\"On Linux, provide an absolute REA_UNBLOB_COMMAND (Unblob 26.6.x (verified with 26.6.4)) path, util-linux prlimit and procps ps. Extraction also requires the selected format\u2019s external extractor.\"},{\"names\":[\"get_navigation_context\"],\"default_mode_available\":false,\"modes\":[{\"name\":\"current_selection\",\"available\":false,\"missing_operations\":[\"current_document\",\"current_address\",\"resolve_containing_procedure\"],\"remediation\":\"Call open_binary with a supported local target.\"},{\"name\":\"explicit_document\",\"available\":false,\"missing_operations\":[\"current_address\",\"resolve_containing_procedure\"],\"remediation\":\"Call open_binary with a supported local target.\"}],\"available\":false,\"reason\":\"target_required\",\"remediation\":\"Call open_binary with a supported local target.\"},{\"names\":[\"inspect_asset_catalog\"],\"available\":false,\"reason\":\"unsupported_host\",\"remediation\":\"Apple asset catalogs require macOS assetutil.\"},{\"names\":[\"inspect_binary_layout\",\"inspect_recorded_crash\"],\"available\":false,\"reason\":\"unsupported_host\",\"remediation\":\"On Linux x64, set absolute REA_PWNTOOLS_PYTHON to caller-supplied Python with pwntools 4.15.0. No active binary target is required.\"},{\"names\":[\"inspect_evm_interface\"],\"available\":false,\"reason\":\"unsupported_host\",\"remediation\":\"The bundled offline EVM interface profile is currently real-verified on Linux x64. No active binary target or chain endpoint is required.\"},{\"names\":[\"inspect_firmware_regions\"],\"available\":false,\"reason\":\"unsupported_host\",\"remediation\":\"On Linux, provide an absolute REA_BINWALK_COMMAND (Binwalk 3.1.x (verified with 3.1.0)) path, util-linux prlimit and procps ps.\"},{\"names\":[\"inspect_packet_capture\",\"inspect_packet_fields\"],\"available\":false,\"reason\":\"unsupported_host\",\"remediation\":\"On Linux, supply TShark 4.x on PATH or through absolute REA_TSHARK_COMMAND, and util-linux prlimit (REA_TSHARK_PRLIMIT_COMMAND, default /usr/bin/prlimit). No active binary target or hardware is required; the tool is checked at execution.\"},{\"names\":[\"recover_javascript_sources\"],\"available\":false,\"reason\":\"unsupported_host\",\"remediation\":\"On Linux x64, provide an absolute REA_WAKARU_COMMAND for Wakaru ^1.13.0 (verified with 1.14.0) and util-linux prlimit; see docs/guides/javascript/javascript-recovery.md#install-wakaru. No binary target is required.\"},{\"names\":[\"start_gdb_session\",\"start_rizin_debug_session\"],\"available\":false,\"reason\":\"unsupported_host\",\"remediation\":\"Run persistent debugger sessions on Linux with /proc descriptor readback.\"},{\"names\":[\"trace_native_values\"],\"value_flow_support\":{\"status\":\"unknown\",\"provider_id\":null},\"available\":false,\"reason\":\"target_required\",\"remediation\":\"Call open_binary with a supported local target.\"},{\"names\":[\"trace_web_module_imports\"],\"default_mode_available\":true,\"modes\":[{\"name\":\"sources-without-literal-imports\",\"available\":true,\"missing_operations\":[],\"remediation\":null},{\"name\":\"native-literal-resolution\",\"available\":true,\"missing_operations\":[],\"remediation\":null}],\"available\":true,\"reason\":\"available\",\"remediation\":null}]},\"client_features\":{\"elicitation_form\":false,\"elicitation_url\":false,\"roots\":false,\"sampling\":false},\"server_identity\":{\"package\":{\"name\":\"rea-agents\",\"version\":\"6.9.0\",\"root_path\":\"D:\\\\Project\\\\reverse\\\\vendor\\\\rea\\\\package\",\"build_commit\":null},\"server\":{\"name\":\"rea\",\"version\":\"6.9.0\",\"started_at\":\"2026-11-16T12:17:27.066Z\",\"command_path\":\"D:\\\\Project\\\\reverse\\\\vendor\\\\rea\\\\package\\\\scripts\\\\rea.mjs\"},\"sdk\":{\"server\":\"2.3.1\",\"client_test\":\"2.3.1\",\"core\":\"2.3.1\"},\"negotiated_protocol_version\":\"2025-06-18\",\"client\":{\"name\":\"reverse-fusion-deployment-check\",\"version\":\"1\"},\"skill\":{\"name\":\"reverse-engineer-anything\",\"expected_version\":\"62\"},\"catalog\":{\"counts\":{\"cli_commands\":196,\"mcp_tools\":255,\"mcp_prompts\":6},\"digests\":{\"tools_sha256\":\"b3054fab57a222a4690d93cdba88805d7cbd2e6c0279dd596eecf213030c3797\",\"prompts_sha256\":\"60078bd8ef8bd152b51440e7579fba2059beec18fec5148dd0ec10ef013213fe\",\"combined_sha256\":\"2c725b48818ac5266198069330907c657f0fa2b6b8236065e5a191e20d95c2d7\"}},\"protocol_features\":{\"progress\":true,\"cancellation\":true,\"elicitation\":false},\"alignment\":{\"state\":\"unknown\",\"reasons\":[],\"remediation\":\"Supply expected package, catalog, or registration identity to compare the live server.\"}}}}"
+        }
+      ],
+      "structuredContent": {
+        "result": {
+          "open": false,
+          "investigation": {
+            "evidence_records": 0,
+            "unknown_revisions": 0,
+            "unknown_heads": 0,
+            "retained_representation_bytes": 0,
+            "maximum_representation_bytes": 1087877496,
+            "persistence": "memory"
+          },
+          "cleanup_pending": false,
+          "capabilities": [
+            {
+              "provider": {
+                "id": "native-macos",
+                "name": "macOS native inspection utilities",
+                "version": null
+              },
+              "shared_limitations": [
+                "Availability and textual formats depend on the installed macOS/Xcode toolchain."
+              ],
+              "groups": [
+                {
+                  "operations": [
+                    "capture_native_ui_scenario",
+                    "observe_native_calls"
+                  ],
+                  "effects": [
+                    "launches_process",
+                    "may_show_ui",
+                    "may_access_network",
+                    "may_write_filesystem"
+                  ],
+                  "limitations": [],
+                  "available": false,
+                  "reason": "Native macOS utilities require macOS.",
+                  "availability_code": "unsupported_host"
+                },
+                {
+                  "operations": [
+                    "demangle_swift",
+                    "inspect_plist",
+                    "list_architectures"
+                  ],
+                  "effects": [
+                    "launches_process"
+                  ],
+                  "limitations": [],
+                  "available": false,
+                  "reason": "Native macOS utilities require macOS.",
+                  "availability_code": "unsupported_host"
+                },
+                {
+                  "operations": [
+                    "inspect_macho",
+                    "inspect_signature",
+                    "observe_native_ui"
+                  ],
+                  "effects": [
+                    "launches_process",
+                    "may_write_filesystem"
+                  ],
+                  "limitations": [],
+                  "available": false,
+                  "reason": "Native macOS utilities require macOS.",
+                  "availability_code": "unsupported_host"
+                },
+                {
+                  "operations": [
+                    "inspect_native_dispatch_metadata"
+                  ],
+                  "effects": [],
+                  "limitations": [],
+                  "available": false,
+                  "reason": "Native macOS utilities require macOS.",
+                  "availability_code": "unsupported_host"
+                }
+              ]
+            },
+            {
+              "provider": {
+                "id": "rea-artifact-graph",
+                "name": "REA safe artifact graph provider",
+                "version": "1"
+              },
+              "shared_limitations": [
+                "DMG child inventory automatically uses a read-only native macOS mount; PKG remains root-hash-only.",
+                "ASAR files discovered in filesystem-backed inventories are expanded without bulk extraction; other nested containers remain recorded only."
+              ],
+              "groups": [
+                {
+                  "operations": [
+                    "decode_interface_builder",
+                    "inspect_keyed_archive",
+                    "trace_dylib_resolution"
+                  ],
+                  "effects": [],
+                  "limitations": [],
+                  "available": true,
+                  "reason": null,
+                  "availability_code": null
+                },
+                {
+                  "operations": [
+                    "extract_artifact",
+                    "inspect_artifact"
+                  ],
+                  "effects": [
+                    "launches_process",
+                    "may_write_filesystem"
+                  ],
+                  "limitations": [],
+                  "available": true,
+                  "reason": null,
+                  "availability_code": null
+                },
+                {
+                  "operations": [
+                    "inspect_asset_catalog"
+                  ],
+                  "effects": [
+                    "launches_process"
+                  ],
+                  "limitations": [],
+                  "available": false,
+                  "reason": "Apple asset catalogs require macOS assetutil.",
+                  "availability_code": "unsupported_host"
+                }
+              ]
+            },
+            {
+              "provider": {
+                "id": "rea-dotnet-static",
+                "name": "REA managed static analysis provider",
+                "version": "1"
+              },
+              "shared_limitations": [],
+              "groups": [
+                {
+                  "operations": [
+                    "inspect_managed_artifact"
+                  ],
+                  "effects": [],
+                  "limitations": [
+                    "This capability inventories PE/CLI identity only; inspect_managed_members admits metadata members, signatures, and CIL anchors.",
+                    "It never loads the target assembly, resolves dependencies through a CLR, decompiles C#, or executes target code."
+                  ],
+                  "available": true,
+                  "reason": null,
+                  "availability_code": null
+                },
+                {
+                  "operations": [
+                    "inspect_managed_members"
+                  ],
+                  "effects": [],
+                  "limitations": [
+                    "This capability decodes PE/CLI metadata members, signatures, and file-backed method bodies; decompiled C# reconstruction and cross-build member comparison are separate operations.",
+                    "It never loads the target assembly, resolves dependencies through a CLR, decompiles C#, or executes target code."
+                  ],
+                  "available": true,
+                  "reason": null,
+                  "availability_code": null
+                },
+                {
+                  "operations": [
+                    "inspect_managed_native_boundaries"
+                  ],
+                  "effects": [],
+                  "limitations": [
+                    "This capability inventories managed declarations for native boundaries only; native exports, thunks, and addresses require separate native-provider evidence.",
+                    "It never loads the target assembly, resolves dependencies through a CLR, decompiles C#, or executes target code."
+                  ],
+                  "available": true,
+                  "reason": null,
+                  "availability_code": null
+                }
+              ]
+            }
+          ],
+          "analysis_provider_binding": null,
+          "analysis_provider_candidates": [
+            {
+              "provider": {
+                "id": "ghidra",
+                "name": "Ghidra",
+                "version": null
+              },
+              "availability": {
+                "status": "available",
+                "code": null,
+                "reason": null
+              },
+              "target_support": {
+                "status": "unknown",
+                "code": null,
+                "reason": "No target is open."
+              },
+              "selected": false,
+              "selection_source": null,
+              "rejections": []
+            },
+            {
+              "provider": {
+                "id": "hopper",
+                "name": "Hopper Disassembler",
+                "version": null
+              },
+              "availability": {
+                "status": "unavailable",
+                "code": "unsupported_host",
+                "reason": "Hopper integration is not supported on win32."
+              },
+              "target_support": {
+                "status": "unknown",
+                "code": null,
+                "reason": "No target is open."
+              },
+              "selected": false,
+              "selection_source": null,
+              "rejections": [
+                {
+                  "provider_id": "hopper",
+                  "origin": "availability",
+                  "code": "unsupported_host",
+                  "reason": "Hopper integration is not supported on win32."
+                }
+              ]
+            },
+            {
+              "provider": {
+                "id": "ida",
+                "name": "IDA MCP adapter",
+                "version": "1"
+              },
+              "availability": {
+                "status": "unavailable",
+                "code": "not_configured",
+                "reason": "REA configuration is invalid: Set REA_IDA_MCP_CONFIG to an upstream IDA MCP JSON registration; see docs/providers/ida-provider.md."
+              },
+              "target_support": {
+                "status": "unknown",
+                "code": null,
+                "reason": "No target is open."
+              },
+              "selected": false,
+              "selection_source": null,
+              "rejections": [
+                {
+                  "provider_id": "ida",
+                  "origin": "availability",
+                  "code": "not_configured",
+                  "reason": "REA configuration is invalid: Set REA_IDA_MCP_CONFIG to an upstream IDA MCP JSON registration; see docs/providers/ida-provider.md."
+                }
+              ]
+            },
+            {
+              "provider": {
+                "id": "kuna",
+                "name": "Kuna",
+                "version": null
+              },
+              "availability": {
+                "status": "unavailable",
+                "code": "not_configured",
+                "reason": "Set REA_KUNA_COMMAND to the absolute path of a caller-supplied kuna executable (verified with 1.990). REA does not download, install or update Kuna."
+              },
+              "target_support": {
+                "status": "unknown",
+                "code": null,
+                "reason": "No target is open."
+              },
+              "selected": false,
+              "selection_source": null,
+              "rejections": [
+                {
+                  "provider_id": "kuna",
+                  "origin": "availability",
+                  "code": "not_configured",
+                  "reason": "Set REA_KUNA_COMMAND to the absolute path of a caller-supplied kuna executable (verified with 1.990). REA does not download, install or update Kuna."
+                }
+              ]
+            }
+          ],
+          "analysis_provider_candidates_observed": "status_request",
+          "analysis_run": null,
+          "analysis_activity": {
+            "status": "not_observed",
+            "providers": []
+          },
+          "provider_operation_health": null,
+          "detail": "summary",
+          "omitted_fields": [
+            "analysis_provider_candidates.availability.remediation",
+            "analysis_provider_candidates.availability.diagnostics",
+            "analysis_provider_candidates.target_support.diagnostics",
+            "analysis_provider_candidates.rejections.remediation",
+            "analysis_provider_candidates.rejections.diagnostics",
+            "analysis_provider_candidates.capabilities",
+            "tool_availability.groups.surface",
+            "tool_availability.groups.effects",
+            "tool_availability.groups.annotations"
+          ],
+          "tool_availability": {
+            "client_requirements": {
+              "required": [],
+              "optional": [],
+              "missing_required": [],
+              "missing_optional": []
+            },
+            "groups": [
+              {
+                "names": [
+                  "act_on_build_computer",
+                  "analyze_javascript_application",
+                  "analyze_web_bundle",
+                  "audit_release_exposure",
+                  "binary_session",
+                  "build_call_path",
+                  "build_reconstruction_obligation_ledger",
+                  "capture_adb_screen",
+                  "capture_browser_scenario",
+                  "capture_electron_scenario",
+                  "capture_web_screenshot",
+                  "check_build_task",
+                  "close_binary",
+                  "close_build_computer",
+                  "close_frida_session",
+                  "close_gdb_session",
+                  "close_rizin_debug_session",
+                  "collect_adb_bugreport",
+                  "compare_application_versions",
+                  "compare_artifacts",
+                  "compare_bundles",
+                  "compare_functions",
+                  "compare_javascript_export_shapes",
+                  "compare_managed_members",
+                  "compare_process_captures",
+                  "compare_source_to_bundle",
+                  "compare_static_and_observed_endpoints",
+                  "compare_wasm_interfaces",
+                  "compare_web_captures",
+                  "compare_web_screenshots",
+                  "correlate_static_and_runtime",
+                  "cutter_command",
+                  "discover_webmcp_tools",
+                  "evaluate_reconstruction_coverage",
+                  "execute_rizin_command",
+                  "export_build_environment",
+                  "export_environment_bundle",
+                  "export_evidence_bundle",
+                  "export_web_scripts",
+                  "find_changed_behavior",
+                  "frida_session_status",
+                  "gdb_console",
+                  "gdb_session_status",
+                  "get_evidence_bundle",
+                  "guided_workflows",
+                  "identify_flutter_build",
+                  "import_evidence_bundle",
+                  "import_managed_reconstruction",
+                  "inspect_adb_client",
+                  "inspect_adb_device",
+                  "inspect_adb_display",
+                  "inspect_adb_package",
+                  "inspect_adb_window",
+                  "inspect_analysis_settings",
+                  "inspect_analysis_view",
+                  "inspect_android_class",
+                  "inspect_android_jni_bindings",
+                  "inspect_android_method",
+                  "inspect_android_package",
+                  "inspect_api_contract",
+                  "inspect_apk_signature",
+                  "inspect_apple_ips",
+                  "inspect_binary_hardening",
+                  "inspect_byte_entropy",
+                  "inspect_dart_aot",
+                  "inspect_desktop_application",
+                  "inspect_devicetree",
+                  "inspect_electron_fuses",
+                  "inspect_electron_page",
+                  "inspect_elf_notes",
+                  "inspect_elf_unwind_ranges",
+                  "inspect_erlang_beam",
+                  "inspect_go_binary",
+                  "inspect_gpu_code_objects",
+                  "inspect_il2cpp_metadata",
+                  "inspect_kernel_build_config",
+                  "inspect_kernel_module",
+                  "inspect_managed_artifact",
+                  "inspect_managed_members",
+                  "inspect_managed_native_boundaries",
+                  "inspect_model_artifact",
+                  "inspect_native_exports",
+                  "inspect_native_initializers",
+                  "inspect_ntfs_journal",
+                  "inspect_pcap_capture",
+                  "inspect_pcap_client",
+                  "inspect_pe_certificates",
+                  "inspect_pe_imports",
+                  "inspect_pe_load_config",
+                  "inspect_pe_resources",
+                  "inspect_playwright_trace",
+                  "inspect_python_pyc",
+                  "inspect_rust_binary",
+                  "inspect_sqlite_database",
+                  "inspect_v8_code_cache",
+                  "inspect_wasm_artifact",
+                  "inspect_web_event_listeners",
+                  "inspect_web_network_capture",
+                  "inspect_web_page",
+                  "inspect_windows_shortcut",
+                  "inspect_with_objdump",
+                  "install_adb_package",
+                  "instrument_with_frida",
+                  "list_adb_devices",
+                  "list_adb_directory",
+                  "list_adb_features",
+                  "list_adb_packages",
+                  "list_adb_processes",
+                  "list_adb_services",
+                  "list_browser_targets",
+                  "list_cutter_sessions",
+                  "list_electron_targets",
+                  "list_frida_devices",
+                  "list_frida_processes",
+                  "list_javascript_runtime_targets",
+                  "list_unknowns",
+                  "load_frida_script",
+                  "mark_build_checkpoint",
+                  "match_native_functions",
+                  "measure_build_task",
+                  "observe_javascript_runtime",
+                  "observe_web_execution",
+                  "observe_web_session",
+                  "open_binary",
+                  "open_bundle_resources",
+                  "project_android_application_graph",
+                  "project_apple_application_graph",
+                  "project_harmony_application_graph",
+                  "project_managed_application_graph",
+                  "pull_adb_file",
+                  "pull_adb_package",
+                  "push_adb_file",
+                  "read_adb_logcat",
+                  "read_adb_setting",
+                  "read_guidance_section",
+                  "reconcile_javascript_runtime",
+                  "record_build_consent",
+                  "record_unknown",
+                  "reset_investigation",
+                  "resolve_adb_packages",
+                  "resume_frida_session",
+                  "rizin_debug_command",
+                  "rizin_debug_session_status",
+                  "search_android_classes",
+                  "search_guidance",
+                  "start_adb_activity",
+                  "start_adb_app",
+                  "start_build_capture",
+                  "start_build_computer",
+                  "start_frida_session",
+                  "stop_adb_app",
+                  "stop_build_capture",
+                  "trace_android_references",
+                  "trace_application_feature",
+                  "trace_javascript_semantics",
+                  "trace_web_source_location",
+                  "uninstall_adb_package",
+                  "unload_frida_script",
+                  "update_analysis_settings",
+                  "update_unknown",
+                  "verify_managed_native_boundaries",
+                  "verify_reconstruction",
+                  "verify_unknown_resolution"
+                ],
+                "available": true,
+                "reason": "available",
+                "remediation": null
+              },
+              {
+                "names": [
+                  "address_name",
+                  "address_to_file_offset",
+                  "analyze_function",
+                  "analyze_swift_types",
+                  "annotate_native_function",
+                  "batch_decompile",
+                  "binary_overview",
+                  "comment",
+                  "current_address",
+                  "current_document",
+                  "current_procedure",
+                  "decode_interface_builder",
+                  "decompile_all",
+                  "extract_artifact",
+                  "find_xrefs_to_name",
+                  "get_call_graph",
+                  "get_objc_classes",
+                  "get_objc_protocols",
+                  "goto_address",
+                  "inline_comment",
+                  "inspect_address_context",
+                  "inspect_artifact",
+                  "inspect_keyed_archive",
+                  "inspect_native_api",
+                  "inspect_native_data_type",
+                  "inspect_native_dispatch_metadata",
+                  "inspect_native_instruction",
+                  "inspect_native_load_image",
+                  "list_bookmarks",
+                  "list_documents",
+                  "list_names",
+                  "list_procedures",
+                  "list_segments",
+                  "list_strings",
+                  "next_address",
+                  "prev_address",
+                  "procedure_address",
+                  "procedure_assembly",
+                  "procedure_callees",
+                  "procedure_callers",
+                  "procedure_info",
+                  "procedure_pseudo_code",
+                  "procedure_references",
+                  "read_bytes",
+                  "read_function_instructions",
+                  "resolve_containing_procedure",
+                  "resolve_native_call_targets",
+                  "search_bytes",
+                  "search_procedures",
+                  "search_strings",
+                  "set_address_name",
+                  "set_addresses_names",
+                  "set_bookmark",
+                  "set_comment",
+                  "set_inline_comment",
+                  "trace_call_path",
+                  "trace_dylib_resolution",
+                  "trace_feature",
+                  "trace_native_ui_action",
+                  "unset_bookmark",
+                  "xrefs"
+                ],
+                "available": false,
+                "reason": "target_required",
+                "remediation": "Call open_binary with a supported local target."
+              },
+              {
+                "names": [
+                  "capture_native_ui_scenario",
+                  "demangle_swift",
+                  "inspect_macho",
+                  "inspect_plist",
+                  "inspect_signature",
+                  "list_architectures",
+                  "observe_native_calls",
+                  "observe_native_ui"
+                ],
+                "available": false,
+                "reason": "unsupported_host",
+                "remediation": "Native macOS utilities require macOS."
+              },
+              {
+                "names": [
+                  "capture_process_scenario"
+                ],
+                "available": false,
+                "reason": "unsupported_host",
+                "remediation": "Run process capture on a supported Linux or macOS host."
+              },
+              {
+                "names": [
+                  "decode_android_resources",
+                  "inspect_apktool_client"
+                ],
+                "available": false,
+                "reason": "provider_unavailable",
+                "remediation": "Set REA_APKTOOL_COMMAND to an absolute apktool launcher, or add its directory and extension to PATH and PATHEXT."
+              },
+              {
+                "names": [
+                  "decode_signal_recording",
+                  "inspect_signal_decoders"
+                ],
+                "available": false,
+                "reason": "unsupported_host",
+                "remediation": "On Linux, supply sigrok-cli 0.7.2 via absolute REA_SIGROK_COMMAND and util-linux prlimit (REA_SIGROK_PRLIMIT_COMMAND, default /usr/bin/prlimit). No active binary target or hardware is required; the tool is checked at execution."
+              },
+              {
+                "names": [
+                  "decompile_jeb_item",
+                  "inspect_jeb_client",
+                  "list_jeb_units",
+                  "open_jeb_project"
+                ],
+                "available": false,
+                "reason": "provider_missing",
+                "remediation": "Start a JEB client serving MCP (default http://127.0.0.1:8425/mcp) or set REA_JEB_MCP_URL to the running endpoint."
+              },
+              {
+                "names": [
+                  "extract_firmware"
+                ],
+                "available": false,
+                "reason": "unsupported_host",
+                "remediation": "On Linux, provide an absolute REA_UNBLOB_COMMAND (Unblob 26.6.x (verified with 26.6.4)) path, util-linux prlimit and procps ps. Extraction also requires the selected format\u2019s external extractor."
+              },
+              {
+                "names": [
+                  "get_navigation_context"
+                ],
+                "default_mode_available": false,
+                "modes": [
+                  {
+                    "name": "current_selection",
+                    "available": false,
+                    "missing_operations": [
+                      "current_document",
+                      "current_address",
+                      "resolve_containing_procedure"
+                    ],
+                    "remediation": "Call open_binary with a supported local target."
+                  },
+                  {
+                    "name": "explicit_document",
+                    "available": false,
+                    "missing_operations": [
+                      "current_address",
+                      "resolve_containing_procedure"
+                    ],
+                    "remediation": "Call open_binary with a supported local target."
+                  }
+                ],
+                "available": false,
+                "reason": "target_required",
+                "remediation": "Call open_binary with a supported local target."
+              },
+              {
+                "names": [
+                  "inspect_asset_catalog"
+                ],
+                "available": false,
+                "reason": "unsupported_host",
+                "remediation": "Apple asset catalogs require macOS assetutil."
+              },
+              {
+                "names": [
+                  "inspect_binary_layout",
+                  "inspect_recorded_crash"
+                ],
+                "available": false,
+                "reason": "unsupported_host",
+                "remediation": "On Linux x64, set absolute REA_PWNTOOLS_PYTHON to caller-supplied Python with pwntools 4.15.0. No active binary target is required."
+              },
+              {
+                "names": [
+                  "inspect_evm_interface"
+                ],
+                "available": false,
+                "reason": "unsupported_host",
+                "remediation": "The bundled offline EVM interface profile is currently real-verified on Linux x64. No active binary target or chain endpoint is required."
+              },
+              {
+                "names": [
+                  "inspect_firmware_regions"
+                ],
+                "available": false,
+                "reason": "unsupported_host",
+                "remediation": "On Linux, provide an absolute REA_BINWALK_COMMAND (Binwalk 3.1.x (verified with 3.1.0)) path, util-linux prlimit and procps ps."
+              },
+              {
+                "names": [
+                  "inspect_packet_capture",
+                  "inspect_packet_fields"
+                ],
+                "available": false,
+                "reason": "unsupported_host",
+                "remediation": "On Linux, supply TShark 4.x on PATH or through absolute REA_TSHARK_COMMAND, and util-linux prlimit (REA_TSHARK_PRLIMIT_COMMAND, default /usr/bin/prlimit). No active binary target or hardware is required; the tool is checked at execution."
+              },
+              {
+                "names": [
+                  "recover_javascript_sources"
+                ],
+                "available": false,
+                "reason": "unsupported_host",
+                "remediation": "On Linux x64, provide an absolute REA_WAKARU_COMMAND for Wakaru ^1.13.0 (verified with 1.14.0) and util-linux prlimit; see docs/guides/javascript/javascript-recovery.md#install-wakaru. No binary target is required."
+              },
+              {
+                "names": [
+                  "start_gdb_session",
+                  "start_rizin_debug_session"
+                ],
+                "available": false,
+                "reason": "unsupported_host",
+                "remediation": "Run persistent debugger sessions on Linux with /proc descriptor readback."
+              },
+              {
+                "names": [
+                  "trace_native_values"
+                ],
+                "value_flow_support": {
+                  "status": "unknown",
+                  "provider_id": null
+                },
+                "available": false,
+                "reason": "target_required",
+                "remediation": "Call open_binary with a supported local target."
+              },
+              {
+                "names": [
+                  "trace_web_module_imports"
+                ],
+                "default_mode_available": true,
+                "modes": [
+                  {
+                    "name": "sources-without-literal-imports",
+                    "available": true,
+                    "missing_operations": [],
+                    "remediation": null
+                  },
+                  {
+                    "name": "native-literal-resolution",
+                    "available": true,
+                    "missing_operations": [],
+                    "remediation": null
+                  }
+                ],
+                "available": true,
+                "reason": "available",
+                "remediation": null
+              }
+            ]
+          },
+          "client_features": {
+            "elicitation_form": false,
+            "elicitation_url": false,
+            "roots": false,
+            "sampling": false
+          },
+          "server_identity": {
+            "package": {
+              "name": "rea-agents",
+              "version": "6.9.0",
+              "root_path": "D:\\Project\\reverse\\vendor\\rea\\package",
+              "build_commit": null
+            },
+            "server": {
+              "name": "rea",
+              "version": "6.9.0",
+              "started_at": "2026-11-16T12:17:27.066Z",
+              "command_path": "D:\\Project\\reverse\\vendor\\rea\\package\\scripts\\rea.mjs"
+            },
+            "sdk": {
+              "server": "2.3.1",
+              "client_test": "2.3.1",
+              "core": "2.3.1"
+            },
+            "negotiated_protocol_version": "2025-06-18",
+            "client": {
+              "name": "reverse-fusion-deployment-check",
+              "version": "1"
+            },
+            "skill": {
+              "name": "reverse-engineer-anything",
+              "expected_version": "62"
+            },
+            "catalog": {
+              "counts": {
+                "cli_commands": 196,
+                "mcp_tools": 255,
+                "mcp_prompts": 6
+              },
+              "digests": {
+                "tools_sha256": "b3054fab57a222a4690d93cdba88805d7cbd2e6c0279dd596eecf213030c3797",
+                "prompts_sha256": "60078bd8ef8bd152b51440e7579fba2059beec18fec5148dd0ec10ef013213fe",
+                "combined_sha256": "2c725b48818ac5266198069330907c657f0fa2b6b8236065e5a191e20d95c2d7"
+              }
+            },
+            "protocol_features": {
+              "progress": true,
+              "cancellation": true,
+              "elicitation": false
+            },
+            "alignment": {
+              "state": "unknown",
+              "reasons": [],
+              "remediation": "Supply expected package, catalog, or registration identity to compare the live server."
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "tool": "inspect_wasm_artifact",
+    "arguments": {
+      "path": "D:\\Project\\reverse\\fixtures\\answer.wasm",
+      "detail": "summary"
+    },
+    "result": {
+      "_meta": {
+        "provenance": {
+          "untrusted_content": true,
+          "source": "analysis_target"
+        }
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"evidence_id\":\"ev_abf83ccdc3e9efa710bdb23c05311b9676bb80476973f91ca66733b13daf5796\",\"subject\":{\"name\":\"answer.wasm\",\"digest\":{\"sha256\":\"ccf59f0f7a7625ee380ed228905aadfa11072ac14cea1c53d1e7f3953d4d48c6\"},\"local_path\":\"D:\\\\Project\\\\reverse\\\\fixtures\\\\answer.wasm\",\"format\":\"file\",\"architecture\":null},\"provider\":{\"id\":\"rea-analysis-view\",\"name\":\"REA analysis view projection\",\"version\":\"1\"},\"analysis_profile\":null,\"predicate_type\":\"rea.analysis-view\",\"operation\":\"inspect_analysis_view\",\"parameters\":{\"parent_evidence_id\":\"ev_41164326232eb8bccb428d64f78e252faa8c5ffac78a26a70b07dbfb7aefd49f\",\"view\":{\"kind\":\"summary\"}},\"raw_result\":null,\"normalized_result\":{\"kind\":\"summary\",\"view\":{\"kind\":\"summary\"},\"parent_evidence_id\":\"ev_41164326232eb8bccb428d64f78e252faa8c5ffac78a26a70b07dbfb7aefd49f\",\"parent_operation\":\"inspect_wasm_artifact\",\"parent_digest\":\"41164326232eb8bccb428d64f78e252faa8c5ffac78a26a70b07dbfb7aefd49f\",\"view_digest\":\"02d21955f9bbc3932e1a99d3db480f2499d24987b7b61e498bf49adfbf98af0d\",\"artifact\":{\"path\":\"D:\\\\Project\\\\reverse\\\\fixtures\\\\answer.wasm\",\"sha256\":\"ccf59f0f7a7625ee380ed228905aadfa11072ac14cea1c53d1e7f3953d4d48c6\"},\"coverage\":{\"status\":\"complete-within-view\",\"examined\":5,\"total\":5,\"next_offset\":null,\"exhausted\":true},\"limitations\":[\"Each WABT command has a 30000 ms deadline and a 33554432 byte combined output budget (max_output_bytes). The deadline is not a whole-inspection budget. Oversized output fails instead of producing truncated success.\",\"Imports and exports retain exact top-level WABT WAT forms. Names remain escaped producer text; unescaped objdump display names are not parsed as unambiguous identifiers.\",\"JavaScript references are AST-observed static literals only. Candidate matches are associations, not proven data flow, URL-to-file identity or runtime loading. Computed references and aliases are not resolved.\",\"No target execution or implicit fetch. WABT tools are trusted caller-supplied executables; SHA-256 identifies their bytes, not publisher authenticity. No OS memory sandbox is claimed.\",\"WAT is a decoded representation, not original source or proof of runtime behavior. Custom annotations may retain payloads, but WAT does not establish original binary layout or round-trip byte identity. Original bytes and objdump output remain authoritative.\"],\"unknowns\":[\"Decoded WAT is not original source. Runtime behavior and network acquisition were not performed.\"],\"summary\":{\"bytes\":39,\"validation\":\"valid\",\"debug_name_metadata\":\"not-present\",\"custom_section_warnings\":[],\"available_counts\":{\"sections\":4,\"imports\":0,\"exports\":1,\"candidates\":1,\"glue\":0},\"wat\":{\"sha256\":\"cfb85ee3cf82e0f804d574eda29b92c86471c25232301ea33ba123b91f327e82\",\"representation\":\"decoded-wat\",\"code_units\":127},\"tool_profile\":{\"source\":\"https://github.com/WebAssembly/wabt\",\"release\":\"1.0.42\",\"source_commit\":\"ff0ef7e0009402740c805a9744c09b05be063e48\",\"commands\":[{\"tool\":\"wasm-validate\",\"path\":\"D:\\\\Project\\\\reverse\\\\vendor\\\\wabt\\\\1.0.42\\\\windows-x64\\\\wabt-1.0.42\\\\bin\\\\wasm-validate.exe\",\"sha256\":\"4939f4bcc66b8b0370685f656c1a33df068f5d1b245b75c94b10c74ffdd946a3\",\"version_banner\":\"1.0.42\\n\",\"arguments\":[\"--enable-all\",\"--ignore-custom-section-errors\",\"module.wasm\"]},{\"tool\":\"wasm-objdump\",\"path\":\"D:\\\\Project\\\\reverse\\\\vendor\\\\wabt\\\\1.0.42\\\\windows-x64\\\\wabt-1.0.42\\\\bin\\\\wasm-objdump.exe\",\"sha256\":\"7f9cf21ca410d867261f719e01f2a0f7b5f13eb83abf0efa975a207307069ac8\",\"version_banner\":\"1.0.42\\n\",\"arguments\":[\"-h\",\"-x\",\"module.wasm\"]},{\"tool\":\"wasm2wat\",\"path\":\"D:\\\\Project\\\\reverse\\\\vendor\\\\wabt\\\\1.0.42\\\\windows-x64\\\\wabt-1.0.42\\\\bin\\\\wasm2wat.exe\",\"sha256\":\"9ccce93d1000e4d3ba7e5c365bd1e3b5d909dea2f72c7511d584f8a8e9108873\",\"version_banner\":\"1.0.42\\n\",\"arguments\":[\"--enable-all\",\"--ignore-custom-section-errors\",\"module.wasm\"]}],\"timeout_ms\":30000,\"output_budget_bytes\":33554432},\"runtime_execution\":\"not-performed\",\"network_fetch\":\"not-performed\",\"limitation_count\":5}},\"confidence\":\"derived\",\"authority\":\"shipped-artifact\",\"environment\":null,\"limitations\":[\"Each WABT command has a 30000 ms deadline and a 33554432 byte combined output budget (max_output_bytes). The deadline is not a whole-inspection budget. Oversized output fails instead of producing truncated success.\",\"Imports and exports retain exact top-level WABT WAT forms. Names remain escaped producer text; unescaped objdump display names are not parsed as unambiguous identifiers.\",\"JavaScript references are AST-observed static literals only. Candidate matches are associations, not proven data flow, URL-to-file identity or runtime loading. Computed references and aliases are not resolved.\",\"No target execution or implicit fetch. WABT tools are trusted caller-supplied executables; SHA-256 identifies their bytes, not publisher authenticity. No OS memory sandbox is claimed.\",\"WAT is a decoded representation, not original source or proof of runtime behavior. Custom annotations may retain payloads, but WAT does not establish original binary layout or round-trip byte identity. Original bytes and objdump output remain authoritative.\"],\"relationship_coverage\":null,\"locations\":[{\"kind\":\"artifact-path\",\"path\":\"D:\\\\Project\\\\reverse\\\\fixtures\\\\answer.wasm\"}],\"evidence_links\":[\"ev_41164326232eb8bccb428d64f78e252faa8c5ffac78a26a70b07dbfb7aefd49f\"]}"
+        }
+      ],
+      "structuredContent": {
+        "evidence_id": "ev_abf83ccdc3e9efa710bdb23c05311b9676bb80476973f91ca66733b13daf5796",
+        "subject": {
+          "name": "answer.wasm",
+          "digest": {
+            "sha256": "ccf59f0f7a7625ee380ed228905aadfa11072ac14cea1c53d1e7f3953d4d48c6"
+          },
+          "local_path": "D:\\Project\\reverse\\fixtures\\answer.wasm",
+          "format": "file",
+          "architecture": null
+        },
+        "provider": {
+          "id": "rea-analysis-view",
+          "name": "REA analysis view projection",
+          "version": "1"
+        },
+        "analysis_profile": null,
+        "predicate_type": "rea.analysis-view",
+        "operation": "inspect_analysis_view",
+        "parameters": {
+          "parent_evidence_id": "ev_41164326232eb8bccb428d64f78e252faa8c5ffac78a26a70b07dbfb7aefd49f",
+          "view": {
+            "kind": "summary"
+          }
+        },
+        "raw_result": null,
+        "normalized_result": {
+          "kind": "summary",
+          "view": {
+            "kind": "summary"
+          },
+          "parent_evidence_id": "ev_41164326232eb8bccb428d64f78e252faa8c5ffac78a26a70b07dbfb7aefd49f",
+          "parent_operation": "inspect_wasm_artifact",
+          "parent_digest": "41164326232eb8bccb428d64f78e252faa8c5ffac78a26a70b07dbfb7aefd49f",
+          "view_digest": "02d21955f9bbc3932e1a99d3db480f2499d24987b7b61e498bf49adfbf98af0d",
+          "artifact": {
+            "path": "D:\\Project\\reverse\\fixtures\\answer.wasm",
+            "sha256": "ccf59f0f7a7625ee380ed228905aadfa11072ac14cea1c53d1e7f3953d4d48c6"
+          },
+          "coverage": {
+            "status": "complete-within-view",
+            "examined": 5,
+            "total": 5,
+            "next_offset": null,
+            "exhausted": true
+          },
+          "limitations": [
+            "Each WABT command has a 30000 ms deadline and a 33554432 byte combined output budget (max_output_bytes). The deadline is not a whole-inspection budget. Oversized output fails instead of producing truncated success.",
+            "Imports and exports retain exact top-level WABT WAT forms. Names remain escaped producer text; unescaped objdump display names are not parsed as unambiguous identifiers.",
+            "JavaScript references are AST-observed static literals only. Candidate matches are associations, not proven data flow, URL-to-file identity or runtime loading. Computed references and aliases are not resolved.",
+            "No target execution or implicit fetch. WABT tools are trusted caller-supplied executables; SHA-256 identifies their bytes, not publisher authenticity. No OS memory sandbox is claimed.",
+            "WAT is a decoded representation, not original source or proof of runtime behavior. Custom annotations may retain payloads, but WAT does not establish original binary layout or round-trip byte identity. Original bytes and objdump output remain authoritative."
+          ],
+          "unknowns": [
+            "Decoded WAT is not original source. Runtime behavior and network acquisition were not performed."
+          ],
+          "summary": {
+            "bytes": 39,
+            "validation": "valid",
+            "debug_name_metadata": "not-present",
+            "custom_section_warnings": [],
+            "available_counts": {
+              "sections": 4,
+              "imports": 0,
+              "exports": 1,
+              "candidates": 1,
+              "glue": 0
+            },
+            "wat": {
+              "sha256": "cfb85ee3cf82e0f804d574eda29b92c86471c25232301ea33ba123b91f327e82",
+              "representation": "decoded-wat",
+              "code_units": 127
+            },
+            "tool_profile": {
+              "source": "https://github.com/WebAssembly/wabt",
+              "release": "1.0.42",
+              "source_commit": "ff0ef7e0009402740c805a9744c09b05be063e48",
+              "commands": [
+                {
+                  "tool": "wasm-validate",
+                  "path": "D:\\Project\\reverse\\vendor\\wabt\\1.0.42\\windows-x64\\wabt-1.0.42\\bin\\wasm-validate.exe",
+                  "sha256": "4939f4bcc66b8b0370685f656c1a33df068f5d1b245b75c94b10c74ffdd946a3",
+                  "version_banner": "1.0.42\n",
+                  "arguments": [
+                    "--enable-all",
+                    "--ignore-custom-section-errors",
+                    "module.wasm"
+                  ]
+                },
+                {
+                  "tool": "wasm-objdump",
+                  "path": "D:\\Project\\reverse\\vendor\\wabt\\1.0.42\\windows-x64\\wabt-1.0.42\\bin\\wasm-objdump.exe",
+                  "sha256": "7f9cf21ca410d867261f719e01f2a0f7b5f13eb83abf0efa975a207307069ac8",
+                  "version_banner": "1.0.42\n",
+                  "arguments": [
+                    "-h",
+                    "-x",
+                    "module.wasm"
+                  ]
+                },
+                {
+                  "tool": "wasm2wat",
+                  "path": "D:\\Project\\reverse\\vendor\\wabt\\1.0.42\\windows-x64\\wabt-1.0.42\\bin\\wasm2wat.exe",
+                  "sha256": "9ccce93d1000e4d3ba7e5c365bd1e3b5d909dea2f72c7511d584f8a8e9108873",
+                  "version_banner": "1.0.42\n",
+                  "arguments": [
+                    "--enable-all",
+                    "--ignore-custom-section-errors",
+                    "module.wasm"
+                  ]
+                }
+              ],
+              "timeout_ms": 30000,
+              "output_budget_bytes": 33554432
+            },
+            "runtime_execution": "not-performed",
+            "network_fetch": "not-performed",
+            "limitation_count": 5
+          }
+        },
+        "confidence": "derived",
+        "authority": "shipped-artifact",
+        "environment": null,
+        "limitations": [
+          "Each WABT command has a 30000 ms deadline and a 33554432 byte combined output budget (max_output_bytes). The deadline is not a whole-inspection budget. Oversized output fails instead of producing truncated success.",
+          "Imports and exports retain exact top-level WABT WAT forms. Names remain escaped producer text; unescaped objdump display names are not parsed as unambiguous identifiers.",
+          "JavaScript references are AST-observed static literals only. Candidate matches are associations, not proven data flow, URL-to-file identity or runtime loading. Computed references and aliases are not resolved.",
+          "No target execution or implicit fetch. WABT tools are trusted caller-supplied executables; SHA-256 identifies their bytes, not publisher authenticity. No OS memory sandbox is claimed.",
+          "WAT is a decoded representation, not original source or proof of runtime behavior. Custom annotations may retain payloads, but WAT does not establish original binary layout or round-trip byte identity. Original bytes and objdump output remain authoritative."
+        ],
+        "relationship_coverage": null,
+        "locations": [
+          {
+            "kind": "artifact-path",
+            "path": "D:\\Project\\reverse\\fixtures\\answer.wasm"
+          }
+        ],
+        "evidence_links": [
+          "ev_41164326232eb8bccb428d64f78e252faa8c5ffac78a26a70b07dbfb7aefd49f"
+        ]
+      }
+    }
+  },
+  {
+    "tool": "inspect_android_package",
+    "arguments": {
+      "path": "D:\\Project\\reverse\\state\\rf36\\apk\\owned.apk",
+      "detail": "summary"
+    },
+    "result": {
+      "_meta": {
+        "provenance": {
+          "untrusted_content": true,
+          "source": "analysis_target"
+        }
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"evidence_id\":\"ev_b8f430dfa48c73f446faace8ad8f7ac28551c0716935eb8dd2f09e54936e372c\",\"subject\":{\"name\":\"owned.apk\",\"digest\":{\"sha256\":\"8f55a89d0b704adfa4d8e629329bfda1a68ab11db5949c7fa236ff13ed8aa6aa\"},\"local_path\":\"D:\\\\Project\\\\reverse\\\\state\\\\rf36\\\\apk\\\\owned.apk\",\"format\":\"apk\",\"architecture\":null},\"provider\":{\"id\":\"rea-analysis-view\",\"name\":\"REA analysis view projection\",\"version\":\"1\"},\"analysis_profile\":null,\"predicate_type\":\"rea.analysis-view\",\"operation\":\"inspect_analysis_view\",\"parameters\":{\"parent_evidence_id\":\"ev_a553561da132db645c9522057d1d3a6c9a87b4088ac5fdd09d32c266c61689e0\",\"view\":{\"kind\":\"summary\"}},\"raw_result\":null,\"normalized_result\":{\"kind\":\"summary\",\"view\":{\"kind\":\"summary\"},\"parent_evidence_id\":\"ev_a553561da132db645c9522057d1d3a6c9a87b4088ac5fdd09d32c266c61689e0\",\"parent_operation\":\"inspect_android_package\",\"parent_digest\":\"a553561da132db645c9522057d1d3a6c9a87b4088ac5fdd09d32c266c61689e0\",\"view_digest\":\"68053c2c26effa89e41139ba4d30bc734b3874563cf605d060ed896223605054\",\"artifact\":{\"path\":\"D:\\\\Project\\\\reverse\\\\state\\\\rf36\\\\apk\\\\owned.apk\",\"sha256\":\"8f55a89d0b704adfa4d8e629329bfda1a68ab11db5949c7fa236ff13ed8aa6aa\"},\"coverage\":{\"status\":\"complete-within-view\",\"examined\":1,\"total\":1,\"next_offset\":null,\"exhausted\":true},\"limitations\":[\"Static decompiler observations do not establish runtime behavior; the APK is never executed.\",\"Method signatures use provider display types; DEX prototypes come from frozen JADX metadata. Display names may be aliases, and overload indices are local to this engine and artifact.\",\"Class inventories use parsed metadata before code generation, including synthetic members that may be omitted from decompiled source. Source positions remain unknown.\",\"Incoming reference totals count JADX using nodes. Direct invoke entries within a using method report raw DEX code-unit offsets and method indexes, but coverage is limited to those nodes and directly matched invokes; it does not establish every possible dynamic or reflective call site.\",\"Manifest summaries are parsed once by REA's bridge from the exact root AndroidManifest.xml resource, using namespace-aware XML attributes; decoded XML is retained. These summaries do not verify APK signatures, split APKs or Android runtime capture.\"],\"unknowns\":[\"APK signatures were not verified; package declarations do not establish authenticity or runtime behavior.\"],\"summary\":{\"engine\":{\"name\":\"jadx-headless-mcp\",\"version\":\"0.7.1\",\"artifact_sha256\":\"6e5eacf500b64292bfb73c49797c1958f6ee44646e43e868039ae7feb573ff75\",\"source_revision\":\"5844800a486d2248fa949b74c9896285f5b54de2\",\"worker_count\":1,\"heap_limit_mib\":4024},\"package_name\":\"com.reversefusion.fixture\",\"version_name\":null,\"version_code\":null,\"min_sdk\":null,\"target_sdk\":null,\"permissions\":[],\"manifest\":{\"status\":\"complete\",\"reported_total_bytes\":null,\"text_code_units\":784,\"text_included\":false},\"components\":{\"status\":\"complete\",\"items\":[{\"kind\":\"activity\",\"declared_name\":\".MainActivity\",\"name\":\"com.reversefusion.fixture.MainActivity\",\"exported\":true,\"exported_default\":true,\"permission\":null,\"permission_source\":\"none\",\"intent_filter_count\":1,\"actions\":[\"android.intent.action.MAIN\"],\"categories\":[\"android.intent.category.LAUNCHER\"],\"foreground_service_type\":null,\"authorities\":null,\"target_activity\":null,\"declaration_coverage\":\"complete\",\"declaration_index\":0,\"location\":{\"line\":11,\"column\":9,\"offset\":436},\"enabled\":null,\"enabled_declaration\":null,\"process\":null,\"grant_uri_permissions\":null,\"grant_uri_permissions_declaration\":null,\"intent_filters\":[{\"source_index\":0,\"location\":{\"line\":14,\"column\":13,\"offset\":539},\"priority\":null,\"actions\":[\"android.intent.action.MAIN\"],\"categories\":[\"android.intent.category.LAUNCHER\"],\"data\":[],\"coverage\":\"complete\"}],\"meta_data\":[]}],\"limitations\":[]},\"class_count\":2,\"resource_count\":2,\"signature_verification\":\"not_performed\"}},\"confidence\":\"derived\",\"authority\":\"shipped-artifact\",\"environment\":null,\"limitations\":[\"Static decompiler observations do not establish runtime behavior; the APK is never executed.\",\"Method signatures use provider display types; DEX prototypes come from frozen JADX metadata. Display names may be aliases, and overload indices are local to this engine and artifact.\",\"Class inventories use parsed metadata before code generation, including synthetic members that may be omitted from decompiled source. Source positions remain unknown.\",\"Incoming reference totals count JADX using nodes. Direct invoke entries within a using method report raw DEX code-unit offsets and method indexes, but coverage is limited to those nodes and directly matched invokes; it does not establish every possible dynamic or reflective call site.\",\"Manifest summaries are parsed once by REA's bridge from the exact root AndroidManifest.xml resource, using namespace-aware XML attributes; decoded XML is retained. These summaries do not verify APK signatures, split APKs or Android runtime capture.\"],\"relationship_coverage\":null,\"locations\":[{\"kind\":\"artifact-path\",\"path\":\"D:\\\\Project\\\\reverse\\\\state\\\\rf36\\\\apk\\\\owned.apk\"}],\"evidence_links\":[\"ev_a553561da132db645c9522057d1d3a6c9a87b4088ac5fdd09d32c266c61689e0\"]}"
+        }
+      ],
+      "structuredContent": {
+        "evidence_id": "ev_b8f430dfa48c73f446faace8ad8f7ac28551c0716935eb8dd2f09e54936e372c",
+        "subject": {
+          "name": "owned.apk",
+          "digest": {
+            "sha256": "8f55a89d0b704adfa4d8e629329bfda1a68ab11db5949c7fa236ff13ed8aa6aa"
+          },
+          "local_path": "D:\\Project\\reverse\\state\\rf36\\apk\\owned.apk",
+          "format": "apk",
+          "architecture": null
+        },
+        "provider": {
+          "id": "rea-analysis-view",
+          "name": "REA analysis view projection",
+          "version": "1"
+        },
+        "analysis_profile": null,
+        "predicate_type": "rea.analysis-view",
+        "operation": "inspect_analysis_view",
+        "parameters": {
+          "parent_evidence_id": "ev_a553561da132db645c9522057d1d3a6c9a87b4088ac5fdd09d32c266c61689e0",
+          "view": {
+            "kind": "summary"
+          }
+        },
+        "raw_result": null,
+        "normalized_result": {
+          "kind": "summary",
+          "view": {
+            "kind": "summary"
+          },
+          "parent_evidence_id": "ev_a553561da132db645c9522057d1d3a6c9a87b4088ac5fdd09d32c266c61689e0",
+          "parent_operation": "inspect_android_package",
+          "parent_digest": "a553561da132db645c9522057d1d3a6c9a87b4088ac5fdd09d32c266c61689e0",
+          "view_digest": "68053c2c26effa89e41139ba4d30bc734b3874563cf605d060ed896223605054",
+          "artifact": {
+            "path": "D:\\Project\\reverse\\state\\rf36\\apk\\owned.apk",
+            "sha256": "8f55a89d0b704adfa4d8e629329bfda1a68ab11db5949c7fa236ff13ed8aa6aa"
+          },
+          "coverage": {
+            "status": "complete-within-view",
+            "examined": 1,
+            "total": 1,
+            "next_offset": null,
+            "exhausted": true
+          },
+          "limitations": [
+            "Static decompiler observations do not establish runtime behavior; the APK is never executed.",
+            "Method signatures use provider display types; DEX prototypes come from frozen JADX metadata. Display names may be aliases, and overload indices are local to this engine and artifact.",
+            "Class inventories use parsed metadata before code generation, including synthetic members that may be omitted from decompiled source. Source positions remain unknown.",
+            "Incoming reference totals count JADX using nodes. Direct invoke entries within a using method report raw DEX code-unit offsets and method indexes, but coverage is limited to those nodes and directly matched invokes; it does not establish every possible dynamic or reflective call site.",
+            "Manifest summaries are parsed once by REA's bridge from the exact root AndroidManifest.xml resource, using namespace-aware XML attributes; decoded XML is retained. These summaries do not verify APK signatures, split APKs or Android runtime capture."
+          ],
+          "unknowns": [
+            "APK signatures were not verified; package declarations do not establish authenticity or runtime behavior."
+          ],
+          "summary": {
+            "engine": {
+              "name": "jadx-headless-mcp",
+              "version": "0.7.1",
+              "artifact_sha256": "6e5eacf500b64292bfb73c49797c1958f6ee44646e43e868039ae7feb573ff75",
+              "source_revision": "5844800a486d2248fa949b74c9896285f5b54de2",
+              "worker_count": 1,
+              "heap_limit_mib": 4024
+            },
+            "package_name": "com.reversefusion.fixture",
+            "version_name": null,
+            "version_code": null,
+            "min_sdk": null,
+            "target_sdk": null,
+            "permissions": [],
+            "manifest": {
+              "status": "complete",
+              "reported_total_bytes": null,
+              "text_code_units": 784,
+              "text_included": false
+            },
+            "components": {
+              "status": "complete",
+              "items": [
+                {
+                  "kind": "activity",
+                  "declared_name": ".MainActivity",
+                  "name": "com.reversefusion.fixture.MainActivity",
+                  "exported": true,
+                  "exported_default": true,
+                  "permission": null,
+                  "permission_source": "none",
+                  "intent_filter_count": 1,
+                  "actions": [
+                    "android.intent.action.MAIN"
+                  ],
+                  "categories": [
+                    "android.intent.category.LAUNCHER"
+                  ],
+                  "foreground_service_type": null,
+                  "authorities": null,
+                  "target_activity": null,
+                  "declaration_coverage": "complete",
+                  "declaration_index": 0,
+                  "location": {
+                    "line": 11,
+                    "column": 9,
+                    "offset": 436
+                  },
+                  "enabled": null,
+                  "enabled_declaration": null,
+                  "process": null,
+                  "grant_uri_permissions": null,
+                  "grant_uri_permissions_declaration": null,
+                  "intent_filters": [
+                    {
+                      "source_index": 0,
+                      "location": {
+                        "line": 14,
+                        "column": 13,
+                        "offset": 539
+                      },
+                      "priority": null,
+                      "actions": [
+                        "android.intent.action.MAIN"
+                      ],
+                      "categories": [
+                        "android.intent.category.LAUNCHER"
+                      ],
+                      "data": [],
+                      "coverage": "complete"
+                    }
+                  ],
+                  "meta_data": []
+                }
+              ],
+              "limitations": []
+            },
+            "class_count": 2,
+            "resource_count": 2,
+            "signature_verification": "not_performed"
+          }
+        },
+        "confidence": "derived",
+        "authority": "shipped-artifact",
+        "environment": null,
+        "limitations": [
+          "Static decompiler observations do not establish runtime behavior; the APK is never executed.",
+          "Method signatures use provider display types; DEX prototypes come from frozen JADX metadata. Display names may be aliases, and overload indices are local to this engine and artifact.",
+          "Class inventories use parsed metadata before code generation, including synthetic members that may be omitted from decompiled source. Source positions remain unknown.",
+          "Incoming reference totals count JADX using nodes. Direct invoke entries within a using method report raw DEX code-unit offsets and method indexes, but coverage is limited to those nodes and directly matched invokes; it does not establish every possible dynamic or reflective call site.",
+          "Manifest summaries are parsed once by REA's bridge from the exact root AndroidManifest.xml resource, using namespace-aware XML attributes; decoded XML is retained. These summaries do not verify APK signatures, split APKs or Android runtime capture."
+        ],
+        "relationship_coverage": null,
+        "locations": [
+          {
+            "kind": "artifact-path",
+            "path": "D:\\Project\\reverse\\state\\rf36\\apk\\owned.apk"
+          }
+        ],
+        "evidence_links": [
+          "ev_a553561da132db645c9522057d1d3a6c9a87b4088ac5fdd09d32c266c61689e0"
+        ]
+      }
+    }
+  },
+  {
+    "tool": "inspect_android_class",
+    "arguments": {
+      "path": "D:\\Project\\reverse\\state\\rf36\\apk\\owned.apk",
+      "class_name": "com.reversefusion.Answer"
+    },
+    "result": {
+      "_meta": {
+        "provenance": {
+          "untrusted_content": true,
+          "source": "analysis_target"
+        }
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"evidence_id\":\"ev_462855d215b968832247802cbf95b1c3baf0f038d12f2a11e1e6caee4df60bb5\",\"subject\":{\"name\":\"owned.apk\",\"digest\":{\"sha256\":\"8f55a89d0b704adfa4d8e629329bfda1a68ab11db5949c7fa236ff13ed8aa6aa\"},\"local_path\":\"D:\\\\Project\\\\reverse\\\\state\\\\rf36\\\\apk\\\\owned.apk\",\"format\":\"apk\",\"architecture\":null},\"provider\":{\"id\":\"jadx\",\"name\":\"JADX headless\",\"version\":\"0.7.1\"},\"analysis_profile\":null,\"predicate_type\":\"rea.analysis\",\"operation\":\"inspect_android_class\",\"parameters\":{\"path\":\"D:\\\\Project\\\\reverse\\\\state\\\\rf36\\\\apk\\\\owned.apk\",\"class_name\":\"com.reversefusion.Answer\"},\"raw_result\":{\"server\":{\"name\":\"rea-jadx-bridge\",\"version\":\"10\"},\"bridge_sha256\":\"f9d6d68eadd3d51a89e2debda359454c20534560080d4438f9b9cfe5a19f0b2e\",\"jar_sha256\":\"6e5eacf500b64292bfb73c49797c1958f6ee44646e43e868039ae7feb573ff75\",\"loaded\":{\"state\":\"LOADED\",\"apk_path\":\"D:\\\\tmp\\\\rea-android-5d08b4447893741024f14db1cd3c3100\\\\target.apk\",\"class_count\":2,\"resource_count\":2,\"threads\":1,\"resources\":\"full\"},\"calls\":[{\"operation\":\"rea_jvm_status\",\"input\":{},\"response\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\\"java_version\\\":\\\"21.0.12.1\\\",\\\"max_heap_bytes\\\":4219469824,\\\"metadata_scope\\\":\\\"parsed_members\\\",\\\"engine_reported_version\\\":\\\"0.7.1\\\",\\\"available_processors\\\":20}\"}],\"isError\":false}},{\"operation\":\"get_class_summary\",\"input\":{\"class_name\":\"com.reversefusion.Answer\",\"dex_static_values\":true},\"response\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\\"methods\\\":[{\\\"def_pos\\\":0,\\\"is_constructor\\\":true,\\\"name\\\":\\\"\\\\u003cinit\\\\u003e\\\",\\\"signature\\\":\\\"\\\\u003cinit\\\\u003e(): void\\\",\\\"dex_descriptor\\\":\\\"()V\\\",\\\"raw_name\\\":\\\"\\\\u003cinit\\\\u003e\\\"},{\\\"def_pos\\\":0,\\\"is_constructor\\\":false,\\\"name\\\":\\\"answer\\\",\\\"signature\\\":\\\"answer(java.lang.String): java.lang.String\\\",\\\"dex_descriptor\\\":\\\"(Ljava/lang/String;)Ljava/lang/String;\\\",\\\"raw_name\\\":\\\"answer\\\"}],\\\"full_name\\\":\\\"com.reversefusion.Answer\\\",\\\"inner_classes\\\":[],\\\"field_count\\\":0,\\\"method_count\\\":2,\\\"raw_name\\\":\\\"com.reversefusion.Answer\\\",\\\"name\\\":\\\"Answer\\\",\\\"inner_class_count\\\":0,\\\"inner_class_raw_names\\\":[],\\\"fields\\\":[]}\"}],\"isError\":false}}]},\"normalized_result\":{\"engine\":{\"name\":\"jadx-headless-mcp\",\"version\":\"0.7.1\",\"artifact_sha256\":\"6e5eacf500b64292bfb73c49797c1958f6ee44646e43e868039ae7feb573ff75\",\"source_revision\":\"5844800a486d2248fa949b74c9896285f5b54de2\",\"worker_count\":1,\"heap_limit_mib\":4024},\"class_name\":\"com.reversefusion.Answer\",\"methods\":[{\"name\":\"<init>\",\"reported_signature\":\"<init>(): void\",\"overload_index\":0,\"is_constructor\":true,\"dex_descriptor\":\"()V\"},{\"name\":\"answer\",\"reported_signature\":\"answer(java.lang.String): java.lang.String\",\"overload_index\":0,\"is_constructor\":false,\"dex_descriptor\":\"(Ljava/lang/String;)Ljava/lang/String;\"}],\"fields\":[],\"inner_classes\":[]},\"confidence\":\"observed\",\"authority\":\"shipped-artifact\",\"environment\":null,\"limitations\":[\"Static decompiler observations do not establish runtime behavior; the APK is never executed.\",\"Method signatures use provider display types; DEX prototypes come from frozen JADX metadata. Display names may be aliases, and overload indices are local to this engine and artifact.\",\"Class inventories use parsed metadata before code generation, including synthetic members that may be omitted from decompiled source. Source positions remain unknown.\",\"Incoming reference totals count JADX using nodes. Direct invoke entries within a using method report raw DEX code-unit offsets and method indexes, but coverage is limited to those nodes and directly matched invokes; it does not establish every possible dynamic or reflective call site.\",\"Manifest summaries are parsed once by REA's bridge from the exact root AndroidManifest.xml resource, using namespace-aware XML attributes; decoded XML is retained. These summaries do not verify APK signatures, split APKs or Android runtime capture.\"],\"relationship_coverage\":null,\"locations\":[],\"evidence_links\":[]}"
+        }
+      ],
+      "structuredContent": {
+        "evidence_id": "ev_462855d215b968832247802cbf95b1c3baf0f038d12f2a11e1e6caee4df60bb5",
+        "subject": {
+          "name": "owned.apk",
+          "digest": {
+            "sha256": "8f55a89d0b704adfa4d8e629329bfda1a68ab11db5949c7fa236ff13ed8aa6aa"
+          },
+          "local_path": "D:\\Project\\reverse\\state\\rf36\\apk\\owned.apk",
+          "format": "apk",
+          "architecture": null
+        },
+        "provider": {
+          "id": "jadx",
+          "name": "JADX headless",
+          "version": "0.7.1"
+        },
+        "analysis_profile": null,
+        "predicate_type": "rea.analysis",
+        "operation": "inspect_android_class",
+        "parameters": {
+          "path": "D:\\Project\\reverse\\state\\rf36\\apk\\owned.apk",
+          "class_name": "com.reversefusion.Answer"
+        },
+        "raw_result": {
+          "server": {
+            "name": "rea-jadx-bridge",
+            "version": "10"
+          },
+          "bridge_sha256": "f9d6d68eadd3d51a89e2debda359454c20534560080d4438f9b9cfe5a19f0b2e",
+          "jar_sha256": "6e5eacf500b64292bfb73c49797c1958f6ee44646e43e868039ae7feb573ff75",
+          "loaded": {
+            "state": "LOADED",
+            "apk_path": "D:\\tmp\\rea-android-5d08b4447893741024f14db1cd3c3100\\target.apk",
+            "class_count": 2,
+            "resource_count": 2,
+            "threads": 1,
+            "resources": "full"
+          },
+          "calls": [
+            {
+              "operation": "rea_jvm_status",
+              "input": {},
+              "response": {
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "{\"java_version\":\"21.0.12.1\",\"max_heap_bytes\":4219469824,\"metadata_scope\":\"parsed_members\",\"engine_reported_version\":\"0.7.1\",\"available_processors\":20}"
+                  }
+                ],
+                "isError": false
+              }
+            },
+            {
+              "operation": "get_class_summary",
+              "input": {
+                "class_name": "com.reversefusion.Answer",
+                "dex_static_values": true
+              },
+              "response": {
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "{\"methods\":[{\"def_pos\":0,\"is_constructor\":true,\"name\":\"\\u003cinit\\u003e\",\"signature\":\"\\u003cinit\\u003e(): void\",\"dex_descriptor\":\"()V\",\"raw_name\":\"\\u003cinit\\u003e\"},{\"def_pos\":0,\"is_constructor\":false,\"name\":\"answer\",\"signature\":\"answer(java.lang.String): java.lang.String\",\"dex_descriptor\":\"(Ljava/lang/String;)Ljava/lang/String;\",\"raw_name\":\"answer\"}],\"full_name\":\"com.reversefusion.Answer\",\"inner_classes\":[],\"field_count\":0,\"method_count\":2,\"raw_name\":\"com.reversefusion.Answer\",\"name\":\"Answer\",\"inner_class_count\":0,\"inner_class_raw_names\":[],\"fields\":[]}"
+                  }
+                ],
+                "isError": false
+              }
+            }
+          ]
+        },
+        "normalized_result": {
+          "engine": {
+            "name": "jadx-headless-mcp",
+            "version": "0.7.1",
+            "artifact_sha256": "6e5eacf500b64292bfb73c49797c1958f6ee44646e43e868039ae7feb573ff75",
+            "source_revision": "5844800a486d2248fa949b74c9896285f5b54de2",
+            "worker_count": 1,
+            "heap_limit_mib": 4024
+          },
+          "class_name": "com.reversefusion.Answer",
+          "methods": [
+            {
+              "name": "<init>",
+              "reported_signature": "<init>(): void",
+              "overload_index": 0,
+              "is_constructor": true,
+              "dex_descriptor": "()V"
+            },
+            {
+              "name": "answer",
+              "reported_signature": "answer(java.lang.String): java.lang.String",
+              "overload_index": 0,
+              "is_constructor": false,
+              "dex_descriptor": "(Ljava/lang/String;)Ljava/lang/String;"
+            }
+          ],
+          "fields": [],
+          "inner_classes": []
+        },
+        "confidence": "observed",
+        "authority": "shipped-artifact",
+        "environment": null,
+        "limitations": [
+          "Static decompiler observations do not establish runtime behavior; the APK is never executed.",
+          "Method signatures use provider display types; DEX prototypes come from frozen JADX metadata. Display names may be aliases, and overload indices are local to this engine and artifact.",
+          "Class inventories use parsed metadata before code generation, including synthetic members that may be omitted from decompiled source. Source positions remain unknown.",
+          "Incoming reference totals count JADX using nodes. Direct invoke entries within a using method report raw DEX code-unit offsets and method indexes, but coverage is limited to those nodes and directly matched invokes; it does not establish every possible dynamic or reflective call site.",
+          "Manifest summaries are parsed once by REA's bridge from the exact root AndroidManifest.xml resource, using namespace-aware XML attributes; decoded XML is retained. These summaries do not verify APK signatures, split APKs or Android runtime capture."
+        ],
+        "relationship_coverage": null,
+        "locations": [],
+        "evidence_links": []
+      }
+    }
+  },
+  {
+    "tool": "open_binary",
+    "arguments": {
+      "path": "D:\\Project\\reverse\\state\\rf36\\native\\guarded.exe",
+      "provider_id": "ghidra"
+    },
+    "result": {
+      "_meta": {
+        "provenance": {
+          "untrusted_content": true,
+          "source": "analysis_target"
+        }
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"result\":{\"path\":\"D:\\\\Project\\\\reverse\\\\state\\\\rf36\\\\native\\\\guarded.exe\",\"sha256\":\"de0d25bbf6253cf29b10e651f24aeedab77aa2c798bc01a5b0ab218ff72d2e32\",\"kind\":\"executable\",\"format\":\"pe\",\"architecture\":\"x86_64\"}}"
+        }
+      ],
+      "structuredContent": {
+        "result": {
+          "path": "D:\\Project\\reverse\\state\\rf36\\native\\guarded.exe",
+          "sha256": "de0d25bbf6253cf29b10e651f24aeedab77aa2c798bc01a5b0ab218ff72d2e32",
+          "kind": "executable",
+          "format": "pe",
+          "architecture": "x86_64"
+        }
+      }
+    }
+  },
+  {
+    "tool": "procedure_pseudo_code",
+    "arguments": {
+      "procedure": "main"
+    },
+    "result": {
+      "_meta": {
+        "provenance": {
+          "untrusted_content": true,
+          "source": "analysis_target"
+        }
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"evidence_id\":\"ev_8dc1245998df855866a6cee3b88fab016669ba50644f57e957039db3b5b237e9\",\"subject\":{\"name\":\"guarded.exe\",\"digest\":{\"sha256\":\"de0d25bbf6253cf29b10e651f24aeedab77aa2c798bc01a5b0ab218ff72d2e32\"},\"local_path\":\"D:\\\\Project\\\\reverse\\\\state\\\\rf36\\\\native\\\\guarded.exe\",\"format\":\"pe\",\"architecture\":\"x86_64\"},\"provider\":{\"id\":\"ghidra\",\"name\":\"Ghidra\",\"version\":\"12.1.3\"},\"analysis_profile\":{\"provider\":{\"id\":\"ghidra\",\"name\":\"Ghidra\",\"version\":\"12.1.3\"},\"parameters\":{\"target_kind\":\"executable\",\"target_format\":\"pe\",\"executable_role\":\"application\",\"managed\":false,\"native_aot_metadata\":{\"contract_revision\":\"rtr-9.1-x64-pe-read-only-v10\",\"source_bytes\":134217728,\"work_units\":67108864,\"working_memory_bytes\":67108864,\"report_bytes\":4194304},\"architecture\":\"x86_64\",\"available_architectures\":[\"x86_64\"],\"import_mode\":\"ephemeral-source-immutable\",\"pdb_observations\":\"program-info-v5\",\"annotation_policy\":\"atomic-function-entry-metadata-v1\",\"byte_search_boundary\":\"contiguous-eligible-initialized-blocks-v1\",\"load_image_observations\":\"source-mappings-entry-context-relocation-symbol-v3\",\"function_body_evidence\":\"complete-inclusive-ranges-v1\",\"function_references\":\"complete-body-and-entry-reference-manager-v3\",\"call_relationship_coverage\":\"observed-call-inventory-and-discovery-v7\",\"function_dossier_coverage\":\"observed-facets-and-call-relationships-v1\",\"native_value_flow_projection\":\"accepted-runtime-budgets-v1\",\"value_flow_effect_scope\":\"pcode-load-store-explicit-v1\",\"string_inventory_evidence\":\"defined-data-coverage-v1\",\"inventory_search_projection\":\"provider-inventory-facts-v1\",\"data_type_observations\":\"bit-field-base-and-lookup-v1\",\"location_resolution\":\"explicit-address-exact-entry-symbol-first-v3\",\"procedure_search\":\"primary-and-exact-entry-symbol-names-v1\",\"procedure_file_offset_resolution\":\"address-first-unique-target-source-mapping-v2\",\"instruction_flow_evidence\":\"decoded-return-pcode-v1\",\"instruction_status\":\"unlisted-and-containing-code-data-v3\",\"instruction_references\":\"exact-address-incoming-without-synthetic-entry-v3\",\"byte_search_coverage\":\"separate-loaded-overlays-v1\",\"function_boundary_observations\":\"ghidra-function-boundary-limitations-v4\",\"no_return_repair\":\"disabled-windows-p0\",\"process_launch\":\"official-headless-script-v1\",\"jump_table_evidence\":\"typed-case-default-blocks-v1\",\"decompiler_jump_loads\":true,\"loader\":\"auto-from-header\",\"language_id\":\"auto-from-header\",\"compiler_spec_id\":\"auto-default\",\"analyzer_preset\":\"ghidra-default\",\"function_coordinate_context\":{\"kind\":\"native-function-coordinate-context-v1\",\"selected_image\":null,\"mapping_sha256\":\"55a7964dc0bcdf067484a281c658e6ca8457a49405e0ea9dbd080366ee4c3198\"}},\"digest\":\"b63e4046fa14a25ab76c5dfb21671aaca39e1be50a390f68a56b6067fccfe9e6\"},\"predicate_type\":\"rea.analysis\",\"operation\":\"procedure_pseudo_code\",\"parameters\":{\"procedure\":\"main\"},\"raw_result\":null,\"normalized_result\":\"\\r\\n/* WARNING: Unknown calling convention -- yet parameter storage is locked */\\r\\n\\r\\nint main(void)\\r\\n\\r\\n{\\r\\n  int iVar1;\\r\\n  BOOL BVar2;\\r\\n  long lVar3;\\r\\n  FILE *_File;\\r\\n  char *pcVar4;\\r\\n  int *piVar5;\\r\\n  char *end;\\r\\n  char input [128];\\r\\n  long value;\\r\\n  \\r\\n  __main();\\r\\n  _File = (FILE *)__acrt_iob_func(0);\\r\\n  pcVar4 = fgets(input,0x80,_File);\\r\\n  if (pcVar4 == (char *)0x0) {\\r\\n    iVar1 = 2;\\r\\n  }\\r\\n  else {\\r\\n    BVar2 = IsDebuggerPresent();\\r\\n    if (BVar2 == 0) {\\r\\n      piVar5 = _errno();\\r\\n      *piVar5 = 0;\\r\\n      lVar3 = strtol(input,&end,10);\\r\\n      for (; (((*end == ' ' || (*end == '\\\\r')) || (*end == '\\\\n')) || (*end == '\\\\t')); end = end + 1)\\r\\n      {\\r\\n      }\\r\\n      piVar5 = _errno();\\r\\n      if (((*piVar5 == 0) && (end != input)) &&\\r\\n         ((*end == '\\\\0' && ((-0x3e9 < lVar3 && (lVar3 < 0x3e9)))))) {\\r\\n        printf(\\\"result:%ld\\\\n\\\",(ulonglong)(lVar3 * 2 + 7));\\r\\n        iVar1 = 0;\\r\\n      }\\r\\n      else {\\r\\n        puts(\\\"invalid\\\");\\r\\n        iVar1 = 3;\\r\\n      }\\r\\n    }\\r\\n    else {\\r\\n      puts(\\\"observer-blocked\\\");\\r\\n      iVar1 = 9;\\r\\n    }\\r\\n  }\\r\\n  return iVar1;\\r\\n}\\r\\n\\r\\n\",\"confidence\":\"observed\",\"authority\":\"shipped-artifact\",\"environment\":null,\"limitations\":[\"The session serves operations only after Ghidra reports default auto-analysis complete; incomplete analysis does not expose partial results.\",\"Ghidra Program checkpoint mode is disabled: closing discards metadata edits; original executable bytes are unchanged. For stock ELF/PE/Mach-O on Linux/macOS, set REA_GHIDRA_CHECKPOINT_DIR to a private absolute directory before starting REA (restart MCP after changing its startup environment).\",\"Cancelling an active Ghidra request terminates its ephemeral database and discards session annotations. The selected target remains open; the next provider query imports the original artifact again.\",\"Default-space addresses use lowercase 0x-prefixed hexadecimal; other address spaces use <percent-encoded-space>:0x<hex>.\",\"Pseudocode is Ghidra decompiler output, not original source and not text-equivalent to Hopper output.\",\"External functions and functions without an analyzable body return null; other decompiler failures remain explicit.\",\"Windows Ghidra P0 accepts native x86, x86-64, ARMNT (Thumb-2) and ARM64 PE applications and DLLs, DOS MZ images, and explicitly selected raw 6502 images; managed, hostile, sensitive, and mutable-path targets are unsupported.\",\"The Windows bridge uses authenticated IPv4 loopback because Node path-based IPC does not expose Java AF_UNIX sockets; the endpoint file contains no bearer token.\",\"Windows sessions require the matching packaged Windows x64 native addon, local NTFS/ReFS targets and runtimes, and Windows 10 or later. Native handles enforce path admission, private DACLs, and Job Object ownership automatically.\",\"This session uses Ghidra 12.1.3. The bridge is verified against 12.1.4; other 12.x (>=12.1) builds are accepted and the observed version is reported.\"],\"relationship_coverage\":null,\"locations\":[],\"evidence_links\":[]}"
+        }
+      ],
+      "structuredContent": {
+        "evidence_id": "ev_8dc1245998df855866a6cee3b88fab016669ba50644f57e957039db3b5b237e9",
+        "subject": {
+          "name": "guarded.exe",
+          "digest": {
+            "sha256": "de0d25bbf6253cf29b10e651f24aeedab77aa2c798bc01a5b0ab218ff72d2e32"
+          },
+          "local_path": "D:\\Project\\reverse\\state\\rf36\\native\\guarded.exe",
+          "format": "pe",
+          "architecture": "x86_64"
+        },
+        "provider": {
+          "id": "ghidra",
+          "name": "Ghidra",
+          "version": "12.1.3"
+        },
+        "analysis_profile": {
+          "provider": {
+            "id": "ghidra",
+            "name": "Ghidra",
+            "version": "12.1.3"
+          },
+          "parameters": {
+            "target_kind": "executable",
+            "target_format": "pe",
+            "executable_role": "application",
+            "managed": false,
+            "native_aot_metadata": {
+              "contract_revision": "rtr-9.1-x64-pe-read-only-v10",
+              "source_bytes": 134217728,
+              "work_units": 67108864,
+              "working_memory_bytes": 67108864,
+              "report_bytes": 4194304
+            },
+            "architecture": "x86_64",
+            "available_architectures": [
+              "x86_64"
+            ],
+            "import_mode": "ephemeral-source-immutable",
+            "pdb_observations": "program-info-v5",
+            "annotation_policy": "atomic-function-entry-metadata-v1",
+            "byte_search_boundary": "contiguous-eligible-initialized-blocks-v1",
+            "load_image_observations": "source-mappings-entry-context-relocation-symbol-v3",
+            "function_body_evidence": "complete-inclusive-ranges-v1",
+            "function_references": "complete-body-and-entry-reference-manager-v3",
+            "call_relationship_coverage": "observed-call-inventory-and-discovery-v7",
+            "function_dossier_coverage": "observed-facets-and-call-relationships-v1",
+            "native_value_flow_projection": "accepted-runtime-budgets-v1",
+            "value_flow_effect_scope": "pcode-load-store-explicit-v1",
+            "string_inventory_evidence": "defined-data-coverage-v1",
+            "inventory_search_projection": "provider-inventory-facts-v1",
+            "data_type_observations": "bit-field-base-and-lookup-v1",
+            "location_resolution": "explicit-address-exact-entry-symbol-first-v3",
+            "procedure_search": "primary-and-exact-entry-symbol-names-v1",
+            "procedure_file_offset_resolution": "address-first-unique-target-source-mapping-v2",
+            "instruction_flow_evidence": "decoded-return-pcode-v1",
+            "instruction_status": "unlisted-and-containing-code-data-v3",
+            "instruction_references": "exact-address-incoming-without-synthetic-entry-v3",
+            "byte_search_coverage": "separate-loaded-overlays-v1",
+            "function_boundary_observations": "ghidra-function-boundary-limitations-v4",
+            "no_return_repair": "disabled-windows-p0",
+            "process_launch": "official-headless-script-v1",
+            "jump_table_evidence": "typed-case-default-blocks-v1",
+            "decompiler_jump_loads": true,
+            "loader": "auto-from-header",
+            "language_id": "auto-from-header",
+            "compiler_spec_id": "auto-default",
+            "analyzer_preset": "ghidra-default",
+            "function_coordinate_context": {
+              "kind": "native-function-coordinate-context-v1",
+              "selected_image": null,
+              "mapping_sha256": "55a7964dc0bcdf067484a281c658e6ca8457a49405e0ea9dbd080366ee4c3198"
+            }
+          },
+          "digest": "b63e4046fa14a25ab76c5dfb21671aaca39e1be50a390f68a56b6067fccfe9e6"
+        },
+        "predicate_type": "rea.analysis",
+        "operation": "procedure_pseudo_code",
+        "parameters": {
+          "procedure": "main"
+        },
+        "raw_result": null,
+        "normalized_result": "\r\n/* WARNING: Unknown calling convention -- yet parameter storage is locked */\r\n\r\nint main(void)\r\n\r\n{\r\n  int iVar1;\r\n  BOOL BVar2;\r\n  long lVar3;\r\n  FILE *_File;\r\n  char *pcVar4;\r\n  int *piVar5;\r\n  char *end;\r\n  char input [128];\r\n  long value;\r\n  \r\n  __main();\r\n  _File = (FILE *)__acrt_iob_func(0);\r\n  pcVar4 = fgets(input,0x80,_File);\r\n  if (pcVar4 == (char *)0x0) {\r\n    iVar1 = 2;\r\n  }\r\n  else {\r\n    BVar2 = IsDebuggerPresent();\r\n    if (BVar2 == 0) {\r\n      piVar5 = _errno();\r\n      *piVar5 = 0;\r\n      lVar3 = strtol(input,&end,10);\r\n      for (; (((*end == ' ' || (*end == '\\r')) || (*end == '\\n')) || (*end == '\\t')); end = end + 1)\r\n      {\r\n      }\r\n      piVar5 = _errno();\r\n      if (((*piVar5 == 0) && (end != input)) &&\r\n         ((*end == '\\0' && ((-0x3e9 < lVar3 && (lVar3 < 0x3e9)))))) {\r\n        printf(\"result:%ld\\n\",(ulonglong)(lVar3 * 2 + 7));\r\n        iVar1 = 0;\r\n      }\r\n      else {\r\n        puts(\"invalid\");\r\n        iVar1 = 3;\r\n      }\r\n    }\r\n    else {\r\n      puts(\"observer-blocked\");\r\n      iVar1 = 9;\r\n    }\r\n  }\r\n  return iVar1;\r\n}\r\n\r\n",
+        "confidence": "observed",
+        "authority": "shipped-artifact",
+        "environment": null,
+        "limitations": [
+          "The session serves operations only after Ghidra reports default auto-analysis complete; incomplete analysis does not expose partial results.",
+          "Ghidra Program checkpoint mode is disabled: closing discards metadata edits; original executable bytes are unchanged. For stock ELF/PE/Mach-O on Linux/macOS, set REA_GHIDRA_CHECKPOINT_DIR to a private absolute directory before starting REA (restart MCP after changing its startup environment).",
+          "Cancelling an active Ghidra request terminates its ephemeral database and discards session annotations. The selected target remains open; the next provider query imports the original artifact again.",
+          "Default-space addresses use lowercase 0x-prefixed hexadecimal; other address spaces use <percent-encoded-space>:0x<hex>.",
+          "Pseudocode is Ghidra decompiler output, not original source and not text-equivalent to Hopper output.",
+          "External functions and functions without an analyzable body return null; other decompiler failures remain explicit.",
+          "Windows Ghidra P0 accepts native x86, x86-64, ARMNT (Thumb-2) and ARM64 PE applications and DLLs, DOS MZ images, and explicitly selected raw 6502 images; managed, hostile, sensitive, and mutable-path targets are unsupported.",
+          "The Windows bridge uses authenticated IPv4 loopback because Node path-based IPC does not expose Java AF_UNIX sockets; the endpoint file contains no bearer token.",
+          "Windows sessions require the matching packaged Windows x64 native addon, local NTFS/ReFS targets and runtimes, and Windows 10 or later. Native handles enforce path admission, private DACLs, and Job Object ownership automatically.",
+          "This session uses Ghidra 12.1.3. The bridge is verified against 12.1.4; other 12.x (>=12.1) builds are accepted and the observed version is reported."
+        ],
+        "relationship_coverage": null,
+        "locations": [],
+        "evidence_links": []
+      }
+    }
+  },
+  {
+    "tool": "close_binary",
+    "arguments": {},
+    "result": {
+      "_meta": {
+        "provenance": {
+          "untrusted_content": true,
+          "source": "analysis_target"
+        }
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"result\":null}"
+        }
+      ],
+      "structuredContent": {
+        "result": null
+      }
+    }
+  },
+  {
+    "tool": "export_evidence_bundle",
+    "arguments": {
+      "path": "D:\\Project\\reverse\\state\\rf36\\provider-final\\bundle.json"
+    },
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"result\":{\"path\":\"D:\\\\Project\\\\reverse\\\\state\\\\rf36\\\\provider-final\\\\bundle.json\",\"bytes\":33387,\"records\":6,\"unknowns\":0}}"
+        }
+      ],
+      "structuredContent": {
+        "result": {
+          "path": "D:\\Project\\reverse\\state\\rf36\\provider-final\\bundle.json",
+          "bytes": 33387,
+          "records": 6,
+          "unknowns": 0
+        }
+      }
+    }
+  },
+  {
+    "tool": "get_evidence_bundle",
+    "arguments": {
+      "detail": "summary"
+    },
+    "result": {
+      "_meta": {
+        "provenance": {
+          "untrusted_content": true,
+          "source": "analysis_target"
+        }
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"result\":{\"kind\":\"evidence-bundle-summary\",\"filters\":{},\"total_retained_records\":6,\"matching_records\":6,\"unknown_revisions\":0,\"direct_links\":2,\"missing_direct_links\":0,\"records\":[{\"evidence_id\":\"ev_41164326232eb8bccb428d64f78e252faa8c5ffac78a26a70b07dbfb7aefd49f\",\"subject\":{\"name\":\"answer.wasm\",\"digest\":{\"sha256\":\"ccf59f0f7a7625ee380ed228905aadfa11072ac14cea1c53d1e7f3953d4d48c6\"},\"local_path\":\"D:\\\\Project\\\\reverse\\\\fixtures\\\\answer.wasm\",\"format\":\"file\",\"architecture\":null},\"provider\":{\"id\":\"wabt-artifact\",\"name\":\"REA WABT artifact adapter\",\"version\":\"wabt@1.0.42\"},\"operation\":\"inspect_wasm_artifact\",\"confidence\":\"observed\",\"authority\":\"shipped-artifact\",\"analysis_profile_digest\":null,\"retention\":\"complete-record\",\"limitation_count\":5,\"native_dossier\":{\"available\":false,\"reason\":\"different-operation\"}},{\"evidence_id\":\"ev_462855d215b968832247802cbf95b1c3baf0f038d12f2a11e1e6caee4df60bb5\",\"subject\":{\"name\":\"owned.apk\",\"digest\":{\"sha256\":\"8f55a89d0b704adfa4d8e629329bfda1a68ab11db5949c7fa236ff13ed8aa6aa\"},\"local_path\":\"D:\\\\Project\\\\reverse\\\\state\\\\rf36\\\\apk\\\\owned.apk\",\"format\":\"apk\",\"architecture\":null},\"provider\":{\"id\":\"jadx\",\"name\":\"JADX headless\",\"version\":\"0.7.1\"},\"operation\":\"inspect_android_class\",\"confidence\":\"observed\",\"authority\":\"shipped-artifact\",\"analysis_profile_digest\":null,\"retention\":\"complete-record\",\"limitation_count\":5,\"native_dossier\":{\"available\":false,\"reason\":\"different-operation\"}},{\"evidence_id\":\"ev_8dc1245998df855866a6cee3b88fab016669ba50644f57e957039db3b5b237e9\",\"subject\":{\"name\":\"guarded.exe\",\"digest\":{\"sha256\":\"de0d25bbf6253cf29b10e651f24aeedab77aa2c798bc01a5b0ab218ff72d2e32\"},\"local_path\":\"D:\\\\Project\\\\reverse\\\\state\\\\rf36\\\\native\\\\guarded.exe\",\"format\":\"pe\",\"architecture\":\"x86_64\"},\"provider\":{\"id\":\"ghidra\",\"name\":\"Ghidra\",\"version\":\"12.1.3\"},\"operation\":\"procedure_pseudo_code\",\"confidence\":\"observed\",\"authority\":\"shipped-artifact\",\"analysis_profile_digest\":\"b63e4046fa14a25ab76c5dfb21671aaca39e1be50a390f68a56b6067fccfe9e6\",\"retention\":\"complete-record\",\"limitation_count\":10,\"native_dossier\":{\"available\":false,\"reason\":\"different-operation\"}},{\"evidence_id\":\"ev_a553561da132db645c9522057d1d3a6c9a87b4088ac5fdd09d32c266c61689e0\",\"subject\":{\"name\":\"owned.apk\",\"digest\":{\"sha256\":\"8f55a89d0b704adfa4d8e629329bfda1a68ab11db5949c7fa236ff13ed8aa6aa\"},\"local_path\":\"D:\\\\Project\\\\reverse\\\\state\\\\rf36\\\\apk\\\\owned.apk\",\"format\":\"apk\",\"architecture\":null},\"provider\":{\"id\":\"jadx\",\"name\":\"JADX headless\",\"version\":\"0.7.1\"},\"operation\":\"inspect_android_package\",\"confidence\":\"observed\",\"authority\":\"shipped-artifact\",\"analysis_profile_digest\":null,\"retention\":\"complete-record\",\"limitation_count\":5,\"native_dossier\":{\"available\":false,\"reason\":\"different-operation\"}},{\"evidence_id\":\"ev_abf83ccdc3e9efa710bdb23c05311b9676bb80476973f91ca66733b13daf5796\",\"subject\":{\"name\":\"answer.wasm\",\"digest\":{\"sha256\":\"ccf59f0f7a7625ee380ed228905aadfa11072ac14cea1c53d1e7f3953d4d48c6\"},\"local_path\":\"D:\\\\Project\\\\reverse\\\\fixtures\\\\answer.wasm\",\"format\":\"file\",\"architecture\":null},\"provider\":{\"id\":\"rea-analysis-view\",\"name\":\"REA analysis view projection\",\"version\":\"1\"},\"operation\":\"inspect_analysis_view\",\"confidence\":\"derived\",\"authority\":\"shipped-artifact\",\"analysis_profile_digest\":null,\"retention\":\"complete-record\",\"limitation_count\":5,\"native_dossier\":{\"available\":false,\"reason\":\"different-operation\"}},{\"evidence_id\":\"ev_b8f430dfa48c73f446faace8ad8f7ac28551c0716935eb8dd2f09e54936e372c\",\"subject\":{\"name\":\"owned.apk\",\"digest\":{\"sha256\":\"8f55a89d0b704adfa4d8e629329bfda1a68ab11db5949c7fa236ff13ed8aa6aa\"},\"local_path\":\"D:\\\\Project\\\\reverse\\\\state\\\\rf36\\\\apk\\\\owned.apk\",\"format\":\"apk\",\"architecture\":null},\"provider\":{\"id\":\"rea-analysis-view\",\"name\":\"REA analysis view projection\",\"version\":\"1\"},\"operation\":\"inspect_analysis_view\",\"confidence\":\"derived\",\"authority\":\"shipped-artifact\",\"analysis_profile_digest\":null,\"retention\":\"complete-record\",\"limitation_count\":5,\"native_dossier\":{\"available\":false,\"reason\":\"different-operation\"}}]}}"
+        }
+      ],
+      "structuredContent": {
+        "result": {
+          "kind": "evidence-bundle-summary",
+          "filters": {},
+          "total_retained_records": 6,
+          "matching_records": 6,
+          "unknown_revisions": 0,
+          "direct_links": 2,
+          "missing_direct_links": 0,
+          "records": [
+            {
+              "evidence_id": "ev_41164326232eb8bccb428d64f78e252faa8c5ffac78a26a70b07dbfb7aefd49f",
+              "subject": {
+                "name": "answer.wasm",
+                "digest": {
+                  "sha256": "ccf59f0f7a7625ee380ed228905aadfa11072ac14cea1c53d1e7f3953d4d48c6"
+                },
+                "local_path": "D:\\Project\\reverse\\fixtures\\answer.wasm",
+                "format": "file",
+                "architecture": null
+              },
+              "provider": {
+                "id": "wabt-artifact",
+                "name": "REA WABT artifact adapter",
+                "version": "wabt@1.0.42"
+              },
+              "operation": "inspect_wasm_artifact",
+              "confidence": "observed",
+              "authority": "shipped-artifact",
+              "analysis_profile_digest": null,
+              "retention": "complete-record",
+              "limitation_count": 5,
+              "native_dossier": {
+                "available": false,
+                "reason": "different-operation"
+              }
+            },
+            {
+              "evidence_id": "ev_462855d215b968832247802cbf95b1c3baf0f038d12f2a11e1e6caee4df60bb5",
+              "subject": {
+                "name": "owned.apk",
+                "digest": {
+                  "sha256": "8f55a89d0b704adfa4d8e629329bfda1a68ab11db5949c7fa236ff13ed8aa6aa"
+                },
+                "local_path": "D:\\Project\\reverse\\state\\rf36\\apk\\owned.apk",
+                "format": "apk",
+                "architecture": null
+              },
+              "provider": {
+                "id": "jadx",
+                "name": "JADX headless",
+                "version": "0.7.1"
+              },
+              "operation": "inspect_android_class",
+              "confidence": "observed",
+              "authority": "shipped-artifact",
+              "analysis_profile_digest": null,
+              "retention": "complete-record",
+              "limitation_count": 5,
+              "native_dossier": {
+                "available": false,
+                "reason": "different-operation"
+              }
+            },
+            {
+              "evidence_id": "ev_8dc1245998df855866a6cee3b88fab016669ba50644f57e957039db3b5b237e9",
+              "subject": {
+                "name": "guarded.exe",
+                "digest": {
+                  "sha256": "de0d25bbf6253cf29b10e651f24aeedab77aa2c798bc01a5b0ab218ff72d2e32"
+                },
+                "local_path": "D:\\Project\\reverse\\state\\rf36\\native\\guarded.exe",
+                "format": "pe",
+                "architecture": "x86_64"
+              },
+              "provider": {
+                "id": "ghidra",
+                "name": "Ghidra",
+                "version": "12.1.3"
+              },
+              "operation": "procedure_pseudo_code",
+              "confidence": "observed",
+              "authority": "shipped-artifact",
+              "analysis_profile_digest": "b63e4046fa14a25ab76c5dfb21671aaca39e1be50a390f68a56b6067fccfe9e6",
+              "retention": "complete-record",
+              "limitation_count": 10,
+              "native_dossier": {
+                "available": false,
+                "reason": "different-operation"
+              }
+            },
+            {
+              "evidence_id": "ev_a553561da132db645c9522057d1d3a6c9a87b4088ac5fdd09d32c266c61689e0",
+              "subject": {
+                "name": "owned.apk",
+                "digest": {
+                  "sha256": "8f55a89d0b704adfa4d8e629329bfda1a68ab11db5949c7fa236ff13ed8aa6aa"
+                },
+                "local_path": "D:\\Project\\reverse\\state\\rf36\\apk\\owned.apk",
+                "format": "apk",
+                "architecture": null
+              },
+              "provider": {
+                "id": "jadx",
+                "name": "JADX headless",
+                "version": "0.7.1"
+              },
+              "operation": "inspect_android_package",
+              "confidence": "observed",
+              "authority": "shipped-artifact",
+              "analysis_profile_digest": null,
+              "retention": "complete-record",
+              "limitation_count": 5,
+              "native_dossier": {
+                "available": false,
+                "reason": "different-operation"
+              }
+            },
+            {
+              "evidence_id": "ev_abf83ccdc3e9efa710bdb23c05311b9676bb80476973f91ca66733b13daf5796",
+              "subject": {
+                "name": "answer.wasm",
+                "digest": {
+                  "sha256": "ccf59f0f7a7625ee380ed228905aadfa11072ac14cea1c53d1e7f3953d4d48c6"
+                },
+                "local_path": "D:\\Project\\reverse\\fixtures\\answer.wasm",
+                "format": "file",
+                "architecture": null
+              },
+              "provider": {
+                "id": "rea-analysis-view",
+                "name": "REA analysis view projection",
+                "version": "1"
+              },
+              "operation": "inspect_analysis_view",
+              "confidence": "derived",
+              "authority": "shipped-artifact",
+              "analysis_profile_digest": null,
+              "retention": "complete-record",
+              "limitation_count": 5,
+              "native_dossier": {
+                "available": false,
+                "reason": "different-operation"
+              }
+            },
+            {
+              "evidence_id": "ev_b8f430dfa48c73f446faace8ad8f7ac28551c0716935eb8dd2f09e54936e372c",
+              "subject": {
+                "name": "owned.apk",
+                "digest": {
+                  "sha256": "8f55a89d0b704adfa4d8e629329bfda1a68ab11db5949c7fa236ff13ed8aa6aa"
+                },
+                "local_path": "D:\\Project\\reverse\\state\\rf36\\apk\\owned.apk",
+                "format": "apk",
+                "architecture": null
+              },
+              "provider": {
+                "id": "rea-analysis-view",
+                "name": "REA analysis view projection",
+                "version": "1"
+              },
+              "operation": "inspect_analysis_view",
+              "confidence": "derived",
+              "authority": "shipped-artifact",
+              "analysis_profile_digest": null,
+              "retention": "complete-record",
+              "limitation_count": 5,
+              "native_dossier": {
+                "available": false,
+                "reason": "different-operation"
+              }
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "tool": "import_evidence_bundle",
+    "arguments": {
+      "path": "D:\\Project\\reverse\\state\\rf36\\provider-final\\bundle.json"
+    },
+    "result": {
+      "_meta": {
+        "provenance": {
+          "untrusted_content": true,
+          "source": "analysis_target"
+        }
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"result\":{\"imported\":6,\"unknowns_added\":0,\"total\":6}}"
+        }
+      ],
+      "structuredContent": {
+        "result": {
+          "imported": 6,
+          "unknowns_added": 0,
+          "total": 6
+        }
+      }
+    }
+  },
+  {
+    "tool": "get_evidence_bundle",
+    "arguments": {
+      "detail": "summary"
+    },
+    "result": {
+      "_meta": {
+        "provenance": {
+          "untrusted_content": true,
+          "source": "analysis_target"
+        }
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"result\":{\"kind\":\"evidence-bundle-summary\",\"filters\":{},\"total_retained_records\":6,\"matching_records\":6,\"unknown_revisions\":0,\"direct_links\":2,\"missing_direct_links\":0,\"records\":[{\"evidence_id\":\"ev_41164326232eb8bccb428d64f78e252faa8c5ffac78a26a70b07dbfb7aefd49f\",\"subject\":{\"name\":\"answer.wasm\",\"digest\":{\"sha256\":\"ccf59f0f7a7625ee380ed228905aadfa11072ac14cea1c53d1e7f3953d4d48c6\"},\"local_path\":\"D:\\\\Project\\\\reverse\\\\fixtures\\\\answer.wasm\",\"format\":\"file\",\"architecture\":null},\"provider\":{\"id\":\"wabt-artifact\",\"name\":\"REA WABT artifact adapter\",\"version\":\"wabt@1.0.42\"},\"operation\":\"inspect_wasm_artifact\",\"confidence\":\"observed\",\"authority\":\"shipped-artifact\",\"analysis_profile_digest\":null,\"retention\":\"complete-record\",\"limitation_count\":5,\"native_dossier\":{\"available\":false,\"reason\":\"different-operation\"}},{\"evidence_id\":\"ev_462855d215b968832247802cbf95b1c3baf0f038d12f2a11e1e6caee4df60bb5\",\"subject\":{\"name\":\"owned.apk\",\"digest\":{\"sha256\":\"8f55a89d0b704adfa4d8e629329bfda1a68ab11db5949c7fa236ff13ed8aa6aa\"},\"local_path\":\"D:\\\\Project\\\\reverse\\\\state\\\\rf36\\\\apk\\\\owned.apk\",\"format\":\"apk\",\"architecture\":null},\"provider\":{\"id\":\"jadx\",\"name\":\"JADX headless\",\"version\":\"0.7.1\"},\"operation\":\"inspect_android_class\",\"confidence\":\"observed\",\"authority\":\"shipped-artifact\",\"analysis_profile_digest\":null,\"retention\":\"complete-record\",\"limitation_count\":5,\"native_dossier\":{\"available\":false,\"reason\":\"different-operation\"}},{\"evidence_id\":\"ev_8dc1245998df855866a6cee3b88fab016669ba50644f57e957039db3b5b237e9\",\"subject\":{\"name\":\"guarded.exe\",\"digest\":{\"sha256\":\"de0d25bbf6253cf29b10e651f24aeedab77aa2c798bc01a5b0ab218ff72d2e32\"},\"local_path\":\"D:\\\\Project\\\\reverse\\\\state\\\\rf36\\\\native\\\\guarded.exe\",\"format\":\"pe\",\"architecture\":\"x86_64\"},\"provider\":{\"id\":\"ghidra\",\"name\":\"Ghidra\",\"version\":\"12.1.3\"},\"operation\":\"procedure_pseudo_code\",\"confidence\":\"observed\",\"authority\":\"shipped-artifact\",\"analysis_profile_digest\":\"b63e4046fa14a25ab76c5dfb21671aaca39e1be50a390f68a56b6067fccfe9e6\",\"retention\":\"complete-record\",\"limitation_count\":10,\"native_dossier\":{\"available\":false,\"reason\":\"different-operation\"}},{\"evidence_id\":\"ev_a553561da132db645c9522057d1d3a6c9a87b4088ac5fdd09d32c266c61689e0\",\"subject\":{\"name\":\"owned.apk\",\"digest\":{\"sha256\":\"8f55a89d0b704adfa4d8e629329bfda1a68ab11db5949c7fa236ff13ed8aa6aa\"},\"local_path\":\"D:\\\\Project\\\\reverse\\\\state\\\\rf36\\\\apk\\\\owned.apk\",\"format\":\"apk\",\"architecture\":null},\"provider\":{\"id\":\"jadx\",\"name\":\"JADX headless\",\"version\":\"0.7.1\"},\"operation\":\"inspect_android_package\",\"confidence\":\"observed\",\"authority\":\"shipped-artifact\",\"analysis_profile_digest\":null,\"retention\":\"complete-record\",\"limitation_count\":5,\"native_dossier\":{\"available\":false,\"reason\":\"different-operation\"}},{\"evidence_id\":\"ev_abf83ccdc3e9efa710bdb23c05311b9676bb80476973f91ca66733b13daf5796\",\"subject\":{\"name\":\"answer.wasm\",\"digest\":{\"sha256\":\"ccf59f0f7a7625ee380ed228905aadfa11072ac14cea1c53d1e7f3953d4d48c6\"},\"local_path\":\"D:\\\\Project\\\\reverse\\\\fixtures\\\\answer.wasm\",\"format\":\"file\",\"architecture\":null},\"provider\":{\"id\":\"rea-analysis-view\",\"name\":\"REA analysis view projection\",\"version\":\"1\"},\"operation\":\"inspect_analysis_view\",\"confidence\":\"derived\",\"authority\":\"shipped-artifact\",\"analysis_profile_digest\":null,\"retention\":\"complete-record\",\"limitation_count\":5,\"native_dossier\":{\"available\":false,\"reason\":\"different-operation\"}},{\"evidence_id\":\"ev_b8f430dfa48c73f446faace8ad8f7ac28551c0716935eb8dd2f09e54936e372c\",\"subject\":{\"name\":\"owned.apk\",\"digest\":{\"sha256\":\"8f55a89d0b704adfa4d8e629329bfda1a68ab11db5949c7fa236ff13ed8aa6aa\"},\"local_path\":\"D:\\\\Project\\\\reverse\\\\state\\\\rf36\\\\apk\\\\owned.apk\",\"format\":\"apk\",\"architecture\":null},\"provider\":{\"id\":\"rea-analysis-view\",\"name\":\"REA analysis view projection\",\"version\":\"1\"},\"operation\":\"inspect_analysis_view\",\"confidence\":\"derived\",\"authority\":\"shipped-artifact\",\"analysis_profile_digest\":null,\"retention\":\"complete-record\",\"limitation_count\":5,\"native_dossier\":{\"available\":false,\"reason\":\"different-operation\"}}]}}"
+        }
+      ],
+      "structuredContent": {
+        "result": {
+          "kind": "evidence-bundle-summary",
+          "filters": {},
+          "total_retained_records": 6,
+          "matching_records": 6,
+          "unknown_revisions": 0,
+          "direct_links": 2,
+          "missing_direct_links": 0,
+          "records": [
+            {
+              "evidence_id": "ev_41164326232eb8bccb428d64f78e252faa8c5ffac78a26a70b07dbfb7aefd49f",
+              "subject": {
+                "name": "answer.wasm",
+                "digest": {
+                  "sha256": "ccf59f0f7a7625ee380ed228905aadfa11072ac14cea1c53d1e7f3953d4d48c6"
+                },
+                "local_path": "D:\\Project\\reverse\\fixtures\\answer.wasm",
+                "format": "file",
+                "architecture": null
+              },
+              "provider": {
+                "id": "wabt-artifact",
+                "name": "REA WABT artifact adapter",
+                "version": "wabt@1.0.42"
+              },
+              "operation": "inspect_wasm_artifact",
+              "confidence": "observed",
+              "authority": "shipped-artifact",
+              "analysis_profile_digest": null,
+              "retention": "complete-record",
+              "limitation_count": 5,
+              "native_dossier": {
+                "available": false,
+                "reason": "different-operation"
+              }
+            },
+            {
+              "evidence_id": "ev_462855d215b968832247802cbf95b1c3baf0f038d12f2a11e1e6caee4df60bb5",
+              "subject": {
+                "name": "owned.apk",
+                "digest": {
+                  "sha256": "8f55a89d0b704adfa4d8e629329bfda1a68ab11db5949c7fa236ff13ed8aa6aa"
+                },
+                "local_path": "D:\\Project\\reverse\\state\\rf36\\apk\\owned.apk",
+                "format": "apk",
+                "architecture": null
+              },
+              "provider": {
+                "id": "jadx",
+                "name": "JADX headless",
+                "version": "0.7.1"
+              },
+              "operation": "inspect_android_class",
+              "confidence": "observed",
+              "authority": "shipped-artifact",
+              "analysis_profile_digest": null,
+              "retention": "complete-record",
+              "limitation_count": 5,
+              "native_dossier": {
+                "available": false,
+                "reason": "different-operation"
+              }
+            },
+            {
+              "evidence_id": "ev_8dc1245998df855866a6cee3b88fab016669ba50644f57e957039db3b5b237e9",
+              "subject": {
+                "name": "guarded.exe",
+                "digest": {
+                  "sha256": "de0d25bbf6253cf29b10e651f24aeedab77aa2c798bc01a5b0ab218ff72d2e32"
+                },
+                "local_path": "D:\\Project\\reverse\\state\\rf36\\native\\guarded.exe",
+                "format": "pe",
+                "architecture": "x86_64"
+              },
+              "provider": {
+                "id": "ghidra",
+                "name": "Ghidra",
+                "version": "12.1.3"
+              },
+              "operation": "procedure_pseudo_code",
+              "confidence": "observed",
+              "authority": "shipped-artifact",
+              "analysis_profile_digest": "b63e4046fa14a25ab76c5dfb21671aaca39e1be50a390f68a56b6067fccfe9e6",
+              "retention": "complete-record",
+              "limitation_count": 10,
+              "native_dossier": {
+                "available": false,
+                "reason": "different-operation"
+              }
+            },
+            {
+              "evidence_id": "ev_a553561da132db645c9522057d1d3a6c9a87b4088ac5fdd09d32c266c61689e0",
+              "subject": {
+                "name": "owned.apk",
+                "digest": {
+                  "sha256": "8f55a89d0b704adfa4d8e629329bfda1a68ab11db5949c7fa236ff13ed8aa6aa"
+                },
+                "local_path": "D:\\Project\\reverse\\state\\rf36\\apk\\owned.apk",
+                "format": "apk",
+                "architecture": null
+              },
+              "provider": {
+                "id": "jadx",
+                "name": "JADX headless",
+                "version": "0.7.1"
+              },
+              "operation": "inspect_android_package",
+              "confidence": "observed",
+              "authority": "shipped-artifact",
+              "analysis_profile_digest": null,
+              "retention": "complete-record",
+              "limitation_count": 5,
+              "native_dossier": {
+                "available": false,
+                "reason": "different-operation"
+              }
+            },
+            {
+              "evidence_id": "ev_abf83ccdc3e9efa710bdb23c05311b9676bb80476973f91ca66733b13daf5796",
+              "subject": {
+                "name": "answer.wasm",
+                "digest": {
+                  "sha256": "ccf59f0f7a7625ee380ed228905aadfa11072ac14cea1c53d1e7f3953d4d48c6"
+                },
+                "local_path": "D:\\Project\\reverse\\fixtures\\answer.wasm",
+                "format": "file",
+                "architecture": null
+              },
+              "provider": {
+                "id": "rea-analysis-view",
+                "name": "REA analysis view projection",
+                "version": "1"
+              },
+              "operation": "inspect_analysis_view",
+              "confidence": "derived",
+              "authority": "shipped-artifact",
+              "analysis_profile_digest": null,
+              "retention": "complete-record",
+              "limitation_count": 5,
+              "native_dossier": {
+                "available": false,
+                "reason": "different-operation"
+              }
+            },
+            {
+              "evidence_id": "ev_b8f430dfa48c73f446faace8ad8f7ac28551c0716935eb8dd2f09e54936e372c",
+              "subject": {
+                "name": "owned.apk",
+                "digest": {
+                  "sha256": "8f55a89d0b704adfa4d8e629329bfda1a68ab11db5949c7fa236ff13ed8aa6aa"
+                },
+                "local_path": "D:\\Project\\reverse\\state\\rf36\\apk\\owned.apk",
+                "format": "apk",
+                "architecture": null
+              },
+              "provider": {
+                "id": "rea-analysis-view",
+                "name": "REA analysis view projection",
+                "version": "1"
+              },
+              "operation": "inspect_analysis_view",
+              "confidence": "derived",
+              "authority": "shipped-artifact",
+              "analysis_profile_digest": null,
+              "retention": "complete-record",
+              "limitation_count": 5,
+              "native_dossier": {
+                "available": false,
+                "reason": "different-operation"
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+]

@@ -1,0 +1,16 @@
+diff --git a/crates/engines/src/assets/fal.rs b/crates/engines/src/assets/fal.rs
+--- a/crates/engines/src/assets/fal.rs
++++ b/crates/engines/src/assets/fal.rs
+@@ -84,6 +84,12 @@ impl AssetProvider for Fal {
+ }
+ 
+ impl Fal {
++    /// An explicit transport base, for an owned loopback qualification server.
++    /// Production callers keep Default and its official HTTPS endpoint.
++    pub fn with_base(base: &str) -> Self {
++        Self { base: base.trim_end_matches('/').to_string() }
++    }
++
+     fn post(&self, key: &str, model: &str, body: &Value) -> Result<Value, ToolError> {
+         let url = format!("{}/{model}", self.base);
+         // A 3D model takes a minute or two; fal answers once it's done.

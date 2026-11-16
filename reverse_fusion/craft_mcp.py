@@ -17,7 +17,9 @@ def mcp_binary(root: Path) -> Path:
     if not binary.is_file():
         raise ValueError('Craft MCP binary missing; run scripts/bootstrap-craft-mcp.ps1')
     actual = sha256(binary.read_bytes()).hexdigest()
-    names = {'components/craft-mcp/src/main.rs', 'components/craft-mcp/Cargo.toml', 'components/craft-mcp/Cargo.lock'}
+    names = {'components/craft-mcp/Cargo.toml', 'components/craft-mcp/Cargo.lock',
+             *(path.relative_to(root).as_posix() for path in (root/'components/craft-mcp/src').rglob('*.rs'))}
+    if 'components/craft-mcp/src/main.rs' not in names: raise ValueError('Craft MCP source entry missing')
     sources = manifest.get('adapter_source_sha256', {})
     matches = (set(sources) == names and all(
         sha256((root / name).read_bytes().replace(b'\r\n', b'\n')).hexdigest() == digest

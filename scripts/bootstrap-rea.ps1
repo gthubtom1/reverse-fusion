@@ -40,6 +40,14 @@ if (-not $extract) {
         $extract = $packageJson.name -ne $manifest.package -or $packageJson.version -ne $manifest.version -or $packageJson.engines.node -ne $manifest.node_engine
     } catch { $extract = $true }
 }
+if (-not $manifest.method_files_sha256 -or -not $manifest.method_files_sha256.PSObject.Properties.Count) {
+    throw 'REA manifest must include the original skill and method file identities'
+}
+foreach ($method in $manifest.method_files_sha256.PSObject.Properties) {
+    $methodPath = Assert-RepositoryWritePath $repo (Join-Path $destination $method.Name)
+    if (-not (Test-Path -LiteralPath $methodPath -PathType Leaf) -or
+        (Get-FileHash -Algorithm SHA256 -LiteralPath $methodPath).Hash.ToLowerInvariant() -ne $method.Value) { $extract = $true }
+}
 if ($extract) {
     if (Test-Path -LiteralPath $packageRoot) { Remove-Item -LiteralPath $packageRoot -Recurse -Force }
     tar -xzf $archive -C $destination
@@ -49,6 +57,13 @@ if (-not (Test-Path -LiteralPath $entry)) { throw "REA entry missing: $entry" }
 $packageJson = Get-Content -Raw -LiteralPath $packageJsonPath | ConvertFrom-Json
 if ($packageJson.name -ne $manifest.package -or $packageJson.version -ne $manifest.version -or $packageJson.engines.node -ne $manifest.node_engine) {
     throw 'Extracted REA package identity or Node engine mismatch'
+}
+foreach ($method in $manifest.method_files_sha256.PSObject.Properties) {
+    $methodPath = Assert-RepositoryWritePath $repo (Join-Path $destination $method.Name)
+    if (-not (Test-Path -LiteralPath $methodPath -PathType Leaf) -or
+        (Get-FileHash -Algorithm SHA256 -LiteralPath $methodPath).Hash.ToLowerInvariant() -ne $method.Value) {
+        throw "Extracted REA original method identity mismatch: $($method.Name)"
+    }
 }
 $runtimeReceipt = Assert-RepositoryWritePath $repo (Join-Path $repo 'state/rea-runtime.json')
 New-Item -ItemType Directory -Path ([IO.Path]::GetDirectoryName($runtimeReceipt)) -Force | Out-Null

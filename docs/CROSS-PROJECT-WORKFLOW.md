@@ -49,6 +49,12 @@ case、规格、候选及测试。`bridge`、`session`、`build`、`craft`、`na
    复制运行时或重复设置全局 PATH。重新检查 doctor 的 `node_source` 和实际版本，
    然后调用官方接口验证该目标支持的能力。
 
+   当前Codex优先使用已登记的适用MCP工具，原版方法见
+   `component_entries.rea.official_skill`。Craft分析先调用返回的`case_bind`，打开成果
+   case的原生Project；重新连接后绑定同case恢复。REA在结束前导出原生bundle到同case。
+   具体调用条件、保存路径和provider刷新见[MCP接入](MCP-INTEGRATION.md)；目录可见
+   不等于后端健康。返回的CLI argv恢复同一provider配置并保留成果项目cwd。
+
 3. **证据到规格**：选定被证据支持的功能，写 feature 的 spec/plan/tasks，任务引用原
    Evidence、观察与 unknown。区分 observed/inferred/designed。必须执行已安装官方 Spec Kit 的生成工作流与脚本，不能只手写同名任务。
    按 [真实组件交接](NATIVE-COMPONENTS.md) 继续 native-craft，实现后完成 implement/converge。

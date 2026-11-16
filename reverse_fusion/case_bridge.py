@@ -12,13 +12,16 @@ import platform
 import re
 import subprocess
 import sys
+import time
+from contextlib import contextmanager
 from dataclasses import asdict, dataclass
-from pathlib import Path
+from pathlib import Path, PureWindowsPath
 from typing import Any
 
 from importlib.util import module_from_spec, spec_from_file_location
 
 from .contracts import is_safe_relative_path
+from .file_updates import atomic_write, file_transaction
 
 
 @dataclass(frozen=True)
@@ -51,6 +54,65 @@ def resolve_case_root(repo_root: Path, case_root: str) -> Path:
 
 
 def record_case_pointer(repo_root: Path, pointer: CasePointer) -> Path:
+    with _case_index_lock(repo_root.resolve()):
+        return _record_case_pointer(repo_root, pointer)
+
+
+def _case_path_inside(path: Path, project: Path) -> bool:
+    def comparable(resolved):
+        # Windows realpath can retain its extended prefix if the final file is
+        # created between its two native probes (CPython ntpath.realpath).
+        # Normalize only the already-resolved drive/UNC namespace for comparison;
+        # keep resolved link targets and all components, and never change I/O paths.
+        if isinstance(resolved, PureWindowsPath):
+            text = str(resolved)
+            if text[:8].lower() == '\\\\?\\unc\\':
+                return PureWindowsPath('\\\\' + text[8:])
+            if re.match(r'^\\\\\?\\[A-Za-z]:\\', text):
+                return PureWindowsPath(text[4:])
+        return resolved
+    return comparable(path.resolve()).is_relative_to(comparable(project.resolve()))
+
+
+@contextmanager
+def _case_index_lock(project: Path):
+    """Serialize index read/update across cases; release automatically on exit."""
+    index = _case_index_path(project)
+    lock = index.with_suffix('.lock')
+    if not _case_path_inside(lock, project):
+        raise ValueError('Case discovery lock leaves the selected project')
+    lock.parent.mkdir(parents=True, exist_ok=True)
+    with lock.open('a+b') as stream:
+        if not stream.seek(0, os.SEEK_END):
+            stream.write(b'\0')
+            stream.flush()
+        deadline = time.monotonic() + 5
+        while True:
+            try:
+                stream.seek(0)
+                if os.name == 'nt':
+                    import msvcrt
+                    msvcrt.locking(stream.fileno(), msvcrt.LK_NBLCK, 1)
+                else:
+                    import fcntl
+                    fcntl.flock(stream.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)
+                break
+            except OSError as exc:
+                if time.monotonic() >= deadline:
+                    raise ValueError('Case index is being updated by another writer; retry after it finishes') from exc
+                time.sleep(.01)
+        try:
+            yield
+        finally:
+            stream.seek(0)
+            if os.name == 'nt':
+                msvcrt.locking(stream.fileno(), msvcrt.LK_UNLCK, 1)
+            else:
+                fcntl.flock(stream.fileno(), fcntl.LOCK_UN)
+
+
+def _record_case_pointer(repo_root: Path, pointer: CasePointer) -> Path:
+    repo_root = repo_root.resolve()
     case_root = resolve_case_root(repo_root, pointer.case_root)
     case_root.mkdir(parents=True, exist_ok=True)
     path = case_root / "case.json"
@@ -98,7 +160,15 @@ def record_case_pointer(repo_root: Path, pointer: CasePointer) -> Path:
         "history": history,
         "pointer": pointer.to_dict(),
     }
-    path.write_text(json.dumps(record, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    index_path = _case_index_path(repo_root)
+    roots = _indexed_case_roots(repo_root)
+    name = case_root.relative_to(repo_root).as_posix()
+    index = {'schema_version': 1, 'case_roots': sorted(set([*roots, name]))}
+    # The index is only a discovery pointer, never a second case authority.
+    # Restore both old records on a reported write failure.
+    with file_transaction([path, index_path]):
+        atomic_write(path, (json.dumps(record, ensure_ascii=False, indent=2, sort_keys=True) + "\n").encode('utf-8'))
+        atomic_write(index_path, (json.dumps(index, ensure_ascii=False, indent=2, sort_keys=True) + "\n").encode('utf-8'))
     return path
 
 
@@ -200,33 +270,90 @@ def request_intent(hint: str) -> str:
     text = hint or ''
     if re.fullmatch(r'\s*(?:继续(?:吧|做|分析|上次的|刚才那个项目[，,]?接着没完成的地方做)?|接着(?:做|来)?|恢复(?:上次)?|continue|resume)[。.!！\s]*', text, re.I):
         return 'follow-up'
-    if re.search(r'(?:只|仅|先).{0,4}(?:分析|研究|看懂).{0,16}(?:不(?:要|用)?|别|暂不).{0,4}(?:复刻|实现|写|开发)|(?:不要|不用|暂不|别).{0,3}(?:复刻|实现|写代码)', text):
+    if re.search(r'(?:只|仅|先).{0,4}(?:分析|研究|看懂).{0,16}(?:不(?:要|用)?|别|暂不).{0,4}(?:复刻|还原|仿制|实现|写|开发)|(?:不要|不用|暂不|别).{0,3}(?:复刻|还原|仿制|实现|写代码)', text):
         return 'analysis'
-    if re.search(r'复刻|仿制|照着.{0,10}(?:做|开发)|做(?:个|一[个份套])?.{0,8}一(?:模一样|样)|reconstruct|replica|re-?implement|clone.?behavior|behavio[u]?r.?equivalence', text, re.I):
+    if re.search(r'复刻|仿制|还原.{0,12}(?:软件|程序|应用|功能|界面|行为)|照着.{0,10}(?:做|开发)|做(?:个|一[个份套])?.{0,8}一(?:模一样|样)|reconstruct|replica|re-?implement|clone.?behavior|behavio[u]?r.?equivalence', text, re.I):
         return 'reconstruction'
     return 'analysis' if _reverse_intent(text) else 'normal-dev'
 
 
+def _case_index_path(project: Path) -> Path:
+    path = project / '.reverse-fusion/cases.json'
+    if not _case_path_inside(path, project):
+        raise ValueError('Case discovery index leaves the selected project')
+    if path.exists() and not path.is_file():
+        raise ValueError('Case discovery index is not a file')
+    return path
+
+
+def _indexed_case_roots(project: Path) -> list[str]:
+    path = _case_index_path(project)
+    if not path.is_file():
+        return []
+    try:
+        index = json.loads(path.read_text(encoding='utf-8-sig'))
+    except (OSError, ValueError) as exc:
+        raise ValueError('Case discovery index is unreadable; preserve and recover it before recording or automatic continuation') from exc
+    if (not isinstance(index, dict) or set(index) != {'schema_version', 'case_roots'}
+            or type(index['schema_version']) is not int or index['schema_version'] != 1
+            or not isinstance(index['case_roots'], list)
+            or any(not is_safe_relative_path(name) for name in index['case_roots'])
+            or len(set(index['case_roots'])) != len(index['case_roots'])):
+        raise ValueError('Case discovery index is malformed; do not overwrite it')
+    for name in index['case_roots']:
+        resolve_case_root(project, name)  # Reject indexed traversal and junction escapes.
+    return index['case_roots']
+
+
 def discover_open_cases(project: Path) -> list[str]:
-    """Find project-local direct cases for a plain 'continue', never old projects."""
-    found = []
-    for record in sorted((project / 'work').glob('*/case.json')):
+    """Resolve the managed index plus legacy work/* cases without a tree scan."""
+    project = project.resolve()
+    indexed = _indexed_case_roots(project)
+    records = [resolve_case_root(project, name) / 'case.json' for name in indexed]
+    records.extend(sorted((project / 'work').glob('*/case.json')))
+    found = set()
+    for record in records:
         if record.is_symlink() or record.parent.is_symlink() or not record.resolve().is_relative_to(project.resolve()):
             continue
         try:
             name = record.parent.relative_to(project).as_posix()
             if load_case_record(project, name):
-                found.append(name)
+                found.add(name)
         except (ValueError, OSError):
+            if record.parent.relative_to(project).as_posix() in indexed:
+                raise ValueError('Indexed case identity is invalid; locate the original case before automatic continuation')
             continue
-    return found
+    return sorted(found)
 
 
 def _reverse_intent(hint: str) -> bool:
-    return bool(re.search(
-        r"逆向|反编译|脱壳|复刻|重构目标|看懂.{0,8}(?:软件|程序|网站|算法|APK)|分析.{0,8}(?:软件|程序|安装包|网站|APK|抓包|协议)|取证|渗透测试|漏洞审计|reverse|decompil|reconstruct|replica|reimplement|re-?implement|clone.?behavior|implementation.?equivalence|obfuscat|anti[- ]?(debug|analysis|vm|hook)|packed|protected|binary analysis|apk analysis|forensic|penetration test|\.exe|\.apk",
-        hint or "", flags=re.IGNORECASE,
-    ))
+    text = hint or ''
+    # A task may name a protection or use the English verb "reverse" in normal
+    # development. Those bare words alone are not an analysis request.
+    target = r'(?:软件|程序|应用|网站|算法|安装包|文件(?:夹)?|代码|抓包|协议|二进制|样本|APK|DEX|DLL|EXE|WASM|ELF)'
+    explicit = r'逆向|反编译|脱壳|复刻|重构目标|取证|渗透测试|(?:安全|漏洞|代码)审计|\breverse[- ]engineering\b|\breverse[- ]fusion\b|decompil|reconstruct|replica|re-?implement|clone.?behavior|implementation.?equivalence|\bforensic|penetration test|\b(?:binary|apk) analysis\b'
+    if re.search(explicit, text, re.I):
+        return True
+    if re.search(r'\breverse\s+(?:(?:this|the)\s+)?(?:binary|software|application|app|apk|dex|firmware)\b', text, re.I):
+        return True
+    if re.search(r'(?:分析|研究|看懂|弄懂|搞懂).{0,24}' + target, text, re.I):
+        return True
+    if re.search(target + r'.{0,12}(?:怎么工作|工作原理|内部实现|反编译|逆向)', text, re.I):
+        return True
+    # Recognizable supplied artifacts can enter analysis; ordinary source files
+    # and protected routes/layouts do not activate this path on their own.
+    if re.search(r'\.(?:exe|dll|apk|dex|wasm|elf|so|dylib|ipa)\b', text, re.I):
+        return True
+    analysis = r'\b(?:analy[sz]e|inspect|decompile|investigate|unpack|disassemble)\b'
+    english_target = r'\b(?:files?|binar(?:y|ies)|executables?|software|apps?|applications?|dll|apk|dex|wasm|firmware|protocol|artifacts?)\b'
+    if re.search(analysis + r'.{0,80}' + english_target, text, re.I):
+        return True
+    if re.search(r'\b(?:build|create|implement|develop|fix|add|write|design)\b', text, re.I):
+        return False
+    protection = r'\b(?:obfuscat\w*|anti[- ]?(?:debug|analysis|vm|hook)|packed|protected)\b'
+    technology = r'(?:(?:javascript|native|windows|android|ios|managed|x86(?:_64)?|arm(?:64)?|pe|elf)\s+){0,3}'
+    return bool(re.search(protection + r'\s+' + technology + english_target, text, re.I)
+                or re.search(english_target + r'\s+(?:is|was|uses|has|with)\s+' + protection, text, re.I))
 
 
 def load_case_record(repo_root: Path, case_root: str) -> dict[str, Any] | None:

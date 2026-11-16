@@ -77,9 +77,11 @@ class CrossProjectTests(unittest.TestCase):
             recreated = self.invoke(project, 'bridge', '--hint', '照着这个网站做一样的使用效果')
             self.assertEqual(recreated['workflow']['objective'], 'reconstruction')
             self.assertEqual(recreated['route']['next_stage']['id'], 'R46')
-            for prompt in ('开发一个待办事项网站', '修复我们应用的登录按钮', 'continue'):
+            for prompt in ('开发一个待办事项网站', '修复我们应用的登录按钮'):
                 result = self.invoke(project, 'bridge', '--hint', prompt)
                 self.assertEqual(result['status'], 'host-native')
+            missing = self.invoke(project, 'bridge', '--hint', 'continue', code=2)
+            self.assertEqual(missing['status'], 'no-open-case')
             self.assertFalse((project / 'work').exists())
 
     def test_json_transport_preserves_unicode_without_utf8_caller_override(self):

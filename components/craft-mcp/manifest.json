@@ -1,19 +1,20 @@
 {
   "schema_version": 1,
-  "adapter_version": "0.1.0",
+  "adapter_version": "0.1.1",
   "upstream": {
     "repository": "https://github.com/storytold/craft-anything.git",
     "commit": "8374ad71544f2cc44698ea74ef990aa31600bac6",
-    "version": "0.6.1"
+    "version": "0.6.1",
+    "local_source": "vendor/craft/mcp-upstream"
   },
   "platforms": {
     "windows-x64": {
-      "local_path": "vendor/craft/mcp/windows-x64/reverse-fusion-craft-mcp.exe",
-      "binary_sha256": "29446e499d7656c2645f596b40c876ef6a879cb2f7f8b2f7250b756be3dc307f",
-      "archive_url": "https://github.com/gthubtom1/reverse-fusion/releases/download/craft-mcp-v0.1.0-rf35/craft-mcp-windows-x64.zip",
-      "archive_sha256": "4378ddd7ede53ea0324b214604864070e8fae1c0918dbd0d815b309067012d04",
-      "notices_sha256": "bfc949d2b7b5af4431b65780031b464d7d7453efd95ea04a3591c0794d0d5ac7",
-      "dependency_notices_sha256": "b7ee783e5bdd104e31e9db8b0cbbdc4e1ecd01bb9a180aaa9393cb74952c5a21"
+      "local_path": "vendor/craft/mcp/windows-x64/0.1.1/reverse-fusion-craft-mcp.exe",
+      "binary_sha256": "f6a9e75145670051515a4560c64b76534d4706e8eeda42b0be3e213a310b2242",
+      "archive_url": "https://github.com/gthubtom1/reverse-fusion/releases/download/craft-mcp-v0.1.1-rf36/craft-mcp-windows-x64.zip",
+      "archive_sha256": "42e52b98ee9ef0ae660633db06afe7d28de6a2e5bff3881e66f0d2b11462d435",
+      "notices_sha256": "eb010998698039745e7c2f3c603db8a1cff8df86d9d5ca5a25a671d4f14cafd8",
+      "dependency_notices_sha256": "0d421b72f44b590763b2b87d2d4fe629b8ce7299c30b2f438b83de4d5e566d30"
     }
   },
   "protocol": {
@@ -36,17 +37,60 @@
       "path": "components/craft-native/patches/0001-windows-quoted-command-tail.patch",
       "sha256": "1bf216cdebb83f928f0f0059b52ed33c5206adb749937880e8cfe76f858f7585",
       "reason": "Reuse the pinned native managed Windows command-tail fix; preserve process ownership and cleanup."
+    },
+    {
+      "path": "components/craft-mcp/patches/0002-bound-analysis-project-and-effective-mode.patch",
+      "sha256": "8a63ce2ccff39c0a3e36235cd96f0907cd3d11157670db63890b8f443b9fee59",
+      "reason": "Require explicit outcome-case native analysis Project, persist original target context, and report effective process Deep mode; default original/native sessions unaffected."
+    },
+    {
+      "path": "components/craft-mcp/patches/0003-owned-asset-qualification-transport.patch",
+      "sha256": "e1ae5e8965c5721e00fd11b8eac3b0aac9b375043e67ea604268dd9d0bd5cfed",
+      "reason": "Allow explicitly selected loopback transport qualification of the original Fal HTTP producer; production Default remains official HTTPS."
     }
   ],
   "patched_files": {
     "crates/platform/src/process.rs": "17c64d43c4a450e89f5095f9cc8ce18498d79a114a8dc51ee518cb16a86ca4c4",
-    "crates/engine/src/tools/build_tools.rs": "5a4eb3191d3f74171d81cdd7545d126d08aed3f7ae8406c88e36e4bb935d7ba0"
+    "crates/engine/src/tools/build_tools.rs": "5a4eb3191d3f74171d81cdd7545d126d08aed3f7ae8406c88e36e4bb935d7ba0",
+    "crates/engine/src/session.rs": "1ccfbaf029e4e8747a7d94c6d2b28950d63fe9909f32a03b050d7697583bba4c",
+    "crates/engine/src/lib.rs": "933d96a1ecc7c721a5ba2ceaa00fd244e500c3faf4402274096ccef77c3c747f",
+    "crates/engine/src/tools/setup_tools.rs": "cafac6bc978364c392759d2d74446c1e893cc06d90540ff04f4030ad8661ea1d",
+    "crates/engine/src/clean_room.rs": "97fc995ef585c562d63ea079172a3c3e3392e05d8e5377919918ce1f34f6cfd0",
+    "crates/engines/src/assets/fal.rs": "0659a8fd9f73c0dcc95b136a390099b744f333f72e8d6cc8ade6dfa9c001dc87"
   },
   "patched_files_hash_mode": "UTF-8 LF-normalized content",
   "adapter_source_sha256": {
-    "components/craft-mcp/src/main.rs": "cf309e72538d66caf708ef5fbe1c60727832a670ffc6be534be71e1debd23a3a",
-    "components/craft-mcp/Cargo.toml": "a81b00a4ea8b503122ec308d6e3557e8680d0bf6b5d00d61d8ef5892e51320e7",
-    "components/craft-mcp/Cargo.lock": "d59fd27b58fa7e7a07fb038a85e663472e6e66b3e1febba620a83f1e265aae50"
+    "components/craft-mcp/src/assets.rs": "9d0be1d065b50ec92ca55da62e82dea5c619f7c2931ce1191096cae8bba94ffd",
+    "components/craft-mcp/src/main.rs": "80c1c7b00038b74bf35bc56a4978fcdc9e9e2141e9de566ae6fe02868c4cd7c0",
+    "components/craft-mcp/Cargo.toml": "d51b9b3a8b0eb8178cbded689be7ab7418473cdb4087358a4ab6184677b7c17f",
+    "components/craft-mcp/Cargo.lock": "4c84a7cbafe783bd0db67fe3baaeeb8abc2d2184b4e2c81ce5186f6d2cdcb46e"
   },
-  "qualification": "Full original MCP transport/catalog/runtime qualification recorded separately; binary version alone is not target acceptance."
+  "qualification": "Full original MCP transport/catalog/runtime qualification recorded separately; binary version alone is not target acceptance.",
+  "binding": {
+    "tool": "fusion_case_open",
+    "project": "original Project::create/open and Session::open_project",
+    "directory": "<absolute outcome case>/craft-analysis.cany",
+    "fresh_session_on_switch": true,
+    "unbound_analysis": "feature_missing with explicit binding remediation",
+    "target_restore": "integrity-checked original TargetContext; missing/drift targets reported and retained separately",
+    "native_writer": "unchanged; formal candidate writes remain via frozen native lease"
+  },
+  "plugins": {
+    "mcp": "original cached runtime MCP plugins enabled",
+    "wasm": "not compiled; optional upstream feature not part of this build"
+  },
+  "assets": {
+    "tool": "fusion_asset_generate",
+    "original_tools": [
+      "assets_image_generate",
+      "assets_model_generate"
+    ],
+    "producer": "original AssetProviders/Fal (image and Tripo P1 model3d)",
+    "location": "fresh <bound case>/asset-staging/asset*/app only",
+    "budget": "explicit per-invocation allow_paid and listed-estimate limit, not a persistent spending grant",
+    "credential": "explicit REVERSE_FUSION_CRAFT_FAL_KEY environment only; never old keychain or tool params",
+    "candidate": "review staging; integrate through approved Spec/native command",
+    "qualification": "owned loopback original HTTP producer; no paid-service or quality claim",
+    "test_transport": "explicit --asset-test-base loopback IP:port; uses synthetic key only; not a registered default"
+  }
 }

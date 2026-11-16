@@ -9,6 +9,8 @@ from reverse_fusion.global_adapter import (
     install_global_adapter,
     remove_global_adapter,
     adapter_paths,
+    agents_block,
+    ADAPTER_STATE,
 )
 
 
@@ -76,6 +78,71 @@ class GlobalAdapterTests(unittest.TestCase):
     def test_custom_codex_home_is_respected(self):
         with tempfile.TemporaryDirectory() as directory, patch.dict('os.environ', {'CODEX_HOME': directory}):
             self.assertEqual(adapter_paths()['agents'], Path(directory) / 'AGENTS.md')
+
+    def test_exact_roundtrip_of_existing_instructions_and_checkout_migration(self):
+        originals = [b'', b'# User instructions\r\n\r\n- Preserve this.  \r\n\r\n',
+                     b'# No newline and trailing spaces  ', b'\xef\xbb\xbf# UTF-8 BOM\r\n']
+        for original in originals:
+            with self.subTest(original=original), tempfile.TemporaryDirectory() as directory:
+                home, old, new = (Path(directory)/name for name in ('home', 'old', 'new'))
+                agents = home/'.codex/AGENTS.md'
+                agents.parent.mkdir(parents=True)
+                agents.write_bytes(original)
+                install_global_adapter(old, home)
+                self.assertTrue(agents.read_bytes().startswith(original))
+                once = agents.read_bytes()
+                install_global_adapter(old, home)
+                self.assertEqual(agents.read_bytes(), once)
+                install_global_adapter(new, home)
+                migrated = agents.read_bytes()
+                remove_global_adapter(home, repo_root=old)
+                self.assertEqual(agents.read_bytes(), migrated)
+                remove_global_adapter(home, repo_root=new)
+                self.assertEqual(agents.read_bytes(), original)
+
+    def test_new_instructions_file_is_removed_and_later_user_suffix_is_kept(self):
+        with tempfile.TemporaryDirectory() as directory:
+            home, repo = Path(directory)/'home', Path(directory)/'repo'
+            paths = adapter_paths(home)
+            install_global_adapter(repo, home)
+            remove_global_adapter(home, repo_root=repo)
+            self.assertFalse(paths['agents'].exists())
+            install_global_adapter(repo, home)
+            suffix = b'\r\n# User suffix\r\n- Preserve exact bytes.  '
+            with paths['agents'].open('ab') as stream:
+                stream.write(suffix)
+            remove_global_adapter(home, repo_root=repo)
+            self.assertEqual(paths['agents'].read_bytes(), suffix)
+
+    def test_legacy_markers_preserve_exact_prefix_and_suffix(self):
+        with tempfile.TemporaryDirectory() as directory:
+            home, repo = Path(directory)/'home', Path(directory)/'repo'
+            paths = adapter_paths(home)
+            paths['agents'].parent.mkdir(parents=True)
+            prefix, suffix = b'\xef\xbb\xbf# Existing user text  \r\n', b'\r\n\r\n- User suffix.  \r\n'
+            legacy = agents_block(repo).replace('\n', '\r\n').encode('utf-8')
+            paths['agents'].write_bytes(prefix + legacy + suffix)
+            install_global_adapter(repo, home)
+            updated = paths['agents'].read_bytes()
+            self.assertTrue(updated.startswith(prefix))
+            self.assertTrue(updated.endswith(suffix))
+            remove_global_adapter(home, repo_root=repo)
+            self.assertEqual(paths['agents'].read_bytes(), prefix + suffix)
+
+    def test_changed_managed_instructions_or_metadata_refuse_removal_before_writes(self):
+        for change in ('instructions', 'metadata'):
+            with self.subTest(change=change), tempfile.TemporaryDirectory() as directory:
+                home, repo = Path(directory)/'home', Path(directory)/'repo'
+                paths = adapter_paths(home)
+                install_global_adapter(repo, home)
+                payload = paths['agents'].read_bytes()
+                modified = (payload.replace(b'Keep the current project', b'Changed: keep the current project')
+                            if change == 'instructions' else payload.replace(ADAPTER_STATE, ADAPTER_STATE+b'{broken}'))
+                paths['agents'].write_bytes(modified)
+                before = {path: path.read_bytes() for path in paths.values()}
+                with self.assertRaisesRegex(ValueError, 'changed|malformed'):
+                    remove_global_adapter(home, repo_root=repo)
+                self.assertEqual({path: path.read_bytes() for path in before}, before)
 
 
 if __name__ == "__main__":

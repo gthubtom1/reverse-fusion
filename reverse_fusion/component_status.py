@@ -5,11 +5,13 @@ import json
 import re
 import subprocess
 import os
+from hashlib import sha256
 
 from .runtime import node_runtime
 from pathlib import Path
 from .craft_native import native_binary
 from .craft_mcp import mcp_binary
+from .contracts import is_safe_relative_path
 
 
 def core_deployment(components: dict) -> dict:
@@ -70,6 +72,7 @@ def component_status(root: Path) -> dict:
     entry = root / 'vendor/rea' / manifest['entry']
     package_file = root / 'vendor/rea/package/package.json'
     rea_status = 'not-installed'
+    methods_status = 'not-installed'
     if entry.is_file() and package_file.is_file():
         try:
             package = json.loads(package_file.read_text(encoding='utf-8'))
@@ -79,6 +82,15 @@ def component_status(root: Path) -> dict:
             rea_status = 'present-unverified' if matches else 'identity-mismatch'
         except (OSError, ValueError, AttributeError):
             rea_status = 'identity-mismatch'
+    methods = manifest.get('method_files_sha256', {})
+    if methods and isinstance(methods, dict):
+        valid = all(is_safe_relative_path(name) and (root/'vendor/rea'/name).resolve().is_relative_to((root/'vendor/rea').resolve())
+                    and (root/'vendor/rea'/name).is_file()
+                    and sha256((root/'vendor/rea'/name).read_bytes()).hexdigest() == digest
+                    for name,digest in methods.items())
+        methods_status = 'installed-identity-verified' if valid else 'missing-or-changed'
+    if rea_status == 'present-unverified' and methods_status != 'installed-identity-verified':
+        rea_status = 'methods-incomplete'
     node, node_source = node_runtime(root)
     node_version, engine_status = None, 'missing'
     if node:
@@ -101,6 +113,8 @@ def component_status(root: Path) -> dict:
         'reverse': {'status': 'repository-local', 'router': str(root / 'components/reverse-core/router.py'),
                     'boundary': 'route availability is checked by contracts; target analysis is separate'},
         'rea': {'status': rea_status, 'entry': str(entry), 'version_pin': manifest['version'],
+                'methods_status':methods_status,
+                'official_skill':str(root/'vendor/rea/package/skills/reverse-engineer-anything/SKILL.md'),
                 'node_engine': manifest['node_engine'], 'node': node,
                 'node_source': node_source,
                 'node_version': node_version, 'node_engine_status': engine_status,

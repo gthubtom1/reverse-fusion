@@ -39,6 +39,7 @@ from .project_adapter import connect_project
 from .differential import compare_processes
 from .rea_runner import run_rea
 from .mcp_adapter import install_mcp, remove_mcp, inspect_mcp, mcp_paths
+from .provider_runtime import discover_providers, provider_status
 
 ROOT = Path(__file__).resolve().parents[1]
 MANIFEST = ROOT / "components" / "official" / "manifest.json"
@@ -108,6 +109,17 @@ def cmd_mcp_check(args: argparse.Namespace) -> int:
     return 0 if status['status'] == 'pass' else 2
 
 
+def cmd_providers(args: argparse.Namespace) -> int:
+    assignments={}
+    for item in args.set_path or []:
+        if '=' not in item: raise ValueError('Expected provider path KEY=absolute-path')
+        key,value=item.split('=',1);assignments[key]=value
+    if assignments and not args.refresh: raise ValueError('--set-path requires --refresh')
+    result=(discover_providers(ROOT,persist=True,overrides=assignments) if args.refresh else provider_status(ROOT))
+    _print(result,args.format)
+    return 0
+
+
 def cmd_plan(args: argparse.Namespace) -> int:
     contract = check_contracts(ROOT)
     if contract["status"] != "pass":
@@ -159,6 +171,7 @@ def cmd_doctor(args: argparse.Namespace) -> int:
         "components": components,
         "core_deployment": core_deployment(components),
         "mcp_registration": inspect_mcp(ROOT),
+        "provider_paths": provider_status(ROOT),
     }
     _print(result, args.format)
     return 0 if result["status"] == "pass" else 1
@@ -235,7 +248,8 @@ def cmd_install(args: argparse.Namespace) -> int:
     }
     if args.apply:
         path = _state_path("install")  # Validate before any user-level writes.
-        with file_transaction([*adapter_paths().values(), *mcp_paths().values(), path]):
+        with file_transaction([*adapter_paths().values(), *mcp_paths().values(), path, ROOT/'state/provider-runtime.json']):
+            plan['provider_paths'] = discover_providers(ROOT,persist=True)
             if enable_global_adapter:
                 plan["global_adapter"] = install_global_adapter(ROOT)
                 plan['mcp'] = install_mcp(ROOT)
@@ -256,16 +270,24 @@ def cmd_install(args: argparse.Namespace) -> int:
 def cmd_uninstall(args: argparse.Namespace) -> int:
     path = _state_path("install")
     adapter = {"enabled": False, "removed": []}
-    if args.apply and path.exists():
+    if args.apply:
         with file_transaction([*adapter_paths().values(), *mcp_paths().values(), path]):
-            prior = read_json(path)
-            adapter_state = prior.get("global_adapter") if isinstance(prior, dict) else None
-            if isinstance(adapter_state, dict) and adapter_state.get("enabled"):
-                adapter = remove_global_adapter(repo_root=ROOT)
+            # The receipt is recoverable state, not the ownership authority.
+            # Losing it must not leave active global pointers while the shell
+            # uninstaller proceeds to delete their runtime.
+            if path.exists():
+                prior = read_json(path)
+                if not isinstance(prior, dict):
+                    raise ValueError('Installation receipt is malformed; retain the runtime for review')
+            registration = inspect_mcp(ROOT)
+            if registration.get('status') in {'unmanaged-conflict', 'invalid'}:
+                raise ValueError('MCP ownership is uncertain; retain the runtime and configuration for review')
+            adapter = remove_global_adapter(repo_root=ROOT)
             mcp = remove_mcp(ROOT)
-            path.unlink()
+            if path.exists():
+                path.unlink()
             adapter['mcp'] = mcp
-    result = {"operation": "uninstall", "mode": "apply" if args.apply else "dry-run", "status": "uninstalled" if args.apply else "ready", "state_file": str(path), "venv": str(ROOT / ".venv"), "vendor": "retained; remove explicitly if a provider asset is no longer wanted", "global_adapter": adapter, "global_config_mutation": bool(adapter.get("removed"))}
+    result = {"operation": "uninstall", "mode": "apply" if args.apply else "dry-run", "status": "uninstalled" if args.apply else "ready", "state_file": str(path), "venv": str(ROOT / ".venv"), "vendor": "retained; remove explicitly if a provider asset is no longer wanted", "global_adapter": adapter, "global_config_mutation": bool(adapter.get("removed") or adapter.get('mcp', {}).get('removed'))}
     _print(result, args.format)
     return 0
 
@@ -313,18 +335,20 @@ def cmd_bridge(args: argparse.Namespace) -> int:
     effective_mode = args.mode
     if args.mode == 'normal-dev':
         if intent == 'follow-up':
-            cases = discover_open_cases(project)
-            requested = resolve_case_root(project, args.case_root)
-            if explicit_case and (requested / 'case.json').is_file():
+            resolve_case_root(project, args.case_root)
+            if explicit_case:
                 effective_mode = 'follow-up'
-            elif len(cases) == 1:
-                args.case_root = cases[0]
-                effective_mode = 'follow-up'
-            elif len(cases) > 1:
-                _print({'operation': 'case-bridge', 'status': 'needs-case-selection',
-                        'cases': cases, 'project_root': str(project),
-                        'next_action': 'Read the project cases and recent conversation to identify the intended target; ask a plain target question only if it remains ambiguous.'}, args.format)
-                return 2
+            else:
+                cases = discover_open_cases(project)
+                if len(cases) == 1:
+                    args.case_root = cases[0]
+                    effective_mode = 'follow-up'
+                else:
+                    _print({'operation': 'case-bridge', 'status': 'needs-case-selection' if cases else 'no-open-case',
+                            'cases': cases, 'project_root': str(project), 'recorded': False,
+                            'next_action': ('Read the project cases and recent conversation to identify the intended target; ask a plain target question only if it remains ambiguous.' if cases else
+                                            'Locate or restore the original case pointer before continuing Reverse Fusion work; do not replace the missing goal with ordinary development or a new case.')}, args.format)
+                    return 2
         elif intent in {'analysis', 'reconstruction'} or original_intent in {'analysis', 'reconstruction'}:
             effective_mode = 'analysis'
     if effective_mode == "normal-dev":
@@ -432,7 +456,7 @@ def cmd_bridge(args: argparse.Namespace) -> int:
     result['agent_guide'] = str(ROOT / 'docs/AGENT-WORKFLOW.md')
     result['delivery_objective'] = objective
     result['required_read_paths'].append(result['agent_guide'])
-    result['component_entries'] = component_entries(ROOT, project)
+    result['component_entries'] = component_entries(ROOT, project, case_root)
     result["business_acceptance"] = "not-performed"
     if workflow['stage'] == 'reconstruction':
         result['implementation_gate'] = {
@@ -551,11 +575,14 @@ def cmd_handshake(args: argparse.Namespace) -> int:
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="reverse-fusion", description="Reverse Fusion evidence-driven reconstruction entry")
     sub = parser.add_subparsers(dest="command", required=True)
-    for name, fn in (("mcp-check", cmd_mcp_check), ("contracts", cmd_contracts), ("rea-run", cmd_rea_run), ("compare", cmd_compare), ("connect", cmd_connect), ("release-check", cmd_release), ("workflow", cmd_workflow), ("doctor", cmd_doctor), ("plan", cmd_plan), ("handoff", cmd_handoff), ("install", cmd_install), ("uninstall", cmd_uninstall), ("update", cmd_update), ("accept", cmd_accept), ("bridge", cmd_bridge), ("craft", cmd_craft), ("native-craft", cmd_native_craft), ("build", cmd_build), ("session", cmd_session), ("handshake", cmd_handshake)):
+    for name, fn in (("providers", cmd_providers), ("mcp-check", cmd_mcp_check), ("contracts", cmd_contracts), ("rea-run", cmd_rea_run), ("compare", cmd_compare), ("connect", cmd_connect), ("release-check", cmd_release), ("workflow", cmd_workflow), ("doctor", cmd_doctor), ("plan", cmd_plan), ("handoff", cmd_handoff), ("install", cmd_install), ("uninstall", cmd_uninstall), ("update", cmd_update), ("accept", cmd_accept), ("bridge", cmd_bridge), ("craft", cmd_craft), ("native-craft", cmd_native_craft), ("build", cmd_build), ("session", cmd_session), ("handshake", cmd_handshake)):
         p = sub.add_parser(name)
         p.add_argument("--format", choices=("json", "markdown"), default="json")
         if name in {"rea-run", "compare", "connect", "bridge", "workflow", "session", "build", "craft", "native-craft"}:
             p.add_argument("--project-root", help="task project directory; defaults to the current working directory, not the tool checkout")
+        if name == 'providers':
+            p.add_argument('--refresh',action='store_true',help='save discovered existing provider paths in this checkout')
+            p.add_argument('--set-path',action='append',help='explicit allowlisted KEY=absolute-path; no credentials')
         if name == 'connect':
             p.add_argument('--client', choices=('codex', 'pi', 'claude'), required=True)
             p.add_argument('--apply', action='store_true')

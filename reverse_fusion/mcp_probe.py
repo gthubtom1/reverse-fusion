@@ -10,6 +10,31 @@ import time
 from pathlib import Path
 
 from .mcp_process import McpProcess
+from .provider_runtime import ALL_KEYS,provider_status,provider_identities
+
+
+def runtime_fingerprint(root: Path) -> dict:
+    from .craft_mcp import mcp_binary
+    from .runtime import node_runtime
+    node,_=node_runtime(root)
+    paths=[Path(node),mcp_binary(root),root/'scripts/mcp-launch.py',root/'reverse_fusion/provider_runtime.py',
+           root/'state/provider-runtime.json',root/'vendor/rea/package/scripts/rea.mjs']
+    return {**{str(path):sha256(path.read_bytes()).hexdigest() for path in paths},
+            'selected_provider_identities':provider_identities(root)}
+
+
+def _check_configured_providers(root: Path, session: dict):
+    configured=provider_status(root)
+    result=session.get('structuredContent',{}).get('result',{})
+    if configured['unavailable']: raise ValueError('Previously selected providers are unavailable; refresh/review provider paths')
+    if 'GHIDRA_INSTALL_DIR' in configured['paths']:
+        ghidra=next((item for item in result.get('analysis_provider_candidates',[]) if item['provider']['id']=='ghidra'),None)
+        if not ghidra or ghidra['availability']['status']!='available':
+            raise ValueError('Configured Ghidra is not usable by the registered server: '+str(ghidra))
+    for key,operation in [('REA_WABT_BIN_DIRECTORY','inspect_wasm_artifact'),('REA_JADX_MCP_JAR','inspect_android_package')]:
+        if key in configured['paths']:
+            group=next((item for item in result.get('tool_availability',{}).get('groups',[]) if operation in item.get('names',[])),None)
+            if not group or not group.get('available'): raise ValueError(f'Configured {key} is not usable by the registered server: {group}')
 
 
 class StdioMcp:
@@ -99,14 +124,19 @@ def probe_registered(root: Path) -> dict:
     for server in SERVERS:
         entry = config['mcp_servers'][server]
         started = time.monotonic()
+        # Deliberately remove terminal-only provider variables: app startup must
+        # recover saved paths, rather than borrowing this diagnostic shell.
+        environment={key:value for key,value in os.environ.items() if key not in ALL_KEYS}
+        environment.update(entry.get('env',{}))
         with StdioMcp([entry['command'], *entry.get('args', [])], cwd=Path(entry['cwd']),
-                      env={**os.environ, **entry.get('env', {})}, timeout=60) as client:
+                      env=environment, timeout=60) as client:
             identity = client.initialize()
             tools = catalog(client)
             operation = 'binary_session' if server.endswith('-rea') else 'core_session_show'
             response = client.request('tools/call', {'name': operation, 'arguments': {}})
             if response.get('isError'):
                 raise ValueError(f'{server}: actual status tool failed')
+            if server.endswith('-rea'): _check_configured_providers(root,response)
             expected = 'rea' if server.endswith('-rea') else 'craft-anything'
             if identity['serverInfo']['name'] != expected or not any(t['name'] == operation for t in tools):
                 raise ValueError(f'{server}: unexpected identity/catalog')
@@ -119,6 +149,7 @@ def probe_registered(root: Path) -> dict:
             'called': operation, 'result': response, 'cleanup': client.cleanup,
             'elapsed_seconds': time.monotonic()-started})
     result = {'schema_version': 1, 'status': 'pass', 'repository': str(root.resolve()), 'servers': results,
+              'runtime_inputs':runtime_fingerprint(root), 'provider_paths':provider_status(root),
               'scope': 'exact registered stdio initialize/catalog/target-free call; not desktop hot-load, every provider or target acceptance'}
     atomic_write(root / 'state/mcp-runtime.json', (json.dumps(result, ensure_ascii=True, indent=2)+'\n').encode('ascii'))
     return result
@@ -144,6 +175,10 @@ def connection_status(root: Path) -> dict:
                 raise ValueError('MCP launch configuration or binary changed')
             if item['server'].endswith('-rea') and item['entry_sha256'] != sha256((root/'vendor/rea/package/scripts/rea.mjs').read_bytes()).hexdigest():
                 raise ValueError('Official REA entry changed')
+        if saved.get('runtime_inputs')!=runtime_fingerprint(root):
+            raise ValueError('MCP provider paths, launcher or actual runtime identities changed; rerun mcp-check')
+        if provider_status(root)['unavailable']:
+            raise ValueError('Selected provider files are unavailable; prior qualification is stale')
         return {'status': 'pass', 'scope': saved['scope'], 'servers': [
             {key: item[key] for key in ('server', 'server_info', 'tools', 'prompts', 'called')} for item in saved['servers']]}
     except (OSError, KeyError, ValueError, TypeError) as exc:

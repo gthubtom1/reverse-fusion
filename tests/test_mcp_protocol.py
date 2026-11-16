@@ -7,6 +7,7 @@ import json
 import os
 from pathlib import Path
 import sys
+import subprocess
 import tempfile
 import time
 import unittest
@@ -20,6 +21,17 @@ ROOT=Path(__file__).resolve().parents[1]
 
 
 class McpProtocolTests(unittest.TestCase):
+    def test_actual_craft_assets_original_producer_and_controls(self):
+        with tempfile.TemporaryDirectory() as directory:
+            output=Path(directory)/'qualification'
+            run=subprocess.run([sys.executable,'-X','utf8',str(ROOT/'scripts/qualify-craft-assets.py'),
+                                '--output',str(output)],cwd=ROOT,capture_output=True,timeout=60)
+            self.assertEqual(run.returncode,0,run.stderr.decode('utf-8',errors='replace'))
+            report=json.loads((output/'report.json').read_text(encoding='utf-8'))
+            self.assertEqual(report['status'],'pass')
+            self.assertTrue(report['glb_generated'] and report['credential_redacted']
+                            and report['budget_refused_before_network'] and report['formal_candidate_unchanged'])
+
     def test_mcp_check_nonpassing_final_status_returns_nonzero(self):
         with patch('reverse_fusion.mcp_probe.probe_registered') as probe, \
                 patch('reverse_fusion.mcp_probe.connection_status', return_value={'status': 'fail', 'reason': 'changed after probe'}), \
@@ -84,12 +96,33 @@ if sys.argv[2] == 'stuck':
 
     def test_actual_craft_deep_catalog_and_original_analysis(self):
         with tempfile.TemporaryDirectory() as directory:
-            with StdioMcp([str(mcp_binary(ROOT)), '--all-tools', '--deep-mode',
-                          '--state-dir', directory],cwd=ROOT) as client:
+            temporary = Path(directory).resolve()
+            project = temporary/'outcome-project'
+            case = project/'work/owned-case'
+            case.mkdir(parents=True)
+            self.assertFalse(project.is_relative_to(ROOT))
+            argv = [str(mcp_binary(ROOT)), '--all-tools', '--deep-mode',
+                    '--state-dir', str(temporary/'server-state')]
+            with StdioMcp(argv,cwd=ROOT) as client:
                 identity=client.initialize()
                 self.assertEqual(identity['serverInfo']['name'],'craft-anything')
                 names={tool['name'] for tool in catalog(client)}
-                self.assertTrue({'core_target_open','js_app_map','adb_devices_find','native_functions_list','web_site_open'} <= names,names)
+                self.assertEqual(len(names), 305)
+                self.assertTrue({'fusion_case_open','fusion_asset_generate','core_target_open','js_app_map','adb_devices_find',
+                                 'native_functions_list','web_site_open'} <= names,names)
+                unbound=client.request('tools/call',{'name':'js_app_map','arguments':{'input_path':str(ROOT/'fixtures/desk-original')}})
+                self.assertTrue(unbound.get('isError'),unbound)
+                self.assertIn('fusion_case_open',unbound['content'][0]['text'])
+                modes=client.request('tools/call',{'name':'engines_list','arguments':{}})
+                self.assertFalse(modes.get('isError'),modes)
+                effective=modes['structuredContent']['result']['deep_mode']
+                self.assertIs(effective['enabled'],True)
+                bound=client.request('tools/call',{'name':'fusion_case_open','arguments':{
+                    'project_root':str(project),'case_root':str(case)}})
+                self.assertFalse(bound.get('isError'),bound)
+                target=client.request('tools/call',{'name':'core_target_open','arguments':{
+                    'path':str(ROOT/'fixtures/desk-original/core.mjs')}})
+                self.assertFalse(target.get('isError'),target)
                 result=client.request('tools/call',{'name':'js_app_map','arguments':{'input_path':str(ROOT/'fixtures/desk-original')}})
                 self.assertFalse(result.get('isError'),result)
                 evidence=result['structuredContent']
@@ -99,6 +132,20 @@ if sys.argv[2] == 'stuck':
                 denied=client.request('tools/call',{'name':'web_site_open','arguments':{'url':'http://127.0.0.1:1'}})
                 self.assertTrue(denied['isError'])
                 self.assertIn('consent_required',denied['content'][0]['text'])
+            self.assertEqual(client.cleanup['status'],'verified' if os.name=='nt' else 'observed')
+            self.assertTrue((case/'craft-analysis.cany/fusion-binding.json').is_file())
+            with StdioMcp(argv,cwd=ROOT) as client:
+                client.initialize()
+                rebound=client.request('tools/call',{'name':'fusion_case_open','arguments':{
+                    'project_root':str(project),'case_root':str(case)}})
+                self.assertFalse(rebound.get('isError'),rebound)
+                restored=client.request('tools/call',{'name':'core_evidence_show','arguments':{
+                    'evidence_id':evidence['id']}})
+                self.assertFalse(restored.get('isError'),restored)
+                self.assertIn(evidence['id'],json.dumps(restored))
+                session=client.request('tools/call',{'name':'core_session_show','arguments':{}})
+                self.assertGreaterEqual(session['structuredContent']['result']['evidence_records'],1)
+            self.assertEqual(client.cleanup['status'],'verified' if os.name=='nt' else 'observed')
 
     def test_mcp_status_rejects_stale_binary_observation(self):
         with tempfile.TemporaryDirectory() as directory:

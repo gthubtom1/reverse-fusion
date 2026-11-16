@@ -1,0 +1,13 @@
+{
+  "config": "C:\\Users\\toti\\.codex\\config.toml",
+  "before_sha256": "8c9404c34874500518b339e3dade719d86af96c544a708e93fc9d40f9665b22c",
+  "unrelated_config_bytes": 5221,
+  "unrelated_config_sha256": "4c3f88221d2b7af938cb28b5c87f31eb6162cc97a26bb3a50f4943858c8407d6",
+  "managed_owner": "D:\\Project\\reverse",
+  "agents_path": "C:\\Users\\toti\\.codex\\AGENTS.md",
+  "agents_unrelated_sha256": "22d6dfcb0fc0d4cb6fcf2cfe50cae3e8f652a1e45e4e4b14ded564dfc65d965f",
+  "model_and_credentials": "not changed or read as values; only unrelated byte hashes retained",
+  "config_after_sha256": "0145d9105cc940d0a5ef48d74c292ae530797e9ca0844a2f8ab519fd5d4649b1",
+  "unrelated_config_retained": true,
+  "unrelated_agents_retained": true
+}

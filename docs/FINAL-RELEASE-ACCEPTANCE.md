@@ -1,52 +1,55 @@
 # 当前发布验收
 
-当前版本**1.3.0**，维护阶段RF-35。实现与本机协议/分析/浏览器资格已有实际记录，
-最终工程回归、部署绑定、资产发布与远端新克隆结果以[CURRENT-STATE](CURRENT-STATE.md)
-和[RF-35 checkpoint](../checkpoints/RF-35-20261116-001.md)为准；未记录的后续门不预先判通过。
+当前版本为 **1.4.0 / RF-36**。本轮按[原版职责合同](INTEGRATION-CONTRACT.md)检查
+实际承接：有工具入口还要有本地后端、原版方法、持久研究和可执行的宿主替代。
+最终回归、本机部署、远端新克隆及版本发布正在收尾，实际结果统一读取
+[CURRENT-STATE](CURRENT-STATE.md)和[RF-36 checkpoint](../checkpoints/RF-36-20261116-001.md)。
+本页定义完成门，不能自行把尚未写入的检查判为通过。
 
-RF-35补齐此前真实缺口：旧CLI/受控writer验证未证明REA/Craft MCP向Codex可达。
-新实现登记官方REA server和原版Craft engine MCP，保留现有Spec/native冻结writer。
-原版AI17项/setup4项有意由当前宿主及自有installer替代；原版README宣传320不是
-实际registry推导。详细范围见[MCP接入](MCP-INTEGRATION.md)与[1.3说明](RELEASE-1.3.md)。
+## 必须成立的发布门
 
-## 当前发布门
+1. 路由、领域正文、困难资料、原版方法和有意适配均有来源/摘要；
+   普通开发正反例、原目标保留、嵌套case发现及索引失败/并发保全符合合同。
+2. 默认安装真实REA、官方Spec、原生Craft writer和原版engine MCP；
+   按当前manifest安全路径与来源身份检查资产，旧目录残留不能顶替新版本。
+3. Codex自有技能/指引及两项MCP指向当前checkout；迁移、更新、卸载和失败回退保留
+   无关字节与其他checkout指针。receipt丢失仍核归属；缺维护Python则拒绝破坏性卸载。
+4. MCP、普通REA CLI和有预算入口共同恢复已保存的allowlist工具路径，
+   不依赖终端后来设置的变量；工具缺失/替换使旧资格失效，失效只影响相关操作。
+   provider路径存在与实际反编译、设备或服务操作分别留证。
+5. `mcp-check`运行实际登记命令的initialize、目录与真实工具调用，绑定当前配置、
+   launcher、运行时与所选provider身份；清理要包含其拥有的子进程，不能只看根进程退出。
+6. Craft分析先绑定成果case的原版Project，保存并恢复原版研究；
+   正式候选仍执行官方生成的Spec工作流和冻结native写入/检查/cleanup，分析MCP不绕过实现门。
+7. 原版独立AI编排、问答与操作决定有当前宿主的实际承接；
+   图片/3D等资产按真实producer、Workspace/预算、密钥与输出约束检查。
+   目录可见、宿主图片能力、本地假服务和真实付费产物不得互相替代。
+8. 当前源码与实际回归日志摘要绑定；部署门取`release-check --deployed`实值，
+   新克隆按默认步骤重新安装、登记和检查。旧CLI结果、旧MCP结果或历史新克隆不能代替本轮。
+9. 入口、版本、文档、补丁、发布资产、本机部署和GitHub来源一致；
+   发布标签与最终commit明确，未执行或失败的门保留原状。
 
-1. 本地路由、领域正文、必需引用、来源/保全清单一致，fresh clone不依赖旧receipt。
-2. 默认安装真实REA、官方Spec、原生Craft writer与Craft engine MCP启动器；固定
-   来源/二进制身份有效，缺任何必需组件不能报安装成功。
-3. Codex用户级技能/指引及两项自有MCP登记指向当前checkout；无关配置、模型和
-   凭据保留。登记、更新、移除和故障回退遵循归属，不删除其他checkout的新指针。
-4. `mcp-check`按实际登记命令执行initialize、完整工具/提示目录和真实工具调用，
-   记录绑定本配置/二进制的结果；`release-check --deployed`验证必要门，不能只看文件存在。
-5. 当前源码/实际回归日志摘要绑定；结果数量、零跳过、最终部署checks取自记录，
-   不复制旧版本数字。工程检查不冒称新业务样本或当前旧聊天已热加载。
-6. 共用核心保留代表性完整运行；分析/证据/官方Spec/native写入/检查/比较/修正/
-   cleanup及恢复的职责不因MCP加入而绕过。每个具体目标仍有独立行为验收。
-7. 宿主范围明确：Codex自动登记MCP；Pi/Claude已有项目adapter＋CLI/native接入，
-   不自动登记其全局MCP，三宿主项目检查不能说成三宿主MCP都已部署。
-8. 文档、入口、版本、发布资产和GitHub记录一致，远端新克隆按当前默认步骤安装
-   并保存最终结果；协议/目录/本机成功与远端复现分别留证，不用旧记录代替新门。
+## 本轮证据应怎样读取
 
-## 本轮实际记录
+`evidence/rf36/`是本轮归档位置，最终路径、检查数量、部署与新克隆结论由当前状态和
+checkpoint给出；`release/verification.json`负责本轮源码绑定，不能沿用RF-35数字。
 
-- `release/verification.json`：最终源码绑定回归结果和日志摘要，以文件实际值为准。
-- `evidence/rf35/deployed-release.json`：最终本机部署检查与MCP登记/调用身份绑定。
-- `evidence/rf35/tool-qualification.json`：REA255工具/6prompts、Craft303个engine工具/
-  6prompts；REA分析、Craft打开目标/应用图/provider发现与Chrome双尺寸捕获/关闭。
-- `evidence/rf35/rea-catalog.json`、`craft-catalog.json`及对应`*-mcp-calls.json`：
-  原目录与实际调用，保留原生partial/static、截图one_state等限制。
-- `evidence/rf35/config-preservation.json`：无关配置原5189字节完整保留，新增两项自有登记。
-- `evidence/rf35/provider-settings-restart.json`：独立state中的provider设置恢复，
-  不证明未安装provider已就绪；JADX未被现场发现仍按需准备。
-- `evidence/rf35/clean-install.json`：远端新克隆41ac0ba按默认步骤下载固定组件，
-  120+39零跳过，隔离用户真实MCP登记/协议调用与22项部署门通过；主用户配置保持不变。
+已实际观察的有限能力包括：清除终端provider变量后从保存配置调用Ghidra的自有PE
+main伪代码、WABT模块和JADX class；官方导出6条完整Evidence并在新进程导入，
+ID和链接一致。Craft原版Project已执行分析、brief/finding/handoff、unknown、
+annotation、journal、重启恢复、case隔离与变化目标局部恢复；有效Deep模式和Job清理保留。
+这些是本轮操作资格，不能提升为任意目标、Android设备或所有provider已验收。
 
-## 保留的历史资格
+共享Spec/native实现、独立对照、修正和打包的完整自然使用保留在RF-33原始记录中。
+本轮新增职责需各自的实际证据，不能只借历史整段应用通过来宣称新接线通过。
 
-RF-33完整自有应用的Codex/Pi运行、原版比较/修正/打包、原生记录及旧远端安装分别
-保留在`evidence/rf33/`，支持已有共享工作流，不回写成当时已登记MCP。
-RF-34全量静态收尾见[历史收尾记录](FINAL-CLOSEOUT.md)，其104/39、19等数字仅属于
-1.2.1当时资格，不能覆盖本轮代码或新增MCP门。旧状态档案位于`docs/history/`。
+## 历史与宿主范围
 
-当前客户端可能需要重载/新对话才发现新服务器；独立协议通过不等于旧聊天热加载。
-不将有限记录扩张成所有外部provider已安装、任意软件必定复刻成功或所有平台均支持。
+RF-33应用链、RF-34静态收尾和RF-35初次MCP资格分别保存在原Evidence及历史记录中；
+[RF-34收尾原文](history/RF-34-FINAL-CLOSEOUT.md)中的数字仅属于当时版本。
+它们不覆盖本轮代码和新发布门。
+
+当前完整预编译分发为Windows x64，Codex默认登记两个自有MCP。
+Pi/Claude按[宿主合同](HOST-PROJECT-CONNECTION.md)使用已检查的项目入口与共用核心，
+不冒称已自动登记其全局MCP；不要求每个宿主登录模型重跑完整样本。
+新设备/provider、操作系统或未知宿主按实际差异核对；登记更新不表示旧客户端进程已经自动重连。

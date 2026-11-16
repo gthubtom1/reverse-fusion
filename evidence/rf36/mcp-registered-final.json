@@ -1,0 +1,27 @@
+{
+  "scope": "exact registered stdio initialize/catalog/target-free call; not desktop hot-load, every provider or target acceptance",
+  "servers": [
+    {
+      "called": "binary_session",
+      "prompts": 6,
+      "server": "reverse-fusion-rea",
+      "server_info": {
+        "name": "rea",
+        "version": "6.9.0"
+      },
+      "tools": 255
+    },
+    {
+      "called": "core_session_show",
+      "prompts": 6,
+      "server": "reverse-fusion-craft",
+      "server_info": {
+        "name": "craft-anything",
+        "title": "Craft Anything",
+        "version": "0.6.1"
+      },
+      "tools": 305
+    }
+  ],
+  "status": "pass"
+}

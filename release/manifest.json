@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "version": "1.3.0",
+  "version": "1.4.0",
   "edition": "windows-x64-codex",
   "target_execution_required": false,
   "requirements": [
@@ -11,7 +11,8 @@
         "reverse_fusion/global_adapter.py",
         "reverse_fusion/case_bridge.py",
         "components/reverse-core/router.py",
-        "tests/test_cross_project.py"
+        "tests/test_cross_project.py",
+        "tests/test_request_recovery.py"
       ]
     },
     {
@@ -25,7 +26,10 @@
         "scripts/run-rea-doctor.ps1",
         "reverse_fusion/rea_runner.py",
         "tests/test_rea_runner.py",
-        "docs/BOUNDED-REA.md"
+        "docs/BOUNDED-REA.md",
+        "reverse_fusion/provider_runtime.py",
+        "tests/test_provider_runtime.py",
+        "tests/test_component_status.py"
       ]
     },
     {
@@ -110,7 +114,7 @@
         "docs/BEGINNER-GUIDE.md",
         "docs/AGENT-WORKFLOW.md",
         "docs/NATIVE-COMPONENTS.md",
-        "docs/RELEASE-1.3.md",
+        "docs/RELEASE-1.4.md",
         "docs/FINAL-CLOSEOUT.md",
         "docs/PRODUCT-GOAL.md"
       ]
@@ -128,7 +132,22 @@
         "scripts/qualify-mcp.py",
         "tests/test_mcp_adapter.py",
         "tests/test_mcp_protocol.py",
-        "docs/MCP-INTEGRATION.md"
+        "docs/MCP-INTEGRATION.md",
+        "scripts/mcp-launch.py",
+        "scripts/qualify-craft-memory.py",
+        "scripts/qualify-provider-binding.py",
+        "tests/test_provider_integration.py",
+        "components/craft-mcp/src/assets.rs",
+        "scripts/qualify-craft-assets.py"
+      ]
+    },
+    {
+      "id": "original-capability-contract",
+      "responsibility": "explicit original responsibilities, active owner and entry, required evidence propositions and negative checks; structural availability is distinct from execution",
+      "files": [
+        "components/integration-contract.json",
+        "docs/INTEGRATION-CONTRACT.md",
+        "tests/test_integration_contract.py"
       ]
     }
   ],
@@ -136,7 +155,7 @@
     [
       "bridge",
       "--hint",
-      "\u5206\u6790\u8fd9\u4e2a\u8f6f\u4ef6\u7136\u540e\u590d\u523b"
+      "分析这个软件然后复刻"
     ],
     [
       "workflow"
@@ -213,7 +232,11 @@
     ],
     [
       "mcp-check"
+    ],
+    [
+      "providers",
+      "--refresh"
     ]
   ],
-  "engineering_evidence_directory": "evidence/rf35"
+  "engineering_evidence_directory": "evidence/rf36"
 }

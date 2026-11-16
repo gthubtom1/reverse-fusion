@@ -1,0 +1,107 @@
+{
+  "core_deployment": {
+    "missing": [],
+    "scope": "required runtime installation; generated workflow and target acceptance remain separate",
+    "status": "installed"
+  },
+  "effects": [
+    "write repository state/install.json",
+    "write user-level Codex adapter",
+    "register owned REA/Craft MCP servers"
+  ],
+  "global_adapter": {
+    "agents": "C:\\Users\\toti\\.codex\\AGENTS.md",
+    "enabled": true,
+    "repository": "D:\\Project\\reverse",
+    "skill": "C:\\Users\\toti\\.agents\\skills\\reverse-fusion\\SKILL.md"
+  },
+  "global_config_mutation": true,
+  "host": {
+    "arch": "amd64",
+    "available": [
+      "claude",
+      "codex",
+      "pi"
+    ],
+    "client": "codex",
+    "global_config_mutation": false,
+    "hosts": {
+      "claude": "D:\\Tools\\Node\\claude",
+      "codex": "C:\\Users\\toti\\AppData\\Local\\OpenAI\\Codex\\bin\\c38161ad8494f88c\\codex.EXE",
+      "pi": "C:\\Users\\toti\\.pi\\agent\\bin\\pi"
+    },
+    "os": "windows"
+  },
+  "mcp": {
+    "changed": true,
+    "config": "C:\\Users\\toti\\.codex\\config.toml",
+    "enabled": true,
+    "reload_required": true,
+    "repository": "D:\\Project\\reverse",
+    "runtime_acceptance": "not-performed",
+    "servers": [
+      "reverse-fusion-rea",
+      "reverse-fusion-craft"
+    ],
+    "status": "registered"
+  },
+  "mode": "apply",
+  "operation": "install",
+  "project": "reverse-fusion",
+  "provider_paths": {
+    "paths": {
+      "GHIDRA_INSTALL_DIR": "D:\\Tools\\Ghidra",
+      "JAVA_HOME": "D:\\Tools\\runtime\\jdk21\\jdk-21.0.12.1+1",
+      "REA_ADB_PATH": "C:\\Users\\toti\\AppData\\Local\\Microsoft\\WinGet\\Packages\\Genymobile.scrcpy_Microsoft.Winget.Source_8wekyb3d8bbwe\\scrcpy-win64-v4.1\\adb.exe",
+      "REA_BROWSER_EXECUTABLE": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+      "REA_CAPINFOS_COMMAND": "D:\\Tools\\Wireshark\\capinfos.exe",
+      "REA_GDB_COMMAND": "D:\\Tools\\runtime\\mingw64\\bin\\gdb.exe",
+      "REA_ILSPY_CMD_PATH": "C:\\Users\\toti\\.dotnet\\tools\\ilspycmd.exe",
+      "REA_JADX_MCP_JAR": "D:\\Project\\reverse\\vendor\\jadx-headless-mcp\\0.7.1\\jadx-headless-mcp-0.7.1-all.jar",
+      "REA_MITMDUMP_COMMAND": "D:\\EXE\\python\\Scripts\\mitmdump.exe",
+      "REA_OBJDUMP_COMMAND": "D:\\Tools\\runtime\\mingw64\\bin\\objdump.exe",
+      "REA_TSHARK_COMMAND": "D:\\Tools\\Wireshark\\tshark.exe",
+      "REA_WABT_BIN_DIRECTORY": "D:\\Project\\reverse\\vendor\\wabt\\1.0.42\\windows-x64\\wabt-1.0.42\\bin",
+      "REVERSE_FUSION_CRAFT_TOOL_ADB": "C:\\Users\\toti\\AppData\\Local\\Microsoft\\WinGet\\Packages\\Genymobile.scrcpy_Microsoft.Winget.Source_8wekyb3d8bbwe\\scrcpy-win64-v4.1\\adb.exe",
+      "REVERSE_FUSION_CRAFT_TOOL_BINWALK": "C:\\Users\\toti\\.cargo\\bin\\binwalk.exe",
+      "REVERSE_FUSION_CRAFT_TOOL_CHROMIUM": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+      "REVERSE_FUSION_CRAFT_TOOL_FRIDA": "D:\\EXE\\python\\Scripts\\frida.exe",
+      "REVERSE_FUSION_CRAFT_TOOL_GDB": "D:\\Tools\\runtime\\mingw64\\bin\\gdb.exe",
+      "REVERSE_FUSION_CRAFT_TOOL_ILSPY": "C:\\Users\\toti\\.dotnet\\tools\\ilspycmd.exe",
+      "REVERSE_FUSION_CRAFT_TOOL_JAVA": "D:\\Tools\\runtime\\jdk21\\jdk-21.0.12.1+1\\bin\\java.exe",
+      "REVERSE_FUSION_CRAFT_TOOL_MITMDUMP": "D:\\EXE\\python\\Scripts\\mitmdump.exe",
+      "REVERSE_FUSION_CRAFT_TOOL_OBJDUMP": "D:\\Tools\\runtime\\mingw64\\bin\\objdump.exe",
+      "REVERSE_FUSION_CRAFT_TOOL_TSHARK": "D:\\Tools\\Wireshark\\tshark.exe"
+    },
+    "removed_unavailable_paths": {},
+    "repository_root": "D:\\Project\\reverse",
+    "schema_version": 1,
+    "scope": "existing tool paths; actual provider compatibility and operations require native observations",
+    "sources": {
+      "GHIDRA_INSTALL_DIR": "deployment-environment",
+      "JAVA_HOME": "deployment-environment",
+      "REA_ADB_PATH": "saved-tool-path",
+      "REA_BROWSER_EXECUTABLE": "saved-tool-path",
+      "REA_CAPINFOS_COMMAND": "deployment-path",
+      "REA_GDB_COMMAND": "saved-tool-path",
+      "REA_ILSPY_CMD_PATH": "saved-tool-path",
+      "REA_JADX_MCP_JAR": "verified-repository-provider",
+      "REA_MITMDUMP_COMMAND": "saved-tool-path",
+      "REA_OBJDUMP_COMMAND": "saved-tool-path",
+      "REA_TSHARK_COMMAND": "saved-tool-path",
+      "REA_WABT_BIN_DIRECTORY": "verified-repository-provider",
+      "REVERSE_FUSION_CRAFT_TOOL_ADB": "saved-tool-path",
+      "REVERSE_FUSION_CRAFT_TOOL_BINWALK": "saved-tool-path",
+      "REVERSE_FUSION_CRAFT_TOOL_CHROMIUM": "saved-tool-path",
+      "REVERSE_FUSION_CRAFT_TOOL_FRIDA": "saved-tool-path",
+      "REVERSE_FUSION_CRAFT_TOOL_GDB": "saved-tool-path",
+      "REVERSE_FUSION_CRAFT_TOOL_ILSPY": "saved-tool-path",
+      "REVERSE_FUSION_CRAFT_TOOL_JAVA": "saved-tool-path",
+      "REVERSE_FUSION_CRAFT_TOOL_MITMDUMP": "saved-tool-path",
+      "REVERSE_FUSION_CRAFT_TOOL_OBJDUMP": "saved-tool-path",
+      "REVERSE_FUSION_CRAFT_TOOL_TSHARK": "saved-tool-path"
+    },
+    "status": "configured"
+  },
+  "status": "installed"
+}

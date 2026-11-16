@@ -1,0 +1,189 @@
+[
+  {
+    "tool": "open_binary",
+    "arguments": {
+      "path": "D:\\Project\\reverse\\state\\rf36\\native\\guarded.exe",
+      "provider_id": "ghidra"
+    },
+    "result": {
+      "_meta": {
+        "provenance": {
+          "untrusted_content": true,
+          "source": "analysis_target"
+        }
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"result\":{\"path\":\"D:\\\\Project\\\\reverse\\\\state\\\\rf36\\\\native\\\\guarded.exe\",\"sha256\":\"de0d25bbf6253cf29b10e651f24aeedab77aa2c798bc01a5b0ab218ff72d2e32\",\"kind\":\"executable\",\"format\":\"pe\",\"architecture\":\"x86_64\"}}"
+        }
+      ],
+      "structuredContent": {
+        "result": {
+          "path": "D:\\Project\\reverse\\state\\rf36\\native\\guarded.exe",
+          "sha256": "de0d25bbf6253cf29b10e651f24aeedab77aa2c798bc01a5b0ab218ff72d2e32",
+          "kind": "executable",
+          "format": "pe",
+          "architecture": "x86_64"
+        }
+      }
+    }
+  },
+  {
+    "tool": "search_procedures",
+    "arguments": {
+      "pattern": "main",
+      "detail": "summary"
+    },
+    "result": {
+      "_meta": {
+        "provenance": {
+          "untrusted_content": true,
+          "source": "analysis_target"
+        }
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"evidence_id\":\"ev_b762c9d3402a5616cf485d838c80f5d555ba59b717ff52e56471d67e0d6db5be\",\"subject\":{\"name\":\"guarded.exe\",\"digest\":{\"sha256\":\"de0d25bbf6253cf29b10e651f24aeedab77aa2c798bc01a5b0ab218ff72d2e32\"},\"local_path\":\"D:\\\\Project\\\\reverse\\\\state\\\\rf36\\\\native\\\\guarded.exe\",\"format\":\"pe\",\"architecture\":\"x86_64\"},\"provider\":{\"id\":\"rea-analysis-view\",\"name\":\"REA analysis view projection\",\"version\":\"1\"},\"analysis_profile\":null,\"predicate_type\":\"rea.analysis-view\",\"operation\":\"inspect_analysis_view\",\"parameters\":{\"parent_evidence_id\":\"ev_20fde01b98c6324d1255cd928a1596365033ee1d76f05eb551d1ac58e4b5813f\",\"view\":{\"kind\":\"summary\"}},\"raw_result\":null,\"normalized_result\":{\"kind\":\"summary\",\"view\":{\"kind\":\"summary\"},\"parent_evidence_id\":\"ev_20fde01b98c6324d1255cd928a1596365033ee1d76f05eb551d1ac58e4b5813f\",\"parent_operation\":\"search_procedures\",\"parent_digest\":\"20fde01b98c6324d1255cd928a1596365033ee1d76f05eb551d1ac58e4b5813f\",\"view_digest\":\"d447ea15e87508b7bf45e582dedd8abd59a6bbd191d8fe65eedfa36aaf5316cc\",\"artifact\":{\"path\":\"D:\\\\Project\\\\reverse\\\\state\\\\rf36\\\\native\\\\guarded.exe\",\"sha256\":\"de0d25bbf6253cf29b10e651f24aeedab77aa2c798bc01a5b0ab218ff72d2e32\"},\"coverage\":{\"status\":\"complete-within-view\",\"examined\":6,\"total\":6,\"next_offset\":null,\"exhausted\":true},\"limitations\":[\"Cancelling an active Ghidra request terminates its ephemeral database and discards session annotations. The selected target remains open; the next provider query imports the original artifact again.\",\"Default-space addresses use lowercase 0x-prefixed hexadecimal; other address spaces use <percent-encoded-space>:0x<hex>.\",\"For this case-insensitive literal search, raw_result contains Ghidra's candidate rows before REA's Unicode-aware filtering; normalized_result contains the matches.\",\"Ghidra Program checkpoint mode is disabled: closing discards metadata edits; original executable bytes are unchanged. For stock ELF/PE/Mach-O on Linux/macOS, set REA_GHIDRA_CHECKPOINT_DIR to a private absolute directory before starting REA (restart MCP after changing its startup environment).\",\"Regex mode uses Java Pattern semantics. Matcher or compiler stack exhaustion returns a resource constraint without closing the session; literal mode avoids regex recursion and returns complete matching values.\",\"The Windows bridge uses authenticated IPv4 loopback because Node path-based IPC does not expose Java AF_UNIX sockets; the endpoint file contains no bearer token.\",\"The session serves operations only after Ghidra reports default auto-analysis complete; incomplete analysis does not expose partial results.\",\"This session uses Ghidra 12.1.3. The bridge is verified against 12.1.4; other 12.x (>=12.1) builds are accepted and the observed version is reported.\",\"Windows Ghidra P0 accepts native x86, x86-64, ARMNT (Thumb-2) and ARM64 PE applications and DLLs, DOS MZ images, and explicitly selected raw 6502 images; managed, hostile, sensitive, and mutable-path targets are unsupported.\",\"Windows sessions require the matching packaged Windows x64 native addon, local NTFS/ReFS targets and runtimes, and Windows 10 or later. Native handles enforce path admission, private DACLs, and Job Object ownership automatically.\"],\"unknowns\":[\"Counts and paging describe the retained provider-reported rows, not complete discovery of every program object. Missing matches do not establish absence outside that observation.\"],\"source_provider\":{\"id\":\"ghidra\",\"name\":\"Ghidra\",\"version\":\"12.1.3\"},\"source_analysis_profile_digest\":\"b63e4046fa14a25ab76c5dfb21671aaca39e1be50a390f68a56b6067fccfe9e6\",\"source_parameters\":{\"pattern\":\"main\",\"mode\":\"literal\",\"case_sensitive\":false},\"summary\":{\"collection\":\"procedures\",\"row_count\":6,\"discovery_coverage\":\"unknown\",\"selectable_fields\":[\"address\",\"value\",\"symbol\",\"objc_class_label\",\"procedure\",\"string\",\"matched_aliases\",\"provider_value\",\"decoding\"]}},\"confidence\":\"derived\",\"authority\":\"shipped-artifact\",\"environment\":null,\"limitations\":[\"Cancelling an active Ghidra request terminates its ephemeral database and discards session annotations. The selected target remains open; the next provider query imports the original artifact again.\",\"Default-space addresses use lowercase 0x-prefixed hexadecimal; other address spaces use <percent-encoded-space>:0x<hex>.\",\"For this case-insensitive literal search, raw_result contains Ghidra's candidate rows before REA's Unicode-aware filtering; normalized_result contains the matches.\",\"Ghidra Program checkpoint mode is disabled: closing discards metadata edits; original executable bytes are unchanged. For stock ELF/PE/Mach-O on Linux/macOS, set REA_GHIDRA_CHECKPOINT_DIR to a private absolute directory before starting REA (restart MCP after changing its startup environment).\",\"Regex mode uses Java Pattern semantics. Matcher or compiler stack exhaustion returns a resource constraint without closing the session; literal mode avoids regex recursion and returns complete matching values.\",\"The Windows bridge uses authenticated IPv4 loopback because Node path-based IPC does not expose Java AF_UNIX sockets; the endpoint file contains no bearer token.\",\"The session serves operations only after Ghidra reports default auto-analysis complete; incomplete analysis does not expose partial results.\",\"This session uses Ghidra 12.1.3. The bridge is verified against 12.1.4; other 12.x (>=12.1) builds are accepted and the observed version is reported.\",\"Windows Ghidra P0 accepts native x86, x86-64, ARMNT (Thumb-2) and ARM64 PE applications and DLLs, DOS MZ images, and explicitly selected raw 6502 images; managed, hostile, sensitive, and mutable-path targets are unsupported.\",\"Windows sessions require the matching packaged Windows x64 native addon, local NTFS/ReFS targets and runtimes, and Windows 10 or later. Native handles enforce path admission, private DACLs, and Job Object ownership automatically.\"],\"relationship_coverage\":null,\"locations\":[{\"kind\":\"artifact-path\",\"path\":\"D:\\\\Project\\\\reverse\\\\state\\\\rf36\\\\native\\\\guarded.exe\"}],\"evidence_links\":[\"ev_20fde01b98c6324d1255cd928a1596365033ee1d76f05eb551d1ac58e4b5813f\"]}"
+        }
+      ],
+      "structuredContent": {
+        "evidence_id": "ev_b762c9d3402a5616cf485d838c80f5d555ba59b717ff52e56471d67e0d6db5be",
+        "subject": {
+          "name": "guarded.exe",
+          "digest": {
+            "sha256": "de0d25bbf6253cf29b10e651f24aeedab77aa2c798bc01a5b0ab218ff72d2e32"
+          },
+          "local_path": "D:\\Project\\reverse\\state\\rf36\\native\\guarded.exe",
+          "format": "pe",
+          "architecture": "x86_64"
+        },
+        "provider": {
+          "id": "rea-analysis-view",
+          "name": "REA analysis view projection",
+          "version": "1"
+        },
+        "analysis_profile": null,
+        "predicate_type": "rea.analysis-view",
+        "operation": "inspect_analysis_view",
+        "parameters": {
+          "parent_evidence_id": "ev_20fde01b98c6324d1255cd928a1596365033ee1d76f05eb551d1ac58e4b5813f",
+          "view": {
+            "kind": "summary"
+          }
+        },
+        "raw_result": null,
+        "normalized_result": {
+          "kind": "summary",
+          "view": {
+            "kind": "summary"
+          },
+          "parent_evidence_id": "ev_20fde01b98c6324d1255cd928a1596365033ee1d76f05eb551d1ac58e4b5813f",
+          "parent_operation": "search_procedures",
+          "parent_digest": "20fde01b98c6324d1255cd928a1596365033ee1d76f05eb551d1ac58e4b5813f",
+          "view_digest": "d447ea15e87508b7bf45e582dedd8abd59a6bbd191d8fe65eedfa36aaf5316cc",
+          "artifact": {
+            "path": "D:\\Project\\reverse\\state\\rf36\\native\\guarded.exe",
+            "sha256": "de0d25bbf6253cf29b10e651f24aeedab77aa2c798bc01a5b0ab218ff72d2e32"
+          },
+          "coverage": {
+            "status": "complete-within-view",
+            "examined": 6,
+            "total": 6,
+            "next_offset": null,
+            "exhausted": true
+          },
+          "limitations": [
+            "Cancelling an active Ghidra request terminates its ephemeral database and discards session annotations. The selected target remains open; the next provider query imports the original artifact again.",
+            "Default-space addresses use lowercase 0x-prefixed hexadecimal; other address spaces use <percent-encoded-space>:0x<hex>.",
+            "For this case-insensitive literal search, raw_result contains Ghidra's candidate rows before REA's Unicode-aware filtering; normalized_result contains the matches.",
+            "Ghidra Program checkpoint mode is disabled: closing discards metadata edits; original executable bytes are unchanged. For stock ELF/PE/Mach-O on Linux/macOS, set REA_GHIDRA_CHECKPOINT_DIR to a private absolute directory before starting REA (restart MCP after changing its startup environment).",
+            "Regex mode uses Java Pattern semantics. Matcher or compiler stack exhaustion returns a resource constraint without closing the session; literal mode avoids regex recursion and returns complete matching values.",
+            "The Windows bridge uses authenticated IPv4 loopback because Node path-based IPC does not expose Java AF_UNIX sockets; the endpoint file contains no bearer token.",
+            "The session serves operations only after Ghidra reports default auto-analysis complete; incomplete analysis does not expose partial results.",
+            "This session uses Ghidra 12.1.3. The bridge is verified against 12.1.4; other 12.x (>=12.1) builds are accepted and the observed version is reported.",
+            "Windows Ghidra P0 accepts native x86, x86-64, ARMNT (Thumb-2) and ARM64 PE applications and DLLs, DOS MZ images, and explicitly selected raw 6502 images; managed, hostile, sensitive, and mutable-path targets are unsupported.",
+            "Windows sessions require the matching packaged Windows x64 native addon, local NTFS/ReFS targets and runtimes, and Windows 10 or later. Native handles enforce path admission, private DACLs, and Job Object ownership automatically."
+          ],
+          "unknowns": [
+            "Counts and paging describe the retained provider-reported rows, not complete discovery of every program object. Missing matches do not establish absence outside that observation."
+          ],
+          "source_provider": {
+            "id": "ghidra",
+            "name": "Ghidra",
+            "version": "12.1.3"
+          },
+          "source_analysis_profile_digest": "b63e4046fa14a25ab76c5dfb21671aaca39e1be50a390f68a56b6067fccfe9e6",
+          "source_parameters": {
+            "pattern": "main",
+            "mode": "literal",
+            "case_sensitive": false
+          },
+          "summary": {
+            "collection": "procedures",
+            "row_count": 6,
+            "discovery_coverage": "unknown",
+            "selectable_fields": [
+              "address",
+              "value",
+              "symbol",
+              "objc_class_label",
+              "procedure",
+              "string",
+              "matched_aliases",
+              "provider_value",
+              "decoding"
+            ]
+          }
+        },
+        "confidence": "derived",
+        "authority": "shipped-artifact",
+        "environment": null,
+        "limitations": [
+          "Cancelling an active Ghidra request terminates its ephemeral database and discards session annotations. The selected target remains open; the next provider query imports the original artifact again.",
+          "Default-space addresses use lowercase 0x-prefixed hexadecimal; other address spaces use <percent-encoded-space>:0x<hex>.",
+          "For this case-insensitive literal search, raw_result contains Ghidra's candidate rows before REA's Unicode-aware filtering; normalized_result contains the matches.",
+          "Ghidra Program checkpoint mode is disabled: closing discards metadata edits; original executable bytes are unchanged. For stock ELF/PE/Mach-O on Linux/macOS, set REA_GHIDRA_CHECKPOINT_DIR to a private absolute directory before starting REA (restart MCP after changing its startup environment).",
+          "Regex mode uses Java Pattern semantics. Matcher or compiler stack exhaustion returns a resource constraint without closing the session; literal mode avoids regex recursion and returns complete matching values.",
+          "The Windows bridge uses authenticated IPv4 loopback because Node path-based IPC does not expose Java AF_UNIX sockets; the endpoint file contains no bearer token.",
+          "The session serves operations only after Ghidra reports default auto-analysis complete; incomplete analysis does not expose partial results.",
+          "This session uses Ghidra 12.1.3. The bridge is verified against 12.1.4; other 12.x (>=12.1) builds are accepted and the observed version is reported.",
+          "Windows Ghidra P0 accepts native x86, x86-64, ARMNT (Thumb-2) and ARM64 PE applications and DLLs, DOS MZ images, and explicitly selected raw 6502 images; managed, hostile, sensitive, and mutable-path targets are unsupported.",
+          "Windows sessions require the matching packaged Windows x64 native addon, local NTFS/ReFS targets and runtimes, and Windows 10 or later. Native handles enforce path admission, private DACLs, and Job Object ownership automatically."
+        ],
+        "relationship_coverage": null,
+        "locations": [
+          {
+            "kind": "artifact-path",
+            "path": "D:\\Project\\reverse\\state\\rf36\\native\\guarded.exe"
+          }
+        ],
+        "evidence_links": [
+          "ev_20fde01b98c6324d1255cd928a1596365033ee1d76f05eb551d1ac58e4b5813f"
+        ]
+      }
+    }
+  },
+  {
+    "tool": "procedure_pseudo_code",
+    "arguments": {
+      "procedure_name": "main"
+    },
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"error\":{\"code\":\"invalid_request\",\"category\":\"invalid_input\",\"message\":\"The arguments for MCP tool procedure_pseudo_code do not match its advertised input schema. Unrecognized key: \\\"procedure_name\\\"\",\"retryable\":false,\"remediation\":{\"action\":\"Read the declared input schema or CLI usage for procedure_pseudo_code; if using MCP and the catalog may be stale, call tools/list. Correct the listed fields, then retry. Do not repeat the unchanged call.\"},\"recovery\":{\"kind\":\"inspect_input_contract\",\"operation\":\"procedure_pseudo_code\"},\"details\":{\"operation\":\"procedure_pseudo_code\",\"issues\":[{\"path\":[\"procedure\"],\"reason\":\"missing_argument\",\"message\":\"Invalid input: expected string, received undefined\",\"expected\":\"string\"},{\"path\":[\"procedure_name\"],\"reason\":\"unknown_argument\"}]}}}"
+        }
+      ],
+      "isError": true,
+      "_meta": {
+        "provenance": {
+          "untrusted_content": true,
+          "source": "analysis_target"
+        }
+      }
+    }
+  }
+]

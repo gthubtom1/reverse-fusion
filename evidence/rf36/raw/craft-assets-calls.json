@@ -1,0 +1,377 @@
+[
+  {
+    "tool": "fusion_asset_generate",
+    "arguments": {
+      "kind": "image",
+      "prompt": "an owned transport fixture",
+      "save_as": "texture.png",
+      "budget_usd": 1.0,
+      "allow_paid": true
+    },
+    "result": {
+      "content": [
+        {
+          "text": "{\"error\":{\"category\":\"missing\",\"code\":\"feature_missing\",\"message\":\"Bind the current outcome project and case with fusion_case_open before analysis or investigation updates.\",\"remediation\":\"Run the shared bridge for this outcome project, then pass its absolute project_root and case_root to fusion_case_open. Settings/provider setup and diagnostics remain available.\",\"retryable\":false}}",
+          "type": "text"
+        }
+      ],
+      "isError": true
+    }
+  },
+  {
+    "tool": "fusion_case_open",
+    "arguments": {
+      "project_root": "D:\\tmp\\rf36-craft-asset-outcome-vb12stxc",
+      "case_root": "D:\\tmp\\rf36-craft-asset-outcome-vb12stxc\\work\\current-case"
+    },
+    "result": {
+      "content": [
+        {
+          "text": "{\"result\":{\"bound\":\"\\\\\\\\?\\\\D:\\\\tmp\\\\rf36-craft-asset-outcome-vb12stxc\\\\work\\\\current-case\\\\craft-analysis.cany\",\"case_root\":\"\\\\\\\\?\\\\D:\\\\tmp\\\\rf36-craft-asset-outcome-vb12stxc\\\\work\\\\current-case\",\"evidence_records\":0,\"memory\":\"original Project evidence/unknowns/annotations/investigation/journal in this case\",\"project_root\":\"\\\\\\\\?\\\\D:\\\\tmp\\\\rf36-craft-asset-outcome-vb12stxc\",\"restored_targets\":0,\"reused\":false,\"unavailable_targets\":[]}}",
+          "type": "text"
+        }
+      ],
+      "isError": false,
+      "structuredContent": {
+        "result": {
+          "bound": "\\\\?\\D:\\tmp\\rf36-craft-asset-outcome-vb12stxc\\work\\current-case\\craft-analysis.cany",
+          "case_root": "\\\\?\\D:\\tmp\\rf36-craft-asset-outcome-vb12stxc\\work\\current-case",
+          "evidence_records": 0,
+          "memory": "original Project evidence/unknowns/annotations/investigation/journal in this case",
+          "project_root": "\\\\?\\D:\\tmp\\rf36-craft-asset-outcome-vb12stxc",
+          "restored_targets": 0,
+          "reused": false,
+          "unavailable_targets": []
+        }
+      }
+    }
+  },
+  {
+    "tool": "fusion_asset_generate",
+    "arguments": {
+      "kind": "image",
+      "prompt": "an owned transport fixture",
+      "save_as": "texture.png",
+      "budget_usd": 1.0,
+      "allow_paid": true
+    },
+    "result": {
+      "content": [
+        {
+          "text": "{\"error\":{\"category\":\"input\",\"code\":\"bad_settings\",\"message\":\"No explicit asset key is available in REVERSE_FUSION_CRAFT_FAL_KEY.\",\"remediation\":\"Supply a dedicated fal.ai key to the selected server environment and reconnect; never put it in tool parameters, prompts or receipts.\",\"retryable\":false}}",
+          "type": "text"
+        }
+      ],
+      "isError": true
+    }
+  },
+  {
+    "tool": "assets_image_generate",
+    "arguments": {
+      "prompt": "fixture",
+      "save_as": "x.png"
+    },
+    "result": {
+      "content": [
+        {
+          "text": "{\"error\":{\"category\":\"missing\",\"code\":\"feature_missing\",\"message\":\"Assets can only be generated inside a Craft Anything project.\",\"retryable\":false}}",
+          "type": "text"
+        }
+      ],
+      "isError": true
+    }
+  },
+  {
+    "tool": "fusion_case_open",
+    "arguments": {
+      "project_root": "D:\\tmp\\rf36-craft-asset-outcome-vb12stxc",
+      "case_root": "D:\\tmp\\rf36-craft-asset-outcome-vb12stxc\\work\\current-case"
+    },
+    "result": {
+      "content": [
+        {
+          "text": "{\"result\":{\"bound\":\"\\\\\\\\?\\\\D:\\\\tmp\\\\rf36-craft-asset-outcome-vb12stxc\\\\work\\\\current-case\\\\craft-analysis.cany\",\"case_root\":\"\\\\\\\\?\\\\D:\\\\tmp\\\\rf36-craft-asset-outcome-vb12stxc\\\\work\\\\current-case\",\"evidence_records\":0,\"memory\":\"original Project evidence/unknowns/annotations/investigation/journal in this case\",\"project_root\":\"\\\\\\\\?\\\\D:\\\\tmp\\\\rf36-craft-asset-outcome-vb12stxc\",\"restored_targets\":0,\"reused\":false,\"unavailable_targets\":[]}}",
+          "type": "text"
+        }
+      ],
+      "isError": false,
+      "structuredContent": {
+        "result": {
+          "bound": "\\\\?\\D:\\tmp\\rf36-craft-asset-outcome-vb12stxc\\work\\current-case\\craft-analysis.cany",
+          "case_root": "\\\\?\\D:\\tmp\\rf36-craft-asset-outcome-vb12stxc\\work\\current-case",
+          "evidence_records": 0,
+          "memory": "original Project evidence/unknowns/annotations/investigation/journal in this case",
+          "project_root": "\\\\?\\D:\\tmp\\rf36-craft-asset-outcome-vb12stxc",
+          "restored_targets": 0,
+          "reused": false,
+          "unavailable_targets": []
+        }
+      }
+    }
+  },
+  {
+    "tool": "fusion_asset_generate",
+    "arguments": {
+      "kind": "image",
+      "prompt": "an owned transport fixture",
+      "save_as": "texture.png",
+      "budget_usd": 1.0,
+      "allow_paid": false
+    },
+    "result": {
+      "content": [
+        {
+          "text": "{\"error\":{\"category\":\"missing\",\"code\":\"no_permission\",\"message\":\"Asset generation needs explicit host-confirmed allow_paid for this invocation.\",\"retryable\":false}}",
+          "type": "text"
+        }
+      ],
+      "isError": true
+    }
+  },
+  {
+    "tool": "fusion_asset_generate",
+    "arguments": {
+      "kind": "image",
+      "prompt": "an owned transport fixture",
+      "save_as": "../outside.png",
+      "budget_usd": 1.0,
+      "allow_paid": true
+    },
+    "result": {
+      "content": [
+        {
+          "text": "{\"error\":{\"category\":\"input\",\"code\":\"bad_input\",\"message\":\"save_as must be a relative .png file strictly inside the fresh staging app/\",\"retryable\":false}}",
+          "type": "text"
+        }
+      ],
+      "isError": true
+    }
+  },
+  {
+    "tool": "fusion_asset_generate",
+    "arguments": {
+      "kind": "image",
+      "prompt": "an owned transport fixture",
+      "save_as": "texture.png",
+      "budget_usd": 0.001,
+      "allow_paid": true
+    },
+    "result": {
+      "content": [
+        {
+          "text": "{\"error\":{\"category\":\"limit\",\"code\":\"over_limit\",\"message\":\"Original provider's listed estimate $0.1500 exceeds this invocation's $0.0010 budget; no generation started.\",\"retryable\":true}}",
+          "type": "text"
+        }
+      ],
+      "isError": true
+    }
+  },
+  {
+    "tool": "fusion_asset_generate",
+    "arguments": {
+      "kind": "image",
+      "prompt": "an owned transport fixture",
+      "save_as": "texture.png",
+      "budget_usd": 1.0,
+      "allow_paid": true
+    },
+    "result": {
+      "content": [
+        {
+          "text": "{\"result\":{\"candidate_modified\":false,\"files\":[{\"bytes\":68,\"path\":\"texture.png\",\"sha256\":\"81cb26b078700bdf6406d1055a48c37cbd34dbe15a88cc1fa9c9e21d181806fa\"}],\"integration\":\"review asset, then integrate using an approved Spec/native command\",\"listed_estimate_usd\":0.15,\"original_result\":{\"result\":{\"budget_left_usd\":0.85,\"cost_usd\":0.15,\"saved\":\"texture.png\",\"spent_usd\":0.15}},\"original_tool\":\"assets_image_generate\",\"receipt\":\"\\\\\\\\?\\\\D:\\\\tmp\\\\rf36-craft-asset-outcome-vb12stxc\\\\work\\\\current-case\\\\asset-staging\\\\asset\\\\fusion-asset-result.json\",\"request\":{\"allow_paid\":true,\"budget_usd\":1.0,\"faces\":null,\"image\":\"\",\"kind\":\"image\",\"prompt\":\"an owned transport fixture\",\"save_as\":\"texture.png\",\"shape\":null,\"textured\":null},\"secret_policy\":\"explicit process environment only; no credential in request or receipt\",\"staging_workspace\":\"\\\\\\\\?\\\\D:\\\\tmp\\\\rf36-craft-asset-outcome-vb12stxc\\\\work\\\\current-case\\\\asset-staging\\\\asset\",\"status\":\"generated\",\"transport\":\"loopback-fixture\"}}",
+          "type": "text"
+        }
+      ],
+      "isError": false,
+      "structuredContent": {
+        "result": {
+          "candidate_modified": false,
+          "files": [
+            {
+              "bytes": 68,
+              "path": "texture.png",
+              "sha256": "81cb26b078700bdf6406d1055a48c37cbd34dbe15a88cc1fa9c9e21d181806fa"
+            }
+          ],
+          "integration": "review asset, then integrate using an approved Spec/native command",
+          "listed_estimate_usd": 0.15,
+          "original_result": {
+            "result": {
+              "budget_left_usd": 0.85,
+              "cost_usd": 0.15,
+              "saved": "texture.png",
+              "spent_usd": 0.15
+            }
+          },
+          "original_tool": "assets_image_generate",
+          "receipt": "\\\\?\\D:\\tmp\\rf36-craft-asset-outcome-vb12stxc\\work\\current-case\\asset-staging\\asset\\fusion-asset-result.json",
+          "request": {
+            "allow_paid": true,
+            "budget_usd": 1.0,
+            "faces": null,
+            "image": "",
+            "kind": "image",
+            "prompt": "an owned transport fixture",
+            "save_as": "texture.png",
+            "shape": null,
+            "textured": null
+          },
+          "secret_policy": "explicit process environment only; no credential in request or receipt",
+          "staging_workspace": "\\\\?\\D:\\tmp\\rf36-craft-asset-outcome-vb12stxc\\work\\current-case\\asset-staging\\asset",
+          "status": "generated",
+          "transport": "loopback-fixture"
+        }
+      }
+    }
+  },
+  {
+    "tool": "fusion_asset_generate",
+    "arguments": {
+      "kind": "model3d",
+      "prompt": "one original wooden cube",
+      "save_as": "models/cube.glb",
+      "budget_usd": 1.0,
+      "allow_paid": true,
+      "faces": 1000,
+      "textured": true
+    },
+    "result": {
+      "content": [
+        {
+          "text": "{\"result\":{\"candidate_modified\":false,\"files\":[{\"bytes\":72,\"path\":\"models\\\\cube.glb\",\"sha256\":\"3522cd64f98b150c43db6174f5fa1ae5ca148bfc802ad33d4d41d0233a478706\"},{\"bytes\":68,\"path\":\"models\\\\cube.png\",\"sha256\":\"81cb26b078700bdf6406d1055a48c37cbd34dbe15a88cc1fa9c9e21d181806fa\"}],\"integration\":\"review asset, then integrate using an approved Spec/native command\",\"listed_estimate_usd\":0.65,\"original_result\":{\"result\":{\"budget_left_usd\":0.35,\"cost_usd\":0.65,\"faces\":1000,\"picture\":\"models/cube.png\",\"saved\":\"models/cube.glb\",\"spent_usd\":0.65,\"textured\":true}},\"original_tool\":\"assets_model_generate\",\"receipt\":\"\\\\\\\\?\\\\D:\\\\tmp\\\\rf36-craft-asset-outcome-vb12stxc\\\\work\\\\current-case\\\\asset-staging\\\\asset-2\\\\fusion-asset-result.json\",\"request\":{\"allow_paid\":true,\"budget_usd\":1.0,\"faces\":1000,\"image\":\"\",\"kind\":\"model3d\",\"prompt\":\"one original wooden cube\",\"save_as\":\"models/cube.glb\",\"shape\":null,\"textured\":true},\"secret_policy\":\"explicit process environment only; no credential in request or receipt\",\"staging_workspace\":\"\\\\\\\\?\\\\D:\\\\tmp\\\\rf36-craft-asset-outcome-vb12stxc\\\\work\\\\current-case\\\\asset-staging\\\\asset-2\",\"status\":\"generated\",\"transport\":\"loopback-fixture\"}}",
+          "type": "text"
+        }
+      ],
+      "isError": false,
+      "structuredContent": {
+        "result": {
+          "candidate_modified": false,
+          "files": [
+            {
+              "bytes": 72,
+              "path": "models\\cube.glb",
+              "sha256": "3522cd64f98b150c43db6174f5fa1ae5ca148bfc802ad33d4d41d0233a478706"
+            },
+            {
+              "bytes": 68,
+              "path": "models\\cube.png",
+              "sha256": "81cb26b078700bdf6406d1055a48c37cbd34dbe15a88cc1fa9c9e21d181806fa"
+            }
+          ],
+          "integration": "review asset, then integrate using an approved Spec/native command",
+          "listed_estimate_usd": 0.65,
+          "original_result": {
+            "result": {
+              "budget_left_usd": 0.35,
+              "cost_usd": 0.65,
+              "faces": 1000,
+              "picture": "models/cube.png",
+              "saved": "models/cube.glb",
+              "spent_usd": 0.65,
+              "textured": true
+            }
+          },
+          "original_tool": "assets_model_generate",
+          "receipt": "\\\\?\\D:\\tmp\\rf36-craft-asset-outcome-vb12stxc\\work\\current-case\\asset-staging\\asset-2\\fusion-asset-result.json",
+          "request": {
+            "allow_paid": true,
+            "budget_usd": 1.0,
+            "faces": 1000,
+            "image": "",
+            "kind": "model3d",
+            "prompt": "one original wooden cube",
+            "save_as": "models/cube.glb",
+            "shape": null,
+            "textured": true
+          },
+          "secret_policy": "explicit process environment only; no credential in request or receipt",
+          "staging_workspace": "\\\\?\\D:\\tmp\\rf36-craft-asset-outcome-vb12stxc\\work\\current-case\\asset-staging\\asset-2",
+          "status": "generated",
+          "transport": "loopback-fixture"
+        }
+      }
+    }
+  },
+  {
+    "tool": "fusion_asset_generate",
+    "arguments": {
+      "kind": "model3d",
+      "image": "input.png",
+      "save_as": "cube.glb",
+      "budget_usd": 0.5,
+      "allow_paid": true,
+      "faces": 500,
+      "textured": false
+    },
+    "result": {
+      "content": [
+        {
+          "text": "{\"result\":{\"candidate_modified\":false,\"files\":[{\"bytes\":72,\"path\":\"cube.glb\",\"sha256\":\"3522cd64f98b150c43db6174f5fa1ae5ca148bfc802ad33d4d41d0233a478706\"}],\"integration\":\"review asset, then integrate using an approved Spec/native command\",\"listed_estimate_usd\":0.4,\"original_result\":{\"result\":{\"budget_left_usd\":0.1,\"cost_usd\":0.4,\"faces\":500,\"picture\":null,\"saved\":\"cube.glb\",\"spent_usd\":0.4,\"textured\":false}},\"original_tool\":\"assets_model_generate\",\"receipt\":\"\\\\\\\\?\\\\D:\\\\tmp\\\\rf36-craft-asset-outcome-vb12stxc\\\\work\\\\current-case\\\\asset-staging\\\\asset-3\\\\fusion-asset-result.json\",\"request\":{\"allow_paid\":true,\"budget_usd\":0.5,\"faces\":500,\"image\":\"input.png\",\"kind\":\"model3d\",\"prompt\":\"\",\"save_as\":\"cube.glb\",\"shape\":null,\"textured\":false},\"secret_policy\":\"explicit process environment only; no credential in request or receipt\",\"staging_workspace\":\"\\\\\\\\?\\\\D:\\\\tmp\\\\rf36-craft-asset-outcome-vb12stxc\\\\work\\\\current-case\\\\asset-staging\\\\asset-3\",\"status\":\"generated\",\"transport\":\"loopback-fixture\"}}",
+          "type": "text"
+        }
+      ],
+      "isError": false,
+      "structuredContent": {
+        "result": {
+          "candidate_modified": false,
+          "files": [
+            {
+              "bytes": 72,
+              "path": "cube.glb",
+              "sha256": "3522cd64f98b150c43db6174f5fa1ae5ca148bfc802ad33d4d41d0233a478706"
+            }
+          ],
+          "integration": "review asset, then integrate using an approved Spec/native command",
+          "listed_estimate_usd": 0.4,
+          "original_result": {
+            "result": {
+              "budget_left_usd": 0.1,
+              "cost_usd": 0.4,
+              "faces": 500,
+              "picture": null,
+              "saved": "cube.glb",
+              "spent_usd": 0.4,
+              "textured": false
+            }
+          },
+          "original_tool": "assets_model_generate",
+          "receipt": "\\\\?\\D:\\tmp\\rf36-craft-asset-outcome-vb12stxc\\work\\current-case\\asset-staging\\asset-3\\fusion-asset-result.json",
+          "request": {
+            "allow_paid": true,
+            "budget_usd": 0.5,
+            "faces": 500,
+            "image": "input.png",
+            "kind": "model3d",
+            "prompt": "",
+            "save_as": "cube.glb",
+            "shape": null,
+            "textured": false
+          },
+          "secret_policy": "explicit process environment only; no credential in request or receipt",
+          "staging_workspace": "\\\\?\\D:\\tmp\\rf36-craft-asset-outcome-vb12stxc\\work\\current-case\\asset-staging\\asset-3",
+          "status": "generated",
+          "transport": "loopback-fixture"
+        }
+      }
+    }
+  },
+  {
+    "tool": "fusion_asset_generate",
+    "arguments": {
+      "kind": "image",
+      "prompt": "echo-failure",
+      "save_as": "texture.png",
+      "budget_usd": 1.0,
+      "allow_paid": true
+    },
+    "result": {
+      "content": [
+        {
+          "text": "{\"error\":{\"category\":\"engine\",\"code\":\"engine_missing\",\"details\":{\"original_details\":null,\"receipt\":\"\\\\\\\\?\\\\D:\\\\tmp\\\\rf36-craft-asset-outcome-vb12stxc\\\\work\\\\current-case\\\\asset-staging\\\\asset-4\\\\fusion-asset-result.json\",\"staging_workspace\":\"\\\\\\\\?\\\\D:\\\\tmp\\\\rf36-craft-asset-outcome-vb12stxc\\\\work\\\\current-case\\\\asset-staging\\\\asset-4\"},\"message\":\"fal.ai answered 500: {\\\"message\\\": \\\"owned provider failure [REDACTED]\\\"}\",\"retryable\":false}}",
+          "type": "text"
+        }
+      ],
+      "isError": true
+    }
+  }
+]

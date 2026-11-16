@@ -14,6 +14,11 @@ Reverse Fusion 的路由器和领域资料保留在当前 checkout。Codex 选�
 再核实界面/工具发现。配置落盘不是当前聊天已加载。卸载同时移除本checkout的自有MCP项，
 旧checkout不能删除新checkout指针。
 
+REA/Craft登记命令经仓库Python启动器恢复已保存的分析器路径，避免Codex启动时的
+旧环境漏掉后来准备的Ghidra/Java等工具。`providers --refresh`保存当前有效选择，
+`mcp-check`会在清除终端临时provider变量的环境里重新连接，核对所选工具的可达状态。
+Craft分析先绑定成果项目case；重启恢复原版Project，不能把共享工作目录当成果目录。
+
 技能与指引只保存 checkout 路径和调用规则，不复制 `skills/` 正文，不选择模型，不启动
 provider，也不改变当前项目的工作目录。模型在普通软件开发任务中仍走 `host-native`；
 进入 Reverse Fusion 时先运行：

@@ -8,6 +8,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 import json
 from pathlib import Path
+import platform
 import re
 import shutil
 import tomllib
@@ -47,16 +48,28 @@ def _registrations(root: Path, *, require_files: bool = False) -> dict:
         raise ValueError('Required selected REA Node executable is unavailable')
     node = Path(executable).resolve()
     rea = (root / 'vendor/rea/package/scripts/rea.mjs').resolve()
-    craft = (root / 'vendor/craft/mcp/windows-x64/reverse-fusion-craft-mcp.exe').resolve()
-    state = (root / 'state/craft-mcp').resolve()
-    if any(not path.is_relative_to(root) for path in (rea, craft, state)):
+    system = {'Windows': 'windows', 'Linux': 'linux', 'Darwin': 'macos'}.get(platform.system(), 'unknown')
+    machine = platform.machine().lower()
+    architecture = 'x64' if machine in {'amd64', 'x86_64'} else 'arm64' if machine in {'arm64', 'aarch64'} else machine
+    try:
+        manifest = json.loads((root/'components/craft-mcp/manifest.json').read_text(encoding='utf-8'))
+        relative = manifest['platforms'][f'{system}-{architecture}']['local_path']
+    except (OSError, ValueError, TypeError, KeyError) as exc:
+        raise ValueError('Required Craft MCP distribution manifest is missing or has no current-platform asset') from exc
+    if (not isinstance(relative, str) or not relative or Path(relative).is_absolute()
+            or Path(relative).drive or '..' in Path(relative).parts):
+        raise ValueError('Craft MCP manifest path must remain relative to the shared checkout')
+    craft = (root / relative).resolve()
+    python = root/'.venv'/('Scripts/python.exe' if __import__('os').name=='nt' else 'bin/python')
+    launcher=root/'scripts/mcp-launch.py'
+    if any(not path.resolve().is_relative_to(root) for path in (rea, craft, python, launcher)):
         raise ValueError('MCP launch or state path leaves the shared checkout')
-    if require_files and any(not path.is_file() for path in (node, rea, craft)):
+    if require_files and any(not path.is_file() for path in (node, rea, craft,python,launcher)):
         raise ValueError('Required selected Node, official REA or Craft MCP launcher is missing')
     return {
-        SERVERS[0]: {'command': str(node), 'args': [str(rea), 'mcp'], 'cwd': str(root),
+        SERVERS[0]: {'command': str(python), 'args': [str(launcher), 'rea'], 'cwd': str(root),
                      'startup_timeout_sec': 60, 'tool_timeout_sec': 600, 'env': dict(REA_ENV)},
-        SERVERS[1]: {'command': str(craft), 'args': ['--all-tools', '--deep-mode', '--allow-run', '--state-dir', str(state)],
+        SERVERS[1]: {'command': str(python), 'args': [str(launcher), 'craft'],
                      'cwd': str(root), 'startup_timeout_sec': 60, 'tool_timeout_sec': 600},
     }
 

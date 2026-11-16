@@ -1,10 +1,10 @@
 # Reverse Fusion 部署与使用指南
 
-1.3.0 完整工程分发的当前范围是 Windows x64 + Codex；安装不依赖用户样本。
+1.4.0 完整工程分发的当前范围是 Windows x64 + Codex；安装不依赖用户样本。
 Pi项目接入已实际完成全程使用；Claude项目适配及官方Spec布局检查完成，完整模型
 运行未实测。共用核心采用代表性完整运行，单个宿主适配无需登录并重复整段测试，
 验收条件见HOST-PROJECT-CONNECTION.md。其他系统按实际能力报告。
-工程发布门见 [RELEASE-1.3.md](RELEASE-1.3.md)。
+工程发布门见 [RELEASE-1.4.md](RELEASE-1.4.md)。
 把仓库链接交给正在使用的 Codex、Pi、Claude Code 或兼容 coding agent，并说
 “部署到当前工作区”即可。完整部署动作只在
 [AGENT-BOOTSTRAP.md](AGENT-BOOTSTRAP.md) 维护；这份指南解释使用与维护逻辑。
@@ -61,6 +61,12 @@ shell、模型或工具安装路径。
    [NATIVE-COMPONENTS.md](NATIVE-COMPONENTS.md)。保存实际能力、缺失项和下一步；不写旧安装、模型、凭据或
    无关provider运行配置。Codex额外登记两个自有MCP server，保留其他配置。执行`mcp-check`实际核实登记命令的
    initialize、目录和工具调用，再执行`release-check --deployed`。工具范围/模式见[MCP接入](MCP-INTEGRATION.md)。
+
+安装将已存在的分析工具路径保存为本checkout的`state/provider-runtime.json`；
+MCP、工作流CLI与有预算REA执行共同恢复该配置。用`providers`看实际选择和失效项，
+准备或移动工具后执行`providers --refresh`，再运行`mcp-check`。不复制凭据或整个PATH。
+这解决桌面应用和终端环境不一致的问题；工具路径可见仍需实际操作才能证明可用。
+原版职责、宿主替代和条件能力见[承接合同](INTEGRATION-CONTRACT.md)。
 
 Reverse Fusion 的正文属于共享 checkout，case 属于当前成果项目。Codex 的用户级适配层在任务涉及
 逆向、保护分析、协议复刻、行为重建或用户明确要求 Reverse Fusion 时触发；普通软件

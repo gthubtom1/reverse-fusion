@@ -1,11 +1,11 @@
 # Reverse Fusion 宿主自动部署契约
 
-1.3.0 当前完整交付为 Windows x64 + Codex。无需用户提供真实样本来完成工程安装；
+1.4.0 当前完整交付为 Windows x64 + Codex。无需用户提供真实样本来完成工程安装；
 不要为完成安装新开目标对话或启动未知程序。Pi项目接入已完成实际全程使用，
 Claude项目适配/官方Spec布局检查已完成；完整模型运行未实测，不作为适配发布门。
 共用核心以代表性运行验证，宿主差异按HOST-PROJECT-CONNECTION.md核对与检查。
 宿主项目接入见HOST-PROJECT-CONNECTION.md；其他操作系统按实际能力报告。
-组件和本地回归检查与软件业务验收分开，发布依据见RELEASE-1.3.md。
+组件和本地回归检查与软件业务验收分开，发布依据见RELEASE-1.4.md。
 安装核心并更新全局入口后，用 `[venv-python] scripts/verify-engineering.py` 生成本机
 代码摘要绑定的工程回归记录。Codex运行`release-check --deployed`检查当前版本、
 真实核心和全局入口；Pi/Claude使用`release-check`检查共用版本，并按下面第4步
@@ -87,6 +87,12 @@ session 冻结与路径边界。仅从外部目录运行一次无写入的 bridg
    `[venv-python] -m reverse_fusion mcp-check`，实际连接登记命令并保存身份、目录和工具调用。
    新会话或重载后核实宿主工具发现；不能把独立协议检查称作当前对话已热加载。
    Deep/执行权限与原版高层取舍见[MCP接入](MCP-INTEGRATION.md)。
+   安装会发现并保存本机已存在的分析工具路径到本checkout的
+   `state/provider-runtime.json`。MCP与工作流返回的CLI入口从同一记录恢复路径，
+   不依赖桌面应用启动时的环境快照。运行`providers`检查已选择/失效路径；
+   按需准备WABT/JADX等后执行`providers --refresh`和`mcp-check`。
+   缺设备或某专用工具只阻断依赖它的操作；已选择工具失效会使旧连接资格过期。
+   不保存凭据或复制整个环境，不从路径存在推断反编译、调试或设备操作成功。
    按需准备 REA 时，先核 Node 的精确 engine；PATH 版本不满足要求且本机已有兼容
    Node，可将其绝对路径交给 `scripts/bootstrap-rea.ps1 -NodePath [路径]`。bootstrap
    校验后保存本 checkout 的运行时 receipt，后续命令可恢复；不要把本机路径提交到 Git，
@@ -100,6 +106,12 @@ session 冻结与路径边界。仅从外部目录运行一次无写入的 bridg
 8. 完成后报告实际 checkout、commit、venv Python、selected host、receipt、当前实际
    provider 状态、未验证能力、`blocked`/`unsupported`/`unknown` 和下一步。
    只记录本次观察，不把旧握手、旧 smoke 或历史 release 表改写成当前验收。
+
+原版职责如何承接以[INTEGRATION-CONTRACT.md](INTEGRATION-CONTRACT.md)及其机读合同为准；
+`contracts`检查必需职责/归属/引用/固定来源完整，实际调用仍由运行记录证明。
+Craft分析前先使用工作流返回的`fusion_case_open`绑定成果项目与case，重启后重新
+绑定恢复原生Project；REA在结束调查前导出原生Evidence bundle到同一case，恢复时导入。
+这些是正常使用合同，不能把共享checkout cwd或临时MCP连接当成案例持久化。
 
 ## 对话中的使用
 

@@ -16,7 +16,7 @@ from .session_builder import _inside
 from .spec_support import generated_workflow
 
 
-def component_entries(tool: Path, project: Path) -> dict:
+def component_entries(tool: Path, project: Path, case_root: str | None=None) -> dict:
     scripts = tool / '.venv' / ('Scripts' if os.name == 'nt' else 'bin')
     python = str(scripts / ('python.exe' if os.name == 'nt' else 'python'))
     node, source = node_runtime(tool)
@@ -24,8 +24,10 @@ def component_entries(tool: Path, project: Path) -> dict:
     return {
         'cwd': str(project.resolve()),
         'argument_policy': 'argv arrays; append reviewed arguments without shell interpolation; preserve original UTF-8 provider output',
-        'rea': {'argv': [node, str(tool / 'vendor/rea/package/scripts/rea.mjs')] if node else None,
+        'rea': {'argv': [python,str(tool/'scripts/mcp-launch.py'),'rea-cli'] if node else None,
+                'official_argv': [node, str(tool / 'vendor/rea/package/scripts/rea.mjs')] if node else None,
                 'mcp_server': 'reverse-fusion-rea',
+                'official_skill':str(tool/'vendor/rea/package/skills/reverse-engineer-anything/SKILL.md'),
                 'bounded_argv': [*prefix, 'rea-run', '--project-root', str(project.resolve())],
                 'runtime_source': source, 'usage': 'append the installed official command and its arguments; inspect its help/schema before using a new operation'},
         'spec': {'argv': [str(scripts / ('specify.exe' if os.name == 'nt' else 'specify'))],
@@ -34,6 +36,9 @@ def component_entries(tool: Path, project: Path) -> dict:
         'native_craft': {'argv': [*prefix, 'native-craft', '<phase>', '--project-root', str(project.resolve())],
                          'usage': 'prepare/build/check/refine/return_summary/cleanup with the same frozen lease; abort retains failed/interrupted work without acceptance'},
         'craft_mcp': {'server': 'reverse-fusion-craft',
+                      'case_bind':{'tool':'fusion_case_open','arguments':{'project_root':str(project.resolve()),
+                                    'case_root':str((project/case_root).resolve())}} if case_root else None,
+                      'asset_tool':'fusion_asset_generate',
                       'usage': 'use the real MCP catalog for inspection, browser, native and device tools after checking provider readiness; host permissions apply; candidate writes use the reviewed native-craft lease, not a second rebuild/AI loop'},
         'observer': {'argv': [*prefix, 'session', '<phase>', '--project-root', str(project.resolve())],
                      'usage': 'additional check/refine/finish on the native prepare receipt, after native checks and cleanup'},
@@ -59,6 +64,7 @@ def inspect_workflow(tool: Path, project: Path, *, case_root: str | None = None,
     if not record:
         raise ValueError('Workflow recovery requires an existing open case')
     pointer = record['pointer']
+    entries=component_entries(tool,project,pointer['case_root'])
     workflow = pointer.get('workflow', {})
     refs = []
     for ref in pointer['carry_forward_refs']:

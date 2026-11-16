@@ -6,6 +6,7 @@ from pathlib import Path
 from .file_updates import atomic_write
 from .owned_process import run_owned
 from .runtime import node_runtime
+from .provider_runtime import launch_environment
 from .session_builder import _inside
 
 
@@ -28,7 +29,8 @@ def run_rea(tool: Path, project: Path, *, operation: str, arguments: str,
     if not node or not entry.is_file():
         raise ValueError('Required official REA installation is missing')
     dest.mkdir(parents=True)
-    run = run_owned([node, str(entry), operation, *args], cwd=project, stdin=b'', timeout=timeout, memory_mb=memory_mb)
+    run = run_owned([node, str(entry), operation, *args], cwd=project, stdin=b'', timeout=timeout, memory_mb=memory_mb,
+                    env=launch_environment(tool))
     stdout, stderr = run.pop('stdout'), run.pop('stderr')
     atomic_write(dest/'stdout.json', stdout)
     atomic_write(dest/'stderr.txt', stderr)
@@ -50,7 +52,9 @@ def run_rea(tool: Path, project: Path, *, operation: str, arguments: str,
     visit(structured)
     status = ('unknown' if run['status'] != 'observed' or structured is None else
               'partial' if resource_messages else
-              'failed' if run['exit_code'] != 0 or isinstance(structured,dict) and structured.get('ok') is False else
+              'failed' if run['exit_code'] != 0 or isinstance(structured,dict) and (
+                  structured.get('ok') is False or structured.get('isError') is True
+                  or structured.get('error') is not None) else
               'returned')
     report = {'operation': 'owned-official-rea-run', 'execution_status': status, 'requested_operation': operation,
               'runtime_source': source, 'argv': [node, str(entry), operation, *args], 'process': run,

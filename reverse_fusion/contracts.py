@@ -65,6 +65,262 @@ def _check_unique_ids(items: Iterable[dict[str, Any]], label: str) -> None:
         seen.add(item_id)
 
 
+# These product responsibilities are fixed independently of the editable JSON.
+# Removing a row must not redefine what a complete integration declares.
+INTEGRATION_RESPONSIBILITIES = {
+    "reverse-routing": "reverse",
+    "reverse-case-continuation": "reverse",
+    "reverse-domain-methods": "reverse",
+    "rea-official-methods": "rea",
+    "rea-mcp-cli-providers": "rea",
+    "rea-evidence-persistence": "rea",
+    "rea-comparison-proof-ledger": "rea",
+    "spec-official-discovery": "spec",
+    "spec-evidence-native-gate": "spec",
+    "spec-converge-feedback": "spec",
+    "craft-tools-modes-plugins": "craft",
+    "craft-durable-case-project": "craft",
+    "craft-provider-paths": "craft",
+    "craft-native-writer": "craft",
+    "craft-host-build-orchestration": "craft",
+    "craft-host-questions-consent": "craft",
+    "craft-assets-and-3d": "craft",
+    "independent-comparison": "host",
+    "failure-cleanup-recovery": "host",
+    "deployment-ownership": "host",
+}
+
+_INTEGRATION_SOURCES = {
+    "reverse": ("SOURCE-MANIFEST.json", "skills"),
+    "rea": ("vendor/rea/manifest.json", "vendor/rea/package"),
+    "spec": ("vendor/spec-kit/manifest.json", "vendor/spec-kit/upstream"),
+    "craft": ("components/craft-mcp/manifest.json", "vendor/craft/mcp-upstream"),
+    "host": ("components/official/manifest.json", "."),
+}
+
+
+def _integration_text(value: Any, label: str) -> str:
+    if not isinstance(value, str) or not value.strip():
+        raise ContractError(f"integration contract {label} must be a non-empty string")
+    return value
+
+
+def _integration_path(root: Path, value: Any, label: str, *, file: bool = False,
+                      allow_root: bool = False) -> Path:
+    # Store one portable spelling; otherwise a Windows separator could be a
+    # literal filename on another host instead of the intended source path.
+    if not (allow_root and value == "."):
+        if (not is_safe_relative_path(value) or "\\" in value
+                or PurePosixPath(value).as_posix() != value):
+            raise ContractError(f"integration contract {label} has unsafe path: {value!r}")
+    try:
+        path = (root / value).resolve()
+        if not path.is_relative_to(root.resolve()):
+            raise ContractError(f"integration contract {label} escapes its root: {value!r}")
+        if file and (not path.is_file() or path.stat().st_size == 0):
+            raise ContractError(f"integration contract {label} file missing or empty: {value}")
+    except (OSError, RuntimeError) as exc:
+        raise ContractError(f"integration contract {label} cannot resolve {value!r}: {exc}") from exc
+    return path
+
+
+def _integration_strings(value: Any, label: str) -> list[str]:
+    if not isinstance(value, list) or not value:
+        raise ContractError(f"integration contract {label} must be a non-empty list")
+    for item in value:
+        _integration_text(item, label)
+    if len(set(value)) != len(value):
+        raise ContractError(f"integration contract {label} has duplicate entries")
+    return value
+
+
+def _check_rea_method_pins(root: Path, manifest: dict[str, Any]) -> None:
+    expected = {"package/skills/reverse-engineer-anything/SKILL.md"} | {
+        f"package/skills/reverse-engineer-anything/references/{name}.md" for name in (
+            "android-applications", "connection-and-recovery", "desktop-build", "environments",
+            "evidence-workflows", "javascript-applications", "native-and-artifacts", "runtime-observation")
+    }
+    methods = manifest.get("method_files_sha256")
+    if not isinstance(methods, dict) or set(methods) != expected:
+        raise ContractError("REA method source pins must retain the skill and all eight fixed references")
+    for name, digest in methods.items():
+        _integration_path(root / "vendor/rea", name, "REA method pin")
+        if not isinstance(digest, str) or not re.fullmatch(r"[0-9a-f]{64}", digest):
+            raise ContractError(f"REA method source pin must be lowercase SHA-256: {name}")
+
+
+def _integration_component_pins(root: Path) -> None:
+    """Check declared source provenance without requiring downloaded trees."""
+    manifests = {}
+    for label, name in (("source", "SOURCE-MANIFEST.json"),
+                        ("official", "components/official/manifest.json")):
+        data = read_json(_integration_path(root, name, name, file=True))
+        if (type(data.get("schema_version")) is not int or data["schema_version"] != 1
+                or data.get("project") != "reverse-fusion"
+                or not isinstance(data.get("components"), list)):
+            raise ContractError(f"integration contract invalid {label} pin manifest")
+        _check_unique_ids(data["components"], f"integration {label} pin components")
+        manifests[label] = {item["id"]: item for item in data["components"]}
+    source, official = manifests["source"], manifests["official"]
+    required = {"reverse-core", "reverse-domain-skills", "rea", "spec-kit",
+                "craft-bounded", "craft-mcp", "host-adapters"}
+    if not required <= source.keys() or not required <= official.keys():
+        raise ContractError("integration contract missing required source pin component")
+
+    def repository(value: Any, label: str) -> str:
+        value = _integration_text(value, label).removesuffix("/").removesuffix(".git")
+        if not re.fullmatch(r"https://[^/\s]+/[^\s?#]+", value):
+            raise ContractError(f"integration contract {label} must identify an HTTPS repository")
+        return value
+
+    def same_repo(left: Any, right: Any, label: str) -> None:
+        if repository(left, label) != repository(right, label):
+            raise ContractError(f"integration contract {label} source repository drift")
+
+    for component in required - {"host-adapters"}:
+        record, audit = source[component], official[component]
+        commit = record.get("commit")
+        if (not isinstance(commit, str) or not re.fullmatch(r"[0-9a-f]{40}", commit)
+                or audit.get("audit_commit") != commit):
+            raise ContractError(f"integration contract {component} source pin drift")
+        same_repo(record.get("source"), audit.get("source"), component)
+    if (source["reverse-core"]["commit"] != source["reverse-domain-skills"]["commit"]
+            or official["reverse-core"].get("base_commit") != source["reverse-core"]["commit"]):
+        raise ContractError("integration contract Reverse source pins disagree")
+    same_repo(source["reverse-core"]["source"], source["reverse-domain-skills"]["source"], "Reverse")
+
+    def pinned(name: str) -> dict[str, Any]:
+        return read_json(_integration_path(root, name, name, file=True))
+
+    rea = pinned("vendor/rea/manifest.json")
+    version = _integration_text(rea.get("version"), "REA package version")
+    if (rea.get("package") != "rea-agents"
+            or official["rea"].get("audit_version") != f"rea-agents {version}"
+            or rea.get("source") != f"https://registry.npmjs.org/rea-agents/-/rea-agents-{version}.tgz"
+            or not isinstance(rea.get("integrity"), str)
+            or not re.fullmatch(r"sha512-[A-Za-z0-9+/]+={0,2}", rea["integrity"])):
+        raise ContractError("integration contract REA package pin drift")
+    _check_rea_method_pins(root, rea)
+
+    spec = pinned("vendor/spec-kit/manifest.json")
+    if spec.get("commit") != source["spec-kit"]["commit"]:
+        raise ContractError("integration contract Spec source pin drift")
+    same_repo(spec.get("repository"), source["spec-kit"]["source"], "Spec")
+    version = _integration_text(spec.get("version"), "Spec version")
+    if any(record.get(key) != version for record, key in (
+            (source["spec-kit"], "source_version"), (source["spec-kit"], "audit_version"),
+            (official["spec-kit"], "source_version"), (official["spec-kit"], "audit_version"))):
+        raise ContractError("integration contract Spec version pin drift")
+
+    craft_mcp = pinned("components/craft-mcp/manifest.json")
+    craft_native = pinned("components/craft-native/manifest.json")
+    craft_bundle = pinned("components/craft-bounded/bundle-manifest.json")
+    upstreams = [record.get("upstream") for record in (craft_mcp, craft_native, craft_bundle)]
+    if any(not isinstance(record, dict) for record in upstreams):
+        raise ContractError("integration contract Craft upstream pins are invalid")
+    commit = source["craft-mcp"]["commit"]
+    if (source["craft-bounded"]["commit"] != commit
+            or any(record.get("commit") != commit for record in upstreams)):
+        raise ContractError("integration contract Craft source pins disagree")
+    for record in upstreams:
+        same_repo(record.get("repository"), source["craft-mcp"]["source"], "Craft")
+    same_repo(source["craft-bounded"]["source"], source["craft-mcp"]["source"], "Craft")
+    version = _integration_text(upstreams[0].get("version"), "Craft upstream version")
+    local_source = upstreams[0].get("local_source")
+    _integration_path(root, local_source, "Craft local_source")
+    if local_source != _INTEGRATION_SOURCES["craft"][1]:
+        raise ContractError("integration contract Craft source root differs from its pinned build source")
+    if (upstreams[1].get("version") != version or upstreams[2].get("release") != version
+            or official["craft-mcp"].get("audit_version") != version
+            or official["craft-bounded"].get("audit_version") != f"Craft upstream {version} workspace"):
+        raise ContractError("integration contract Craft version pins disagree")
+    for component, name in (("spec-kit", "vendor/spec-kit/manifest.json"),
+                            ("craft-bounded", "components/craft-native/manifest.json"),
+                            ("craft-mcp", "components/craft-mcp/manifest.json")):
+        if source[component].get("manifest") != name or official[component].get("manifest") != name:
+            raise ContractError(f"integration contract {component} manifest pin drift")
+    if (source["host-adapters"].get("commit") != "local"
+            or source["host-adapters"].get("source") != "reverse-fusion"
+            or official["host-adapters"].get("source") != "reverse-fusion"):
+        raise ContractError("integration contract host pin must identify this repository")
+
+
+def check_integration_contract(root: Path) -> dict[str, Any]:
+    """Validate responsibility declarations; never execute or accept a target."""
+    root = root.resolve()
+    value = read_json(_integration_path(root, "components/integration-contract.json",
+                                        "manifest", file=True))
+    required = {"schema_version", "contract_id", "stage", "scope", "status_policy", "source_pins",
+                "responsibilities", "check_semantics", "upstream_path_semantics"}
+    if (set(value) != required or type(value.get("schema_version")) is not int
+            or value["schema_version"] != 1
+            or value.get("contract_id") != "reverse-fusion-original-to-integrated-capabilities"):
+        raise ContractError("integration contract has invalid identity/schema/fields")
+    for name in ("stage", "scope", "status_policy", "check_semantics", "upstream_path_semantics"):
+        _integration_text(value[name], name)
+    pins = value["source_pins"]
+    if not isinstance(pins, dict) or set(pins) != set(_INTEGRATION_SOURCES):
+        raise ContractError("integration contract requires Reverse/REA/Spec/Craft/host source roles")
+    source_roots = {}
+    for role, (manifest, reference_root) in _INTEGRATION_SOURCES.items():
+        pin = pins[role]
+        if not isinstance(pin, dict) or set(pin) != {"pin_manifest", "reference_root", "identity"}:
+            raise ContractError(f"integration contract {role} source pin fields are invalid")
+        _integration_path(root, pin["pin_manifest"], f"{role} pin_manifest", file=True)
+        source_roots[role] = _integration_path(root, pin["reference_root"], f"{role} reference_root",
+                                                allow_root=role == "host")
+        _integration_text(pin["identity"], f"{role} pin identity")
+        if pin["pin_manifest"] != manifest or pin["reference_root"] != reference_root:
+            raise ContractError(f"integration contract {role} source pin mapping drift")
+    _integration_component_pins(root)
+
+    responsibilities = value["responsibilities"]
+    if not isinstance(responsibilities, list):
+        raise ContractError("integration contract responsibilities must be a list")
+    _check_unique_ids(responsibilities, "integration responsibilities")
+    if {item["id"] for item in responsibilities} != set(INTEGRATION_RESPONSIBILITIES):
+        raise ContractError("integration contract must retain all 20 fixed responsibility IDs")
+    row_fields = {"id", "upstream_component", "original_role", "upstream_paths", "fusion_owner",
+                  "entry_points", "required_files", "completion_condition", "checks",
+                  "negative_cases", "acceptance_boundary"}
+    check_kinds = {"regression", "runtime", "runtime-review", "historical-runtime", "source-contract"}
+    required_count = check_count = 0
+    for row in responsibilities:
+        label = row["id"]
+        if set(row) != row_fields:
+            raise ContractError(f"integration contract {label} responsibility fields are invalid")
+        role = INTEGRATION_RESPONSIBILITIES[label]
+        if row["upstream_component"] != role:
+            raise ContractError(f"integration contract {label} has wrong component role")
+        for name in ("original_role", "fusion_owner", "completion_condition", "acceptance_boundary"):
+            _integration_text(row[name], f"{label}.{name}")
+        _integration_strings(row["entry_points"], f"{label}.entry_points")
+        _integration_strings(row["negative_cases"], f"{label}.negative_cases")
+        # Downloaded source trees may be absent before bootstrap. Only lexical
+        # safety and containment are required for these provenance references.
+        for name in _integration_strings(row["upstream_paths"], f"{label}.upstream_paths"):
+            _integration_path(source_roots[role], name, f"{label}.upstream_paths")
+        for name in _integration_strings(row["required_files"], f"{label}.required_files"):
+            _integration_path(root, name, f"{label}.required_files", file=True)
+            required_count += 1
+        checks = row["checks"]
+        if not isinstance(checks, list) or not checks:
+            raise ContractError(f"integration contract {label}.checks must be non-empty")
+        for check in checks:
+            if not isinstance(check, dict) or set(check) != {"path", "kind", "assertion"}:
+                raise ContractError(f"integration contract {label} check fields are invalid")
+            _integration_path(root, check["path"], f"{label}.checks", file=True)
+            if not isinstance(check["kind"], str) or check["kind"] not in check_kinds:
+                raise ContractError(f"integration contract {label} check kind is invalid")
+            _integration_text(check["assertion"], f"{label}.check assertion")
+            check_count += 1
+    return {"id": "integration-responsibilities", "status": "pass",
+            "responsibilities": len(responsibilities), "roles": sorted(_INTEGRATION_SOURCES),
+            "required_file_references": required_count, "declared_checks": check_count,
+            "scope": "static declarations, source-pin consistency and repository path integrity",
+            "runtime_acceptance": "not-evaluated"}
+
+
 def validate_external_baseline(value: dict[str, Any]) -> dict[str, Any]:
     allowed = {"version", "root", "bundle_sha256", "artifacts"}
     missing = sorted({"version", "root", "bundle_sha256", "artifacts"} - value.keys())
@@ -243,6 +499,7 @@ def check_contracts(root: Path) -> dict[str, Any]:
         if {item.get("id") for item in source_manifest["components"]} != {item.get("id") for item in manifest["components"]}:
             raise ContractError("source manifest component ids drift from official manifest")
         checks.append({"id": "source-manifest", "status": "pass"})
+        checks.append(check_integration_contract(root))
         routing_path = root / "components" / "reverse-core" / "routing.json"
         routing = read_json(routing_path)
         routes = routing.get("routes")
@@ -336,6 +593,7 @@ def check_contracts(root: Path) -> dict[str, Any]:
             raise ContractError("REA local manifest integrity missing")
         if rea_manifest.get("node_engine") != "^22.23.4 || ^24.22.1 || >=26.12.1":
             raise ContractError("REA Node engine differs from the official pinned package")
+        _check_rea_method_pins(root, rea_manifest)
         checks.append({"id": "rea-reproducibility", "status": "pass"})
         for rel in ("docs/TARGET-CAPABILITY-MATRIX.md", "docs/FINAL-COMPLETION-SPEC.md", "docs/FINAL-RELEASE-ACCEPTANCE.md", "docs/DEPLOYMENT-GUIDE.md", "docs/AGENT-WORKFLOW.md", "docs/BEGINNER-GUIDE.md"):
             if not (root / rel).is_file():

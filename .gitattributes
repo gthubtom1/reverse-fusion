@@ -12,3 +12,5 @@
 evidence/rf22/builder/frozen/state/*.json binary
 # RF-33 native receipts/Evidence and delivery snapshots retain exact observed bytes.
 evidence/rf33/owned-desk/** binary
+# RF-36 raw native bundles/calls retain exact observed IDs and bytes.
+evidence/rf36/raw/** binary

@@ -1,0 +1,30 @@
+{
+  "status": "pass",
+  "scope": "owned original Project bind/analysis/brief/finding/handoff/annotation/journal, restart, case isolation and target drift",
+  "server": {
+    "name": "craft-anything",
+    "title": "Craft Anything",
+    "version": "0.6.1"
+  },
+  "tools": 305,
+  "binary_sha256": "f6a9e75145670051515a4560c64b76534d4706e8eeda42b0be3e213a310b2242",
+  "outcome_project": "D:\\tmp\\rf36-craft-outcome-lbukpyuq",
+  "case_root": "D:\\tmp\\rf36-craft-outcome-lbukpyuq\\work\\case-a",
+  "evidence_id": "ev_ce54f995bd9e885a070ce6ac366e3ef76d232131f0013fcd3451ecd6e8e5837e",
+  "original_memory_restored": true,
+  "unknowns_restored": true,
+  "annotation_restored": true,
+  "journal_restored": true,
+  "cross_case_contamination": false,
+  "changed_target_isolated": true,
+  "effective_deep_mode": {
+    "enabled": true,
+    "ghidra": "D:\\Tools\\Ghidra\\support\\analyzeHeadless.bat",
+    "saved_enabled": false
+  },
+  "cleanup": {
+    "status": "verified",
+    "scope": "owned Windows Job active-process count zero before close",
+    "root_returncode": 0
+  }
+}

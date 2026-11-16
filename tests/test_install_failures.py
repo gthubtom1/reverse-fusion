@@ -6,6 +6,7 @@ import tempfile
 import os
 import subprocess
 import shutil
+import sys
 import unittest
 from unittest.mock import patch
 
@@ -107,6 +108,57 @@ class InstallFailureTests(unittest.TestCase):
         self.assertEqual(receipt_failure_reached, [True])
         self.assertEqual({p: p.read_bytes() for p in before}, before)
 
+    def test_missing_receipt_still_removes_owned_global_entries(self):
+        with self.cli_patches():
+            self.assertEqual(cli.main(['install', '--apply', '--client', 'codex']), 0)
+            self.receipt.unlink()
+            self.assertEqual(cli.main(['uninstall', '--apply']), 0)
+            self.assertEqual(cli.main(['uninstall', '--apply']), 0)
+        self.assertFalse(self.paths['skill'].exists())
+        self.assertFalse(self.paths['agents'].exists())
+        self.assertFalse(self.mcp['config'].exists())
+
+    def test_missing_receipt_cannot_remove_newer_checkout_pointers(self):
+        newer = self.root/'newer'
+        global_adapter.install_global_adapter(newer, self.home)
+        registrations = {
+            'reverse-fusion-rea': {'command':'synthetic-node', 'args':['rea.mjs','mcp'], 'cwd':str(newer),
+                                 'startup_timeout_sec':60, 'tool_timeout_sec':600, 'env':dict(mcp_adapter.REA_ENV)},
+            'reverse-fusion-craft': {'command':'synthetic-craft', 'args':[], 'cwd':str(newer),
+                                   'startup_timeout_sec':60, 'tool_timeout_sec':600}}
+        with self.cli_patches(), patch.object(mcp_adapter, '_registrations', return_value=registrations):
+            mcp_adapter.install_mcp(newer)
+        before = {path:path.read_bytes() for path in [*self.paths.values(),self.mcp['config']]}
+        with self.cli_patches():
+            self.assertEqual(cli.main(['uninstall', '--apply']), 0)
+        self.assertEqual({path:path.read_bytes() for path in before}, before)
+
+    def test_missing_receipt_uncertain_ownership_blocks_without_partial_removal(self):
+        for uncertain in ('instructions', 'mcp', 'skill', 'unmarked-instructions'):
+            with self.subTest(uncertain=uncertain):
+                # Each branch starts with a complete temporary owned install.
+                with self.cli_patches():
+                    self.assertEqual(cli.main(['install', '--apply', '--client', 'codex']), 0)
+                self.receipt.unlink()
+                target = (self.paths['agents'] if uncertain in {'instructions','unmarked-instructions'} else
+                          self.paths['skill'] if uncertain=='skill' else self.mcp['config'])
+                original = target.read_bytes()
+                if uncertain == 'instructions':
+                    target.write_bytes(original.replace(b'Keep the current project',b'Edited: keep the current project'))
+                elif uncertain == 'skill':
+                    target.write_bytes(b'# User-owned skill with uncertain runtime dependencies\n')
+                elif uncertain == 'unmarked-instructions':
+                    target.write_text(f'User-maintained instructions still call `{self.repo.as_posix()}/.venv/Scripts/python.exe`.\n',encoding='utf-8')
+                else:
+                    target.write_bytes(b'[mcp_servers.reverse-fusion-rea]\ncommand="unmanaged"\n')
+                before = {path:path.read_bytes() for path in [*self.paths.values(),self.mcp['config']]}
+                with self.cli_patches():
+                    self.assertEqual(cli.main(['uninstall', '--apply']), 2)
+                self.assertEqual({path:path.read_bytes() for path in before}, before)
+                target.write_bytes(original)
+                with self.cli_patches():
+                    self.assertEqual(cli.main(['uninstall', '--apply']), 0)
+
     @unittest.skipUnless(os.name == 'nt', 'Windows uninstall lifecycle')
     def test_uninstall_script_keeps_receipt_when_python_is_missing(self):
         source = Path(__file__).resolve().parents[1]
@@ -124,6 +176,83 @@ class InstallFailureTests(unittest.TestCase):
         self.assertNotEqual(run.returncode, 0)
         self.assertTrue(self.receipt.is_file())
         self.assertTrue((venv / 'keep.txt').is_file())
+
+    @unittest.skipUnless(os.name == 'nt', 'Windows uninstall lifecycle')
+    def test_uninstall_script_without_receipt_or_python_retains_runtime_and_global_entries(self):
+        source = Path(__file__).resolve().parents[1]
+        scripts = self.repo/'scripts'
+        (scripts/'lib').mkdir(parents=True)
+        for name in ('uninstall.ps1', 'lib/ScriptSupport.ps1'):
+            shutil.copyfile(source/'scripts'/name, scripts/name)
+        global_adapter.install_global_adapter(self.repo,self.home)
+        self.mcp['config'].write_bytes(b'[mcp_servers.reverse-fusion-rea]\ncommand="unmanaged"\n')
+        venv = self.repo/'.venv'
+        sentinel = venv/'Scripts/keep.txt'
+        sentinel.parent.mkdir(parents=True)
+        sentinel.write_bytes(b'owned runtime remainder requiring ownership review')
+        before = {path:path.read_bytes() for path in [*self.paths.values(),self.mcp['config'],sentinel]}
+        self.assertFalse(self.receipt.exists())
+        environment = {**os.environ, 'USERPROFILE':str(self.home), 'CODEX_HOME':str(self.home/'.codex')}
+        run = subprocess.run(['powershell','-NoProfile','-File',str(scripts/'uninstall.ps1'),'-Apply'],
+                             cwd=self.repo,env=environment,capture_output=True,timeout=15)
+        self.assertNotEqual(run.returncode,0)
+        self.assertIn(b'Python is unavailable',run.stderr)
+        self.assertNotIn(b'"status":"uninstalled"',run.stdout)
+        self.assertEqual({path:path.read_bytes() for path in before},before)
+
+    def test_shell_uninstall_without_receipt_or_python_retains_runtime_and_global_entries(self):
+        shell = shutil.which('sh')
+        if shell is None and os.name == 'nt':
+            git = shutil.which('git')
+            if git:
+                candidate = Path(git).resolve().parents[1]/'bin/sh.exe'
+                if candidate.is_file():
+                    shell = str(candidate)
+        self.assertIsNotNone(shell, 'Repository shell lifecycle check requires sh or Git for Windows')
+        source = Path(__file__).resolve().parents[1]
+        script = self.repo/'scripts/uninstall.sh'
+        script.parent.mkdir()
+        shutil.copyfile(source/'scripts/uninstall.sh',script)
+        global_adapter.install_global_adapter(self.repo,self.home)
+        venv = self.repo/'.venv'
+        sentinel = venv/'keep.txt'
+        sentinel.parent.mkdir()
+        sentinel.write_bytes(b'owned runtime remainder requiring ownership review')
+        before = {path:path.read_bytes() for path in [*self.paths.values(),sentinel]}
+        self.assertFalse(self.receipt.exists())
+        environment = {**os.environ, 'USERPROFILE':str(self.home), 'HOME':str(self.home),
+                       'CODEX_HOME':str(self.home/'.codex'),'RF_PYTHON':Path(sys.executable).as_posix()}
+        run = subprocess.run([shell,script.as_posix()],cwd=self.repo,env=environment,
+                             capture_output=True,timeout=15)
+        self.assertNotEqual(run.returncode,0)
+        self.assertIn(b'Python is unavailable',run.stderr)
+        self.assertNotIn(b'"status":"uninstalled"',run.stdout)
+        self.assertEqual({path:path.read_bytes() for path in before},before)
+
+    @unittest.skipUnless(os.name == 'nt', 'Windows uninstall lifecycle')
+    def test_uninstall_script_retains_runtime_when_receipt_missing_and_pointer_unmanaged(self):
+        source = Path(__file__).resolve().parents[1]
+        shutil.copytree(source/'reverse_fusion', self.repo/'reverse_fusion',
+                        ignore=shutil.ignore_patterns('__pycache__'))
+        scripts = self.repo/'scripts'
+        (scripts/'lib').mkdir(parents=True)
+        for name in ('uninstall.ps1','lib/ScriptSupport.ps1'):
+            shutil.copyfile(source/'scripts'/name, scripts/name)
+        venv = self.repo/'.venv'
+        create = subprocess.run([sys.executable, '-m', 'venv', '--without-pip', str(venv)],capture_output=True,timeout=20)
+        self.assertEqual(create.returncode, 0, create.stderr)
+        (venv/'keep.txt').write_bytes(b'retain runtime while a live unmanaged pointer may depend on it')
+        global_adapter.install_global_adapter(self.repo,self.home)
+        self.mcp['config'].write_bytes(b'[mcp_servers.reverse-fusion-rea]\ncommand="unmanaged"\n')
+        before = {path:path.read_bytes() for path in [*self.paths.values(),self.mcp['config']]}
+        environment = {**os.environ, 'USERPROFILE':str(self.home), 'CODEX_HOME':str(self.home/'.codex'),
+                       'PYTHONPATH':str(self.repo)}
+        run = subprocess.run(['powershell','-NoProfile','-File',str(scripts/'uninstall.ps1'),'-Apply'],
+                             cwd=self.repo, env=environment, capture_output=True,timeout=20)
+        self.assertNotEqual(run.returncode,0)
+        self.assertTrue((venv/'Scripts/python.exe').is_file())
+        self.assertTrue((venv/'keep.txt').is_file())
+        self.assertEqual({path:path.read_bytes() for path in before}, before)
 
 
 if __name__ == '__main__':

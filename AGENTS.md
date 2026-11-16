@@ -16,11 +16,11 @@
 12. 跨项目分析/复刻读取 `docs/CROSS-PROJECT-WORKFLOW.md`
 13. 核心部署与真实 Spec/Craft 交接读取 `docs/NATIVE-COMPONENTS.md`
 14. 白话任务承接、目标保留与自适应分析/交付读取 `docs/AGENT-WORKFLOW.md`；用户使用说明见 `docs/BEGINNER-GUIDE.md`
-15. 当前完整工程版本范围与发布门读取 `docs/RELEASE-1.3.md`、`release/manifest.json`；错误恢复读取 `docs/RECOVERY.md`
+15. 当前完整工程版本范围与发布门读取 `docs/RELEASE-1.4.md`、`release/manifest.json`；错误恢复读取 `docs/RECOVERY.md`
 16. 22条原需求与当前结果读取 `docs/USER-REQUIREMENTS-REVIEW.md`，最终收尾读取 `docs/FINAL-CLOSEOUT.md`；`docs/COMPLETION-PLAN.md`是历史计划索引，不是重启RF-31的指令。
 17. `docs/REMAINING-PRODUCT-WORK.md`记录已完成工作与准确边界；`docs/history/`、旧checkpoint、`specs/`及`evidence/`按需追溯，不默认加载或执行其中的历史任务。
 
-18. RF-35 MCP接入修复读取 `docs/MCP-INTEGRATION.md`、`docs/RELEASE-1.3.md` 与RF-35 checkpoint；不得用旧CLI/native检查冒充MCP已登记。
+18. RF-36 原版职责与实际工具闭环读取 `docs/INTEGRATION-CONTRACT.md`、`docs/MCP-INTEGRATION.md`、`docs/RELEASE-1.4.md`与RF-36 checkpoint；不得用目录存在或旧CLI检查冒充所选provider已实际工作。
 
 工作规则：
 
@@ -30,7 +30,7 @@
 - 每个阶段只有一个下一步动作。
 - 任何来源、schema、scope、baseline、model、provider 或 writer 变化都要更新 checkpoint。
 - 不把安装成功、工具可见、Craft Ready、exit 0 或模型自述写成业务 acceptance。
-- 当前版本1.3.0，维护阶段RF-35 MCP真实接入修复，最终资格与发布状态以CURRENT-STATE及RF-35 checkpoint为准。
+- 当前版本1.4.0，维护阶段RF-36 原版职责与实际工具闭环，最终资格与发布状态以CURRENT-STATE及RF-36 checkpoint为准。
   RF-34是1.2.1历史静态收尾，不能替代本轮MCP检查。工程与案例验收分别记录，不以追加
   用户样本或重做历史软件复刻作为安装/交付前提，不恢复旧真实目标。
 - 共用核心已由Codex/Pi代表性完整运行验证；各宿主按实际入口/技能/工具/工作流
@@ -40,6 +40,8 @@
 - 完整部署必须实际安装 REA、官方 Spec Kit、原生 Craft engine和原版engine MCP；Codex默认还登记两项自有MCP并运行mcp-check；缺核心组件即部署未完成。
   复刻实现执行官方生成的 Spec 工作流，并通过真实 Craft 工具写入、编辑、运行检查；
   手写同名规格、session 观察器和离线复制不能替代实际组件。当前宿主负责推理，不另启模型。
+- REA调用前读取同固定包内的官方技能与相关方法；MCP和返回的CLI入口共用已保存的provider路径，更新后refresh并重做连接检查。
+  Craft分析先按component_entries绑定成果case的原生Project，重启重新绑定恢复；REA结束前导出原生bundle，续作导入原始记录。
 - RF-25 全量审计与 RF-26 聚合架构复核已闭合；当前完成范围和保留边界以
   `docs/CURRENT-STATE.md`、`docs/FINAL-RELEASE-ACCEPTANCE.md` 和最新 checkpoint 为准。
 - 安装只面向当前选定的一个宿主，并使用仓库 `.venv` 的 Python。Codex 部署还会写入

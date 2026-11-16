@@ -1,0 +1,96 @@
+{
+  "stage": "RF-36",
+  "files": {
+    "provider-report.json": {
+      "source": "state/rf36/provider-final/report.json",
+      "bytes": 27881,
+      "sha256": "2468e1585743f774edcbdcdaaa6e87d99b05a939b0a42e45998878c542590d68"
+    },
+    "provider-calls.json": {
+      "source": "state/rf36/provider-final/calls.json",
+      "bytes": 129842,
+      "sha256": "6cd1677277d63633aa5cdefbaaf8b53eb0f6de2ffefe1604883fe7036c280290"
+    },
+    "provider-bundle.json": {
+      "source": "state/rf36/provider-final/bundle.json",
+      "bytes": 33387,
+      "sha256": "f332885788bea2b9b438e2fc0f15c33683df61d5800907756520e74482bde1ef"
+    },
+    "cli-cwd.json": {
+      "source": "state/rf36/cli-cwd.json",
+      "bytes": 8665,
+      "sha256": "6a7f5a2cb1056301bd9546ba9a3c01828a1b196ba303e8da4d9dab9931c949c6"
+    },
+    "bounded-unsupported.json": {
+      "source": "state/rf36/cli-zero-exit-error.json",
+      "bytes": 1247,
+      "sha256": "060bc889ad5a1ab7d9a4dbba23984f9eae0a080cab9efb401222ba779c5e9e43"
+    },
+    "provider-first-wrong-argument.json": {
+      "source": "state/rf36/native/calls.json",
+      "bytes": 16628,
+      "sha256": "d871bc6942611dccd10fa5c6aac1c6ce413040af26660e136ab53b545f1e00d9"
+    },
+    "craft-memory-report.json": {
+      "source": "state/rf36-craft-memory-assets-final/report.json",
+      "bytes": 1096,
+      "sha256": "252928aed9b99135b9e955feceaf085e04ca0e70717b4a9c3789e0e915bb88ae"
+    },
+    "craft-memory-calls.json": {
+      "source": "state/rf36-craft-memory-assets-final/calls.json",
+      "bytes": 66590,
+      "sha256": "cb734bbe32239dfaec67a0ba231cd173e744a618e0bb30a7a53c9c16cd91abf0"
+    },
+    "craft-assets-report.json": {
+      "source": "state/rf36-craft-assets-final/report.json",
+      "bytes": 944,
+      "sha256": "2625f3895f9cdc41f846268db8c954e2e38eb44c91bc04159cce70c0f3a5d7ec"
+    },
+    "craft-assets-calls.json": {
+      "source": "state/rf36-craft-assets-final/calls.json",
+      "bytes": 17285,
+      "sha256": "0f68a8769bb224c08a9ea1991da349d8ab5e46a11ed02f13003e4095f84d7533"
+    },
+    "craft-assets-requests.json": {
+      "source": "state/rf36-craft-assets-final/requests.json",
+      "bytes": 1442,
+      "sha256": "a30307a8b062a3bcd3d9432319cca9a02ae4437f800cc9316fcafee85c625e20"
+    },
+    "rea-method-repair.json": {
+      "source": "state/rf36/rea-method-repair.json",
+      "bytes": 5212,
+      "sha256": "46d9ce84037dbcb22cd3e6c49b5c1059c39af1f4ec074bd7abbb5f0f44e68d58"
+    },
+    "mcp-craft-calls.json": {
+      "source": "state/rf36-mcp-final/craft-calls.json",
+      "bytes": 65665,
+      "sha256": "084d4723c00e6b866f253c579578ffa58110c593e3ff4c44d1d4f0994ef3a803"
+    },
+    "mcp-craft-catalog.json": {
+      "source": "state/rf36-mcp-final/craft-catalog.json",
+      "bytes": 549068,
+      "sha256": "b9999b919e96fa8ad41f7c29bdbd5c5fcb3b45c230805d4cac678cde60e98022"
+    },
+    "mcp-craft-restart-calls.json": {
+      "source": "state/rf36-mcp-final/craft-restart-calls.json",
+      "bytes": 47397,
+      "sha256": "b2de0283ccbfc641036d3cc0fc08f9e6446b36448990db91e83281052ebc75ec"
+    },
+    "mcp-rea-calls.json": {
+      "source": "state/rf36-mcp-final/rea-calls.json",
+      "bytes": 78340,
+      "sha256": "ab2f9b517086335287a67b46cc8b5d5bd25b5e3fd69010f14f8cf666aa00043c"
+    },
+    "mcp-rea-catalog.json": {
+      "source": "state/rf36-mcp-final/rea-catalog.json",
+      "bytes": 1129931,
+      "sha256": "16e3c7165c6459fc1dc683a2555bed51d42181ceaf308069b11850648f050660"
+    },
+    "mcp-report.json": {
+      "source": "state/rf36-mcp-final/report.json",
+      "bytes": 1900,
+      "sha256": "78ea416e52b96f218ae4b4159243d729a9b9dca99d60c340db852c84aee8b221"
+    }
+  },
+  "scope": "exact source observations; historical absolute paths retained, not portable deployment paths"
+}

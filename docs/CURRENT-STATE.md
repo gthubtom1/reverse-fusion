@@ -1,25 +1,38 @@
 # Current State
 
-当前版本：**1.3.0**。当前维护阶段：**RF-35 MCP真实工具接入修复**。
-Stage: RF-35. Status: MCP integration repair, local deployment and remote clean-install qualification complete.
-Acceptance: original-engine MCP tools and retained Spec/native writer; provider and target acceptance separate.
-Next action: use the registered servers after client reload; maintain reproduced issues with actual tool evidence.
-本轮确认旧融合只使用CLI/受控writer，未登记REA/Craft MCP；旧“完整”结论没有覆盖
-该真实缺口。新增范围见[版本说明](RELEASE-1.3.md)与[MCP接入](MCP-INTEGRATION.md)。
-收尾结果与覆盖清单见[FINAL-CLOSEOUT.md](FINAL-CLOSEOUT.md)，恢复记录见
-[RF-35 checkpoint](../checkpoints/RF-35-20261116-001.md)。
+当前版本：**1.4.0**。当前维护阶段：**RF-36 原版职责与实际工具闭环**。
+Stage: RF-36. Status: source-bound regressions and local deployment qualified; remote default installation in progress.
+Acceptance: original-role integration, actual tools and durable native records; external provider and target behavior remain separately scoped.
+Next action: publish the source-bound Craft asset and qualify a fresh remote default installation.
 
-## 唯一当前结论
+RF-35登记了两个MCP，但其有限资格没有发现桌面进程漏掉本地分析器配置、Craft未绑定
+原生Project、白话/嵌套case续作及无receipt卸载等缺口。RF-36已实际修复这些问题，
+不能继续沿用旧“完整”作为当前验收。唯一任务记录为
+[RF-36 checkpoint](../checkpoints/RF-36-20261116-001.md)。
 
-- Windows x64为已资格化的完整组件分发平台，Codex为主要本机部署。
-- Reverse路由/领域正文、真实REA6.9.0、官方Spec1.4.1.dev0、原生Craft adapter0.1.1与MCP启动器0.1.0
-  均有实现与安装；REA官方MCP255/Craft engine MCP303工具已登记并实际调用。当前宿主负责推理，真实Craft执行候选写入与检查。
-- Codex/Pi已有普通请求下完整分析、规格、实现、独立比较、修正和打包交付记录。
-  三宿主项目连接/移除及官方Spec布局检查通过；Claude项目适配完成，完整模型运行未实测。
-- 按用户确定的标准，共用核心使用代表性完整运行，各宿主按入口/技能/工具/工作流
-  合同适配。无需为每个宿主登录并重跑完整样本；不轮询Claude登录，不重开已结束任务。
-- 当前22项功能与适配结果以[需求逐项复核](USER-REQUIREMENTS-REVIEW.md)为准。
-  多领域/困难目标能力的完成不意味着所有未来目标、保护器或外部服务都预先通过。
+## 当前实现与真实观察
+
+- Reverse保存完整原话与目标，白话文件/DLL/安全分析与普通开发正反例已补齐。
+  case支持受控索引、嵌套目录恢复、写失败回退和并发保全；没有旧case的“继续”明确报告缺上下文。
+- REA固定6.9.0及其原版技能/八份方法引用纳入安装身份。官方MCP、工作流CLI和有预算
+  执行共同恢复本checkout保存的工具路径，不再借终端环境掩盖桌面工具缺失。
+- 实际从清除临时provider变量的进程调用Ghidra12.1.3、WABT1.0.42、JADX0.7.1，
+  反编译自有PE main、检查WASM与APK类；导出并重启导入6条原生Evidence，ID/链接一致。
+  这是静态原生工具资格，不是Android设备运行或任意保护器成功。
+- Craft MCP adapter0.1.1使用固定原版0.6.1的303工具，加上`fusion_case_open`和
+  `fusion_asset_generate`共305工具；目录数量不等于305项操作实测。
+  分析先打开成果case的原版Project；重启恢复Evidence、调查、未知、annotation、journal与目标。
+  案例切换隔离、目标变化部分恢复、实际Deep模式与Job清理已执行验证。
+- 原版图片/3D生成器已接入单次独立case暂存Workspace/Inbox，预算、许可、密钥、
+  输出边界和错误控制经真实原版HTTP producer的本地loopback服务验证；正式候选
+  经审查Spec/native整合。没有真实付费调用，服务key/额度与产物效果仍按任务核实。
+- 官方Spec1.4.1.dev0与真实native writer0.1.1继续负责有审查的候选实现；
+  原版独立AI/GUI Inbox职责按[承接合同](INTEGRATION-CONTRACT.md)由当前宿主/实际writer承接。
+  工具可见不表示Inbox、Workspace、设备或付费asset服务均已建立。
+- 全局技能/指引/MCP的安装、迁移、回退与卸载按归属保全无关字节；缺receipt不再静默留下入口。
+- RF-33的Codex/Pi普通白话完整自有应用链仍是共享Spec/native/比较/修正/交付的历史资格，
+  不能改写成当时已经登记MCP。Claude项目适配与官方Spec布局检查已完成，完整模型运行
+  未实测，按用户决定不作为本轮门，也不要求登录。
 
 ## 入口与文档权威
 
@@ -27,31 +40,20 @@ Next action: use the registered servers after client reload; maintain reproduced
 |---|---|
 | 新电脑/只给仓库URL安装 | [AGENT-BOOTSTRAP.md](AGENT-BOOTSTRAP.md) |
 | 用户白话使用 | [BEGINNER-GUIDE.md](BEGINNER-GUIDE.md) |
-| 共用核心与宿主入口差异 | [HOST-PROJECT-CONNECTION.md](HOST-PROJECT-CONNECTION.md) |
-| 智能体分析/实现责任 | [AGENT-WORKFLOW.md](AGENT-WORKFLOW.md)、本地路由返回的领域正文 |
-| 真实Spec/Craft与跨项目交接 | [NATIVE-COMPONENTS.md](NATIVE-COMPONENTS.md)、[CROSS-PROJECT-WORKFLOW.md](CROSS-PROJECT-WORKFLOW.md) |
+| 原版职责、工具和宿主替代 | [INTEGRATION-CONTRACT.md](INTEGRATION-CONTRACT.md)、[MCP-INTEGRATION.md](MCP-INTEGRATION.md) |
+| 现有宿主项目差异 | [HOST-PROJECT-CONNECTION.md](HOST-PROJECT-CONNECTION.md) |
+| 智能体调查/实现责任 | [AGENT-WORKFLOW.md](AGENT-WORKFLOW.md)、路由返回的领域正文 |
+| Spec/Craft与跨项目交接 | [NATIVE-COMPONENTS.md](NATIVE-COMPONENTS.md)、[CROSS-PROJECT-WORKFLOW.md](CROSS-PROJECT-WORKFLOW.md) |
 | 失败/中断恢复 | [RECOVERY.md](RECOVERY.md) |
-| 当前版本与发布门 | [RELEASE-1.3.md](RELEASE-1.3.md)、[release/manifest.json](../release/manifest.json) |
+| 版本与发布门 | [RELEASE-1.4.md](RELEASE-1.4.md)、[release/manifest.json](../release/manifest.json) |
 
-## 已有验证依据及准确边界
+## 验收与发布记录
 
-- `release/verification.json`绑定当前工程源码与120项产品/39项复刻检查结果（0跳过）。
-  收尾若改变检查绑定的源码或元数据，须按对应静态/工程检查更新资格，不冒充新业务运行。
-- 已记录的本机Codex部署检查为22项通过（含MCP登记和实际协议调用）；安装核心缺失或用户级入口陈旧时拒绝完成。
-- `evidence/rf35/clean-install.json`是提交41ac0ba的全新GitHub克隆默认安装记录；
-  自有Node/REA/Spec/native/MCP从远端准备，隔离USERPROFILE/CODEX_HOME执行真实登记与协议调用，
-  120+39零跳过、22门ready；主用户配置未改变。不是另一台物理电脑实测。
-- Codex自有完整应用运行约26.2分钟，有限1416项比较；Pi曾多次达到期限后恢复，
-  最终交付完成。归档身份、独立UI比对及准确限制见[evidence索引](../evidence/README.md)。
-- 非Windows原生分发、目标专用IDA/Frida/Android设备或其他商业工具按实际环境准备，
-  不从路由存在或Windows安装通过推定它们已可用。
+本轮真实调用与源码绑定结果归档到`evidence/rf36/`，回归数量以
+`release/verification.json`实际值为准。最终175项产品与39项复刻检查通过、0跳过，`release/verification.json`绑定源码与日志；
+本机23项部署门ready，真实登记协议、用户技能、handoff/doctor均通过。无关config5221字节与
+AGENTS原内容精确保留。远端新克隆结果尚待写入，不预写通过；MCP登记更新不等于当前旧连接自动重连。
+当前完整预编译分发为Windows x64；其他平台及外部设备/provider按实际条件准备。
 
-## 后续动作
-
-本轮远端新克隆默认安装及隔离用户登记、真实协议和22部署门已通过。
-当前桌面旧聊天仍需客户端重载后确认发现，不冒称本轮已热加载。正常在成果项目按用户目标工作。换电脑执行已保存安装流程，新Pi/Claude成果项目
-执行显式项目连接，均不需重做产品设计或历史样本。发现新缺陷时按证据维护共享实现；
-不要把某目标的未知解释为当前工程版本未安装完成，也不把工程完成当成目标成功。
-
-历史RF-33及更早状态和验收原文已转至[历史档案](history/RF-33-STATE-AND-ACCEPTANCE.md)。
-该档案、旧checkpoint与旧版本的下一步仅供追溯，不能覆盖本页或当前用户决定。
+RF-35及更早版本说明、checkpoint和原始Evidence按需追溯，历史“下一步”不驱动
+当前安装。原始ID、摘要、旧绝对路径、错误和unknown不为清理而改写。

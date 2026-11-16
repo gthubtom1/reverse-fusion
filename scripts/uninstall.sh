@@ -19,8 +19,8 @@ case "$receipt" in "$repo"/*) ;; *) echo "receipt must stay inside repository" >
 
 venv_python="$venv/bin/python"
 if [ -x "$venv/Scripts/python.exe" ]; then venv_python="$venv/Scripts/python.exe"; fi
-if [ -f "$receipt" ] && [ ! -x "$venv_python" ]; then
-  echo 'installation receipt exists but its Python is unavailable; restore venv before managed adapter removal; nothing removed' >&2
+if [ ! -x "$venv_python" ]; then
+  echo 'repository Python is unavailable; restore venv to check global entry ownership before deleting runtime; a missing receipt does not prove global pointers are absent; nothing removed' >&2
   exit 2
 fi
 if [ -x "$venv_python" ]; then
@@ -28,4 +28,4 @@ if [ -x "$venv_python" ]; then
 fi
 if [ -e "$venv" ]; then rm -rf -- "$venv"; fi
 if [ -f "$receipt" ]; then rm -f -- "$receipt"; fi
-printf '%s\n' '{"status":"uninstalled","global_adapter":"removed-by-reverse-fusion-cli-when-recorded"}'
+printf '%s\n' '{"status":"uninstalled","global_adapter":"ownership-checked-by-reverse-fusion-cli-before-removal"}'

@@ -1,0 +1,222 @@
+{
+  "accepted": "unverified",
+  "checks": [
+    {
+      "id": "official-manifest",
+      "status": "pass"
+    },
+    {
+      "id": "source-manifest",
+      "status": "pass"
+    },
+    {
+      "declared_checks": 43,
+      "id": "integration-responsibilities",
+      "required_file_references": 69,
+      "responsibilities": 20,
+      "roles": [
+        "craft",
+        "host",
+        "rea",
+        "reverse",
+        "spec"
+      ],
+      "runtime_acceptance": "not-evaluated",
+      "scope": "static declarations, source-pin consistency and repository path integrity",
+      "status": "pass"
+    },
+    {
+      "id": "reverse-routing-and-skills",
+      "routes": 45,
+      "status": "pass"
+    },
+    {
+      "files": 603,
+      "id": "reverse-support-preservation",
+      "status": "pass"
+    },
+    {
+      "id": "schemas/handoff-v1.schema.json",
+      "status": "pass"
+    },
+    {
+      "id": "schemas/external-baseline-v1.schema.json",
+      "status": "pass"
+    },
+    {
+      "id": "schemas/candidate-result-v1.schema.json",
+      "status": "pass"
+    },
+    {
+      "id": "schemas/source-manifest-v1.schema.json",
+      "status": "pass"
+    },
+    {
+      "id": "craft-bundle-manifest",
+      "status": "pass"
+    },
+    {
+      "id": "wabt-reproducibility",
+      "status": "pass"
+    },
+    {
+      "id": "jadx-reproducibility",
+      "status": "pass"
+    },
+    {
+      "id": "rea-reproducibility",
+      "status": "pass"
+    },
+    {
+      "id": "final-v1-documents",
+      "status": "pass"
+    },
+    {
+      "id": "rf22-evidence-manifest",
+      "status": "pass"
+    },
+    {
+      "id": "spec-kit-project",
+      "status": "pass"
+    },
+    {
+      "id": "profile:normal-dev",
+      "status": "pass"
+    },
+    {
+      "id": "profile:analysis",
+      "status": "pass"
+    },
+    {
+      "id": "profile:reconstruction",
+      "status": "pass"
+    },
+    {
+      "id": "profile:follow-up",
+      "status": "pass"
+    }
+  ],
+  "components": {
+    "builder": {
+      "backend": "host-reasoning-with-native-craft",
+      "boundary": "review analysis and execute official Spec workflow before native-craft prepare/build/check/refine/return_summary/cleanup; session is an auxiliary boundary observer, not the implementation engine",
+      "status": "installed-identity-verified"
+    },
+    "craft": {
+      "binary": "D:\\Project\\reverse\\vendor\\craft\\native\\windows-x64\\reverse-fusion-craft-native.exe",
+      "boundary": "native-craft drives actual Craft engine; the legacy craft copy command is not this backend",
+      "business_acceptance": "not-performed",
+      "distribution": "pinned-native-engine-adapter",
+      "handshake": "unverified",
+      "mcp_backend": "installed-identity-verified",
+      "mcp_binary": "D:\\Project\\reverse\\vendor\\craft\\mcp\\windows-x64\\0.1.1\\reverse-fusion-craft-mcp.exe",
+      "native_backend": "installed-identity-verified"
+    },
+    "rea": {
+      "entry": "D:\\Project\\reverse\\vendor\\rea\\package\\scripts\\rea.mjs",
+      "handshake": "unverified",
+      "methods_status": "installed-identity-verified",
+      "next_action": "Use scripts/bootstrap-rea.ps1 on Windows when REA is needed; check the pinned Node engine and then the actual REA catalog/provider before use. A source manifest is not an installed runtime.",
+      "node": "D:\\Project\\reverse\\vendor\\node\\node-v24.22.1-win-x64\\node.exe",
+      "node_engine": "^22.23.4 || ^24.22.1 || >=26.12.1",
+      "node_engine_status": "satisfied",
+      "node_source": "repository-receipt",
+      "node_version": "v24.22.1",
+      "official_skill": "D:\\Project\\reverse\\vendor\\rea\\package\\skills\\reverse-engineer-anything\\SKILL.md",
+      "provider_health": "unverified",
+      "status": "present-unverified",
+      "version_pin": "6.9.0"
+    },
+    "reverse": {
+      "boundary": "route availability is checked by contracts; target analysis is separate",
+      "router": "D:\\Project\\reverse\\components\\reverse-core\\router.py",
+      "status": "repository-local"
+    },
+    "spec": {
+      "boundary": "installed CLI is required; execute its generated project skills/scripts for actual Spec workflow",
+      "cli": "D:\\Project\\reverse\\.venv\\Scripts\\specify.exe",
+      "cli_status": "installed",
+      "version": "1.4.1.dev0",
+      "workflow_acceptance": "not-performed"
+    }
+  },
+  "core_deployment": {
+    "missing": [],
+    "scope": "required runtime installation; generated workflow and target acceptance remain separate",
+    "status": "installed"
+  },
+  "handshakes": {
+    "config_mutation": false,
+    "probes": [],
+    "status": "unrecorded"
+  },
+  "host": {
+    "arch": "amd64",
+    "available": [
+      "claude",
+      "codex",
+      "pi"
+    ],
+    "global_config_mutation": false,
+    "hosts": {
+      "claude": "D:\\Tools\\Node\\claude",
+      "codex": "C:\\Users\\toti\\AppData\\Local\\OpenAI\\Codex\\bin\\c38161ad8494f88c\\codex.EXE",
+      "pi": "C:\\Users\\toti\\.pi\\agent\\bin\\pi"
+    },
+    "os": "windows",
+    "python": "3.12.0"
+  },
+  "loaded": "unverified",
+  "mcp_registration": {
+    "config": "C:\\Users\\toti\\.codex\\config.toml",
+    "enabled": true,
+    "reload_required": true,
+    "repository": "D:\\Project\\reverse",
+    "runtime_acceptance": "not-performed",
+    "servers": [
+      "reverse-fusion-rea",
+      "reverse-fusion-craft"
+    ],
+    "status": "registered"
+  },
+  "operation": "doctor",
+  "project": "reverse-fusion",
+  "provider_paths": {
+    "paths": {
+      "GHIDRA_INSTALL_DIR": "D:\\Tools\\Ghidra",
+      "JAVA_HOME": "D:\\Tools\\runtime\\jdk21\\jdk-21.0.12.1+1",
+      "REA_ADB_PATH": "C:\\Users\\toti\\AppData\\Local\\Microsoft\\WinGet\\Packages\\Genymobile.scrcpy_Microsoft.Winget.Source_8wekyb3d8bbwe\\scrcpy-win64-v4.1\\adb.exe",
+      "REA_BROWSER_EXECUTABLE": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+      "REA_CAPINFOS_COMMAND": "D:\\Tools\\Wireshark\\capinfos.exe",
+      "REA_GDB_COMMAND": "D:\\Tools\\runtime\\mingw64\\bin\\gdb.exe",
+      "REA_ILSPY_CMD_PATH": "C:\\Users\\toti\\.dotnet\\tools\\ilspycmd.exe",
+      "REA_JADX_MCP_JAR": "D:\\Project\\reverse\\vendor\\jadx-headless-mcp\\0.7.1\\jadx-headless-mcp-0.7.1-all.jar",
+      "REA_MITMDUMP_COMMAND": "D:\\EXE\\python\\Scripts\\mitmdump.exe",
+      "REA_OBJDUMP_COMMAND": "D:\\Tools\\runtime\\mingw64\\bin\\objdump.exe",
+      "REA_TSHARK_COMMAND": "D:\\Tools\\Wireshark\\tshark.exe",
+      "REA_WABT_BIN_DIRECTORY": "D:\\Project\\reverse\\vendor\\wabt\\1.0.42\\windows-x64\\wabt-1.0.42\\bin",
+      "REVERSE_FUSION_CRAFT_TOOL_ADB": "C:\\Users\\toti\\AppData\\Local\\Microsoft\\WinGet\\Packages\\Genymobile.scrcpy_Microsoft.Winget.Source_8wekyb3d8bbwe\\scrcpy-win64-v4.1\\adb.exe",
+      "REVERSE_FUSION_CRAFT_TOOL_BINWALK": "C:\\Users\\toti\\.cargo\\bin\\binwalk.exe",
+      "REVERSE_FUSION_CRAFT_TOOL_CHROMIUM": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+      "REVERSE_FUSION_CRAFT_TOOL_FRIDA": "D:\\EXE\\python\\Scripts\\frida.exe",
+      "REVERSE_FUSION_CRAFT_TOOL_GDB": "D:\\Tools\\runtime\\mingw64\\bin\\gdb.exe",
+      "REVERSE_FUSION_CRAFT_TOOL_ILSPY": "C:\\Users\\toti\\.dotnet\\tools\\ilspycmd.exe",
+      "REVERSE_FUSION_CRAFT_TOOL_JAVA": "D:\\Tools\\runtime\\jdk21\\jdk-21.0.12.1+1\\bin\\java.exe",
+      "REVERSE_FUSION_CRAFT_TOOL_MITMDUMP": "D:\\EXE\\python\\Scripts\\mitmdump.exe",
+      "REVERSE_FUSION_CRAFT_TOOL_OBJDUMP": "D:\\Tools\\runtime\\mingw64\\bin\\objdump.exe",
+      "REVERSE_FUSION_CRAFT_TOOL_TSHARK": "D:\\Tools\\Wireshark\\tshark.exe"
+    },
+    "receipt_present": true,
+    "scope": "configured existing paths; individual native operations establish provider readiness",
+    "status": "configured",
+    "unavailable": {}
+  },
+  "provider_status": "D:\\Project\\reverse\\docs\\PROVIDER-STATUS.md",
+  "receipt": "D:\\Project\\reverse\\state\\install.json",
+  "reverse_root": null,
+  "running": "unverified",
+  "schema_version": 1,
+  "source_manifest_sha256": "1c0be98e49990bf4b1ba3b77d8e43efa3b1f029ccce0d0b715d037dd323f9506",
+  "status": "pass",
+  "status_scope": "repository-contracts-only; component presence and target acceptance are separate"
+}

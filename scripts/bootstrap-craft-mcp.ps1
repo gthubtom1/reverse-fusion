@@ -18,7 +18,7 @@ $destination = Split-Path -Parent $binary
 New-Item -ItemType Directory -Path $destination -Force | Out-Null
 
 if ($BuildFromSource) {
-    $source = Assert-RepositoryWritePath $repo (Join-Path $repo 'vendor/craft/upstream')
+    $source = Assert-RepositoryWritePath $repo (Join-Path $repo 'vendor/craft/mcp-upstream')
     if (-not (Test-Path -LiteralPath (Join-Path $source '.git'))) {
         if ((Test-Path -LiteralPath $source) -and (Get-ChildItem -LiteralPath $source -Force | Select-Object -First 1)) {
             throw 'Craft source destination is not empty'
@@ -80,8 +80,8 @@ if ($BuildFromSource) {
     }
     $distribution = 'source-build'
 } else {
-    $requiredSourceNames = @('components/craft-mcp/src/main.rs', 'components/craft-mcp/Cargo.toml', 'components/craft-mcp/Cargo.lock')
-    if (@($manifest.adapter_source_sha256.PSObject.Properties).Count -ne 3) { throw 'Craft MCP packaged source binding is incomplete' }
+    $requiredSourceNames = @((Get-ChildItem -LiteralPath (Join-Path $repo 'components/craft-mcp/src') -Filter '*.rs' -File -Recurse | ForEach-Object { $_.FullName.Substring($repo.Length + 1).Replace('\','/') })) + @('components/craft-mcp/Cargo.toml', 'components/craft-mcp/Cargo.lock')
+    if (@($manifest.adapter_source_sha256.PSObject.Properties).Count -ne $requiredSourceNames.Count) { throw 'Craft MCP packaged source binding is incomplete' }
     foreach ($name in $requiredSourceNames) {
         $expectedSource = $manifest.adapter_source_sha256.$name
         if ($expectedSource -notmatch '^[a-f0-9]{64}$') { throw "Craft MCP packaged source binding missing: $name" }
@@ -141,7 +141,7 @@ Assert-NativeExit $LASTEXITCODE 'Craft MCP executable identity'
 $expectedVersion = "reverse-fusion-craft-mcp $($manifest.adapter_version) / Craft engine $($manifest.upstream.version) / $($manifest.upstream.commit)"
 if ($version -ne $expectedVersion) { throw 'Craft MCP executable version does not match manifest' }
 $inputs = @{}
-foreach ($name in @('components/craft-mcp/src/main.rs', 'components/craft-mcp/Cargo.toml', 'components/craft-mcp/Cargo.lock', 'components/craft-mcp/manifest.json') + @($manifest.patches.path)) {
+foreach ($name in @($manifest.adapter_source_sha256.PSObject.Properties.Name) + @('components/craft-mcp/manifest.json') + @($manifest.patches.path)) {
     $inputs[$name] = (Get-FileHash -LiteralPath (Join-Path $repo $name) -Algorithm SHA256).Hash.ToLowerInvariant()
 }
 $receipt = Assert-RepositoryWritePath $repo (Join-Path $repo 'state/craft-mcp-runtime.json')

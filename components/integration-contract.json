@@ -1,0 +1,839 @@
+{
+  "schema_version": 1,
+  "contract_id": "reverse-fusion-original-to-integrated-capabilities",
+  "stage": "RF-36",
+  "scope": "Original useful responsibilities mapped to real fusion owners, entries, conditions and negative checks; not a blanket runtime pass report.",
+  "status_policy": "This file contains no completed/pass fields. Source/contract checks validate required mappings; actual execution and target acceptance remain evidence-bound.",
+  "source_pins": {
+    "reverse": {
+      "pin_manifest": "SOURCE-MANIFEST.json",
+      "reference_root": "skills",
+      "identity": "enhanced reverse-skill commit selected by SOURCE-MANIFEST.json"
+    },
+    "rea": {
+      "pin_manifest": "vendor/rea/manifest.json",
+      "reference_root": "vendor/rea/package",
+      "identity": "official installed package; package skill and MCP schemas belong to the same fixed version"
+    },
+    "spec": {
+      "pin_manifest": "vendor/spec-kit/manifest.json",
+      "reference_root": "vendor/spec-kit/upstream",
+      "identity": "official CLI/templates/scripts pinned by vendor manifest"
+    },
+    "craft": {
+      "pin_manifest": "components/craft-mcp/manifest.json",
+      "reference_root": "vendor/craft/mcp-upstream",
+      "identity": "fixed upstream engine/MCP plus recorded owned adaptations; native writer has its own manifest"
+    },
+    "host": {
+      "pin_manifest": "components/official/manifest.json",
+      "reference_root": ".",
+      "identity": "selected current host; no model/account copied or selected by this repository"
+    }
+  },
+  "responsibilities": [
+    {
+      "id": "reverse-routing",
+      "upstream_component": "reverse",
+      "original_role": "Select relevant domain methods without replacing the user objective",
+      "upstream_paths": [
+        "MASTER-ROUTING.md",
+        "INDEX.md",
+        "reverse-engineering/SKILL.md"
+      ],
+      "fusion_owner": "Current host plus the owned router/case bridge",
+      "entry_points": [
+        "reverse_fusion bridge; returned skill/required_reads/related_routes/next_stage"
+      ],
+      "required_files": [
+        "reverse_fusion/case_bridge.py",
+        "components/reverse-core/router.py",
+        "reverse_fusion/global_adapter.py"
+      ],
+      "completion_condition": "Clear target analysis/recreation requests select an available domain and preserve the original delivery objective; ordinary development remains host-native and creates no reverse case.",
+      "checks": [
+        {
+          "path": "tests/test_request_recovery.py",
+          "kind": "regression",
+          "assertion": "Plain file/DLL/security-analysis/recreation requests enter analysis; protected routes, reverse-list/proxy and packed-layout development remain host-native."
+        },
+        {
+          "path": "tests/test_cross_project.py",
+          "kind": "regression",
+          "assertion": "Domain refinement retains the original reconstruction goal and case refs."
+        }
+      ],
+      "negative_cases": [
+        "A route descriptor without its skill body is unavailable.",
+        "A keyword such as protected or reverse alone must not claim ordinary development."
+      ],
+      "acceptance_boundary": "Routing is a decision entry, not tool execution or readiness to implement."
+    },
+    {
+      "id": "reverse-case-continuation",
+      "upstream_component": "reverse",
+      "original_role": "Preserve one case, its original goal and refs across continuation",
+      "upstream_paths": [
+        "ops/timeline-workitem.md",
+        "ops/evidence-finding-path.md"
+      ],
+      "fusion_owner": "Case pointer as authority; bounded discovery index and current host for recovery",
+      "entry_points": [
+        "reverse_fusion bridge --record",
+        "reverse_fusion workflow",
+        ".reverse-fusion/cases.json discovery pointers"
+      ],
+      "required_files": [
+        "reverse_fusion/case_bridge.py",
+        "reverse_fusion/workflow.py",
+        "tests/test_request_recovery.py"
+      ],
+      "completion_condition": "Every supported recorded case path is discoverable; unique continuation resumes the original objective/refs, missing or ambiguous context returns a recovery state without fabricating a new goal. Case and index writes restore prior bytes on reported failures and concurrent recording retains all entries.",
+      "checks": [
+        {
+          "path": "tests/test_request_recovery.py",
+          "kind": "regression",
+          "assertion": "Missing/explicit-wrong/nested/legacy cases, path escape, changed identity, write rollback and parallel case registration are exercised."
+        }
+      ],
+      "negative_cases": [
+        "Continue with no case cannot return ordinary-development success.",
+        "An index is not authority to load an outside or mismatched case."
+      ],
+      "acceptance_boundary": "The index is rebuildable discovery metadata; case/Evidence/Spec remain authoritative. No recursive full-project scan or power-loss transaction guarantee."
+    },
+    {
+      "id": "reverse-domain-methods",
+      "upstream_component": "reverse",
+      "original_role": "Retain domain instructions and adaptive hard-target methods",
+      "upstream_paths": [
+        "INDEX.md",
+        "ops/IDENTITY.md",
+        "reverse-engineering/SKILL.md"
+      ],
+      "fusion_owner": "Owned domain copies, routing runtime and current host analysis",
+      "entry_points": [
+        "route.skill",
+        "route.required_reads",
+        "route.hard_target",
+        "route.missing_support"
+      ],
+      "required_files": [
+        "components/reverse-core/preservation.json",
+        "components/reverse-core/runtime.json",
+        "RULES.md"
+      ],
+      "completion_condition": "Fixed domain bodies, helper references and intentional adaptations are present and hash-accounted; protection evidence can load additional methods after initial routing, with missing mandatory support reported unavailable.",
+      "checks": [
+        {
+          "path": "tests/test_reverse_preservation.py",
+          "kind": "regression",
+          "assertion": "Preserved upstream identity, local digests and required route support remain consistent."
+        },
+        {
+          "path": "tests/test_contracts.py",
+          "kind": "regression",
+          "assertion": "Missing domain/runtime references cannot be treated as available."
+        }
+      ],
+      "negative_cases": [
+        "A packing/anti-debug hint cannot silently drop required hard-target references."
+      ],
+      "acceptance_boundary": "Method availability is not proof of success against all protectors or platforms."
+    },
+    {
+      "id": "rea-official-methods",
+      "upstream_component": "rea",
+      "original_role": "Supply official task-selection, analysis and recovery instructions alongside tools",
+      "upstream_paths": [
+        "skills/reverse-engineer-anything/SKILL.md",
+        "skills/reverse-engineer-anything/references/connection-and-recovery.md",
+        "skills/reverse-engineer-anything/references/evidence-workflows.md"
+      ],
+      "fusion_owner": "Current host reads the installed fixed package skill and selected references",
+      "entry_points": [
+        "installed REA skill from the same package as the server",
+        "official connected MCP schemas and returned remediation"
+      ],
+      "required_files": [
+        "vendor/rea/manifest.json",
+        "reverse_fusion/global_adapter.py",
+        "docs/MCP-INTEGRATION.md"
+      ],
+      "completion_condition": "The installed official skill and relevant method references are reachable from the fusion entry, with the same version as REA. Use existing source-repository tools when source already answers the question; use REA for shipped-artifact, decompilation, runtime and comparison claims.",
+      "checks": [
+        {
+          "path": "tests/test_component_status.py",
+          "kind": "regression",
+          "assertion": "Required installed component identity and method paths are checked by the current component contract."
+        },
+        {
+          "path": "docs/AGENT-WORKFLOW.md",
+          "kind": "runtime-review",
+          "assertion": "Tool selection must read the relevant installed REA method; ordinary source explanation does not require redundant readiness probes."
+        }
+      ],
+      "negative_cases": [
+        "A server catalog without its original usage/recovery instructions is incomplete integration.",
+        "Do not turn a full source-repository explanation into unnecessary REA readiness work."
+      ],
+      "acceptance_boundary": "Instructions guide correct use; loading their text does not prove a particular analysis completed."
+    },
+    {
+      "id": "rea-mcp-cli-providers",
+      "upstream_component": "rea",
+      "original_role": "Reach official analysis operations and their real external backends",
+      "upstream_paths": [
+        "scripts/rea.mjs",
+        "README.md",
+        "dist/mcp/main.js"
+      ],
+      "fusion_owner": "Official REA server/CLI with repository-selected Node and shared provider paths",
+      "entry_points": [
+        "reverse-fusion-rea MCP",
+        "reverse_fusion rea-run",
+        "reverse_fusion providers"
+      ],
+      "required_files": [
+        "reverse_fusion/mcp_adapter.py",
+        "reverse_fusion/rea_runner.py",
+        "reverse_fusion/provider_runtime.py",
+        "scripts/run-rea-doctor.ps1"
+      ],
+      "completion_condition": "Selected compatible Node, official MCP and CLI can invoke required operations; saved allowlisted provider paths reach both entrypoints even when the desktop environment differs. Missing/deleted/tampered paths are reported with a remediation rather than silently accepted.",
+      "checks": [
+        {
+          "path": "tests/test_provider_runtime.py",
+          "kind": "regression",
+          "assertion": "Saved paths survive environment changes without importing secrets; missing and tampered tools are rejected."
+        },
+        {
+          "path": "tests/test_provider_wrappers.py",
+          "kind": "regression",
+          "assertion": "Actual wrapper argv/runtime propagation and failed-bootstrap stopping are checked."
+        },
+        {
+          "path": "scripts/qualify-mcp.py",
+          "kind": "runtime",
+          "assertion": "Invoke real official analysis and retain original coverage/limitations."
+        }
+      ],
+      "negative_cases": [
+        "Catalog visibility is not backend execution.",
+        "An obsolete shell PATH must not be the only way to reach a configured Ghidra/Java/WABT/JADX provider."
+      ],
+      "acceptance_boundary": "Each provider requires its own executable/runtime/device and actual selected-operation observation. This contract does not install every provider."
+    },
+    {
+      "id": "rea-evidence-persistence",
+      "upstream_component": "rea",
+      "original_role": "Preserve and reopen native Evidence without rewriting identity",
+      "upstream_paths": [
+        "skills/reverse-engineer-anything/references/evidence-workflows.md",
+        "dist/domain/evidence.js"
+      ],
+      "fusion_owner": "Official REA export/import plus original case Evidence refs",
+      "entry_points": [
+        "export_evidence_bundle",
+        "import_evidence_bundle",
+        "get_evidence_bundle",
+        "case E-id points to immutable original export"
+      ],
+      "required_files": [
+        "skills/reconstruction/references/evidence-to-spec.md",
+        "skills/reconstruction/scripts/check_handoff.py",
+        "scripts/verify-owned-records.mjs"
+      ],
+      "completion_condition": "Needed complete original records are exported into the outcome case before disconnect; a fresh session can import/read them with unchanged IDs, UTF-8 content, authority and limitations. Markdown summaries point to originals rather than becoming a replacement native bundle.",
+      "checks": [
+        {
+          "path": "scripts/verify-owned-records.mjs",
+          "kind": "runtime",
+          "assertion": "Authenticate existing exact archived native record identities and snapshot bytes without changing IDs."
+        },
+        {
+          "path": "skills/reconstruction/tests/test_check_handoff.py",
+          "kind": "regression",
+          "assertion": "Handoff references and exact artifact bytes are validated by the inherited checker."
+        }
+      ],
+      "negative_cases": [
+        "A summary projection or transient session ID is not a complete exported bundle.",
+        "Tampering or Windows code-page corruption cannot be repaired by refreshing the old Evidence ID."
+      ],
+      "acceptance_boundary": "Handoff SHA checks prove supplied fixity, not native schema authentication or semantic truth; actual REA import/read is separate."
+    },
+    {
+      "id": "rea-comparison-proof-ledger",
+      "upstream_component": "rea",
+      "original_role": "Compare originals/candidates and evaluate scoped proof/obligation coverage",
+      "upstream_paths": [
+        "skills/reverse-engineer-anything/references/evidence-workflows.md",
+        "skills/reverse-engineer-anything/references/runtime-observation.md"
+      ],
+      "fusion_owner": "Official REA evidence/proof/ledger APIs; independently executed comparison producers",
+      "entry_points": [
+        "compare_bundles",
+        "build_reconstruction_obligation_ledger",
+        "verify_reconstruction",
+        "evaluate_reconstruction_coverage"
+      ],
+      "required_files": [
+        "scripts/compare-js-exports.mjs",
+        "skills/reconstruction/references/evidence-to-spec.md",
+        "reverse_fusion/differential.py"
+      ],
+      "completion_condition": "Real comparison inputs/producers are identity-bound; official proof and ledger results retain required open/unknown/unsupported and source authority. A scoped ready claim requires actual applicable proof and zero required open obligations for that unchanged scope.",
+      "checks": [
+        {
+          "path": "evidence/rf33/owned-desk-completion.json",
+          "kind": "historical-runtime",
+          "assertion": "Recorded finite owned application includes official analysis/ledger and independent comparison; it does not establish new MCP/provider behavior."
+        },
+        {
+          "path": "tests/test_differential.py",
+          "kind": "regression",
+          "assertion": "Wrong output fails; absent/timeout/input drift cannot pass; identical original/candidate source is rejected."
+        }
+      ],
+      "negative_cases": [
+        "Exit 0 or candidate-only unit tests cannot close original behavior obligations.",
+        "Static export shape partial cannot be promoted to runtime equivalence or complete graph coverage."
+      ],
+      "acceptance_boundary": "Native REA proof is not fabricated from local equality summaries; designed behavior remains distinguishable from observed original behavior."
+    },
+    {
+      "id": "spec-official-discovery",
+      "upstream_component": "spec",
+      "original_role": "Generate and discover the official project workflow for the selected host",
+      "upstream_paths": [
+        "src/specify_cli/__init__.py",
+        "templates/commands/constitution.md",
+        "templates/commands/specify.md",
+        "templates/commands/tasks.md"
+      ],
+      "fusion_owner": "Installed official Spec CLI and integration-aware phase resolver",
+      "entry_points": [
+        "specify init in outcome project",
+        "reverse_fusion.workflow component_entries.spec.generated_workflow"
+      ],
+      "required_files": [
+        "reverse_fusion/spec_support.py",
+        "vendor/spec-kit/manifest.json",
+        "scripts/bootstrap-spec.ps1"
+      ],
+      "completion_condition": "Official fixed CLI generates the selected host layout; constitution/specify/clarify/plan/tasks/analyze/implement/converge paths are discovered from integration identity and missing phases block implementation.",
+      "checks": [
+        {
+          "path": "tests/test_host_projects.py",
+          "kind": "regression",
+          "assertion": "Actually generate Codex/Pi/Claude official layouts and reject a missing phase."
+        }
+      ],
+      "negative_cases": [
+        "Handwritten files with official-looking names or only specify init do not prove phase execution."
+      ],
+      "acceptance_boundary": "Phase discovery is distinct from completing its reasoning, scripts and hooks."
+    },
+    {
+      "id": "spec-evidence-native-gate",
+      "upstream_component": "spec",
+      "original_role": "Link original evidence into reviewed requirements and implementation tasks",
+      "upstream_paths": [
+        "templates/commands/plan.md",
+        "templates/commands/analyze.md",
+        "templates/commands/implement.md",
+        "scripts/powershell/check-prerequisites.ps1"
+      ],
+      "fusion_owner": "Official phase execution plus inherited case/handoff review and native prepare",
+      "entry_points": [
+        "case-review --verify-hashes --strict",
+        "check_handoff.py",
+        "native-craft prepare"
+      ],
+      "required_files": [
+        "reverse_fusion/craft_native.py",
+        "reverse_fusion/session_builder.py",
+        "skills/reconstruction/scripts/check_handoff.py"
+      ],
+      "completion_condition": "Execute actual generated workflow and prerequisites, map every requirement to evidence/unknowns/obligation refs, review semantic support and freeze exact inputs before candidate edits. Critical unknowns block affected requirements; reviewed independent batches preserve deferred requirements and the whole objective.",
+      "checks": [
+        {
+          "path": "tests/test_reconstruction_gate.py",
+          "kind": "regression",
+          "assertion": "Critical unknowns, omitted case/review, wrong tasks and source changes block the affected implementation."
+        },
+        {
+          "path": "tests/test_craft_native.py",
+          "kind": "regression",
+          "assertion": "An independent selected batch retains deferred critical work rather than deleting requirements."
+        }
+      ],
+      "negative_cases": [
+        "A mechanical PASS and nonempty review file cannot certify semantic readiness.",
+        "Removing an inconvenient unknown or reducing delivery without a scope decision is not completion."
+      ],
+      "acceptance_boundary": "Semantic readiness remains the host/reviewer responsibility; mechanical checks do not discover every omitted dependency."
+    },
+    {
+      "id": "spec-converge-feedback",
+      "upstream_component": "spec",
+      "original_role": "Find unbuilt or contradictory work after implementation and feed it back to tasks",
+      "upstream_paths": [
+        "templates/commands/converge.md",
+        "templates/commands/implement.md"
+      ],
+      "fusion_owner": "Current host executes official implement/converge against the actual candidate",
+      "entry_points": [
+        "generated speckit-implement",
+        "generated speckit-converge",
+        "new reviewed native batch when frozen inputs change"
+      ],
+      "required_files": [
+        "docs/NATIVE-COMPONENTS.md",
+        "skills/reconstruction/references/spec-kit-workflow.md",
+        "reverse_fusion/craft_native.py"
+      ],
+      "completion_condition": "After implementation and independent comparison, official converge inspects present code against unchanged spec/plan/constitution and appends traceable missing work only. Unsatisfied work returns to implementation/analysis; a clean converge does not rewrite expectations or discard original required behavior.",
+      "checks": [
+        {
+          "path": "evidence/rf33/owned-desk-completion.json",
+          "kind": "historical-runtime",
+          "assertion": "Recorded natural workflow found and fixed launcher work through additional reviewed implementation."
+        },
+        {
+          "path": "vendor/spec-kit/manifest.json",
+          "kind": "source-contract",
+          "assertion": "The pinned official converge template is the required behavior; each project must retain its real execution/remaining-task record."
+        }
+      ],
+      "negative_cases": [
+        "Do not edit spec/expected output to make the current candidate pass.",
+        "An empty tasks list or checked checkbox alone is not convergence evidence."
+      ],
+      "acceptance_boundary": "No claim that every project has run converge merely because the generated phase exists."
+    },
+    {
+      "id": "craft-tools-modes-plugins",
+      "upstream_component": "craft",
+      "original_role": "Expose original engine/MCP inspection, browser, native, device and plugin tools",
+      "upstream_paths": [
+        "crates/engine/src/tools/mod.rs",
+        "crates/engine/src/lib.rs",
+        "crates/engine/src/plugins.rs",
+        "crates/mcp/src/lib.rs",
+        "crates/engine/src/clean_room.rs"
+      ],
+      "fusion_owner": "Pinned original engine/MCP plus owned thin launcher and current host permission decisions",
+      "entry_points": [
+        "reverse-fusion-craft MCP",
+        "original engine tools",
+        "original runtime plugin installation",
+        "process Deep mode and explicit host-consent option"
+      ],
+      "required_files": [
+        "components/craft-mcp/src/main.rs",
+        "components/craft-mcp/manifest.json",
+        "reverse_fusion/mcp_probe.py"
+      ],
+      "completion_condition": "Original engine tool families, schemas, evidence/resources, paging, errors and configured plugin routes remain reachable under documented modes. Readiness/requirements are checked before invoking a tool; host permissions govern actions without starting another model or standalone installer.",
+      "checks": [
+        {
+          "path": "tests/test_mcp_protocol.py",
+          "kind": "regression",
+          "assertion": "Original target/application tools really run; mode/consent refusals and protocol lifecycle are preserved."
+        },
+        {
+          "path": "scripts/qualify-mcp.py",
+          "kind": "runtime",
+          "assertion": "Actual browser and analysis calls validate selected operations, not just catalog count."
+        }
+      ],
+      "negative_cases": [
+        "The RF35 baseline of 303 engine tools is not 303 successfully exercised operations.",
+        "--all-tools alone cannot remove Clean-room restrictions or install devices/backends."
+      ],
+      "acceptance_boundary": "AI/setup layers are deliberately reassigned; this is not a claim to expose every standalone CLI high-level tool or every external plugin."
+    },
+    {
+      "id": "craft-durable-case-project",
+      "upstream_component": "craft",
+      "original_role": "Persist original investigation memory, Evidence, unknowns, annotations and target context",
+      "upstream_paths": [
+        "crates/engine/src/project.rs",
+        "crates/engine/src/session.rs",
+        "crates/engine/src/tools/investigation_tools.rs",
+        "crates/engine/src/tools/session_tools.rs"
+      ],
+      "fusion_owner": "Original Craft Project in the outcome case, bound by the owned case-opening adapter",
+      "entry_points": [
+        "fusion_case_open before analysis",
+        "original Project evidence/unknowns/investigation/journal",
+        "explicit unavailable-target report on recovery"
+      ],
+      "required_files": [
+        "components/craft-mcp/src/main.rs",
+        "docs/MCP-INTEGRATION.md",
+        "tests/test_mcp_protocol.py",
+        "scripts/qualify-craft-memory.py"
+      ],
+      "completion_condition": "Bind/reopen the actual outcome case before target analysis. Needed records, annotations, investigation and target identity survive server restart; switching cases starts isolated state and must not copy another case records or save outcome work into shared tool storage.",
+      "checks": [
+        {
+          "path": "tests/test_mcp_protocol.py",
+          "kind": "regression",
+          "assertion": "Required RF36 cases: unbound analysis refusal; two-case separation; restart and rebind retains original records; invalid/outside/changed bindings cannot be accepted."
+        },
+        {
+          "path": "scripts/qualify-craft-memory.py",
+          "kind": "runtime",
+          "assertion": "Execute real owned bind/analysis/memory/restart/case-switch checks against the current installed binary and retain actual failures or partial recovery."
+        }
+      ],
+      "negative_cases": [
+        "An in-memory MCP Session alone is not persistent project integration.",
+        "A globally registered shared cwd cannot become the implicit output project."
+      ],
+      "acceptance_boundary": "The ownership marker is not the analysis authority; original Craft Project records remain native and unresolved target recovery is reported."
+    },
+    {
+      "id": "craft-provider-paths",
+      "upstream_component": "craft",
+      "original_role": "Resolve local engines/devices/CLI tools and retain provider selections",
+      "upstream_paths": [
+        "crates/engine/src/settings.rs",
+        "crates/engine/src/tools/setup_tools.rs"
+      ],
+      "fusion_owner": "Allowlisted shared provider discovery plus owned Craft state settings",
+      "entry_points": [
+        "reverse_fusion providers --refresh",
+        "original engines_list",
+        "owned Craft state/config.toml"
+      ],
+      "required_files": [
+        "reverse_fusion/provider_runtime.py",
+        "components/craft-mcp/src/main.rs",
+        "tests/test_provider_runtime.py"
+      ],
+      "completion_condition": "Actual selected paths are validated, persisted and passed to fresh MCP/CLI processes; own Craft settings restore after restart without reading/copying unrelated global credentials. Native operation still determines whether each provider is usable.",
+      "checks": [
+        {
+          "path": "tests/test_provider_runtime.py",
+          "kind": "regression",
+          "assertion": "Restored paths, stale/missing paths, fixed provider integrity and secret exclusion are tested."
+        },
+        {
+          "path": "tests/test_mcp_protocol.py",
+          "kind": "regression",
+          "assertion": "Provider settings survive a fresh server process in owned state."
+        }
+      ],
+      "negative_cases": [
+        "An engines_list path or configured setting is not a successful decompile/debug/device operation."
+      ],
+      "acceptance_boundary": "Devices, Java and commercial external tools are conditional resources, not automatically ready because core deployment passes."
+    },
+    {
+      "id": "craft-native-writer",
+      "upstream_component": "craft",
+      "original_role": "Build, edit, run checks, refine, summarize and clean the candidate with actual Craft tools",
+      "upstream_paths": [
+        "crates/engine/src/tools/build_tools.rs",
+        "crates/engine/src/workspace.rs",
+        "crates/platform/src/process.rs"
+      ],
+      "fusion_owner": "Current host supplies content; actual native engine uses the reviewed single-writer lease",
+      "entry_points": [
+        "native-craft prepare/build/check/refine/return_summary/cleanup/abort",
+        "session check/refine/finish as additional observation"
+      ],
+      "required_files": [
+        "components/craft-native/src/main.rs",
+        "components/craft-native/manifest.json",
+        "reverse_fusion/craft_native.py",
+        "reverse_fusion/session_builder.py"
+      ],
+      "completion_condition": "Real native tools enforce frozen research/tasks/commands/output boundaries, invalidate old checks after edits and bind cleanup to current candidate digests. Failures and interrupted batches remain recoverable; the observer is supplemental and no direct edit or fixture copy is reported as Craft execution.",
+      "checks": [
+        {
+          "path": "tests/test_craft_native.py",
+          "kind": "regression",
+          "assertion": "Actual lifecycle, changed inputs/outputs, wrong commands, timeouts, writer serialization, abort and hybrid delivery are exercised."
+        },
+        {
+          "path": "tests/test_session_and_handshake.py",
+          "kind": "regression",
+          "assertion": "The auxiliary observer keeps its separate boundary and does not supply target acceptance."
+        }
+      ],
+      "negative_cases": [
+        "Generic build tools without a rebuild Inbox/Workspace cannot be represented as a working leased writer.",
+        "A previous successful check cannot qualify a modified candidate."
+      ],
+      "acceptance_boundary": "Commands have actual filesystem/network effects; this is reviewed ownership and process cleanup, not an OS sandbox or behavior-equivalence proof."
+    },
+    {
+      "id": "craft-host-build-orchestration",
+      "upstream_component": "craft",
+      "original_role": "Study, build, inspect progress, accept follow-up instructions, refine and stop",
+      "upstream_paths": [
+        "crates/ai/src/rebuild/tools.rs",
+        "crates/ai/src/lib.rs",
+        "crates/engine/src/inbox.rs",
+        "crates/engine/src/tools/build_tools.rs"
+      ],
+      "fusion_owner": "Current host conversation/progress plus official Spec and native writer; no duplicate upstream AI loop",
+      "entry_points": [
+        "user current conversation",
+        "bridge/workflow existing case",
+        "official Spec tasks",
+        "native-craft lease and events"
+      ],
+      "required_files": [
+        "reverse_fusion/global_adapter.py",
+        "reverse_fusion/case_bridge.py",
+        "reverse_fusion/craft_native.py",
+        "docs/AGENT-WORKFLOW.md"
+      ],
+      "completion_condition": "The current host can investigate, plan, deliver real changes, explain actual progress, incorporate ordinary follow-up, pause/abort a batch and return to comparison using the saved goal. Missing standalone rebuild control tools are mapped to these actual operations, not merely renamed in a diagram.",
+      "checks": [
+        {
+          "path": "tests/test_request_recovery.py",
+          "kind": "regression",
+          "assertion": "Follow-up and refinement preserve the original goal and cases."
+        },
+        {
+          "path": "tests/test_craft_native.py",
+          "kind": "regression",
+          "assertion": "Real writer checks/refines/aborts rather than depending on a missing standalone rebuild Inbox."
+        },
+        {
+          "path": "evidence/rf33/owned-desk-completion.json",
+          "kind": "historical-runtime",
+          "assertion": "Prior uncoached owned-app use observed the shared host/Spec/native collaboration at its declared scope."
+        }
+      ],
+      "negative_cases": [
+        "Do not call standalone rebuild_start expecting another model or direct MCP build_file_write without its required Workspace."
+      ],
+      "acceptance_boundary": "A new host requires actual entry/tool/permission mapping; it does not require another logged-in full-model sample run for every adapter."
+    },
+    {
+      "id": "craft-host-questions-consent",
+      "upstream_component": "craft",
+      "original_role": "Ask useful product questions and obtain operation decisions without blocking on a missing GUI inbox",
+      "upstream_paths": [
+        "crates/engine/src/tools/interaction_tools.rs",
+        "crates/engine/src/inbox.rs",
+        "crates/mcp/src/lib.rs"
+      ],
+      "fusion_owner": "Current host user-input and permission flow; original tool effects/errors remain informative",
+      "entry_points": [
+        "host conversation/user-input channel",
+        "host operation approval",
+        "native abort/resume after a genuine decision"
+      ],
+      "required_files": [
+        "docs/AGENT-WORKFLOW.md",
+        "docs/MCP-INTEGRATION.md",
+        "reverse_fusion/global_adapter.py"
+      ],
+      "completion_condition": "Without an upstream GUI Inbox, ask/approve is explicitly handled by the current host. Questions describe the missing human material/operation/product decision in ordinary language, continue independent work and never assume a timeout supplies consent. Tool availability does not broaden the user task.",
+      "checks": [
+        {
+          "path": "docs/RECOVERY.md",
+          "kind": "runtime-review",
+          "assertion": "Missing dependencies affect only dependent tasks; necessary questions preserve scope and saved progress."
+        },
+        {
+          "path": "tests/test_mcp_protocol.py",
+          "kind": "regression",
+          "assertion": "Absent explicit host-consent mode retains original consent refusal rather than swallowing the error."
+        }
+      ],
+      "negative_cases": [
+        "A tool returning missing Inbox/consent_required is not a completed user question or approval.",
+        "Do not manufacture approval from elapsed time."
+      ],
+      "acceptance_boundary": "The host permission system remains authoritative; catalog registration is not universal authorization."
+    },
+    {
+      "id": "craft-assets-and-3d",
+      "upstream_component": "craft",
+      "original_role": "Generate required images/models when an appropriate real provider is available",
+      "upstream_paths": [
+        "crates/engine/src/tools/asset_tools.rs",
+        "crates/engines/src/assets/mod.rs",
+        "crates/engines/src/assets/fal.rs",
+        "crates/ai/src/key_tools.rs"
+      ],
+      "fusion_owner": "Current host media tools or an explicitly configured compatible external asset provider; native writer integrates resulting files",
+      "entry_points": [
+        "fusion_asset_generate after fusion_case_open; original assets_image_generate/assets_model_generate with original AssetProviders::Fal",
+        "current host image generation where available",
+        "case asset staging, then reviewed official Spec/native integration commands"
+      ],
+      "required_files": [
+        "docs/MCP-INTEGRATION.md",
+        "docs/AGENT-WORKFLOW.md",
+        "components/craft-native/src/main.rs",
+        "components/craft-mcp/src/assets.rs",
+        "scripts/qualify-craft-assets.py"
+      ],
+      "completion_condition": "A supported executable producer route/schema must exist for every claimed image/3D capability; a missing connector is an implementation gap, not a missing-key precondition. For a requested asset, validate its real provider/key/format/allowed effects, generate through that route, preserve provenance and check integration. An unavailable external dependency is reported precisely while independent work continues; a visible engine asset tool without required Inbox/key is not success.",
+      "checks": [
+        {
+          "path": "docs/INTEGRATION-CONTRACT.md",
+          "kind": "runtime-review",
+          "assertion": "Inspect actual host/provider capability and native returned status for each requested image/model; no unconditional 3D execution claim is made."
+        },
+        {
+          "path": "tests/test_mcp_protocol.py",
+          "kind": "regression",
+          "assertion": "Actual original image/model producer with loopback fixture, missing-key/permission/budget/path/provider-error controls, secret redaction and unchanged formal candidate."
+        },
+        {
+          "path": "scripts/qualify-craft-assets.py",
+          "kind": "runtime",
+          "assertion": "Original Fal HTTP producer writes PNG and GLB to fresh bound-case staging; local fixture execution is distinguished from real paid-provider use."
+        }
+      ],
+      "negative_cases": [
+        "Directory/tool visibility cannot assert a paid provider key or a functioning 3D generator.",
+        "Do not fabricate a generated model or silently replace a required asset with a placeholder."
+      ],
+      "acceptance_boundary": "Executable original image/model connector qualified with local loopback provider and negative controls; dedicated external key, budget and host permission required for real paid generation, which was not performed. Formal candidates are integrated only through reviewed Spec/native commands."
+    },
+    {
+      "id": "independent-comparison",
+      "upstream_component": "host",
+      "original_role": "Validate the delivered behavior and differences against the original using independent observations",
+      "upstream_paths": [
+        "docs/AGENT-WORKFLOW.md",
+        "skills/reconstruction/references/differential-validation.md"
+      ],
+      "fusion_owner": "Current host plus independent process/UI/runtime comparators and official REA claims where applicable",
+      "entry_points": [
+        "reverse_fusion compare",
+        "independent UI/runtime comparison",
+        "actual original/candidate execution"
+      ],
+      "required_files": [
+        "reverse_fusion/differential.py",
+        "scripts/qualify-desk-ui.cjs",
+        "skills/reconstruction/references/differential-validation.md"
+      ],
+      "completion_condition": "Original and independently built candidate execute fixed finite inputs/scenarios including applicable boundaries/errors/state/side effects; incorrect controls fail. Discrepancies return to evidence/spec/environment/candidate as appropriate and delivery preserves the full agreed goal.",
+      "checks": [
+        {
+          "path": "tests/test_differential.py",
+          "kind": "regression",
+          "assertion": "Wrong candidate, same source, missing executable, timeout, input mutation and output overflow cannot pass."
+        },
+        {
+          "path": "scripts/qualify-desk-ui.cjs",
+          "kind": "runtime",
+          "assertion": "Independent UI behavior/pixel observations remain separate from candidate unit tests."
+        }
+      ],
+      "negative_cases": [
+        "Unit tests for only the candidate or a screenshot at one state do not establish whole-product equivalence."
+      ],
+      "acceptance_boundary": "Each comparison reports its actual finite scope; new targets are not declared accepted in advance."
+    },
+    {
+      "id": "failure-cleanup-recovery",
+      "upstream_component": "host",
+      "original_role": "Recover partial work, bounded failures and owned processes without dropping goals or falsifying completion",
+      "upstream_paths": [
+        "docs/RECOVERY.md",
+        "skills/ops/timeline-workitem.md"
+      ],
+      "fusion_owner": "Current host case recovery, official provider remediation and owned process runners",
+      "entry_points": [
+        "workflow existing case/receipt",
+        "rea-run execution telemetry",
+        "native-craft abort",
+        "mcp-check owned cleanup"
+      ],
+      "required_files": [
+        "reverse_fusion/owned_process.py",
+        "reverse_fusion/mcp_process.py",
+        "reverse_fusion/rea_runner.py",
+        "docs/RECOVERY.md"
+      ],
+      "completion_condition": "Timeout/resource failures keep raw partial/unknown output and the original goal, clean or explicitly account for owned processes, preserve invalidated batches and resume only valid frozen context. Missing facts block dependent tasks, not all independent work.",
+      "checks": [
+        {
+          "path": "tests/test_mcp_protocol.py",
+          "kind": "regression",
+          "assertion": "Root exit, early root exit and ignored EOF clean owned descendants and reject old root-only cleanup observations."
+        },
+        {
+          "path": "tests/test_differential.py",
+          "kind": "regression",
+          "assertion": "Output/stdin budgets and success/timeout descendant cleanup are verified."
+        },
+        {
+          "path": "tests/test_rea_runner.py",
+          "kind": "regression",
+          "assertion": "A zero-exit resource failure stays partial and official output is retained unchanged."
+        }
+      ],
+      "negative_cases": [
+        "Client timeout is not proof of provider cleanup.",
+        "Do not refresh frozen hashes to conceal input changes."
+      ],
+      "acceptance_boundary": "Cleanup/telemetry establish process ownership at the checked platform scope, not file/network isolation or universal responsiveness."
+    },
+    {
+      "id": "deployment-ownership",
+      "upstream_component": "host",
+      "original_role": "Install/update/remove the selected host connection and fixed real components on a new checkout",
+      "upstream_paths": [
+        "docs/AGENT-BOOTSTRAP.md",
+        "components/official/manifest.json"
+      ],
+      "fusion_owner": "Repository bootstrap/runtime identity checks plus owned selected-host lifecycle",
+      "entry_points": [
+        "scripts/install.ps1",
+        "reverse_fusion install/uninstall",
+        "mcp-check",
+        "release-check --deployed",
+        "connect for explicit project host pointers"
+      ],
+      "required_files": [
+        "scripts/bootstrap-core.ps1",
+        "reverse_fusion/mcp_adapter.py",
+        "reverse_fusion/global_adapter.py",
+        "reverse_fusion/cli.py",
+        "reverse_fusion/release.py"
+      ],
+      "completion_condition": "Default deployment actually installs fixed required components and selected-host entries, restores only allowlisted provider paths, checks actual configured MCP calls and refuses missing/stale components. Updates/removal preserve unrelated config and newer checkout pointers; absent install receipts cannot silently leave owned registrations or delete uncertain ones.",
+      "checks": [
+        {
+          "path": "tests/test_install_failures.py",
+          "kind": "regression",
+          "assertion": "Real mutation points, rollback, missing receipt and ownership uncertainty are exercised."
+        },
+        {
+          "path": "tests/test_mcp_adapter.py",
+          "kind": "regression",
+          "assertion": "Unrelated bytes, invalid TOML/markers, unmanaged conflicts, updates and old-checkout removal are checked."
+        },
+        {
+          "path": "evidence/rf35/clean-install.json",
+          "kind": "historical-runtime",
+          "assertion": "Fresh remote clone installation proves its pinned source scope; later source changes require applicable requalification."
+        }
+      ],
+      "negative_cases": [
+        "Package-only, catalog-only, receipt-only or detected-host-only is not complete deployment.",
+        "Codex registration cannot be reported as automatic Pi/Claude global MCP registration."
+      ],
+      "acceptance_boundary": "Windows x64 is the qualified native distribution. No new user target sample or full-model login/run per host is required to validate the shared installation contract."
+    }
+  ],
+  "check_semantics": "Each checks[].assertion is a required verification proposition, not a claim it has already run or that the named test currently covers every listed detail. Missing coverage must be implemented and executed before the corresponding completion claim.",
+  "upstream_path_semantics": "upstream_paths are relative to the selected source_pins reference_root and may be materialized by pinned bootstrap rather than shipped as tracked files. required_files and checks[].path are repository-owned tracked integration/check references; their existence does not mark runtime assertions passed."
+}

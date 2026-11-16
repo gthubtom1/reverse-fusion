@@ -1,0 +1,197 @@
+{
+  "status": "pass",
+  "project": "D:\\tmp\\rf36-cli-cwd-phy1n_xr",
+  "argv": [
+    "D:\\Project\\reverse\\.venv\\Scripts\\python.exe",
+    "D:\\Project\\reverse\\scripts\\mcp-launch.py",
+    "rea-cli",
+    "inspect-wasm-artifact",
+    "relative-sample.wasm",
+    "--format",
+    "json"
+  ],
+  "returncode": 0,
+  "relative_input_in_project": true,
+  "terminal_provider_keys_removed": true,
+  "native_result": {
+    "evidence_id": "ev_93f13d97fa5d7730b36b7b1cd3e9f42cd0de19192f14366d0751055c01ff3247",
+    "subject": {
+      "name": "relative-sample.wasm",
+      "digest": {
+        "sha256": "ccf59f0f7a7625ee380ed228905aadfa11072ac14cea1c53d1e7f3953d4d48c6"
+      },
+      "local_path": "D:\\tmp\\rf36-cli-cwd-phy1n_xr\\relative-sample.wasm",
+      "format": "file",
+      "architecture": null
+    },
+    "provider": {
+      "id": "wabt-artifact",
+      "name": "REA WABT artifact adapter",
+      "version": "wabt@1.0.42"
+    },
+    "analysis_profile": null,
+    "predicate_type": "rea.analysis",
+    "operation": "inspect_wasm_artifact",
+    "parameters": {
+      "path": "D:\\tmp\\rf36-cli-cwd-phy1n_xr\\relative-sample.wasm",
+      "glue_paths": [],
+      "candidate_paths": []
+    },
+    "raw_result": null,
+    "normalized_result": {
+      "artifact": {
+        "path": "D:\\tmp\\rf36-cli-cwd-phy1n_xr\\relative-sample.wasm",
+        "sha256": "ccf59f0f7a7625ee380ed228905aadfa11072ac14cea1c53d1e7f3953d4d48c6",
+        "bytes": 39
+      },
+      "validation": "valid",
+      "sections": [
+        {
+          "kind": "Type",
+          "start": 10,
+          "end": 15,
+          "bytes": 5,
+          "description": "count: 1"
+        },
+        {
+          "kind": "Function",
+          "start": 17,
+          "end": 19,
+          "bytes": 2,
+          "description": "count: 1"
+        },
+        {
+          "kind": "Export",
+          "start": 21,
+          "end": 31,
+          "bytes": 10,
+          "description": "count: 1"
+        },
+        {
+          "kind": "Code",
+          "start": 33,
+          "end": 39,
+          "bytes": 6,
+          "description": "count: 1"
+        }
+      ],
+      "interface": {
+        "state": "complete",
+        "entries": [
+          {
+            "direction": "export",
+            "module": null,
+            "name": "answer",
+            "kind": "func",
+            "index": 0,
+            "signature": {
+              "kind": "func",
+              "params": [],
+              "results": [
+                "i32"
+              ]
+            },
+            "wat_form": "(export \"answer\" (func 0))",
+            "issue": null
+          }
+        ],
+        "issues": []
+      },
+      "imports": [],
+      "exports": [
+        "(export \"answer\" (func 0))"
+      ],
+      "debug_name_metadata": "not-present",
+      "custom_section_warnings": [],
+      "headers": "\nmodule.wasm:\tfile format wasm 0x1\n\nSections:\n\n     Type start=0x0000000a end=0x0000000f (size=0x00000005) count: 1\n Function start=0x00000011 end=0x00000013 (size=0x00000002) count: 1\n   Export start=0x00000015 end=0x0000001f (size=0x0000000a) count: 1\n     Code start=0x00000021 end=0x00000027 (size=0x00000006) count: 1\n\n",
+      "details": "module.wasm:\tfile format wasm 0x1\n\nSection Details:\n\nType[1]:\n - type[0] () -> i32\nFunction[1]:\n - func[0] sig=0 <answer>\nExport[1]:\n - func[0] <answer> -> \"answer\"\nCode[1]:\n - func[0] size=4 <answer>\n",
+      "wat": {
+        "text": "(module\n  (type (;0;) (func (result i32)))\n  (func (;0;) (type 0) (result i32)\n    i32.const 42)\n  (export \"answer\" (func 0)))\n",
+        "sha256": "cfb85ee3cf82e0f804d574eda29b92c86471c25232301ea33ba123b91f327e82",
+        "representation": "decoded-wat"
+      },
+      "tool_profile": {
+        "source": "https://github.com/WebAssembly/wabt",
+        "release": "1.0.42",
+        "source_commit": "ff0ef7e0009402740c805a9744c09b05be063e48",
+        "commands": [
+          {
+            "tool": "wasm-validate",
+            "path": "D:\\Project\\reverse\\vendor\\wabt\\1.0.42\\windows-x64\\wabt-1.0.42\\bin\\wasm-validate.exe",
+            "sha256": "4939f4bcc66b8b0370685f656c1a33df068f5d1b245b75c94b10c74ffdd946a3",
+            "version_banner": "1.0.42\n",
+            "arguments": [
+              "--enable-all",
+              "--ignore-custom-section-errors",
+              "module.wasm"
+            ]
+          },
+          {
+            "tool": "wasm-objdump",
+            "path": "D:\\Project\\reverse\\vendor\\wabt\\1.0.42\\windows-x64\\wabt-1.0.42\\bin\\wasm-objdump.exe",
+            "sha256": "7f9cf21ca410d867261f719e01f2a0f7b5f13eb83abf0efa975a207307069ac8",
+            "version_banner": "1.0.42\n",
+            "arguments": [
+              "-h",
+              "-x",
+              "module.wasm"
+            ]
+          },
+          {
+            "tool": "wasm2wat",
+            "path": "D:\\Project\\reverse\\vendor\\wabt\\1.0.42\\windows-x64\\wabt-1.0.42\\bin\\wasm2wat.exe",
+            "sha256": "9ccce93d1000e4d3ba7e5c365bd1e3b5d909dea2f72c7511d584f8a8e9108873",
+            "version_banner": "1.0.42\n",
+            "arguments": [
+              "--enable-all",
+              "--ignore-custom-section-errors",
+              "module.wasm"
+            ]
+          }
+        ],
+        "timeout_ms": 30000,
+        "output_budget_bytes": 33554432
+      },
+      "candidates": [
+        {
+          "path": "D:\\tmp\\rf36-cli-cwd-phy1n_xr\\relative-sample.wasm",
+          "sha256": "ccf59f0f7a7625ee380ed228905aadfa11072ac14cea1c53d1e7f3953d4d48c6",
+          "bytes": 39
+        }
+      ],
+      "glue": [],
+      "runtime_execution": "not-performed",
+      "network_fetch": "not-performed",
+      "limitations": [
+        "WAT is a decoded representation, not original source or proof of runtime behavior. Custom annotations may retain payloads, but WAT does not establish original binary layout or round-trip byte identity. Original bytes and objdump output remain authoritative.",
+        "Imports and exports retain exact top-level WABT WAT forms. Names remain escaped producer text; unescaped objdump display names are not parsed as unambiguous identifiers.",
+        "JavaScript references are AST-observed static literals only. Candidate matches are associations, not proven data flow, URL-to-file identity or runtime loading. Computed references and aliases are not resolved.",
+        "No target execution or implicit fetch. WABT tools are trusted caller-supplied executables; SHA-256 identifies their bytes, not publisher authenticity. No OS memory sandbox is claimed.",
+        "Each WABT command has a 30000 ms deadline and a 33554432 byte combined output budget (max_output_bytes). The deadline is not a whole-inspection budget. Oversized output fails instead of producing truncated success."
+      ]
+    },
+    "confidence": "observed",
+    "authority": "shipped-artifact",
+    "environment": null,
+    "limitations": [
+      "WAT is a decoded representation, not original source or proof of runtime behavior. Custom annotations may retain payloads, but WAT does not establish original binary layout or round-trip byte identity. Original bytes and objdump output remain authoritative.",
+      "Imports and exports retain exact top-level WABT WAT forms. Names remain escaped producer text; unescaped objdump display names are not parsed as unambiguous identifiers.",
+      "JavaScript references are AST-observed static literals only. Candidate matches are associations, not proven data flow, URL-to-file identity or runtime loading. Computed references and aliases are not resolved.",
+      "No target execution or implicit fetch. WABT tools are trusted caller-supplied executables; SHA-256 identifies their bytes, not publisher authenticity. No OS memory sandbox is claimed.",
+      "Each WABT command has a 30000 ms deadline and a 33554432 byte combined output budget (max_output_bytes). The deadline is not a whole-inspection budget. Oversized output fails instead of producing truncated success."
+    ],
+    "relationship_coverage": null,
+    "locations": [
+      {
+        "kind": "artifact-path",
+        "path": "D:\\tmp\\rf36-cli-cwd-phy1n_xr\\relative-sample.wasm"
+      }
+    ],
+    "evidence_links": [],
+    "caller_input_path": "relative-sample.wasm"
+  },
+  "failed_probe_retained": {
+    "path": "D:\\tmp\\rf36-cli-cwd-phy1n_xr\\stdout.json",
+    "reason": "generic artifact route correctly refused WASM and provided WABT-specific remediation; used documented native lane next"
+  }
+}

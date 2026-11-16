@@ -1,0 +1,1429 @@
+[
+  {
+    "tool": "js_app_map",
+    "arguments": {
+      "input_path": "D:\\tmp\\rf36-craft-outcome-lbukpyuq\\original.mjs"
+    },
+    "result": {
+      "content": [
+        {
+          "text": "{\"error\":{\"category\":\"missing\",\"code\":\"feature_missing\",\"message\":\"Bind the current outcome project and case with fusion_case_open before analysis or investigation updates.\",\"remediation\":\"Run the shared bridge for this outcome project, then pass its absolute project_root and case_root to fusion_case_open. Settings/provider setup and diagnostics remain available.\",\"retryable\":false}}",
+          "type": "text"
+        }
+      ],
+      "isError": true
+    }
+  },
+  {
+    "tool": "engines_list",
+    "arguments": {},
+    "result": {
+      "content": [
+        {
+          "text": "{\"result\":{\"deep_mode\":{\"enabled\":true,\"ghidra\":\"D:\\\\Tools\\\\Ghidra\\\\support\\\\analyzeHeadless.bat\",\"saved_enabled\":false},\"engine_store\":\"D:\\\\Project\\\\reverse\\\\state\\\\rf36-craft-memory-assets-final\\\\owned-server-state\\\\engines\",\"engines\":[{\"found\":\"D:\\\\Tools\\\\Ghidra\\\\support\\\\analyzeHeadless.bat\",\"id\":\"ghidra\",\"installable_here\":true,\"name\":\"Ghidra\",\"needed_for\":\"Deep mode: richer decompiled code\"},{\"found\":\"C:\\\\Users\\\\toti\\\\AppData\\\\Local\\\\Microsoft\\\\WinGet\\\\Packages\\\\Genymobile.scrcpy_Microsoft.Winget.Source_8wekyb3d8bbwe\\\\scrcpy-win64-v4.1\\\\adb.exe\",\"id\":\"adb\",\"installable_here\":true,\"name\":\"Android platform tools (adb)\",\"needed_for\":\"Android devices: apps, logs, screenshots\"},{\"found\":null,\"id\":\"jadx\",\"installable_here\":true,\"name\":\"JADX\",\"needed_for\":\"Decompiling Android apps to Java (needs Java)\"},{\"found\":null,\"id\":\"apktool\",\"installable_here\":true,\"name\":\"Apktool\",\"needed_for\":\"Decoding Android resources (needs Java)\"},{\"found\":\"C:\\\\Program Files\\\\Google/Chrome/Application/chrome.exe\",\"id\":\"chromium\",\"installable_here\":false,\"name\":\"a Chromium-based browser\",\"needed_for\":\"Studying websites in a live browser\"},{\"found\":\"D:\\\\EXE\\\\python\\\\Scripts\\\\frida.exe\",\"id\":\"frida\",\"installable_here\":false,\"name\":\"Frida\",\"needed_for\":\"Tracing apps while they run\"},{\"found\":\"D:\\\\Tools\\\\runtime\\\\mingw64\\\\bin\\\\gdb.exe\",\"id\":\"gdb\",\"installable_here\":false,\"name\":\"GDB\",\"needed_for\":\"Debugging native programs\"},{\"found\":null,\"id\":\"lldb\",\"installable_here\":false,\"name\":\"LLDB\",\"needed_for\":\"Debugging Apple apps\"},{\"found\":\"D:\\\\EXE\\\\python\\\\Scripts\\\\mitmdump.exe\",\"id\":\"mitmdump\",\"installable_here\":false,\"name\":\"mitmproxy (mitmdump)\",\"needed_for\":\"Recording an app's network traffic\"},{\"found\":\"C:\\\\Users\\\\toti\\\\.cargo\\\\bin\\\\binwalk.exe\",\"id\":\"binwalk\",\"installable_here\":false,\"name\":\"Binwalk\",\"needed_for\":\"Firmware carving (a second opinion)\"},{\"found\":null,\"id\":\"unblob\",\"installable_here\":false,\"name\":\"Unblob\",\"needed_for\":\"Firmware unpacking (a second opinion)\"},{\"found\":\"C:\\\\Users\\\\toti\\\\.dotnet\\\\tools\\\\ilspycmd.exe\",\"id\":\"ilspy\",\"installable_here\":false,\"name\":\"ILSpy command line (ilspycmd)\",\"needed_for\":\".NET decompiling (a second opinion)\"},{\"found\":\"D:\\\\Tools\\\\runtime\\\\jdk21\\\\jdk-21.0.12.1+1\\\\bin\\\\java.exe\",\"id\":\"java\",\"installable_here\":true,\"name\":\"Java runtime\",\"needed_for\":\"Runs Ghidra, JADX and Apktool\"},{\"found\":\"D:\\\\Tools\\\\Wireshark\\\\tshark.exe\",\"id\":\"tshark\",\"installable_here\":false,\"name\":\"Wireshark (tshark)\",\"needed_for\":\"Reading packet captures (a second opinion)\"},{\"found\":\"D:\\\\Tools\\\\runtime\\\\mingw64\\\\bin\\\\objdump.exe\",\"id\":\"objdump\",\"installable_here\":false,\"name\":\"objdump (GNU binutils or LLVM)\",\"needed_for\":\"Disassembly (a second opinion)\"},{\"found\":null,\"id\":\"rizin\",\"installable_here\":true,\"name\":\"Rizin\",\"needed_for\":\"Disassembly (a second opinion)\"},{\"found\":null,\"id\":\"rtl433\",\"installable_here\":false,\"name\":\"rtl_433\",\"needed_for\":\"Decoding radio recordings\"},{\"found\":null,\"id\":\"vineflower\",\"installable_here\":true,\"name\":\"Vineflower\",\"needed_for\":\"Decompiling Java classes and JARs (needs Java)\"}],\"game_engines\":[{\"found\":null,\"id\":\"unity\",\"name\":\"Unity\",\"needs\":\"About 10 GB. Free for personal use with a Unity account.\",\"ready\":false},{\"found\":null,\"id\":\"unreal\",\"name\":\"Unreal Engine\",\"needs\":\"About 60 GB, an Epic Games account, and Visual Studio's C++ tools.\",\"ready\":false},{\"found\":null,\"id\":\"godot\",\"name\":\"Godot\",\"needs\":\"A small download (under 200 MB). Free, no account needed.\",\"ready\":false},{\"found\":{\"program\":\"C:\\\\Users\\\\toti\\\\.cargo\\\\bin\\\\cargo.exe\",\"version\":\"\"},\"id\":\"rust\",\"name\":\"Rust\",\"needs\":\"The Rust toolchain (rustup.rs).\",\"ready\":true}]}}",
+          "type": "text"
+        }
+      ],
+      "isError": false,
+      "structuredContent": {
+        "result": {
+          "deep_mode": {
+            "enabled": true,
+            "ghidra": "D:\\Tools\\Ghidra\\support\\analyzeHeadless.bat",
+            "saved_enabled": false
+          },
+          "engine_store": "D:\\Project\\reverse\\state\\rf36-craft-memory-assets-final\\owned-server-state\\engines",
+          "engines": [
+            {
+              "found": "D:\\Tools\\Ghidra\\support\\analyzeHeadless.bat",
+              "id": "ghidra",
+              "installable_here": true,
+              "name": "Ghidra",
+              "needed_for": "Deep mode: richer decompiled code"
+            },
+            {
+              "found": "C:\\Users\\toti\\AppData\\Local\\Microsoft\\WinGet\\Packages\\Genymobile.scrcpy_Microsoft.Winget.Source_8wekyb3d8bbwe\\scrcpy-win64-v4.1\\adb.exe",
+              "id": "adb",
+              "installable_here": true,
+              "name": "Android platform tools (adb)",
+              "needed_for": "Android devices: apps, logs, screenshots"
+            },
+            {
+              "found": null,
+              "id": "jadx",
+              "installable_here": true,
+              "name": "JADX",
+              "needed_for": "Decompiling Android apps to Java (needs Java)"
+            },
+            {
+              "found": null,
+              "id": "apktool",
+              "installable_here": true,
+              "name": "Apktool",
+              "needed_for": "Decoding Android resources (needs Java)"
+            },
+            {
+              "found": "C:\\Program Files\\Google/Chrome/Application/chrome.exe",
+              "id": "chromium",
+              "installable_here": false,
+              "name": "a Chromium-based browser",
+              "needed_for": "Studying websites in a live browser"
+            },
+            {
+              "found": "D:\\EXE\\python\\Scripts\\frida.exe",
+              "id": "frida",
+              "installable_here": false,
+              "name": "Frida",
+              "needed_for": "Tracing apps while they run"
+            },
+            {
+              "found": "D:\\Tools\\runtime\\mingw64\\bin\\gdb.exe",
+              "id": "gdb",
+              "installable_here": false,
+              "name": "GDB",
+              "needed_for": "Debugging native programs"
+            },
+            {
+              "found": null,
+              "id": "lldb",
+              "installable_here": false,
+              "name": "LLDB",
+              "needed_for": "Debugging Apple apps"
+            },
+            {
+              "found": "D:\\EXE\\python\\Scripts\\mitmdump.exe",
+              "id": "mitmdump",
+              "installable_here": false,
+              "name": "mitmproxy (mitmdump)",
+              "needed_for": "Recording an app's network traffic"
+            },
+            {
+              "found": "C:\\Users\\toti\\.cargo\\bin\\binwalk.exe",
+              "id": "binwalk",
+              "installable_here": false,
+              "name": "Binwalk",
+              "needed_for": "Firmware carving (a second opinion)"
+            },
+            {
+              "found": null,
+              "id": "unblob",
+              "installable_here": false,
+              "name": "Unblob",
+              "needed_for": "Firmware unpacking (a second opinion)"
+            },
+            {
+              "found": "C:\\Users\\toti\\.dotnet\\tools\\ilspycmd.exe",
+              "id": "ilspy",
+              "installable_here": false,
+              "name": "ILSpy command line (ilspycmd)",
+              "needed_for": ".NET decompiling (a second opinion)"
+            },
+            {
+              "found": "D:\\Tools\\runtime\\jdk21\\jdk-21.0.12.1+1\\bin\\java.exe",
+              "id": "java",
+              "installable_here": true,
+              "name": "Java runtime",
+              "needed_for": "Runs Ghidra, JADX and Apktool"
+            },
+            {
+              "found": "D:\\Tools\\Wireshark\\tshark.exe",
+              "id": "tshark",
+              "installable_here": false,
+              "name": "Wireshark (tshark)",
+              "needed_for": "Reading packet captures (a second opinion)"
+            },
+            {
+              "found": "D:\\Tools\\runtime\\mingw64\\bin\\objdump.exe",
+              "id": "objdump",
+              "installable_here": false,
+              "name": "objdump (GNU binutils or LLVM)",
+              "needed_for": "Disassembly (a second opinion)"
+            },
+            {
+              "found": null,
+              "id": "rizin",
+              "installable_here": true,
+              "name": "Rizin",
+              "needed_for": "Disassembly (a second opinion)"
+            },
+            {
+              "found": null,
+              "id": "rtl433",
+              "installable_here": false,
+              "name": "rtl_433",
+              "needed_for": "Decoding radio recordings"
+            },
+            {
+              "found": null,
+              "id": "vineflower",
+              "installable_here": true,
+              "name": "Vineflower",
+              "needed_for": "Decompiling Java classes and JARs (needs Java)"
+            }
+          ],
+          "game_engines": [
+            {
+              "found": null,
+              "id": "unity",
+              "name": "Unity",
+              "needs": "About 10 GB. Free for personal use with a Unity account.",
+              "ready": false
+            },
+            {
+              "found": null,
+              "id": "unreal",
+              "name": "Unreal Engine",
+              "needs": "About 60 GB, an Epic Games account, and Visual Studio's C++ tools.",
+              "ready": false
+            },
+            {
+              "found": null,
+              "id": "godot",
+              "name": "Godot",
+              "needs": "A small download (under 200 MB). Free, no account needed.",
+              "ready": false
+            },
+            {
+              "found": {
+                "program": "C:\\Users\\toti\\.cargo\\bin\\cargo.exe",
+                "version": ""
+              },
+              "id": "rust",
+              "name": "Rust",
+              "needs": "The Rust toolchain (rustup.rs).",
+              "ready": true
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "tool": "fusion_case_open",
+    "arguments": {
+      "project_root": "D:\\tmp\\rf36-craft-outcome-lbukpyuq",
+      "case_root": "D:\\tmp\\rf36-craft-outcome-lbukpyuq\\work\\case-a"
+    },
+    "result": {
+      "content": [
+        {
+          "text": "{\"result\":{\"bound\":\"\\\\\\\\?\\\\D:\\\\tmp\\\\rf36-craft-outcome-lbukpyuq\\\\work\\\\case-a\\\\craft-analysis.cany\",\"case_root\":\"\\\\\\\\?\\\\D:\\\\tmp\\\\rf36-craft-outcome-lbukpyuq\\\\work\\\\case-a\",\"evidence_records\":0,\"memory\":\"original Project evidence/unknowns/annotations/investigation/journal in this case\",\"project_root\":\"\\\\\\\\?\\\\D:\\\\tmp\\\\rf36-craft-outcome-lbukpyuq\",\"restored_targets\":0,\"reused\":false,\"unavailable_targets\":[]}}",
+          "type": "text"
+        }
+      ],
+      "isError": false,
+      "structuredContent": {
+        "result": {
+          "bound": "\\\\?\\D:\\tmp\\rf36-craft-outcome-lbukpyuq\\work\\case-a\\craft-analysis.cany",
+          "case_root": "\\\\?\\D:\\tmp\\rf36-craft-outcome-lbukpyuq\\work\\case-a",
+          "evidence_records": 0,
+          "memory": "original Project evidence/unknowns/annotations/investigation/journal in this case",
+          "project_root": "\\\\?\\D:\\tmp\\rf36-craft-outcome-lbukpyuq",
+          "restored_targets": 0,
+          "reused": false,
+          "unavailable_targets": []
+        }
+      }
+    }
+  },
+  {
+    "tool": "core_target_open",
+    "arguments": {
+      "path": "D:\\tmp\\rf36-craft-outcome-lbukpyuq\\original.mjs"
+    },
+    "result": {
+      "content": [
+        {
+          "text": "{\"result\":{\"bytes\":45,\"description\":\"A script or web page\",\"kind\":\"script\",\"name\":\"original.mjs\",\"path\":\"D:\\\\tmp\\\\rf36-craft-outcome-lbukpyuq\\\\original.mjs\",\"raw\":null,\"sha256\":\"5d5a90cb089db64f7729eb3ab854ea5edc9d0d9067dd8a16faf4ef5d97bb9b22\",\"target_id\":\"t_5d5a90cb089d\"}}",
+          "type": "text"
+        }
+      ],
+      "isError": false,
+      "structuredContent": {
+        "result": {
+          "bytes": 45,
+          "description": "A script or web page",
+          "kind": "script",
+          "name": "original.mjs",
+          "path": "D:\\tmp\\rf36-craft-outcome-lbukpyuq\\original.mjs",
+          "raw": null,
+          "sha256": "5d5a90cb089db64f7729eb3ab854ea5edc9d0d9067dd8a16faf4ef5d97bb9b22",
+          "target_id": "t_5d5a90cb089d"
+        }
+      }
+    }
+  },
+  {
+    "tool": "js_app_map",
+    "arguments": {
+      "input_path": "D:\\tmp\\rf36-craft-outcome-lbukpyuq\\original.mjs"
+    },
+    "result": {
+      "content": [
+        {
+          "text": "{\"authority\":\"original-files\",\"confidence\":\"derived\",\"coverage\":{\"examined\":1,\"status\":\"complete\",\"total\":1},\"environment\":{\"clean_room\":false,\"engine\":\"builtin\",\"engine_version\":\"0.6.1\",\"host\":\"windows-x86_64\"},\"id\":\"ev_ce54f995bd9e885a070ce6ac366e3ef76d232131f0013fcd3451ecd6e8e5837e\",\"limitations\":[{\"code\":\"static_only\",\"message\":\"Static reading only: code built at run time (eval, computed requires, remote content) is invisible; IPC pairs need literal channel names.\"}],\"links\":[],\"locations\":[{\"kind\":\"path\",\"value\":\"D:\\\\tmp\\\\rf36-craft-outcome-lbukpyuq\\\\original.mjs\"}],\"operation\":\"js_app_map\",\"params\":{\"include_node_modules\":false,\"input_path\":\"D:\\\\tmp\\\\rf36-craft-outcome-lbukpyuq\\\\original.mjs\",\"limit\":500,\"max_nodes\":25000,\"offset\":0,\"source_paths\":[]},\"result\":{\"api_operations\":[],\"app_kind\":\"unknown\",\"bundlers\":[],\"edges\":[{\"from\":\"module:original.mjs\",\"kind\":\"defines\",\"to\":\"fn:original.mjs#answer@1\"}],\"effects\":[],\"endpoints\":[],\"entry_points\":{\"pages\":[],\"preloads\":[],\"renderers\":[],\"workers\":[]},\"exposed\":[],\"graph_id\":\"ag_05cbaf478bed5f0bfce083ef3db3ad313ecb4f4c453251d78575e811535f51ff\",\"input_format\":\"file\",\"ipc\":[],\"label\":\"original.mjs\",\"limitations\":[],\"modules\":[{\"bundle_modules\":[],\"bundlers\":[],\"bytes\":45,\"chunk_ids\":[],\"exports\":{\"cjs\":[],\"esm\":[\"answer\"]},\"fingerprint\":\"739f8f090503ad5f8482d339b1d9dc221687a9f2323fdfc9e57d3454a126d3f9\",\"functions\":[\"answer\"],\"imports\":[],\"kind\":\"script\",\"parse_mode\":\"parsed\",\"path\":\"original.mjs\",\"role\":\"unknown\",\"sha256\":\"5d5a90cb089db64f7729eb3ab854ea5edc9d0d9067dd8a16faf4ef5d97bb9b22\",\"strings\":[]}],\"modules_total\":1,\"native_modules\":[],\"nodes\":[{\"id\":\"module:original.mjs\",\"kind\":\"module\",\"label\":\"original.mjs\",\"module\":\"original.mjs\",\"role\":\"unknown\"},{\"attrs\":{\"calls\":[],\"end\":43,\"end_line\":1,\"exported\":true,\"kind\":\"declaration\",\"params\":[\"x\"],\"parent\":null,\"start\":7,\"strings\":[]},\"id\":\"fn:original.mjs#answer@1\",\"kind\":\"function\",\"label\":\"answer\",\"line\":1,\"module\":\"original.mjs\",\"role\":\"unknown\"}],\"package\":null,\"routes\":[],\"source_maps\":[],\"stats\":{\"api_operations\":0,\"bundle_modules\":0,\"edges\":1,\"endpoints\":0,\"files\":1,\"functions\":1,\"ipc_channels\":0,\"listed\":1,\"modules\":1,\"nodes\":2,\"paired_channels\":0},\"storage\":[],\"summary\":\"JavaScript code original.mjs: 1 source files, 0 IPC channel(s) (0 paired), 0 window(s), 0 endpoint(s), 0 route(s).\",\"vendors\":[],\"windows\":[]},\"subject\":{\"kind\":\"script\",\"name\":\"original.mjs\",\"sha256\":\"5d5a90cb089db64f7729eb3ab854ea5edc9d0d9067dd8a16faf4ef5d97bb9b22\"},\"summary\":\"JavaScript code original.mjs: 1 source files, 0 IPC channel(s) (0 paired), 0 window(s), 0 endpoint(s), 0 route(s).\"}",
+          "type": "text"
+        }
+      ],
+      "isError": false,
+      "structuredContent": {
+        "authority": "original-files",
+        "confidence": "derived",
+        "coverage": {
+          "examined": 1,
+          "status": "complete",
+          "total": 1
+        },
+        "environment": {
+          "clean_room": false,
+          "engine": "builtin",
+          "engine_version": "0.6.1",
+          "host": "windows-x86_64"
+        },
+        "id": "ev_ce54f995bd9e885a070ce6ac366e3ef76d232131f0013fcd3451ecd6e8e5837e",
+        "limitations": [
+          {
+            "code": "static_only",
+            "message": "Static reading only: code built at run time (eval, computed requires, remote content) is invisible; IPC pairs need literal channel names."
+          }
+        ],
+        "links": [],
+        "locations": [
+          {
+            "kind": "path",
+            "value": "D:\\tmp\\rf36-craft-outcome-lbukpyuq\\original.mjs"
+          }
+        ],
+        "operation": "js_app_map",
+        "params": {
+          "include_node_modules": false,
+          "input_path": "D:\\tmp\\rf36-craft-outcome-lbukpyuq\\original.mjs",
+          "limit": 500,
+          "max_nodes": 25000,
+          "offset": 0,
+          "source_paths": []
+        },
+        "result": {
+          "api_operations": [],
+          "app_kind": "unknown",
+          "bundlers": [],
+          "edges": [
+            {
+              "from": "module:original.mjs",
+              "kind": "defines",
+              "to": "fn:original.mjs#answer@1"
+            }
+          ],
+          "effects": [],
+          "endpoints": [],
+          "entry_points": {
+            "pages": [],
+            "preloads": [],
+            "renderers": [],
+            "workers": []
+          },
+          "exposed": [],
+          "graph_id": "ag_05cbaf478bed5f0bfce083ef3db3ad313ecb4f4c453251d78575e811535f51ff",
+          "input_format": "file",
+          "ipc": [],
+          "label": "original.mjs",
+          "limitations": [],
+          "modules": [
+            {
+              "bundle_modules": [],
+              "bundlers": [],
+              "bytes": 45,
+              "chunk_ids": [],
+              "exports": {
+                "cjs": [],
+                "esm": [
+                  "answer"
+                ]
+              },
+              "fingerprint": "739f8f090503ad5f8482d339b1d9dc221687a9f2323fdfc9e57d3454a126d3f9",
+              "functions": [
+                "answer"
+              ],
+              "imports": [],
+              "kind": "script",
+              "parse_mode": "parsed",
+              "path": "original.mjs",
+              "role": "unknown",
+              "sha256": "5d5a90cb089db64f7729eb3ab854ea5edc9d0d9067dd8a16faf4ef5d97bb9b22",
+              "strings": []
+            }
+          ],
+          "modules_total": 1,
+          "native_modules": [],
+          "nodes": [
+            {
+              "id": "module:original.mjs",
+              "kind": "module",
+              "label": "original.mjs",
+              "module": "original.mjs",
+              "role": "unknown"
+            },
+            {
+              "attrs": {
+                "calls": [],
+                "end": 43,
+                "end_line": 1,
+                "exported": true,
+                "kind": "declaration",
+                "params": [
+                  "x"
+                ],
+                "parent": null,
+                "start": 7,
+                "strings": []
+              },
+              "id": "fn:original.mjs#answer@1",
+              "kind": "function",
+              "label": "answer",
+              "line": 1,
+              "module": "original.mjs",
+              "role": "unknown"
+            }
+          ],
+          "package": null,
+          "routes": [],
+          "source_maps": [],
+          "stats": {
+            "api_operations": 0,
+            "bundle_modules": 0,
+            "edges": 1,
+            "endpoints": 0,
+            "files": 1,
+            "functions": 1,
+            "ipc_channels": 0,
+            "listed": 1,
+            "modules": 1,
+            "nodes": 2,
+            "paired_channels": 0
+          },
+          "storage": [],
+          "summary": "JavaScript code original.mjs: 1 source files, 0 IPC channel(s) (0 paired), 0 window(s), 0 endpoint(s), 0 route(s).",
+          "vendors": [],
+          "windows": []
+        },
+        "subject": {
+          "kind": "script",
+          "name": "original.mjs",
+          "sha256": "5d5a90cb089db64f7729eb3ab854ea5edc9d0d9067dd8a16faf4ef5d97bb9b22"
+        },
+        "summary": "JavaScript code original.mjs: 1 source files, 0 IPC channel(s) (0 paired), 0 window(s), 0 endpoint(s), 0 route(s)."
+      }
+    }
+  },
+  {
+    "tool": "core_brief_write",
+    "arguments": {
+      "question": "Explain the owned answer function",
+      "done_when": "Evidence and memory survive restart"
+    },
+    "result": {
+      "content": [
+        {
+          "text": "{\"result\":{\"brief\":{\"constraints\":[],\"done_when\":\"Evidence and memory survive restart\",\"question\":\"Explain the owned answer function\",\"targets\":[]},\"findings\":[],\"handoff\":null,\"hypotheses\":[],\"plan\":[],\"revision\":1,\"stored_in\":\"\\\\\\\\?\\\\D:\\\\tmp\\\\rf36-craft-outcome-lbukpyuq\\\\work\\\\case-a\\\\craft-analysis.cany\\\\investigation\",\"updated\":\"2026-11-16T12:37:16Z\"}}",
+          "type": "text"
+        }
+      ],
+      "isError": false,
+      "structuredContent": {
+        "result": {
+          "brief": {
+            "constraints": [],
+            "done_when": "Evidence and memory survive restart",
+            "question": "Explain the owned answer function",
+            "targets": []
+          },
+          "findings": [],
+          "handoff": null,
+          "hypotheses": [],
+          "plan": [],
+          "revision": 1,
+          "stored_in": "\\\\?\\D:\\tmp\\rf36-craft-outcome-lbukpyuq\\work\\case-a\\craft-analysis.cany\\investigation",
+          "updated": "2026-11-16T12:37:16Z"
+        }
+      }
+    }
+  },
+  {
+    "tool": "core_finding_record",
+    "arguments": {
+      "statement": "The owned module exports answer",
+      "evidence_ids": [
+        "ev_ce54f995bd9e885a070ce6ac366e3ef76d232131f0013fcd3451ecd6e8e5837e"
+      ],
+      "confidence": "derived"
+    },
+    "result": {
+      "content": [
+        {
+          "text": "{\"result\":{\"finding_id\":\"fnd_1\",\"revision\":2}}",
+          "type": "text"
+        }
+      ],
+      "isError": false,
+      "structuredContent": {
+        "result": {
+          "finding_id": "fnd_1",
+          "revision": 2
+        }
+      }
+    }
+  },
+  {
+    "tool": "core_unknown_add",
+    "arguments": {
+      "question": "Does a future input change behavior?",
+      "domain": "owned-fixture",
+      "evidence_for": [
+        "ev_ce54f995bd9e885a070ce6ac366e3ef76d232131f0013fcd3451ecd6e8e5837e"
+      ]
+    },
+    "result": {
+      "content": [
+        {
+          "text": "{\"result\":{\"domain\":\"owned-fixture\",\"evidence_against\":[],\"evidence_for\":[\"ev_ce54f995bd9e885a070ce6ac366e3ef76d232131f0013fcd3451ecd6e8e5837e\"],\"id\":\"unk_844bbadf3842a081\",\"probes\":[],\"question\":\"Does a future input change behavior?\",\"revision\":1,\"severity\":\"medium\",\"status\":\"open\"}}",
+          "type": "text"
+        }
+      ],
+      "isError": false,
+      "structuredContent": {
+        "result": {
+          "domain": "owned-fixture",
+          "evidence_against": [],
+          "evidence_for": [
+            "ev_ce54f995bd9e885a070ce6ac366e3ef76d232131f0013fcd3451ecd6e8e5837e"
+          ],
+          "id": "unk_844bbadf3842a081",
+          "probes": [],
+          "question": "Does a future input change behavior?",
+          "revision": 1,
+          "severity": "medium",
+          "status": "open"
+        }
+      }
+    }
+  },
+  {
+    "tool": "core_unknowns_show",
+    "arguments": {},
+    "result": {
+      "content": [
+        {
+          "text": "{\"result\":{\"items\":[{\"domain\":\"owned-fixture\",\"evidence_against\":[],\"evidence_for\":[\"ev_ce54f995bd9e885a070ce6ac366e3ef76d232131f0013fcd3451ecd6e8e5837e\"],\"id\":\"unk_844bbadf3842a081\",\"probes\":[],\"question\":\"Does a future input change behavior?\",\"revision\":1,\"severity\":\"medium\",\"status\":\"open\"}],\"total\":1}}",
+          "type": "text"
+        }
+      ],
+      "isError": false,
+      "structuredContent": {
+        "result": {
+          "items": [
+            {
+              "domain": "owned-fixture",
+              "evidence_against": [],
+              "evidence_for": [
+                "ev_ce54f995bd9e885a070ce6ac366e3ef76d232131f0013fcd3451ecd6e8e5837e"
+              ],
+              "id": "unk_844bbadf3842a081",
+              "probes": [],
+              "question": "Does a future input change behavior?",
+              "revision": 1,
+              "severity": "medium",
+              "status": "open"
+            }
+          ],
+          "total": 1
+        }
+      }
+    }
+  },
+  {
+    "tool": "core_handoff_write",
+    "arguments": {
+      "text": "Resume original analysis; preserved original evidence ID is required."
+    },
+    "result": {
+      "content": [
+        {
+          "text": "{\"result\":{\"revision\":3}}",
+          "type": "text"
+        }
+      ],
+      "isError": false,
+      "structuredContent": {
+        "result": {
+          "revision": 3
+        }
+      }
+    }
+  },
+  {
+    "tool": "core_target_open",
+    "arguments": {
+      "path": "D:\\tmp\\rf36-craft-outcome-lbukpyuq\\owned.bin",
+      "format": "raw-binary",
+      "architecture": "x86_64",
+      "entry_point": "0x1000"
+    },
+    "result": {
+      "content": [
+        {
+          "text": "{\"result\":{\"bytes\":3,\"description\":\"Raw machine code\",\"kind\":\"raw-binary\",\"name\":\"owned.bin\",\"path\":\"D:\\\\tmp\\\\rf36-craft-outcome-lbukpyuq\\\\owned.bin\",\"raw\":{\"architecture\":\"x86_64\",\"entry_point\":4096},\"sha256\":\"39be667df5c9e6069f69c26d1d7923c4939ad24c9fe2a1b10037b322be4421b3\",\"target_id\":\"t_39be667df5c9\"}}",
+          "type": "text"
+        }
+      ],
+      "isError": false,
+      "structuredContent": {
+        "result": {
+          "bytes": 3,
+          "description": "Raw machine code",
+          "kind": "raw-binary",
+          "name": "owned.bin",
+          "path": "D:\\tmp\\rf36-craft-outcome-lbukpyuq\\owned.bin",
+          "raw": {
+            "architecture": "x86_64",
+            "entry_point": 4096
+          },
+          "sha256": "39be667df5c9e6069f69c26d1d7923c4939ad24c9fe2a1b10037b322be4421b3",
+          "target_id": "t_39be667df5c9"
+        }
+      }
+    }
+  },
+  {
+    "tool": "native_comment_write",
+    "arguments": {
+      "address": "0x1000",
+      "comment": "Owned annotation survives restart"
+    },
+    "result": {
+      "content": [
+        {
+          "text": "{\"result\":{\"address\":\"0x1000\",\"comment\":\"Owned annotation survives restart\",\"inline\":false}}",
+          "type": "text"
+        }
+      ],
+      "isError": false,
+      "structuredContent": {
+        "result": {
+          "address": "0x1000",
+          "comment": "Owned annotation survives restart",
+          "inline": false
+        }
+      }
+    }
+  },
+  {
+    "tool": "core_investigation_show",
+    "arguments": {},
+    "result": {
+      "content": [
+        {
+          "text": "{\"result\":{\"brief\":{\"constraints\":[],\"done_when\":\"Evidence and memory survive restart\",\"question\":\"Explain the owned answer function\",\"targets\":[]},\"findings\":[{\"confidence\":\"derived\",\"evidence_ids\":[\"ev_ce54f995bd9e885a070ce6ac366e3ef76d232131f0013fcd3451ecd6e8e5837e\"],\"id\":\"fnd_1\",\"statement\":\"The owned module exports answer\"}],\"handoff\":\"Resume original analysis; preserved original evidence ID is required.\",\"hypotheses\":[],\"plan\":[],\"revision\":3,\"stored_in\":\"\\\\\\\\?\\\\D:\\\\tmp\\\\rf36-craft-outcome-lbukpyuq\\\\work\\\\case-a\\\\craft-analysis.cany\\\\investigation\",\"updated\":\"2026-11-16T12:37:16Z\"}}",
+          "type": "text"
+        }
+      ],
+      "isError": false,
+      "structuredContent": {
+        "result": {
+          "brief": {
+            "constraints": [],
+            "done_when": "Evidence and memory survive restart",
+            "question": "Explain the owned answer function",
+            "targets": []
+          },
+          "findings": [
+            {
+              "confidence": "derived",
+              "evidence_ids": [
+                "ev_ce54f995bd9e885a070ce6ac366e3ef76d232131f0013fcd3451ecd6e8e5837e"
+              ],
+              "id": "fnd_1",
+              "statement": "The owned module exports answer"
+            }
+          ],
+          "handoff": "Resume original analysis; preserved original evidence ID is required.",
+          "hypotheses": [],
+          "plan": [],
+          "revision": 3,
+          "stored_in": "\\\\?\\D:\\tmp\\rf36-craft-outcome-lbukpyuq\\work\\case-a\\craft-analysis.cany\\investigation",
+          "updated": "2026-11-16T12:37:16Z"
+        }
+      }
+    }
+  },
+  {
+    "tool": "core_journal_read",
+    "arguments": {
+      "limit": 30
+    },
+    "result": {
+      "content": [
+        {
+          "text": "{\"result\":{\"day\":\"2026-11-16\",\"days\":[\"2026-11-16\"],\"entries\":[{\"caller\":\"mcp\",\"duration_ms\":5,\"kind\":\"tool_call\",\"ok\":true,\"params\":{\"case_root\":\"D:\\\\tmp\\\\rf36-craft-outcome-lbukpyuq\\\\work\\\\case-a\",\"project_root\":\"D:\\\\tmp\\\\rf36-craft-outcome-lbukpyuq\"},\"time\":\"2026-11-16T12:37:16Z\",\"tool\":\"fusion_case_open\",\"ts\":1794832636},{\"caller\":\"mcp\",\"duration_ms\":1,\"kind\":\"tool_call\",\"ok\":true,\"params\":{\"path\":\"D:\\\\tmp\\\\rf36-craft-outcome-lbukpyuq\\\\original.mjs\"},\"time\":\"2026-11-16T12:37:16Z\",\"tool\":\"core_target_open\",\"ts\":1794832636},{\"caller\":\"mcp\",\"duration_ms\":3,\"evidence_id\":\"ev_ce54f995bd9e885a070ce6ac366e3ef76d232131f0013fcd3451ecd6e8e5837e\",\"kind\":\"tool_call\",\"ok\":true,\"params\":{\"input_path\":\"D:\\\\tmp\\\\rf36-craft-outcome-lbukpyuq\\\\original.mjs\"},\"time\":\"2026-11-16T12:37:16Z\",\"tool\":\"js_app_map\",\"ts\":1794832636},{\"caller\":\"mcp\",\"duration_ms\":7,\"kind\":\"tool_call\",\"ok\":true,\"params\":{\"done_when\":\"Evidence and memory survive restart\",\"question\":\"Explain the owned answer function\"},\"time\":\"2026-11-16T12:37:16Z\",\"tool\":\"core_brief_write\",\"ts\":1794832636},{\"caller\":\"mcp\",\"duration_ms\":7,\"kind\":\"tool_call\",\"ok\":true,\"params\":{\"confidence\":\"derived\",\"evidence_ids\":[\"ev_ce54f995bd9e885a070ce6ac366e3ef76d232131f0013fcd3451ecd6e8e5837e\"],\"statement\":\"The owned module exports answer\"},\"time\":\"2026-11-16T12:37:16Z\",\"tool\":\"core_finding_record\",\"ts\":1794832636},{\"caller\":\"mcp\",\"duration_ms\":1,\"kind\":\"tool_call\",\"ok\":true,\"params\":{\"domain\":\"owned-fixture\",\"evidence_for\":[\"ev_ce54f995bd9e885a070ce6ac366e3ef76d232131f0013fcd3451ecd6e8e5837e\"],\"question\":\"Does a future input change behavior?\"},\"time\":\"2026-11-16T12:37:16Z\",\"tool\":\"core_unknown_add\",\"ts\":1794832636},{\"caller\":\"mcp\",\"duration_ms\":1,\"kind\":\"tool_call\",\"ok\":true,\"params\":{},\"time\":\"2026-11-16T12:37:16Z\",\"tool\":\"core_unknowns_show\",\"ts\":1794832636},{\"caller\":\"mcp\",\"duration_ms\":7,\"kind\":\"tool_call\",\"ok\":true,\"params\":{\"text\":\"Resume original analysis; preserved original evidence ID is required.\"},\"time\":\"2026-11-16T12:37:16Z\",\"tool\":\"core_handoff_write\",\"ts\":1794832636},{\"caller\":\"mcp\",\"duration_ms\":0,\"kind\":\"tool_call\",\"ok\":true,\"params\":{\"architecture\":\"x86_64\",\"entry_point\":\"0x1000\",\"format\":\"raw-binary\",\"path\":\"D:\\\\tmp\\\\rf36-craft-outcome-lbukpyuq\\\\owned.bin\"},\"time\":\"2026-11-16T12:37:16Z\",\"tool\":\"core_target_open\",\"ts\":1794832636},{\"caller\":\"mcp\",\"duration_ms\":1,\"kind\":\"tool_call\",\"ok\":true,\"params\":{\"address\":\"0x1000\",\"comment\":\"Owned annotation survives restart\"},\"time\":\"2026-11-16T12:37:16Z\",\"tool\":\"native_comment_write\",\"ts\":1794832636},{\"caller\":\"mcp\",\"duration_ms\":0,\"kind\":\"tool_call\",\"ok\":true,\"params\":{},\"time\":\"2026-11-16T12:37:16Z\",\"tool\":\"core_investigation_show\",\"ts\":1794832636}],\"next_offset\":null,\"total\":11}}",
+          "type": "text"
+        }
+      ],
+      "isError": false,
+      "structuredContent": {
+        "result": {
+          "day": "2026-11-16",
+          "days": [
+            "2026-11-16"
+          ],
+          "entries": [
+            {
+              "caller": "mcp",
+              "duration_ms": 5,
+              "kind": "tool_call",
+              "ok": true,
+              "params": {
+                "case_root": "D:\\tmp\\rf36-craft-outcome-lbukpyuq\\work\\case-a",
+                "project_root": "D:\\tmp\\rf36-craft-outcome-lbukpyuq"
+              },
+              "time": "2026-11-16T12:37:16Z",
+              "tool": "fusion_case_open",
+              "ts": 1794832636
+            },
+            {
+              "caller": "mcp",
+              "duration_ms": 1,
+              "kind": "tool_call",
+              "ok": true,
+              "params": {
+                "path": "D:\\tmp\\rf36-craft-outcome-lbukpyuq\\original.mjs"
+              },
+              "time": "2026-11-16T12:37:16Z",
+              "tool": "core_target_open",
+              "ts": 1794832636
+            },
+            {
+              "caller": "mcp",
+              "duration_ms": 3,
+              "evidence_id": "ev_ce54f995bd9e885a070ce6ac366e3ef76d232131f0013fcd3451ecd6e8e5837e",
+              "kind": "tool_call",
+              "ok": true,
+              "params": {
+                "input_path": "D:\\tmp\\rf36-craft-outcome-lbukpyuq\\original.mjs"
+              },
+              "time": "2026-11-16T12:37:16Z",
+              "tool": "js_app_map",
+              "ts": 1794832636
+            },
+            {
+              "caller": "mcp",
+              "duration_ms": 7,
+              "kind": "tool_call",
+              "ok": true,
+              "params": {
+                "done_when": "Evidence and memory survive restart",
+                "question": "Explain the owned answer function"
+              },
+              "time": "2026-11-16T12:37:16Z",
+              "tool": "core_brief_write",
+              "ts": 1794832636
+            },
+            {
+              "caller": "mcp",
+              "duration_ms": 7,
+              "kind": "tool_call",
+              "ok": true,
+              "params": {
+                "confidence": "derived",
+                "evidence_ids": [
+                  "ev_ce54f995bd9e885a070ce6ac366e3ef76d232131f0013fcd3451ecd6e8e5837e"
+                ],
+                "statement": "The owned module exports answer"
+              },
+              "time": "2026-11-16T12:37:16Z",
+              "tool": "core_finding_record",
+              "ts": 1794832636
+            },
+            {
+              "caller": "mcp",
+              "duration_ms": 1,
+              "kind": "tool_call",
+              "ok": true,
+              "params": {
+                "domain": "owned-fixture",
+                "evidence_for": [
+                  "ev_ce54f995bd9e885a070ce6ac366e3ef76d232131f0013fcd3451ecd6e8e5837e"
+                ],
+                "question": "Does a future input change behavior?"
+              },
+              "time": "2026-11-16T12:37:16Z",
+              "tool": "core_unknown_add",
+              "ts": 1794832636
+            },
+            {
+              "caller": "mcp",
+              "duration_ms": 1,
+              "kind": "tool_call",
+              "ok": true,
+              "params": {},
+              "time": "2026-11-16T12:37:16Z",
+              "tool": "core_unknowns_show",
+              "ts": 1794832636
+            },
+            {
+              "caller": "mcp",
+              "duration_ms": 7,
+              "kind": "tool_call",
+              "ok": true,
+              "params": {
+                "text": "Resume original analysis; preserved original evidence ID is required."
+              },
+              "time": "2026-11-16T12:37:16Z",
+              "tool": "core_handoff_write",
+              "ts": 1794832636
+            },
+            {
+              "caller": "mcp",
+              "duration_ms": 0,
+              "kind": "tool_call",
+              "ok": true,
+              "params": {
+                "architecture": "x86_64",
+                "entry_point": "0x1000",
+                "format": "raw-binary",
+                "path": "D:\\tmp\\rf36-craft-outcome-lbukpyuq\\owned.bin"
+              },
+              "time": "2026-11-16T12:37:16Z",
+              "tool": "core_target_open",
+              "ts": 1794832636
+            },
+            {
+              "caller": "mcp",
+              "duration_ms": 1,
+              "kind": "tool_call",
+              "ok": true,
+              "params": {
+                "address": "0x1000",
+                "comment": "Owned annotation survives restart"
+              },
+              "time": "2026-11-16T12:37:16Z",
+              "tool": "native_comment_write",
+              "ts": 1794832636
+            },
+            {
+              "caller": "mcp",
+              "duration_ms": 0,
+              "kind": "tool_call",
+              "ok": true,
+              "params": {},
+              "time": "2026-11-16T12:37:16Z",
+              "tool": "core_investigation_show",
+              "ts": 1794832636
+            }
+          ],
+          "next_offset": null,
+          "total": 11
+        }
+      }
+    }
+  },
+  {
+    "tool": "fusion_case_open",
+    "arguments": {
+      "project_root": "D:\\tmp\\rf36-craft-outcome-lbukpyuq",
+      "case_root": "D:\\tmp\\rf36-craft-outcome-lbukpyuq\\work\\case-a"
+    },
+    "result": {
+      "content": [
+        {
+          "text": "{\"result\":{\"bound\":\"\\\\\\\\?\\\\D:\\\\tmp\\\\rf36-craft-outcome-lbukpyuq\\\\work\\\\case-a\\\\craft-analysis.cany\",\"case_root\":\"\\\\\\\\?\\\\D:\\\\tmp\\\\rf36-craft-outcome-lbukpyuq\\\\work\\\\case-a\",\"evidence_records\":1,\"memory\":\"original Project evidence/unknowns/annotations/investigation/journal in this case\",\"project_root\":\"\\\\\\\\?\\\\D:\\\\tmp\\\\rf36-craft-outcome-lbukpyuq\",\"restored_targets\":2,\"reused\":false,\"unavailable_targets\":[]}}",
+          "type": "text"
+        }
+      ],
+      "isError": false,
+      "structuredContent": {
+        "result": {
+          "bound": "\\\\?\\D:\\tmp\\rf36-craft-outcome-lbukpyuq\\work\\case-a\\craft-analysis.cany",
+          "case_root": "\\\\?\\D:\\tmp\\rf36-craft-outcome-lbukpyuq\\work\\case-a",
+          "evidence_records": 1,
+          "memory": "original Project evidence/unknowns/annotations/investigation/journal in this case",
+          "project_root": "\\\\?\\D:\\tmp\\rf36-craft-outcome-lbukpyuq",
+          "restored_targets": 2,
+          "reused": false,
+          "unavailable_targets": []
+        }
+      }
+    }
+  },
+  {
+    "tool": "core_investigation_show",
+    "arguments": {},
+    "result": {
+      "content": [
+        {
+          "text": "{\"result\":{\"brief\":{\"constraints\":[],\"done_when\":\"Evidence and memory survive restart\",\"question\":\"Explain the owned answer function\",\"targets\":[]},\"findings\":[{\"confidence\":\"derived\",\"evidence_ids\":[\"ev_ce54f995bd9e885a070ce6ac366e3ef76d232131f0013fcd3451ecd6e8e5837e\"],\"id\":\"fnd_1\",\"statement\":\"The owned module exports answer\"}],\"handoff\":\"Resume original analysis; preserved original evidence ID is required.\",\"hypotheses\":[],\"plan\":[],\"revision\":3,\"stored_in\":\"\\\\\\\\?\\\\D:\\\\tmp\\\\rf36-craft-outcome-lbukpyuq\\\\work\\\\case-a\\\\craft-analysis.cany\\\\investigation\",\"updated\":\"2026-11-16T12:37:16Z\"}}",
+          "type": "text"
+        }
+      ],
+      "isError": false,
+      "structuredContent": {
+        "result": {
+          "brief": {
+            "constraints": [],
+            "done_when": "Evidence and memory survive restart",
+            "question": "Explain the owned answer function",
+            "targets": []
+          },
+          "findings": [
+            {
+              "confidence": "derived",
+              "evidence_ids": [
+                "ev_ce54f995bd9e885a070ce6ac366e3ef76d232131f0013fcd3451ecd6e8e5837e"
+              ],
+              "id": "fnd_1",
+              "statement": "The owned module exports answer"
+            }
+          ],
+          "handoff": "Resume original analysis; preserved original evidence ID is required.",
+          "hypotheses": [],
+          "plan": [],
+          "revision": 3,
+          "stored_in": "\\\\?\\D:\\tmp\\rf36-craft-outcome-lbukpyuq\\work\\case-a\\craft-analysis.cany\\investigation",
+          "updated": "2026-11-16T12:37:16Z"
+        }
+      }
+    }
+  },
+  {
+    "tool": "core_unknowns_show",
+    "arguments": {},
+    "result": {
+      "content": [
+        {
+          "text": "{\"result\":{\"items\":[{\"domain\":\"owned-fixture\",\"evidence_against\":[],\"evidence_for\":[\"ev_ce54f995bd9e885a070ce6ac366e3ef76d232131f0013fcd3451ecd6e8e5837e\"],\"id\":\"unk_844bbadf3842a081\",\"probes\":[],\"question\":\"Does a future input change behavior?\",\"revision\":1,\"severity\":\"medium\",\"status\":\"open\"}],\"total\":1}}",
+          "type": "text"
+        }
+      ],
+      "isError": false,
+      "structuredContent": {
+        "result": {
+          "items": [
+            {
+              "domain": "owned-fixture",
+              "evidence_against": [],
+              "evidence_for": [
+                "ev_ce54f995bd9e885a070ce6ac366e3ef76d232131f0013fcd3451ecd6e8e5837e"
+              ],
+              "id": "unk_844bbadf3842a081",
+              "probes": [],
+              "question": "Does a future input change behavior?",
+              "revision": 1,
+              "severity": "medium",
+              "status": "open"
+            }
+          ],
+          "total": 1
+        }
+      }
+    }
+  },
+  {
+    "tool": "core_evidence_show",
+    "arguments": {
+      "evidence_id": "ev_ce54f995bd9e885a070ce6ac366e3ef76d232131f0013fcd3451ecd6e8e5837e"
+    },
+    "result": {
+      "content": [
+        {
+          "text": "{\"result\":{\"not_loaded\":0,\"records\":[{\"authority\":\"original-files\",\"confidence\":\"derived\",\"coverage\":{\"examined\":1,\"status\":\"complete\",\"total\":1},\"environment\":{\"clean_room\":false,\"engine\":\"builtin\",\"engine_version\":\"0.6.1\",\"host\":\"windows-x86_64\"},\"id\":\"ev_ce54f995bd9e885a070ce6ac366e3ef76d232131f0013fcd3451ecd6e8e5837e\",\"limitations\":[{\"code\":\"static_only\",\"message\":\"Static reading only: code built at run time (eval, computed requires, remote content) is invisible; IPC pairs need literal channel names.\"}],\"links\":[],\"locations\":[{\"kind\":\"path\",\"value\":\"D:\\\\tmp\\\\rf36-craft-outcome-lbukpyuq\\\\original.mjs\"}],\"operation\":\"js_app_map\",\"params\":{\"include_node_modules\":false,\"input_path\":\"D:\\\\tmp\\\\rf36-craft-outcome-lbukpyuq\\\\original.mjs\",\"limit\":500,\"max_nodes\":25000,\"offset\":0,\"source_paths\":[]},\"result\":{\"api_operations\":[],\"app_kind\":\"unknown\",\"bundlers\":[],\"edges\":[{\"from\":\"module:original.mjs\",\"kind\":\"defines\",\"to\":\"fn:original.mjs#answer@1\"}],\"effects\":[],\"endpoints\":[],\"entry_points\":{\"pages\":[],\"preloads\":[],\"renderers\":[],\"workers\":[]},\"exposed\":[],\"graph_id\":\"ag_05cbaf478bed5f0bfce083ef3db3ad313ecb4f4c453251d78575e811535f51ff\",\"input_format\":\"file\",\"ipc\":[],\"label\":\"original.mjs\",\"limitations\":[],\"modules\":[{\"bundle_modules\":[],\"bundlers\":[],\"bytes\":45,\"chunk_ids\":[],\"exports\":{\"cjs\":[],\"esm\":[\"answer\"]},\"fingerprint\":\"739f8f090503ad5f8482d339b1d9dc221687a9f2323fdfc9e57d3454a126d3f9\",\"functions\":[\"answer\"],\"imports\":[],\"kind\":\"script\",\"parse_mode\":\"parsed\",\"path\":\"original.mjs\",\"role\":\"unknown\",\"sha256\":\"5d5a90cb089db64f7729eb3ab854ea5edc9d0d9067dd8a16faf4ef5d97bb9b22\",\"strings\":[]}],\"modules_total\":1,\"native_modules\":[],\"nodes\":[{\"id\":\"module:original.mjs\",\"kind\":\"module\",\"label\":\"original.mjs\",\"module\":\"original.mjs\",\"role\":\"unknown\"},{\"attrs\":{\"calls\":[],\"end\":43,\"end_line\":1,\"exported\":true,\"kind\":\"declaration\",\"params\":[\"x\"],\"parent\":null,\"start\":7,\"strings\":[]},\"id\":\"fn:original.mjs#answer@1\",\"kind\":\"function\",\"label\":\"answer\",\"line\":1,\"module\":\"original.mjs\",\"role\":\"unknown\"}],\"package\":null,\"routes\":[],\"source_maps\":[],\"stats\":{\"api_operations\":0,\"bundle_modules\":0,\"edges\":1,\"endpoints\":0,\"files\":1,\"functions\":1,\"ipc_channels\":0,\"listed\":1,\"modules\":1,\"nodes\":2,\"paired_channels\":0},\"storage\":[],\"summary\":\"JavaScript code original.mjs: 1 source files, 0 IPC channel(s) (0 paired), 0 window(s), 0 endpoint(s), 0 route(s).\",\"vendors\":[],\"windows\":[]},\"subject\":{\"kind\":\"script\",\"name\":\"original.mjs\",\"sha256\":\"5d5a90cb089db64f7729eb3ab854ea5edc9d0d9067dd8a16faf4ef5d97bb9b22\"},\"summary\":\"JavaScript code original.mjs: 1 source files, 0 IPC channel(s) (0 paired), 0 window(s), 0 endpoint(s), 0 route(s).\"}],\"total\":1,\"unknowns\":[{\"domain\":\"owned-fixture\",\"evidence_against\":[],\"evidence_for\":[\"ev_ce54f995bd9e885a070ce6ac366e3ef76d232131f0013fcd3451ecd6e8e5837e\"],\"id\":\"unk_844bbadf3842a081\",\"probes\":[],\"question\":\"Does a future input change behavior?\",\"revision\":1,\"severity\":\"medium\",\"status\":\"open\"}]}}",
+          "type": "text"
+        }
+      ],
+      "isError": false,
+      "structuredContent": {
+        "result": {
+          "not_loaded": 0,
+          "records": [
+            {
+              "authority": "original-files",
+              "confidence": "derived",
+              "coverage": {
+                "examined": 1,
+                "status": "complete",
+                "total": 1
+              },
+              "environment": {
+                "clean_room": false,
+                "engine": "builtin",
+                "engine_version": "0.6.1",
+                "host": "windows-x86_64"
+              },
+              "id": "ev_ce54f995bd9e885a070ce6ac366e3ef76d232131f0013fcd3451ecd6e8e5837e",
+              "limitations": [
+                {
+                  "code": "static_only",
+                  "message": "Static reading only: code built at run time (eval, computed requires, remote content) is invisible; IPC pairs need literal channel names."
+                }
+              ],
+              "links": [],
+              "locations": [
+                {
+                  "kind": "path",
+                  "value": "D:\\tmp\\rf36-craft-outcome-lbukpyuq\\original.mjs"
+                }
+              ],
+              "operation": "js_app_map",
+              "params": {
+                "include_node_modules": false,
+                "input_path": "D:\\tmp\\rf36-craft-outcome-lbukpyuq\\original.mjs",
+                "limit": 500,
+                "max_nodes": 25000,
+                "offset": 0,
+                "source_paths": []
+              },
+              "result": {
+                "api_operations": [],
+                "app_kind": "unknown",
+                "bundlers": [],
+                "edges": [
+                  {
+                    "from": "module:original.mjs",
+                    "kind": "defines",
+                    "to": "fn:original.mjs#answer@1"
+                  }
+                ],
+                "effects": [],
+                "endpoints": [],
+                "entry_points": {
+                  "pages": [],
+                  "preloads": [],
+                  "renderers": [],
+                  "workers": []
+                },
+                "exposed": [],
+                "graph_id": "ag_05cbaf478bed5f0bfce083ef3db3ad313ecb4f4c453251d78575e811535f51ff",
+                "input_format": "file",
+                "ipc": [],
+                "label": "original.mjs",
+                "limitations": [],
+                "modules": [
+                  {
+                    "bundle_modules": [],
+                    "bundlers": [],
+                    "bytes": 45,
+                    "chunk_ids": [],
+                    "exports": {
+                      "cjs": [],
+                      "esm": [
+                        "answer"
+                      ]
+                    },
+                    "fingerprint": "739f8f090503ad5f8482d339b1d9dc221687a9f2323fdfc9e57d3454a126d3f9",
+                    "functions": [
+                      "answer"
+                    ],
+                    "imports": [],
+                    "kind": "script",
+                    "parse_mode": "parsed",
+                    "path": "original.mjs",
+                    "role": "unknown",
+                    "sha256": "5d5a90cb089db64f7729eb3ab854ea5edc9d0d9067dd8a16faf4ef5d97bb9b22",
+                    "strings": []
+                  }
+                ],
+                "modules_total": 1,
+                "native_modules": [],
+                "nodes": [
+                  {
+                    "id": "module:original.mjs",
+                    "kind": "module",
+                    "label": "original.mjs",
+                    "module": "original.mjs",
+                    "role": "unknown"
+                  },
+                  {
+                    "attrs": {
+                      "calls": [],
+                      "end": 43,
+                      "end_line": 1,
+                      "exported": true,
+                      "kind": "declaration",
+                      "params": [
+                        "x"
+                      ],
+                      "parent": null,
+                      "start": 7,
+                      "strings": []
+                    },
+                    "id": "fn:original.mjs#answer@1",
+                    "kind": "function",
+                    "label": "answer",
+                    "line": 1,
+                    "module": "original.mjs",
+                    "role": "unknown"
+                  }
+                ],
+                "package": null,
+                "routes": [],
+                "source_maps": [],
+                "stats": {
+                  "api_operations": 0,
+                  "bundle_modules": 0,
+                  "edges": 1,
+                  "endpoints": 0,
+                  "files": 1,
+                  "functions": 1,
+                  "ipc_channels": 0,
+                  "listed": 1,
+                  "modules": 1,
+                  "nodes": 2,
+                  "paired_channels": 0
+                },
+                "storage": [],
+                "summary": "JavaScript code original.mjs: 1 source files, 0 IPC channel(s) (0 paired), 0 window(s), 0 endpoint(s), 0 route(s).",
+                "vendors": [],
+                "windows": []
+              },
+              "subject": {
+                "kind": "script",
+                "name": "original.mjs",
+                "sha256": "5d5a90cb089db64f7729eb3ab854ea5edc9d0d9067dd8a16faf4ef5d97bb9b22"
+              },
+              "summary": "JavaScript code original.mjs: 1 source files, 0 IPC channel(s) (0 paired), 0 window(s), 0 endpoint(s), 0 route(s)."
+            }
+          ],
+          "total": 1,
+          "unknowns": [
+            {
+              "domain": "owned-fixture",
+              "evidence_against": [],
+              "evidence_for": [
+                "ev_ce54f995bd9e885a070ce6ac366e3ef76d232131f0013fcd3451ecd6e8e5837e"
+              ],
+              "id": "unk_844bbadf3842a081",
+              "probes": [],
+              "question": "Does a future input change behavior?",
+              "revision": 1,
+              "severity": "medium",
+              "status": "open"
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "tool": "native_comment_read",
+    "arguments": {
+      "address": "0x1000"
+    },
+    "result": {
+      "content": [
+        {
+          "text": "{\"result\":{\"address\":\"0x1000\",\"comment\":\"Owned annotation survives restart\"}}",
+          "type": "text"
+        }
+      ],
+      "isError": false,
+      "structuredContent": {
+        "result": {
+          "address": "0x1000",
+          "comment": "Owned annotation survives restart"
+        }
+      }
+    }
+  },
+  {
+    "tool": "core_journal_read",
+    "arguments": {
+      "tool": "core_handoff_write",
+      "limit": 30
+    },
+    "result": {
+      "content": [
+        {
+          "text": "{\"result\":{\"day\":\"2026-11-16\",\"days\":[\"2026-11-16\"],\"entries\":[{\"caller\":\"mcp\",\"duration_ms\":7,\"kind\":\"tool_call\",\"ok\":true,\"params\":{\"text\":\"Resume original analysis; preserved original evidence ID is required.\"},\"time\":\"2026-11-16T12:37:16Z\",\"tool\":\"core_handoff_write\",\"ts\":1794832636}],\"next_offset\":null,\"total\":1}}",
+          "type": "text"
+        }
+      ],
+      "isError": false,
+      "structuredContent": {
+        "result": {
+          "day": "2026-11-16",
+          "days": [
+            "2026-11-16"
+          ],
+          "entries": [
+            {
+              "caller": "mcp",
+              "duration_ms": 7,
+              "kind": "tool_call",
+              "ok": true,
+              "params": {
+                "text": "Resume original analysis; preserved original evidence ID is required."
+              },
+              "time": "2026-11-16T12:37:16Z",
+              "tool": "core_handoff_write",
+              "ts": 1794832636
+            }
+          ],
+          "next_offset": null,
+          "total": 1
+        }
+      }
+    }
+  },
+  {
+    "tool": "fusion_case_open",
+    "arguments": {
+      "project_root": "D:\\tmp\\rf36-craft-outcome-lbukpyuq",
+      "case_root": "D:\\tmp\\rf36-craft-outcome-lbukpyuq\\work\\case-b"
+    },
+    "result": {
+      "content": [
+        {
+          "text": "{\"result\":{\"bound\":\"\\\\\\\\?\\\\D:\\\\tmp\\\\rf36-craft-outcome-lbukpyuq\\\\work\\\\case-b\\\\craft-analysis.cany\",\"case_root\":\"\\\\\\\\?\\\\D:\\\\tmp\\\\rf36-craft-outcome-lbukpyuq\\\\work\\\\case-b\",\"evidence_records\":0,\"memory\":\"original Project evidence/unknowns/annotations/investigation/journal in this case\",\"project_root\":\"\\\\\\\\?\\\\D:\\\\tmp\\\\rf36-craft-outcome-lbukpyuq\",\"restored_targets\":0,\"reused\":false,\"unavailable_targets\":[]}}",
+          "type": "text"
+        }
+      ],
+      "isError": false,
+      "structuredContent": {
+        "result": {
+          "bound": "\\\\?\\D:\\tmp\\rf36-craft-outcome-lbukpyuq\\work\\case-b\\craft-analysis.cany",
+          "case_root": "\\\\?\\D:\\tmp\\rf36-craft-outcome-lbukpyuq\\work\\case-b",
+          "evidence_records": 0,
+          "memory": "original Project evidence/unknowns/annotations/investigation/journal in this case",
+          "project_root": "\\\\?\\D:\\tmp\\rf36-craft-outcome-lbukpyuq",
+          "restored_targets": 0,
+          "reused": false,
+          "unavailable_targets": []
+        }
+      }
+    }
+  },
+  {
+    "tool": "core_session_show",
+    "arguments": {},
+    "result": {
+      "content": [
+        {
+          "text": "{\"result\":{\"active_target\":null,\"analysis_mode\":\"deep\",\"clean_room\":false,\"evidence_not_loaded\":0,\"evidence_records\":0,\"host\":\"windows-x86_64\",\"open\":false,\"project\":{\"name\":\"Reverse Fusion case analysis\",\"path\":\"\\\\\\\\?\\\\D:\\\\tmp\\\\rf36-craft-outcome-lbukpyuq\\\\work\\\\case-b\\\\craft-analysis.cany\",\"purpose\":\"own_or_authorized\"},\"server\":{\"name\":\"craft-anything\",\"version\":\"0.6.1\"},\"targets\":[],\"unknowns\":0}}",
+          "type": "text"
+        }
+      ],
+      "isError": false,
+      "structuredContent": {
+        "result": {
+          "active_target": null,
+          "analysis_mode": "deep",
+          "clean_room": false,
+          "evidence_not_loaded": 0,
+          "evidence_records": 0,
+          "host": "windows-x86_64",
+          "open": false,
+          "project": {
+            "name": "Reverse Fusion case analysis",
+            "path": "\\\\?\\D:\\tmp\\rf36-craft-outcome-lbukpyuq\\work\\case-b\\craft-analysis.cany",
+            "purpose": "own_or_authorized"
+          },
+          "server": {
+            "name": "craft-anything",
+            "version": "0.6.1"
+          },
+          "targets": [],
+          "unknowns": 0
+        }
+      }
+    }
+  },
+  {
+    "tool": "core_investigation_show",
+    "arguments": {},
+    "result": {
+      "content": [
+        {
+          "text": "{\"result\":{\"brief\":null,\"findings\":[],\"handoff\":null,\"hypotheses\":[],\"plan\":[],\"revision\":0,\"stored_in\":\"\\\\\\\\?\\\\D:\\\\tmp\\\\rf36-craft-outcome-lbukpyuq\\\\work\\\\case-b\\\\craft-analysis.cany\\\\investigation\",\"updated\":null}}",
+          "type": "text"
+        }
+      ],
+      "isError": false,
+      "structuredContent": {
+        "result": {
+          "brief": null,
+          "findings": [],
+          "handoff": null,
+          "hypotheses": [],
+          "plan": [],
+          "revision": 0,
+          "stored_in": "\\\\?\\D:\\tmp\\rf36-craft-outcome-lbukpyuq\\work\\case-b\\craft-analysis.cany\\investigation",
+          "updated": null
+        }
+      }
+    }
+  },
+  {
+    "tool": "core_evidence_show",
+    "arguments": {
+      "evidence_id": "ev_ce54f995bd9e885a070ce6ac366e3ef76d232131f0013fcd3451ecd6e8e5837e"
+    },
+    "result": {
+      "content": [
+        {
+          "text": "{\"result\":{\"not_loaded\":0,\"records\":[],\"total\":0,\"unknowns\":[]}}",
+          "type": "text"
+        }
+      ],
+      "isError": false,
+      "structuredContent": {
+        "result": {
+          "not_loaded": 0,
+          "records": [],
+          "total": 0,
+          "unknowns": []
+        }
+      }
+    }
+  },
+  {
+    "tool": "fusion_case_open",
+    "arguments": {
+      "project_root": "D:\\tmp\\rf36-craft-outcome-lbukpyuq",
+      "case_root": "D:\\tmp\\rf36-craft-outcome-lbukpyuq\\work\\case-a"
+    },
+    "result": {
+      "content": [
+        {
+          "text": "{\"result\":{\"bound\":\"\\\\\\\\?\\\\D:\\\\tmp\\\\rf36-craft-outcome-lbukpyuq\\\\work\\\\case-a\\\\craft-analysis.cany\",\"case_root\":\"\\\\\\\\?\\\\D:\\\\tmp\\\\rf36-craft-outcome-lbukpyuq\\\\work\\\\case-a\",\"evidence_records\":1,\"memory\":\"original Project evidence/unknowns/annotations/investigation/journal in this case\",\"project_root\":\"\\\\\\\\?\\\\D:\\\\tmp\\\\rf36-craft-outcome-lbukpyuq\",\"restored_targets\":2,\"reused\":false,\"unavailable_targets\":[]}}",
+          "type": "text"
+        }
+      ],
+      "isError": false,
+      "structuredContent": {
+        "result": {
+          "bound": "\\\\?\\D:\\tmp\\rf36-craft-outcome-lbukpyuq\\work\\case-a\\craft-analysis.cany",
+          "case_root": "\\\\?\\D:\\tmp\\rf36-craft-outcome-lbukpyuq\\work\\case-a",
+          "evidence_records": 1,
+          "memory": "original Project evidence/unknowns/annotations/investigation/journal in this case",
+          "project_root": "\\\\?\\D:\\tmp\\rf36-craft-outcome-lbukpyuq",
+          "restored_targets": 2,
+          "reused": false,
+          "unavailable_targets": []
+        }
+      }
+    }
+  },
+  {
+    "tool": "core_investigation_show",
+    "arguments": {},
+    "result": {
+      "content": [
+        {
+          "text": "{\"result\":{\"brief\":{\"constraints\":[],\"done_when\":\"Evidence and memory survive restart\",\"question\":\"Explain the owned answer function\",\"targets\":[]},\"findings\":[{\"confidence\":\"derived\",\"evidence_ids\":[\"ev_ce54f995bd9e885a070ce6ac366e3ef76d232131f0013fcd3451ecd6e8e5837e\"],\"id\":\"fnd_1\",\"statement\":\"The owned module exports answer\"}],\"handoff\":\"Resume original analysis; preserved original evidence ID is required.\",\"hypotheses\":[],\"plan\":[],\"revision\":3,\"stored_in\":\"\\\\\\\\?\\\\D:\\\\tmp\\\\rf36-craft-outcome-lbukpyuq\\\\work\\\\case-a\\\\craft-analysis.cany\\\\investigation\",\"updated\":\"2026-11-16T12:37:16Z\"}}",
+          "type": "text"
+        }
+      ],
+      "isError": false,
+      "structuredContent": {
+        "result": {
+          "brief": {
+            "constraints": [],
+            "done_when": "Evidence and memory survive restart",
+            "question": "Explain the owned answer function",
+            "targets": []
+          },
+          "findings": [
+            {
+              "confidence": "derived",
+              "evidence_ids": [
+                "ev_ce54f995bd9e885a070ce6ac366e3ef76d232131f0013fcd3451ecd6e8e5837e"
+              ],
+              "id": "fnd_1",
+              "statement": "The owned module exports answer"
+            }
+          ],
+          "handoff": "Resume original analysis; preserved original evidence ID is required.",
+          "hypotheses": [],
+          "plan": [],
+          "revision": 3,
+          "stored_in": "\\\\?\\D:\\tmp\\rf36-craft-outcome-lbukpyuq\\work\\case-a\\craft-analysis.cany\\investigation",
+          "updated": "2026-11-16T12:37:16Z"
+        }
+      }
+    }
+  },
+  {
+    "tool": "fusion_case_open",
+    "arguments": {
+      "project_root": "D:\\tmp\\rf36-craft-outcome-lbukpyuq",
+      "case_root": "D:\\tmp\\rf36-craft-outcome-lbukpyuq\\work\\case-a"
+    },
+    "result": {
+      "content": [
+        {
+          "text": "{\"result\":{\"bound\":\"\\\\\\\\?\\\\D:\\\\tmp\\\\rf36-craft-outcome-lbukpyuq\\\\work\\\\case-a\\\\craft-analysis.cany\",\"case_root\":\"\\\\\\\\?\\\\D:\\\\tmp\\\\rf36-craft-outcome-lbukpyuq\\\\work\\\\case-a\",\"evidence_records\":1,\"memory\":\"original Project evidence/unknowns/annotations/investigation/journal in this case\",\"project_root\":\"\\\\\\\\?\\\\D:\\\\tmp\\\\rf36-craft-outcome-lbukpyuq\",\"restored_targets\":1,\"reused\":false,\"unavailable_targets\":[{\"reason\":\"The shared target changed after it was opened.\",\"target\":{\"kind\":\"script\",\"path\":\"D:\\\\tmp\\\\rf36-craft-outcome-lbukpyuq\\\\original.mjs\",\"raw\":null,\"sha256\":\"5d5a90cb089db64f7729eb3ab854ea5edc9d0d9067dd8a16faf4ef5d97bb9b22\"}}]}}",
+          "type": "text"
+        }
+      ],
+      "isError": false,
+      "structuredContent": {
+        "result": {
+          "bound": "\\\\?\\D:\\tmp\\rf36-craft-outcome-lbukpyuq\\work\\case-a\\craft-analysis.cany",
+          "case_root": "\\\\?\\D:\\tmp\\rf36-craft-outcome-lbukpyuq\\work\\case-a",
+          "evidence_records": 1,
+          "memory": "original Project evidence/unknowns/annotations/investigation/journal in this case",
+          "project_root": "\\\\?\\D:\\tmp\\rf36-craft-outcome-lbukpyuq",
+          "restored_targets": 1,
+          "reused": false,
+          "unavailable_targets": [
+            {
+              "reason": "The shared target changed after it was opened.",
+              "target": {
+                "kind": "script",
+                "path": "D:\\tmp\\rf36-craft-outcome-lbukpyuq\\original.mjs",
+                "raw": null,
+                "sha256": "5d5a90cb089db64f7729eb3ab854ea5edc9d0d9067dd8a16faf4ef5d97bb9b22"
+              }
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "tool": "core_investigation_show",
+    "arguments": {},
+    "result": {
+      "content": [
+        {
+          "text": "{\"result\":{\"brief\":{\"constraints\":[],\"done_when\":\"Evidence and memory survive restart\",\"question\":\"Explain the owned answer function\",\"targets\":[]},\"findings\":[{\"confidence\":\"derived\",\"evidence_ids\":[\"ev_ce54f995bd9e885a070ce6ac366e3ef76d232131f0013fcd3451ecd6e8e5837e\"],\"id\":\"fnd_1\",\"statement\":\"The owned module exports answer\"}],\"handoff\":\"Resume original analysis; preserved original evidence ID is required.\",\"hypotheses\":[],\"plan\":[],\"revision\":3,\"stored_in\":\"\\\\\\\\?\\\\D:\\\\tmp\\\\rf36-craft-outcome-lbukpyuq\\\\work\\\\case-a\\\\craft-analysis.cany\\\\investigation\",\"updated\":\"2026-11-16T12:37:16Z\"}}",
+          "type": "text"
+        }
+      ],
+      "isError": false,
+      "structuredContent": {
+        "result": {
+          "brief": {
+            "constraints": [],
+            "done_when": "Evidence and memory survive restart",
+            "question": "Explain the owned answer function",
+            "targets": []
+          },
+          "findings": [
+            {
+              "confidence": "derived",
+              "evidence_ids": [
+                "ev_ce54f995bd9e885a070ce6ac366e3ef76d232131f0013fcd3451ecd6e8e5837e"
+              ],
+              "id": "fnd_1",
+              "statement": "The owned module exports answer"
+            }
+          ],
+          "handoff": "Resume original analysis; preserved original evidence ID is required.",
+          "hypotheses": [],
+          "plan": [],
+          "revision": 3,
+          "stored_in": "\\\\?\\D:\\tmp\\rf36-craft-outcome-lbukpyuq\\work\\case-a\\craft-analysis.cany\\investigation",
+          "updated": "2026-11-16T12:37:16Z"
+        }
+      }
+    }
+  }
+]

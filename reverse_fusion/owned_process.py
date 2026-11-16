@@ -8,7 +8,7 @@ import tempfile
 
 
 def run_owned(argv, *, cwd, stdin: bytes, timeout: float, memory_mb: int | None = None,
-              max_output_bytes: int = 16 * 1024 * 1024) -> dict:
+              max_output_bytes: int = 16 * 1024 * 1024, env=None) -> dict:
     started = time.perf_counter()
     job, kernel = None, None
     process = None
@@ -46,7 +46,7 @@ def run_owned(argv, *, cwd, stdin: bytes, timeout: float, memory_mb: int | None 
                 limits.job_limit = memory_mb * 1024 * 1024
             if not kernel.SetInformationJobObject(job, 9, ctypes.byref(limits), ctypes.sizeof(limits)):
                 raise ctypes.WinError(ctypes.get_last_error())
-            process = subprocess.Popen(argv, cwd=cwd, stdin=stdin_file, stdout=stdout_file,
+            process = subprocess.Popen(argv, cwd=cwd, env=env, stdin=stdin_file, stdout=stdout_file,
                 stderr=stderr_file, creationflags=subprocess.CREATE_NO_WINDOW | 0x4)  # suspended until contained
             if not kernel.AssignProcessToJobObject(job, int(process._handle)):
                 process.kill(); process.communicate()
@@ -57,7 +57,7 @@ def run_owned(argv, *, cwd, stdin: bytes, timeout: float, memory_mb: int | None 
             if native.NtResumeProcess(int(process._handle)) != 0:
                 raise OSError('Cannot resume contained process')
         else:
-            process = subprocess.Popen(argv, cwd=cwd, stdin=stdin_file, stdout=stdout_file,
+            process = subprocess.Popen(argv, cwd=cwd, env=env, stdin=stdin_file, stdout=stdout_file,
                                        stderr=stderr_file, start_new_session=True)
         timed_out, output_exceeded = False, False
         deadline = time.monotonic() + timeout
