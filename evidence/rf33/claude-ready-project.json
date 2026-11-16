@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "status": "prepared-awaiting-human-login",
+  "project_root": "C:\\Users\\toti\\Documents\\Codex\\2026-11-16\\reverse-fusion-claude-owned-desk-use",
+  "source_commit": "252ba35a9bfa76ea79007b3d0c357c4191363db1",
+  "reference_files": [
+    {
+      "path": "reference/core.mjs",
+      "sha256": "ddf8609a5fbb3e194d3973228da56771c6c3c03329166f0e5a95e29e1e94b9f2",
+      "bytes": 2428
+    },
+    {
+      "path": "reference/index.html",
+      "sha256": "fe8bb33fe756982f3bbaae9745716d896f7c81e9104f1327266c84a1975e6832",
+      "bytes": 2160
+    },
+    {
+      "path": "reference/page.mjs",
+      "sha256": "83f93826a55b128f7c711ebc7052455330896b29d3553c895b1ac39433d92c63",
+      "bytes": 1840
+    },
+    {
+      "path": "reference/README.txt",
+      "sha256": "abb9dd6c8bdd460a293e321a9c0d23361f11352b8396b5471b0a525ea3efc66e",
+      "bytes": 368
+    }
+  ],
+  "connection": {
+    "status": "connected",
+    "client": "claude",
+    "project_root": "C:\\Users\\toti\\Documents\\Codex\\2026-11-16\\reverse-fusion-claude-owned-desk-use",
+    "repository": "D:\\Project\\reverse",
+    "skill": "C:\\Users\\toti\\Documents\\Codex\\2026-11-16\\reverse-fusion-claude-owned-desk-use\\.claude\\skills\\reverse-fusion\\SKILL.md",
+    "instructions": "C:\\Users\\toti\\Documents\\Codex\\2026-11-16\\reverse-fusion-claude-owned-desk-use\\CLAUDE.md",
+    "writes": true,
+    "global_writes": false,
+    "runtime_acceptance": "not-performed"
+  },
+  "auth_status": {
+    "loggedIn": false,
+    "authMethod": "none",
+    "returncode": 1
+  },
+  "config_snapshot": {
+    "status": "observed",
+    "mutation": false,
+    "before": {
+      "status": "observed",
+      "files": {
+        "C:\\Users\\toti\\.claude\\settings.json": "0db88b3108c4952bc6cdcd19a94eb518b48f76f01896363053376802d1d8c8aa",
+        "C:\\Users\\toti\\.claude.json": "d4bc581e9b8d1a0c0e38035caa0367bb7988876665c9624c1ad455df54415e4f"
+      },
+      "known_paths": [
+        "C:\\Users\\toti\\.claude\\settings.json",
+        "C:\\Users\\toti\\.claude\\config.json",
+        "C:\\Users\\toti\\.claude.json"
+      ]
+    },
+    "after": {
+      "status": "observed",
+      "files": {
+        "C:\\Users\\toti\\.claude\\settings.json": "0db88b3108c4952bc6cdcd19a94eb518b48f76f01896363053376802d1d8c8aa",
+        "C:\\Users\\toti\\.claude.json": "d4bc581e9b8d1a0c0e38035caa0367bb7988876665c9624c1ad455df54415e4f"
+      },
+      "known_paths": [
+        "C:\\Users\\toti\\.claude\\settings.json",
+        "C:\\Users\\toti\\.claude\\config.json",
+        "C:\\Users\\toti\\.claude.json"
+      ]
+    }
+  },
+  "next_prompt": "原版小软件在当前文件夹的reference里。请分析并复刻一个界面和功能一样、能实际使用的版本。我不懂技术，需要我提供什么就直接告诉我。",
+  "not_started": [
+    "No model invocation",
+    "No Spec project initialization",
+    "No reverse case",
+    "No candidate outputs"
+  ],
+  "completion_conditions": [
+    "Actual Claude loads project entry using its current account/model",
+    "Ordinary prompt leads through actual Reverse/REA/official Spec/native Craft",
+    "Independent original/candidate behavior and UI comparison, wrong candidate rejection and delivered package checks",
+    "Native cleanup and observer finish; actual final reply; configuration unchanged"
+  ],
+  "remaining_external_action": "Human signs in to Claude Code. Do not change provider/model, copy credentials, or mark runtime acceptance passed."
+}
