@@ -1,0 +1,15 @@
+[package]
+name = "reverse-fusion-craft-mcp"
+version = "0.1.0"
+edition = "2024"
+license = "MIT"
+publish = false
+
+[workspace]
+
+[dependencies]
+craft-anything-engine = { path = "../../vendor/craft/upstream/crates/engine" }
+craft-anything-mcp = { path = "../../vendor/craft/upstream/crates/mcp" }
+
+[profile.dev]
+debug = 0

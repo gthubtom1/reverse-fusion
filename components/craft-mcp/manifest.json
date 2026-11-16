@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "adapter_version": "0.1.0",
+  "upstream": {
+    "repository": "https://github.com/storytold/craft-anything.git",
+    "commit": "8374ad71544f2cc44698ea74ef990aa31600bac6",
+    "version": "0.6.1"
+  },
+  "platforms": {
+    "windows-x64": {
+      "local_path": "vendor/craft/mcp/windows-x64/reverse-fusion-craft-mcp.exe",
+      "binary_sha256": "29446e499d7656c2645f596b40c876ef6a879cb2f7f8b2f7250b756be3dc307f",
+      "archive_url": "https://github.com/gthubtom1/reverse-fusion/releases/download/craft-mcp-v0.1.0-rf35/craft-mcp-windows-x64.zip",
+      "archive_sha256": "4378ddd7ede53ea0324b214604864070e8fae1c0918dbd0d815b309067012d04",
+      "notices_sha256": "bfc949d2b7b5af4431b65780031b464d7d7453efd95ea04a3591c0794d0d5ac7",
+      "dependency_notices_sha256": "b7ee783e5bdd104e31e9db8b0cbbdc4e1ecd01bb9a180aaa9393cb74952c5a21"
+    }
+  },
+  "protocol": {
+    "transport": "stdio",
+    "entry": "original craft-anything-mcp serve_stdio",
+    "arguments": [
+      "--all-tools",
+      "--deep-mode",
+      "--allow-run",
+      "--state-dir",
+      "<absolute checkout-owned state directory>"
+    ],
+    "model": "none; current host owns reasoning",
+    "allow_run": "explicit --allow-run delegates consent to the external host; absent flag retains upstream refusal",
+    "deep_mode": "--deep-mode is current-process only, without global settings mutation",
+    "auto_mode": false
+  },
+  "patches": [
+    {
+      "path": "components/craft-native/patches/0001-windows-quoted-command-tail.patch",
+      "sha256": "1bf216cdebb83f928f0f0059b52ed33c5206adb749937880e8cfe76f858f7585",
+      "reason": "Reuse the pinned native managed Windows command-tail fix; preserve process ownership and cleanup."
+    }
+  ],
+  "patched_files": {
+    "crates/platform/src/process.rs": "17c64d43c4a450e89f5095f9cc8ce18498d79a114a8dc51ee518cb16a86ca4c4",
+    "crates/engine/src/tools/build_tools.rs": "5a4eb3191d3f74171d81cdd7545d126d08aed3f7ae8406c88e36e4bb935d7ba0"
+  },
+  "patched_files_hash_mode": "UTF-8 LF-normalized content",
+  "adapter_source_sha256": {
+    "components/craft-mcp/src/main.rs": "cf309e72538d66caf708ef5fbe1c60727832a670ffc6be534be71e1debd23a3a",
+    "components/craft-mcp/Cargo.toml": "a81b00a4ea8b503122ec308d6e3557e8680d0bf6b5d00d61d8ef5892e51320e7",
+    "components/craft-mcp/Cargo.lock": "d59fd27b58fa7e7a07fb038a85e663472e6e66b3e1febba620a83f1e265aae50"
+  },
+  "qualification": "Full original MCP transport/catalog/runtime qualification recorded separately; binary version alone is not target acceptance."
+}
