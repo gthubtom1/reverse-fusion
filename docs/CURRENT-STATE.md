@@ -1,5 +1,12 @@
 # Current State
 
+Latest user decision (2026-11-16): defer Claude work and assess the delivered
+Codex aggregation. Claude model-use qualification is a retained follow-up,
+not a blocker for the current agreed delivery. Current Codex implementation,
+local deployment, source-bound checks and real natural full-chain use are
+completed at the stated Windows scope; Pi use is also qualified. No universal
+future-target success or zero-defect guarantee is implied. See RF-33checkpoint.
+
 Current stage: RF-33 /1.2.0, Windows x64 with Codex deployed. The former missing
 natural full-chain use is now completed: an ordinary request in a new external
 chat independently led to Reverse/actual REA/official Spec/native Craft,
@@ -33,8 +40,8 @@ not inferred from this Windows qualification. Historical13/8/1is superseded by
 the current observations, not deleted or changed retrospectively.
 
 Persistent task details: docs/REMAINING-PRODUCT-WORK.md and RF-33checkpoint.
-The only external action for remaining Claude use qualification is human login
-to that host. Do not resume old target cases or request additional samples.
+The external action for future Claude use qualification is human login
+to that host; the user has now deferred it. Do not resume old target cases or request additional samples.
 Final publication and remote identity are recorded in the RF-33checkpoint.
 
 ## Installed RF-31 baseline (historical closure, not the active task)
