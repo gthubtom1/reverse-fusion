@@ -1,0 +1,10 @@
+{
+  "status": "pass",
+  "server_ready": true,
+  "served_exact_delivered_files": true,
+  "port_conflict_rejected": true,
+  "launch_mode": "delivered launch.py --no-browser; CMD wrapper separately inspected",
+  "python": "3.12.0",
+  "process_exited": true,
+  "port_closed": true
+}

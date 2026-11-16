@@ -145,7 +145,7 @@ class HandoffCheck:
         self.checked_files.add(artifact.relative_to(self.root).as_posix())
         return evidence_id
 
-    def check(self, manifest):
+    def check(self, manifest, selected_fr_ids=None):
         object_keys(manifest, ("manifest_version", "case_root", "context_refs", "feature_refs",
                                "bundle_refs", "requirements"), "manifest")
         if type(manifest["manifest_version"]) is not int or manifest["manifest_version"] != 1:
@@ -170,6 +170,9 @@ class HandoffCheck:
         spec_ids = set(FR_ID.findall(spec_path.read_text(encoding="utf-8-sig")))
         if not spec_ids:
             fail("fr.missing", "feature_refs.spec", "No native FR identifiers found in selected spec")
+        selected = spec_ids if selected_fr_ids is None else set(selected_fr_ids)
+        if not selected or not selected <= spec_ids:
+            fail('fr.batch', 'selected_fr_ids', 'Batch requirements must be a nonempty subset of the unchanged full spec')
         bundles = items(manifest["bundle_refs"], "bundle_refs", nonempty=True)
         for index, ref in enumerate(bundles):
             self.file_ref(ref, "bundle_refs[" + str(index) + "]")
@@ -207,16 +210,16 @@ class HandoffCheck:
                 unknown = self.json_ref({k: ref[k] for k in ("document_ref", "pointer")}, u_loc)
                 if not isinstance(unknown, dict) or not unknown:
                     fail("unknown.identity", u_loc, "Unknown pointer must select a nonempty source object")
-                if ref["critical"]:
+                if ref["critical"] and fr in selected:
                     fail("unknown.critical_open", u_loc, fr + " cites a declared unresolved critical unknown; return it to analysis")
-            review.append({"fr_id": fr, "source_kind": req["source_kind"],
+            review.append({"fr_id": fr, "source_kind": req["source_kind"], "selected_for_batch": fr in selected,
                            "required": "Review evidence support, unknown completeness, authority and current applicability"})
         if seen != spec_ids:
             fail("fr.unmapped", "requirements", "Missing FR mappings: " + ", ".join(sorted(spec_ids - seen)))
         return review
 
 
-def check_handoff(project_root, manifest_path):
+def check_handoff(project_root, manifest_path, selected_fr_ids=None):
     checker = None
     issues = []
     review = []
@@ -226,7 +229,7 @@ def check_handoff(project_root, manifest_path):
             fail("path.missing", "project_root", "Project root directory is missing")
         path = relative_file(root, manifest_path, "manifest")
         checker = HandoffCheck(root)
-        review = checker.check(load_json(path))
+        review = checker.check(load_json(path), selected_fr_ids=selected_fr_ids)
     except CheckError as exc:
         issues.append({"code": exc.code, "location": exc.location, "message": str(exc)})
     except (OSError, ValueError, RuntimeError, RecursionError) as exc:
@@ -236,6 +239,7 @@ def check_handoff(project_root, manifest_path):
             "authorization": "not_assessed", "issues": issues,
             "checked_files": sorted(checker.checked_files) if checker else [],
             "semantic_review_required": review,
+            "deferred_requirements": [item['fr_id'] for item in review if not item['selected_for_batch']],
             "limitations": ["SHA-256 checks fixity against supplied commitments, not authenticity or freshness of the selected version.",
                             "Source classifications and unknown lists require independent review; omitted or misclassified unknowns are not discovered.",
                             "No REA schema validation, Evidence authentication, proof applicability or semantic closure is performed.",

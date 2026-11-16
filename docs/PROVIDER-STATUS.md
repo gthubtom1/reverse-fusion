@@ -1,5 +1,15 @@
 # Provider and host status
 
+Current RF-33 adds actual natural full-chain Codex owned-app qualification and
+project-local Pi/Claude adapters plus actual official three-host Spec layouts.
+Codex run completed full analysis/spec/native implementation/comparison/fix/
+delivery in26.2minutes. Actual Windows PE debugger-effect and protocol/HAR
+qualifications supplement the bounded domain matrix. Pi analysis and native
+implementation/packaging are observed; final resumed-run qualification stays in
+RF-33 checkpoint. Claude current auth status loggedIn=false; project code and
+official layout tests do not imply logged-in runtime success. Old probe rows
+below remain historical; do not use them instead of current scoped records.
+
 RF-27 initial machine observation (2026-11-16): REA was not installed, PATH Node
 was v24.20.0 (below the pin), and `specify` was absent. During the isolated live
 test, maintenance discovered the desktop-bundled Node v24.22.1, integrity-checked

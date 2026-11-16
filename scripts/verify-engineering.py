@@ -23,7 +23,11 @@ if 'abort' not in capabilities['capabilities']:
 report = {'schema_version': 1, 'scope': 'finite Windows x64/Codex repository checks; no user target',
           'environment': {'platform': platform.system(), 'python': platform.python_version()},
           'native_capabilities': capabilities, 'suites': {}}
-output = root / 'evidence/rf31'
+release = json.loads((root / 'release/manifest.json').read_text(encoding='utf-8'))
+relative_output = release.get('engineering_evidence_directory', 'evidence/rf31')
+output = (root / relative_output).resolve()
+if not output.is_relative_to(root / 'evidence'):
+    raise SystemExit('Engineering logs must stay in the repository evidence directory')
 output.mkdir(parents=True, exist_ok=True)
 success = True
 for name, directory in (('product', 'tests'), ('reconstruction', 'skills/reconstruction/tests')):
@@ -35,7 +39,8 @@ for name, directory in (('product', 'tests'), ('reconstruction', 'skills/reconst
     match = re.search(r'Ran (\d+) tests?', text)
     skipped = len(re.findall(r'\.\.\. skipped ', text))
     result = {'returncode': run.returncode, 'tests_run': int(match[1]) if match else 0,
-              'skipped': skipped, 'log_sha256': sha256(log).hexdigest()}
+              'skipped': skipped, 'log_sha256': sha256(log).hexdigest(),
+              'log_path': f'{relative_output}/{name}-tests.txt'}
     report['suites'][name] = result
     print(json.dumps({name: result}), flush=True)
     success &= run.returncode == 0 and result['tests_run'] > 0 and skipped == 0

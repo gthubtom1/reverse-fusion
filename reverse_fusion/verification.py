@@ -6,9 +6,14 @@ from pathlib import Path
 
 def engineering_inputs(root: Path) -> dict:
     paths = [root / name for name in ('VERSION', 'pyproject.toml', 'SOURCE-MANIFEST.json', 'release/manifest.json')]
+    if (root / '.gitattributes').is_file():paths.append(root / '.gitattributes')
+    for name in ('skills/reconstruction/scripts/check_handoff.py', 'skills/scripts/case-init.ps1'):
+        if (root / name).is_file():paths.append(root / name)
     for directory in ('reverse_fusion', 'tests', 'scripts', 'components'):
         paths += [path for path in (root / directory).rglob('*') if path.is_file()
                   and '__pycache__' not in path.parts]
+    paths += [path for path in (root / 'fixtures').rglob('*') if path.is_file()
+              and not any(part in {'bin','obj','build','__pycache__'} for part in path.relative_to(root/'fixtures').parts)]
     return {path.relative_to(root).as_posix(): sha256(path.read_bytes().replace(b'\r\n', b'\n')).hexdigest()
             for path in sorted(paths)}
 
@@ -26,7 +31,9 @@ def verification_status(root: Path) -> dict:
         for name, suite in suites.items():
             if suite['returncode'] != 0 or suite['tests_run'] < 1 or suite['skipped'] != 0:
                 raise ValueError(f'Engineering suite not fully executed: {name}')
-            log = root / 'evidence/rf31' / f'{name}-tests.txt'
+            log = (root / suite.get('log_path', f'evidence/rf31/{name}-tests.txt')).resolve()
+            if not log.is_relative_to(root / 'evidence'):
+                raise ValueError('Engineering log path leaves the repository evidence directory')
             if sha256(log.read_bytes()).hexdigest() != suite['log_sha256']:
                 raise ValueError(f'Engineering log differs from recorded result: {name}')
         return {'status': 'pass', 'suites': {name: suite['tests_run'] for name, suite in suites.items()},

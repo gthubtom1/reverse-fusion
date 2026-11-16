@@ -1,0 +1,200 @@
+{
+  "history": [
+    {
+      "pointer": {
+        "carry_forward_refs": [
+          "reverse-fusion.local-router",
+          "RULES.md",
+          "skills/reverse-engineering/SKILL.md",
+          "skills/reconstruction/SKILL.md"
+        ],
+        "case_root": "work\\current-case",
+        "decision_delta": [
+          "route resolved by local router",
+          "Current request: 原版小软件在 D:\\Project\\reverse\\fixtures\\desk-original。请先复制到当前文件夹，再分析并复刻一个界面和功能一样、能实际使用的版本。我不懂技术，需要我提供什么就直接告诉我。"
+        ],
+        "mode": "analysis",
+        "primary": "components/reverse-core/routes/R0.md",
+        "route_owner": "reverse-fusion.local-router",
+        "route_source": "local",
+        "workflow": {
+          "activation_required": [
+            "REA original Evidence",
+            "selected domain skill"
+          ],
+          "business_acceptance_boundary": [
+            "analysis conclusions require Evidence links",
+            "no candidate equivalence claim"
+          ],
+          "mode": "analysis",
+          "next_stage": {
+            "activation": "explicit-second-stage",
+            "hint": "reconstruction stage for the reviewed target behavior",
+            "id": "R46",
+            "label": "Evidence-driven reconstruction / verification",
+            "missing_support": [],
+            "required_reads": [
+              "RULES.md",
+              "skills/reconstruction/SKILL.md"
+            ],
+            "skill": "skills/reconstruction/SKILL.md",
+            "skill_available": true
+          },
+          "objective": "reconstruction",
+          "primary_route": "components/reverse-core/routes/R0.md",
+          "related_routes": [
+            {
+              "activation": "explicit-secondary-route",
+              "descriptor": "components/reverse-core/routes/R46.md",
+              "hard_target": false,
+              "id": "R46",
+              "label": "Evidence-driven reconstruction / verification",
+              "missing_support": [],
+              "required_reads": [
+                "RULES.md",
+                "skills/reconstruction/SKILL.md"
+              ],
+              "skill": "skills/reconstruction/SKILL.md",
+              "skill_available": true
+            }
+          ],
+          "required_artifacts": [
+            "original-evidence",
+            "observations",
+            "unknowns",
+            "limitations",
+            "conclusion"
+          ],
+          "schema_version": 1,
+          "stage": "analysis",
+          "user_request": "原版小软件在 D:\\Project\\reverse\\fixtures\\desk-original。请先复制到当前文件夹，再分析并复刻一个界面和功能一样、能实际使用的版本。我不懂技术，需要我提供什么就直接告诉我。"
+        }
+      },
+      "revision": 1
+    },
+    {
+      "pointer": {
+        "carry_forward_refs": [
+          "reverse-fusion.local-router",
+          "RULES.md",
+          "skills/reverse-engineering/SKILL.md",
+          "skills/reconstruction/SKILL.md",
+          "skills/js-reverse/SKILL.md"
+        ],
+        "case_root": "work\\current-case",
+        "decision_delta": [
+          "route resolved by local router",
+          "Current request: JavaScript browser ES modules HTML localStorage application; analyze validation, persistence, UI, sorting, search for faithful independent reconstruction"
+        ],
+        "mode": "analysis",
+        "primary": "components/reverse-core/routes/R3.md",
+        "route_owner": "reverse-fusion.local-router",
+        "route_source": "local",
+        "workflow": {
+          "activation_required": [
+            "REA original Evidence",
+            "selected domain skill"
+          ],
+          "business_acceptance_boundary": [
+            "analysis conclusions require Evidence links",
+            "no candidate equivalence claim"
+          ],
+          "mode": "analysis",
+          "next_stage": {
+            "activation": "explicit-second-stage",
+            "hint": "reconstruction stage for the reviewed target behavior",
+            "id": "R46",
+            "label": "Evidence-driven reconstruction / verification",
+            "missing_support": [],
+            "required_reads": [
+              "RULES.md",
+              "skills/reconstruction/SKILL.md"
+            ],
+            "skill": "skills/reconstruction/SKILL.md",
+            "skill_available": true
+          },
+          "objective": "reconstruction",
+          "primary_route": "components/reverse-core/routes/R3.md",
+          "related_routes": [
+            {
+              "activation": "explicit-secondary-route",
+              "descriptor": "components/reverse-core/routes/R46.md",
+              "hard_target": false,
+              "id": "R46",
+              "label": "Evidence-driven reconstruction / verification",
+              "missing_support": [],
+              "required_reads": [
+                "RULES.md",
+                "skills/reconstruction/SKILL.md"
+              ],
+              "skill": "skills/reconstruction/SKILL.md",
+              "skill_available": true
+            }
+          ],
+          "required_artifacts": [
+            "original-evidence",
+            "observations",
+            "unknowns",
+            "limitations",
+            "conclusion"
+          ],
+          "schema_version": 1,
+          "stage": "analysis",
+          "user_request": "原版小软件在 D:\\Project\\reverse\\fixtures\\desk-original。请先复制到当前文件夹，再分析并复刻一个界面和功能一样、能实际使用的版本。我不懂技术，需要我提供什么就直接告诉我。"
+        }
+      },
+      "revision": 2
+    }
+  ],
+  "pointer": {
+    "carry_forward_refs": [
+      "reverse-fusion.local-router",
+      "RULES.md",
+      "skills/reverse-engineering/SKILL.md",
+      "skills/reconstruction/SKILL.md",
+      "skills/js-reverse/SKILL.md"
+    ],
+    "case_root": "work\\current-case",
+    "decision_delta": [
+      "route resolved by local router",
+      "Current request: Reviewed full local 标签收纳盒 behavior; independently reconstruct all UI, operations and persistence"
+    ],
+    "mode": "reconstruction",
+    "primary": "components/reverse-core/routes/R46.md",
+    "route_owner": "reverse-fusion.local-router",
+    "route_source": "local",
+    "workflow": {
+      "activation_required": [
+        "REA original Evidence",
+        "official Spec Kit project workflow",
+        "native Craft engine via current-host reasoning",
+        "independent acceptance"
+      ],
+      "business_acceptance_boundary": [
+        "candidate is bounded by frozen tasks",
+        "pass/fail/unknown/blocked/unsupported remain distinct"
+      ],
+      "mode": "reconstruction",
+      "next_stage": null,
+      "objective": "reconstruction",
+      "primary_route": "components/reverse-core/routes/R46.md",
+      "related_routes": [],
+      "required_artifacts": [
+        "original-evidence",
+        "frozen-spec-tasks",
+        "candidate",
+        "build-run",
+        "comparison",
+        "proof",
+        "obligation-ledger",
+        "cleanup"
+      ],
+      "schema_version": 1,
+      "stage": "reconstruction",
+      "user_request": "原版小软件在 D:\\Project\\reverse\\fixtures\\desk-original。请先复制到当前文件夹，再分析并复刻一个界面和功能一样、能实际使用的版本。我不懂技术，需要我提供什么就直接告诉我。"
+    }
+  },
+  "revision": 3,
+  "schema_version": 1,
+  "status": "open"
+}

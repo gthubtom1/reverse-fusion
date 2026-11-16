@@ -1,6 +1,6 @@
 # Project Context
 
-当前交付为1.1.1 Windows x64/Codex工程版，当前阶段RF-31；按用户新指示，不再要求追加样本
+当前交付为1.2.0 Windows x64/Codex工程版，当前阶段RF-33；按用户新指示，不再要求追加样本
 或实际软件复刻作为发布前提。工程功能、组件部署、异常恢复与有限检查完成后交付。
 具体目标的结果另有自身验收。当前合同见RELEASE-1.1.md与release/manifest.json。
 完整需求、未完成工作顺序及逐项完成条件见COMPLETION-PLAN.md；RF-31补齐正式中止、

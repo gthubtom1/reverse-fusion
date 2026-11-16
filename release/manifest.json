@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "version": "1.1.1",
+  "version": "1.2.0",
   "edition": "windows-x64-codex",
   "target_execution_required": false,
   "requirements": [
@@ -22,7 +22,10 @@
         "vendor/node/manifest.json",
         "reverse_fusion/runtime.py",
         "scripts/bootstrap-rea.ps1",
-        "scripts/run-rea-doctor.ps1"
+        "scripts/run-rea-doctor.ps1",
+        "reverse_fusion/rea_runner.py",
+        "tests/test_rea_runner.py",
+        "docs/BOUNDED-REA.md"
       ]
     },
     {
@@ -32,7 +35,9 @@
         "vendor/spec-kit/manifest.json",
         "scripts/bootstrap-spec.ps1",
         "skills/reconstruction/references/spec-kit-workflow.md",
-        "reverse_fusion/craft_native.py"
+        "reverse_fusion/craft_native.py",
+        "reverse_fusion/spec_support.py",
+        "tests/test_host_projects.py"
       ]
     },
     {
@@ -62,7 +67,11 @@
         "skills/reconstruction/references/differential-validation.md",
         "scripts/compare-js-exports.mjs",
         "reverse_fusion/adapters.py",
-        "docs/AGENT-WORKFLOW.md"
+        "docs/AGENT-WORKFLOW.md",
+        "reverse_fusion/differential.py",
+        "reverse_fusion/owned_process.py",
+        "tests/test_differential.py",
+        "scripts/qualify-desk-ui.cjs"
       ]
     },
     {
@@ -75,7 +84,9 @@
         "reverse_fusion/verification.py",
         "scripts/verify-engineering.py",
         "tests/test_verification.py",
-        "docs/COMPLETION-PLAN.md"
+        "docs/COMPLETION-PLAN.md",
+        "reverse_fusion/project_adapter.py",
+        "docs/HOST-PROJECT-CONNECTION.md"
       ]
     },
     {
@@ -156,6 +167,33 @@
     [
       "release-check",
       "--deployed"
+    ],
+    [
+      "connect",
+      "--client",
+      "pi"
+    ],
+    [
+      "connect",
+      "--client",
+      "claude"
+    ],
+    [
+      "compare",
+      "--plan",
+      "plan.json",
+      "--output",
+      "new-run"
+    ],
+    [
+      "rea-run",
+      "--operation",
+      "inspect-artifact",
+      "--args-file",
+      "args.json",
+      "--output",
+      "new-run"
     ]
-  ]
+  ],
+  "engineering_evidence_directory": "evidence/rf33"
 }

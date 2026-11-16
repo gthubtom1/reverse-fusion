@@ -10,6 +10,7 @@ import time
 import os
 
 from .session_builder import _inside, prepare_session
+from .spec_support import generated_workflow
 
 
 TOOL_ROOT = Path(__file__).resolve().parents[1]
@@ -40,9 +41,10 @@ def _spec_implementation_refs(project: Path, task_files: list[str]) -> list[str]
     # The official command can persist feature.json; freeze its final state below.
     refs = ['.specify/integration.json', '.specify/feature.json', '.specify/memory/constitution.md',
             f'{feature}/spec.md', f'{feature}/plan.md', f'{feature}/tasks.md']
-    refs += [path.relative_to(project).as_posix() for path in (project / '.agents/skills').glob('speckit-*/SKILL.md')]
-    if not refs[6:]:
-        raise ValueError('Official generated Spec skills are missing; initialize the outcome project')
+    generated = generated_workflow(project)
+    if generated['status'] != 'available':
+        raise ValueError(f"Official generated Spec workflow is incomplete: {generated['missing_phases']}")
+    refs += generated['refs']
     for name in refs:
         if not _inside(project, name).read_bytes().strip():
             raise ValueError(f'Official Spec input is empty: {name}')
@@ -127,7 +129,8 @@ def prepare_native(project: Path, *, lease: str, workspace: str, receipt: str,
                    tasks: list[str], task_files: list[str], research_files: list[str],
                    allowed_outputs: list[str], check_commands: list[str],
                    command_timeout_seconds: int = 60, case_root: str | None = None,
-                   handoff_manifest: str | None = None, review_file: str | None = None) -> dict:
+                   handoff_manifest: str | None = None, review_file: str | None = None,
+                   requirements: list[str] | None = None) -> dict:
     project = project.resolve()
     native_binary()  # Fail before creating task state when the component is absent.
     if not check_commands or not 1 <= command_timeout_seconds <= 600:
@@ -159,7 +162,8 @@ def prepare_native(project: Path, *, lease: str, workspace: str, receipt: str,
         observer = prepare_session(project, workspace=configuration['workspace'], receipt=configuration['receipt'],
                                    tasks=tasks, task_files=task_files, research_files=[*research_files, *spec_refs, lease],
                                    allowed_outputs=['craft.json', *allowed_outputs], case_root=case_root,
-                                   handoff_manifest=handoff_manifest, review_file=review_file, native_lease=lease)
+                                   handoff_manifest=handoff_manifest, review_file=review_file, native_lease=lease,
+                                   requirements=requirements)
     except (ValueError, OSError):
         lease_path.unlink()  # Only the new file owned by this failed prepare.
         raise

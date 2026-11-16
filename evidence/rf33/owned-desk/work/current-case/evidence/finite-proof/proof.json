@@ -1,0 +1,148 @@
+{
+  "ok": true,
+  "data": {
+    "evidence_id": "ev_3424e8aca8e9d305e45c8f9fda8fb170802bba12452a0dc0d8af9c4bc45bd15c",
+    "subject": null,
+    "provider": {
+      "id": "reverse-fusion-desk-verifier",
+      "name": "Reverse Fusion finite desk application replay verifier",
+      "version": "1"
+    },
+    "analysis_profile": null,
+    "predicate_type": "rea.reconstruction-proof",
+    "operation": "verify_reconstruction_obligations",
+    "parameters": {
+      "obligation_id": "desk-declared-replay",
+      "fixture_id": "desk-finite-cases",
+      "verifier_id": "desk-node-chrome",
+      "original_sha256": "ddf8609a5fbb3e194d3973228da56771c6c3c03329166f0e5a95e29e1e94b9f2",
+      "candidate_sha256": "f4a3352a68bc801b05dd1e8623f72913017bf987f86bb5b2ba8ed56d9a9b68f4",
+      "verifier_sha256": "cfcc2a1cd998c695fe841acd8e66df7282a3f27893dbedce2c9ee5514e388c0b",
+      "comparator_sha256": "0342346a759e2c4b3e59462c015204d12d2061016c02972f7502a3acf66e447b",
+      "browser_scenario_sha256": "a18391ab523fc3853751295afc662f23e2edeb99411825ce7186586c7aa23d0e",
+      "all_original_file_hashes": {
+        "core.mjs": "ddf8609a5fbb3e194d3973228da56771c6c3c03329166f0e5a95e29e1e94b9f2",
+        "index.html": "fe8bb33fe756982f3bbaae9745716d896f7c81e9104f1327266c84a1975e6832",
+        "page.mjs": "83f93826a55b128f7c711ebc7052455330896b29d3553c895b1ac39433d92c63",
+        "README.txt": "abb9dd6c8bdd460a293e321a9c0d23361f11352b8396b5471b0a525ea3efc66e"
+      },
+      "all_candidate_file_hashes": {
+        "core.mjs": "f4a3352a68bc801b05dd1e8623f72913017bf987f86bb5b2ba8ed56d9a9b68f4",
+        "page.mjs": "32b1a634db8cb0d125a88611f410a04c6a8d9eaa2f02609209cbdc4730d8ee67",
+        "index.html": "2433f2705cda219fb865f70242fa2d320a6864e6ae0572af4e1b3599503bd761",
+        "launch.py": "84f4d12957b6b7c0483406f1dd184cf919c632c7fb133da68be66ae6f54c30de",
+        "启动.cmd": "72a29110cdd9937ea2b835e68d3cff9077bbc5a0610c00a44911bd8fc368b400",
+        "使用说明.txt": "473dad0c43ce68823276895a58143b73c33216dbff0f71075359bb23aeee3aa1"
+      }
+    },
+    "raw_result": {
+      "replay": {
+        "status": "pass",
+        "checks": 1416,
+        "coreTraces": [
+          {
+            "seed": 20261116,
+            "operations": 600,
+            "traceSha256": "06abe0e234cf88e7358ac7d7d501b7cdce280cd60e61d616b90b4e8078dd05aa"
+          },
+          {
+            "seed": 4138721,
+            "operations": 600,
+            "traceSha256": "917b9f9deed213947e00513c9ffd94c6c8bbd6d2fa18a4435a4b29400f84db4d"
+          }
+        ],
+        "browserCheckpoints": 21,
+        "screenshots": [
+          {
+            "name": "empty",
+            "sha256": "1918dacfbcd6e4a09e872a46fc18e2c889bef0d46a1176b6789fb600b3d0dfb7",
+            "equal": true
+          },
+          {
+            "name": "populated",
+            "sha256": "64ac334ce9bcca88c9c4a2d87606099f77b571a562d420dc8bb4ee1a943857b0",
+            "equal": true
+          },
+          {
+            "name": "mobile",
+            "sha256": "175c7846b0cb2e37eeec4aa6d56a715173e8c8c9f8dac442dffeea96ac928955",
+            "equal": true
+          }
+        ],
+        "wrongCandidateRejected": true,
+        "files": {
+          "core.mjs": "f4a3352a68bc801b05dd1e8623f72913017bf987f86bb5b2ba8ed56d9a9b68f4",
+          "page.mjs": "32b1a634db8cb0d125a88611f410a04c6a8d9eaa2f02609209cbdc4730d8ee67",
+          "index.html": "2433f2705cda219fb865f70242fa2d320a6864e6ae0572af4e1b3599503bd761",
+          "launch.py": "84f4d12957b6b7c0483406f1dd184cf919c632c7fb133da68be66ae6f54c30de",
+          "启动.cmd": "72a29110cdd9937ea2b835e68d3cff9077bbc5a0610c00a44911bd8fc368b400",
+          "使用说明.txt": "473dad0c43ce68823276895a58143b73c33216dbff0f71075359bb23aeee3aa1"
+        },
+        "limitations": [
+          "Finite declared input/operation coverage; not a universal equivalence proof.",
+          "Same-machine installed Chrome visual comparison."
+        ],
+        "cleanup": "Both owned browser contexts and browsers closed; loopback servers closed in finally."
+      },
+      "launcher": {
+        "status": "pass",
+        "server_ready": true,
+        "served_exact_delivered_files": true,
+        "port_conflict_rejected": true,
+        "launch_mode": "delivered launch.py --no-browser; CMD wrapper separately inspected",
+        "python": "3.12.0",
+        "process_exited": true,
+        "port_closed": true
+      }
+    },
+    "normalized_result": {
+      "bindings": [
+        {
+          "obligation_id": "desk-declared-replay",
+          "obligation_version": 1,
+          "owner_sha256": "ddf8609a5fbb3e194d3973228da56771c6c3c03329166f0e5a95e29e1e94b9f2",
+          "fixtures": [
+            {
+              "fixture_id": "desk-finite-positive",
+              "case_kind": "positive",
+              "passed": true
+            },
+            {
+              "fixture_id": "desk-finite-negative",
+              "case_kind": "negative",
+              "passed": true
+            },
+            {
+              "fixture_id": "desk-finite-malformed",
+              "case_kind": "malformed",
+              "passed": true
+            }
+          ],
+          "verifiers": [
+            {
+              "verifier_id": "desk-node-chrome",
+              "claim_id": "desk-declared-replay",
+              "passed": true
+            }
+          ]
+        }
+      ]
+    },
+    "confidence": "observed",
+    "authority": "controlled-replay",
+    "environment": null,
+    "limitations": [
+      "Artifact identity is unavailable for this observation.",
+      "Repository-owned integration proof of declared finite cases only; not native REA browser/process verification and not universal equivalence.",
+      "Full original static application ledger and conservative unknowns remain archived unchanged.",
+      "Screenshots cover this installed Chrome at declared desktop/mobile viewports.",
+      "Launcher Python path tested with --no-browser; CMD wrapper inspected separately."
+    ],
+    "relationship_coverage": null,
+    "locations": [],
+    "evidence_links": [
+      "ev_0dffba4e1769cfff5f3a03c321820d36a93d595c72e174a62e820645288e0db9",
+      "ev_12dc3d36657599f705334dcd36aeabe89ab506869dc3d6f3c475b2eb39440762"
+    ]
+  }
+}

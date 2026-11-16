@@ -1,0 +1,11 @@
+{
+  "scope": "independent held UI verifier for owned-material qualification only",
+  "verifier_sha256": "2c1dac38fad7aebe6485c71a6cba28208604a6d4b3dfd2b680b47b6c16b9e3a7",
+  "created_before_reviewing_candidate_implementation": true,
+  "negative_control": "wrong quantity aggregation in a copied reference; copied reference used only for verifier self-check, never claimed as independent reconstruction",
+  "self_check": {
+    "copied_reference": "pass at desktop/mobile",
+    "wrong_quantity_mutant": "fail at desktop/mobile"
+  },
+  "candidate_source_reviewed_before_commitment": false
+}

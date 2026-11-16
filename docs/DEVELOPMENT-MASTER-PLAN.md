@@ -1,5 +1,12 @@
 # Development Plan
 
+RF-33 is the active original-product continuation, not another installation
+closure. docs/REMAINING-PRODUCT-WORK.md and RF-33checkpoint define current work.
+Natural full Codex owned-app chain now completed; implement and qualify shared
+execution/dependency/host/performance repairs, retain Claude login boundary,
+then synchronize1.2.0. Historical sample-dependent plans below do not restart
+old real targets or require additional user material.
+
 RF-31 supersedes RF-30's closure after deeper implementation review. Read
 COMPLETION-PLAN.md and checkpoints/RF-31-20261116-001.md for task order,
 acceptance conditions and one next action. Repair failure exits and install

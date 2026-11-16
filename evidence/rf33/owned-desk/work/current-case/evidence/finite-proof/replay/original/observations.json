@@ -1,0 +1,376 @@
+{
+  "trace": [
+    {
+      "name": "empty",
+      "title": "标签收纳盒",
+      "rows": [],
+      "error": "",
+      "summary": "0 项 · 共 0 件",
+      "empty": "还没有条目，先添加一个吧。",
+      "emptyHidden": false,
+      "nameValue": "",
+      "tagValue": "",
+      "quantityValue": "1",
+      "focused": "",
+      "storage": null
+    },
+    {
+      "name": "blank-name",
+      "title": "标签收纳盒",
+      "rows": [],
+      "error": "请填写名称",
+      "summary": "0 项 · 共 0 件",
+      "empty": "还没有条目，先添加一个吧。",
+      "emptyHidden": false,
+      "nameValue": "",
+      "tagValue": "",
+      "quantityValue": "1",
+      "focused": "",
+      "storage": null
+    },
+    {
+      "name": "long-name",
+      "title": "标签收纳盒",
+      "rows": [],
+      "error": "名称最多32个字符",
+      "summary": "0 项 · 共 0 件",
+      "empty": "还没有条目，先添加一个吧。",
+      "emptyHidden": false,
+      "nameValue": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "tagValue": "",
+      "quantityValue": "1",
+      "focused": "",
+      "storage": null
+    },
+    {
+      "name": "quantity-zero",
+      "title": "标签收纳盒",
+      "rows": [],
+      "error": "数量须为1至99的整数",
+      "summary": "0 项 · 共 0 件",
+      "empty": "还没有条目，先添加一个吧。",
+      "emptyHidden": false,
+      "nameValue": "纸巾",
+      "tagValue": "",
+      "quantityValue": "0",
+      "focused": "",
+      "storage": null
+    },
+    {
+      "name": "quantity-high",
+      "title": "标签收纳盒",
+      "rows": [],
+      "error": "数量须为1至99的整数",
+      "summary": "0 项 · 共 0 件",
+      "empty": "还没有条目，先添加一个吧。",
+      "emptyHidden": false,
+      "nameValue": "纸巾",
+      "tagValue": "",
+      "quantityValue": "100",
+      "focused": "",
+      "storage": null
+    },
+    {
+      "name": "native-fraction-block",
+      "title": "标签收纳盒",
+      "rows": [],
+      "error": "数量须为1至99的整数",
+      "summary": "0 项 · 共 0 件",
+      "empty": "还没有条目，先添加一个吧。",
+      "emptyHidden": false,
+      "nameValue": "纸巾",
+      "tagValue": "",
+      "quantityValue": "1.5",
+      "focused": "quantity",
+      "storage": null
+    },
+    {
+      "name": "first",
+      "title": "标签收纳盒",
+      "rows": [
+        "USB Cable电子3删除"
+      ],
+      "error": "",
+      "summary": "1 项 · 共 3 件",
+      "empty": "没有匹配的条目。",
+      "emptyHidden": true,
+      "nameValue": "",
+      "tagValue": "  电子  ",
+      "quantityValue": "3",
+      "focused": "name",
+      "storage": "{\"version\":1,\"next\":2,\"entries\":[{\"id\":1,\"name\":\"USB Cable\",\"tag\":\"电子\",\"quantity\":3}]}"
+    },
+    {
+      "name": "duplicate",
+      "title": "标签收纳盒",
+      "rows": [
+        "USB Cable电子3删除"
+      ],
+      "error": "该分类中已有同名条目",
+      "summary": "1 项 · 共 3 件",
+      "empty": "没有匹配的条目。",
+      "emptyHidden": true,
+      "nameValue": "usb cable",
+      "tagValue": "电子",
+      "quantityValue": "2",
+      "focused": "",
+      "storage": "{\"version\":1,\"next\":2,\"entries\":[{\"id\":1,\"name\":\"USB Cable\",\"tag\":\"电子\",\"quantity\":3}]}"
+    },
+    {
+      "name": "different-category",
+      "title": "标签收纳盒",
+      "rows": [
+        "usb cable其它99删除",
+        "USB Cable电子3删除"
+      ],
+      "error": "",
+      "summary": "2 项 · 共 102 件",
+      "empty": "没有匹配的条目。",
+      "emptyHidden": true,
+      "nameValue": "",
+      "tagValue": "其它",
+      "quantityValue": "99",
+      "focused": "name",
+      "storage": "{\"version\":1,\"next\":3,\"entries\":[{\"id\":1,\"name\":\"USB Cable\",\"tag\":\"电子\",\"quantity\":3},{\"id\":2,\"name\":\"usb cable\",\"tag\":\"其它\",\"quantity\":99}]}"
+    },
+    {
+      "name": "uncategorized",
+      "title": "标签收纳盒",
+      "rows": [
+        "笔记本未分类1删除",
+        "usb cable其它99删除",
+        "USB Cable电子3删除"
+      ],
+      "error": "",
+      "summary": "3 项 · 共 103 件",
+      "empty": "没有匹配的条目。",
+      "emptyHidden": true,
+      "nameValue": "",
+      "tagValue": "",
+      "quantityValue": "1",
+      "focused": "name",
+      "storage": "{\"version\":1,\"next\":4,\"entries\":[{\"id\":1,\"name\":\"USB Cable\",\"tag\":\"电子\",\"quantity\":3},{\"id\":2,\"name\":\"usb cable\",\"tag\":\"其它\",\"quantity\":99},{\"id\":3,\"name\":\"笔记本\",\"tag\":\"未分类\",\"quantity\":1}]}"
+    },
+    {
+      "name": "literal-html",
+      "title": "标签收纳盒",
+      "rows": [
+        "<img src=x onerror=alert(1)>安全2删除",
+        "笔记本未分类1删除",
+        "usb cable其它99删除",
+        "USB Cable电子3删除"
+      ],
+      "error": "",
+      "summary": "4 项 · 共 105 件",
+      "empty": "没有匹配的条目。",
+      "emptyHidden": true,
+      "nameValue": "",
+      "tagValue": "安全",
+      "quantityValue": "2",
+      "focused": "name",
+      "storage": "{\"version\":1,\"next\":5,\"entries\":[{\"id\":1,\"name\":\"USB Cable\",\"tag\":\"电子\",\"quantity\":3},{\"id\":2,\"name\":\"usb cable\",\"tag\":\"其它\",\"quantity\":99},{\"id\":3,\"name\":\"笔记本\",\"tag\":\"未分类\",\"quantity\":1},{\"id\":4,\"name\":\"<img src=x onerror=alert(1)>\",\"tag\":\"安全\",\"quantity\":2}]}"
+    },
+    {
+      "name": "search",
+      "title": "标签收纳盒",
+      "rows": [
+        "usb cable其它99删除",
+        "USB Cable电子3删除"
+      ],
+      "error": "",
+      "summary": "2 项 · 共 102 件",
+      "empty": "没有匹配的条目。",
+      "emptyHidden": true,
+      "nameValue": "",
+      "tagValue": "安全",
+      "quantityValue": "2",
+      "focused": "query",
+      "storage": "{\"version\":1,\"next\":5,\"entries\":[{\"id\":1,\"name\":\"USB Cable\",\"tag\":\"电子\",\"quantity\":3},{\"id\":2,\"name\":\"usb cable\",\"tag\":\"其它\",\"quantity\":99},{\"id\":3,\"name\":\"笔记本\",\"tag\":\"未分类\",\"quantity\":1},{\"id\":4,\"name\":\"<img src=x onerror=alert(1)>\",\"tag\":\"安全\",\"quantity\":2}]}"
+    },
+    {
+      "name": "category-search",
+      "title": "标签收纳盒",
+      "rows": [
+        "<img src=x onerror=alert(1)>安全2删除"
+      ],
+      "error": "",
+      "summary": "1 项 · 共 2 件",
+      "empty": "没有匹配的条目。",
+      "emptyHidden": true,
+      "nameValue": "",
+      "tagValue": "安全",
+      "quantityValue": "2",
+      "focused": "query",
+      "storage": "{\"version\":1,\"next\":5,\"entries\":[{\"id\":1,\"name\":\"USB Cable\",\"tag\":\"电子\",\"quantity\":3},{\"id\":2,\"name\":\"usb cable\",\"tag\":\"其它\",\"quantity\":99},{\"id\":3,\"name\":\"笔记本\",\"tag\":\"未分类\",\"quantity\":1},{\"id\":4,\"name\":\"<img src=x onerror=alert(1)>\",\"tag\":\"安全\",\"quantity\":2}]}"
+    },
+    {
+      "name": "no-match",
+      "title": "标签收纳盒",
+      "rows": [],
+      "error": "",
+      "summary": "0 项 · 共 0 件",
+      "empty": "没有匹配的条目。",
+      "emptyHidden": false,
+      "nameValue": "",
+      "tagValue": "安全",
+      "quantityValue": "2",
+      "focused": "query",
+      "storage": "{\"version\":1,\"next\":5,\"entries\":[{\"id\":1,\"name\":\"USB Cable\",\"tag\":\"电子\",\"quantity\":3},{\"id\":2,\"name\":\"usb cable\",\"tag\":\"其它\",\"quantity\":99},{\"id\":3,\"name\":\"笔记本\",\"tag\":\"未分类\",\"quantity\":1},{\"id\":4,\"name\":\"<img src=x onerror=alert(1)>\",\"tag\":\"安全\",\"quantity\":2}]}"
+    },
+    {
+      "name": "sort-name",
+      "title": "标签收纳盒",
+      "rows": [
+        "<img src=x onerror=alert(1)>安全2删除",
+        "笔记本未分类1删除",
+        "usb cable其它99删除",
+        "USB Cable电子3删除"
+      ],
+      "error": "",
+      "summary": "4 项 · 共 105 件",
+      "empty": "没有匹配的条目。",
+      "emptyHidden": true,
+      "nameValue": "",
+      "tagValue": "安全",
+      "quantityValue": "2",
+      "focused": "query",
+      "storage": "{\"version\":1,\"next\":5,\"entries\":[{\"id\":1,\"name\":\"USB Cable\",\"tag\":\"电子\",\"quantity\":3},{\"id\":2,\"name\":\"usb cable\",\"tag\":\"其它\",\"quantity\":99},{\"id\":3,\"name\":\"笔记本\",\"tag\":\"未分类\",\"quantity\":1},{\"id\":4,\"name\":\"<img src=x onerror=alert(1)>\",\"tag\":\"安全\",\"quantity\":2}]}"
+    },
+    {
+      "name": "reload",
+      "title": "标签收纳盒",
+      "rows": [
+        "<img src=x onerror=alert(1)>安全2删除",
+        "笔记本未分类1删除",
+        "usb cable其它99删除",
+        "USB Cable电子3删除"
+      ],
+      "error": "",
+      "summary": "4 项 · 共 105 件",
+      "empty": "没有匹配的条目。",
+      "emptyHidden": true,
+      "nameValue": "",
+      "tagValue": "",
+      "quantityValue": "1",
+      "focused": "",
+      "storage": "{\"version\":1,\"next\":5,\"entries\":[{\"id\":1,\"name\":\"USB Cable\",\"tag\":\"电子\",\"quantity\":3},{\"id\":2,\"name\":\"usb cable\",\"tag\":\"其它\",\"quantity\":99},{\"id\":3,\"name\":\"笔记本\",\"tag\":\"未分类\",\"quantity\":1},{\"id\":4,\"name\":\"<img src=x onerror=alert(1)>\",\"tag\":\"安全\",\"quantity\":2}]}"
+    },
+    {
+      "name": "remove",
+      "title": "标签收纳盒",
+      "rows": [
+        "笔记本未分类1删除",
+        "usb cable其它99删除",
+        "USB Cable电子3删除"
+      ],
+      "error": "",
+      "summary": "3 项 · 共 103 件",
+      "empty": "没有匹配的条目。",
+      "emptyHidden": true,
+      "nameValue": "",
+      "tagValue": "",
+      "quantityValue": "1",
+      "focused": "",
+      "storage": "{\"version\":1,\"next\":5,\"entries\":[{\"id\":1,\"name\":\"USB Cable\",\"tag\":\"电子\",\"quantity\":3},{\"id\":2,\"name\":\"usb cable\",\"tag\":\"其它\",\"quantity\":99},{\"id\":3,\"name\":\"笔记本\",\"tag\":\"未分类\",\"quantity\":1}]}"
+    },
+    {
+      "name": "clear-cancel",
+      "title": "标签收纳盒",
+      "rows": [
+        "笔记本未分类1删除",
+        "usb cable其它99删除",
+        "USB Cable电子3删除"
+      ],
+      "error": "",
+      "summary": "3 项 · 共 103 件",
+      "empty": "没有匹配的条目。",
+      "emptyHidden": true,
+      "nameValue": "",
+      "tagValue": "",
+      "quantityValue": "1",
+      "focused": "clear",
+      "storage": "{\"version\":1,\"next\":5,\"entries\":[{\"id\":1,\"name\":\"USB Cable\",\"tag\":\"电子\",\"quantity\":3},{\"id\":2,\"name\":\"usb cable\",\"tag\":\"其它\",\"quantity\":99},{\"id\":3,\"name\":\"笔记本\",\"tag\":\"未分类\",\"quantity\":1}]}"
+    },
+    {
+      "name": "clear-confirm",
+      "title": "标签收纳盒",
+      "rows": [],
+      "error": "",
+      "summary": "0 项 · 共 0 件",
+      "empty": "还没有条目，先添加一个吧。",
+      "emptyHidden": false,
+      "nameValue": "",
+      "tagValue": "",
+      "quantityValue": "1",
+      "focused": "clear",
+      "storage": "{\"version\":1,\"next\":1,\"entries\":[]}"
+    },
+    {
+      "name": "corrupt-storage",
+      "title": "标签收纳盒",
+      "rows": [],
+      "error": "",
+      "summary": "0 项 · 共 0 件",
+      "empty": "还没有条目，先添加一个吧。",
+      "emptyHidden": false,
+      "nameValue": "",
+      "tagValue": "",
+      "quantityValue": "1",
+      "focused": "",
+      "storage": "broken"
+    },
+    {
+      "name": "storage-failure",
+      "title": "标签收纳盒",
+      "rows": [],
+      "error": "test storage denied",
+      "summary": "0 项 · 共 0 件",
+      "empty": "还没有条目，先添加一个吧。",
+      "emptyHidden": false,
+      "nameValue": "无法保存",
+      "tagValue": "",
+      "quantityValue": "1",
+      "focused": "",
+      "storage": "broken"
+    }
+  ],
+  "errors": [],
+  "mobileMetrics": {
+    "main": {
+      "x": 12,
+      "y": 12,
+      "width": 366,
+      "height": 680
+    },
+    "h1": {
+      "x": 31,
+      "y": 31,
+      "width": 328,
+      "height": 42
+    },
+    "form": {
+      "x": 31,
+      "y": 161,
+      "width": 328,
+      "height": 158
+    },
+    ".toolbar": {
+      "x": 31,
+      "y": 391,
+      "width": 328,
+      "height": 73
+    },
+    "table": {
+      "x": 31,
+      "y": 488,
+      "width": 328,
+      "height": 49
+    },
+    "footer": {
+      "x": 31,
+      "y": 629,
+      "width": 328,
+      "height": 44
+    }
+  }
+}

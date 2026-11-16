@@ -1,0 +1,61 @@
+{
+  "scope": "owned Windows PE/debugger-effect finite qualification only",
+  "normal_comparison": "pass",
+  "actual_debugger_observations": [
+    {
+      "side": "guarded",
+      "actual_os_debugger_attached": true,
+      "events": [
+        3,
+        6,
+        2,
+        6,
+        6,
+        6,
+        2,
+        1,
+        6,
+        6,
+        6,
+        4,
+        4,
+        5
+      ],
+      "exit_code": 9,
+      "stdout": "observer-blocked\r\n",
+      "stderr": ""
+    },
+    {
+      "side": "candidate",
+      "actual_os_debugger_attached": true,
+      "events": [
+        3,
+        6,
+        2,
+        6,
+        6,
+        6,
+        2,
+        1,
+        1,
+        4,
+        6,
+        6,
+        6,
+        4,
+        5
+      ],
+      "exit_code": 9,
+      "stdout": "observer-blocked\r\n",
+      "stderr": ""
+    }
+  ],
+  "rea_execution": "returned",
+  "status": "pass",
+  "next_method": "Record observer influence and use static/unobserved facts; do not mistake debug-triggered early exit for absent behavior.",
+  "not_claimed": [
+    "unpacking arbitrary protectors",
+    "all anti-debug bypass",
+    "full arbitrary native source recovery"
+  ]
+}

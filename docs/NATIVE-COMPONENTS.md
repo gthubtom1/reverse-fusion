@@ -49,6 +49,13 @@ constitution 和生成的技能；这一机械门不能证明需求语义充分�
 交接仍使用原 case-review、handoff checker 和语义审查；冻结 Spec 任务、原版身份、
 研究、检查命令及租约。所有路径都属于当前成果项目，技能正文属于共享工具 checkout。
 
+同一完整feature中仅部分功能的依赖已满足时，可在语义审查明确独立性后，为prepare
+重复传`--requirement FR-001`等选择本批需求。选中task的唯一任务行必须显式写出
+对应FR编号，不能引用未选需求；每个选中FR都要映射选中task。完整spec与handoff
+所有引用仍检查和冻结，其他需求保存在`handoff.deferred_requirements`，不会删除。
+关键unknown仍阻断受影响的选中需求；默认不选子集时保持全量阻断。依赖独立性
+本身仍由真实调查和语义审查判断，不能靠重新标号隐藏远程/授权依赖或取消原目标。
+
 ```text
 [python] -m reverse_fusion native-craft prepare --project-root "[成果项目]" --lease work/case/native-lease.json --workspace work/case/craft --receipt work/case/session.json --case-root work/case --handoff-manifest work/case/notes/handoff-manifest.json --review-file work/case/notes/semantic-review.md --tasks T001 --task-file specs/feature/tasks.md --research-file work/case/research.json --allowed-output app/main.ext --check-command "[已审查的构建或测试命令]" --command-timeout 60
 [python] -m reverse_fusion native-craft build --project-root "[成果项目]" --lease work/case/native-lease.json --params-file work/case/write-request.json

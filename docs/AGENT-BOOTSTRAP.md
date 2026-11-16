@@ -1,6 +1,6 @@
 # Reverse Fusion 宿主自动部署契约
 
-1.1.1 当前完整交付为 Windows x64 + Codex。无需用户提供真实样本来完成工程安装；
+1.2.0 当前完整交付为 Windows x64 + Codex。无需用户提供真实样本来完成工程安装；
 不要为完成安装新开目标对话或启动未知程序。其他宿主/平台的旧发现入口不等于完整
 分发支持。组件和本地回归检查与软件业务验收分开，发布依据见 RELEASE-1.1.md。
 安装核心并更新全局入口后，用 `[venv-python] scripts/verify-engineering.py` 生成本机

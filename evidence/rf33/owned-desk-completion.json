@@ -1,0 +1,448 @@
+{
+  "schema_version": 1,
+  "scope": "uncoached ordinary-language full owned application use; finite observed input/UI/runtime scope",
+  "thread_id": "01a1e213-26d1-7e03-8231-e35d3c68b557",
+  "project_root": "C:\\Users\\toti\\Documents\\Codex\\2026-11-16\\reverse-fusion-owned-desk-use",
+  "prompt": "原版小软件在 D:\\Project\\reverse\\fixtures\\desk-original。请先复制到当前文件夹，再分析并复刻一个界面和功能一样、能实际使用的版本。我不懂技术，需要我提供什么就直接告诉我。",
+  "maintainer_followup_prompts": [],
+  "duration_seconds": 1569.728,
+  "components": {
+    "reverse": "global skill, recorded original objective, domain refinement",
+    "rea": "actual original static application analysis, imported canonical finite integration proof and actual ledger evaluation",
+    "spec": "actual official generated constitution/specify/clarify/plan/tasks/analyze/implement/converge and prerequisite scripts",
+    "craft": "actual pinned native write/edit/check/summary/cleanup in2frozen batches"
+  },
+  "sessions": {
+    "session.json": "finished",
+    "session-v2.json": "finished"
+  },
+  "native_operations": {
+    "native-lease.events.jsonl": [
+      {
+        "operation": "prepare",
+        "returncode": 0,
+        "check_succeeded": null
+      },
+      {
+        "operation": "build",
+        "returncode": 0,
+        "check_succeeded": null
+      },
+      {
+        "operation": "build",
+        "returncode": 0,
+        "check_succeeded": null
+      },
+      {
+        "operation": "build",
+        "returncode": 0,
+        "check_succeeded": null
+      },
+      {
+        "operation": "build",
+        "returncode": 0,
+        "check_succeeded": null
+      },
+      {
+        "operation": "build",
+        "returncode": 0,
+        "check_succeeded": null
+      },
+      {
+        "operation": "build",
+        "returncode": 0,
+        "check_succeeded": null
+      },
+      {
+        "operation": "check",
+        "returncode": 0,
+        "check_succeeded": true
+      },
+      {
+        "operation": "return_summary",
+        "returncode": 0,
+        "check_succeeded": null
+      },
+      {
+        "operation": "cleanup",
+        "returncode": 0,
+        "check_succeeded": null
+      }
+    ],
+    "native-lease-v2.events.jsonl": [
+      {
+        "operation": "prepare",
+        "returncode": 0,
+        "check_succeeded": null
+      },
+      {
+        "operation": "build",
+        "returncode": 0,
+        "check_succeeded": null
+      },
+      {
+        "operation": "build",
+        "returncode": 0,
+        "check_succeeded": null
+      },
+      {
+        "operation": "build",
+        "returncode": 0,
+        "check_succeeded": null
+      },
+      {
+        "operation": "build",
+        "returncode": 0,
+        "check_succeeded": null
+      },
+      {
+        "operation": "build",
+        "returncode": 0,
+        "check_succeeded": null
+      },
+      {
+        "operation": "build",
+        "returncode": 0,
+        "check_succeeded": null
+      },
+      {
+        "operation": "check",
+        "returncode": 0,
+        "check_succeeded": true
+      },
+      {
+        "operation": "check",
+        "returncode": 0,
+        "check_succeeded": true
+      },
+      {
+        "operation": "return_summary",
+        "returncode": 0,
+        "check_succeeded": null
+      },
+      {
+        "operation": "cleanup",
+        "returncode": 0,
+        "check_succeeded": null
+      }
+    ]
+  },
+  "comparison": {
+    "status": "pass",
+    "checks": 1416,
+    "coreTraces": [
+      {
+        "seed": 20261116,
+        "operations": 600,
+        "traceSha256": "06abe0e234cf88e7358ac7d7d501b7cdce280cd60e61d616b90b4e8078dd05aa"
+      },
+      {
+        "seed": 4138721,
+        "operations": 600,
+        "traceSha256": "917b9f9deed213947e00513c9ffd94c6c8bbd6d2fa18a4435a4b29400f84db4d"
+      }
+    ],
+    "browserCheckpoints": 21,
+    "screenshots": [
+      {
+        "name": "empty",
+        "sha256": "1918dacfbcd6e4a09e872a46fc18e2c889bef0d46a1176b6789fb600b3d0dfb7",
+        "equal": true
+      },
+      {
+        "name": "populated",
+        "sha256": "64ac334ce9bcca88c9c4a2d87606099f77b571a562d420dc8bb4ee1a943857b0",
+        "equal": true
+      },
+      {
+        "name": "mobile",
+        "sha256": "175c7846b0cb2e37eeec4aa6d56a715173e8c8c9f8dac442dffeea96ac928955",
+        "equal": true
+      }
+    ],
+    "wrongCandidateRejected": true,
+    "files": {
+      "core.mjs": "f4a3352a68bc801b05dd1e8623f72913017bf987f86bb5b2ba8ed56d9a9b68f4",
+      "page.mjs": "32b1a634db8cb0d125a88611f410a04c6a8d9eaa2f02609209cbdc4730d8ee67",
+      "index.html": "2433f2705cda219fb865f70242fa2d320a6864e6ae0572af4e1b3599503bd761",
+      "launch.py": "84f4d12957b6b7c0483406f1dd184cf919c632c7fb133da68be66ae6f54c30de",
+      "启动.cmd": "72a29110cdd9937ea2b835e68d3cff9077bbc5a0610c00a44911bd8fc368b400",
+      "使用说明.txt": "473dad0c43ce68823276895a58143b73c33216dbff0f71075359bb23aeee3aa1"
+    },
+    "limitations": [
+      "Finite declared input/operation coverage; not a universal equivalence proof.",
+      "Same-machine installed Chrome visual comparison."
+    ],
+    "cleanup": "Both owned browser contexts and browsers closed; loopback servers closed in finally."
+  },
+  "original_target": "repository-owned local web app; no user sample, account or remote service",
+  "remaining_boundaries": [
+    "finite browser/operation coverage, not all future inputs or protectors",
+    "static semantic unknowns retained",
+    "integration verifier is owned, not native Windows PTY proof",
+    "no OS isolation proof from a new folder alone"
+  ],
+  "archived_raw_files": [
+    {
+      "path": "work/current-case/case.json",
+      "sha256": "5712eb6a5e326c2a2bc16921e8b86889ffa965fed1955a14e35688906013abca",
+      "bytes": 7774
+    },
+    {
+      "path": "work/current-case/scope.md",
+      "sha256": "55aba78a7831acaf4c5b4c90008fb3f759e75f94bfb5dce4a0cb34696c2a40bf",
+      "bytes": 874
+    },
+    {
+      "path": "work/current-case/timeline.md",
+      "sha256": "b27442d36d57c22c137013a4f0bb87827e163ae4e8482f26fe1829e93576cdc2",
+      "bytes": 4319
+    },
+    {
+      "path": "work/current-case/workitems.md",
+      "sha256": "66fc62adf4dd4b518558392bccbdb9ad4622a442e2ee9d9aa7fc8fd708163e49",
+      "bytes": 788
+    },
+    {
+      "path": "work/current-case/session.json",
+      "sha256": "9c54e239804a7578dfab486296cbf9e19dc86f327d03e144c7b7ae2155750cad",
+      "bytes": 9910
+    },
+    {
+      "path": "work/current-case/session-v2.json",
+      "sha256": "2845b26bdf1ad28f62016e593551907af40f71a14d29939b8ed7bfb0aae4f7ff",
+      "bytes": 10177
+    },
+    {
+      "path": "work/current-case/native-lease.json",
+      "sha256": "f35486f93b9feef4c269f9e53bba65bffe418b21ac056d04a108f3c71b732bbe",
+      "bytes": 584
+    },
+    {
+      "path": "work/current-case/native-lease-v2.json",
+      "sha256": "f7de8ce550d2c16daf6daeab3617651a5a6c33fb19222463e37c8f15d334c46f",
+      "bytes": 746
+    },
+    {
+      "path": "work/current-case/native-lease.events.jsonl",
+      "sha256": "b6c52e70a5843e52c9c41ae968ba373896d8d625e1bba707dfd169df1ff7e0f0",
+      "bytes": 7843
+    },
+    {
+      "path": "work/current-case/native-lease-v2.events.jsonl",
+      "sha256": "faaed1980f1308e9cc3bf3add4c92db2cb9c32481805931306e74bbba897ce98",
+      "bytes": 8810
+    },
+    {
+      "path": "work/current-case/notes/behavior-review.md",
+      "sha256": "0adb2453e5f6f2726916da483863429d213ec129a89e16bfc81f3cc7449bfa3b",
+      "bytes": 1376
+    },
+    {
+      "path": "work/current-case/notes/case-review.json",
+      "sha256": "a260be17b91668c6099ee8e7670027b194b48ef992df6b55d0104fffbf7c520e",
+      "bytes": 878
+    },
+    {
+      "path": "work/current-case/report/final.md",
+      "sha256": "0d397421f57c1f8d2bdb971a35e635ea34bb0f3573c268b8ebddc7c256fa6349",
+      "bytes": 2304
+    },
+    {
+      "path": "work/current-case/evidence/original-bundle.json",
+      "sha256": "3b5a9c0da860412ecc81c2ec68df1abd74531b378d1f8a2b42cad648d1c48905",
+      "bytes": 1385316
+    },
+    {
+      "path": "work/current-case/evidence/differential/result.json",
+      "sha256": "8a781a4c06861b7bf8f645b0702e8811868848708c53aeec1abd80d96a0fbd02",
+      "bytes": 1669
+    },
+    {
+      "path": "work/current-case/evidence/finite-proof/ledger.json",
+      "sha256": "799c92e10012a04f107d67a21784a252383e86a6db00a1b251673720ed8bd71e",
+      "bytes": 5991
+    },
+    {
+      "path": "work/current-case/evidence/launcher-smoke.json",
+      "sha256": "5ea5f8a0607f8c74d200e0e837c67277f3976790f8e766d8a84b180e82ba02e7",
+      "bytes": 287
+    },
+    {
+      "path": "specs/001-desk-recreation/spec.md",
+      "sha256": "1fce08d490c959fe56c12b11ef6153d8834dc7eef388d1c2152073094459e67d",
+      "bytes": 7573
+    },
+    {
+      "path": "specs/001-desk-recreation/plan.md",
+      "sha256": "b217d00fa61c632a9de842b9cc5ef28d8f865ef2cec7b082805e750e1227c06f",
+      "bytes": 3428
+    },
+    {
+      "path": "specs/001-desk-recreation/tasks.md",
+      "sha256": "72e51dbb58ab86d71efbdb4e0f686e1683ee17a123f69083fef91ff69ad44e19",
+      "bytes": 5080
+    },
+    {
+      "path": "work/implement-prerequisites.json",
+      "sha256": "512f2411e845972cf425096b738b14d3584fd7c3403fb482b8db2e814a5214f2",
+      "bytes": 213
+    },
+    {
+      "path": "work/converge-prerequisites.json",
+      "sha256": "512f2411e845972cf425096b738b14d3584fd7c3403fb482b8db2e814a5214f2",
+      "bytes": 213
+    },
+    {
+      "path": ".specify/integration.json",
+      "sha256": "b38e1c60fa754384871a974c9427e29df3095e3190c0a75293e733c3814c1e70",
+      "bytes": 386
+    },
+    {
+      "path": "outputs/交付与验证说明.txt",
+      "sha256": "57c5a3acaf60d311656936fec8667c580972f4d9d05610e7d88f4b85c302cd0a",
+      "bytes": 2248
+    },
+    {
+      "path": "outputs/标签收纳盒/core.mjs",
+      "sha256": "f4a3352a68bc801b05dd1e8623f72913017bf987f86bb5b2ba8ed56d9a9b68f4",
+      "bytes": 2765
+    },
+    {
+      "path": "outputs/标签收纳盒/index.html",
+      "sha256": "2433f2705cda219fb865f70242fa2d320a6864e6ae0572af4e1b3599503bd761",
+      "bytes": 2586
+    },
+    {
+      "path": "outputs/标签收纳盒/launch.py",
+      "sha256": "84f4d12957b6b7c0483406f1dd184cf919c632c7fb133da68be66ae6f54c30de",
+      "bytes": 2033
+    },
+    {
+      "path": "outputs/标签收纳盒/page.mjs",
+      "sha256": "32b1a634db8cb0d125a88611f410a04c6a8d9eaa2f02609209cbdc4730d8ee67",
+      "bytes": 2229
+    },
+    {
+      "path": "outputs/标签收纳盒/使用说明.txt",
+      "sha256": "473dad0c43ce68823276895a58143b73c33216dbff0f71075359bb23aeee3aa1",
+      "bytes": 1808
+    },
+    {
+      "path": "outputs/标签收纳盒/启动.cmd",
+      "sha256": "72a29110cdd9937ea2b835e68d3cff9077bbc5a0610c00a44911bd8fc368b400",
+      "bytes": 498
+    },
+    {
+      "path": "work/current-case/evidence/browser-original/empty.png",
+      "sha256": "1918dacfbcd6e4a09e872a46fc18e2c889bef0d46a1176b6789fb600b3d0dfb7",
+      "bytes": 30588
+    },
+    {
+      "path": "work/current-case/evidence/browser-original/mobile.png",
+      "sha256": "175c7846b0cb2e37eeec4aa6d56a715173e8c8c9f8dac442dffeea96ac928955",
+      "bytes": 26667
+    },
+    {
+      "path": "work/current-case/evidence/browser-original/observations.json",
+      "sha256": "170e9347c832498a47e62aaf02705724f49414be9ad19068ede9ab16e119392f",
+      "bytes": 12513
+    },
+    {
+      "path": "work/current-case/evidence/browser-original/populated.png",
+      "sha256": "64ac334ce9bcca88c9c4a2d87606099f77b571a562d420dc8bb4ee1a943857b0",
+      "bytes": 39960
+    },
+    {
+      "path": "work/current-case/evidence/finite-proof/bundle.json",
+      "sha256": "d0640bfd976dd96d62a938c2941eb282afee7111b717dbce4a0c8a9ebe3f5ffe",
+      "bytes": 13881
+    },
+    {
+      "path": "work/current-case/evidence/finite-proof/candidate-inventory.json",
+      "sha256": "c9f82f0b0a3069cf5f4388d081471dfadc2cc8c78123a7104f113dfc09bfd08e",
+      "bytes": 6854
+    },
+    {
+      "path": "work/current-case/evidence/finite-proof/ledger-input.json",
+      "sha256": "bd11f6b38a450d2fff9092702e0de8842899f5a5c045aa545c65878c2d194cd9",
+      "bytes": 18461
+    },
+    {
+      "path": "work/current-case/evidence/finite-proof/original-inventory.json",
+      "sha256": "45572a85a96fb9ad62c8996077a93f4fab2af16a10d0d9d01400af1ec83a1ee8",
+      "bytes": 6810
+    },
+    {
+      "path": "work/current-case/evidence/finite-proof/proof.json",
+      "sha256": "5b21e505a266719254169c25c12902d90772455a6dc8e791d75c794ef976bb62",
+      "bytes": 6196
+    },
+    {
+      "path": "work/current-case/evidence/finite-proof/replay-output.txt",
+      "sha256": "6d33096dff23657de0569a50a6999a4ce16591fed9699d7a7d1b9bd10204cf4f",
+      "bytes": 1405
+    },
+    {
+      "path": "work/current-case/evidence/finite-proof/replay/result.json",
+      "sha256": "8a781a4c06861b7bf8f645b0702e8811868848708c53aeec1abd80d96a0fbd02",
+      "bytes": 1669
+    },
+    {
+      "path": "work/current-case/evidence/finite-proof/replay/candidate/empty.png",
+      "sha256": "1918dacfbcd6e4a09e872a46fc18e2c889bef0d46a1176b6789fb600b3d0dfb7",
+      "bytes": 30588
+    },
+    {
+      "path": "work/current-case/evidence/finite-proof/replay/candidate/mobile.png",
+      "sha256": "175c7846b0cb2e37eeec4aa6d56a715173e8c8c9f8dac442dffeea96ac928955",
+      "bytes": 26667
+    },
+    {
+      "path": "work/current-case/evidence/finite-proof/replay/candidate/observations.json",
+      "sha256": "170e9347c832498a47e62aaf02705724f49414be9ad19068ede9ab16e119392f",
+      "bytes": 12513
+    },
+    {
+      "path": "work/current-case/evidence/finite-proof/replay/candidate/populated.png",
+      "sha256": "64ac334ce9bcca88c9c4a2d87606099f77b571a562d420dc8bb4ee1a943857b0",
+      "bytes": 39960
+    },
+    {
+      "path": "work/current-case/evidence/finite-proof/replay/original/empty.png",
+      "sha256": "1918dacfbcd6e4a09e872a46fc18e2c889bef0d46a1176b6789fb600b3d0dfb7",
+      "bytes": 30588
+    },
+    {
+      "path": "work/current-case/evidence/finite-proof/replay/original/mobile.png",
+      "sha256": "175c7846b0cb2e37eeec4aa6d56a715173e8c8c9f8dac442dffeea96ac928955",
+      "bytes": 26667
+    },
+    {
+      "path": "work/current-case/evidence/finite-proof/replay/original/observations.json",
+      "sha256": "170e9347c832498a47e62aaf02705724f49414be9ad19068ede9ab16e119392f",
+      "bytes": 12513
+    },
+    {
+      "path": "work/current-case/evidence/finite-proof/replay/original/populated.png",
+      "sha256": "64ac334ce9bcca88c9c4a2d87606099f77b571a562d420dc8bb4ee1a943857b0",
+      "bytes": 39960
+    },
+    {
+      "path": "work/compare.mjs",
+      "sha256": "0342346a759e2c4b3e59462c015204d12d2061016c02972f7502a3acf66e447b",
+      "bytes": 7508
+    },
+    {
+      "path": "work/launcher-smoke.py",
+      "sha256": "d92c5e217a1eaf2eaf29366936f1bd13bcb93d5b3bf432bbc30cb5aa0681bdb0",
+      "bytes": 2231
+    },
+    {
+      "path": "work/finite-proof.mjs",
+      "sha256": "cfcc2a1cd998c695fe841acd8e66df7282a3f27893dbedce2c9ee5514e388c0b",
+      "bytes": 6161
+    }
+  ],
+  "archive_policy": "exact original bytes, original paths/IDs not normalized; copies are evidence snapshots, not live resumable receipts"
+}

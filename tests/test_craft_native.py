@@ -122,6 +122,39 @@ class NativeCraftTests(unittest.TestCase):
                 research_files=['research.json'], allowed_outputs=['app/main.py'], check_commands=[self.command])
         self.assertFalse((self.project / 'new').exists())
 
+    def test_binary_patch_and_hybrid_delivery_use_native_commands_and_preserve_original(self):
+        # Owned inert binary fixture, not third-party licensing/patch evidence.
+        original = b'RF-OWNED\x00MODE=OLD\x00\xff\x80'
+        (self.project / 'original.bin').write_bytes(original)
+        (self.project / 'research.json').write_text(json.dumps({
+            'scope': 'owned delivery transport; change MODE=OLD to MODE=NEW only',
+            'original_hex': original.hex(), 'approved_bytes': [original.index(b'OLD'), 3]}), encoding='utf-8')
+        (self.project / 'tasks.md').write_text('T001 prepare verified patch and hybrid wrapper from owned fixture', encoding='utf-8')
+        self.command = f'"{sys.executable}" build_delivery.py'
+        self.prepare(extra_outputs=['app/build_delivery.py', 'app/patched.bin', 'app/hybrid.py'])
+        script = ('from pathlib import Path\n'
+            f'original=bytes.fromhex("{original.hex()}")\n'
+            'assert original.count(b"MODE=OLD")==1\n'
+            'patched=original.replace(b"MODE=OLD",b"MODE=NEW")\n'
+            'Path("patched.bin").write_bytes(patched)\n'
+            'Path("hybrid.py").write_text("from pathlib import Path\\nprint(Path(__file__).with_name(\'patched.bin\').read_bytes().hex())\\n",encoding="utf-8")\n'
+            'assert len(original)==len(patched)\n'
+            'assert sum(a!=b for a,b in zip(original,patched))==3\n'
+            'print("owned binary patch and wrapper verified")\n')
+        self.call('build', path='app/main.py', content='# owned transport test; no arbitrary reconstruction claim\n')
+        self.call('build', path='app/build_delivery.py', content=script)
+        self.call('check', command=self.command, timeout_secs=10)
+        result = self.call('cleanup')
+        self.assertEqual(result['data']['status'], 'candidate')
+        self.assertEqual((self.project / 'original.bin').read_bytes(), original)
+        patched = self.project / 'native/workspace/app/patched.bin'
+        self.assertEqual(patched.read_bytes(), original.replace(b'OLD', b'NEW'))
+        wrapper = subprocess.run([sys.executable, str(patched.with_name('hybrid.py'))], capture_output=True, timeout=5)
+        self.assertEqual(wrapper.stdout.strip().decode(), patched.read_bytes().hex())
+        for phase in ('check', 'refine', 'finish'):
+            checked = check_session(self.project, receipt='native/session.json', phase=phase)
+        self.assertEqual(checked['phase'], 'finish')
+
     def test_timeout_stops_owned_descendant_and_serializes_writers(self):
         self.prepare(timeout=2, extra_outputs=['app/owned-child.pid'])
         code = ('import subprocess,sys,time\nfrom pathlib import Path\n'

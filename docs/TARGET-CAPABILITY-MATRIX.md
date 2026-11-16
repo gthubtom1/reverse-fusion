@@ -1,5 +1,13 @@
 # Target capability matrix
 
+RF-33 current additions: actual ordinary-language full owned Web application
+delivery, real PE normal/OS-debug-attached finite observations, protocol/device/
+expiry/offline/cancellation state replay and real HTTP200/400/404HAR inspected by
+officialREA. Records:evidence/rf33/owned-desk-completion.json,
+native-qualification.json and protocol-qualification.json. The older table below
+is historical family qualification; its planned protocol/native rows are
+supplemented by these current finite runs, not converted into every-provider pass.
+
 Reverse Fusion does not need to execute every future target in advance. It
 defines the route, evidence contract and variant-handling path for each target
 family; representative fixtures validate that the shared pipeline is wired

@@ -1,0 +1,9 @@
+{
+  "scope": "actual Pi project loading and plain analysis only",
+  "status": "observed",
+  "prompt": "\u5148\u5206\u6790\u8fd9\u4e2a\u6587\u4ef6\u5939\u91cc\u7684\u5c0f\u8f6f\u4ef6\uff0c\u544a\u8bc9\u6211\u5b83\u6709\u4ec0\u4e48\u529f\u80fd\uff0c\u6682\u65f6\u4e0d\u8981\u5199\u590d\u523b\u7248\u3002",
+  "project_adapter": ".pi/skills/reverse-fusion/SKILL.md and AGENTS.md",
+  "final_assistant_observed": true,
+  "case_recorded": true,
+  "whole_reconstruction": "not-performed"
+}

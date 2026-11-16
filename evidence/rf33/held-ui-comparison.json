@@ -1,0 +1,802 @@
+{
+  "scope": "owned desk app finite UI behavior and exact screenshot comparison; no arbitrary target claim",
+  "verifierSha256": "2c1dac38fad7aebe6485c71a6cba28208604a6d4b3dfd2b680b47b6c16b9e3a7",
+  "sources": {
+    "original": [
+      {
+        "path": "core.mjs",
+        "sha256": "ddf8609a5fbb3e194d3973228da56771c6c3c03329166f0e5a95e29e1e94b9f2"
+      },
+      {
+        "path": "index.html",
+        "sha256": "fe8bb33fe756982f3bbaae9745716d896f7c81e9104f1327266c84a1975e6832"
+      },
+      {
+        "path": "page.mjs",
+        "sha256": "83f93826a55b128f7c711ebc7052455330896b29d3553c895b1ac39433d92c63"
+      }
+    ],
+    "candidate": [
+      {
+        "path": "core.mjs",
+        "sha256": "f4a3352a68bc801b05dd1e8623f72913017bf987f86bb5b2ba8ed56d9a9b68f4"
+      },
+      {
+        "path": "index.html",
+        "sha256": "2433f2705cda219fb865f70242fa2d320a6864e6ae0572af4e1b3599503bd761"
+      },
+      {
+        "path": "page.mjs",
+        "sha256": "32b1a634db8cb0d125a88611f410a04c6a8d9eaa2f02609209cbdc4730d8ee67"
+      }
+    ]
+  },
+  "inputFixity": true,
+  "status": "pass",
+  "measurements": [
+    {
+      "viewport": {
+        "width": 1100,
+        "height": 850
+      },
+      "behavior": "pass",
+      "emptyVisual": {
+        "status": "pass",
+        "differingPixels": 0,
+        "pixels": 935000
+      },
+      "finalVisual": {
+        "status": "pass",
+        "differingPixels": 0,
+        "pixels": 935000
+      },
+      "left": {
+        "states": [
+          {
+            "name": "empty",
+            "rows": [],
+            "alerts": [
+              ""
+            ],
+            "body": "标签收纳盒\n\n把零散物品放进分类，数量与清单只保存在当前浏览器。\n\n名称\n分类\n数量\n添加条目\n搜索名称或分类\n排序\n最近添加\n按名称\n名称\t分类\t数量\t操作\n还没有条目，先添加一个吧。\n0 项 · 共 0 件\n清空全部",
+            "horizontalOverflow": false
+          },
+          {
+            "name": "trimmed-name",
+            "rows": [
+              "灯具办公3删除"
+            ],
+            "alerts": [
+              ""
+            ],
+            "body": "标签收纳盒\n\n把零散物品放进分类，数量与清单只保存在当前浏览器。\n\n名称\n分类\n数量\n添加条目\n搜索名称或分类\n排序\n最近添加\n按名称\n名称\t分类\t数量\t操作\n灯具\t办公\t3\t删除\n1 项 · 共 3 件\n清空全部",
+            "horizontalOverflow": false
+          },
+          {
+            "name": "case-insensitive-duplicate",
+            "rows": [
+              "Screw工具2删除",
+              "灯具办公3删除"
+            ],
+            "alerts": [
+              "该分类中已有同名条目"
+            ],
+            "body": "标签收纳盒\n\n把零散物品放进分类，数量与清单只保存在当前浏览器。\n\n名称\n分类\n数量\n添加条目\n该分类中已有同名条目\n搜索名称或分类\n排序\n最近添加\n按名称\n名称\t分类\t数量\t操作\nScrew\t工具\t2\t删除\n灯具\t办公\t3\t删除\n2 项 · 共 5 件\n清空全部",
+            "horizontalOverflow": false
+          },
+          {
+            "name": "literal-html",
+            "rows": [
+              "<img src=x onerror=window.bad=1>未分类1删除",
+              "Screw备件4删除",
+              "Screw工具2删除",
+              "灯具办公3删除"
+            ],
+            "alerts": [
+              ""
+            ],
+            "body": "标签收纳盒\n\n把零散物品放进分类，数量与清单只保存在当前浏览器。\n\n名称\n分类\n数量\n添加条目\n搜索名称或分类\n排序\n最近添加\n按名称\n名称\t分类\t数量\t操作\n<img src=x onerror=window.bad=1>\t未分类\t1\t删除\nScrew\t备件\t4\t删除\nScrew\t工具\t2\t删除\n灯具\t办公\t3\t删除\n4 项 · 共 10 件\n清空全部",
+            "horizontalOverflow": false
+          },
+          {
+            "name": "blank-error",
+            "rows": [
+              "<img src=x onerror=window.bad=1>未分类1删除",
+              "Screw备件4删除",
+              "Screw工具2删除",
+              "灯具办公3删除"
+            ],
+            "alerts": [
+              "请填写名称"
+            ],
+            "body": "标签收纳盒\n\n把零散物品放进分类，数量与清单只保存在当前浏览器。\n\n名称\n分类\n数量\n添加条目\n请填写名称\n搜索名称或分类\n排序\n最近添加\n按名称\n名称\t分类\t数量\t操作\n<img src=x onerror=window.bad=1>\t未分类\t1\t删除\nScrew\t备件\t4\t删除\nScrew\t工具\t2\t删除\n灯具\t办公\t3\t删除\n4 项 · 共 10 件\n清空全部",
+            "horizontalOverflow": false
+          },
+          {
+            "name": "out-of-range-error",
+            "rows": [
+              "<img src=x onerror=window.bad=1>未分类1删除",
+              "Screw备件4删除",
+              "Screw工具2删除",
+              "灯具办公3删除"
+            ],
+            "alerts": [
+              "数量须为1至99的整数"
+            ],
+            "body": "标签收纳盒\n\n把零散物品放进分类，数量与清单只保存在当前浏览器。\n\n名称\n分类\n数量\n添加条目\n数量须为1至99的整数\n搜索名称或分类\n排序\n最近添加\n按名称\n名称\t分类\t数量\t操作\n<img src=x onerror=window.bad=1>\t未分类\t1\t删除\nScrew\t备件\t4\t删除\nScrew\t工具\t2\t删除\n灯具\t办公\t3\t删除\n4 项 · 共 10 件\n清空全部",
+            "horizontalOverflow": false
+          },
+          {
+            "name": "filtered-summary",
+            "rows": [
+              "Screw备件4删除",
+              "Screw工具2删除"
+            ],
+            "alerts": [
+              "数量须为1至99的整数"
+            ],
+            "body": "标签收纳盒\n\n把零散物品放进分类，数量与清单只保存在当前浏览器。\n\n名称\n分类\n数量\n添加条目\n数量须为1至99的整数\n搜索名称或分类\n排序\n最近添加\n按名称\n名称\t分类\t数量\t操作\nScrew\t备件\t4\t删除\nScrew\t工具\t2\t删除\n2 项 · 共 6 件\n清空全部",
+            "horizontalOverflow": false
+          },
+          {
+            "name": "no-matches",
+            "rows": [],
+            "alerts": [
+              "数量须为1至99的整数"
+            ],
+            "body": "标签收纳盒\n\n把零散物品放进分类，数量与清单只保存在当前浏览器。\n\n名称\n分类\n数量\n添加条目\n数量须为1至99的整数\n搜索名称或分类\n排序\n最近添加\n按名称\n名称\t分类\t数量\t操作\n没有匹配的条目。\n0 项 · 共 0 件\n清空全部",
+            "horizontalOverflow": false
+          },
+          {
+            "name": "name-order",
+            "rows": [
+              "<img src=x onerror=window.bad=1>未分类1删除",
+              "灯具办公3删除",
+              "Screw工具2删除",
+              "Screw备件4删除"
+            ],
+            "alerts": [
+              "数量须为1至99的整数"
+            ],
+            "body": "标签收纳盒\n\n把零散物品放进分类，数量与清单只保存在当前浏览器。\n\n名称\n分类\n数量\n添加条目\n数量须为1至99的整数\n搜索名称或分类\n排序\n最近添加\n按名称\n名称\t分类\t数量\t操作\n<img src=x onerror=window.bad=1>\t未分类\t1\t删除\n灯具\t办公\t3\t删除\nScrew\t工具\t2\t删除\nScrew\t备件\t4\t删除\n4 项 · 共 10 件\n清空全部",
+            "horizontalOverflow": false
+          },
+          {
+            "name": "persisted-on-reload",
+            "rows": [
+              "<img src=x onerror=window.bad=1>未分类1删除",
+              "Screw备件4删除",
+              "Screw工具2删除",
+              "灯具办公3删除"
+            ],
+            "alerts": [
+              ""
+            ],
+            "body": "标签收纳盒\n\n把零散物品放进分类，数量与清单只保存在当前浏览器。\n\n名称\n分类\n数量\n添加条目\n搜索名称或分类\n排序\n最近添加\n按名称\n名称\t分类\t数量\t操作\n<img src=x onerror=window.bad=1>\t未分类\t1\t删除\nScrew\t备件\t4\t删除\nScrew\t工具\t2\t删除\n灯具\t办公\t3\t删除\n4 项 · 共 10 件\n清空全部",
+            "horizontalOverflow": false
+          },
+          {
+            "name": "delete-one",
+            "rows": [
+              "Screw备件4删除",
+              "Screw工具2删除",
+              "灯具办公3删除"
+            ],
+            "alerts": [
+              ""
+            ],
+            "body": "标签收纳盒\n\n把零散物品放进分类，数量与清单只保存在当前浏览器。\n\n名称\n分类\n数量\n添加条目\n搜索名称或分类\n排序\n最近添加\n按名称\n名称\t分类\t数量\t操作\nScrew\t备件\t4\t删除\nScrew\t工具\t2\t删除\n灯具\t办公\t3\t删除\n3 项 · 共 9 件\n清空全部",
+            "horizontalOverflow": false
+          },
+          {
+            "name": "cancel-clear",
+            "rows": [
+              "Screw备件4删除",
+              "Screw工具2删除",
+              "灯具办公3删除"
+            ],
+            "alerts": [
+              ""
+            ],
+            "body": "标签收纳盒\n\n把零散物品放进分类，数量与清单只保存在当前浏览器。\n\n名称\n分类\n数量\n添加条目\n搜索名称或分类\n排序\n最近添加\n按名称\n名称\t分类\t数量\t操作\nScrew\t备件\t4\t删除\nScrew\t工具\t2\t删除\n灯具\t办公\t3\t删除\n3 项 · 共 9 件\n清空全部",
+            "horizontalOverflow": false
+          },
+          {
+            "name": "confirm-clear",
+            "rows": [],
+            "alerts": [
+              ""
+            ],
+            "body": "标签收纳盒\n\n把零散物品放进分类，数量与清单只保存在当前浏览器。\n\n名称\n分类\n数量\n添加条目\n搜索名称或分类\n排序\n最近添加\n按名称\n名称\t分类\t数量\t操作\n还没有条目，先添加一个吧。\n0 项 · 共 0 件\n清空全部",
+            "horizontalOverflow": false
+          },
+          {
+            "name": "persisted-clear",
+            "rows": [],
+            "alerts": [
+              ""
+            ],
+            "body": "标签收纳盒\n\n把零散物品放进分类，数量与清单只保存在当前浏览器。\n\n名称\n分类\n数量\n添加条目\n搜索名称或分类\n排序\n最近添加\n按名称\n名称\t分类\t数量\t操作\n还没有条目，先添加一个吧。\n0 项 · 共 0 件\n清空全部",
+            "horizontalOverflow": false
+          },
+          {
+            "name": "damaged-storage-recovery",
+            "rows": [],
+            "alerts": [
+              ""
+            ],
+            "body": "标签收纳盒\n\n把零散物品放进分类，数量与清单只保存在当前浏览器。\n\n名称\n分类\n数量\n添加条目\n搜索名称或分类\n排序\n最近添加\n按名称\n名称\t分类\t数量\t操作\n还没有条目，先添加一个吧。\n0 项 · 共 0 件\n清空全部",
+            "horizontalOverflow": false
+          }
+        ],
+        "errors": [],
+        "scriptExecutedFromItemName": false
+      },
+      "right": {
+        "states": [
+          {
+            "name": "empty",
+            "rows": [],
+            "alerts": [
+              ""
+            ],
+            "body": "标签收纳盒\n\n把零散物品放进分类，数量与清单只保存在当前浏览器。\n\n名称\n分类\n数量\n添加条目\n搜索名称或分类\n排序\n最近添加\n按名称\n名称\t分类\t数量\t操作\n还没有条目，先添加一个吧。\n0 项 · 共 0 件\n清空全部",
+            "horizontalOverflow": false
+          },
+          {
+            "name": "trimmed-name",
+            "rows": [
+              "灯具办公3删除"
+            ],
+            "alerts": [
+              ""
+            ],
+            "body": "标签收纳盒\n\n把零散物品放进分类，数量与清单只保存在当前浏览器。\n\n名称\n分类\n数量\n添加条目\n搜索名称或分类\n排序\n最近添加\n按名称\n名称\t分类\t数量\t操作\n灯具\t办公\t3\t删除\n1 项 · 共 3 件\n清空全部",
+            "horizontalOverflow": false
+          },
+          {
+            "name": "case-insensitive-duplicate",
+            "rows": [
+              "Screw工具2删除",
+              "灯具办公3删除"
+            ],
+            "alerts": [
+              "该分类中已有同名条目"
+            ],
+            "body": "标签收纳盒\n\n把零散物品放进分类，数量与清单只保存在当前浏览器。\n\n名称\n分类\n数量\n添加条目\n该分类中已有同名条目\n搜索名称或分类\n排序\n最近添加\n按名称\n名称\t分类\t数量\t操作\nScrew\t工具\t2\t删除\n灯具\t办公\t3\t删除\n2 项 · 共 5 件\n清空全部",
+            "horizontalOverflow": false
+          },
+          {
+            "name": "literal-html",
+            "rows": [
+              "<img src=x onerror=window.bad=1>未分类1删除",
+              "Screw备件4删除",
+              "Screw工具2删除",
+              "灯具办公3删除"
+            ],
+            "alerts": [
+              ""
+            ],
+            "body": "标签收纳盒\n\n把零散物品放进分类，数量与清单只保存在当前浏览器。\n\n名称\n分类\n数量\n添加条目\n搜索名称或分类\n排序\n最近添加\n按名称\n名称\t分类\t数量\t操作\n<img src=x onerror=window.bad=1>\t未分类\t1\t删除\nScrew\t备件\t4\t删除\nScrew\t工具\t2\t删除\n灯具\t办公\t3\t删除\n4 项 · 共 10 件\n清空全部",
+            "horizontalOverflow": false
+          },
+          {
+            "name": "blank-error",
+            "rows": [
+              "<img src=x onerror=window.bad=1>未分类1删除",
+              "Screw备件4删除",
+              "Screw工具2删除",
+              "灯具办公3删除"
+            ],
+            "alerts": [
+              "请填写名称"
+            ],
+            "body": "标签收纳盒\n\n把零散物品放进分类，数量与清单只保存在当前浏览器。\n\n名称\n分类\n数量\n添加条目\n请填写名称\n搜索名称或分类\n排序\n最近添加\n按名称\n名称\t分类\t数量\t操作\n<img src=x onerror=window.bad=1>\t未分类\t1\t删除\nScrew\t备件\t4\t删除\nScrew\t工具\t2\t删除\n灯具\t办公\t3\t删除\n4 项 · 共 10 件\n清空全部",
+            "horizontalOverflow": false
+          },
+          {
+            "name": "out-of-range-error",
+            "rows": [
+              "<img src=x onerror=window.bad=1>未分类1删除",
+              "Screw备件4删除",
+              "Screw工具2删除",
+              "灯具办公3删除"
+            ],
+            "alerts": [
+              "数量须为1至99的整数"
+            ],
+            "body": "标签收纳盒\n\n把零散物品放进分类，数量与清单只保存在当前浏览器。\n\n名称\n分类\n数量\n添加条目\n数量须为1至99的整数\n搜索名称或分类\n排序\n最近添加\n按名称\n名称\t分类\t数量\t操作\n<img src=x onerror=window.bad=1>\t未分类\t1\t删除\nScrew\t备件\t4\t删除\nScrew\t工具\t2\t删除\n灯具\t办公\t3\t删除\n4 项 · 共 10 件\n清空全部",
+            "horizontalOverflow": false
+          },
+          {
+            "name": "filtered-summary",
+            "rows": [
+              "Screw备件4删除",
+              "Screw工具2删除"
+            ],
+            "alerts": [
+              "数量须为1至99的整数"
+            ],
+            "body": "标签收纳盒\n\n把零散物品放进分类，数量与清单只保存在当前浏览器。\n\n名称\n分类\n数量\n添加条目\n数量须为1至99的整数\n搜索名称或分类\n排序\n最近添加\n按名称\n名称\t分类\t数量\t操作\nScrew\t备件\t4\t删除\nScrew\t工具\t2\t删除\n2 项 · 共 6 件\n清空全部",
+            "horizontalOverflow": false
+          },
+          {
+            "name": "no-matches",
+            "rows": [],
+            "alerts": [
+              "数量须为1至99的整数"
+            ],
+            "body": "标签收纳盒\n\n把零散物品放进分类，数量与清单只保存在当前浏览器。\n\n名称\n分类\n数量\n添加条目\n数量须为1至99的整数\n搜索名称或分类\n排序\n最近添加\n按名称\n名称\t分类\t数量\t操作\n没有匹配的条目。\n0 项 · 共 0 件\n清空全部",
+            "horizontalOverflow": false
+          },
+          {
+            "name": "name-order",
+            "rows": [
+              "<img src=x onerror=window.bad=1>未分类1删除",
+              "灯具办公3删除",
+              "Screw工具2删除",
+              "Screw备件4删除"
+            ],
+            "alerts": [
+              "数量须为1至99的整数"
+            ],
+            "body": "标签收纳盒\n\n把零散物品放进分类，数量与清单只保存在当前浏览器。\n\n名称\n分类\n数量\n添加条目\n数量须为1至99的整数\n搜索名称或分类\n排序\n最近添加\n按名称\n名称\t分类\t数量\t操作\n<img src=x onerror=window.bad=1>\t未分类\t1\t删除\n灯具\t办公\t3\t删除\nScrew\t工具\t2\t删除\nScrew\t备件\t4\t删除\n4 项 · 共 10 件\n清空全部",
+            "horizontalOverflow": false
+          },
+          {
+            "name": "persisted-on-reload",
+            "rows": [
+              "<img src=x onerror=window.bad=1>未分类1删除",
+              "Screw备件4删除",
+              "Screw工具2删除",
+              "灯具办公3删除"
+            ],
+            "alerts": [
+              ""
+            ],
+            "body": "标签收纳盒\n\n把零散物品放进分类，数量与清单只保存在当前浏览器。\n\n名称\n分类\n数量\n添加条目\n搜索名称或分类\n排序\n最近添加\n按名称\n名称\t分类\t数量\t操作\n<img src=x onerror=window.bad=1>\t未分类\t1\t删除\nScrew\t备件\t4\t删除\nScrew\t工具\t2\t删除\n灯具\t办公\t3\t删除\n4 项 · 共 10 件\n清空全部",
+            "horizontalOverflow": false
+          },
+          {
+            "name": "delete-one",
+            "rows": [
+              "Screw备件4删除",
+              "Screw工具2删除",
+              "灯具办公3删除"
+            ],
+            "alerts": [
+              ""
+            ],
+            "body": "标签收纳盒\n\n把零散物品放进分类，数量与清单只保存在当前浏览器。\n\n名称\n分类\n数量\n添加条目\n搜索名称或分类\n排序\n最近添加\n按名称\n名称\t分类\t数量\t操作\nScrew\t备件\t4\t删除\nScrew\t工具\t2\t删除\n灯具\t办公\t3\t删除\n3 项 · 共 9 件\n清空全部",
+            "horizontalOverflow": false
+          },
+          {
+            "name": "cancel-clear",
+            "rows": [
+              "Screw备件4删除",
+              "Screw工具2删除",
+              "灯具办公3删除"
+            ],
+            "alerts": [
+              ""
+            ],
+            "body": "标签收纳盒\n\n把零散物品放进分类，数量与清单只保存在当前浏览器。\n\n名称\n分类\n数量\n添加条目\n搜索名称或分类\n排序\n最近添加\n按名称\n名称\t分类\t数量\t操作\nScrew\t备件\t4\t删除\nScrew\t工具\t2\t删除\n灯具\t办公\t3\t删除\n3 项 · 共 9 件\n清空全部",
+            "horizontalOverflow": false
+          },
+          {
+            "name": "confirm-clear",
+            "rows": [],
+            "alerts": [
+              ""
+            ],
+            "body": "标签收纳盒\n\n把零散物品放进分类，数量与清单只保存在当前浏览器。\n\n名称\n分类\n数量\n添加条目\n搜索名称或分类\n排序\n最近添加\n按名称\n名称\t分类\t数量\t操作\n还没有条目，先添加一个吧。\n0 项 · 共 0 件\n清空全部",
+            "horizontalOverflow": false
+          },
+          {
+            "name": "persisted-clear",
+            "rows": [],
+            "alerts": [
+              ""
+            ],
+            "body": "标签收纳盒\n\n把零散物品放进分类，数量与清单只保存在当前浏览器。\n\n名称\n分类\n数量\n添加条目\n搜索名称或分类\n排序\n最近添加\n按名称\n名称\t分类\t数量\t操作\n还没有条目，先添加一个吧。\n0 项 · 共 0 件\n清空全部",
+            "horizontalOverflow": false
+          },
+          {
+            "name": "damaged-storage-recovery",
+            "rows": [],
+            "alerts": [
+              ""
+            ],
+            "body": "标签收纳盒\n\n把零散物品放进分类，数量与清单只保存在当前浏览器。\n\n名称\n分类\n数量\n添加条目\n搜索名称或分类\n排序\n最近添加\n按名称\n名称\t分类\t数量\t操作\n还没有条目，先添加一个吧。\n0 项 · 共 0 件\n清空全部",
+            "horizontalOverflow": false
+          }
+        ],
+        "errors": [],
+        "scriptExecutedFromItemName": false
+      },
+      "elapsedMs": 1637
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "behavior": "pass",
+      "emptyVisual": {
+        "status": "pass",
+        "differingPixels": 0,
+        "pixels": 341820
+      },
+      "finalVisual": {
+        "status": "pass",
+        "differingPixels": 0,
+        "pixels": 341820
+      },
+      "left": {
+        "states": [
+          {
+            "name": "empty",
+            "rows": [],
+            "alerts": [
+              ""
+            ],
+            "body": "标签收纳盒\n\n把零散物品放进分类，数量与清单只保存在当前浏览器。\n\n名称\n分类\n数量\n添加条目\n搜索名称或分类\n排序\n最近添加\n按名称\n名称\t分类\t数量\t操作\n还没有条目，先添加一个吧。\n0 项 · 共 0 件\n清空全部",
+            "horizontalOverflow": true
+          },
+          {
+            "name": "trimmed-name",
+            "rows": [
+              "灯具办公3删除"
+            ],
+            "alerts": [
+              ""
+            ],
+            "body": "标签收纳盒\n\n把零散物品放进分类，数量与清单只保存在当前浏览器。\n\n名称\n分类\n数量\n添加条目\n搜索名称或分类\n排序\n最近添加\n按名称\n名称\t分类\t数量\t操作\n灯具\t办公\t3\t删除\n1 项 · 共 3 件\n清空全部",
+            "horizontalOverflow": true
+          },
+          {
+            "name": "case-insensitive-duplicate",
+            "rows": [
+              "Screw工具2删除",
+              "灯具办公3删除"
+            ],
+            "alerts": [
+              "该分类中已有同名条目"
+            ],
+            "body": "标签收纳盒\n\n把零散物品放进分类，数量与清单只保存在当前浏览器。\n\n名称\n分类\n数量\n添加条目\n该分类中已有同名条目\n搜索名称或分类\n排序\n最近添加\n按名称\n名称\t分类\t数量\t操作\nScrew\t工具\t2\t删除\n灯具\t办公\t3\t删除\n2 项 · 共 5 件\n清空全部",
+            "horizontalOverflow": true
+          },
+          {
+            "name": "literal-html",
+            "rows": [
+              "<img src=x onerror=window.bad=1>未分类1删除",
+              "Screw备件4删除",
+              "Screw工具2删除",
+              "灯具办公3删除"
+            ],
+            "alerts": [
+              ""
+            ],
+            "body": "标签收纳盒\n\n把零散物品放进分类，数量与清单只保存在当前浏览器。\n\n名称\n分类\n数量\n添加条目\n搜索名称或分类\n排序\n最近添加\n按名称\n名称\t分类\t数量\t操作\n<img src=x onerror=window.bad=1>\t未分类\t1\t删除\nScrew\t备件\t4\t删除\nScrew\t工具\t2\t删除\n灯具\t办公\t3\t删除\n4 项 · 共 10 件\n清空全部",
+            "horizontalOverflow": true
+          },
+          {
+            "name": "blank-error",
+            "rows": [
+              "<img src=x onerror=window.bad=1>未分类1删除",
+              "Screw备件4删除",
+              "Screw工具2删除",
+              "灯具办公3删除"
+            ],
+            "alerts": [
+              "请填写名称"
+            ],
+            "body": "标签收纳盒\n\n把零散物品放进分类，数量与清单只保存在当前浏览器。\n\n名称\n分类\n数量\n添加条目\n请填写名称\n搜索名称或分类\n排序\n最近添加\n按名称\n名称\t分类\t数量\t操作\n<img src=x onerror=window.bad=1>\t未分类\t1\t删除\nScrew\t备件\t4\t删除\nScrew\t工具\t2\t删除\n灯具\t办公\t3\t删除\n4 项 · 共 10 件\n清空全部",
+            "horizontalOverflow": true
+          },
+          {
+            "name": "out-of-range-error",
+            "rows": [
+              "<img src=x onerror=window.bad=1>未分类1删除",
+              "Screw备件4删除",
+              "Screw工具2删除",
+              "灯具办公3删除"
+            ],
+            "alerts": [
+              "数量须为1至99的整数"
+            ],
+            "body": "标签收纳盒\n\n把零散物品放进分类，数量与清单只保存在当前浏览器。\n\n名称\n分类\n数量\n添加条目\n数量须为1至99的整数\n搜索名称或分类\n排序\n最近添加\n按名称\n名称\t分类\t数量\t操作\n<img src=x onerror=window.bad=1>\t未分类\t1\t删除\nScrew\t备件\t4\t删除\nScrew\t工具\t2\t删除\n灯具\t办公\t3\t删除\n4 项 · 共 10 件\n清空全部",
+            "horizontalOverflow": true
+          },
+          {
+            "name": "filtered-summary",
+            "rows": [
+              "Screw备件4删除",
+              "Screw工具2删除"
+            ],
+            "alerts": [
+              "数量须为1至99的整数"
+            ],
+            "body": "标签收纳盒\n\n把零散物品放进分类，数量与清单只保存在当前浏览器。\n\n名称\n分类\n数量\n添加条目\n数量须为1至99的整数\n搜索名称或分类\n排序\n最近添加\n按名称\n名称\t分类\t数量\t操作\nScrew\t备件\t4\t删除\nScrew\t工具\t2\t删除\n2 项 · 共 6 件\n清空全部",
+            "horizontalOverflow": true
+          },
+          {
+            "name": "no-matches",
+            "rows": [],
+            "alerts": [
+              "数量须为1至99的整数"
+            ],
+            "body": "标签收纳盒\n\n把零散物品放进分类，数量与清单只保存在当前浏览器。\n\n名称\n分类\n数量\n添加条目\n数量须为1至99的整数\n搜索名称或分类\n排序\n最近添加\n按名称\n名称\t分类\t数量\t操作\n没有匹配的条目。\n0 项 · 共 0 件\n清空全部",
+            "horizontalOverflow": true
+          },
+          {
+            "name": "name-order",
+            "rows": [
+              "<img src=x onerror=window.bad=1>未分类1删除",
+              "灯具办公3删除",
+              "Screw工具2删除",
+              "Screw备件4删除"
+            ],
+            "alerts": [
+              "数量须为1至99的整数"
+            ],
+            "body": "标签收纳盒\n\n把零散物品放进分类，数量与清单只保存在当前浏览器。\n\n名称\n分类\n数量\n添加条目\n数量须为1至99的整数\n搜索名称或分类\n排序\n最近添加\n按名称\n名称\t分类\t数量\t操作\n<img src=x onerror=window.bad=1>\t未分类\t1\t删除\n灯具\t办公\t3\t删除\nScrew\t工具\t2\t删除\nScrew\t备件\t4\t删除\n4 项 · 共 10 件\n清空全部",
+            "horizontalOverflow": true
+          },
+          {
+            "name": "persisted-on-reload",
+            "rows": [
+              "<img src=x onerror=window.bad=1>未分类1删除",
+              "Screw备件4删除",
+              "Screw工具2删除",
+              "灯具办公3删除"
+            ],
+            "alerts": [
+              ""
+            ],
+            "body": "标签收纳盒\n\n把零散物品放进分类，数量与清单只保存在当前浏览器。\n\n名称\n分类\n数量\n添加条目\n搜索名称或分类\n排序\n最近添加\n按名称\n名称\t分类\t数量\t操作\n<img src=x onerror=window.bad=1>\t未分类\t1\t删除\nScrew\t备件\t4\t删除\nScrew\t工具\t2\t删除\n灯具\t办公\t3\t删除\n4 项 · 共 10 件\n清空全部",
+            "horizontalOverflow": true
+          },
+          {
+            "name": "delete-one",
+            "rows": [
+              "Screw备件4删除",
+              "Screw工具2删除",
+              "灯具办公3删除"
+            ],
+            "alerts": [
+              ""
+            ],
+            "body": "标签收纳盒\n\n把零散物品放进分类，数量与清单只保存在当前浏览器。\n\n名称\n分类\n数量\n添加条目\n搜索名称或分类\n排序\n最近添加\n按名称\n名称\t分类\t数量\t操作\nScrew\t备件\t4\t删除\nScrew\t工具\t2\t删除\n灯具\t办公\t3\t删除\n3 项 · 共 9 件\n清空全部",
+            "horizontalOverflow": true
+          },
+          {
+            "name": "cancel-clear",
+            "rows": [
+              "Screw备件4删除",
+              "Screw工具2删除",
+              "灯具办公3删除"
+            ],
+            "alerts": [
+              ""
+            ],
+            "body": "标签收纳盒\n\n把零散物品放进分类，数量与清单只保存在当前浏览器。\n\n名称\n分类\n数量\n添加条目\n搜索名称或分类\n排序\n最近添加\n按名称\n名称\t分类\t数量\t操作\nScrew\t备件\t4\t删除\nScrew\t工具\t2\t删除\n灯具\t办公\t3\t删除\n3 项 · 共 9 件\n清空全部",
+            "horizontalOverflow": true
+          },
+          {
+            "name": "confirm-clear",
+            "rows": [],
+            "alerts": [
+              ""
+            ],
+            "body": "标签收纳盒\n\n把零散物品放进分类，数量与清单只保存在当前浏览器。\n\n名称\n分类\n数量\n添加条目\n搜索名称或分类\n排序\n最近添加\n按名称\n名称\t分类\t数量\t操作\n还没有条目，先添加一个吧。\n0 项 · 共 0 件\n清空全部",
+            "horizontalOverflow": true
+          },
+          {
+            "name": "persisted-clear",
+            "rows": [],
+            "alerts": [
+              ""
+            ],
+            "body": "标签收纳盒\n\n把零散物品放进分类，数量与清单只保存在当前浏览器。\n\n名称\n分类\n数量\n添加条目\n搜索名称或分类\n排序\n最近添加\n按名称\n名称\t分类\t数量\t操作\n还没有条目，先添加一个吧。\n0 项 · 共 0 件\n清空全部",
+            "horizontalOverflow": true
+          },
+          {
+            "name": "damaged-storage-recovery",
+            "rows": [],
+            "alerts": [
+              ""
+            ],
+            "body": "标签收纳盒\n\n把零散物品放进分类，数量与清单只保存在当前浏览器。\n\n名称\n分类\n数量\n添加条目\n搜索名称或分类\n排序\n最近添加\n按名称\n名称\t分类\t数量\t操作\n还没有条目，先添加一个吧。\n0 项 · 共 0 件\n清空全部",
+            "horizontalOverflow": true
+          }
+        ],
+        "errors": [],
+        "scriptExecutedFromItemName": false
+      },
+      "right": {
+        "states": [
+          {
+            "name": "empty",
+            "rows": [],
+            "alerts": [
+              ""
+            ],
+            "body": "标签收纳盒\n\n把零散物品放进分类，数量与清单只保存在当前浏览器。\n\n名称\n分类\n数量\n添加条目\n搜索名称或分类\n排序\n最近添加\n按名称\n名称\t分类\t数量\t操作\n还没有条目，先添加一个吧。\n0 项 · 共 0 件\n清空全部",
+            "horizontalOverflow": true
+          },
+          {
+            "name": "trimmed-name",
+            "rows": [
+              "灯具办公3删除"
+            ],
+            "alerts": [
+              ""
+            ],
+            "body": "标签收纳盒\n\n把零散物品放进分类，数量与清单只保存在当前浏览器。\n\n名称\n分类\n数量\n添加条目\n搜索名称或分类\n排序\n最近添加\n按名称\n名称\t分类\t数量\t操作\n灯具\t办公\t3\t删除\n1 项 · 共 3 件\n清空全部",
+            "horizontalOverflow": true
+          },
+          {
+            "name": "case-insensitive-duplicate",
+            "rows": [
+              "Screw工具2删除",
+              "灯具办公3删除"
+            ],
+            "alerts": [
+              "该分类中已有同名条目"
+            ],
+            "body": "标签收纳盒\n\n把零散物品放进分类，数量与清单只保存在当前浏览器。\n\n名称\n分类\n数量\n添加条目\n该分类中已有同名条目\n搜索名称或分类\n排序\n最近添加\n按名称\n名称\t分类\t数量\t操作\nScrew\t工具\t2\t删除\n灯具\t办公\t3\t删除\n2 项 · 共 5 件\n清空全部",
+            "horizontalOverflow": true
+          },
+          {
+            "name": "literal-html",
+            "rows": [
+              "<img src=x onerror=window.bad=1>未分类1删除",
+              "Screw备件4删除",
+              "Screw工具2删除",
+              "灯具办公3删除"
+            ],
+            "alerts": [
+              ""
+            ],
+            "body": "标签收纳盒\n\n把零散物品放进分类，数量与清单只保存在当前浏览器。\n\n名称\n分类\n数量\n添加条目\n搜索名称或分类\n排序\n最近添加\n按名称\n名称\t分类\t数量\t操作\n<img src=x onerror=window.bad=1>\t未分类\t1\t删除\nScrew\t备件\t4\t删除\nScrew\t工具\t2\t删除\n灯具\t办公\t3\t删除\n4 项 · 共 10 件\n清空全部",
+            "horizontalOverflow": true
+          },
+          {
+            "name": "blank-error",
+            "rows": [
+              "<img src=x onerror=window.bad=1>未分类1删除",
+              "Screw备件4删除",
+              "Screw工具2删除",
+              "灯具办公3删除"
+            ],
+            "alerts": [
+              "请填写名称"
+            ],
+            "body": "标签收纳盒\n\n把零散物品放进分类，数量与清单只保存在当前浏览器。\n\n名称\n分类\n数量\n添加条目\n请填写名称\n搜索名称或分类\n排序\n最近添加\n按名称\n名称\t分类\t数量\t操作\n<img src=x onerror=window.bad=1>\t未分类\t1\t删除\nScrew\t备件\t4\t删除\nScrew\t工具\t2\t删除\n灯具\t办公\t3\t删除\n4 项 · 共 10 件\n清空全部",
+            "horizontalOverflow": true
+          },
+          {
+            "name": "out-of-range-error",
+            "rows": [
+              "<img src=x onerror=window.bad=1>未分类1删除",
+              "Screw备件4删除",
+              "Screw工具2删除",
+              "灯具办公3删除"
+            ],
+            "alerts": [
+              "数量须为1至99的整数"
+            ],
+            "body": "标签收纳盒\n\n把零散物品放进分类，数量与清单只保存在当前浏览器。\n\n名称\n分类\n数量\n添加条目\n数量须为1至99的整数\n搜索名称或分类\n排序\n最近添加\n按名称\n名称\t分类\t数量\t操作\n<img src=x onerror=window.bad=1>\t未分类\t1\t删除\nScrew\t备件\t4\t删除\nScrew\t工具\t2\t删除\n灯具\t办公\t3\t删除\n4 项 · 共 10 件\n清空全部",
+            "horizontalOverflow": true
+          },
+          {
+            "name": "filtered-summary",
+            "rows": [
+              "Screw备件4删除",
+              "Screw工具2删除"
+            ],
+            "alerts": [
+              "数量须为1至99的整数"
+            ],
+            "body": "标签收纳盒\n\n把零散物品放进分类，数量与清单只保存在当前浏览器。\n\n名称\n分类\n数量\n添加条目\n数量须为1至99的整数\n搜索名称或分类\n排序\n最近添加\n按名称\n名称\t分类\t数量\t操作\nScrew\t备件\t4\t删除\nScrew\t工具\t2\t删除\n2 项 · 共 6 件\n清空全部",
+            "horizontalOverflow": true
+          },
+          {
+            "name": "no-matches",
+            "rows": [],
+            "alerts": [
+              "数量须为1至99的整数"
+            ],
+            "body": "标签收纳盒\n\n把零散物品放进分类，数量与清单只保存在当前浏览器。\n\n名称\n分类\n数量\n添加条目\n数量须为1至99的整数\n搜索名称或分类\n排序\n最近添加\n按名称\n名称\t分类\t数量\t操作\n没有匹配的条目。\n0 项 · 共 0 件\n清空全部",
+            "horizontalOverflow": true
+          },
+          {
+            "name": "name-order",
+            "rows": [
+              "<img src=x onerror=window.bad=1>未分类1删除",
+              "灯具办公3删除",
+              "Screw工具2删除",
+              "Screw备件4删除"
+            ],
+            "alerts": [
+              "数量须为1至99的整数"
+            ],
+            "body": "标签收纳盒\n\n把零散物品放进分类，数量与清单只保存在当前浏览器。\n\n名称\n分类\n数量\n添加条目\n数量须为1至99的整数\n搜索名称或分类\n排序\n最近添加\n按名称\n名称\t分类\t数量\t操作\n<img src=x onerror=window.bad=1>\t未分类\t1\t删除\n灯具\t办公\t3\t删除\nScrew\t工具\t2\t删除\nScrew\t备件\t4\t删除\n4 项 · 共 10 件\n清空全部",
+            "horizontalOverflow": true
+          },
+          {
+            "name": "persisted-on-reload",
+            "rows": [
+              "<img src=x onerror=window.bad=1>未分类1删除",
+              "Screw备件4删除",
+              "Screw工具2删除",
+              "灯具办公3删除"
+            ],
+            "alerts": [
+              ""
+            ],
+            "body": "标签收纳盒\n\n把零散物品放进分类，数量与清单只保存在当前浏览器。\n\n名称\n分类\n数量\n添加条目\n搜索名称或分类\n排序\n最近添加\n按名称\n名称\t分类\t数量\t操作\n<img src=x onerror=window.bad=1>\t未分类\t1\t删除\nScrew\t备件\t4\t删除\nScrew\t工具\t2\t删除\n灯具\t办公\t3\t删除\n4 项 · 共 10 件\n清空全部",
+            "horizontalOverflow": true
+          },
+          {
+            "name": "delete-one",
+            "rows": [
+              "Screw备件4删除",
+              "Screw工具2删除",
+              "灯具办公3删除"
+            ],
+            "alerts": [
+              ""
+            ],
+            "body": "标签收纳盒\n\n把零散物品放进分类，数量与清单只保存在当前浏览器。\n\n名称\n分类\n数量\n添加条目\n搜索名称或分类\n排序\n最近添加\n按名称\n名称\t分类\t数量\t操作\nScrew\t备件\t4\t删除\nScrew\t工具\t2\t删除\n灯具\t办公\t3\t删除\n3 项 · 共 9 件\n清空全部",
+            "horizontalOverflow": true
+          },
+          {
+            "name": "cancel-clear",
+            "rows": [
+              "Screw备件4删除",
+              "Screw工具2删除",
+              "灯具办公3删除"
+            ],
+            "alerts": [
+              ""
+            ],
+            "body": "标签收纳盒\n\n把零散物品放进分类，数量与清单只保存在当前浏览器。\n\n名称\n分类\n数量\n添加条目\n搜索名称或分类\n排序\n最近添加\n按名称\n名称\t分类\t数量\t操作\nScrew\t备件\t4\t删除\nScrew\t工具\t2\t删除\n灯具\t办公\t3\t删除\n3 项 · 共 9 件\n清空全部",
+            "horizontalOverflow": true
+          },
+          {
+            "name": "confirm-clear",
+            "rows": [],
+            "alerts": [
+              ""
+            ],
+            "body": "标签收纳盒\n\n把零散物品放进分类，数量与清单只保存在当前浏览器。\n\n名称\n分类\n数量\n添加条目\n搜索名称或分类\n排序\n最近添加\n按名称\n名称\t分类\t数量\t操作\n还没有条目，先添加一个吧。\n0 项 · 共 0 件\n清空全部",
+            "horizontalOverflow": true
+          },
+          {
+            "name": "persisted-clear",
+            "rows": [],
+            "alerts": [
+              ""
+            ],
+            "body": "标签收纳盒\n\n把零散物品放进分类，数量与清单只保存在当前浏览器。\n\n名称\n分类\n数量\n添加条目\n搜索名称或分类\n排序\n最近添加\n按名称\n名称\t分类\t数量\t操作\n还没有条目，先添加一个吧。\n0 项 · 共 0 件\n清空全部",
+            "horizontalOverflow": true
+          },
+          {
+            "name": "damaged-storage-recovery",
+            "rows": [],
+            "alerts": [
+              ""
+            ],
+            "body": "标签收纳盒\n\n把零散物品放进分类，数量与清单只保存在当前浏览器。\n\n名称\n分类\n数量\n添加条目\n搜索名称或分类\n排序\n最近添加\n按名称\n名称\t分类\t数量\t操作\n还没有条目，先添加一个吧。\n0 项 · 共 0 件\n清空全部",
+            "horizontalOverflow": true
+          }
+        ],
+        "errors": [],
+        "scriptExecutedFromItemName": false
+      },
+      "elapsedMs": 1356
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "scope": "owned protocol finite dependency/control-flow qualification, not a third-party license/server claim",
+  "cases": 5,
+  "positive": "pass",
+  "wrong_dependency_response": "fail",
+  "local_work_after_service_failure": "observed in offline-independent-local and expiry-and-local cases",
+  "unknown_services": "not defaulted to success; explicit error retained",
+  "status": "pass",
+  "actual_local_http_statuses": [
+    200,
+    400,
+    404
+  ],
+  "official_rea_capture_execution": "returned"
+}

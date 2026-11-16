@@ -13,6 +13,7 @@ from pathlib import Path
 from .case_bridge import discover_open_cases, load_case_record
 from .runtime import node_runtime
 from .session_builder import _inside
+from .spec_support import generated_workflow
 
 
 def component_entries(tool: Path, project: Path) -> dict:
@@ -24,15 +25,19 @@ def component_entries(tool: Path, project: Path) -> dict:
         'cwd': str(project.resolve()),
         'argument_policy': 'argv arrays; append reviewed arguments without shell interpolation; preserve original UTF-8 provider output',
         'rea': {'argv': [node, str(tool / 'vendor/rea/package/scripts/rea.mjs')] if node else None,
+                'bounded_argv': [*prefix, 'rea-run', '--project-root', str(project.resolve())],
                 'runtime_source': source, 'usage': 'append the installed official command and its arguments; inspect its help/schema before using a new operation'},
         'spec': {'argv': [str(scripts / ('specify.exe' if os.name == 'nt' else 'specify'))],
+                 'generated_workflow': generated_workflow(project),
                  'usage': 'initialize in the outcome project, then read and execute its generated speckit skills; init alone is not the workflow'},
         'native_craft': {'argv': [*prefix, 'native-craft', '<phase>', '--project-root', str(project.resolve())],
                          'usage': 'prepare/build/check/refine/return_summary/cleanup with the same frozen lease; abort retains failed/interrupted work without acceptance'},
         'observer': {'argv': [*prefix, 'session', '<phase>', '--project-root', str(project.resolve())],
                      'usage': 'additional check/refine/finish on the native prepare receipt, after native checks and cleanup'},
+        'comparison': {'argv': [*prefix, 'compare', '--project-root', str(project.resolve())],
+                       'usage': 'reviewed --plan and new --output; independent finite argv/stdin observations with owned process cleanup; not native REA proof'},
         'guides': [str(tool / 'docs' / name) for name in
-                   ('AGENT-WORKFLOW.md', 'NATIVE-COMPONENTS.md', 'CROSS-PROJECT-WORKFLOW.md', 'RECOVERY.md')],
+                   ('AGENT-WORKFLOW.md', 'NATIVE-COMPONENTS.md', 'CROSS-PROJECT-WORKFLOW.md', 'RECOVERY.md', 'PROCESS-COMPARISON.md')],
     }
 
 

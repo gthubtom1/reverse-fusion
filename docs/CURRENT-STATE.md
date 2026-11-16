@@ -1,5 +1,14 @@
 # Current State
 
+Active work: RF-33 continues original product completion at explicit user request.
+The previous engineering release remains installed; original functional gaps are
+not closed. Persistent task order/criteria:docs/REMAINING-PRODUCT-WORK.md;
+checkpoint:checkpoints/RF-33-20261116-001.md. Do not stop at another acceptance
+summary or request user samples. Use owned repeatable material, actual component
+execution and recorded failures/corrections; preserve external host blockers.
+
+## Installed RF-31 baseline (historical closure, not the active task)
+
 Stage: RF-31
 Status: current Windows x64/Codex engineering delivery closed at1.1.1
 

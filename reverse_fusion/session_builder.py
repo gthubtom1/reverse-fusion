@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import json
 import runpy
+import re
 from hashlib import sha256
 from pathlib import Path
 from typing import Any
@@ -37,6 +38,7 @@ def prepare_session(
     case_root: str | None = None, handoff_manifest: str | None = None,
     review_file: str | None = None,
     native_lease: str | None = None,
+    requirements: list[str] | None = None,
 ) -> dict[str, Any]:
     root = root.resolve()
     area = _inside(root, workspace)
@@ -67,7 +69,7 @@ def prepare_session(
         # Reuse the inherited checker, not a second Evidence/obligation ledger.
         check = runpy.run_path(str(Path(__file__).resolve().parents[1] /
                                   'skills/reconstruction/scripts/check_handoff.py'))['check_handoff']
-        handoff = check(root, handoff_manifest)
+        handoff = check(root, handoff_manifest, selected_fr_ids=requirements or None)
         if handoff['status'] != 'PASS':
             raise ValueError(f"Reconstruction handoff blocked: {handoff['issues']}")
         manifest = json.loads(_inside(root, handoff_manifest).read_text(encoding='utf-8-sig'))
@@ -76,10 +78,24 @@ def prepare_session(
         task_path = _inside(root, manifest['feature_refs']['tasks']['path'])
         if task_path not in {_inside(root, name) for name in task_files}:
             raise ValueError("Frozen tasks must include the handoff feature's tasks file")
+        if requirements:
+            selected = set(requirements)
+            mapped = set()
+            text = task_path.read_text(encoding='utf-8-sig')
+            for task in tasks:
+                lines = [line for line in text.splitlines() if re.search(r'(?<![\w-])' + re.escape(task) + r'(?![\w-])', line)]
+                if len(lines) != 1:
+                    raise ValueError('Selected batch tasks require unique task lines with explicit FR mappings')
+                refs = set(re.findall(r'\bFR-\d{3,}\b', lines[0]))
+                if not refs or not refs <= selected:
+                    raise ValueError('Selected task references an unselected requirement or lacks an explicit FR mapping')
+                mapped.update(refs)
+            if mapped != selected:
+                raise ValueError('Every selected requirement must map to a selected task; review dependencies before batch selection')
         if not _inside(root, review_file).read_text(encoding='utf-8-sig').strip():
             raise ValueError("Independent semantic review record is empty")
         frozen.extend([handoff_manifest, review_file, f'{case_root}/case.json', *handoff['checked_files']])
-    elif handoff_manifest or review_file:
+    elif handoff_manifest or review_file or requirements:
         raise ValueError("Handoff and review must be bound to --case-root")
     refs = {name: _digest(_inside(root, name)) for name in dict.fromkeys(frozen)}
     task_text = "\n".join(_inside(root, name).read_text(encoding="utf-8-sig") for name in task_files)
@@ -102,6 +118,8 @@ def prepare_session(
         if native_lease not in refs:
             raise ValueError("Native lease must be frozen by its observer")
         record['native_lease'] = native_lease
+    if requirements:
+        record['batch_requirements'] = sorted(set(requirements))
     record_path.parent.mkdir(parents=True, exist_ok=True)
     atomic_write(record_path, (json.dumps(record, ensure_ascii=False, indent=2) + "\n").encode('utf-8'))
     return {"status": "prepared", "receipt": receipt, "workspace": workspace,

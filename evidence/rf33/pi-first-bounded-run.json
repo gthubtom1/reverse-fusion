@@ -1,0 +1,39 @@
+{
+  "status": "unknown",
+  "reason": "timeout",
+  "exit_code": 124,
+  "elapsed_ms": 300067.307,
+  "peak_job_bytes": 804642816,
+  "cleanup": "owned Windows job closed after invocation",
+  "config_snapshot": {
+    "status": "observed",
+    "mutation": false,
+    "before": {
+      "status": "observed",
+      "files": {
+        "C:\\Users\\toti\\.pi\\agent\\settings.json": "d8b7cfa7d6abe9f33b78661aa39d61f5753043ca6a36a5c17360a061c94eea02",
+        "C:\\Users\\toti\\.pi\\agent\\mcp.json": "a608cf11f6bdb990b3027431b1f8e9a2cc69df464208a08d95c3ad2d5d1d2a6d",
+        "C:\\Users\\toti\\.pi\\agent\\AGENTS.md": "6142fb4a0c4d7109bd92ab4aa2e73d1d4d8ede40446e012cc87856676362e997"
+      },
+      "known_paths": [
+        "C:\\Users\\toti\\.pi\\agent\\settings.json",
+        "C:\\Users\\toti\\.pi\\agent\\mcp.json",
+        "C:\\Users\\toti\\.pi\\agent\\AGENTS.md"
+      ]
+    },
+    "after": {
+      "status": "observed",
+      "files": {
+        "C:\\Users\\toti\\.pi\\agent\\settings.json": "d8b7cfa7d6abe9f33b78661aa39d61f5753043ca6a36a5c17360a061c94eea02",
+        "C:\\Users\\toti\\.pi\\agent\\mcp.json": "a608cf11f6bdb990b3027431b1f8e9a2cc69df464208a08d95c3ad2d5d1d2a6d",
+        "C:\\Users\\toti\\.pi\\agent\\AGENTS.md": "6142fb4a0c4d7109bd92ab4aa2e73d1d4d8ede40446e012cc87856676362e997"
+      },
+      "known_paths": [
+        "C:\\Users\\toti\\.pi\\agent\\settings.json",
+        "C:\\Users\\toti\\.pi\\agent\\mcp.json",
+        "C:\\Users\\toti\\.pi\\agent\\AGENTS.md"
+      ]
+    }
+  },
+  "prompt": "\u7ee7\u7eed\uff0c\u628a\u8fd9\u4e2a\u5c0f\u8f6f\u4ef6\u590d\u523b\u6210\u754c\u9762\u548c\u529f\u80fd\u4e00\u6837\u3001\u80fd\u76f4\u63a5\u4f7f\u7528\u7684\u7248\u672c\uff0c\u505a\u597d\u540e\u548c\u539f\u7248\u5bf9\u6bd4\u3002"
+}

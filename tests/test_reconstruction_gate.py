@@ -13,6 +13,8 @@ import sys
 
 from reverse_fusion.case_bridge import build_case_pointer, record_case_pointer, workflow_contract
 from reverse_fusion.session_builder import prepare_session, check_session
+from hashlib import sha256
+from copy import deepcopy
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -23,6 +25,44 @@ BUNDLE = f'{CASE}/evidence/synthetic-bundle.json'
 
 
 class ReconstructionGateTests(unittest.TestCase):
+    def test_independent_reviewed_batch_retains_deferred_critical_requirement(self):
+        spec = self.project / 'specs/001-literal-v1/spec.md'
+        spec.write_text(spec.read_text(encoding='utf-8') + '\n- FR-002: Remote-dependent behavior remains unknown.\n', encoding='utf-8')
+        tasks = self.project / TASKS
+        tasks.write_text('- [ ] T001 Implement local behavior FR-001\n- [ ] T002 Implement remote behavior FR-002\n', encoding='utf-8')
+        manifest_path = self.project / MANIFEST
+        manifest = json.loads(manifest_path.read_text(encoding='utf-8'))
+        for name, path in [('spec', spec), ('tasks', tasks)]:
+            manifest['feature_refs'][name]['sha256'] = sha256(path.read_bytes()).hexdigest()
+        deferred = deepcopy(manifest['requirements'][0])
+        deferred['fr_id'] = 'FR-002'
+        deferred['unknown_refs'][0]['critical'] = True
+        manifest['requirements'].append(deferred)
+        manifest_path.write_text(json.dumps(manifest), encoding='utf-8')
+        with self.assertRaisesRegex(ValueError, 'critical_open'):
+            prepare_session(self.project, **self.kwargs)
+        result = prepare_session(self.project, **self.kwargs, requirements=['FR-001'])
+        self.assertEqual(result['status'], 'prepared')
+        record = json.loads((self.project / self.kwargs['receipt']).read_text(encoding='utf-8'))
+        self.assertEqual(record['batch_requirements'], ['FR-001'])
+        self.assertEqual(record['handoff']['deferred_requirements'], ['FR-002'])
+        self.assertIn('FR-002', spec.read_text(encoding='utf-8'))
+
+    def test_selected_batch_cannot_omit_its_tasks_requirement(self):
+        tasks = self.project / TASKS
+        tasks.write_text('- [ ] T001 Implement FR-001\n', encoding='utf-8')
+        path = self.project / MANIFEST
+        manifest = json.loads(path.read_text(encoding='utf-8'))
+        manifest['feature_refs']['tasks']['sha256'] = sha256(tasks.read_bytes()).hexdigest()
+        path.write_text(json.dumps(manifest), encoding='utf-8')
+        with self.assertRaisesRegex(ValueError, 'fr.batch'):
+            prepare_session(self.project, **self.kwargs, requirements=['FR-999'])
+        tasks.write_text('- [ ] T001 No explicit requirement\n', encoding='utf-8')
+        manifest['feature_refs']['tasks']['sha256'] = sha256(tasks.read_bytes()).hexdigest()
+        path.write_text(json.dumps(manifest), encoding='utf-8')
+        with self.assertRaisesRegex(ValueError, 'lacks an explicit FR mapping'):
+            prepare_session(self.project, **self.kwargs, requirements=['FR-001'])
+
     def setUp(self):
         temporary = tempfile.TemporaryDirectory(prefix='rf handoff ')
         self.addCleanup(temporary.cleanup)

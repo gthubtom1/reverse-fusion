@@ -3,12 +3,12 @@
 给当前 coding agent 使用的普通开发、逆向分析与独立复刻工具集。
 仓库：<https://github.com/gthubtom1/reverse-fusion>。
 
-产品版本 **`1.1.1`，Windows x64 / Codex 完整工程版**，当前交付阶段 `RF-31`。
+产品版本 **`1.2.0`，Windows x64 / Codex 完整工程版**，当前交付阶段 `RF-33`。
 不需要用户继续提供样本才能安装或交付本版本。范围与有限发布门见
-[版本说明](docs/RELEASE-1.1.md)。准确的工程检查、历史实测和
+[版本说明](docs/RELEASE-1.2.md)。准确的工程检查、历史实测和
 未覆盖范围分别保存在 [当前状态](docs/CURRENT-STATE.md)、
 [发布验收](docs/FINAL-RELEASE-ACCEPTANCE.md) 与
-[最新 checkpoint](checkpoints/RF-31-20261116-001.md)。工程版本与具体软件的复刻结果分别报告。
+[最新 checkpoint](checkpoints/RF-33-20261116-001.md)。工程版本与具体软件的复刻结果分别报告。
 
 ## 换电脑，只给仓库链接
 
@@ -42,6 +42,11 @@ cd reverse-fusion
 
 **零基础先看 [白话使用指南](docs/BEGINNER-GUIDE.md)**。你说目标，智能体负责选领域、
 判断缺什么、调用组件并比较结果；不需要你编写专业流程提示词。
+
+1.2.0新增的普通请求完整使用记录见[功能复核](docs/FUNCTIONAL-ACCEPTANCE-REVIEW.md)：
+仓库自有完整小应用已实际走完真实四组件、比较、修正和交付，保留各阶段原始记录。
+新增[有预算REA执行](docs/BOUNDED-REA.md)、[独立进程比较](docs/PROCESS-COMPARISON.md)
+及[Pi/Claude项目接入](docs/HOST-PROJECT-CONNECTION.md)。宿主登录/运行资格单列。
 
 - **正常开发**：直接描述要开发的网站、应用或其他项目。默认 `normal-dev`，
   不强制建立逆向 case，也不强制启动 REA、Spec、Builder 或 ledger。

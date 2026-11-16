@@ -1,0 +1,32 @@
+{
+  "operation": "owned-official-rea-run",
+  "execution_status": "returned",
+  "requested_operation": "inspect-artifact",
+  "runtime_source": "repository-receipt",
+  "argv": [
+    "D:\\Project\\reverse\\vendor\\node\\node-v24.22.1-win-x64\\node.exe",
+    "D:\\Project\\reverse\\vendor\\rea\\package\\scripts\\rea.mjs",
+    "inspect-artifact",
+    "guarded/main.exe",
+    "--format",
+    "json",
+    "--full-output"
+  ],
+  "process": {
+    "status": "observed",
+    "reason": null,
+    "exit_code": 0,
+    "elapsed_ms": 1499.286,
+    "peak_job_bytes": 340717568,
+    "output_truncated": false,
+    "memory_limit_mb": 768,
+    "cleanup": "owned Windows job closed after invocation"
+  },
+  "argument_sha256": "774759bdf5f77ad4a1b5e89d2bb9e6712984e5f88360c854d5a871f3c54a6d6c",
+  "arguments_changed": false,
+  "stdout_sha256": "c673d6c26d54d631f9068f8ce679a1815d4e730310ce636e8941609aacce61e4",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "resource_messages": [],
+  "semantic_acceptance": "not-assessed; inspect native coverage/limitations even when execution_status=returned",
+  "next_action": "Inspect actual official result/coverage before promoting facts; raw output remains unmodified."
+}

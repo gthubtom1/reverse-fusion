@@ -1,0 +1,303 @@
+{
+  "version": 1,
+  "operation": "finite-process-comparison",
+  "status": "pass",
+  "scope": "owned native integer operation, input validation and exit behavior",
+  "plan_sha256": "ec897f4a6c18cd89d6652598c64869f094ad49684c0bbfad7944ca803a255bdc",
+  "sources": {
+    "guarded/main.c": "f34348b53e3d862d44cad87490cf6e0a9919fafb2d45ec8252ed88fd0c6e1a96",
+    "guarded/main.exe": "aa718d191fd97f579ac544d7785f4789693d7eb5e0a8ef5d2778f7fe156923fa",
+    "candidate/main.c": "beea5330e8d16d3ae67e5739a894ad8e79a366772de2a80cd5046e96317e5322",
+    "candidate/main.exe": "4e4553fb87cb50a7670ab9c7e2d3332257564b152b9c6518ad6fa0fa7843523b"
+  },
+  "changed_inputs": [],
+  "cases": [
+    {
+      "id": "case-0",
+      "original": {
+        "status": "observed",
+        "reason": null,
+        "exit_code": 0,
+        "elapsed_ms": 24.996,
+        "peak_job_bytes": 7680000,
+        "output_truncated": false,
+        "memory_limit_mb": null,
+        "cleanup": "owned Windows job closed after invocation",
+        "stdout_base64": "cmVzdWx0OjcNCg==",
+        "stderr_base64": ""
+      },
+      "candidate": {
+        "status": "observed",
+        "reason": null,
+        "exit_code": 0,
+        "elapsed_ms": 24.091,
+        "peak_job_bytes": 7675904,
+        "output_truncated": false,
+        "memory_limit_mb": null,
+        "cleanup": "owned Windows job closed after invocation",
+        "stdout_base64": "cmVzdWx0OjcNCg==",
+        "stderr_base64": ""
+      },
+      "status": "pass"
+    },
+    {
+      "id": "case-1",
+      "original": {
+        "status": "observed",
+        "reason": null,
+        "exit_code": 0,
+        "elapsed_ms": 21.213,
+        "peak_job_bytes": 7696384,
+        "output_truncated": false,
+        "memory_limit_mb": null,
+        "cleanup": "owned Windows job closed after invocation",
+        "stdout_base64": "cmVzdWx0OjExDQo=",
+        "stderr_base64": ""
+      },
+      "candidate": {
+        "status": "observed",
+        "reason": null,
+        "exit_code": 0,
+        "elapsed_ms": 22.239,
+        "peak_job_bytes": 7696384,
+        "output_truncated": false,
+        "memory_limit_mb": null,
+        "cleanup": "owned Windows job closed after invocation",
+        "stdout_base64": "cmVzdWx0OjExDQo=",
+        "stderr_base64": ""
+      },
+      "status": "pass"
+    },
+    {
+      "id": "case-2",
+      "original": {
+        "status": "observed",
+        "reason": null,
+        "exit_code": 0,
+        "elapsed_ms": 21.71,
+        "peak_job_bytes": 7700480,
+        "output_truncated": false,
+        "memory_limit_mb": null,
+        "cleanup": "owned Windows job closed after invocation",
+        "stdout_base64": "cmVzdWx0Oi0xOTkzDQo=",
+        "stderr_base64": ""
+      },
+      "candidate": {
+        "status": "observed",
+        "reason": null,
+        "exit_code": 0,
+        "elapsed_ms": 20.986,
+        "peak_job_bytes": 7688192,
+        "output_truncated": false,
+        "memory_limit_mb": null,
+        "cleanup": "owned Windows job closed after invocation",
+        "stdout_base64": "cmVzdWx0Oi0xOTkzDQo=",
+        "stderr_base64": ""
+      },
+      "status": "pass"
+    },
+    {
+      "id": "case-3",
+      "original": {
+        "status": "observed",
+        "reason": null,
+        "exit_code": 0,
+        "elapsed_ms": 21.532,
+        "peak_job_bytes": 7716864,
+        "output_truncated": false,
+        "memory_limit_mb": null,
+        "cleanup": "owned Windows job closed after invocation",
+        "stdout_base64": "cmVzdWx0OjIwMDcNCg==",
+        "stderr_base64": ""
+      },
+      "candidate": {
+        "status": "observed",
+        "reason": null,
+        "exit_code": 0,
+        "elapsed_ms": 21.673,
+        "peak_job_bytes": 7684096,
+        "output_truncated": false,
+        "memory_limit_mb": null,
+        "cleanup": "owned Windows job closed after invocation",
+        "stdout_base64": "cmVzdWx0OjIwMDcNCg==",
+        "stderr_base64": ""
+      },
+      "status": "pass"
+    },
+    {
+      "id": "case-4",
+      "original": {
+        "status": "observed",
+        "reason": null,
+        "exit_code": 3,
+        "elapsed_ms": 21.777,
+        "peak_job_bytes": 7725056,
+        "output_truncated": false,
+        "memory_limit_mb": null,
+        "cleanup": "owned Windows job closed after invocation",
+        "stdout_base64": "aW52YWxpZA0K",
+        "stderr_base64": ""
+      },
+      "candidate": {
+        "status": "observed",
+        "reason": null,
+        "exit_code": 3,
+        "elapsed_ms": 20.528,
+        "peak_job_bytes": 7688192,
+        "output_truncated": false,
+        "memory_limit_mb": null,
+        "cleanup": "owned Windows job closed after invocation",
+        "stdout_base64": "aW52YWxpZA0K",
+        "stderr_base64": ""
+      },
+      "status": "pass"
+    },
+    {
+      "id": "case-5",
+      "original": {
+        "status": "observed",
+        "reason": null,
+        "exit_code": 3,
+        "elapsed_ms": 22.01,
+        "peak_job_bytes": 7696384,
+        "output_truncated": false,
+        "memory_limit_mb": null,
+        "cleanup": "owned Windows job closed after invocation",
+        "stdout_base64": "aW52YWxpZA0K",
+        "stderr_base64": ""
+      },
+      "candidate": {
+        "status": "observed",
+        "reason": null,
+        "exit_code": 3,
+        "elapsed_ms": 21.503,
+        "peak_job_bytes": 7688192,
+        "output_truncated": false,
+        "memory_limit_mb": null,
+        "cleanup": "owned Windows job closed after invocation",
+        "stdout_base64": "aW52YWxpZA0K",
+        "stderr_base64": ""
+      },
+      "status": "pass"
+    },
+    {
+      "id": "case-6",
+      "original": {
+        "status": "observed",
+        "reason": null,
+        "exit_code": 0,
+        "elapsed_ms": 21.217,
+        "peak_job_bytes": 7720960,
+        "output_truncated": false,
+        "memory_limit_mb": null,
+        "cleanup": "owned Windows job closed after invocation",
+        "stdout_base64": "cmVzdWx0OjQ1DQo=",
+        "stderr_base64": ""
+      },
+      "candidate": {
+        "status": "observed",
+        "reason": null,
+        "exit_code": 0,
+        "elapsed_ms": 21.687,
+        "peak_job_bytes": 7696384,
+        "output_truncated": false,
+        "memory_limit_mb": null,
+        "cleanup": "owned Windows job closed after invocation",
+        "stdout_base64": "cmVzdWx0OjQ1DQo=",
+        "stderr_base64": ""
+      },
+      "status": "pass"
+    },
+    {
+      "id": "case-7",
+      "original": {
+        "status": "observed",
+        "reason": null,
+        "exit_code": 0,
+        "elapsed_ms": 21.667,
+        "peak_job_bytes": 7700480,
+        "output_truncated": false,
+        "memory_limit_mb": null,
+        "cleanup": "owned Windows job closed after invocation",
+        "stdout_base64": "cmVzdWx0OjczDQo=",
+        "stderr_base64": ""
+      },
+      "candidate": {
+        "status": "observed",
+        "reason": null,
+        "exit_code": 0,
+        "elapsed_ms": 21.19,
+        "peak_job_bytes": 7688192,
+        "output_truncated": false,
+        "memory_limit_mb": null,
+        "cleanup": "owned Windows job closed after invocation",
+        "stdout_base64": "cmVzdWx0OjczDQo=",
+        "stderr_base64": ""
+      },
+      "status": "pass"
+    },
+    {
+      "id": "case-8",
+      "original": {
+        "status": "observed",
+        "reason": null,
+        "exit_code": 3,
+        "elapsed_ms": 21.921,
+        "peak_job_bytes": 7688192,
+        "output_truncated": false,
+        "memory_limit_mb": null,
+        "cleanup": "owned Windows job closed after invocation",
+        "stdout_base64": "aW52YWxpZA0K",
+        "stderr_base64": ""
+      },
+      "candidate": {
+        "status": "observed",
+        "reason": null,
+        "exit_code": 3,
+        "elapsed_ms": 21.995,
+        "peak_job_bytes": 7700480,
+        "output_truncated": false,
+        "memory_limit_mb": null,
+        "cleanup": "owned Windows job closed after invocation",
+        "stdout_base64": "aW52YWxpZA0K",
+        "stderr_base64": ""
+      },
+      "status": "pass"
+    },
+    {
+      "id": "case-9",
+      "original": {
+        "status": "observed",
+        "reason": null,
+        "exit_code": 2,
+        "elapsed_ms": 21.389,
+        "peak_job_bytes": 7696384,
+        "output_truncated": false,
+        "memory_limit_mb": null,
+        "cleanup": "owned Windows job closed after invocation",
+        "stdout_base64": "",
+        "stderr_base64": ""
+      },
+      "candidate": {
+        "status": "observed",
+        "reason": null,
+        "exit_code": 2,
+        "elapsed_ms": 21.101,
+        "peak_job_bytes": 7741440,
+        "output_truncated": false,
+        "memory_limit_mb": null,
+        "cleanup": "owned Windows job closed after invocation",
+        "stdout_base64": "",
+        "stderr_base64": ""
+      },
+      "status": "pass"
+    }
+  ],
+  "rea_native_proof": "not-performed",
+  "whole_product_acceptance": "not-established",
+  "limitations": [
+    "Finite argv/stdin/exit/stdout/stderr comparison only.",
+    "Filesystem, UI, network and other effects need their own reviewed observations.",
+    "No shell expansion; executable arguments still have their actual effects."
+  ]
+}

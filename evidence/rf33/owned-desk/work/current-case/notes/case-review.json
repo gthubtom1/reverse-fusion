@@ -1,0 +1,42 @@
+{
+  "status": "PASS",
+  "case_root": "C:\\Users\\toti\\Documents\\Codex\\2026-11-16\\reverse-fusion-owned-desk-use\\work\\current-case",
+  "generated_at": "2026-11-16T02:12:13.069801+00:00",
+  "scope": {
+    "auth_status": "granted",
+    "network_mode": "lab_only",
+    "ready_for_act": "true",
+    "assets": [
+      "desk-original",
+      "outputs",
+      "work/current-case"
+    ]
+  },
+  "summary": {
+    "errors": 0,
+    "warnings": 0,
+    "evidence": 3,
+    "workitems": 3,
+    "timeline_events": 1,
+    "findings": 0,
+    "paths": 0
+  },
+  "issues": [],
+  "traceability": {
+    "E-001": {
+      "workitems": 2,
+      "timeline": 1,
+      "reports": 0
+    },
+    "E-002": {
+      "workitems": 2,
+      "timeline": 1,
+      "reports": 0
+    },
+    "E-003": {
+      "workitems": 2,
+      "timeline": 1,
+      "reports": 0
+    }
+  }
+}

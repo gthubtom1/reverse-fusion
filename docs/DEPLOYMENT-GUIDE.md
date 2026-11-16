@@ -1,8 +1,8 @@
 # Reverse Fusion 部署与使用指南
 
-1.1.1 完整工程分发的当前范围是 Windows x64 + Codex；安装不依赖用户样本。
+1.2.0 完整工程分发的当前范围是 Windows x64 + Codex；安装不依赖用户样本。
 其他宿主与系统的旧入口保留，但完整分发资格需另行适配，不能自动报告为已支持。
-工程发布门见 [RELEASE-1.1.md](RELEASE-1.1.md)。
+工程发布门见 [RELEASE-1.2.md](RELEASE-1.2.md)。
 把仓库链接交给正在使用的 Codex、Pi、Claude Code 或兼容 coding agent，并说
 “部署到当前工作区”即可。完整部署动作只在
 [AGENT-BOOTSTRAP.md](AGENT-BOOTSTRAP.md) 维护；这份指南解释使用与维护逻辑。

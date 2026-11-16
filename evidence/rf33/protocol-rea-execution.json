@@ -1,0 +1,33 @@
+{
+  "operation": "owned-official-rea-run",
+  "execution_status": "returned",
+  "requested_operation": "inspect-web-network-capture",
+  "runtime_source": "repository-receipt",
+  "argv": [
+    "D:\\Project\\reverse\\vendor\\node\\node-v24.22.1-win-x64\\node.exe",
+    "D:\\Project\\reverse\\vendor\\rea\\package\\scripts\\rea.mjs",
+    "inspect-web-network-capture",
+    "capture.har",
+    "har",
+    "--format",
+    "json",
+    "--full-output"
+  ],
+  "process": {
+    "status": "observed",
+    "reason": null,
+    "exit_code": 0,
+    "elapsed_ms": 1515.731,
+    "peak_job_bytes": 380641280,
+    "output_truncated": false,
+    "memory_limit_mb": 768,
+    "cleanup": "owned Windows job closed after invocation"
+  },
+  "argument_sha256": "08fe4313caab4a7da58e5e0608e34984c718c277609f3755e22061c2110432b8",
+  "arguments_changed": false,
+  "stdout_sha256": "1c8805695564f980c734b6a93430bc0cfdd18aca753ecc2a5b6b994f6a148c8b",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "resource_messages": [],
+  "semantic_acceptance": "not-assessed; inspect native coverage/limitations even when execution_status=returned",
+  "next_action": "Inspect actual official result/coverage before promoting facts; raw output remains unmodified."
+}

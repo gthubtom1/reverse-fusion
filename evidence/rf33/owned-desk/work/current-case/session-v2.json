@@ -1,0 +1,211 @@
+{
+  "version": 1,
+  "backend": "current-session",
+  "workspace": "work/current-case/craft-v2",
+  "project_root": "C:\\Users\\toti\\Documents\\Codex\\2026-11-16\\reverse-fusion-owned-desk-use",
+  "handoff": {
+    "assessment_scope": "machine_check_only",
+    "status": "PASS",
+    "semantic_verification": "not_performed",
+    "target_execution": "not_performed",
+    "authorization": "not_assessed",
+    "issues": [],
+    "checked_files": [
+      "specs/001-desk-recreation/plan.md",
+      "specs/001-desk-recreation/spec.md",
+      "specs/001-desk-recreation/tasks.md",
+      "work/current-case/evidence/E-001.md",
+      "work/current-case/evidence/E-002.md",
+      "work/current-case/evidence/E-003.md",
+      "work/current-case/evidence/browser-original/observations.json",
+      "work/current-case/evidence/initial-ledger.json",
+      "work/current-case/evidence/original-bundle.json",
+      "work/current-case/notes/behavior-review.md",
+      "work/current-case/scope.md",
+      "work/current-case/timeline.md",
+      "work/current-case/workitems.md"
+    ],
+    "semantic_review_required": [
+      {
+        "fr_id": "FR-001",
+        "source_kind": "observed",
+        "selected_for_batch": true,
+        "required": "Review evidence support, unknown completeness, authority and current applicability"
+      },
+      {
+        "fr_id": "FR-002",
+        "source_kind": "observed",
+        "selected_for_batch": true,
+        "required": "Review evidence support, unknown completeness, authority and current applicability"
+      },
+      {
+        "fr_id": "FR-003",
+        "source_kind": "observed",
+        "selected_for_batch": true,
+        "required": "Review evidence support, unknown completeness, authority and current applicability"
+      },
+      {
+        "fr_id": "FR-004",
+        "source_kind": "observed",
+        "selected_for_batch": true,
+        "required": "Review evidence support, unknown completeness, authority and current applicability"
+      },
+      {
+        "fr_id": "FR-005",
+        "source_kind": "observed",
+        "selected_for_batch": true,
+        "required": "Review evidence support, unknown completeness, authority and current applicability"
+      },
+      {
+        "fr_id": "FR-006",
+        "source_kind": "observed",
+        "selected_for_batch": true,
+        "required": "Review evidence support, unknown completeness, authority and current applicability"
+      },
+      {
+        "fr_id": "FR-007",
+        "source_kind": "observed",
+        "selected_for_batch": true,
+        "required": "Review evidence support, unknown completeness, authority and current applicability"
+      },
+      {
+        "fr_id": "FR-008",
+        "source_kind": "designed",
+        "selected_for_batch": true,
+        "required": "Review evidence support, unknown completeness, authority and current applicability"
+      }
+    ],
+    "deferred_requirements": [],
+    "limitations": [
+      "SHA-256 checks fixity against supplied commitments, not authenticity or freshness of the selected version.",
+      "Source classifications and unknown lists require independent review; omitted or misclassified unknowns are not discovered.",
+      "No REA schema validation, Evidence authentication, proof applicability or semantic closure is performed.",
+      "PASS permits only mechanical handoff review; it does not authorize ACT or establish implementation readiness."
+    ]
+  },
+  "tasks": [
+    "T013"
+  ],
+  "frozen_refs": {
+    "specs/001-desk-recreation/tasks.md": "412be6935a859ea431ccca31c48e886d5fe8c4813e01076abe7c473a6bea6d37",
+    "work/current-case/research-v2.json": "c7a53880816ebc150e47bbd7ed1b34aa34fbf02f5759836ab707c6861dc4582d",
+    ".specify/integration.json": "b38e1c60fa754384871a974c9427e29df3095e3190c0a75293e733c3814c1e70",
+    ".specify/feature.json": "492974a63db03afc79b0d097f3e87d32aac0533c1aaa24a676b6c25f7fcf096e",
+    ".specify/memory/constitution.md": "d7e9376a3ccb929b7706a2b1f3202a710cff0df0850c2b76f4a2fed99ba2e980",
+    "specs/001-desk-recreation/spec.md": "1fce08d490c959fe56c12b11ef6153d8834dc7eef388d1c2152073094459e67d",
+    "specs/001-desk-recreation/plan.md": "b217d00fa61c632a9de842b9cc5ef28d8f865ef2cec7b082805e750e1227c06f",
+    ".agents/skills/speckit-constitution/SKILL.md": "ff6604c8424d4f4edf80f19ccfda1ede1a1dc5091a397cc1f0078a0bc3b0a538",
+    ".agents/skills/speckit-specify/SKILL.md": "37417c591b037e48507a622950f0b5b3596f65bfc0726eb544052dceedcaa92c",
+    ".agents/skills/speckit-clarify/SKILL.md": "1e9de2b2a673c923f7ca650fc40e4d5f24654163c577e0f1ceb70edfaa08114b",
+    ".agents/skills/speckit-plan/SKILL.md": "0834b2298c078b0a89ee64a3e47e140cc9b31c4049492bd504491199a0fe3e73",
+    ".agents/skills/speckit-tasks/SKILL.md": "1e1d18b34e39d62d6388297f035505905741b07973102e0d44aa8647d85ab093",
+    ".agents/skills/speckit-analyze/SKILL.md": "fad1c37a451e017995b15fc3eefe243274642fbb3ff7c8a5ab021908df71aa93",
+    ".agents/skills/speckit-implement/SKILL.md": "4d58a80ede8d837798d13a838b83a88fd4335104d0806d27f8018664a1ee0b85",
+    ".agents/skills/speckit-converge/SKILL.md": "369e168cbcc9f903d1b8f3f360a32d24a7ebf3d07066b8676032cffcafbebd9e",
+    "work/current-case/native-lease-v2.json": "f7de8ce550d2c16daf6daeab3617651a5a6c33fb19222463e37c8f15d334c46f",
+    "work/current-case/notes/handoff-manifest-v2.json": "a3e2495ecf3c6a4835310c36c3705b929aa880eb9a232c4b2b7ad5ed5b24bf91",
+    "work/current-case/notes/semantic-review-v2.md": "cb61c3e0c3637cf180e36efa91fc5e7f2cf39222752369da3ae79a0acdca2f76",
+    "work/current-case/case.json": "5712eb6a5e326c2a2bc16921e8b86889ffa965fed1955a14e35688906013abca",
+    "work/current-case/evidence/E-001.md": "68a758a020ebc6df7ff41318a05a521e6d4613add3503556a8c289843c2d87a9",
+    "work/current-case/evidence/E-002.md": "7a4a9e6f5501a1ac1843953423b8ba53b27d69572f000a804e4b781036a4b9f2",
+    "work/current-case/evidence/E-003.md": "2999ff7450e69164c88f54dcd2c9eddebdf7f755bd651c59893943266346cf0c",
+    "work/current-case/evidence/browser-original/observations.json": "170e9347c832498a47e62aaf02705724f49414be9ad19068ede9ab16e119392f",
+    "work/current-case/evidence/initial-ledger.json": "e1ead101870192ad5bbd3bdbee4589b2cd9fc56ce93d9d04b39a6a80c8299055",
+    "work/current-case/evidence/original-bundle.json": "3b5a9c0da860412ecc81c2ec68df1abd74531b378d1f8a2b42cad648d1c48905",
+    "work/current-case/notes/behavior-review.md": "0adb2453e5f6f2726916da483863429d213ec129a89e16bfc81f3cc7449bfa3b",
+    "work/current-case/scope.md": "55aba78a7831acaf4c5b4c90008fb3f759e75f94bfb5dce4a0cb34696c2a40bf",
+    "work/current-case/timeline.md": "9acb582016ed184d4f6c3fc470c69b4113af9f447df5309946089d2975b9b8bd",
+    "work/current-case/workitems.md": "14711a623394a8e83a3cc8df3bdf0a6c981e4728f5a594694b435fe49330acd9"
+  },
+  "allowed_outputs": [
+    "craft.json",
+    "app/core.mjs",
+    "app/page.mjs",
+    "app/index.html",
+    "app/launch.py",
+    "app/启动.cmd",
+    "app/使用说明.txt"
+  ],
+  "before": {},
+  "phase": "finished",
+  "events": [
+    {
+      "phase": "check",
+      "outputs": {
+        "app/core.mjs": "f4a3352a68bc801b05dd1e8623f72913017bf987f86bb5b2ba8ed56d9a9b68f4",
+        "app/index.html": "2433f2705cda219fb865f70242fa2d320a6864e6ae0572af4e1b3599503bd761",
+        "app/launch.py": "84f4d12957b6b7c0483406f1dd184cf919c632c7fb133da68be66ae6f54c30de",
+        "app/page.mjs": "32b1a634db8cb0d125a88611f410a04c6a8d9eaa2f02609209cbdc4730d8ee67",
+        "app/使用说明.txt": "473dad0c43ce68823276895a58143b73c33216dbff0f71075359bb23aeee3aa1",
+        "app/启动.cmd": "72a29110cdd9937ea2b835e68d3cff9077bbc5a0610c00a44911bd8fc368b400",
+        "craft.json": "e30d4f4b5ad51418bb0275f3b5af595d233e78fd31f1c16d2fc3db9bb177eae8"
+      },
+      "snapshot_delta": {
+        "added": [
+          "app/core.mjs",
+          "app/index.html",
+          "app/launch.py",
+          "app/page.mjs",
+          "app/使用说明.txt",
+          "app/启动.cmd",
+          "craft.json"
+        ],
+        "changed": [],
+        "deleted": []
+      }
+    },
+    {
+      "phase": "refine",
+      "outputs": {
+        "app/core.mjs": "f4a3352a68bc801b05dd1e8623f72913017bf987f86bb5b2ba8ed56d9a9b68f4",
+        "app/index.html": "2433f2705cda219fb865f70242fa2d320a6864e6ae0572af4e1b3599503bd761",
+        "app/launch.py": "84f4d12957b6b7c0483406f1dd184cf919c632c7fb133da68be66ae6f54c30de",
+        "app/page.mjs": "32b1a634db8cb0d125a88611f410a04c6a8d9eaa2f02609209cbdc4730d8ee67",
+        "app/使用说明.txt": "473dad0c43ce68823276895a58143b73c33216dbff0f71075359bb23aeee3aa1",
+        "app/启动.cmd": "72a29110cdd9937ea2b835e68d3cff9077bbc5a0610c00a44911bd8fc368b400",
+        "craft.json": "e30d4f4b5ad51418bb0275f3b5af595d233e78fd31f1c16d2fc3db9bb177eae8"
+      },
+      "snapshot_delta": {
+        "added": [
+          "app/core.mjs",
+          "app/index.html",
+          "app/launch.py",
+          "app/page.mjs",
+          "app/使用说明.txt",
+          "app/启动.cmd",
+          "craft.json"
+        ],
+        "changed": [],
+        "deleted": []
+      }
+    },
+    {
+      "phase": "finish",
+      "outputs": {
+        "app/core.mjs": "f4a3352a68bc801b05dd1e8623f72913017bf987f86bb5b2ba8ed56d9a9b68f4",
+        "app/index.html": "2433f2705cda219fb865f70242fa2d320a6864e6ae0572af4e1b3599503bd761",
+        "app/launch.py": "84f4d12957b6b7c0483406f1dd184cf919c632c7fb133da68be66ae6f54c30de",
+        "app/page.mjs": "32b1a634db8cb0d125a88611f410a04c6a8d9eaa2f02609209cbdc4730d8ee67",
+        "app/使用说明.txt": "473dad0c43ce68823276895a58143b73c33216dbff0f71075359bb23aeee3aa1",
+        "app/启动.cmd": "72a29110cdd9937ea2b835e68d3cff9077bbc5a0610c00a44911bd8fc368b400",
+        "craft.json": "e30d4f4b5ad51418bb0275f3b5af595d233e78fd31f1c16d2fc3db9bb177eae8"
+      },
+      "snapshot_delta": {
+        "added": [
+          "app/core.mjs",
+          "app/index.html",
+          "app/launch.py",
+          "app/page.mjs",
+          "app/使用说明.txt",
+          "app/启动.cmd",
+          "craft.json"
+        ],
+        "changed": [],
+        "deleted": []
+      }
+    }
+  ],
+  "model_selection": "current-host-owned",
+  "business_acceptance": "not-performed",
+  "native_lease": "work/current-case/native-lease-v2.json"
+}

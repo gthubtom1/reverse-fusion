@@ -1,0 +1,8 @@
+{
+  "returncode": 1,
+  "status_fields": {
+    "loggedIn": false,
+    "authMethod": "none",
+    "apiProvider": "firstParty"
+  }
+}

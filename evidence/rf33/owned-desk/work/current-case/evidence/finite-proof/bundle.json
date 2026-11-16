@@ -1,0 +1,359 @@
+{
+  "artifacts": [
+    {
+      "digest": {
+        "sha256": "ddf8609a5fbb3e194d3973228da56771c6c3c03329166f0e5a95e29e1e94b9f2"
+      },
+      "format": "javascript-bundle",
+      "architecture": null
+    },
+    {
+      "digest": {
+        "sha256": "f4a3352a68bc801b05dd1e8623f72913017bf987f86bb5b2ba8ed56d9a9b68f4"
+      },
+      "format": "javascript-bundle",
+      "architecture": null
+    }
+  ],
+  "providers": [
+    {
+      "id": "rea-artifact-graph",
+      "name": "REA safe artifact graph provider",
+      "version": "1"
+    },
+    {
+      "id": "reverse-fusion-desk-verifier",
+      "name": "Reverse Fusion finite desk application replay verifier",
+      "version": "1"
+    }
+  ],
+  "environments": [],
+  "scenarios": [
+    {
+      "evidence_id": "ev_3424e8aca8e9d305e45c8f9fda8fb170802bba12452a0dc0d8af9c4bc45bd15c",
+      "operation": "verify_reconstruction_obligations",
+      "authority": "controlled-replay"
+    }
+  ],
+  "captures": [],
+  "unknowns": [],
+  "records": [
+    {
+      "evidence_id": "ev_0dffba4e1769cfff5f3a03c321820d36a93d595c72e174a62e820645288e0db9",
+      "subject": {
+        "name": "core.mjs",
+        "digest": {
+          "sha256": "ddf8609a5fbb3e194d3973228da56771c6c3c03329166f0e5a95e29e1e94b9f2"
+        },
+        "local_path": "C:\\Users\\toti\\Documents\\Codex\\2026-11-16\\reverse-fusion-owned-desk-use\\desk-original\\core.mjs",
+        "format": "javascript-bundle",
+        "architecture": null
+      },
+      "provider": {
+        "id": "rea-artifact-graph",
+        "name": "REA safe artifact graph provider",
+        "version": "1"
+      },
+      "analysis_profile": null,
+      "predicate_type": "rea.analysis",
+      "operation": "inventory_artifact",
+      "parameters": {
+        "integrity_policy": "fail"
+      },
+      "raw_result": null,
+      "normalized_result": {
+        "manifest": {
+          "manifest_id": "agm_c54df20fba8b2ec0ec2170018b17b91b6fbca7a4ab4b244d45e7b906ee51c20e",
+          "root_artifact_id": "art_f8393697906cb08140102197fb8807c3b99496271f27ce674598d7899fc8b918",
+          "root_sha256": "ddf8609a5fbb3e194d3973228da56771c6c3c03329166f0e5a95e29e1e94b9f2",
+          "root_format": "javascript-bundle",
+          "graph_sha256": "8a96a609672f1066129f3e89b09ad842bf59781e1120a342962d7ed48b83d441",
+          "node_count": 1,
+          "occurrence_count": 1,
+          "edge_count": 0
+        },
+        "nodes": [
+          {
+            "artifact_id": "art_f8393697906cb08140102197fb8807c3b99496271f27ce674598d7899fc8b918",
+            "format": "file",
+            "sha256": "ddf8609a5fbb3e194d3973228da56771c6c3c03329166f0e5a95e29e1e94b9f2",
+            "size": 2428,
+            "media_type": null,
+            "architecture": null,
+            "content_state": "materialized",
+            "limitations": []
+          }
+        ],
+        "occurrences": [
+          {
+            "occurrence_id": "occ_483277350dbe24486ccfae3019a141edd97593c69f63cf9b89ab2e9cd9b3061d",
+            "artifact_id": "art_f8393697906cb08140102197fb8807c3b99496271f27ce674598d7899fc8b918",
+            "parent_occurrence_id": null,
+            "relationship_coverage": "complete",
+            "logical_path": ".",
+            "entry_kind": "file",
+            "artifact_kind": "javascript",
+            "artifact_format": "javascript-bundle",
+            "declared_size": 2428,
+            "compressed_size": null,
+            "executable": false,
+            "encrypted": false,
+            "hash_status": "verified",
+            "source_location": null,
+            "limitations": []
+          }
+        ],
+        "edges": [],
+        "provenance": [],
+        "integrity_contradictions": [],
+        "coverage": {
+          "scope": "root",
+          "status": "complete"
+        },
+        "limitations": [
+          "Inventory covers root bytes only; child container entries were not examined."
+        ]
+      },
+      "confidence": "observed",
+      "authority": "shipped-artifact",
+      "environment": null,
+      "limitations": [
+        "Inventory covers root bytes only; child container entries were not examined."
+      ],
+      "relationship_coverage": null,
+      "locations": [],
+      "evidence_links": []
+    },
+    {
+      "evidence_id": "ev_12dc3d36657599f705334dcd36aeabe89ab506869dc3d6f3c475b2eb39440762",
+      "subject": {
+        "name": "core.mjs",
+        "digest": {
+          "sha256": "f4a3352a68bc801b05dd1e8623f72913017bf987f86bb5b2ba8ed56d9a9b68f4"
+        },
+        "local_path": "C:\\Users\\toti\\Documents\\Codex\\2026-11-16\\reverse-fusion-owned-desk-use\\outputs\\标签收纳盒\\core.mjs",
+        "format": "javascript-bundle",
+        "architecture": null
+      },
+      "provider": {
+        "id": "rea-artifact-graph",
+        "name": "REA safe artifact graph provider",
+        "version": "1"
+      },
+      "analysis_profile": null,
+      "predicate_type": "rea.analysis",
+      "operation": "inventory_artifact",
+      "parameters": {
+        "integrity_policy": "fail"
+      },
+      "raw_result": null,
+      "normalized_result": {
+        "manifest": {
+          "manifest_id": "agm_989465d6db05b9a935b7ed8a606bfdf121c48c1cab1d47aebecd8659171fadfe",
+          "root_artifact_id": "art_7940b22a0e280cebf41d1144bc493bb25733d9351bd1b84755ea04da4a79a58c",
+          "root_sha256": "f4a3352a68bc801b05dd1e8623f72913017bf987f86bb5b2ba8ed56d9a9b68f4",
+          "root_format": "javascript-bundle",
+          "graph_sha256": "aa0469e78c0c1cf02f0f589621c7ef75e380174efc5d6b5be89d45081f6e92dc",
+          "node_count": 1,
+          "occurrence_count": 1,
+          "edge_count": 0
+        },
+        "nodes": [
+          {
+            "artifact_id": "art_7940b22a0e280cebf41d1144bc493bb25733d9351bd1b84755ea04da4a79a58c",
+            "format": "file",
+            "sha256": "f4a3352a68bc801b05dd1e8623f72913017bf987f86bb5b2ba8ed56d9a9b68f4",
+            "size": 2765,
+            "media_type": null,
+            "architecture": null,
+            "content_state": "materialized",
+            "limitations": []
+          }
+        ],
+        "occurrences": [
+          {
+            "occurrence_id": "occ_7752735af746c331a712ed46400ab30c995d35e2c946f471f3a6e7801c71b1d2",
+            "artifact_id": "art_7940b22a0e280cebf41d1144bc493bb25733d9351bd1b84755ea04da4a79a58c",
+            "parent_occurrence_id": null,
+            "relationship_coverage": "complete",
+            "logical_path": ".",
+            "entry_kind": "file",
+            "artifact_kind": "javascript",
+            "artifact_format": "javascript-bundle",
+            "declared_size": 2765,
+            "compressed_size": null,
+            "executable": false,
+            "encrypted": false,
+            "hash_status": "verified",
+            "source_location": null,
+            "limitations": []
+          }
+        ],
+        "edges": [],
+        "provenance": [],
+        "integrity_contradictions": [],
+        "coverage": {
+          "scope": "root",
+          "status": "complete"
+        },
+        "limitations": [
+          "Inventory covers root bytes only; child container entries were not examined."
+        ]
+      },
+      "confidence": "observed",
+      "authority": "shipped-artifact",
+      "environment": null,
+      "limitations": [
+        "Inventory covers root bytes only; child container entries were not examined."
+      ],
+      "relationship_coverage": null,
+      "locations": [],
+      "evidence_links": []
+    },
+    {
+      "evidence_id": "ev_3424e8aca8e9d305e45c8f9fda8fb170802bba12452a0dc0d8af9c4bc45bd15c",
+      "subject": null,
+      "provider": {
+        "id": "reverse-fusion-desk-verifier",
+        "name": "Reverse Fusion finite desk application replay verifier",
+        "version": "1"
+      },
+      "analysis_profile": null,
+      "predicate_type": "rea.reconstruction-proof",
+      "operation": "verify_reconstruction_obligations",
+      "parameters": {
+        "obligation_id": "desk-declared-replay",
+        "fixture_id": "desk-finite-cases",
+        "verifier_id": "desk-node-chrome",
+        "original_sha256": "ddf8609a5fbb3e194d3973228da56771c6c3c03329166f0e5a95e29e1e94b9f2",
+        "candidate_sha256": "f4a3352a68bc801b05dd1e8623f72913017bf987f86bb5b2ba8ed56d9a9b68f4",
+        "verifier_sha256": "cfcc2a1cd998c695fe841acd8e66df7282a3f27893dbedce2c9ee5514e388c0b",
+        "comparator_sha256": "0342346a759e2c4b3e59462c015204d12d2061016c02972f7502a3acf66e447b",
+        "browser_scenario_sha256": "a18391ab523fc3853751295afc662f23e2edeb99411825ce7186586c7aa23d0e",
+        "all_original_file_hashes": {
+          "core.mjs": "ddf8609a5fbb3e194d3973228da56771c6c3c03329166f0e5a95e29e1e94b9f2",
+          "index.html": "fe8bb33fe756982f3bbaae9745716d896f7c81e9104f1327266c84a1975e6832",
+          "page.mjs": "83f93826a55b128f7c711ebc7052455330896b29d3553c895b1ac39433d92c63",
+          "README.txt": "abb9dd6c8bdd460a293e321a9c0d23361f11352b8396b5471b0a525ea3efc66e"
+        },
+        "all_candidate_file_hashes": {
+          "core.mjs": "f4a3352a68bc801b05dd1e8623f72913017bf987f86bb5b2ba8ed56d9a9b68f4",
+          "page.mjs": "32b1a634db8cb0d125a88611f410a04c6a8d9eaa2f02609209cbdc4730d8ee67",
+          "index.html": "2433f2705cda219fb865f70242fa2d320a6864e6ae0572af4e1b3599503bd761",
+          "launch.py": "84f4d12957b6b7c0483406f1dd184cf919c632c7fb133da68be66ae6f54c30de",
+          "启动.cmd": "72a29110cdd9937ea2b835e68d3cff9077bbc5a0610c00a44911bd8fc368b400",
+          "使用说明.txt": "473dad0c43ce68823276895a58143b73c33216dbff0f71075359bb23aeee3aa1"
+        }
+      },
+      "raw_result": {
+        "replay": {
+          "status": "pass",
+          "checks": 1416,
+          "coreTraces": [
+            {
+              "seed": 20261116,
+              "operations": 600,
+              "traceSha256": "06abe0e234cf88e7358ac7d7d501b7cdce280cd60e61d616b90b4e8078dd05aa"
+            },
+            {
+              "seed": 4138721,
+              "operations": 600,
+              "traceSha256": "917b9f9deed213947e00513c9ffd94c6c8bbd6d2fa18a4435a4b29400f84db4d"
+            }
+          ],
+          "browserCheckpoints": 21,
+          "screenshots": [
+            {
+              "name": "empty",
+              "sha256": "1918dacfbcd6e4a09e872a46fc18e2c889bef0d46a1176b6789fb600b3d0dfb7",
+              "equal": true
+            },
+            {
+              "name": "populated",
+              "sha256": "64ac334ce9bcca88c9c4a2d87606099f77b571a562d420dc8bb4ee1a943857b0",
+              "equal": true
+            },
+            {
+              "name": "mobile",
+              "sha256": "175c7846b0cb2e37eeec4aa6d56a715173e8c8c9f8dac442dffeea96ac928955",
+              "equal": true
+            }
+          ],
+          "wrongCandidateRejected": true,
+          "files": {
+            "core.mjs": "f4a3352a68bc801b05dd1e8623f72913017bf987f86bb5b2ba8ed56d9a9b68f4",
+            "page.mjs": "32b1a634db8cb0d125a88611f410a04c6a8d9eaa2f02609209cbdc4730d8ee67",
+            "index.html": "2433f2705cda219fb865f70242fa2d320a6864e6ae0572af4e1b3599503bd761",
+            "launch.py": "84f4d12957b6b7c0483406f1dd184cf919c632c7fb133da68be66ae6f54c30de",
+            "启动.cmd": "72a29110cdd9937ea2b835e68d3cff9077bbc5a0610c00a44911bd8fc368b400",
+            "使用说明.txt": "473dad0c43ce68823276895a58143b73c33216dbff0f71075359bb23aeee3aa1"
+          },
+          "limitations": [
+            "Finite declared input/operation coverage; not a universal equivalence proof.",
+            "Same-machine installed Chrome visual comparison."
+          ],
+          "cleanup": "Both owned browser contexts and browsers closed; loopback servers closed in finally."
+        },
+        "launcher": {
+          "status": "pass",
+          "server_ready": true,
+          "served_exact_delivered_files": true,
+          "port_conflict_rejected": true,
+          "launch_mode": "delivered launch.py --no-browser; CMD wrapper separately inspected",
+          "python": "3.12.0",
+          "process_exited": true,
+          "port_closed": true
+        }
+      },
+      "normalized_result": {
+        "bindings": [
+          {
+            "obligation_id": "desk-declared-replay",
+            "obligation_version": 1,
+            "owner_sha256": "ddf8609a5fbb3e194d3973228da56771c6c3c03329166f0e5a95e29e1e94b9f2",
+            "fixtures": [
+              {
+                "fixture_id": "desk-finite-positive",
+                "case_kind": "positive",
+                "passed": true
+              },
+              {
+                "fixture_id": "desk-finite-negative",
+                "case_kind": "negative",
+                "passed": true
+              },
+              {
+                "fixture_id": "desk-finite-malformed",
+                "case_kind": "malformed",
+                "passed": true
+              }
+            ],
+            "verifiers": [
+              {
+                "verifier_id": "desk-node-chrome",
+                "claim_id": "desk-declared-replay",
+                "passed": true
+              }
+            ]
+          }
+        ]
+      },
+      "confidence": "observed",
+      "authority": "controlled-replay",
+      "environment": null,
+      "limitations": [
+        "Artifact identity is unavailable for this observation.",
+        "Repository-owned integration proof of declared finite cases only; not native REA browser/process verification and not universal equivalence.",
+        "Full original static application ledger and conservative unknowns remain archived unchanged.",
+        "Screenshots cover this installed Chrome at declared desktop/mobile viewports.",
+        "Launcher Python path tested with --no-browser; CMD wrapper inspected separately."
+      ],
+      "relationship_coverage": null,
+      "locations": [],
+      "evidence_links": [
+        "ev_0dffba4e1769cfff5f3a03c321820d36a93d595c72e174a62e820645288e0db9",
+        "ev_12dc3d36657599f705334dcd36aeabe89ab506869dc3d6f3c475b2eb39440762"
+      ]
+    }
+  ]
+}

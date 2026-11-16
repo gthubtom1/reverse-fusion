@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "project_root": "C:\\Users\\toti\\Documents\\Codex\\2026-11-16\\reverse-fusion-owned-desk-use",
+  "receipt": "work/current-case/session-v2.json",
+  "workspace": "work/current-case/craft-v2",
+  "check_commands": [
+    "\"C:/Users/toti/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node.exe\" \"C:/Users/toti/Documents/Codex/2026-11-16/reverse-fusion-owned-desk-use/work/compare.mjs\" . \"C:/Users/toti/Documents/Codex/2026-11-16/reverse-fusion-owned-desk-use/work/current-case/evidence/differential\"",
+    "\"D:/Project/reverse/.venv/Scripts/python.exe\" \"C:/Users/toti/Documents/Codex/2026-11-16/reverse-fusion-owned-desk-use/work/launcher-smoke.py\" ."
+  ],
+  "command_timeout_seconds": 60
+}

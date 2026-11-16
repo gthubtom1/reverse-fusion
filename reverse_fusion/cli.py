@@ -35,6 +35,9 @@ from .component_status import component_status, core_deployment
 from .craft_native import prepare_native, invoke_native
 from .workflow import component_entries, inspect_workflow
 from .file_updates import atomic_write, file_transaction
+from .project_adapter import connect_project
+from .differential import compare_processes
+from .rea_runner import run_rea
 
 ROOT = Path(__file__).resolve().parents[1]
 MANIFEST = ROOT / "components" / "official" / "manifest.json"
@@ -68,6 +71,25 @@ def cmd_workflow(args: argparse.Namespace) -> int:
     result = inspect_workflow(ROOT, _project_root(args), case_root=args.case_root, receipt=args.receipt)
     _print(result, args.format)
     return 0 if result['status'] == 'context-resolved' else 2
+
+
+def cmd_connect(args: argparse.Namespace) -> int:
+    result = connect_project(ROOT, _project_root(args), client=args.client, apply=args.apply, remove=args.remove)
+    _print(result, args.format)
+    return 0
+
+
+def cmd_compare(args: argparse.Namespace) -> int:
+    result = compare_processes(_project_root(args), args.plan, args.output)
+    _print(result, args.format)
+    return 0 if result['status'] == 'pass' else 1 if result['status'] == 'fail' else 2
+
+
+def cmd_rea_run(args: argparse.Namespace) -> int:
+    result = run_rea(ROOT, _project_root(args), operation=args.operation, arguments=args.args_file,
+                     output=args.output, timeout=args.timeout, memory_mb=args.memory_mb)
+    _print(result, args.format)
+    return 0 if result['execution_status'] == 'returned' else 2
 
 
 def cmd_release(args: argparse.Namespace) -> int:
@@ -463,7 +485,7 @@ def cmd_session(args: argparse.Namespace) -> int:
                                      tasks=args.tasks, task_files=args.task_file,
                                      research_files=args.research_file, allowed_outputs=args.allowed_output,
                                      case_root=args.case_root, handoff_manifest=args.handoff_manifest,
-                                     review_file=args.review_file)
+                                     review_file=args.review_file, requirements=args.requirement)
         else:
             result = check_session(project, receipt=args.receipt, phase=args.phase)
     except (ValueError, OSError, KeyError, TypeError) as exc:
@@ -481,7 +503,8 @@ def cmd_native_craft(args: argparse.Namespace) -> int:
                                 tasks=args.tasks, task_files=args.task_file, research_files=args.research_file,
                                 allowed_outputs=args.allowed_output, check_commands=args.check_command,
                                 command_timeout_seconds=args.command_timeout, case_root=args.case_root,
-                                handoff_manifest=args.handoff_manifest, review_file=args.review_file)
+                                handoff_manifest=args.handoff_manifest, review_file=args.review_file,
+                                requirements=args.requirement)
     else:
         params = {}
         if args.params_file:
@@ -512,11 +535,24 @@ def cmd_handshake(args: argparse.Namespace) -> int:
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="reverse-fusion", description="Reverse Fusion evidence-driven reconstruction entry")
     sub = parser.add_subparsers(dest="command", required=True)
-    for name, fn in (("contracts", cmd_contracts), ("release-check", cmd_release), ("workflow", cmd_workflow), ("doctor", cmd_doctor), ("plan", cmd_plan), ("handoff", cmd_handoff), ("install", cmd_install), ("uninstall", cmd_uninstall), ("update", cmd_update), ("accept", cmd_accept), ("bridge", cmd_bridge), ("craft", cmd_craft), ("native-craft", cmd_native_craft), ("build", cmd_build), ("session", cmd_session), ("handshake", cmd_handshake)):
+    for name, fn in (("contracts", cmd_contracts), ("rea-run", cmd_rea_run), ("compare", cmd_compare), ("connect", cmd_connect), ("release-check", cmd_release), ("workflow", cmd_workflow), ("doctor", cmd_doctor), ("plan", cmd_plan), ("handoff", cmd_handoff), ("install", cmd_install), ("uninstall", cmd_uninstall), ("update", cmd_update), ("accept", cmd_accept), ("bridge", cmd_bridge), ("craft", cmd_craft), ("native-craft", cmd_native_craft), ("build", cmd_build), ("session", cmd_session), ("handshake", cmd_handshake)):
         p = sub.add_parser(name)
         p.add_argument("--format", choices=("json", "markdown"), default="json")
-        if name in {"bridge", "workflow", "session", "build", "craft", "native-craft"}:
+        if name in {"rea-run", "compare", "connect", "bridge", "workflow", "session", "build", "craft", "native-craft"}:
             p.add_argument("--project-root", help="task project directory; defaults to the current working directory, not the tool checkout")
+        if name == 'connect':
+            p.add_argument('--client', choices=('codex', 'pi', 'claude'), required=True)
+            p.add_argument('--apply', action='store_true')
+            p.add_argument('--remove', action='store_true', help='remove only this checkout project pointer, preserve other content')
+        if name == 'compare':
+            p.add_argument('--plan', required=True, help='reviewed project-relative JSON argv/stdin comparison plan')
+            p.add_argument('--output', required=True, help='new project-relative directory for immutable observations')
+        if name == 'rea-run':
+            p.add_argument('--operation', required=True)
+            p.add_argument('--args-file', required=True, help='project-relative JSON argument array for the actual official operation')
+            p.add_argument('--output', required=True, help='new project-relative raw output/telemetry directory')
+            p.add_argument('--timeout', type=int, default=180)
+            p.add_argument('--memory-mb', type=int, default=2048)
         if name == 'release-check':
             p.add_argument('--deployed', action='store_true', help='also inspect installed core identities, receipt and managed Codex entry; never execute a target')
         if name == 'workflow':
@@ -567,6 +603,7 @@ def build_parser() -> argparse.ArgumentParser:
             p.add_argument("--timeout", type=int, default=180)
             p.add_argument("--record", action="store_true")
         if name == "session":
+            p.add_argument('--requirement', action='append', default=[], help='explicit reviewed batch FR subset; selected task lines must map exactly; full spec and deferred work retained')
             p.add_argument("phase", choices=("prepare", "check", "refine", "finish"))
             p.add_argument("--receipt", default="state/current-builder-session.json")
             p.add_argument("--workspace", default="state/current-candidate")
@@ -578,6 +615,7 @@ def build_parser() -> argparse.ArgumentParser:
             p.add_argument("--handoff-manifest", help="project-relative existing reconstruction handoff manifest")
             p.add_argument("--review-file", help="project-relative independent semantic review record; not machine proof")
         if name == 'native-craft':
+            p.add_argument('--requirement', action='append', default=[], help='explicit reviewed batch FR subset; full spec and deferred work retained')
             p.add_argument('phase', choices=('capabilities', 'prepare', 'build', 'check', 'refine', 'return_summary', 'cleanup', 'abort'))
             p.add_argument('--lease')
             p.add_argument('--params-file', help='project-relative JSON for the real native tool')

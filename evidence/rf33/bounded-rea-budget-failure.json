@@ -1,0 +1,39 @@
+{
+  "operation": "owned-official-rea-run",
+  "execution_status": "partial",
+  "requested_operation": "analyze-javascript-application",
+  "runtime_source": "repository-receipt",
+  "argv": [
+    "D:\\Project\\reverse\\vendor\\node\\node-v24.22.1-win-x64\\node.exe",
+    "D:\\Project\\reverse\\vendor\\rea\\package\\scripts\\rea.mjs",
+    "analyze-javascript-application",
+    "large",
+    "--format",
+    "json",
+    "--full-output",
+    "--max-heap-mb",
+    "128",
+    "--analysis-timeout-ms",
+    "100"
+  ],
+  "process": {
+    "status": "observed",
+    "reason": null,
+    "exit_code": 1,
+    "elapsed_ms": 1329.372,
+    "peak_job_bytes": 347922432,
+    "output_truncated": false,
+    "memory_limit_mb": 768,
+    "cleanup": "owned Windows job closed after invocation"
+  },
+  "argument_sha256": "c7f1d422c442443b55168de247145952ff72ce44cc492b18ce8fc1eed6b2dd1c",
+  "arguments_changed": false,
+  "stdout_sha256": "63d2bc4cee03a6c7ffa7f45970d65ab25fbe7d7862471c3137f1f2740af49ea8",
+  "stderr_sha256": "68b068c99a5fe490889e75ea25b03a27520a248d497337c040321c358f18f25d",
+  "resource_messages": [
+    "JavaScript source analysis reached its 100ms per-source server/provider deadline (analysis_timeout_ms), not the MCP client deadline.",
+    "generated.mjs: Analysis operation timed out after 100ms: analyze_javascript_application"
+  ],
+  "semantic_acceptance": "not-assessed; inspect native coverage/limitations even when execution_status=returned",
+  "next_action": "Read retained partial result, identify the affected source/feature and choose a smaller provenance-backed observation or another available method; keep independent tasks moving."
+}

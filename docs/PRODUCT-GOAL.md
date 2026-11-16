@@ -2,6 +2,12 @@
 
 本文件是项目的最高层产品目标。它高于阶段性 checkpoint、fixture 通过记录和 provider 的当前状态。任何阶段都不能用“框架合同通过”替代本文件定义的产品完成。
 
+RF-33最新指示继续原始功能要求，不能停在RF-31工程整改完成。当前1.2.0新增真实
+普通请求完整聚合使用、共有依赖/恢复/性能和跨宿主接入；具体条件与结果在
+[REMAINING-PRODUCT-WORK.md](REMAINING-PRODUCT-WORK.md)、
+[RELEASE-1.2.md](RELEASE-1.2.md)和RF-33checkpoint。以下早期版本段落保留历史，
+不撤销当前继续任务，也不将未来目标未知重写成通过。
+
 2026-11-16 用户进一步明确：要完整工程版本，不再以提供更多真实样本或完成特定
 软件复刻作为发布前提。**1.1.1 当前交付范围为 Windows x64 + Codex**，其有限工程
 交付门在 [RELEASE-1.1.md](RELEASE-1.1.md) 和 `release/manifest.json`。

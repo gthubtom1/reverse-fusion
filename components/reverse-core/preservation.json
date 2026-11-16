@@ -1505,7 +1505,9 @@
       "sha256": "90c9a1ee0ee93a899ae3c8abe01f0f565535b13f434f647858ff9177aa1f17d5"
     },
     "skills/reconstruction/scripts/check_handoff.py": {
-      "sha256": "69cc08c3e814ac0f35a4da046ace10ccd22aad48a161c31b49b04dff51d941c8"
+      "sha256": "9a5384091f0b982c0fb8da0dbe5cf913da4b9af63109ebe00eeaf2f8dd5cfed5",
+      "upstream_sha256": "69cc08c3e814ac0f35a4da046ace10ccd22aad48a161c31b49b04dff51d941c8",
+      "patch_reason": "RF-33: validate full unchanged handoff while allowing explicit reviewed FR batch subsets; unresolved critical dependencies block selected requirements, deferred requirements remain recorded; default all-requirements gate unchanged."
     },
     "skills/reconstruction/tests/fixtures/backend-routing.json": {
       "sha256": "06f0b993058a0b435ededb78b9935d12268ec6e5fa466e2f6990b15b38332b59"
@@ -1674,7 +1676,9 @@
       "sha256": "066101d6abe62b9f78e2a0843bcaaf576b236056dff64572ed5cd6d3053cdc8b"
     },
     "skills/scripts/case-init.ps1": {
-      "sha256": "cf446071657f4f3e72bff798eb9bafff8f361b75b9d69cb601397fec71a4ea1c"
+      "sha256": "d17081ff7b8df187e84b42927f554d510f097424399784aa6742e461df556e2c",
+      "upstream_sha256": "cf446071657f4f3e72bff798eb9bafff8f361b75b9d69cb601397fec71a4ea1c",
+      "patch_reason": " RF-33: optional ResumePointer initializes missing scope/timeline/workitems after bridge recording in the exact same open case; rejects existing authoritative documents; exclusive CreateNew writes prevent overwrite."
     },
     "skills/scripts/case-init.sh": {
       "sha256": "0821a20c3de13efe9884a25d90eb59036216a066c3fb5e6232fa68752eb34392"

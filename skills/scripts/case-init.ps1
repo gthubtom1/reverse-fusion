@@ -22,7 +22,8 @@ param(
     [string] $Preset = '',
     [string[]] $InScopeAssets = @(),
     [string] $NetworkProfile = '',
-    [switch] $ReadyForAct
+    [switch] $ReadyForAct,
+    [switch] $ResumePointer
 )
 $ErrorActionPreference = 'Stop'
 
@@ -135,16 +136,34 @@ if ($null -ne $workItem) {
 $caseRoot = Join-Path $workRoot $CaseName
 $existingCase = Get-Item -LiteralPath $caseRoot -Force -ErrorAction SilentlyContinue
 if ($null -ne $existingCase) {
-    throw "Case path already exists: $caseRoot. Refusing to overwrite an existing case; choose a new CaseName or continue the existing case."
-}
-try {
-    New-Item -ItemType Directory -Path $caseRoot -ErrorAction Stop | Out-Null
-} catch {
-    throw "Case path appeared during initialization: $caseRoot. Refusing to overwrite it; choose a new CaseName or continue the existing case."
+    if (-not $ResumePointer -or -not $existingCase.PSIsContainer -or
+        (($existingCase.Attributes -band [System.IO.FileAttributes]::ReparsePoint) -ne 0)) {
+        throw "Case path already exists: $caseRoot. Refusing to overwrite an existing case; continue it, or use -ResumePointer only for an uninitialized bridge pointer."
+    }
+    $pointerPath = Join-Path $caseRoot 'case.json'
+    if (-not (Test-Path -LiteralPath $pointerPath -PathType Leaf)) { throw 'ResumePointer requires an existing bridge case.json' }
+    $pointerRecord = Get-Content -Raw -LiteralPath $pointerPath | ConvertFrom-Json
+    if (-not $pointerRecord.pointer -or $pointerRecord.status -ne 'open' -or
+        $pointerRecord.pointer.case_root.Replace('\', '/').TrimEnd('/') -ne "work/$CaseName") {
+        throw 'ResumePointer requires an open bridge pointer for this exact case directory'
+    }
+    foreach ($name in @('scope.md', 'timeline.md', 'workitems.md', 'README.md')) {
+        if (Test-Path -LiteralPath (Join-Path $caseRoot $name)) { throw "ResumePointer cannot replace existing case material: $name" }
+    }
+} else {
+    if ($ResumePointer) { throw 'ResumePointer requires the existing recorded bridge case; do not silently create another case' }
+    try {
+        New-Item -ItemType Directory -Path $caseRoot -ErrorAction Stop | Out-Null
+    } catch {
+        throw "Case path appeared during initialization: $caseRoot. Refusing to overwrite it; choose a new CaseName or continue the existing case."
+    }
 }
 $dirs = @('evidence', 'notes', 'report')
 foreach ($d in $dirs) {
-    New-Item -ItemType Directory -Path (Join-Path $caseRoot $d) -ErrorAction Stop | Out-Null
+    $directory = Join-Path $caseRoot $d
+    if (-not (Test-Path -LiteralPath $directory)) { New-Item -ItemType Directory -Path $directory -ErrorAction Stop | Out-Null }
+    $directoryItem = Get-Item -LiteralPath $directory -Force
+    if (-not $directoryItem.PSIsContainer -or (($directoryItem.Attributes -band [System.IO.FileAttributes]::ReparsePoint) -ne 0)) { throw "Unsafe case subdirectory: $directory" }
 }
 
 # Resolve auth / network / assets
@@ -384,9 +403,14 @@ $workitems = @"
 "@
 
 $utf8 = New-Object System.Text.UTF8Encoding $true
-[System.IO.File]::WriteAllText((Join-Path $caseRoot 'scope.md'), $scope, $utf8)
-[System.IO.File]::WriteAllText((Join-Path $caseRoot 'timeline.md'), $timeline, $utf8)
-[System.IO.File]::WriteAllText((Join-Path $caseRoot 'workitems.md'), $workitems, $utf8)
+function Write-NewCaseText([string]$Name, [string]$Content) {
+    $stream = [System.IO.File]::Open((Join-Path $caseRoot $Name), [System.IO.FileMode]::CreateNew, [System.IO.FileAccess]::Write, [System.IO.FileShare]::None)
+    try { $bytes = $utf8.GetPreamble() + $utf8.GetBytes($Content); $stream.Write($bytes, 0, $bytes.Length) }
+    finally { $stream.Dispose() }
+}
+Write-NewCaseText 'scope.md' $scope
+Write-NewCaseText 'timeline.md' $timeline
+Write-NewCaseText 'workitems.md' $workitems
 
 $readmeNext = if ($ready) {
     @"
@@ -416,7 +440,7 @@ $readme = @"
 
 $readmeNext
 "@
-[System.IO.File]::WriteAllText((Join-Path $caseRoot 'README.md'), $readme, $utf8)
+Write-NewCaseText 'README.md' $readme
 
 Write-Host ("CASE -> {0}" -f $caseRoot) -ForegroundColor Green
 Write-Host ("PROJECT -> {0}" -f $projectRoot)

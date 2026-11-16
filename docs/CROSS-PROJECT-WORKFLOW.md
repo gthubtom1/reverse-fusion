@@ -34,6 +34,11 @@ case、规格、候选及测试。`bridge`、`session`、`build`、`craft`、`na
    先做可验证的行为切片，发现 JS/native/设备等边界后读相关领域资料。
    大型目录、二进制字符串和完整反编译写文件，返回摘要与检索结果，避免整份输出挤占上下文。
 
+   bridge已先创建case.json但尚无scope/timeline/workitems时，可调用继承的
+   `skills/scripts/case-init.ps1 -ProjectRoot [当前项目] -CaseName [同一case名] -ResumePointer`
+   并补充原授权/目标参数。它只补同一开放案例尚未建立的上下文，不改原pointer；
+   已有任一权威文档就拒绝覆盖，直接恢复已有材料。不要为这次初始化另建case。
+
 2. **检查执行能力**：`[python] -m reverse_fusion doctor` 的总 `pass` 只检查仓库合同。
    `components` 分别报告本地 REA、Spec CLI、Builder 和 Craft 的可见状态。
    REA 固定 manifest 不是安装；入口存在不是握手，catalog 可见也不是 provider 实跑。
