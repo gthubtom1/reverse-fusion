@@ -1,14 +1,20 @@
 # Codex 跨项目接入
 
 Reverse Fusion 的路由器和领域资料保留在当前 checkout。Codex 选择为 selected host 时，
-`reverse_fusion install --apply --client codex` 另外写入两项用户级接入：
+`reverse_fusion install --apply --client codex` 另外写入以下用户级接入：
 
 - `~/.agents/skills/reverse-fusion/SKILL.md`：说明何时启用 Reverse Fusion，以及如何调用
   当前 checkout 的 `.venv` 路由器。
 - `~/.codex/AGENTS.md`（设置 `CODEX_HOME` 时使用该目录）中的 `reverse-fusion:begin/end` 标记块：要求涉及逆向、保护分析、
   协议复刻或行为重建的任务先使用这个技能。
 
-这两项内容只保存 checkout 路径和调用规则，不复制 `skills/` 正文，不选择模型，不启动
+另在`~/.codex/config.toml`（遵循`CODEX_HOME`）中登记`reverse-fusion-rea`与
+`reverse-fusion-craft`。管理自有标记块，保留无关设置；原版工具、Deep模式和宿主权限见
+[MCP接入](MCP-INTEGRATION.md)。运行`mcp-check`核实真实stdio协议和工具，客户端重载后
+再核实界面/工具发现。配置落盘不是当前聊天已加载。卸载同时移除本checkout的自有MCP项，
+旧checkout不能删除新checkout指针。
+
+技能与指引只保存 checkout 路径和调用规则，不复制 `skills/` 正文，不选择模型，不启动
 provider，也不改变当前项目的工作目录。模型在普通软件开发任务中仍走 `host-native`；
 进入 Reverse Fusion 时先运行：
 

@@ -9,7 +9,7 @@ $ErrorActionPreference = 'Stop'
 . (Join-Path $PSScriptRoot 'lib\ScriptSupport.ps1')
 $repo = Get-CanonicalPath (Join-Path $PSScriptRoot '..')
 $venv = Assert-RepositoryWritePath $repo $VenvPath
-if ($DryRun) { Write-Output (ConvertTo-Json @{ mode='dry-run'; package_only=[bool]$PackageOnly; required_components=@('REA','Spec Kit','Craft native'); commands=@("$Python -m venv $venv", "$venv\Scripts\python.exe -m pip install --no-deps -e $repo", 'scripts/bootstrap-core.ps1') } -Compress); exit 0 }
+if ($DryRun) { Write-Output (ConvertTo-Json @{ mode='dry-run'; package_only=[bool]$PackageOnly; required_components=@('REA','Spec Kit','Craft native','Craft full MCP'); commands=@("$Python -m venv $venv", "$venv\Scripts\python.exe -m pip install --no-deps -e $repo", 'scripts/bootstrap-core.ps1') } -Compress); exit 0 }
 & $Python -m venv $venv
 Assert-NativeExit $LASTEXITCODE 'venv creation'
 & (Join-Path $venv 'Scripts\python.exe') -m pip install --no-deps -e $repo

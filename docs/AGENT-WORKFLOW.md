@@ -4,6 +4,13 @@
 用户不需要记住 route ID、命令、Evidence 格式或 Spec/Craft 的调用时机。
 产品目标与用户的新决定优先；本文件提供判断依据，不指定固定的逆向工具顺序。
 
+分析前先查现成工具：默认Codex安装提供`reverse-fusion-rea`与
+`reverse-fusion-craft` MCP。先看schema/provider状态，按问题调用现成反编译、
+应用分析、调试、浏览器或设备工具。补充脚本用于现成工具缺口或独立验证，保留
+原因和结果。CLI仍可用于预算执行或原版操作；CLI曾成功不证明宿主MCP已连接。
+真实入口见[MCP-INTEGRATION.md](MCP-INTEGRATION.md)。候选构建仍用Spec审查后的
+native租约，不启动另一个Craft模型循环。目标和输出用当前成果项目绝对路径。
+
 ## 接住目标并保存原意
 
 把“分析这个软件然后复刻”“照着这个网站做一样的”“帮我看懂这个 APK”等白话，

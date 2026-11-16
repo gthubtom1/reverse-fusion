@@ -9,7 +9,7 @@ import shutil
 import unittest
 from unittest.mock import patch
 
-from reverse_fusion import cli, global_adapter
+from reverse_fusion import cli, global_adapter, mcp_adapter
 from reverse_fusion.file_updates import atomic_write
 from reverse_fusion.contracts import is_safe_relative_path
 
@@ -28,6 +28,7 @@ class InstallFailureTests(unittest.TestCase):
         self.repo.mkdir()
         self.paths = global_adapter.adapter_paths(self.home)
         self.receipt = self.repo / 'state/install.json'
+        self.mcp = {'config': self.paths['agents'].parent / 'config.toml'}
 
     def test_second_entry_write_failure_restores_the_first_file(self):
         global_adapter.install_global_adapter(self.repo, self.home)
@@ -57,6 +58,11 @@ class InstallFailureTests(unittest.TestCase):
         stack.enter_context(patch.object(cli, 'ROOT', self.repo))
         stack.enter_context(patch.object(cli, 'adapter_paths', return_value=self.paths))
         stack.enter_context(patch.object(global_adapter, 'adapter_paths', return_value=self.paths))
+        stack.enter_context(patch.object(mcp_adapter, 'adapter_paths', return_value=self.paths))
+        stack.enter_context(patch.object(cli, 'mcp_paths', return_value=self.mcp))
+        stack.enter_context(patch.object(mcp_adapter, '_registrations', return_value={
+            'reverse-fusion-rea': {'command': 'synthetic-node', 'args': ['rea.mjs', 'mcp'], 'cwd':str(self.repo), 'startup_timeout_sec':60, 'tool_timeout_sec':600, 'env':dict(mcp_adapter.REA_ENV)},
+            'reverse-fusion-craft': {'command': 'synthetic-craft', 'args': [], 'cwd':str(self.repo), 'startup_timeout_sec':60, 'tool_timeout_sec':600}}))
         stack.enter_context(patch.object(cli, 'check_contracts', return_value={'status': 'pass'}))
         stack.enter_context(patch.object(cli, 'component_status', return_value={}))
         stack.enter_context(patch.object(cli, 'core_deployment', return_value={'status': 'installed'}))
@@ -69,6 +75,8 @@ class InstallFailureTests(unittest.TestCase):
         self.receipt.parent.mkdir()
         self.receipt.write_bytes(b'{"original":true}')
         before = {p: p.read_bytes() for p in [*self.paths.values(), self.receipt]}
+        self.mcp['config'].write_bytes(b'model = "unchanged-model"\n')
+        before[self.mcp['config']] = self.mcp['config'].read_bytes()
         with self.cli_patches(), patch.object(cli, '_write_state', side_effect=OSError('injected receipt failure')):
             self.assertEqual(cli.main(['install', '--apply', '--client', 'codex']), 2)
         self.assertEqual({p: p.read_bytes() for p in before}, before)
@@ -78,15 +86,25 @@ class InstallFailureTests(unittest.TestCase):
         self.receipt.parent.mkdir()
         self.receipt.write_bytes(b'{"global_adapter":{"enabled":true}}')
         before = {p: p.read_bytes() for p in [*self.paths.values(), self.receipt]}
+        with self.cli_patches():
+            mcp_adapter.install_mcp(self.repo)
+        before[self.mcp['config']] = self.mcp['config'].read_bytes()
         original_unlink = Path.unlink
+        receipt_failure_reached = []
 
         def fail_receipt(path, *args, **kwargs):
             if path == self.receipt:
+                # The MCP/skill entries must already be removed, so this is an
+                # actual mid-uninstall failure rather than an earlier refusal.
+                self.assertFalse(self.paths['skill'].exists())
+                self.assertFalse(self.mcp['config'].exists())
+                receipt_failure_reached.append(True)
                 raise OSError('injected receipt unlink failure')
             return original_unlink(path, *args, **kwargs)
 
         with self.cli_patches(), patch.object(Path, 'unlink', new=fail_receipt):
             self.assertEqual(cli.main(['uninstall', '--apply']), 2)
+        self.assertEqual(receipt_failure_reached, [True])
         self.assertEqual({p: p.read_bytes() for p in before}, before)
 
     @unittest.skipUnless(os.name == 'nt', 'Windows uninstall lifecycle')

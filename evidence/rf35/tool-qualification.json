@@ -1,0 +1,37 @@
+{
+  "scope": "owned fixture real protocol/tools/browser use; not every provider or target equivalence",
+  "servers": {
+    "rea": {
+      "server": {
+        "name": "rea",
+        "version": "6.9.0"
+      },
+      "tools": 255,
+      "prompts": 6,
+      "binary_sha256": "d702daa815eabbff763c7d3808e235cf031cf2ca70211b56847bc72f51e240e5",
+      "called": [
+        "binary_session",
+        "analyze_javascript_application"
+      ]
+    },
+    "craft": {
+      "server": {
+        "name": "craft-anything",
+        "title": "Craft Anything",
+        "version": "0.6.1"
+      },
+      "tools": 303,
+      "prompts": 6,
+      "binary_sha256": "29446e499d7656c2645f596b40c876ef6a879cb2f7f8b2f7250b756be3dc307f",
+      "called": [
+        "core_target_open",
+        "js_app_map",
+        "engines_list",
+        "web_site_open",
+        "web_site_capture",
+        "web_site_close"
+      ]
+    }
+  },
+  "status": "pass"
+}

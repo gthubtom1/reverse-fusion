@@ -38,6 +38,7 @@ from .file_updates import atomic_write, file_transaction
 from .project_adapter import connect_project
 from .differential import compare_processes
 from .rea_runner import run_rea
+from .mcp_adapter import install_mcp, remove_mcp, inspect_mcp, mcp_paths
 
 ROOT = Path(__file__).resolve().parents[1]
 MANIFEST = ROOT / "components" / "official" / "manifest.json"
@@ -99,6 +100,14 @@ def cmd_release(args: argparse.Namespace) -> int:
     return 0 if result['status'] == 'ready' else 2
 
 
+def cmd_mcp_check(args: argparse.Namespace) -> int:
+    from .mcp_probe import probe_registered, connection_status
+    probe_registered(ROOT)
+    status = connection_status(ROOT)
+    _print(status, args.format)
+    return 0 if status['status'] == 'pass' else 2
+
+
 def cmd_plan(args: argparse.Namespace) -> int:
     contract = check_contracts(ROOT)
     if contract["status"] != "pass":
@@ -149,6 +158,7 @@ def cmd_doctor(args: argparse.Namespace) -> int:
         "provider_status": str(ROOT / "docs" / "PROVIDER-STATUS.md"),
         "components": components,
         "core_deployment": core_deployment(components),
+        "mcp_registration": inspect_mcp(ROOT),
     }
     _print(result, args.format)
     return 0 if result["status"] == "pass" else 1
@@ -215,22 +225,26 @@ def cmd_install(args: argparse.Namespace) -> int:
         "mode": "apply" if args.apply else "dry-run",
         "project": "reverse-fusion",
         "host": {"client": args.client, **detect_hosts()},
-        "effects": (["write repository state/install.json", "write user-level Codex adapter"] if args.apply and enable_global_adapter else ["write repository state/install.json"] if args.apply else ["read repository files only"]),
+        "effects": (["write repository state/install.json", "write user-level Codex adapter", "register owned REA/Craft MCP servers"] if args.apply and enable_global_adapter else ["write repository state/install.json"] if args.apply else ["read repository files only"]),
         "global_adapter": adapter_preview,
+        "mcp": {"enabled": bool(enable_global_adapter), "config": str(mcp_paths()['config']),
+                "servers": ['reverse-fusion-rea', 'reverse-fusion-craft'], "reload_required": True},
         "global_config_mutation": bool(args.apply and enable_global_adapter),
         "status": "ready",
         "core_deployment": deployment,
     }
     if args.apply:
         path = _state_path("install")  # Validate before any user-level writes.
-        with file_transaction([*adapter_paths().values(), path]):
+        with file_transaction([*adapter_paths().values(), *mcp_paths().values(), path]):
             if enable_global_adapter:
                 plan["global_adapter"] = install_global_adapter(ROOT)
+                plan['mcp'] = install_mcp(ROOT)
             elif path.is_file():
                 previous = read_json(path)
                 previous_adapter = previous.get('global_adapter')
                 if isinstance(previous_adapter, dict) and previous_adapter.get('enabled'):
                     removal = remove_global_adapter(repo_root=ROOT)
+                    plan['mcp'] = remove_mcp(ROOT)
                     plan['global_config_mutation'] = bool(removal.get('removed'))
                     plan['effects'].append('remove this checkout user-level adapter')
             plan["status"] = "installed"
@@ -243,12 +257,14 @@ def cmd_uninstall(args: argparse.Namespace) -> int:
     path = _state_path("install")
     adapter = {"enabled": False, "removed": []}
     if args.apply and path.exists():
-        with file_transaction([*adapter_paths().values(), path]):
+        with file_transaction([*adapter_paths().values(), *mcp_paths().values(), path]):
             prior = read_json(path)
             adapter_state = prior.get("global_adapter") if isinstance(prior, dict) else None
             if isinstance(adapter_state, dict) and adapter_state.get("enabled"):
                 adapter = remove_global_adapter(repo_root=ROOT)
+            mcp = remove_mcp(ROOT)
             path.unlink()
+            adapter['mcp'] = mcp
     result = {"operation": "uninstall", "mode": "apply" if args.apply else "dry-run", "status": "uninstalled" if args.apply else "ready", "state_file": str(path), "venv": str(ROOT / ".venv"), "vendor": "retained; remove explicitly if a provider asset is no longer wanted", "global_adapter": adapter, "global_config_mutation": bool(adapter.get("removed"))}
     _print(result, args.format)
     return 0
@@ -535,7 +551,7 @@ def cmd_handshake(args: argparse.Namespace) -> int:
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="reverse-fusion", description="Reverse Fusion evidence-driven reconstruction entry")
     sub = parser.add_subparsers(dest="command", required=True)
-    for name, fn in (("contracts", cmd_contracts), ("rea-run", cmd_rea_run), ("compare", cmd_compare), ("connect", cmd_connect), ("release-check", cmd_release), ("workflow", cmd_workflow), ("doctor", cmd_doctor), ("plan", cmd_plan), ("handoff", cmd_handoff), ("install", cmd_install), ("uninstall", cmd_uninstall), ("update", cmd_update), ("accept", cmd_accept), ("bridge", cmd_bridge), ("craft", cmd_craft), ("native-craft", cmd_native_craft), ("build", cmd_build), ("session", cmd_session), ("handshake", cmd_handshake)):
+    for name, fn in (("mcp-check", cmd_mcp_check), ("contracts", cmd_contracts), ("rea-run", cmd_rea_run), ("compare", cmd_compare), ("connect", cmd_connect), ("release-check", cmd_release), ("workflow", cmd_workflow), ("doctor", cmd_doctor), ("plan", cmd_plan), ("handoff", cmd_handoff), ("install", cmd_install), ("uninstall", cmd_uninstall), ("update", cmd_update), ("accept", cmd_accept), ("bridge", cmd_bridge), ("craft", cmd_craft), ("native-craft", cmd_native_craft), ("build", cmd_build), ("session", cmd_session), ("handshake", cmd_handshake)):
         p = sub.add_parser(name)
         p.add_argument("--format", choices=("json", "markdown"), default="json")
         if name in {"rea-run", "compare", "connect", "bridge", "workflow", "session", "build", "craft", "native-craft"}:
@@ -642,7 +658,7 @@ def main(argv: list[str] | None = None) -> int:
     args = build_parser().parse_args(argv)
     try:
         return args.handler(args)
-    except (ValueError, OSError) as exc:
+    except (ValueError, OSError, TimeoutError, EOFError) as exc:
         _print({'operation': args.command, 'status': 'blocked', 'reason': str(exc)}, args.format)
         return 2
 

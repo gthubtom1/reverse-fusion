@@ -1,11 +1,11 @@
 # Reverse Fusion 宿主自动部署契约
 
-1.2.1 当前完整交付为 Windows x64 + Codex。无需用户提供真实样本来完成工程安装；
+1.3.0 当前完整交付为 Windows x64 + Codex。无需用户提供真实样本来完成工程安装；
 不要为完成安装新开目标对话或启动未知程序。Pi项目接入已完成实际全程使用，
 Claude项目适配/官方Spec布局检查已完成；完整模型运行未实测，不作为适配发布门。
 共用核心以代表性运行验证，宿主差异按HOST-PROJECT-CONNECTION.md核对与检查。
 宿主项目接入见HOST-PROJECT-CONNECTION.md；其他操作系统按实际能力报告。
-组件和本地回归检查与软件业务验收分开，发布依据见 RELEASE-1.2.md。
+组件和本地回归检查与软件业务验收分开，发布依据见RELEASE-1.3.md。
 安装核心并更新全局入口后，用 `[venv-python] scripts/verify-engineering.py` 生成本机
 代码摘要绑定的工程回归记录。Codex运行`release-check --deployed`检查当前版本、
 真实核心和全局入口；Pi/Claude使用`release-check`检查共用版本，并按下面第4步
@@ -18,7 +18,7 @@ agent 克隆或定位仓库后，以本文件的当前 checkout 版本为准。
 部署把 Reverse Fusion 的代码和资料保留在当前 checkout；当选定宿主是 Codex 时，
 还会在当前用户的 `~/.agents/skills/reverse-fusion/SKILL.md` 和 `~/.codex/AGENTS.md`
 写入一个薄适配层。适配层只指向这个 checkout 的路由器，不复制技能正文，不把输出
-写到其他项目，也不修改模型、凭据或 provider 配置。这样另一个项目可以直接调用同一
+写到其他项目，也不修改模型、凭据或无关 provider 配置；Codex MCP 配置仅增加两项自有登记。这样另一个项目可以直接调用同一
 份共享路由；如果不需要跨项目调用，可使用 `--no-global-adapter` 跳过它。
 
 仓库地址：<https://github.com/gthubtom1/reverse-fusion>
@@ -76,15 +76,17 @@ session 冻结与路径边界。仅从外部目录运行一次无写入的 bridg
    不重装核心。若当前只部署共享工具、尚无成果项目，明确报告“共享核心已安装，
    项目入口待选择成果目录”，不能把工具仓库自身的连接当成所有项目都已连接。
 5. 默认 Windows 安装会执行 `scripts/bootstrap-core.ps1`，实际安装固定 REA、官方 Spec Kit
-   和原生 Craft adapter。缺组件时安装不能完成；`doctor.core_deployment` 必须为 installed。
+   、原生 Craft adapter和完整engine MCP启动器。缺组件时安装不能完成；`doctor.core_deployment` 必须为 installed。
    真实版本、补丁、构建和工作流见 [NATIVE-COMPONENTS.md](NATIVE-COMPONENTS.md)。
    安装写仓库自己的 `.venv`、`state/install.json`，并在 Codex 选择下写入用户级适配层。
    WABT、JADX 等目标 provider
    仅在具体任务需要时由对应 bootstrap 写入工具仓库 `vendor/`；case 仅在用户开始目标时
    写入 `--project-root` 选定成果项目的 `work/`，不会集中写回共享工具仓库。
 6. 模型、账号和 provider 由 `[selected-host]` 拥有。项目不选择、下载、切换或绑定
-   模型，不复制凭据，也不修改宿主运行配置。Codex 适配层只增加路由指引；Craft
-   companion 的 `--all-tools` 参数保持不变。
+   模型，不复制凭据，不修改无关宿主运行配置。Codex 适配层还登记官方REA server与Craft engine MCP；只改自有标记块，保留其余配置。运行
+   `[venv-python] -m reverse_fusion mcp-check`，实际连接登记命令并保存身份、目录和工具调用。
+   新会话或重载后核实宿主工具发现；不能把独立协议检查称作当前对话已热加载。
+   Deep/执行权限与原版高层取舍见[MCP接入](MCP-INTEGRATION.md)。
    按需准备 REA 时，先核 Node 的精确 engine；PATH 版本不满足要求且本机已有兼容
    Node，可将其绝对路径交给 `scripts/bootstrap-rea.ps1 -NodePath [路径]`。bootstrap
    校验后保存本 checkout 的运行时 receipt，后续命令可恢复；不要把本机路径提交到 Git，

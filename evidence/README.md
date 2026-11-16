@@ -1,5 +1,7 @@
 # 执行记录与历史证据
 
+RF35当前MCP修复证据：`rf35/tool-qualification.json`、原始`*-mcp-calls.json`、工具目录、配置保全、provider设置重启恢复、source-bound回归。旧RF33/34记录不是MCP宿主登记证明。
+
 本目录保存**当时实际发生的观察**，不提供当前安装命令或未完成任务。当前版本、
 宿主适配和部署步骤以[当前状态](../docs/CURRENT-STATE.md)、
 [唯一安装入口](../docs/AGENT-BOOTSTRAP.md)和[宿主接入合同](../docs/HOST-PROJECT-CONNECTION.md)为准。

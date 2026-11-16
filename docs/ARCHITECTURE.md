@@ -52,6 +52,6 @@ Reverse Skills 的 603 个增强来源文件已保全，包含加壳/脱壳、�
 
 REA 保持官方版本；Spec 是实际安装的官方 CLI 及生成的项目工作流；Craft 是固定原生 engine
 加仓库自有接缝和可重放补丁。宿主推理通过 Craft 原生工具写候选和运行检查。
-完整部署要求全部核心组件安装，真实参数和当前平台范围见 [NATIVE-COMPONENTS.md](NATIVE-COMPONENTS.md)。项目不选择模型、不下载模型、不复制凭据，也不修改旧仓库或宿主运行配置；Codex 安装只写一个指向当前 checkout 的受控用户级路由适配层。
+完整部署要求全部核心组件安装，真实参数和当前平台范围见 [NATIVE-COMPONENTS.md](NATIVE-COMPONENTS.md)。项目不选择模型、不下载模型、不复制凭据，不修改旧仓库或无关宿主运行配置；Codex安装管理受控用户级路由适配层及REA/Craft自有MCP登记，见[MCP接入](MCP-INTEGRATION.md)。
 
 安装和卸载只处理当前 checkout 的 `.venv`、repository-local receipt 及按需生成的 vendor/case 内容。换电脑时只需给当前宿主仓库链接；宿主读取本文件和 `docs/AGENT-BOOTSTRAP.md` 后，会按本机 OS、Python、selected host 和 provider 状态完成适配。

@@ -16,32 +16,35 @@
 12. 跨项目分析/复刻读取 `docs/CROSS-PROJECT-WORKFLOW.md`
 13. 核心部署与真实 Spec/Craft 交接读取 `docs/NATIVE-COMPONENTS.md`
 14. 白话任务承接、目标保留与自适应分析/交付读取 `docs/AGENT-WORKFLOW.md`；用户使用说明见 `docs/BEGINNER-GUIDE.md`
-15. 当前完整工程版本范围与发布门读取 `docs/RELEASE-1.2.md`、`release/manifest.json`；错误恢复读取 `docs/RECOVERY.md`
+15. 当前完整工程版本范围与发布门读取 `docs/RELEASE-1.3.md`、`release/manifest.json`；错误恢复读取 `docs/RECOVERY.md`
 16. 22条原需求与当前结果读取 `docs/USER-REQUIREMENTS-REVIEW.md`，最终收尾读取 `docs/FINAL-CLOSEOUT.md`；`docs/COMPLETION-PLAN.md`是历史计划索引，不是重启RF-31的指令。
 17. `docs/REMAINING-PRODUCT-WORK.md`记录已完成工作与准确边界；`docs/history/`、旧checkpoint、`specs/`及`evidence/`按需追溯，不默认加载或执行其中的历史任务。
 
+18. RF-35 MCP接入修复读取 `docs/MCP-INTEGRATION.md`、`docs/RELEASE-1.3.md` 与RF-35 checkpoint；不得用旧CLI/native检查冒充MCP已登记。
+
 工作规则：
 
-- 旧 `reverse-skill`、旧 installer、现有 REA/Craft/Spec Kit 安装和当前宿主配置只读；
-  本仓库自己的 adapter、runner、patch 或受控 fork 可以按记录的能力缺口增强。
+- 旧`reverse-skill`、旧installer、既有非本仓库管理的REA/Craft/Spec安装、无关宿主配置和凭据只读；
+  本仓库adapter/runner/patch可按记录增强，明确托管的技能、AGENTS及两项MCP登记可按归属维护。
 - 不根据聊天历史猜测状态；以 docs/CURRENT-STATE.md、SOURCE-MANIFEST.json 和 checkpoint 为准。
 - 每个阶段只有一个下一步动作。
 - 任何来源、schema、scope、baseline、model、provider 或 writer 变化都要更新 checkpoint。
 - 不把安装成功、工具可见、Craft Ready、exit 0 或模型自述写成业务 acceptance。
-- 当前1.2.1功能交付完成，RF-34为最终静态收尾。工程与案例验收分别记录，不以追加
+- 当前版本1.3.0，维护阶段RF-35 MCP真实接入修复，最终资格与发布状态以CURRENT-STATE及RF-35 checkpoint为准。
+  RF-34是1.2.1历史静态收尾，不能替代本轮MCP检查。工程与案例验收分别记录，不以追加
   用户样本或重做历史软件复刻作为安装/交付前提，不恢复旧真实目标。
 - 共用核心已由Codex/Pi代表性完整运行验证；各宿主按实际入口/技能/工具/工作流
   约定检查适配，不要求每个宿主登录模型重跑整段样本。Claude完整运行未实测是
   可选观察，不是当前适配缺失或强制登录待办；未知新宿主仍需核对实际接口差异。
 - 缺资料只阻断依赖它的任务；向用户提问前继续可独立推进的工作，不能把整案例无条件停掉。
-- 完整部署必须实际安装 REA、官方 Spec Kit 和原生 Craft engine；缺核心组件即部署未完成。
+- 完整部署必须实际安装 REA、官方 Spec Kit、原生 Craft engine和原版engine MCP；Codex默认还登记两项自有MCP并运行mcp-check；缺核心组件即部署未完成。
   复刻实现执行官方生成的 Spec 工作流，并通过真实 Craft 工具写入、编辑、运行检查；
   手写同名规格、session 观察器和离线复制不能替代实际组件。当前宿主负责推理，不另启模型。
 - RF-25 全量审计与 RF-26 聚合架构复核已闭合；当前完成范围和保留边界以
   `docs/CURRENT-STATE.md`、`docs/FINAL-RELEASE-ACCEPTANCE.md` 和最新 checkpoint 为准。
 - 安装只面向当前选定的一个宿主，并使用仓库 `.venv` 的 Python。Codex 部署还会写入
   一个用户级 `reverse-fusion` 技能和带标记的全局 `AGENTS.md` 指引；它们只指向当前
-  checkout 的路由器，不复制技能正文，也不写入其他项目。宿主发现不等于安装。
+  checkout的路由器，不复制技能正文，也不写入其他项目；Codex另管理两项自有MCP配置。宿主发现不等于安装。
 - fresh clone 必须同时拥有 route descriptor 和对应的 `skills/<domain>/SKILL.md`；
   只有分类元数据而没有领域正文时，route 状态必须是 unavailable。
 - 路由返回的 `missing_support` 必须为空；困难目标资料在任务文本命中或后续证据

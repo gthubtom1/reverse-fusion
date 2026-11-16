@@ -26,6 +26,8 @@ Assert-NativeExit $LASTEXITCODE 'Required REA installation'
 Assert-NativeExit $LASTEXITCODE 'Required Spec installation'
 & powershell -NoProfile -File (Join-Path $PSScriptRoot 'bootstrap-craft.ps1')
 Assert-NativeExit $LASTEXITCODE 'Required native Craft installation'
+& powershell -NoProfile -File (Join-Path $PSScriptRoot 'bootstrap-craft-mcp.ps1')
+Assert-NativeExit $LASTEXITCODE 'Required full Craft MCP installation'
 & powershell -NoProfile -File (Join-Path $PSScriptRoot 'run-rea-doctor.ps1')
 Assert-NativeExit $LASTEXITCODE 'Required REA live diagnosis'
 & (Join-Path $repo '.venv/Scripts/python.exe') -m reverse_fusion native-craft capabilities --format json

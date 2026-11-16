@@ -1,0 +1,38 @@
+{
+  "status": "pass",
+  "scope": "Codex CLI reads configured MCP entries; not old desktop chat hot-load",
+  "servers": [
+    {
+      "name": "chrome-devtools",
+      "enabled": true
+    },
+    {
+      "name": "codex_app",
+      "enabled": false
+    },
+    {
+      "name": "cua_repl",
+      "enabled": true
+    },
+    {
+      "name": "github",
+      "enabled": true
+    },
+    {
+      "name": "node_repl",
+      "enabled": true
+    },
+    {
+      "name": "playwright",
+      "enabled": true
+    },
+    {
+      "name": "reverse-fusion-craft",
+      "enabled": true
+    },
+    {
+      "name": "reverse-fusion-rea",
+      "enabled": true
+    }
+  ]
+}

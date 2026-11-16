@@ -1,0 +1,99 @@
+{
+  "set": {
+    "content": [
+      {
+        "text": "{\"result\":{\"path\":\"D:\\\\Project\\\\reverse\\\\state\\\\rf35-persistence\\\\config.toml\",\"set\":\"engines.tools.jadx\"}}",
+        "type": "text"
+      }
+    ],
+    "isError": false,
+    "structuredContent": {
+      "result": {
+        "path": "D:\\Project\\reverse\\state\\rf35-persistence\\config.toml",
+        "set": "engines.tools.jadx"
+      }
+    }
+  },
+  "restored": {
+    "content": [
+      {
+        "text": "{\"result\":{\"path\":\"D:\\\\Project\\\\reverse\\\\state\\\\rf35-persistence\\\\config.toml\",\"settings\":{\"ai\":{},\"ask_before_running\":true,\"assets\":{\"budget_usd\":5.0,\"image_model\":null},\"auto_mode\":false,\"build\":{\"good_enough\":90.0,\"max_pages\":4,\"max_rounds\":6,\"parallel\":2,\"picture_good_enough\":null,\"web_widths\":[1440,768,390]},\"deep_mode\":false,\"engines\":{\"ghidra\":{\"compiler_spec\":null,\"install_dir\":\"D:\\\\Tools\\\\Ghidra\",\"java_home\":\"D:\\\\Tools\\\\runtime\\\\jdk21\\\\jdk-21.0.12.1+1\",\"language_id\":null,\"memory_gb\":null,\"startup_timeout_secs\":null},\"jeb_url\":null,\"store_dir\":\"D:\\\\Project\\\\reverse\\\\state\\\\rf35-persistence\\\\engines\",\"tools\":{\"adb\":null,\"apktool\":null,\"binwalk\":null,\"chromium\":null,\"frida\":null,\"gdb\":null,\"ilspy\":null,\"jadx\":\"D:/owned-test-provider/jadx.exe\",\"java\":null,\"lldb\":null,\"mitmdump\":null,\"objdump\":null,\"rizin\":null,\"rtl433\":null,\"tshark\":null,\"unblob\":null,\"vineflower\":null}},\"existing_files\":null,\"first_run_done\":false,\"language\":\"\",\"mode\":\"beginner\",\"plugins\":{\"mcp\":[]},\"project_folders\":[],\"projects_dir\":\"D:\\\\Project\\\\reverse\\\\state\\\\rf35-persistence\\\\projects\",\"questions\":null,\"recent\":[],\"runtime_study\":false,\"theme\":\"studio\",\"version\":3}}}",
+        "type": "text"
+      }
+    ],
+    "isError": false,
+    "structuredContent": {
+      "result": {
+        "path": "D:\\Project\\reverse\\state\\rf35-persistence\\config.toml",
+        "settings": {
+          "ai": {},
+          "ask_before_running": true,
+          "assets": {
+            "budget_usd": 5.0,
+            "image_model": null
+          },
+          "auto_mode": false,
+          "build": {
+            "good_enough": 90.0,
+            "max_pages": 4,
+            "max_rounds": 6,
+            "parallel": 2,
+            "picture_good_enough": null,
+            "web_widths": [
+              1440,
+              768,
+              390
+            ]
+          },
+          "deep_mode": false,
+          "engines": {
+            "ghidra": {
+              "compiler_spec": null,
+              "install_dir": "D:\\Tools\\Ghidra",
+              "java_home": "D:\\Tools\\runtime\\jdk21\\jdk-21.0.12.1+1",
+              "language_id": null,
+              "memory_gb": null,
+              "startup_timeout_secs": null
+            },
+            "jeb_url": null,
+            "store_dir": "D:\\Project\\reverse\\state\\rf35-persistence\\engines",
+            "tools": {
+              "adb": null,
+              "apktool": null,
+              "binwalk": null,
+              "chromium": null,
+              "frida": null,
+              "gdb": null,
+              "ilspy": null,
+              "jadx": "D:/owned-test-provider/jadx.exe",
+              "java": null,
+              "lldb": null,
+              "mitmdump": null,
+              "objdump": null,
+              "rizin": null,
+              "rtl433": null,
+              "tshark": null,
+              "unblob": null,
+              "vineflower": null
+            }
+          },
+          "existing_files": null,
+          "first_run_done": false,
+          "language": "",
+          "mode": "beginner",
+          "plugins": {
+            "mcp": []
+          },
+          "project_folders": [],
+          "projects_dir": "D:\\Project\\reverse\\state\\rf35-persistence\\projects",
+          "questions": null,
+          "recent": [],
+          "runtime_study": false,
+          "theme": "studio",
+          "version": 3
+        }
+      }
+    }
+  },
+  "pass": true
+}

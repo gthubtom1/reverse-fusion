@@ -1,0 +1,32 @@
+{
+  "upstream_commit": "8374ad71544f2cc44698ea74ef990aa31600bac6",
+  "included": "all engine ToolSpec registry plus original runtime plugin loader and original stdio library",
+  "observed_engine_tools": 303,
+  "excluded_ai": [
+    "ai_model_options_set",
+    "ai_model_options_show",
+    "ai_model_set",
+    "ai_models_list",
+    "assets_key_remove",
+    "assets_key_set",
+    "assets_key_status",
+    "project_builder_set",
+    "rebuild_activity_show",
+    "rebuild_check",
+    "rebuild_note",
+    "rebuild_note_withdraw",
+    "rebuild_question_ask",
+    "rebuild_questions_list",
+    "rebuild_start",
+    "rebuild_status",
+    "rebuild_stop"
+  ],
+  "excluded_setup": [
+    "setup_plan",
+    "setup_apply",
+    "setup_doctor",
+    "setup_uninstall"
+  ],
+  "reason": "current host owns models/permissions; official Spec and native leases own implementation; repository owns installation; no second AI loop or unrelated host setup",
+  "catalog_count_is_not_provider_readiness": true
+}

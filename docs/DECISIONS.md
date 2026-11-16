@@ -234,3 +234,7 @@ without previous analysis or a specialist prompt. The agent workflow and beginne
 guide define useful user communication, evidence-based readiness and whole-goal
 preservation; they do not prescribe a fixed reverse tool sequence. Real component
 qualification and independent novice entry observations are reported separately.
+
+## RF-026 Original MCP engine plus host-owned reasoning
+
+RF35 confirms REA/Craft were not registered to Codex. Register official REA and pinned Craft engine/MCP/plugins through owned lifecycle-managed entries. Preserve original inspection/browser/device functionality; the upstream independent AI17/setup4 tools are replaced by host reasoning and this installer. Deep is process-only. Explicit upstream allow-run delegates invocation permissions to the external host; no duplicate GUI consent or hidden second AI loop. Candidate edits retain Spec/native leases. Config/call/catalog/provider/target acceptance remain distinct.

@@ -36,7 +36,7 @@ class CoreDeploymentTests(unittest.TestCase):
 
     def test_missing_real_component_blocks_install_before_global_writes(self):
         components = {'rea': {'status': 'present-unverified', 'node_engine_status': 'satisfied'},
-                      'spec': {'cli_status': 'installed'}, 'craft': {'native_backend': 'not-installed'}}
+                      'spec': {'cli_status': 'installed'}, 'craft': {'native_backend': 'not-installed', 'mcp_backend': 'installed-identity-verified'}}
         self.assertEqual(core_deployment(components)['missing'], ['craft-native'])
         args = Namespace(apply=True, format='json')
         with patch.object(cli, 'check_contracts', return_value={'status': 'pass'}), \

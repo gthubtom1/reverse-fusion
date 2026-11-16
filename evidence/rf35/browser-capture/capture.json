@@ -1,0 +1,555 @@
+{
+  "a11y": {
+    "images_without_alt": 0,
+    "landmarks": {
+      "contentinfo": 1,
+      "main": 1
+    },
+    "lang": "zh-CN",
+    "unnamed_controls": 0,
+    "unnamed_examples": []
+  },
+  "assets": {
+    "background_images": [],
+    "fonts": [],
+    "images": [],
+    "inline_scripts": 0,
+    "requests": [
+      {
+        "bytes": 2140,
+        "type": "script",
+        "url": "http://127.0.0.1:62723/page.mjs"
+      },
+      {
+        "bytes": 2728,
+        "type": "script",
+        "url": "http://127.0.0.1:62723/core.mjs"
+      },
+      {
+        "bytes": 635,
+        "type": "other",
+        "url": "http://127.0.0.1:62723/favicon.ico"
+      }
+    ],
+    "scripts": [
+      "http://127.0.0.1:62723/page.mjs"
+    ],
+    "stylesheets": []
+  },
+  "breakpoints": [
+    {
+      "count": 1,
+      "px": 600,
+      "query": "max-width 600px"
+    }
+  ],
+  "design": {
+    "backgrounds": [
+      {
+        "count": 7,
+        "value": "#ffffff"
+      },
+      {
+        "count": 1,
+        "value": "#f4f2ee"
+      },
+      {
+        "count": 1,
+        "value": "#365b45"
+      }
+    ],
+    "css_variables": {},
+    "font_faces": [],
+    "font_sizes": [
+      {
+        "count": 14,
+        "value": "16px"
+      },
+      {
+        "count": 1,
+        "value": "28px"
+      }
+    ],
+    "font_weights": [
+      {
+        "count": 10,
+        "value": "400"
+      },
+      {
+        "count": 4,
+        "value": "600"
+      },
+      {
+        "count": 1,
+        "value": "700"
+      }
+    ],
+    "fonts": [
+      {
+        "count": 15,
+        "value": "system-ui, sans-serif"
+      }
+    ],
+    "max_widths": [
+      {
+        "count": 1,
+        "value": "860px"
+      }
+    ],
+    "radii": [
+      {
+        "count": 7,
+        "value": "4px"
+      },
+      {
+        "count": 1,
+        "value": "8px"
+      }
+    ],
+    "shadows": [],
+    "spacing": [
+      {
+        "count": 26,
+        "value": "12px"
+      },
+      {
+        "count": 14,
+        "value": "9px"
+      },
+      {
+        "count": 10,
+        "value": "5px"
+      },
+      {
+        "count": 8,
+        "value": "24px"
+      },
+      {
+        "count": 8,
+        "value": "8px"
+      },
+      {
+        "count": 4,
+        "value": "28px"
+      },
+      {
+        "count": 2,
+        "value": "48px"
+      },
+      {
+        "count": 2,
+        "value": "16px"
+      },
+      {
+        "count": 1,
+        "value": "4px"
+      },
+      {
+        "count": 1,
+        "value": "20px"
+      }
+    ],
+    "text_colors": [
+      {
+        "count": 8,
+        "value": "#282b28"
+      },
+      {
+        "count": 4,
+        "value": "#565f51"
+      },
+      {
+        "count": 1,
+        "value": "#656961"
+      },
+      {
+        "count": 1,
+        "value": "#ffffff"
+      },
+      {
+        "count": 1,
+        "value": "#365b45"
+      }
+    ]
+  },
+  "forms": [
+    {
+      "action": "",
+      "fields": [
+        {
+          "label": "名称",
+          "name": "",
+          "placeholder": "",
+          "required": false,
+          "tag": "input",
+          "type": "text"
+        },
+        {
+          "label": "分类",
+          "name": "",
+          "placeholder": "",
+          "required": false,
+          "tag": "input",
+          "type": "text"
+        },
+        {
+          "label": "数量",
+          "name": "",
+          "placeholder": "",
+          "required": false,
+          "tag": "input",
+          "type": "number"
+        },
+        {
+          "label": "",
+          "name": "",
+          "placeholder": "",
+          "required": false,
+          "tag": "button",
+          "type": "submit"
+        }
+      ],
+      "method": "get"
+    }
+  ],
+  "headings": [
+    {
+      "level": 1,
+      "text": "标签收纳盒"
+    }
+  ],
+  "health": {
+    "errors": [],
+    "failed_requests": [
+      {
+        "status": 404,
+        "type": "Other",
+        "url": "http://127.0.0.1:62723/favicon.ico"
+      }
+    ]
+  },
+  "lang": "zh-CN",
+  "layouts": [
+    {
+      "blocks": [
+        {
+          "background": "#ffffff",
+          "column": {
+            "max_w": 860,
+            "pad": [
+              28,
+              28
+            ],
+            "w": 860,
+            "x": 120
+          },
+          "h": 591,
+          "heading": "标签收纳盒",
+          "pad": [
+            28,
+            28,
+            28,
+            28
+          ],
+          "per_row": 4,
+          "tag": "main",
+          "w": 860,
+          "y": 48
+        },
+        {
+          "h": 44,
+          "pad": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "per_row": 1,
+          "tag": "footer",
+          "w": 802,
+          "y": 566
+        }
+      ],
+      "page_h": 900,
+      "page_w": 1100,
+      "type": {
+        "body": 16,
+        "h1": 28,
+        "h2": 0,
+        "h3": 0
+      },
+      "width": 1100
+    },
+    {
+      "blocks": [
+        {
+          "background": "#ffffff",
+          "column": {
+            "max_w": 860,
+            "pad": [
+              18,
+              18
+            ],
+            "w": 366,
+            "x": 12
+          },
+          "h": 680,
+          "heading": "标签收纳盒",
+          "pad": [
+            18,
+            18,
+            18,
+            18
+          ],
+          "per_row": 4,
+          "tag": "main",
+          "w": 366,
+          "y": 12
+        },
+        {
+          "h": 44,
+          "pad": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "per_row": 2,
+          "tag": "footer",
+          "w": 328,
+          "y": 629
+        }
+      ],
+      "page_h": 935,
+      "page_w": 405,
+      "type": {
+        "body": 16,
+        "h1": 28,
+        "h2": 0,
+        "h3": 0
+      },
+      "width": 390
+    }
+  ],
+  "links": [],
+  "meta": {
+    "description": "",
+    "icons": [],
+    "og_image": "",
+    "og_title": "",
+    "theme_color": ""
+  },
+  "outline": [
+    {
+      "background": "#ffffff",
+      "box": {
+        "h": 591,
+        "w": 860,
+        "x": 120,
+        "y": 48
+      },
+      "color": "#282b28",
+      "depth": 2,
+      "display": "block",
+      "font": "16px 400",
+      "tag": "main"
+    },
+    {
+      "box": {
+        "h": 42,
+        "w": 802,
+        "x": 149,
+        "y": 77
+      },
+      "color": "#282b28",
+      "depth": 3,
+      "font": "28px 700",
+      "tag": "h1",
+      "text": "标签收纳盒"
+    },
+    {
+      "box": {
+        "h": 24,
+        "w": 802,
+        "x": 149,
+        "y": 135
+      },
+      "color": "#656961",
+      "depth": 3,
+      "font": "16px 400",
+      "tag": "p",
+      "text": "把零散物品放进分类，数量与清单只保存在当前浏览器。"
+    },
+    {
+      "box": {
+        "h": 73,
+        "w": 802,
+        "x": 149,
+        "y": 183
+      },
+      "color": "#282b28",
+      "depth": 3,
+      "display": "flex",
+      "flex": "row",
+      "font": "16px 400",
+      "id": "add",
+      "tag": "form"
+    },
+    {
+      "background": "#ffffff",
+      "box": {
+        "h": 44,
+        "w": 225,
+        "x": 149,
+        "y": 212
+      },
+      "color": "#000000",
+      "depth": 5,
+      "font": "16px 400",
+      "id": "name",
+      "name": "",
+      "placeholder": "",
+      "tag": "input",
+      "type": "text"
+    },
+    {
+      "background": "#ffffff",
+      "box": {
+        "h": 44,
+        "w": 225,
+        "x": 386,
+        "y": 212
+      },
+      "color": "#000000",
+      "depth": 5,
+      "font": "16px 400",
+      "id": "tag",
+      "name": "",
+      "placeholder": "",
+      "tag": "input",
+      "type": "text"
+    },
+    {
+      "background": "#ffffff",
+      "box": {
+        "h": 44,
+        "w": 225,
+        "x": 624,
+        "y": 212
+      },
+      "color": "#000000",
+      "depth": 5,
+      "font": "16px 400",
+      "id": "quantity",
+      "name": "",
+      "placeholder": "",
+      "tag": "input",
+      "type": "number"
+    },
+    {
+      "background": "#365b45",
+      "box": {
+        "h": 44,
+        "w": 90,
+        "x": 861,
+        "y": 212
+      },
+      "color": "#ffffff",
+      "depth": 4,
+      "font": "16px 400",
+      "tag": "button",
+      "text": "添加条目"
+    },
+    {
+      "box": {
+        "h": 24,
+        "w": 802,
+        "x": 149,
+        "y": 280
+      },
+      "color": "#a33124",
+      "depth": 3,
+      "font": "16px 400",
+      "id": "error",
+      "role": "alert",
+      "tag": "div"
+    },
+    {
+      "background": "#ffffff",
+      "box": {
+        "h": 44,
+        "w": 395,
+        "x": 149,
+        "y": 357
+      },
+      "color": "#000000",
+      "depth": 5,
+      "font": "16px 400",
+      "id": "query",
+      "name": "",
+      "placeholder": "输入关键词",
+      "tag": "input",
+      "type": "text"
+    },
+    {
+      "background": "#ffffff",
+      "box": {
+        "h": 43,
+        "w": 395,
+        "x": 556,
+        "y": 358
+      },
+      "color": "#000000",
+      "depth": 5,
+      "font": "16px 400",
+      "id": "order",
+      "name": "",
+      "placeholder": "",
+      "tag": "select",
+      "text": "最近添加 按名称",
+      "type": "select-one"
+    },
+    {
+      "box": {
+        "h": 44,
+        "w": 802,
+        "x": 149,
+        "y": 566
+      },
+      "color": "#282b28",
+      "depth": 3,
+      "display": "flex",
+      "flex": "row",
+      "font": "16px 400",
+      "tag": "footer"
+    },
+    {
+      "background": "#ffffff",
+      "box": {
+        "h": 44,
+        "w": 90,
+        "x": 861,
+        "y": 566
+      },
+      "class": "secondary",
+      "color": "#365b45",
+      "depth": 4,
+      "font": "16px 400",
+      "id": "clear",
+      "tag": "button",
+      "text": "清空全部"
+    }
+  ],
+  "page": {
+    "h": 900,
+    "w": 1100
+  },
+  "text": "标签收纳盒 把零散物品放进分类，数量与清单只保存在当前浏览器。 名称 分类 数量 添加条目 搜索名称或分类 排序 最近添加 按名称 名称 分类 数量 操作 还没有条目，先添加一个吧。 0 项 · 共 0 件 清空全部",
+  "title": "标签收纳盒",
+  "unreadable_stylesheets": 0,
+  "url": "http://127.0.0.1:62723/",
+  "viewport": {
+    "h": 900,
+    "w": 1100
+  }
+}

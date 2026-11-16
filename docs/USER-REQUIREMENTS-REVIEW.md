@@ -1,6 +1,28 @@
 # 用户需求逐项复核
 
-## 1.2.1 最终逐项结果（RF-34；含RF-33实际运行）
+> RF-35更新：本页RF34及更早的完成/计数只涵盖当时CLI与受控构建，未覆盖后来确认的MCP工具可达性缺口。当前1.3.0新增MCP接入、默认登记及真实调用资格，以[当前状态](CURRENT-STATE.md)、[MCP接入](MCP-INTEGRATION.md)和[1.3说明](RELEASE-1.3.md)为准；不能用旧表替代新检查。
+
+
+## RF-35当前增量验收（1.3.0）
+
+原22项需求继续保留；本表记录本轮对其中MCP相关要求的实际补齐，不把旧22个
+“完成”直接当成新增MCP已通过。最终发布/远端状态见[当前状态](CURRENT-STATE.md)。
+
+| 关联要求 | 本轮实现与实际结果 | 当前边界/尚待最终记录 |
+|---|---|---|
+| 1 核心真实部署 | 默认核心增加固定Craft engine MCP启动器，Codex登记官方REA和Craft两项server | 本机真实initialize/list/call已通过；最终部署绑定以`evidence/rf35/deployed-release.json`为准 |
+| 2 真实聚合协作 | REA255/6、Craft303engine/6原目录可达；REA自有应用分析、Craft目标打开/应用图/provider、Chrome双尺寸捕获与关闭已执行 | 不是原CLI所有高层工具全加载，不提升原生partial/one_state为全行为验收；旧Spec/native链继续负责实现 |
+| 3/4 跨目录与归属 | 托管MCP命令使用固定checkout/运行时，保留成果项目路径；无关配置5189字节保留 | 当前聊天需重载后确认发现，不能声称热加载；具体目标仍落自己的case |
+| 6 新电脑完整安装 | 默认bootstrap含摘要固定MCP资产，Codex安装登记并要求mcp-check，不再只诊断未登记 | RF-35远端新克隆默认安装待最终记录，不用RF-33旧克隆替代 |
+| 8 必要二开与能力保全 | 原版MCP协议＋303engine工具＋运行时plugin/provider扩展；AI17/setup4明确由宿主/自有installer替代 | README320宣传数不作减法统计，不另启第二模型或原setup重写别的宿主配置 |
+| 22 宿主适配 | Codex两项全局MCP登记实现且本机已真实连接；Pi/Claude已有项目adapter、官方Spec和CLI/native路径 | 没有自动登记Pi/Claude全局MCP，不标三宿主MCP全部完成；完整模型实测不是每宿主适配门 |
+| 发布与记录 | 本机协议、分析、浏览器及配置保留证据已在`evidence/rf35/` | 工程最终数量取`release/verification.json`；资产/源码发布和远端复现取最终checkpoint |
+
+Ghidra/Chrome/adb现场被发现，JADX尚未发现、设备/外部引擎按任务准备；不写成所有
+provider ready。当前原始Evidence、目录、真实调用、模式和授权边界见
+[MCP接入](MCP-INTEGRATION.md)、[1.3说明](RELEASE-1.3.md)与[发布验收](FINAL-RELEASE-ACCEPTANCE.md)。
+
+## RF34历史1.2.1逐项结果（RF-34；含RF-33实际运行）
 
 用户最新明确宿主验收原则：共用核心已在代表性宿主跑通，其他宿主完成入口/技能/
 工具调用与工作流适配检查即可，不以每个宿主完整模型实测为完成前提。具体条件见

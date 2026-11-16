@@ -1,0 +1,1485 @@
+{
+  "schema_version": 1,
+  "status": "pass",
+  "repository": "D:\\Project\\reverse",
+  "servers": [
+    {
+      "server": "reverse-fusion-rea",
+      "registration": {
+        "command": "D:\\Project\\reverse\\vendor\\node\\node-v24.22.1-win-x64\\node.exe",
+        "args": [
+          "D:\\Project\\reverse\\vendor\\rea\\package\\scripts\\rea.mjs",
+          "mcp"
+        ],
+        "cwd": "D:\\Project\\reverse",
+        "startup_timeout_sec": 60,
+        "tool_timeout_sec": 600,
+        "env": {
+          "REA_MCP_INPUT_SCHEMA_PROFILE": "compact",
+          "REA_MCP_OUTPUT_SCHEMA_PROFILE": "compact"
+        }
+      },
+      "server_info": {
+        "name": "rea",
+        "version": "6.9.0"
+      },
+      "binary_sha256": "d702daa815eabbff763c7d3808e235cf031cf2ca70211b56847bc72f51e240e5",
+      "entry_sha256": "57a41eeefdee8b5882b08537820004dbb1cf53929aa196b4d86471be7865b83d",
+      "tools": 255,
+      "tool_names": [
+        "annotate_native_function",
+        "inspect_native_load_image",
+        "inspect_native_data_type",
+        "inspect_native_instruction",
+        "resolve_native_call_targets",
+        "address_name",
+        "comment",
+        "current_address",
+        "current_procedure",
+        "current_document",
+        "goto_address",
+        "inline_comment",
+        "list_bookmarks",
+        "list_documents",
+        "list_names",
+        "list_procedures",
+        "list_segments",
+        "list_strings",
+        "next_address",
+        "prev_address",
+        "procedure_address",
+        "procedure_assembly",
+        "procedure_callees",
+        "procedure_callers",
+        "procedure_info",
+        "read_function_instructions",
+        "search_bytes",
+        "read_bytes",
+        "address_to_file_offset",
+        "procedure_references",
+        "procedure_pseudo_code",
+        "resolve_containing_procedure",
+        "search_procedures",
+        "search_strings",
+        "set_address_name",
+        "set_addresses_names",
+        "set_bookmark",
+        "set_comment",
+        "set_inline_comment",
+        "unset_bookmark",
+        "xrefs",
+        "trace_native_values",
+        "inspect_native_dispatch_metadata",
+        "get_objc_classes",
+        "get_objc_protocols",
+        "batch_decompile",
+        "decompile_all",
+        "get_call_graph",
+        "analyze_swift_types",
+        "find_xrefs_to_name",
+        "binary_overview",
+        "analyze_function",
+        "inspect_native_api",
+        "trace_feature",
+        "trace_call_path",
+        "trace_native_ui_action",
+        "observe_native_ui",
+        "capture_native_ui_scenario",
+        "observe_native_calls",
+        "inspect_macho",
+        "inspect_signature",
+        "inspect_plist",
+        "list_architectures",
+        "demangle_swift",
+        "inspect_with_objdump",
+        "execute_rizin_command",
+        "list_cutter_sessions",
+        "cutter_command",
+        "start_gdb_session",
+        "gdb_console",
+        "gdb_session_status",
+        "close_gdb_session",
+        "start_rizin_debug_session",
+        "rizin_debug_command",
+        "rizin_debug_session_status",
+        "close_rizin_debug_session",
+        "inspect_byte_entropy",
+        "inspect_binary_layout",
+        "inspect_pe_resources",
+        "inspect_native_exports",
+        "inspect_devicetree",
+        "inspect_elf_notes",
+        "inspect_native_initializers",
+        "inspect_elf_unwind_ranges",
+        "inspect_apple_ips",
+        "inspect_kernel_module",
+        "inspect_kernel_build_config",
+        "inspect_pe_load_config",
+        "audit_release_exposure",
+        "inspect_binary_hardening",
+        "inspect_pe_certificates",
+        "inspect_pe_imports",
+        "inspect_windows_shortcut",
+        "inspect_recorded_crash",
+        "inspect_artifact",
+        "extract_artifact",
+        "decode_interface_builder",
+        "inspect_keyed_archive",
+        "inspect_asset_catalog",
+        "trace_dylib_resolution",
+        "inspect_desktop_application",
+        "inspect_model_artifact",
+        "inspect_gpu_code_objects",
+        "inspect_evm_interface",
+        "inspect_go_binary",
+        "inspect_il2cpp_metadata",
+        "inspect_rust_binary",
+        "inspect_python_pyc",
+        "inspect_erlang_beam",
+        "inspect_v8_code_cache",
+        "compare_wasm_interfaces",
+        "inspect_wasm_artifact",
+        "inspect_apk_signature",
+        "inspect_sqlite_database",
+        "inspect_packet_capture",
+        "inspect_packet_fields",
+        "decode_signal_recording",
+        "inspect_signal_decoders",
+        "inspect_managed_artifact",
+        "inspect_managed_members",
+        "inspect_managed_native_boundaries",
+        "compare_managed_members",
+        "verify_managed_native_boundaries",
+        "import_managed_reconstruction",
+        "project_managed_application_graph",
+        "inspect_firmware_regions",
+        "extract_firmware",
+        "inspect_android_package",
+        "inspect_android_jni_bindings",
+        "search_android_classes",
+        "inspect_android_class",
+        "inspect_android_method",
+        "trace_android_references",
+        "inspect_pcap_client",
+        "inspect_pcap_capture",
+        "identify_flutter_build",
+        "inspect_dart_aot",
+        "list_frida_devices",
+        "list_frida_processes",
+        "start_frida_session",
+        "load_frida_script",
+        "resume_frida_session",
+        "unload_frida_script",
+        "frida_session_status",
+        "close_frida_session",
+        "instrument_with_frida",
+        "inspect_apktool_client",
+        "decode_android_resources",
+        "inspect_jeb_client",
+        "open_jeb_project",
+        "list_jeb_units",
+        "decompile_jeb_item",
+        "inspect_adb_client",
+        "list_adb_devices",
+        "inspect_adb_device",
+        "list_adb_packages",
+        "pull_adb_package",
+        "read_adb_logcat",
+        "inspect_adb_package",
+        "pull_adb_file",
+        "push_adb_file",
+        "capture_adb_screen",
+        "list_adb_processes",
+        "list_adb_directory",
+        "list_adb_features",
+        "list_adb_services",
+        "inspect_adb_display",
+        "inspect_adb_window",
+        "read_adb_setting",
+        "collect_adb_bugreport",
+        "resolve_adb_packages",
+        "install_adb_package",
+        "uninstall_adb_package",
+        "start_adb_app",
+        "start_adb_activity",
+        "stop_adb_app",
+        "list_browser_targets",
+        "inspect_web_page",
+        "analyze_web_bundle",
+        "observe_web_session",
+        "discover_webmcp_tools",
+        "compare_web_captures",
+        "capture_web_screenshot",
+        "compare_web_screenshots",
+        "capture_browser_scenario",
+        "observe_web_execution",
+        "inspect_web_event_listeners",
+        "inspect_web_network_capture",
+        "inspect_electron_fuses",
+        "list_electron_targets",
+        "inspect_electron_page",
+        "analyze_javascript_application",
+        "reconcile_javascript_runtime",
+        "capture_electron_scenario",
+        "list_javascript_runtime_targets",
+        "observe_javascript_runtime",
+        "inspect_analysis_settings",
+        "update_analysis_settings",
+        "inspect_analysis_view",
+        "export_web_scripts",
+        "trace_web_module_imports",
+        "trace_web_source_location",
+        "recover_javascript_sources",
+        "search_guidance",
+        "read_guidance_section",
+        "guided_workflows",
+        "trace_application_feature",
+        "trace_javascript_semantics",
+        "compare_application_versions",
+        "compare_static_and_observed_endpoints",
+        "inspect_api_contract",
+        "inspect_ntfs_journal",
+        "inspect_playwright_trace",
+        "compare_source_to_bundle",
+        "compare_javascript_export_shapes",
+        "build_reconstruction_obligation_ledger",
+        "evaluate_reconstruction_coverage",
+        "export_environment_bundle",
+        "project_android_application_graph",
+        "project_apple_application_graph",
+        "project_harmony_application_graph",
+        "start_build_computer",
+        "act_on_build_computer",
+        "start_build_capture",
+        "mark_build_checkpoint",
+        "stop_build_capture",
+        "export_build_environment",
+        "check_build_task",
+        "measure_build_task",
+        "record_build_consent",
+        "close_build_computer",
+        "open_bundle_resources",
+        "open_binary",
+        "close_binary",
+        "reset_investigation",
+        "binary_session",
+        "export_evidence_bundle",
+        "import_evidence_bundle",
+        "get_evidence_bundle",
+        "capture_process_scenario",
+        "compare_process_captures",
+        "compare_artifacts",
+        "compare_functions",
+        "match_native_functions",
+        "compare_bundles",
+        "find_changed_behavior",
+        "build_call_path",
+        "correlate_static_and_runtime",
+        "verify_reconstruction",
+        "list_unknowns",
+        "record_unknown",
+        "update_unknown",
+        "verify_unknown_resolution",
+        "get_navigation_context",
+        "inspect_address_context"
+      ],
+      "prompts": 6,
+      "called": "binary_session",
+      "result": {
+        "_meta": {
+          "provenance": {
+            "untrusted_content": true,
+            "source": "analysis_target"
+          }
+        },
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"result\":{\"open\":false,\"investigation\":{\"evidence_records\":0,\"unknown_revisions\":0,\"unknown_heads\":0,\"retained_representation_bytes\":0,\"maximum_representation_bytes\":1086800248,\"persistence\":\"memory\"},\"cleanup_pending\":false,\"capabilities\":[{\"provider\":{\"id\":\"native-macos\",\"name\":\"macOS native inspection utilities\",\"version\":null},\"shared_limitations\":[\"Availability and textual formats depend on the installed macOS/Xcode toolchain.\"],\"groups\":[{\"operations\":[\"capture_native_ui_scenario\",\"observe_native_calls\"],\"effects\":[\"launches_process\",\"may_show_ui\",\"may_access_network\",\"may_write_filesystem\"],\"limitations\":[],\"available\":false,\"reason\":\"Native macOS utilities require macOS.\",\"availability_code\":\"unsupported_host\"},{\"operations\":[\"demangle_swift\",\"inspect_plist\",\"list_architectures\"],\"effects\":[\"launches_process\"],\"limitations\":[],\"available\":false,\"reason\":\"Native macOS utilities require macOS.\",\"availability_code\":\"unsupported_host\"},{\"operations\":[\"inspect_macho\",\"inspect_signature\",\"observe_native_ui\"],\"effects\":[\"launches_process\",\"may_write_filesystem\"],\"limitations\":[],\"available\":false,\"reason\":\"Native macOS utilities require macOS.\",\"availability_code\":\"unsupported_host\"},{\"operations\":[\"inspect_native_dispatch_metadata\"],\"effects\":[],\"limitations\":[],\"available\":false,\"reason\":\"Native macOS utilities require macOS.\",\"availability_code\":\"unsupported_host\"}]},{\"provider\":{\"id\":\"rea-artifact-graph\",\"name\":\"REA safe artifact graph provider\",\"version\":\"1\"},\"shared_limitations\":[\"DMG child inventory automatically uses a read-only native macOS mount; PKG remains root-hash-only.\",\"ASAR files discovered in filesystem-backed inventories are expanded without bulk extraction; other nested containers remain recorded only.\"],\"groups\":[{\"operations\":[\"decode_interface_builder\",\"inspect_keyed_archive\",\"trace_dylib_resolution\"],\"effects\":[],\"limitations\":[],\"available\":true,\"reason\":null,\"availability_code\":null},{\"operations\":[\"extract_artifact\",\"inspect_artifact\"],\"effects\":[\"launches_process\",\"may_write_filesystem\"],\"limitations\":[],\"available\":true,\"reason\":null,\"availability_code\":null},{\"operations\":[\"inspect_asset_catalog\"],\"effects\":[\"launches_process\"],\"limitations\":[],\"available\":false,\"reason\":\"Apple asset catalogs require macOS assetutil.\",\"availability_code\":\"unsupported_host\"}]},{\"provider\":{\"id\":\"rea-dotnet-static\",\"name\":\"REA managed static analysis provider\",\"version\":\"1\"},\"shared_limitations\":[],\"groups\":[{\"operations\":[\"inspect_managed_artifact\"],\"effects\":[],\"limitations\":[\"This capability inventories PE/CLI identity only; inspect_managed_members admits metadata members, signatures, and CIL anchors.\",\"It never loads the target assembly, resolves dependencies through a CLR, decompiles C#, or executes target code.\"],\"available\":true,\"reason\":null,\"availability_code\":null},{\"operations\":[\"inspect_managed_members\"],\"effects\":[],\"limitations\":[\"This capability decodes PE/CLI metadata members, signatures, and file-backed method bodies; decompiled C# reconstruction and cross-build member comparison are separate operations.\",\"It never loads the target assembly, resolves dependencies through a CLR, decompiles C#, or executes target code.\"],\"available\":true,\"reason\":null,\"availability_code\":null},{\"operations\":[\"inspect_managed_native_boundaries\"],\"effects\":[],\"limitations\":[\"This capability inventories managed declarations for native boundaries only; native exports, thunks, and addresses require separate native-provider evidence.\",\"It never loads the target assembly, resolves dependencies through a CLR, decompiles C#, or executes target code.\"],\"available\":true,\"reason\":null,\"availability_code\":null}]}],\"analysis_provider_binding\":null,\"analysis_provider_candidates\":[{\"provider\":{\"id\":\"ghidra\",\"name\":\"Ghidra\",\"version\":null},\"availability\":{\"status\":\"available\",\"code\":null,\"reason\":null},\"target_support\":{\"status\":\"unknown\",\"code\":null,\"reason\":\"No target is open.\"},\"selected\":false,\"selection_source\":null,\"rejections\":[]},{\"provider\":{\"id\":\"hopper\",\"name\":\"Hopper Disassembler\",\"version\":null},\"availability\":{\"status\":\"unavailable\",\"code\":\"unsupported_host\",\"reason\":\"Hopper integration is not supported on win32.\"},\"target_support\":{\"status\":\"unknown\",\"code\":null,\"reason\":\"No target is open.\"},\"selected\":false,\"selection_source\":null,\"rejections\":[{\"provider_id\":\"hopper\",\"origin\":\"availability\",\"code\":\"unsupported_host\",\"reason\":\"Hopper integration is not supported on win32.\"}]},{\"provider\":{\"id\":\"ida\",\"name\":\"IDA MCP adapter\",\"version\":\"1\"},\"availability\":{\"status\":\"unavailable\",\"code\":\"not_configured\",\"reason\":\"REA configuration is invalid: Set REA_IDA_MCP_CONFIG to an upstream IDA MCP JSON registration; see docs/providers/ida-provider.md.\"},\"target_support\":{\"status\":\"unknown\",\"code\":null,\"reason\":\"No target is open.\"},\"selected\":false,\"selection_source\":null,\"rejections\":[{\"provider_id\":\"ida\",\"origin\":\"availability\",\"code\":\"not_configured\",\"reason\":\"REA configuration is invalid: Set REA_IDA_MCP_CONFIG to an upstream IDA MCP JSON registration; see docs/providers/ida-provider.md.\"}]},{\"provider\":{\"id\":\"kuna\",\"name\":\"Kuna\",\"version\":null},\"availability\":{\"status\":\"unavailable\",\"code\":\"not_configured\",\"reason\":\"Set REA_KUNA_COMMAND to the absolute path of a caller-supplied kuna executable (verified with 1.990). REA does not download, install or update Kuna.\"},\"target_support\":{\"status\":\"unknown\",\"code\":null,\"reason\":\"No target is open.\"},\"selected\":false,\"selection_source\":null,\"rejections\":[{\"provider_id\":\"kuna\",\"origin\":\"availability\",\"code\":\"not_configured\",\"reason\":\"Set REA_KUNA_COMMAND to the absolute path of a caller-supplied kuna executable (verified with 1.990). REA does not download, install or update Kuna.\"}]}],\"analysis_provider_candidates_observed\":\"status_request\",\"analysis_run\":null,\"analysis_activity\":{\"status\":\"not_observed\",\"providers\":[]},\"provider_operation_health\":null,\"detail\":\"summary\",\"omitted_fields\":[\"analysis_provider_candidates.availability.remediation\",\"analysis_provider_candidates.availability.diagnostics\",\"analysis_provider_candidates.target_support.diagnostics\",\"analysis_provider_candidates.rejections.remediation\",\"analysis_provider_candidates.rejections.diagnostics\",\"analysis_provider_candidates.capabilities\",\"tool_availability.groups.surface\",\"tool_availability.groups.effects\",\"tool_availability.groups.annotations\"],\"tool_availability\":{\"client_requirements\":{\"required\":[],\"optional\":[],\"missing_required\":[],\"missing_optional\":[]},\"groups\":[{\"names\":[\"act_on_build_computer\",\"analyze_javascript_application\",\"analyze_web_bundle\",\"audit_release_exposure\",\"binary_session\",\"build_call_path\",\"build_reconstruction_obligation_ledger\",\"capture_adb_screen\",\"capture_browser_scenario\",\"capture_electron_scenario\",\"capture_web_screenshot\",\"check_build_task\",\"close_binary\",\"close_build_computer\",\"close_frida_session\",\"close_gdb_session\",\"close_rizin_debug_session\",\"collect_adb_bugreport\",\"compare_application_versions\",\"compare_artifacts\",\"compare_bundles\",\"compare_functions\",\"compare_javascript_export_shapes\",\"compare_managed_members\",\"compare_process_captures\",\"compare_source_to_bundle\",\"compare_static_and_observed_endpoints\",\"compare_wasm_interfaces\",\"compare_web_captures\",\"compare_web_screenshots\",\"correlate_static_and_runtime\",\"cutter_command\",\"discover_webmcp_tools\",\"evaluate_reconstruction_coverage\",\"execute_rizin_command\",\"export_build_environment\",\"export_environment_bundle\",\"export_evidence_bundle\",\"export_web_scripts\",\"find_changed_behavior\",\"frida_session_status\",\"gdb_console\",\"gdb_session_status\",\"get_evidence_bundle\",\"guided_workflows\",\"identify_flutter_build\",\"import_evidence_bundle\",\"import_managed_reconstruction\",\"inspect_adb_client\",\"inspect_adb_device\",\"inspect_adb_display\",\"inspect_adb_package\",\"inspect_adb_window\",\"inspect_analysis_settings\",\"inspect_analysis_view\",\"inspect_api_contract\",\"inspect_apk_signature\",\"inspect_apple_ips\",\"inspect_binary_hardening\",\"inspect_byte_entropy\",\"inspect_dart_aot\",\"inspect_desktop_application\",\"inspect_devicetree\",\"inspect_electron_fuses\",\"inspect_electron_page\",\"inspect_elf_notes\",\"inspect_elf_unwind_ranges\",\"inspect_erlang_beam\",\"inspect_go_binary\",\"inspect_gpu_code_objects\",\"inspect_il2cpp_metadata\",\"inspect_kernel_build_config\",\"inspect_kernel_module\",\"inspect_managed_artifact\",\"inspect_managed_members\",\"inspect_managed_native_boundaries\",\"inspect_model_artifact\",\"inspect_native_exports\",\"inspect_native_initializers\",\"inspect_ntfs_journal\",\"inspect_pcap_capture\",\"inspect_pcap_client\",\"inspect_pe_certificates\",\"inspect_pe_imports\",\"inspect_pe_load_config\",\"inspect_pe_resources\",\"inspect_playwright_trace\",\"inspect_python_pyc\",\"inspect_rust_binary\",\"inspect_sqlite_database\",\"inspect_v8_code_cache\",\"inspect_web_event_listeners\",\"inspect_web_network_capture\",\"inspect_web_page\",\"inspect_windows_shortcut\",\"inspect_with_objdump\",\"install_adb_package\",\"instrument_with_frida\",\"list_adb_devices\",\"list_adb_directory\",\"list_adb_features\",\"list_adb_packages\",\"list_adb_processes\",\"list_adb_services\",\"list_browser_targets\",\"list_cutter_sessions\",\"list_electron_targets\",\"list_frida_devices\",\"list_frida_processes\",\"list_javascript_runtime_targets\",\"list_unknowns\",\"load_frida_script\",\"mark_build_checkpoint\",\"match_native_functions\",\"measure_build_task\",\"observe_javascript_runtime\",\"observe_web_execution\",\"observe_web_session\",\"open_binary\",\"open_bundle_resources\",\"project_android_application_graph\",\"project_apple_application_graph\",\"project_harmony_application_graph\",\"project_managed_application_graph\",\"pull_adb_file\",\"pull_adb_package\",\"push_adb_file\",\"read_adb_logcat\",\"read_adb_setting\",\"read_guidance_section\",\"reconcile_javascript_runtime\",\"record_build_consent\",\"record_unknown\",\"reset_investigation\",\"resolve_adb_packages\",\"resume_frida_session\",\"rizin_debug_command\",\"rizin_debug_session_status\",\"search_guidance\",\"start_adb_activity\",\"start_adb_app\",\"start_build_capture\",\"start_build_computer\",\"start_frida_session\",\"stop_adb_app\",\"stop_build_capture\",\"trace_application_feature\",\"trace_javascript_semantics\",\"trace_web_source_location\",\"uninstall_adb_package\",\"unload_frida_script\",\"update_analysis_settings\",\"update_unknown\",\"verify_managed_native_boundaries\",\"verify_reconstruction\",\"verify_unknown_resolution\"],\"available\":true,\"reason\":\"available\",\"remediation\":null},{\"names\":[\"address_name\",\"address_to_file_offset\",\"analyze_function\",\"analyze_swift_types\",\"annotate_native_function\",\"batch_decompile\",\"binary_overview\",\"comment\",\"current_address\",\"current_document\",\"current_procedure\",\"decode_interface_builder\",\"decompile_all\",\"extract_artifact\",\"find_xrefs_to_name\",\"get_call_graph\",\"get_objc_classes\",\"get_objc_protocols\",\"goto_address\",\"inline_comment\",\"inspect_address_context\",\"inspect_artifact\",\"inspect_keyed_archive\",\"inspect_native_api\",\"inspect_native_data_type\",\"inspect_native_dispatch_metadata\",\"inspect_native_instruction\",\"inspect_native_load_image\",\"list_bookmarks\",\"list_documents\",\"list_names\",\"list_procedures\",\"list_segments\",\"list_strings\",\"next_address\",\"prev_address\",\"procedure_address\",\"procedure_assembly\",\"procedure_callees\",\"procedure_callers\",\"procedure_info\",\"procedure_pseudo_code\",\"procedure_references\",\"read_bytes\",\"read_function_instructions\",\"resolve_containing_procedure\",\"resolve_native_call_targets\",\"search_bytes\",\"search_procedures\",\"search_strings\",\"set_address_name\",\"set_addresses_names\",\"set_bookmark\",\"set_comment\",\"set_inline_comment\",\"trace_call_path\",\"trace_dylib_resolution\",\"trace_feature\",\"trace_native_ui_action\",\"unset_bookmark\",\"xrefs\"],\"available\":false,\"reason\":\"target_required\",\"remediation\":\"Call open_binary with a supported local target.\"},{\"names\":[\"capture_native_ui_scenario\",\"demangle_swift\",\"inspect_macho\",\"inspect_plist\",\"inspect_signature\",\"list_architectures\",\"observe_native_calls\",\"observe_native_ui\"],\"available\":false,\"reason\":\"unsupported_host\",\"remediation\":\"Native macOS utilities require macOS.\"},{\"names\":[\"capture_process_scenario\"],\"available\":false,\"reason\":\"unsupported_host\",\"remediation\":\"Run process capture on a supported Linux or macOS host.\"},{\"names\":[\"decode_android_resources\",\"inspect_apktool_client\"],\"available\":false,\"reason\":\"provider_unavailable\",\"remediation\":\"Set REA_APKTOOL_COMMAND to an absolute apktool launcher, or add its directory and extension to PATH and PATHEXT.\"},{\"names\":[\"decode_signal_recording\",\"inspect_signal_decoders\"],\"available\":false,\"reason\":\"unsupported_host\",\"remediation\":\"On Linux, supply sigrok-cli 0.7.2 via absolute REA_SIGROK_COMMAND and util-linux prlimit (REA_SIGROK_PRLIMIT_COMMAND, default /usr/bin/prlimit). No active binary target or hardware is required; the tool is checked at execution.\"},{\"names\":[\"decompile_jeb_item\",\"inspect_jeb_client\",\"list_jeb_units\",\"open_jeb_project\"],\"available\":false,\"reason\":\"provider_missing\",\"remediation\":\"Start a JEB client serving MCP (default http://127.0.0.1:8425/mcp) or set REA_JEB_MCP_URL to the running endpoint.\"},{\"names\":[\"extract_firmware\"],\"available\":false,\"reason\":\"unsupported_host\",\"remediation\":\"On Linux, provide an absolute REA_UNBLOB_COMMAND (Unblob 26.6.x (verified with 26.6.4)) path, util-linux prlimit and procps ps. Extraction also requires the selected format\u2019s external extractor.\"},{\"names\":[\"get_navigation_context\"],\"default_mode_available\":false,\"modes\":[{\"name\":\"current_selection\",\"available\":false,\"missing_operations\":[\"current_document\",\"current_address\",\"resolve_containing_procedure\"],\"remediation\":\"Call open_binary with a supported local target.\"},{\"name\":\"explicit_document\",\"available\":false,\"missing_operations\":[\"current_address\",\"resolve_containing_procedure\"],\"remediation\":\"Call open_binary with a supported local target.\"}],\"available\":false,\"reason\":\"target_required\",\"remediation\":\"Call open_binary with a supported local target.\"},{\"names\":[\"inspect_android_class\",\"inspect_android_jni_bindings\",\"inspect_android_method\",\"inspect_android_package\",\"search_android_classes\",\"trace_android_references\"],\"available\":false,\"reason\":\"provider_missing\",\"remediation\":\"Set REA_JADX_MCP_JAR to the absolute path of a caller-supplied jadx-headless-mcp 0.7.1 JAR. REA does not download or install it.\"},{\"names\":[\"inspect_asset_catalog\"],\"available\":false,\"reason\":\"unsupported_host\",\"remediation\":\"Apple asset catalogs require macOS assetutil.\"},{\"names\":[\"inspect_binary_layout\",\"inspect_recorded_crash\"],\"available\":false,\"reason\":\"unsupported_host\",\"remediation\":\"On Linux x64, set absolute REA_PWNTOOLS_PYTHON to caller-supplied Python with pwntools 4.15.0. No active binary target is required.\"},{\"names\":[\"inspect_evm_interface\"],\"available\":false,\"reason\":\"unsupported_host\",\"remediation\":\"The bundled offline EVM interface profile is currently real-verified on Linux x64. No active binary target or chain endpoint is required.\"},{\"names\":[\"inspect_firmware_regions\"],\"available\":false,\"reason\":\"unsupported_host\",\"remediation\":\"On Linux, provide an absolute REA_BINWALK_COMMAND (Binwalk 3.1.x (verified with 3.1.0)) path, util-linux prlimit and procps ps.\"},{\"names\":[\"inspect_packet_capture\",\"inspect_packet_fields\"],\"available\":false,\"reason\":\"unsupported_host\",\"remediation\":\"On Linux, supply TShark 4.x on PATH or through absolute REA_TSHARK_COMMAND, and util-linux prlimit (REA_TSHARK_PRLIMIT_COMMAND, default /usr/bin/prlimit). No active binary target or hardware is required; the tool is checked at execution.\"},{\"names\":[\"inspect_wasm_artifact\"],\"available\":false,\"reason\":\"provider_missing\",\"remediation\":\"Supply WABT 1.0.42 via absolute REA_WABT_BIN_DIRECTORY. No active binary target is required; tools are checked at execution.\"},{\"names\":[\"recover_javascript_sources\"],\"available\":false,\"reason\":\"unsupported_host\",\"remediation\":\"On Linux x64, provide an absolute REA_WAKARU_COMMAND for Wakaru ^1.13.0 (verified with 1.14.0) and util-linux prlimit; see docs/guides/javascript/javascript-recovery.md#install-wakaru. No binary target is required.\"},{\"names\":[\"start_gdb_session\",\"start_rizin_debug_session\"],\"available\":false,\"reason\":\"unsupported_host\",\"remediation\":\"Run persistent debugger sessions on Linux with /proc descriptor readback.\"},{\"names\":[\"trace_native_values\"],\"value_flow_support\":{\"status\":\"unknown\",\"provider_id\":null},\"available\":false,\"reason\":\"target_required\",\"remediation\":\"Call open_binary with a supported local target.\"},{\"names\":[\"trace_web_module_imports\"],\"default_mode_available\":false,\"modes\":[{\"name\":\"sources-without-literal-imports\",\"available\":true,\"missing_operations\":[],\"remediation\":null},{\"name\":\"native-literal-resolution\",\"available\":false,\"missing_operations\":[\"native-module-resolver\"],\"remediation\":\"Provide an absolute REA_BROWSER_EXECUTABLE supporting import.meta.resolve; no binary target is required.\"}],\"available\":true,\"reason\":\"available\",\"remediation\":null}]},\"client_features\":{\"elicitation_form\":false,\"elicitation_url\":false,\"roots\":false,\"sampling\":false},\"server_identity\":{\"package\":{\"name\":\"rea-agents\",\"version\":\"6.9.0\",\"root_path\":\"D:\\\\Project\\\\reverse\\\\vendor\\\\rea\\\\package\",\"build_commit\":null},\"server\":{\"name\":\"rea\",\"version\":\"6.9.0\",\"started_at\":\"2026-11-16T11:31:09.839Z\",\"command_path\":\"D:\\\\Project\\\\reverse\\\\vendor\\\\rea\\\\package\\\\scripts\\\\rea.mjs\"},\"sdk\":{\"server\":\"2.3.1\",\"client_test\":\"2.3.1\",\"core\":\"2.3.1\"},\"negotiated_protocol_version\":\"2025-06-18\",\"client\":{\"name\":\"reverse-fusion-deployment-check\",\"version\":\"1\"},\"skill\":{\"name\":\"reverse-engineer-anything\",\"expected_version\":\"62\"},\"catalog\":{\"counts\":{\"cli_commands\":196,\"mcp_tools\":255,\"mcp_prompts\":6},\"digests\":{\"tools_sha256\":\"7ffed2ab26f6705a8dd2a7904763016347d928537d3880d74ed1268193b45498\",\"prompts_sha256\":\"60078bd8ef8bd152b51440e7579fba2059beec18fec5148dd0ec10ef013213fe\",\"combined_sha256\":\"9ab5e82d63647a49f05ead4ccf772d00c4da2f6758a2cb4d3ca3df3e4f37ef48\"}},\"protocol_features\":{\"progress\":true,\"cancellation\":true,\"elicitation\":false},\"alignment\":{\"state\":\"unknown\",\"reasons\":[],\"remediation\":\"Supply expected package, catalog, or registration identity to compare the live server.\"}}}}"
+          }
+        ],
+        "structuredContent": {
+          "result": {
+            "open": false,
+            "investigation": {
+              "evidence_records": 0,
+              "unknown_revisions": 0,
+              "unknown_heads": 0,
+              "retained_representation_bytes": 0,
+              "maximum_representation_bytes": 1086800248,
+              "persistence": "memory"
+            },
+            "cleanup_pending": false,
+            "capabilities": [
+              {
+                "provider": {
+                  "id": "native-macos",
+                  "name": "macOS native inspection utilities",
+                  "version": null
+                },
+                "shared_limitations": [
+                  "Availability and textual formats depend on the installed macOS/Xcode toolchain."
+                ],
+                "groups": [
+                  {
+                    "operations": [
+                      "capture_native_ui_scenario",
+                      "observe_native_calls"
+                    ],
+                    "effects": [
+                      "launches_process",
+                      "may_show_ui",
+                      "may_access_network",
+                      "may_write_filesystem"
+                    ],
+                    "limitations": [],
+                    "available": false,
+                    "reason": "Native macOS utilities require macOS.",
+                    "availability_code": "unsupported_host"
+                  },
+                  {
+                    "operations": [
+                      "demangle_swift",
+                      "inspect_plist",
+                      "list_architectures"
+                    ],
+                    "effects": [
+                      "launches_process"
+                    ],
+                    "limitations": [],
+                    "available": false,
+                    "reason": "Native macOS utilities require macOS.",
+                    "availability_code": "unsupported_host"
+                  },
+                  {
+                    "operations": [
+                      "inspect_macho",
+                      "inspect_signature",
+                      "observe_native_ui"
+                    ],
+                    "effects": [
+                      "launches_process",
+                      "may_write_filesystem"
+                    ],
+                    "limitations": [],
+                    "available": false,
+                    "reason": "Native macOS utilities require macOS.",
+                    "availability_code": "unsupported_host"
+                  },
+                  {
+                    "operations": [
+                      "inspect_native_dispatch_metadata"
+                    ],
+                    "effects": [],
+                    "limitations": [],
+                    "available": false,
+                    "reason": "Native macOS utilities require macOS.",
+                    "availability_code": "unsupported_host"
+                  }
+                ]
+              },
+              {
+                "provider": {
+                  "id": "rea-artifact-graph",
+                  "name": "REA safe artifact graph provider",
+                  "version": "1"
+                },
+                "shared_limitations": [
+                  "DMG child inventory automatically uses a read-only native macOS mount; PKG remains root-hash-only.",
+                  "ASAR files discovered in filesystem-backed inventories are expanded without bulk extraction; other nested containers remain recorded only."
+                ],
+                "groups": [
+                  {
+                    "operations": [
+                      "decode_interface_builder",
+                      "inspect_keyed_archive",
+                      "trace_dylib_resolution"
+                    ],
+                    "effects": [],
+                    "limitations": [],
+                    "available": true,
+                    "reason": null,
+                    "availability_code": null
+                  },
+                  {
+                    "operations": [
+                      "extract_artifact",
+                      "inspect_artifact"
+                    ],
+                    "effects": [
+                      "launches_process",
+                      "may_write_filesystem"
+                    ],
+                    "limitations": [],
+                    "available": true,
+                    "reason": null,
+                    "availability_code": null
+                  },
+                  {
+                    "operations": [
+                      "inspect_asset_catalog"
+                    ],
+                    "effects": [
+                      "launches_process"
+                    ],
+                    "limitations": [],
+                    "available": false,
+                    "reason": "Apple asset catalogs require macOS assetutil.",
+                    "availability_code": "unsupported_host"
+                  }
+                ]
+              },
+              {
+                "provider": {
+                  "id": "rea-dotnet-static",
+                  "name": "REA managed static analysis provider",
+                  "version": "1"
+                },
+                "shared_limitations": [],
+                "groups": [
+                  {
+                    "operations": [
+                      "inspect_managed_artifact"
+                    ],
+                    "effects": [],
+                    "limitations": [
+                      "This capability inventories PE/CLI identity only; inspect_managed_members admits metadata members, signatures, and CIL anchors.",
+                      "It never loads the target assembly, resolves dependencies through a CLR, decompiles C#, or executes target code."
+                    ],
+                    "available": true,
+                    "reason": null,
+                    "availability_code": null
+                  },
+                  {
+                    "operations": [
+                      "inspect_managed_members"
+                    ],
+                    "effects": [],
+                    "limitations": [
+                      "This capability decodes PE/CLI metadata members, signatures, and file-backed method bodies; decompiled C# reconstruction and cross-build member comparison are separate operations.",
+                      "It never loads the target assembly, resolves dependencies through a CLR, decompiles C#, or executes target code."
+                    ],
+                    "available": true,
+                    "reason": null,
+                    "availability_code": null
+                  },
+                  {
+                    "operations": [
+                      "inspect_managed_native_boundaries"
+                    ],
+                    "effects": [],
+                    "limitations": [
+                      "This capability inventories managed declarations for native boundaries only; native exports, thunks, and addresses require separate native-provider evidence.",
+                      "It never loads the target assembly, resolves dependencies through a CLR, decompiles C#, or executes target code."
+                    ],
+                    "available": true,
+                    "reason": null,
+                    "availability_code": null
+                  }
+                ]
+              }
+            ],
+            "analysis_provider_binding": null,
+            "analysis_provider_candidates": [
+              {
+                "provider": {
+                  "id": "ghidra",
+                  "name": "Ghidra",
+                  "version": null
+                },
+                "availability": {
+                  "status": "available",
+                  "code": null,
+                  "reason": null
+                },
+                "target_support": {
+                  "status": "unknown",
+                  "code": null,
+                  "reason": "No target is open."
+                },
+                "selected": false,
+                "selection_source": null,
+                "rejections": []
+              },
+              {
+                "provider": {
+                  "id": "hopper",
+                  "name": "Hopper Disassembler",
+                  "version": null
+                },
+                "availability": {
+                  "status": "unavailable",
+                  "code": "unsupported_host",
+                  "reason": "Hopper integration is not supported on win32."
+                },
+                "target_support": {
+                  "status": "unknown",
+                  "code": null,
+                  "reason": "No target is open."
+                },
+                "selected": false,
+                "selection_source": null,
+                "rejections": [
+                  {
+                    "provider_id": "hopper",
+                    "origin": "availability",
+                    "code": "unsupported_host",
+                    "reason": "Hopper integration is not supported on win32."
+                  }
+                ]
+              },
+              {
+                "provider": {
+                  "id": "ida",
+                  "name": "IDA MCP adapter",
+                  "version": "1"
+                },
+                "availability": {
+                  "status": "unavailable",
+                  "code": "not_configured",
+                  "reason": "REA configuration is invalid: Set REA_IDA_MCP_CONFIG to an upstream IDA MCP JSON registration; see docs/providers/ida-provider.md."
+                },
+                "target_support": {
+                  "status": "unknown",
+                  "code": null,
+                  "reason": "No target is open."
+                },
+                "selected": false,
+                "selection_source": null,
+                "rejections": [
+                  {
+                    "provider_id": "ida",
+                    "origin": "availability",
+                    "code": "not_configured",
+                    "reason": "REA configuration is invalid: Set REA_IDA_MCP_CONFIG to an upstream IDA MCP JSON registration; see docs/providers/ida-provider.md."
+                  }
+                ]
+              },
+              {
+                "provider": {
+                  "id": "kuna",
+                  "name": "Kuna",
+                  "version": null
+                },
+                "availability": {
+                  "status": "unavailable",
+                  "code": "not_configured",
+                  "reason": "Set REA_KUNA_COMMAND to the absolute path of a caller-supplied kuna executable (verified with 1.990). REA does not download, install or update Kuna."
+                },
+                "target_support": {
+                  "status": "unknown",
+                  "code": null,
+                  "reason": "No target is open."
+                },
+                "selected": false,
+                "selection_source": null,
+                "rejections": [
+                  {
+                    "provider_id": "kuna",
+                    "origin": "availability",
+                    "code": "not_configured",
+                    "reason": "Set REA_KUNA_COMMAND to the absolute path of a caller-supplied kuna executable (verified with 1.990). REA does not download, install or update Kuna."
+                  }
+                ]
+              }
+            ],
+            "analysis_provider_candidates_observed": "status_request",
+            "analysis_run": null,
+            "analysis_activity": {
+              "status": "not_observed",
+              "providers": []
+            },
+            "provider_operation_health": null,
+            "detail": "summary",
+            "omitted_fields": [
+              "analysis_provider_candidates.availability.remediation",
+              "analysis_provider_candidates.availability.diagnostics",
+              "analysis_provider_candidates.target_support.diagnostics",
+              "analysis_provider_candidates.rejections.remediation",
+              "analysis_provider_candidates.rejections.diagnostics",
+              "analysis_provider_candidates.capabilities",
+              "tool_availability.groups.surface",
+              "tool_availability.groups.effects",
+              "tool_availability.groups.annotations"
+            ],
+            "tool_availability": {
+              "client_requirements": {
+                "required": [],
+                "optional": [],
+                "missing_required": [],
+                "missing_optional": []
+              },
+              "groups": [
+                {
+                  "names": [
+                    "act_on_build_computer",
+                    "analyze_javascript_application",
+                    "analyze_web_bundle",
+                    "audit_release_exposure",
+                    "binary_session",
+                    "build_call_path",
+                    "build_reconstruction_obligation_ledger",
+                    "capture_adb_screen",
+                    "capture_browser_scenario",
+                    "capture_electron_scenario",
+                    "capture_web_screenshot",
+                    "check_build_task",
+                    "close_binary",
+                    "close_build_computer",
+                    "close_frida_session",
+                    "close_gdb_session",
+                    "close_rizin_debug_session",
+                    "collect_adb_bugreport",
+                    "compare_application_versions",
+                    "compare_artifacts",
+                    "compare_bundles",
+                    "compare_functions",
+                    "compare_javascript_export_shapes",
+                    "compare_managed_members",
+                    "compare_process_captures",
+                    "compare_source_to_bundle",
+                    "compare_static_and_observed_endpoints",
+                    "compare_wasm_interfaces",
+                    "compare_web_captures",
+                    "compare_web_screenshots",
+                    "correlate_static_and_runtime",
+                    "cutter_command",
+                    "discover_webmcp_tools",
+                    "evaluate_reconstruction_coverage",
+                    "execute_rizin_command",
+                    "export_build_environment",
+                    "export_environment_bundle",
+                    "export_evidence_bundle",
+                    "export_web_scripts",
+                    "find_changed_behavior",
+                    "frida_session_status",
+                    "gdb_console",
+                    "gdb_session_status",
+                    "get_evidence_bundle",
+                    "guided_workflows",
+                    "identify_flutter_build",
+                    "import_evidence_bundle",
+                    "import_managed_reconstruction",
+                    "inspect_adb_client",
+                    "inspect_adb_device",
+                    "inspect_adb_display",
+                    "inspect_adb_package",
+                    "inspect_adb_window",
+                    "inspect_analysis_settings",
+                    "inspect_analysis_view",
+                    "inspect_api_contract",
+                    "inspect_apk_signature",
+                    "inspect_apple_ips",
+                    "inspect_binary_hardening",
+                    "inspect_byte_entropy",
+                    "inspect_dart_aot",
+                    "inspect_desktop_application",
+                    "inspect_devicetree",
+                    "inspect_electron_fuses",
+                    "inspect_electron_page",
+                    "inspect_elf_notes",
+                    "inspect_elf_unwind_ranges",
+                    "inspect_erlang_beam",
+                    "inspect_go_binary",
+                    "inspect_gpu_code_objects",
+                    "inspect_il2cpp_metadata",
+                    "inspect_kernel_build_config",
+                    "inspect_kernel_module",
+                    "inspect_managed_artifact",
+                    "inspect_managed_members",
+                    "inspect_managed_native_boundaries",
+                    "inspect_model_artifact",
+                    "inspect_native_exports",
+                    "inspect_native_initializers",
+                    "inspect_ntfs_journal",
+                    "inspect_pcap_capture",
+                    "inspect_pcap_client",
+                    "inspect_pe_certificates",
+                    "inspect_pe_imports",
+                    "inspect_pe_load_config",
+                    "inspect_pe_resources",
+                    "inspect_playwright_trace",
+                    "inspect_python_pyc",
+                    "inspect_rust_binary",
+                    "inspect_sqlite_database",
+                    "inspect_v8_code_cache",
+                    "inspect_web_event_listeners",
+                    "inspect_web_network_capture",
+                    "inspect_web_page",
+                    "inspect_windows_shortcut",
+                    "inspect_with_objdump",
+                    "install_adb_package",
+                    "instrument_with_frida",
+                    "list_adb_devices",
+                    "list_adb_directory",
+                    "list_adb_features",
+                    "list_adb_packages",
+                    "list_adb_processes",
+                    "list_adb_services",
+                    "list_browser_targets",
+                    "list_cutter_sessions",
+                    "list_electron_targets",
+                    "list_frida_devices",
+                    "list_frida_processes",
+                    "list_javascript_runtime_targets",
+                    "list_unknowns",
+                    "load_frida_script",
+                    "mark_build_checkpoint",
+                    "match_native_functions",
+                    "measure_build_task",
+                    "observe_javascript_runtime",
+                    "observe_web_execution",
+                    "observe_web_session",
+                    "open_binary",
+                    "open_bundle_resources",
+                    "project_android_application_graph",
+                    "project_apple_application_graph",
+                    "project_harmony_application_graph",
+                    "project_managed_application_graph",
+                    "pull_adb_file",
+                    "pull_adb_package",
+                    "push_adb_file",
+                    "read_adb_logcat",
+                    "read_adb_setting",
+                    "read_guidance_section",
+                    "reconcile_javascript_runtime",
+                    "record_build_consent",
+                    "record_unknown",
+                    "reset_investigation",
+                    "resolve_adb_packages",
+                    "resume_frida_session",
+                    "rizin_debug_command",
+                    "rizin_debug_session_status",
+                    "search_guidance",
+                    "start_adb_activity",
+                    "start_adb_app",
+                    "start_build_capture",
+                    "start_build_computer",
+                    "start_frida_session",
+                    "stop_adb_app",
+                    "stop_build_capture",
+                    "trace_application_feature",
+                    "trace_javascript_semantics",
+                    "trace_web_source_location",
+                    "uninstall_adb_package",
+                    "unload_frida_script",
+                    "update_analysis_settings",
+                    "update_unknown",
+                    "verify_managed_native_boundaries",
+                    "verify_reconstruction",
+                    "verify_unknown_resolution"
+                  ],
+                  "available": true,
+                  "reason": "available",
+                  "remediation": null
+                },
+                {
+                  "names": [
+                    "address_name",
+                    "address_to_file_offset",
+                    "analyze_function",
+                    "analyze_swift_types",
+                    "annotate_native_function",
+                    "batch_decompile",
+                    "binary_overview",
+                    "comment",
+                    "current_address",
+                    "current_document",
+                    "current_procedure",
+                    "decode_interface_builder",
+                    "decompile_all",
+                    "extract_artifact",
+                    "find_xrefs_to_name",
+                    "get_call_graph",
+                    "get_objc_classes",
+                    "get_objc_protocols",
+                    "goto_address",
+                    "inline_comment",
+                    "inspect_address_context",
+                    "inspect_artifact",
+                    "inspect_keyed_archive",
+                    "inspect_native_api",
+                    "inspect_native_data_type",
+                    "inspect_native_dispatch_metadata",
+                    "inspect_native_instruction",
+                    "inspect_native_load_image",
+                    "list_bookmarks",
+                    "list_documents",
+                    "list_names",
+                    "list_procedures",
+                    "list_segments",
+                    "list_strings",
+                    "next_address",
+                    "prev_address",
+                    "procedure_address",
+                    "procedure_assembly",
+                    "procedure_callees",
+                    "procedure_callers",
+                    "procedure_info",
+                    "procedure_pseudo_code",
+                    "procedure_references",
+                    "read_bytes",
+                    "read_function_instructions",
+                    "resolve_containing_procedure",
+                    "resolve_native_call_targets",
+                    "search_bytes",
+                    "search_procedures",
+                    "search_strings",
+                    "set_address_name",
+                    "set_addresses_names",
+                    "set_bookmark",
+                    "set_comment",
+                    "set_inline_comment",
+                    "trace_call_path",
+                    "trace_dylib_resolution",
+                    "trace_feature",
+                    "trace_native_ui_action",
+                    "unset_bookmark",
+                    "xrefs"
+                  ],
+                  "available": false,
+                  "reason": "target_required",
+                  "remediation": "Call open_binary with a supported local target."
+                },
+                {
+                  "names": [
+                    "capture_native_ui_scenario",
+                    "demangle_swift",
+                    "inspect_macho",
+                    "inspect_plist",
+                    "inspect_signature",
+                    "list_architectures",
+                    "observe_native_calls",
+                    "observe_native_ui"
+                  ],
+                  "available": false,
+                  "reason": "unsupported_host",
+                  "remediation": "Native macOS utilities require macOS."
+                },
+                {
+                  "names": [
+                    "capture_process_scenario"
+                  ],
+                  "available": false,
+                  "reason": "unsupported_host",
+                  "remediation": "Run process capture on a supported Linux or macOS host."
+                },
+                {
+                  "names": [
+                    "decode_android_resources",
+                    "inspect_apktool_client"
+                  ],
+                  "available": false,
+                  "reason": "provider_unavailable",
+                  "remediation": "Set REA_APKTOOL_COMMAND to an absolute apktool launcher, or add its directory and extension to PATH and PATHEXT."
+                },
+                {
+                  "names": [
+                    "decode_signal_recording",
+                    "inspect_signal_decoders"
+                  ],
+                  "available": false,
+                  "reason": "unsupported_host",
+                  "remediation": "On Linux, supply sigrok-cli 0.7.2 via absolute REA_SIGROK_COMMAND and util-linux prlimit (REA_SIGROK_PRLIMIT_COMMAND, default /usr/bin/prlimit). No active binary target or hardware is required; the tool is checked at execution."
+                },
+                {
+                  "names": [
+                    "decompile_jeb_item",
+                    "inspect_jeb_client",
+                    "list_jeb_units",
+                    "open_jeb_project"
+                  ],
+                  "available": false,
+                  "reason": "provider_missing",
+                  "remediation": "Start a JEB client serving MCP (default http://127.0.0.1:8425/mcp) or set REA_JEB_MCP_URL to the running endpoint."
+                },
+                {
+                  "names": [
+                    "extract_firmware"
+                  ],
+                  "available": false,
+                  "reason": "unsupported_host",
+                  "remediation": "On Linux, provide an absolute REA_UNBLOB_COMMAND (Unblob 26.6.x (verified with 26.6.4)) path, util-linux prlimit and procps ps. Extraction also requires the selected format\u2019s external extractor."
+                },
+                {
+                  "names": [
+                    "get_navigation_context"
+                  ],
+                  "default_mode_available": false,
+                  "modes": [
+                    {
+                      "name": "current_selection",
+                      "available": false,
+                      "missing_operations": [
+                        "current_document",
+                        "current_address",
+                        "resolve_containing_procedure"
+                      ],
+                      "remediation": "Call open_binary with a supported local target."
+                    },
+                    {
+                      "name": "explicit_document",
+                      "available": false,
+                      "missing_operations": [
+                        "current_address",
+                        "resolve_containing_procedure"
+                      ],
+                      "remediation": "Call open_binary with a supported local target."
+                    }
+                  ],
+                  "available": false,
+                  "reason": "target_required",
+                  "remediation": "Call open_binary with a supported local target."
+                },
+                {
+                  "names": [
+                    "inspect_android_class",
+                    "inspect_android_jni_bindings",
+                    "inspect_android_method",
+                    "inspect_android_package",
+                    "search_android_classes",
+                    "trace_android_references"
+                  ],
+                  "available": false,
+                  "reason": "provider_missing",
+                  "remediation": "Set REA_JADX_MCP_JAR to the absolute path of a caller-supplied jadx-headless-mcp 0.7.1 JAR. REA does not download or install it."
+                },
+                {
+                  "names": [
+                    "inspect_asset_catalog"
+                  ],
+                  "available": false,
+                  "reason": "unsupported_host",
+                  "remediation": "Apple asset catalogs require macOS assetutil."
+                },
+                {
+                  "names": [
+                    "inspect_binary_layout",
+                    "inspect_recorded_crash"
+                  ],
+                  "available": false,
+                  "reason": "unsupported_host",
+                  "remediation": "On Linux x64, set absolute REA_PWNTOOLS_PYTHON to caller-supplied Python with pwntools 4.15.0. No active binary target is required."
+                },
+                {
+                  "names": [
+                    "inspect_evm_interface"
+                  ],
+                  "available": false,
+                  "reason": "unsupported_host",
+                  "remediation": "The bundled offline EVM interface profile is currently real-verified on Linux x64. No active binary target or chain endpoint is required."
+                },
+                {
+                  "names": [
+                    "inspect_firmware_regions"
+                  ],
+                  "available": false,
+                  "reason": "unsupported_host",
+                  "remediation": "On Linux, provide an absolute REA_BINWALK_COMMAND (Binwalk 3.1.x (verified with 3.1.0)) path, util-linux prlimit and procps ps."
+                },
+                {
+                  "names": [
+                    "inspect_packet_capture",
+                    "inspect_packet_fields"
+                  ],
+                  "available": false,
+                  "reason": "unsupported_host",
+                  "remediation": "On Linux, supply TShark 4.x on PATH or through absolute REA_TSHARK_COMMAND, and util-linux prlimit (REA_TSHARK_PRLIMIT_COMMAND, default /usr/bin/prlimit). No active binary target or hardware is required; the tool is checked at execution."
+                },
+                {
+                  "names": [
+                    "inspect_wasm_artifact"
+                  ],
+                  "available": false,
+                  "reason": "provider_missing",
+                  "remediation": "Supply WABT 1.0.42 via absolute REA_WABT_BIN_DIRECTORY. No active binary target is required; tools are checked at execution."
+                },
+                {
+                  "names": [
+                    "recover_javascript_sources"
+                  ],
+                  "available": false,
+                  "reason": "unsupported_host",
+                  "remediation": "On Linux x64, provide an absolute REA_WAKARU_COMMAND for Wakaru ^1.13.0 (verified with 1.14.0) and util-linux prlimit; see docs/guides/javascript/javascript-recovery.md#install-wakaru. No binary target is required."
+                },
+                {
+                  "names": [
+                    "start_gdb_session",
+                    "start_rizin_debug_session"
+                  ],
+                  "available": false,
+                  "reason": "unsupported_host",
+                  "remediation": "Run persistent debugger sessions on Linux with /proc descriptor readback."
+                },
+                {
+                  "names": [
+                    "trace_native_values"
+                  ],
+                  "value_flow_support": {
+                    "status": "unknown",
+                    "provider_id": null
+                  },
+                  "available": false,
+                  "reason": "target_required",
+                  "remediation": "Call open_binary with a supported local target."
+                },
+                {
+                  "names": [
+                    "trace_web_module_imports"
+                  ],
+                  "default_mode_available": false,
+                  "modes": [
+                    {
+                      "name": "sources-without-literal-imports",
+                      "available": true,
+                      "missing_operations": [],
+                      "remediation": null
+                    },
+                    {
+                      "name": "native-literal-resolution",
+                      "available": false,
+                      "missing_operations": [
+                        "native-module-resolver"
+                      ],
+                      "remediation": "Provide an absolute REA_BROWSER_EXECUTABLE supporting import.meta.resolve; no binary target is required."
+                    }
+                  ],
+                  "available": true,
+                  "reason": "available",
+                  "remediation": null
+                }
+              ]
+            },
+            "client_features": {
+              "elicitation_form": false,
+              "elicitation_url": false,
+              "roots": false,
+              "sampling": false
+            },
+            "server_identity": {
+              "package": {
+                "name": "rea-agents",
+                "version": "6.9.0",
+                "root_path": "D:\\Project\\reverse\\vendor\\rea\\package",
+                "build_commit": null
+              },
+              "server": {
+                "name": "rea",
+                "version": "6.9.0",
+                "started_at": "2026-11-16T11:31:09.839Z",
+                "command_path": "D:\\Project\\reverse\\vendor\\rea\\package\\scripts\\rea.mjs"
+              },
+              "sdk": {
+                "server": "2.3.1",
+                "client_test": "2.3.1",
+                "core": "2.3.1"
+              },
+              "negotiated_protocol_version": "2025-06-18",
+              "client": {
+                "name": "reverse-fusion-deployment-check",
+                "version": "1"
+              },
+              "skill": {
+                "name": "reverse-engineer-anything",
+                "expected_version": "62"
+              },
+              "catalog": {
+                "counts": {
+                  "cli_commands": 196,
+                  "mcp_tools": 255,
+                  "mcp_prompts": 6
+                },
+                "digests": {
+                  "tools_sha256": "7ffed2ab26f6705a8dd2a7904763016347d928537d3880d74ed1268193b45498",
+                  "prompts_sha256": "60078bd8ef8bd152b51440e7579fba2059beec18fec5148dd0ec10ef013213fe",
+                  "combined_sha256": "9ab5e82d63647a49f05ead4ccf772d00c4da2f6758a2cb4d3ca3df3e4f37ef48"
+                }
+              },
+              "protocol_features": {
+                "progress": true,
+                "cancellation": true,
+                "elicitation": false
+              },
+              "alignment": {
+                "state": "unknown",
+                "reasons": [],
+                "remediation": "Supply expected package, catalog, or registration identity to compare the live server."
+              }
+            }
+          }
+        }
+      },
+      "cleanup": {
+        "status": "verified",
+        "scope": "owned Windows Job active-process count zero before close",
+        "root_returncode": 0
+      },
+      "elapsed_seconds": 3.5
+    },
+    {
+      "server": "reverse-fusion-craft",
+      "registration": {
+        "command": "D:\\Project\\reverse\\vendor\\craft\\mcp\\windows-x64\\reverse-fusion-craft-mcp.exe",
+        "args": [
+          "--all-tools",
+          "--deep-mode",
+          "--allow-run",
+          "--state-dir",
+          "D:\\Project\\reverse\\state\\craft-mcp"
+        ],
+        "cwd": "D:\\Project\\reverse",
+        "startup_timeout_sec": 60,
+        "tool_timeout_sec": 600
+      },
+      "server_info": {
+        "name": "craft-anything",
+        "title": "Craft Anything",
+        "version": "0.6.1"
+      },
+      "binary_sha256": "29446e499d7656c2645f596b40c876ef6a879cb2f7f8b2f7250b756be3dc307f",
+      "entry_sha256": null,
+      "tools": 303,
+      "tool_names": [
+        "core_target_open",
+        "core_target_close",
+        "core_session_show",
+        "core_targets_list",
+        "core_target_select",
+        "native_cursor_show",
+        "core_evidence_show",
+        "core_evidence_export",
+        "core_evidence_import",
+        "core_unknowns_show",
+        "core_unknown_add",
+        "core_unknown_edit",
+        "core_unknown_verify",
+        "core_archive_show",
+        "core_archive_extract",
+        "core_archives_compare",
+        "js_app_map",
+        "js_runtime_code_match",
+        "web_scripts_save",
+        "js_source_locate",
+        "web_recording_show",
+        "js_sources_restore",
+        "web_browser_connect",
+        "web_pages_list",
+        "web_page_show",
+        "web_page_js_analyze",
+        "web_page_watch",
+        "web_mcp_tools_list",
+        "web_page_screenshot_take",
+        "web_snapshots_compare",
+        "web_pixels_compare",
+        "web_walkthrough_record",
+        "web_walkthrough_check",
+        "web_site_open",
+        "web_site_capture",
+        "web_page_states_capture",
+        "web_site_close",
+        "web_standin_build",
+        "web_standin_start",
+        "web_standin_stop",
+        "web_standin_show",
+        "core_person_ask",
+        "core_action_approve",
+        "project_list",
+        "project_show",
+        "project_inbox_answer",
+        "project_play",
+        "project_preview",
+        "project_open_folder",
+        "project_rename",
+        "project_plan_fold",
+        "project_duplicate",
+        "project_delete",
+        "project_questions_set",
+        "project_approvals_set",
+        "project_build_finish",
+        "project_assets_budget",
+        "project_assets_allow",
+        "project_pin_create",
+        "project_pins_list",
+        "project_pin_open",
+        "project_pin_stop",
+        "project_pin_rename",
+        "project_pin_delete",
+        "engines_list",
+        "engines_install",
+        "settings_show",
+        "settings_set",
+        "plugins_list",
+        "plugins_refresh",
+        "plugins_add",
+        "plugins_remove",
+        "engines_app_open",
+        "build_files_list",
+        "build_file_read",
+        "build_file_write",
+        "build_file_edit",
+        "build_checklist",
+        "build_command_run",
+        "native_window_capture",
+        "assets_image_generate",
+        "assets_model_generate",
+        "js_electron_pages_list",
+        "js_electron_page_show",
+        "js_electron_walkthrough_record",
+        "js_runtimes_list",
+        "js_runtime_watch",
+        "web_coverage_measure",
+        "web_listeners_list",
+        "web_modules_trace",
+        "app_feature_follow",
+        "js_function_explain",
+        "app_graphs_compare",
+        "js_exports_compare",
+        "app_source_import",
+        "js_source_bundle_compare",
+        "app_ledger_build",
+        "app_coverage_evaluate",
+        "android_app_graph_build",
+        "apple_app_graph_build",
+        "harmony_app_graph_build",
+        "core_investigation_show",
+        "core_brief_write",
+        "core_plan_update",
+        "core_hypothesis_record",
+        "core_hypothesis_update",
+        "core_finding_record",
+        "core_finding_edit",
+        "core_handoff_write",
+        "core_journal_read",
+        "core_report_save",
+        "core_report_write",
+        "native_functions_list",
+        "native_sections_list",
+        "native_strings_browse",
+        "native_named_addresses_list",
+        "native_open_documents_list",
+        "native_bookmarks_show",
+        "native_functions_search",
+        "native_strings_find",
+        "native_bytes_show",
+        "native_address_offset_show",
+        "native_xrefs_list",
+        "native_name_show",
+        "native_comment_read",
+        "native_inline_comment_read",
+        "native_function_show",
+        "native_function_disassemble",
+        "native_function_callees_list",
+        "native_function_callers_list",
+        "native_function_references_list",
+        "native_function_pseudocode",
+        "native_function_address_show",
+        "native_function_instructions_list",
+        "native_function_find",
+        "native_instruction_show",
+        "native_call_site_resolve",
+        "native_data_show",
+        "native_name_set",
+        "native_names_set",
+        "native_comment_write",
+        "native_inline_comment_write",
+        "native_bookmark_add",
+        "native_bookmark_remove",
+        "native_function_label",
+        "native_cursor_address_show",
+        "native_cursor_function_show",
+        "native_document_show",
+        "native_cursor_goto",
+        "native_cursor_forward",
+        "native_cursor_back",
+        "core_overview_show",
+        "native_function_study",
+        "native_call_graph_show",
+        "core_feature_find",
+        "native_call_path_find",
+        "native_functions_decompile",
+        "native_name_xrefs_list",
+        "native_api_show",
+        "native_value_flow_show",
+        "apple_objc_classes_list",
+        "apple_objc_protocols_list",
+        "apple_swift_types_list",
+        "apple_dispatch_show",
+        "apple_ui_action_trace",
+        "native_pe_resources_list",
+        "native_layout_show",
+        "native_crash_show",
+        "native_dos_image_show",
+        "core_target_triage",
+        "core_evidence_browse",
+        "apple_macho_show",
+        "apple_signature_show",
+        "apple_plist_show",
+        "apple_slices_list",
+        "apple_swift_symbols_demangle",
+        "apple_nib_decode",
+        "apple_archive_decode",
+        "apple_assets_list",
+        "apple_dylibs_resolve",
+        "android_package_show",
+        "android_classes_find",
+        "android_class_show",
+        "android_method_show",
+        "android_class_users_find",
+        "android_resources_read",
+        "android_components_list",
+        "engines_apktool_check",
+        "android_flutter_identify",
+        "android_dart_snapshot_show",
+        "engines_jeb_check",
+        "android_jeb_open",
+        "android_jeb_units_browse",
+        "android_jeb_decompile",
+        "java_archive_show",
+        "java_classes_find",
+        "java_class_show",
+        "java_method_show",
+        "java_class_users_find",
+        "engines_adb_check",
+        "adb_devices_find",
+        "adb_device_show",
+        "adb_apps_list",
+        "adb_log_read",
+        "adb_app_show",
+        "adb_running_processes_list",
+        "adb_folder_list",
+        "adb_device_features_list",
+        "adb_system_services_list",
+        "adb_display_show",
+        "adb_window_show",
+        "adb_setting_get",
+        "adb_apps_find",
+        "adb_app_download",
+        "adb_file_download",
+        "adb_screenshot_take",
+        "adb_bugreport_save",
+        "adb_file_upload",
+        "adb_app_install",
+        "adb_app_remove",
+        "adb_app_launch",
+        "adb_activity_open",
+        "adb_app_force_stop",
+        "frida_devices_find",
+        "frida_targets_list",
+        "frida_session_begin",
+        "frida_script_run",
+        "frida_session_continue",
+        "frida_script_forget",
+        "frida_session_show",
+        "frida_session_end",
+        "frida_instrument_run",
+        "native_go_binary_show",
+        "formats_wasm_module_show",
+        "formats_evm_interface_show",
+        "db_sqlite_show",
+        "formats_sbpf_show",
+        "formats_sbpf_disassemble",
+        "firmware_regions_list",
+        "firmware_image_extract",
+        "core_packed_files_list",
+        "core_packed_files_unpack",
+        "formats_bytecode_show",
+        "core_text_read",
+        "game_archives_list",
+        "game_pak_list",
+        "game_iostore_list",
+        "game_unity_list",
+        "game_unity_bundle_list",
+        "game_unity_asset_export",
+        "game_unreal_texture_export",
+        "game_pak_extract",
+        "game_unity_code_names_show",
+        "app_folder_explain",
+        "managed_assembly_show",
+        "managed_members_list",
+        "managed_native_calls_list",
+        "managed_assemblies_compare",
+        "managed_native_calls_verify",
+        "managed_reconstruction_check",
+        "managed_app_graph_build",
+        "runtime_walkthrough_record",
+        "runtime_captures_compare",
+        "native_address_show",
+        "app_function_versions_compare",
+        "core_evidence_exports_compare",
+        "app_changes_summarize",
+        "app_call_path_find",
+        "app_runtime_correlate",
+        "app_rebuild_claim_check",
+        "runtime_ui_read",
+        "runtime_ui_walkthrough_record",
+        "apple_calls_observe",
+        "native_bytes_find",
+        "native_rust_binary_show",
+        "native_library_calls_list",
+        "native_offered_symbols_list",
+        "native_publisher_show",
+        "formats_ai_weights_show",
+        "app_builds_line_up",
+        "native_source_folder_write",
+        "js_electron_fuses_show",
+        "formats_wasm_compare",
+        "packets_capture_show",
+        "packets_fields_show",
+        "engines_tshark_check",
+        "packets_inventory_show",
+        "native_objdump_run",
+        "native_rizin_command_run",
+        "managed_ilspy_decompile",
+        "native_gdb_session_begin",
+        "native_gdb_command_run",
+        "native_gdb_session_show",
+        "native_gdb_session_end",
+        "native_rizin_session_begin",
+        "native_rizin_session_command_run",
+        "native_rizin_session_show",
+        "native_rizin_session_end",
+        "radio_recording_decode",
+        "radio_decoders_list",
+        "native_cutter_sessions_list",
+        "native_cutter_command_run",
+        "java_vineflower_decompile"
+      ],
+      "prompts": 6,
+      "called": "core_session_show",
+      "result": {
+        "content": [
+          {
+            "text": "{\"result\":{\"active_target\":null,\"analysis_mode\":\"deep\",\"clean_room\":false,\"evidence_not_loaded\":0,\"evidence_records\":0,\"host\":\"windows-x86_64\",\"open\":false,\"project\":null,\"server\":{\"name\":\"craft-anything\",\"version\":\"0.6.1\"},\"targets\":[],\"unknowns\":0}}",
+            "type": "text"
+          }
+        ],
+        "isError": false,
+        "structuredContent": {
+          "result": {
+            "active_target": null,
+            "analysis_mode": "deep",
+            "clean_room": false,
+            "evidence_not_loaded": 0,
+            "evidence_records": 0,
+            "host": "windows-x86_64",
+            "open": false,
+            "project": null,
+            "server": {
+              "name": "craft-anything",
+              "version": "0.6.1"
+            },
+            "targets": [],
+            "unknowns": 0
+          }
+        }
+      },
+      "cleanup": {
+        "status": "verified",
+        "scope": "owned Windows Job active-process count zero before close",
+        "root_returncode": 0
+      },
+      "elapsed_seconds": 0.14100000000325963
+    }
+  ],
+  "scope": "exact registered stdio initialize/catalog/target-free call; not desktop hot-load, every provider or target acceptance"
+}

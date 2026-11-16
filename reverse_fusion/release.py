@@ -11,6 +11,8 @@ from .component_status import component_status, core_deployment
 from .contracts import check_contracts, is_safe_relative_path
 from .global_adapter import adapter_paths, agents_block, skill_text
 from .verification import verification_status
+from .mcp_adapter import inspect_mcp
+from .mcp_probe import connection_status
 
 
 def check_release(root: Path, *, deployed: bool = False) -> dict:
@@ -57,6 +59,10 @@ def check_release(root: Path, *, deployed: bool = False) -> dict:
         components = component_status(root)
         deployment = core_deployment(components)
         gate('installed-core', deployment['status'] == 'installed', deployment)
+        mcp = inspect_mcp(root)
+        gate('deployed-mcp', mcp.get('enabled') is True, mcp)
+        protocol = connection_status(root)
+        gate('mcp-protocol-calls', protocol['status'] == 'pass', protocol)
         try:
             receipt = json.loads((root / 'state/install.json').read_text(encoding='utf-8'))
             gate('selected-host-install', receipt.get('installed') is True and receipt.get('version') == __version__

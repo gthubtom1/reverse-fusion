@@ -1,6 +1,8 @@
 # Project Context
 
-当前交付为1.2.1 Windows x64/Codex工程版；RF-33已交付功能，RF-34完成最终文件收尾。
+当前1.3.0/RF-35修复MCP接入缺口；默认Codex部署包含REA官方server和Craft原版engine工具。当前边界见MCP-INTEGRATION.md与CURRENT-STATE.md，旧CLI成功不能证明宿主已加载MCP。
+
+当前交付为1.3.0 Windows x64/Codex工程版；RF35补齐REA/Craft MCP接入。
 不再要求追加样本或实际软件复刻作为发布前提。工程功能、组件部署、异常恢复与有限检查已完成。
 具体目标的结果另有自身验收。当前合同见RELEASE-1.2.md与release/manifest.json。
 完整需求和最新结果见USER-REQUIREMENTS-REVIEW.md，工作顺序见REMAINING-PRODUCT-WORK.md。
@@ -30,7 +32,7 @@ Evidence 支持结论或候选带回主项目，避免子案例污染普通开�
 能力的保全不等于所有变体已执行；未知项保留 unknown 和下一步 probe。
 
 项目不选择或下载模型，不复制凭据，不写旧仓库/旧安装或宿主运行配置。选择 Codex
-安装时会写入一个只指向当前 checkout 的用户级路由适配层；其他工作区可通过该适配层
+安装时写入指向当前checkout的用户级路由适配层及两项自有MCP登记；其他工作区可通过该适配层
 使用共享路由，但输出仍留在当前项目。上游仅在实际有益时
 选择性吸收，不自动跟随每次发布。当前状态以 CURRENT-STATE 和最新 checkpoint
 为准，历史 final 标签不能覆盖后来发现的问题。

@@ -9,6 +9,7 @@ import os
 from .runtime import node_runtime
 from pathlib import Path
 from .craft_native import native_binary
+from .craft_mcp import mcp_binary
 
 
 def core_deployment(components: dict) -> dict:
@@ -19,6 +20,8 @@ def core_deployment(components: dict) -> dict:
         missing.append('spec-kit')
     if components['craft']['native_backend'] != 'installed-identity-verified':
         missing.append('craft-native')
+    if components['craft'].get('mcp_backend') != 'installed-identity-verified':
+        missing.append('craft-mcp')
     return {'status': 'installed' if not missing else 'incomplete', 'missing': missing,
             'scope': 'required runtime installation; generated workflow and target acceptance remain separate'}
 
@@ -54,6 +57,11 @@ def _craft_status(root: Path) -> dict:
         result.update({'native_backend': 'installed-identity-verified', 'binary': str(binary)})
     except (OSError, ValueError, KeyError) as exc:
         result['reason'] = str(exc)
+    try:
+        binary = mcp_binary(root)
+        result.update(mcp_backend='installed-identity-verified', mcp_binary=str(binary))
+    except (OSError, ValueError, KeyError) as exc:
+        result.update(mcp_backend='not-installed', mcp_reason=str(exc))
     return result
 
 

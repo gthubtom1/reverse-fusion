@@ -1,6 +1,6 @@
 [project]
 name = "reverse-fusion"
-version = "1.2.1"
+version = "1.3.0"
 description = "Evidence-driven reverse engineering and reconstruction orchestration"
 requires-python = ">=3.11"
 readme = "README.md"

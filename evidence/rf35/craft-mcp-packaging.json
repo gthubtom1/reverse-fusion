@@ -1,0 +1,56 @@
+{
+  "status": "release-built-packaged-local-bootstrap-verified",
+  "adapter_version": "0.1.0",
+  "upstream": {
+    "repository": "https://github.com/storytold/craft-anything.git",
+    "commit": "8374ad71544f2cc44698ea74ef990aa31600bac6",
+    "version": "0.6.1"
+  },
+  "source_inputs": {
+    "components/craft-mcp/src/main.rs": "cf309e72538d66caf708ef5fbe1c60727832a670ffc6be534be71e1debd23a3a",
+    "components/craft-mcp/Cargo.toml": "a81b00a4ea8b503122ec308d6e3557e8680d0bf6b5d00d61d8ef5892e51320e7",
+    "components/craft-mcp/Cargo.lock": "d59fd27b58fa7e7a07fb038a85e663472e6e66b3e1febba620a83f1e265aae50"
+  },
+  "asset": {
+    "local_path": "vendor/craft/mcp/windows-x64/reverse-fusion-craft-mcp.exe",
+    "binary_sha256": "29446e499d7656c2645f596b40c876ef6a879cb2f7f8b2f7250b756be3dc307f",
+    "archive_url": "https://github.com/gthubtom1/reverse-fusion/releases/download/craft-mcp-v0.1.0-rf35/craft-mcp-windows-x64.zip",
+    "archive_sha256": "4378ddd7ede53ea0324b214604864070e8fae1c0918dbd0d815b309067012d04",
+    "notices_sha256": "bfc949d2b7b5af4431b65780031b464d7d7453efd95ea04a3591c0794d0d5ac7",
+    "dependency_notices_sha256": "b7ee783e5bdd104e31e9db8b0cbbdc4e1ecd01bb9a180aaa9393cb74952c5a21"
+  },
+  "dependency_packages": 268,
+  "archive": "D:\\Project\\reverse\\vendor\\craft\\mcp\\craft-mcp-windows-x64.zip",
+  "archive_bytes": 19895228,
+  "binary_bytes": 59973635,
+  "release_log": {
+    "path": "state/rf35-craft-mcp-release-final.stderr.txt",
+    "sha256": "ba4791c2208ef55e96a3bcee15ed84a3b30d1c749e9944f439e544369d21692f"
+  },
+  "checks": [
+    "PowerShell parse valid",
+    "Release executable --version exact pin",
+    "ZIP3flat unique entries+CRC",
+    "Executable/notices/dependency-list SHA match manifest",
+    "Source-build bootstrap passes pinned source/patch checks",
+    "Default bootstrap verifies/extracts local archive and writes pinned-release receipt",
+    "Parent mcp_binary source identity accepted"
+  ],
+  "not_performed": [
+    "Remote release upload/download; parent owns publication",
+    "MCP full protocol/catalog/tool invocation; parent owns runtime qualification",
+    "No model invocation"
+  ],
+  "source_change": "Load only isolated state/config.toml on restart; reset owned engine/projects defaults; auto_mode=false and deep_for_run retained; original runtime plugins installed.",
+  "superseded_assets": [
+    {
+      "local_path": "vendor/craft/mcp/windows-x64/reverse-fusion-craft-mcp.exe",
+      "binary_sha256": "a43eda954f49832aecf0760faed59273bbe4f6a278749de074aecfe2aeb3c36b",
+      "archive_url": "https://github.com/gthubtom1/reverse-fusion/releases/download/craft-mcp-v0.1.0-rf35/craft-mcp-windows-x64.zip",
+      "archive_sha256": "07ea286c1490186ca23174f11a7590c3414f1ee3b67359e9d67c7794d019fa35",
+      "notices_sha256": "bfc949d2b7b5af4431b65780031b464d7d7453efd95ea04a3591c0794d0d5ac7",
+      "dependency_notices_sha256": "b7ee783e5bdd104e31e9db8b0cbbdc4e1ecd01bb9a180aaa9393cb74952c5a21"
+    }
+  ],
+  "runtime_recheck": "pinned-release bootstrap/version/source-binding/archive digest pass after settings persistence fix; parent owns actual settings_set restart semantic probe"
+}

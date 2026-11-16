@@ -1,0 +1,1341 @@
+[
+  {
+    "tool": "core_target_open",
+    "arguments": {
+      "path": "D:\\Project\\reverse\\fixtures\\desk-original\\core.mjs"
+    },
+    "result": {
+      "content": [
+        {
+          "text": "{\"result\":{\"bytes\":2428,\"description\":\"A script or web page\",\"kind\":\"script\",\"name\":\"core.mjs\",\"path\":\"D:\\\\Project\\\\reverse\\\\fixtures\\\\desk-original\\\\core.mjs\",\"raw\":null,\"sha256\":\"ddf8609a5fbb3e194d3973228da56771c6c3c03329166f0e5a95e29e1e94b9f2\",\"target_id\":\"t_ddf8609a5fbb\"}}",
+          "type": "text"
+        }
+      ],
+      "isError": false,
+      "structuredContent": {
+        "result": {
+          "bytes": 2428,
+          "description": "A script or web page",
+          "kind": "script",
+          "name": "core.mjs",
+          "path": "D:\\Project\\reverse\\fixtures\\desk-original\\core.mjs",
+          "raw": null,
+          "sha256": "ddf8609a5fbb3e194d3973228da56771c6c3c03329166f0e5a95e29e1e94b9f2",
+          "target_id": "t_ddf8609a5fbb"
+        }
+      }
+    }
+  },
+  {
+    "tool": "js_app_map",
+    "arguments": {
+      "input_path": "D:\\Project\\reverse\\fixtures\\desk-original",
+      "max_files": 20,
+      "limit": 10
+    },
+    "result": {
+      "content": [
+        {
+          "text": "{\"authority\":\"original-files\",\"confidence\":\"derived\",\"coverage\":{\"examined\":3,\"status\":\"partial\",\"total\":4},\"environment\":{\"clean_room\":false,\"engine\":\"builtin\",\"engine_version\":\"0.6.1\",\"host\":\"windows-x86_64\"},\"id\":\"ev_c09f63c34cebb9ef0584158dcaa990888d60fe0a16ab13daf8f86144d42d5ec9\",\"limitations\":[{\"code\":\"static_only\",\"message\":\"Static reading only: code built at run time (eval, computed requires, remote content) is invisible; IPC pairs need literal channel names.\"}],\"links\":[],\"locations\":[{\"kind\":\"path\",\"value\":\"D:\\\\Project\\\\reverse\\\\fixtures\\\\desk-original\"}],\"operation\":\"js_app_map\",\"params\":{\"include_node_modules\":false,\"input_path\":\"D:\\\\Project\\\\reverse\\\\fixtures\\\\desk-original\",\"limit\":10,\"max_nodes\":25000,\"offset\":0,\"source_paths\":[]},\"result\":{\"api_operations\":[],\"app_kind\":\"web\",\"bundlers\":[],\"edges\":[{\"from\":\"event:page.mjs#$(add):submit\",\"kind\":\"handled-by\",\"to\":\"fn:page.mjs#$(add).addEventListener(submit)@28\"},{\"from\":\"event:page.mjs#$(clear):click\",\"kind\":\"handled-by\",\"to\":\"fn:page.mjs#$(clear).addEventListener(click)@35\"},{\"from\":\"event:page.mjs#$(order):change\",\"kind\":\"handled-by\",\"to\":\"fn:page.mjs#render@4\"},{\"from\":\"event:page.mjs#$(query):input\",\"kind\":\"handled-by\",\"to\":\"fn:page.mjs#render@4\"},{\"from\":\"event:page.mjs#button:click\",\"kind\":\"handled-by\",\"to\":\"fn:page.mjs#button.addEventListener(click)@14\"},{\"from\":\"fn:core.mjs#change@16\",\"kind\":\"calls\",\"to\":\"fn:core.mjs#initial@2\"},{\"from\":\"fn:core.mjs#restore@3\",\"kind\":\"calls\",\"to\":\"fn:core.mjs#initial@2\"},{\"from\":\"fn:page.mjs#$(add).addEventListener(submit)@28\",\"kind\":\"calls\",\"to\":\"fn:page.mjs#$@2\"},{\"from\":\"fn:page.mjs#$(add).addEventListener(submit)@28\",\"kind\":\"calls\",\"to\":\"fn:page.mjs#update@21\"},{\"from\":\"fn:page.mjs#$(clear).addEventListener(click)@35\",\"kind\":\"calls\",\"to\":\"fn:page.mjs#update@21\"},{\"from\":\"fn:page.mjs#button.addEventListener(click)@14\",\"kind\":\"calls\",\"to\":\"fn:page.mjs#update@21\"},{\"from\":\"fn:page.mjs#render@4\",\"kind\":\"listens\",\"to\":\"event:page.mjs#button:click\"},{\"from\":\"fn:page.mjs#render@4\",\"kind\":\"calls\",\"to\":\"fn:page.mjs#$@2\"},{\"from\":\"fn:page.mjs#update@21\",\"kind\":\"calls\",\"to\":\"fn:page.mjs#$@2\"},{\"from\":\"fn:page.mjs#update@21\",\"kind\":\"calls\",\"to\":\"fn:page.mjs#render@4\"},{\"from\":\"fn:page.mjs#update@21\",\"kind\":\"uses\",\"to\":\"storage:localStorage.setItem rf-owned-desk-v1\"},{\"from\":\"module:core.mjs\",\"kind\":\"defines\",\"to\":\"fn:core.mjs#change@16\"},{\"from\":\"module:core.mjs\",\"kind\":\"defines\",\"to\":\"fn:core.mjs#initial@2\"},{\"from\":\"module:core.mjs\",\"kind\":\"defines\",\"to\":\"fn:core.mjs#restore@3\"},{\"from\":\"module:core.mjs\",\"kind\":\"defines\",\"to\":\"fn:core.mjs#view@34\"},{\"from\":\"module:index.html\",\"kind\":\"html-script\",\"to\":\"module:page.mjs\"},{\"from\":\"module:page.mjs\",\"kind\":\"listens\",\"to\":\"event:page.mjs#$(add):submit\"},{\"from\":\"module:page.mjs\",\"kind\":\"listens\",\"to\":\"event:page.mjs#$(clear):click\"},{\"from\":\"module:page.mjs\",\"kind\":\"listens\",\"to\":\"event:page.mjs#$(order):change\"},{\"from\":\"module:page.mjs\",\"kind\":\"listens\",\"to\":\"event:page.mjs#$(query):input\"},{\"from\":\"module:page.mjs\",\"kind\":\"defines\",\"to\":\"fn:page.mjs#$(add).addEventListener(submit)@28\"},{\"from\":\"module:page.mjs\",\"kind\":\"defines\",\"to\":\"fn:page.mjs#$(clear).addEventListener(click)@35\"},{\"from\":\"module:page.mjs\",\"kind\":\"defines\",\"to\":\"fn:page.mjs#$@2\"},{\"from\":\"module:page.mjs\",\"kind\":\"defines\",\"to\":\"fn:page.mjs#button.addEventListener(click)@14\"},{\"from\":\"module:page.mjs\",\"kind\":\"defines\",\"to\":\"fn:page.mjs#render@4\"},{\"from\":\"module:page.mjs\",\"kind\":\"defines\",\"to\":\"fn:page.mjs#update@21\"},{\"from\":\"module:page.mjs\",\"kind\":\"import\",\"to\":\"module:core.mjs\"},{\"from\":\"module:page.mjs\",\"kind\":\"uses\",\"to\":\"storage:localStorage.getItem rf-owned-desk-v1\"}],\"effects\":[],\"endpoints\":[],\"entry_points\":{\"pages\":[\"index.html\"],\"preloads\":[],\"renderers\":[],\"workers\":[]},\"exposed\":[],\"graph_id\":\"ag_6cc940d20f6e1130146f53a180e02b09536921d351c2c4dfc78e48a9ab775741\",\"input_format\":\"directory\",\"ipc\":[],\"label\":\"desk-original\",\"limitations\":[],\"modules\":[{\"bundle_modules\":[],\"bundlers\":[],\"bytes\":2428,\"chunk_ids\":[],\"exports\":{\"cjs\":[],\"esm\":[\"initial\",\"restore\",\"change\",\"view\"]},\"fingerprint\":\"3380d5d33b873bd4cbad7b83f2cb4505dbe9c546dada817ba0d4a8d61dc3d950\",\"functions\":[\"initial\",\"restore\",\"change\",\"view\"],\"imports\":[],\"kind\":\"script\",\"parse_mode\":\"parsed\",\"path\":\"core.mjs\",\"role\":\"page\",\"sha256\":\"ddf8609a5fbb3e194d3973228da56771c6c3c03329166f0e5a95e29e1e94b9f2\",\"strings\":[\"string\",\"add\",\"\u672a\u5206\u7c7b\",\"\u8bf7\u586b\u5199\u540d\u79f0\",\"\u540d\u79f0\u6700\u591a32\u4e2a\u5b57\u7b26\",\"\u6570\u91cf\u987b\u4e3a1\u81f399\u7684\u6574\u6570\",\"en-US\",\"\u8be5\u5206\u7c7b\u4e2d\u5df2\u6709\u540c\u540d\u6761\u76ee\",\"remove\",\"\u6761\u76ee\u4e0d\u5b58\u5728\",\"clear\",\"\u672a\u77e5\u64cd\u4f5c\",\"newest\",\"name\",\"zh-CN\"]},{\"bundle_modules\":[],\"bundlers\":[],\"bytes\":2160,\"chunk_ids\":[],\"exports\":{\"cjs\":[],\"esm\":[]},\"functions\":[],\"imports\":[{\"kind\":\"html-script\",\"line\":16,\"resolved\":\"page.mjs\",\"specifier\":\"./page.mjs\"}],\"kind\":\"html\",\"path\":\"index.html\",\"role\":\"page\",\"sha256\":\"fe8bb33fe756982f3bbaae9745716d896f7c81e9104f1327266c84a1975e6832\",\"strings\":[]},{\"bundle_modules\":[],\"bundlers\":[],\"bytes\":1840,\"chunk_ids\":[],\"exports\":{\"cjs\":[],\"esm\":[]},\"fingerprint\":\"8620ffb9217506ae5f552ffc4f87052110390223ae70d814bf60814364ce5df9\",\"functions\":[\"$\",\"render\",\"button.addEventListener(click)\",\"update\",\"$(add).addEventListener(submit)\",\"$(clear).addEventListener(click)\"],\"imports\":[{\"kind\":\"import\",\"line\":1,\"resolved\":\"core.mjs\",\"specifier\":\"./core.mjs\"}],\"kind\":\"script\",\"parse_mode\":\"parsed\",\"path\":\"page.mjs\",\"role\":\"page\",\"sha256\":\"83f93826a55b128f7c711ebc7052455330896b29d3553c895b1ac39433d92c63\",\"strings\":[\"rf-owned-desk-v1\",\"query\",\"order\",\"rows\",\"tr\",\"td\",\"button\",\"remove\",\"\u5220\u9664\",\"click\",\"empty\",\"\u6ca1\u6709\u5339\u914d\u7684\u6761\u76ee\u3002\",\"\u8fd8\u6ca1\u6709\u6761\u76ee\uff0c\u5148\u6dfb\u52a0\u4e00\u4e2a\u5427\u3002\",\"summary\",\"error\",\"add\",\"submit\",\"name\",\"tag\",\"quantity\",\"input\",\"change\",\"clear\",\"\u786e\u5b9a\u6e05\u7a7a\u5168\u90e8\u6761\u76ee\u5417\uff1f\"]}],\"modules_total\":3,\"native_modules\":[],\"nodes\":[{\"id\":\"module:core.mjs\",\"kind\":\"module\",\"label\":\"core.mjs\",\"module\":\"core.mjs\",\"role\":\"page\"},{\"id\":\"module:index.html\",\"kind\":\"html\",\"label\":\"index.html\",\"module\":\"index.html\",\"role\":\"page\"},{\"id\":\"module:page.mjs\",\"kind\":\"module\",\"label\":\"page.mjs\",\"module\":\"page.mjs\",\"role\":\"page\"},{\"attrs\":{\"calls\":[],\"end\":161,\"end_line\":2,\"exported\":true,\"kind\":\"declaration\",\"params\":[],\"parent\":null,\"start\":96,\"strings\":[]},\"id\":\"fn:core.mjs#initial@2\",\"kind\":\"function\",\"label\":\"initial\",\"line\":2,\"module\":\"core.mjs\",\"role\":\"page\"},{\"attrs\":{\"calls\":[\"initial\",\"JSON.parse\",\"Number.isSafeInteger\",\"Array.isArray\",\"state.entries.some\",\"new Set\",\"state.entries.map\"],\"end\":850,\"end_line\":15,\"exported\":true,\"kind\":\"declaration\",\"params\":[\"text\"],\"parent\":null,\"start\":169,\"strings\":[]},\"id\":\"fn:core.mjs#restore@3\",\"kind\":\"function\",\"label\":\"restore\",\"line\":3,\"module\":\"core.mjs\",\"role\":\"page\"},{\"attrs\":{\"calls\":[\"structuredClone\",\"String().trim\",\"String\",\"Number\",\"new Error\",\"Number.isInteger\",\"next.entries.some\",\"next.entries.push\",\"next.entries.filter\",\"initial\"],\"end\":1923,\"end_line\":33,\"exported\":true,\"kind\":\"declaration\",\"params\":[\"state\",\"action\"],\"parent\":null,\"start\":858,\"strings\":[\"add\",\"\u672a\u5206\u7c7b\",\"\u8bf7\u586b\u5199\u540d\u79f0\",\"\u540d\u79f0\u6700\u591a32\u4e2a\u5b57\u7b26\",\"\u6570\u91cf\u987b\u4e3a1\u81f399\u7684\u6574\u6570\",\"\u8be5\u5206\u7c7b\u4e2d\u5df2\u6709\u540c\u540d\u6761\u76ee\",\"remove\",\"\u6761\u76ee\u4e0d\u5b58\u5728\",\"clear\",\"\u672a\u77e5\u64cd\u4f5c\"]},\"id\":\"fn:core.mjs#change@16\",\"kind\":\"function\",\"label\":\"change\",\"line\":16,\"module\":\"core.mjs\",\"role\":\"page\"},{\"attrs\":{\"calls\":[\"String().trim().toLocaleLowerCase\",\"String().trim\",\"String\",\"state.entries.filter\",\"entries.sort\",\"entries.reduce\"],\"end\":2427,\"end_line\":40,\"exported\":true,\"kind\":\"declaration\",\"params\":[\"state\",\"query\",\"order\"],\"parent\":null,\"start\":1931,\"strings\":[\"newest\",\"en-US\",\"name\"]},\"id\":\"fn:core.mjs#view@34\",\"kind\":\"function\",\"label\":\"view\",\"line\":34,\"module\":\"core.mjs\",\"role\":\"page\"},{\"attrs\":{\"calls\":[\"document.getElementById\"],\"end\":102,\"end_line\":2,\"exported\":false,\"kind\":\"arrow\",\"params\":[\"id\"],\"parent\":null,\"start\":69,\"strings\":[]},\"id\":\"fn:page.mjs#$@2\",\"kind\":\"function\",\"label\":\"$\",\"line\":2,\"module\":\"page.mjs\",\"role\":\"page\"},{\"attrs\":{\"calls\":[\"./core.mjs.view\",\"$\",\"$(rows).replaceChildren\",\"document.createElement\",\"row.append\",\"button.addEventListener\",\"cell.append\",\"$(rows).append\"],\"end\":1116,\"end_line\":20,\"exported\":false,\"kind\":\"declaration\",\"params\":[],\"parent\":null,\"start\":178,\"strings\":[\"query\",\"order\",\"rows\",\"tr\",\"td\",\"button\",\"remove\",\"\u5220\u9664\",\"click\",\"empty\",\"\u6ca1\u6709\u5339\u914d\u7684\u6761\u76ee\u3002\",\"\u8fd8\u6ca1\u6709\u6761\u76ee\uff0c\u5148\u6dfb\u52a0\u4e00\u4e2a\u5427\u3002\",\"summary\"]},\"id\":\"fn:page.mjs#render@4\",\"kind\":\"function\",\"label\":\"render\",\"line\":4,\"module\":\"page.mjs\",\"role\":\"page\"},{\"attrs\":{\"calls\":[\"update\"],\"end\":796,\"end_line\":14,\"exported\":false,\"kind\":\"arrow\",\"params\":[],\"parent\":\"render\",\"start\":756,\"strings\":[\"remove\"]},\"id\":\"fn:page.mjs#button.addEventListener(click)@14\",\"kind\":\"function\",\"label\":\"button.addEventListener(click)\",\"line\":14,\"module\":\"page.mjs\",\"role\":\"page\"},{\"attrs\":{\"calls\":[\"./core.mjs.change\",\"localStorage.setItem\",\"JSON.stringify\",\"$\",\"render\"],\"end\":1391,\"end_line\":27,\"exported\":false,\"kind\":\"declaration\",\"params\":[\"action\"],\"parent\":null,\"start\":1117,\"strings\":[\"error\"]},\"id\":\"fn:page.mjs#update@21\",\"kind\":\"function\",\"label\":\"update\",\"line\":21,\"module\":\"page.mjs\",\"role\":\"page\"},{\"attrs\":{\"calls\":[\"event.preventDefault\",\"update\",\"$\",\"$(name).focus\"],\"end\":1614,\"end_line\":33,\"exported\":false,\"kind\":\"arrow\",\"params\":[\"event\"],\"parent\":null,\"start\":1428,\"strings\":[\"add\",\"name\",\"tag\",\"quantity\"]},\"id\":\"fn:page.mjs#$(add).addEventListener(submit)@28\",\"kind\":\"function\",\"label\":\"$(add).addEventListener(submit)\",\"line\":28,\"module\":\"page.mjs\",\"role\":\"page\"},{\"attrs\":{\"calls\":[\"confirm\",\"update\"],\"end\":1827,\"end_line\":35,\"exported\":false,\"kind\":\"arrow\",\"params\":[],\"parent\":null,\"start\":1747,\"strings\":[\"\u786e\u5b9a\u6e05\u7a7a\u5168\u90e8\u6761\u76ee\u5417\uff1f\",\"clear\"]},\"id\":\"fn:page.mjs#$(clear).addEventListener(click)@35\",\"kind\":\"function\",\"label\":\"$(clear).addEventListener(click)\",\"line\":35,\"module\":\"page.mjs\",\"role\":\"page\"},{\"id\":\"storage:localStorage.getItem rf-owned-desk-v1\",\"kind\":\"storage\",\"label\":\"localStorage.getItem rf-owned-desk-v1\"},{\"id\":\"storage:localStorage.setItem rf-owned-desk-v1\",\"kind\":\"storage\",\"label\":\"localStorage.setItem rf-owned-desk-v1\"},{\"id\":\"event:page.mjs#button:click\",\"kind\":\"event\",\"label\":\"button:click\",\"line\":14,\"module\":\"page.mjs\",\"role\":\"page\"},{\"id\":\"event:page.mjs#$(add):submit\",\"kind\":\"event\",\"label\":\"$(add):submit\",\"line\":28,\"module\":\"page.mjs\",\"role\":\"page\"},{\"id\":\"event:page.mjs#$(query):input\",\"kind\":\"event\",\"label\":\"$(query):input\",\"line\":34,\"module\":\"page.mjs\",\"role\":\"page\"},{\"id\":\"event:page.mjs#$(order):change\",\"kind\":\"event\",\"label\":\"$(order):change\",\"line\":34,\"module\":\"page.mjs\",\"role\":\"page\"},{\"id\":\"event:page.mjs#$(clear):click\",\"kind\":\"event\",\"label\":\"$(clear):click\",\"line\":35,\"module\":\"page.mjs\",\"role\":\"page\"}],\"package\":null,\"routes\":[],\"source_maps\":[],\"stats\":{\"api_operations\":0,\"bundle_modules\":0,\"edges\":33,\"endpoints\":0,\"files\":3,\"functions\":10,\"ipc_channels\":0,\"listed\":4,\"modules\":3,\"nodes\":20,\"paired_channels\":0},\"storage\":[{\"api\":\"localStorage.getItem\",\"arg\":\"rf-owned-desk-v1\",\"function\":null,\"line\":3,\"module\":\"page.mjs\",\"role\":\"page\"},{\"api\":\"localStorage.setItem\",\"arg\":\"rf-owned-desk-v1\",\"function\":\"update\",\"line\":24,\"module\":\"page.mjs\",\"role\":\"page\"}],\"summary\":\"Web app desk-original: 3 source files, 0 IPC channel(s) (0 paired), 0 window(s), 0 endpoint(s), 0 route(s).\",\"vendors\":[],\"windows\":[]},\"subject\":{\"kind\":\"js-app\",\"name\":\"desk-original\",\"sha256\":\"0eacec86091069588636331d5a8d6a18bed4bdec576fdc46c925b7f08471e07f\"},\"summary\":\"Web app desk-original: 3 source files, 0 IPC channel(s) (0 paired), 0 window(s), 0 endpoint(s), 0 route(s).\"}",
+          "type": "text"
+        }
+      ],
+      "isError": false,
+      "structuredContent": {
+        "authority": "original-files",
+        "confidence": "derived",
+        "coverage": {
+          "examined": 3,
+          "status": "partial",
+          "total": 4
+        },
+        "environment": {
+          "clean_room": false,
+          "engine": "builtin",
+          "engine_version": "0.6.1",
+          "host": "windows-x86_64"
+        },
+        "id": "ev_c09f63c34cebb9ef0584158dcaa990888d60fe0a16ab13daf8f86144d42d5ec9",
+        "limitations": [
+          {
+            "code": "static_only",
+            "message": "Static reading only: code built at run time (eval, computed requires, remote content) is invisible; IPC pairs need literal channel names."
+          }
+        ],
+        "links": [],
+        "locations": [
+          {
+            "kind": "path",
+            "value": "D:\\Project\\reverse\\fixtures\\desk-original"
+          }
+        ],
+        "operation": "js_app_map",
+        "params": {
+          "include_node_modules": false,
+          "input_path": "D:\\Project\\reverse\\fixtures\\desk-original",
+          "limit": 10,
+          "max_nodes": 25000,
+          "offset": 0,
+          "source_paths": []
+        },
+        "result": {
+          "api_operations": [],
+          "app_kind": "web",
+          "bundlers": [],
+          "edges": [
+            {
+              "from": "event:page.mjs#$(add):submit",
+              "kind": "handled-by",
+              "to": "fn:page.mjs#$(add).addEventListener(submit)@28"
+            },
+            {
+              "from": "event:page.mjs#$(clear):click",
+              "kind": "handled-by",
+              "to": "fn:page.mjs#$(clear).addEventListener(click)@35"
+            },
+            {
+              "from": "event:page.mjs#$(order):change",
+              "kind": "handled-by",
+              "to": "fn:page.mjs#render@4"
+            },
+            {
+              "from": "event:page.mjs#$(query):input",
+              "kind": "handled-by",
+              "to": "fn:page.mjs#render@4"
+            },
+            {
+              "from": "event:page.mjs#button:click",
+              "kind": "handled-by",
+              "to": "fn:page.mjs#button.addEventListener(click)@14"
+            },
+            {
+              "from": "fn:core.mjs#change@16",
+              "kind": "calls",
+              "to": "fn:core.mjs#initial@2"
+            },
+            {
+              "from": "fn:core.mjs#restore@3",
+              "kind": "calls",
+              "to": "fn:core.mjs#initial@2"
+            },
+            {
+              "from": "fn:page.mjs#$(add).addEventListener(submit)@28",
+              "kind": "calls",
+              "to": "fn:page.mjs#$@2"
+            },
+            {
+              "from": "fn:page.mjs#$(add).addEventListener(submit)@28",
+              "kind": "calls",
+              "to": "fn:page.mjs#update@21"
+            },
+            {
+              "from": "fn:page.mjs#$(clear).addEventListener(click)@35",
+              "kind": "calls",
+              "to": "fn:page.mjs#update@21"
+            },
+            {
+              "from": "fn:page.mjs#button.addEventListener(click)@14",
+              "kind": "calls",
+              "to": "fn:page.mjs#update@21"
+            },
+            {
+              "from": "fn:page.mjs#render@4",
+              "kind": "listens",
+              "to": "event:page.mjs#button:click"
+            },
+            {
+              "from": "fn:page.mjs#render@4",
+              "kind": "calls",
+              "to": "fn:page.mjs#$@2"
+            },
+            {
+              "from": "fn:page.mjs#update@21",
+              "kind": "calls",
+              "to": "fn:page.mjs#$@2"
+            },
+            {
+              "from": "fn:page.mjs#update@21",
+              "kind": "calls",
+              "to": "fn:page.mjs#render@4"
+            },
+            {
+              "from": "fn:page.mjs#update@21",
+              "kind": "uses",
+              "to": "storage:localStorage.setItem rf-owned-desk-v1"
+            },
+            {
+              "from": "module:core.mjs",
+              "kind": "defines",
+              "to": "fn:core.mjs#change@16"
+            },
+            {
+              "from": "module:core.mjs",
+              "kind": "defines",
+              "to": "fn:core.mjs#initial@2"
+            },
+            {
+              "from": "module:core.mjs",
+              "kind": "defines",
+              "to": "fn:core.mjs#restore@3"
+            },
+            {
+              "from": "module:core.mjs",
+              "kind": "defines",
+              "to": "fn:core.mjs#view@34"
+            },
+            {
+              "from": "module:index.html",
+              "kind": "html-script",
+              "to": "module:page.mjs"
+            },
+            {
+              "from": "module:page.mjs",
+              "kind": "listens",
+              "to": "event:page.mjs#$(add):submit"
+            },
+            {
+              "from": "module:page.mjs",
+              "kind": "listens",
+              "to": "event:page.mjs#$(clear):click"
+            },
+            {
+              "from": "module:page.mjs",
+              "kind": "listens",
+              "to": "event:page.mjs#$(order):change"
+            },
+            {
+              "from": "module:page.mjs",
+              "kind": "listens",
+              "to": "event:page.mjs#$(query):input"
+            },
+            {
+              "from": "module:page.mjs",
+              "kind": "defines",
+              "to": "fn:page.mjs#$(add).addEventListener(submit)@28"
+            },
+            {
+              "from": "module:page.mjs",
+              "kind": "defines",
+              "to": "fn:page.mjs#$(clear).addEventListener(click)@35"
+            },
+            {
+              "from": "module:page.mjs",
+              "kind": "defines",
+              "to": "fn:page.mjs#$@2"
+            },
+            {
+              "from": "module:page.mjs",
+              "kind": "defines",
+              "to": "fn:page.mjs#button.addEventListener(click)@14"
+            },
+            {
+              "from": "module:page.mjs",
+              "kind": "defines",
+              "to": "fn:page.mjs#render@4"
+            },
+            {
+              "from": "module:page.mjs",
+              "kind": "defines",
+              "to": "fn:page.mjs#update@21"
+            },
+            {
+              "from": "module:page.mjs",
+              "kind": "import",
+              "to": "module:core.mjs"
+            },
+            {
+              "from": "module:page.mjs",
+              "kind": "uses",
+              "to": "storage:localStorage.getItem rf-owned-desk-v1"
+            }
+          ],
+          "effects": [],
+          "endpoints": [],
+          "entry_points": {
+            "pages": [
+              "index.html"
+            ],
+            "preloads": [],
+            "renderers": [],
+            "workers": []
+          },
+          "exposed": [],
+          "graph_id": "ag_6cc940d20f6e1130146f53a180e02b09536921d351c2c4dfc78e48a9ab775741",
+          "input_format": "directory",
+          "ipc": [],
+          "label": "desk-original",
+          "limitations": [],
+          "modules": [
+            {
+              "bundle_modules": [],
+              "bundlers": [],
+              "bytes": 2428,
+              "chunk_ids": [],
+              "exports": {
+                "cjs": [],
+                "esm": [
+                  "initial",
+                  "restore",
+                  "change",
+                  "view"
+                ]
+              },
+              "fingerprint": "3380d5d33b873bd4cbad7b83f2cb4505dbe9c546dada817ba0d4a8d61dc3d950",
+              "functions": [
+                "initial",
+                "restore",
+                "change",
+                "view"
+              ],
+              "imports": [],
+              "kind": "script",
+              "parse_mode": "parsed",
+              "path": "core.mjs",
+              "role": "page",
+              "sha256": "ddf8609a5fbb3e194d3973228da56771c6c3c03329166f0e5a95e29e1e94b9f2",
+              "strings": [
+                "string",
+                "add",
+                "\u672a\u5206\u7c7b",
+                "\u8bf7\u586b\u5199\u540d\u79f0",
+                "\u540d\u79f0\u6700\u591a32\u4e2a\u5b57\u7b26",
+                "\u6570\u91cf\u987b\u4e3a1\u81f399\u7684\u6574\u6570",
+                "en-US",
+                "\u8be5\u5206\u7c7b\u4e2d\u5df2\u6709\u540c\u540d\u6761\u76ee",
+                "remove",
+                "\u6761\u76ee\u4e0d\u5b58\u5728",
+                "clear",
+                "\u672a\u77e5\u64cd\u4f5c",
+                "newest",
+                "name",
+                "zh-CN"
+              ]
+            },
+            {
+              "bundle_modules": [],
+              "bundlers": [],
+              "bytes": 2160,
+              "chunk_ids": [],
+              "exports": {
+                "cjs": [],
+                "esm": []
+              },
+              "functions": [],
+              "imports": [
+                {
+                  "kind": "html-script",
+                  "line": 16,
+                  "resolved": "page.mjs",
+                  "specifier": "./page.mjs"
+                }
+              ],
+              "kind": "html",
+              "path": "index.html",
+              "role": "page",
+              "sha256": "fe8bb33fe756982f3bbaae9745716d896f7c81e9104f1327266c84a1975e6832",
+              "strings": []
+            },
+            {
+              "bundle_modules": [],
+              "bundlers": [],
+              "bytes": 1840,
+              "chunk_ids": [],
+              "exports": {
+                "cjs": [],
+                "esm": []
+              },
+              "fingerprint": "8620ffb9217506ae5f552ffc4f87052110390223ae70d814bf60814364ce5df9",
+              "functions": [
+                "$",
+                "render",
+                "button.addEventListener(click)",
+                "update",
+                "$(add).addEventListener(submit)",
+                "$(clear).addEventListener(click)"
+              ],
+              "imports": [
+                {
+                  "kind": "import",
+                  "line": 1,
+                  "resolved": "core.mjs",
+                  "specifier": "./core.mjs"
+                }
+              ],
+              "kind": "script",
+              "parse_mode": "parsed",
+              "path": "page.mjs",
+              "role": "page",
+              "sha256": "83f93826a55b128f7c711ebc7052455330896b29d3553c895b1ac39433d92c63",
+              "strings": [
+                "rf-owned-desk-v1",
+                "query",
+                "order",
+                "rows",
+                "tr",
+                "td",
+                "button",
+                "remove",
+                "\u5220\u9664",
+                "click",
+                "empty",
+                "\u6ca1\u6709\u5339\u914d\u7684\u6761\u76ee\u3002",
+                "\u8fd8\u6ca1\u6709\u6761\u76ee\uff0c\u5148\u6dfb\u52a0\u4e00\u4e2a\u5427\u3002",
+                "summary",
+                "error",
+                "add",
+                "submit",
+                "name",
+                "tag",
+                "quantity",
+                "input",
+                "change",
+                "clear",
+                "\u786e\u5b9a\u6e05\u7a7a\u5168\u90e8\u6761\u76ee\u5417\uff1f"
+              ]
+            }
+          ],
+          "modules_total": 3,
+          "native_modules": [],
+          "nodes": [
+            {
+              "id": "module:core.mjs",
+              "kind": "module",
+              "label": "core.mjs",
+              "module": "core.mjs",
+              "role": "page"
+            },
+            {
+              "id": "module:index.html",
+              "kind": "html",
+              "label": "index.html",
+              "module": "index.html",
+              "role": "page"
+            },
+            {
+              "id": "module:page.mjs",
+              "kind": "module",
+              "label": "page.mjs",
+              "module": "page.mjs",
+              "role": "page"
+            },
+            {
+              "attrs": {
+                "calls": [],
+                "end": 161,
+                "end_line": 2,
+                "exported": true,
+                "kind": "declaration",
+                "params": [],
+                "parent": null,
+                "start": 96,
+                "strings": []
+              },
+              "id": "fn:core.mjs#initial@2",
+              "kind": "function",
+              "label": "initial",
+              "line": 2,
+              "module": "core.mjs",
+              "role": "page"
+            },
+            {
+              "attrs": {
+                "calls": [
+                  "initial",
+                  "JSON.parse",
+                  "Number.isSafeInteger",
+                  "Array.isArray",
+                  "state.entries.some",
+                  "new Set",
+                  "state.entries.map"
+                ],
+                "end": 850,
+                "end_line": 15,
+                "exported": true,
+                "kind": "declaration",
+                "params": [
+                  "text"
+                ],
+                "parent": null,
+                "start": 169,
+                "strings": []
+              },
+              "id": "fn:core.mjs#restore@3",
+              "kind": "function",
+              "label": "restore",
+              "line": 3,
+              "module": "core.mjs",
+              "role": "page"
+            },
+            {
+              "attrs": {
+                "calls": [
+                  "structuredClone",
+                  "String().trim",
+                  "String",
+                  "Number",
+                  "new Error",
+                  "Number.isInteger",
+                  "next.entries.some",
+                  "next.entries.push",
+                  "next.entries.filter",
+                  "initial"
+                ],
+                "end": 1923,
+                "end_line": 33,
+                "exported": true,
+                "kind": "declaration",
+                "params": [
+                  "state",
+                  "action"
+                ],
+                "parent": null,
+                "start": 858,
+                "strings": [
+                  "add",
+                  "\u672a\u5206\u7c7b",
+                  "\u8bf7\u586b\u5199\u540d\u79f0",
+                  "\u540d\u79f0\u6700\u591a32\u4e2a\u5b57\u7b26",
+                  "\u6570\u91cf\u987b\u4e3a1\u81f399\u7684\u6574\u6570",
+                  "\u8be5\u5206\u7c7b\u4e2d\u5df2\u6709\u540c\u540d\u6761\u76ee",
+                  "remove",
+                  "\u6761\u76ee\u4e0d\u5b58\u5728",
+                  "clear",
+                  "\u672a\u77e5\u64cd\u4f5c"
+                ]
+              },
+              "id": "fn:core.mjs#change@16",
+              "kind": "function",
+              "label": "change",
+              "line": 16,
+              "module": "core.mjs",
+              "role": "page"
+            },
+            {
+              "attrs": {
+                "calls": [
+                  "String().trim().toLocaleLowerCase",
+                  "String().trim",
+                  "String",
+                  "state.entries.filter",
+                  "entries.sort",
+                  "entries.reduce"
+                ],
+                "end": 2427,
+                "end_line": 40,
+                "exported": true,
+                "kind": "declaration",
+                "params": [
+                  "state",
+                  "query",
+                  "order"
+                ],
+                "parent": null,
+                "start": 1931,
+                "strings": [
+                  "newest",
+                  "en-US",
+                  "name"
+                ]
+              },
+              "id": "fn:core.mjs#view@34",
+              "kind": "function",
+              "label": "view",
+              "line": 34,
+              "module": "core.mjs",
+              "role": "page"
+            },
+            {
+              "attrs": {
+                "calls": [
+                  "document.getElementById"
+                ],
+                "end": 102,
+                "end_line": 2,
+                "exported": false,
+                "kind": "arrow",
+                "params": [
+                  "id"
+                ],
+                "parent": null,
+                "start": 69,
+                "strings": []
+              },
+              "id": "fn:page.mjs#$@2",
+              "kind": "function",
+              "label": "$",
+              "line": 2,
+              "module": "page.mjs",
+              "role": "page"
+            },
+            {
+              "attrs": {
+                "calls": [
+                  "./core.mjs.view",
+                  "$",
+                  "$(rows).replaceChildren",
+                  "document.createElement",
+                  "row.append",
+                  "button.addEventListener",
+                  "cell.append",
+                  "$(rows).append"
+                ],
+                "end": 1116,
+                "end_line": 20,
+                "exported": false,
+                "kind": "declaration",
+                "params": [],
+                "parent": null,
+                "start": 178,
+                "strings": [
+                  "query",
+                  "order",
+                  "rows",
+                  "tr",
+                  "td",
+                  "button",
+                  "remove",
+                  "\u5220\u9664",
+                  "click",
+                  "empty",
+                  "\u6ca1\u6709\u5339\u914d\u7684\u6761\u76ee\u3002",
+                  "\u8fd8\u6ca1\u6709\u6761\u76ee\uff0c\u5148\u6dfb\u52a0\u4e00\u4e2a\u5427\u3002",
+                  "summary"
+                ]
+              },
+              "id": "fn:page.mjs#render@4",
+              "kind": "function",
+              "label": "render",
+              "line": 4,
+              "module": "page.mjs",
+              "role": "page"
+            },
+            {
+              "attrs": {
+                "calls": [
+                  "update"
+                ],
+                "end": 796,
+                "end_line": 14,
+                "exported": false,
+                "kind": "arrow",
+                "params": [],
+                "parent": "render",
+                "start": 756,
+                "strings": [
+                  "remove"
+                ]
+              },
+              "id": "fn:page.mjs#button.addEventListener(click)@14",
+              "kind": "function",
+              "label": "button.addEventListener(click)",
+              "line": 14,
+              "module": "page.mjs",
+              "role": "page"
+            },
+            {
+              "attrs": {
+                "calls": [
+                  "./core.mjs.change",
+                  "localStorage.setItem",
+                  "JSON.stringify",
+                  "$",
+                  "render"
+                ],
+                "end": 1391,
+                "end_line": 27,
+                "exported": false,
+                "kind": "declaration",
+                "params": [
+                  "action"
+                ],
+                "parent": null,
+                "start": 1117,
+                "strings": [
+                  "error"
+                ]
+              },
+              "id": "fn:page.mjs#update@21",
+              "kind": "function",
+              "label": "update",
+              "line": 21,
+              "module": "page.mjs",
+              "role": "page"
+            },
+            {
+              "attrs": {
+                "calls": [
+                  "event.preventDefault",
+                  "update",
+                  "$",
+                  "$(name).focus"
+                ],
+                "end": 1614,
+                "end_line": 33,
+                "exported": false,
+                "kind": "arrow",
+                "params": [
+                  "event"
+                ],
+                "parent": null,
+                "start": 1428,
+                "strings": [
+                  "add",
+                  "name",
+                  "tag",
+                  "quantity"
+                ]
+              },
+              "id": "fn:page.mjs#$(add).addEventListener(submit)@28",
+              "kind": "function",
+              "label": "$(add).addEventListener(submit)",
+              "line": 28,
+              "module": "page.mjs",
+              "role": "page"
+            },
+            {
+              "attrs": {
+                "calls": [
+                  "confirm",
+                  "update"
+                ],
+                "end": 1827,
+                "end_line": 35,
+                "exported": false,
+                "kind": "arrow",
+                "params": [],
+                "parent": null,
+                "start": 1747,
+                "strings": [
+                  "\u786e\u5b9a\u6e05\u7a7a\u5168\u90e8\u6761\u76ee\u5417\uff1f",
+                  "clear"
+                ]
+              },
+              "id": "fn:page.mjs#$(clear).addEventListener(click)@35",
+              "kind": "function",
+              "label": "$(clear).addEventListener(click)",
+              "line": 35,
+              "module": "page.mjs",
+              "role": "page"
+            },
+            {
+              "id": "storage:localStorage.getItem rf-owned-desk-v1",
+              "kind": "storage",
+              "label": "localStorage.getItem rf-owned-desk-v1"
+            },
+            {
+              "id": "storage:localStorage.setItem rf-owned-desk-v1",
+              "kind": "storage",
+              "label": "localStorage.setItem rf-owned-desk-v1"
+            },
+            {
+              "id": "event:page.mjs#button:click",
+              "kind": "event",
+              "label": "button:click",
+              "line": 14,
+              "module": "page.mjs",
+              "role": "page"
+            },
+            {
+              "id": "event:page.mjs#$(add):submit",
+              "kind": "event",
+              "label": "$(add):submit",
+              "line": 28,
+              "module": "page.mjs",
+              "role": "page"
+            },
+            {
+              "id": "event:page.mjs#$(query):input",
+              "kind": "event",
+              "label": "$(query):input",
+              "line": 34,
+              "module": "page.mjs",
+              "role": "page"
+            },
+            {
+              "id": "event:page.mjs#$(order):change",
+              "kind": "event",
+              "label": "$(order):change",
+              "line": 34,
+              "module": "page.mjs",
+              "role": "page"
+            },
+            {
+              "id": "event:page.mjs#$(clear):click",
+              "kind": "event",
+              "label": "$(clear):click",
+              "line": 35,
+              "module": "page.mjs",
+              "role": "page"
+            }
+          ],
+          "package": null,
+          "routes": [],
+          "source_maps": [],
+          "stats": {
+            "api_operations": 0,
+            "bundle_modules": 0,
+            "edges": 33,
+            "endpoints": 0,
+            "files": 3,
+            "functions": 10,
+            "ipc_channels": 0,
+            "listed": 4,
+            "modules": 3,
+            "nodes": 20,
+            "paired_channels": 0
+          },
+          "storage": [
+            {
+              "api": "localStorage.getItem",
+              "arg": "rf-owned-desk-v1",
+              "function": null,
+              "line": 3,
+              "module": "page.mjs",
+              "role": "page"
+            },
+            {
+              "api": "localStorage.setItem",
+              "arg": "rf-owned-desk-v1",
+              "function": "update",
+              "line": 24,
+              "module": "page.mjs",
+              "role": "page"
+            }
+          ],
+          "summary": "Web app desk-original: 3 source files, 0 IPC channel(s) (0 paired), 0 window(s), 0 endpoint(s), 0 route(s).",
+          "vendors": [],
+          "windows": []
+        },
+        "subject": {
+          "kind": "js-app",
+          "name": "desk-original",
+          "sha256": "0eacec86091069588636331d5a8d6a18bed4bdec576fdc46c925b7f08471e07f"
+        },
+        "summary": "Web app desk-original: 3 source files, 0 IPC channel(s) (0 paired), 0 window(s), 0 endpoint(s), 0 route(s)."
+      }
+    }
+  },
+  {
+    "tool": "engines_list",
+    "arguments": {},
+    "result": {
+      "content": [
+        {
+          "text": "{\"result\":{\"deep_mode\":{\"enabled\":false,\"ghidra\":\"D:\\\\Tools\\\\Ghidra\\\\support\\\\analyzeHeadless.bat\"},\"engine_store\":\"D:\\\\Project\\\\reverse\\\\state\\\\rf35-owned-final\\\\craft\\\\engines\",\"engines\":[{\"found\":\"D:\\\\Tools\\\\Ghidra\\\\support\\\\analyzeHeadless.bat\",\"id\":\"ghidra\",\"installable_here\":true,\"name\":\"Ghidra\",\"needed_for\":\"Deep mode: richer decompiled code\"},{\"found\":\"C:\\\\Users\\\\toti\\\\AppData\\\\Local\\\\Microsoft\\\\WinGet\\\\Packages\\\\Genymobile.scrcpy_Microsoft.Winget.Source_8wekyb3d8bbwe\\\\scrcpy-win64-v4.1\\\\adb.exe\",\"id\":\"adb\",\"installable_here\":true,\"name\":\"Android platform tools (adb)\",\"needed_for\":\"Android devices: apps, logs, screenshots\"},{\"found\":null,\"id\":\"jadx\",\"installable_here\":true,\"name\":\"JADX\",\"needed_for\":\"Decompiling Android apps to Java (needs Java)\"},{\"found\":null,\"id\":\"apktool\",\"installable_here\":true,\"name\":\"Apktool\",\"needed_for\":\"Decoding Android resources (needs Java)\"},{\"found\":\"C:\\\\Program Files\\\\Google/Chrome/Application/chrome.exe\",\"id\":\"chromium\",\"installable_here\":false,\"name\":\"a Chromium-based browser\",\"needed_for\":\"Studying websites in a live browser\"},{\"found\":\"D:\\\\EXE\\\\python\\\\Scripts\\\\frida.exe\",\"id\":\"frida\",\"installable_here\":false,\"name\":\"Frida\",\"needed_for\":\"Tracing apps while they run\"},{\"found\":\"D:\\\\Tools\\\\runtime\\\\mingw64\\\\bin\\\\gdb.exe\",\"id\":\"gdb\",\"installable_here\":false,\"name\":\"GDB\",\"needed_for\":\"Debugging native programs\"},{\"found\":null,\"id\":\"lldb\",\"installable_here\":false,\"name\":\"LLDB\",\"needed_for\":\"Debugging Apple apps\"},{\"found\":\"D:\\\\EXE\\\\python\\\\Scripts\\\\mitmdump.exe\",\"id\":\"mitmdump\",\"installable_here\":false,\"name\":\"mitmproxy (mitmdump)\",\"needed_for\":\"Recording an app's network traffic\"},{\"found\":\"C:\\\\Users\\\\toti\\\\.cargo\\\\bin\\\\binwalk.exe\",\"id\":\"binwalk\",\"installable_here\":false,\"name\":\"Binwalk\",\"needed_for\":\"Firmware carving (a second opinion)\"},{\"found\":null,\"id\":\"unblob\",\"installable_here\":false,\"name\":\"Unblob\",\"needed_for\":\"Firmware unpacking (a second opinion)\"},{\"found\":\"C:\\\\Users\\\\toti\\\\.dotnet\\\\tools\\\\ilspycmd.exe\",\"id\":\"ilspy\",\"installable_here\":false,\"name\":\"ILSpy command line (ilspycmd)\",\"needed_for\":\".NET decompiling (a second opinion)\"},{\"found\":\"D:\\\\Tools\\\\runtime\\\\jdk21\\\\jdk-21.0.12.1+1\\\\bin\\\\java.exe\",\"id\":\"java\",\"installable_here\":true,\"name\":\"Java runtime\",\"needed_for\":\"Runs Ghidra, JADX and Apktool\"},{\"found\":\"D:\\\\Tools\\\\Wireshark\\\\tshark.exe\",\"id\":\"tshark\",\"installable_here\":false,\"name\":\"Wireshark (tshark)\",\"needed_for\":\"Reading packet captures (a second opinion)\"},{\"found\":\"D:\\\\Tools\\\\runtime\\\\mingw64\\\\bin\\\\objdump.exe\",\"id\":\"objdump\",\"installable_here\":false,\"name\":\"objdump (GNU binutils or LLVM)\",\"needed_for\":\"Disassembly (a second opinion)\"},{\"found\":null,\"id\":\"rizin\",\"installable_here\":true,\"name\":\"Rizin\",\"needed_for\":\"Disassembly (a second opinion)\"},{\"found\":null,\"id\":\"rtl433\",\"installable_here\":false,\"name\":\"rtl_433\",\"needed_for\":\"Decoding radio recordings\"},{\"found\":null,\"id\":\"vineflower\",\"installable_here\":true,\"name\":\"Vineflower\",\"needed_for\":\"Decompiling Java classes and JARs (needs Java)\"}],\"game_engines\":[{\"found\":null,\"id\":\"unity\",\"name\":\"Unity\",\"needs\":\"About 10 GB. Free for personal use with a Unity account.\",\"ready\":false},{\"found\":null,\"id\":\"unreal\",\"name\":\"Unreal Engine\",\"needs\":\"About 60 GB, an Epic Games account, and Visual Studio's C++ tools.\",\"ready\":false},{\"found\":null,\"id\":\"godot\",\"name\":\"Godot\",\"needs\":\"A small download (under 200 MB). Free, no account needed.\",\"ready\":false},{\"found\":{\"program\":\"C:\\\\Users\\\\toti\\\\.cargo\\\\bin\\\\cargo.exe\",\"version\":\"\"},\"id\":\"rust\",\"name\":\"Rust\",\"needs\":\"The Rust toolchain (rustup.rs).\",\"ready\":true}]}}",
+          "type": "text"
+        }
+      ],
+      "isError": false,
+      "structuredContent": {
+        "result": {
+          "deep_mode": {
+            "enabled": false,
+            "ghidra": "D:\\Tools\\Ghidra\\support\\analyzeHeadless.bat"
+          },
+          "engine_store": "D:\\Project\\reverse\\state\\rf35-owned-final\\craft\\engines",
+          "engines": [
+            {
+              "found": "D:\\Tools\\Ghidra\\support\\analyzeHeadless.bat",
+              "id": "ghidra",
+              "installable_here": true,
+              "name": "Ghidra",
+              "needed_for": "Deep mode: richer decompiled code"
+            },
+            {
+              "found": "C:\\Users\\toti\\AppData\\Local\\Microsoft\\WinGet\\Packages\\Genymobile.scrcpy_Microsoft.Winget.Source_8wekyb3d8bbwe\\scrcpy-win64-v4.1\\adb.exe",
+              "id": "adb",
+              "installable_here": true,
+              "name": "Android platform tools (adb)",
+              "needed_for": "Android devices: apps, logs, screenshots"
+            },
+            {
+              "found": null,
+              "id": "jadx",
+              "installable_here": true,
+              "name": "JADX",
+              "needed_for": "Decompiling Android apps to Java (needs Java)"
+            },
+            {
+              "found": null,
+              "id": "apktool",
+              "installable_here": true,
+              "name": "Apktool",
+              "needed_for": "Decoding Android resources (needs Java)"
+            },
+            {
+              "found": "C:\\Program Files\\Google/Chrome/Application/chrome.exe",
+              "id": "chromium",
+              "installable_here": false,
+              "name": "a Chromium-based browser",
+              "needed_for": "Studying websites in a live browser"
+            },
+            {
+              "found": "D:\\EXE\\python\\Scripts\\frida.exe",
+              "id": "frida",
+              "installable_here": false,
+              "name": "Frida",
+              "needed_for": "Tracing apps while they run"
+            },
+            {
+              "found": "D:\\Tools\\runtime\\mingw64\\bin\\gdb.exe",
+              "id": "gdb",
+              "installable_here": false,
+              "name": "GDB",
+              "needed_for": "Debugging native programs"
+            },
+            {
+              "found": null,
+              "id": "lldb",
+              "installable_here": false,
+              "name": "LLDB",
+              "needed_for": "Debugging Apple apps"
+            },
+            {
+              "found": "D:\\EXE\\python\\Scripts\\mitmdump.exe",
+              "id": "mitmdump",
+              "installable_here": false,
+              "name": "mitmproxy (mitmdump)",
+              "needed_for": "Recording an app's network traffic"
+            },
+            {
+              "found": "C:\\Users\\toti\\.cargo\\bin\\binwalk.exe",
+              "id": "binwalk",
+              "installable_here": false,
+              "name": "Binwalk",
+              "needed_for": "Firmware carving (a second opinion)"
+            },
+            {
+              "found": null,
+              "id": "unblob",
+              "installable_here": false,
+              "name": "Unblob",
+              "needed_for": "Firmware unpacking (a second opinion)"
+            },
+            {
+              "found": "C:\\Users\\toti\\.dotnet\\tools\\ilspycmd.exe",
+              "id": "ilspy",
+              "installable_here": false,
+              "name": "ILSpy command line (ilspycmd)",
+              "needed_for": ".NET decompiling (a second opinion)"
+            },
+            {
+              "found": "D:\\Tools\\runtime\\jdk21\\jdk-21.0.12.1+1\\bin\\java.exe",
+              "id": "java",
+              "installable_here": true,
+              "name": "Java runtime",
+              "needed_for": "Runs Ghidra, JADX and Apktool"
+            },
+            {
+              "found": "D:\\Tools\\Wireshark\\tshark.exe",
+              "id": "tshark",
+              "installable_here": false,
+              "name": "Wireshark (tshark)",
+              "needed_for": "Reading packet captures (a second opinion)"
+            },
+            {
+              "found": "D:\\Tools\\runtime\\mingw64\\bin\\objdump.exe",
+              "id": "objdump",
+              "installable_here": false,
+              "name": "objdump (GNU binutils or LLVM)",
+              "needed_for": "Disassembly (a second opinion)"
+            },
+            {
+              "found": null,
+              "id": "rizin",
+              "installable_here": true,
+              "name": "Rizin",
+              "needed_for": "Disassembly (a second opinion)"
+            },
+            {
+              "found": null,
+              "id": "rtl433",
+              "installable_here": false,
+              "name": "rtl_433",
+              "needed_for": "Decoding radio recordings"
+            },
+            {
+              "found": null,
+              "id": "vineflower",
+              "installable_here": true,
+              "name": "Vineflower",
+              "needed_for": "Decompiling Java classes and JARs (needs Java)"
+            }
+          ],
+          "game_engines": [
+            {
+              "found": null,
+              "id": "unity",
+              "name": "Unity",
+              "needs": "About 10 GB. Free for personal use with a Unity account.",
+              "ready": false
+            },
+            {
+              "found": null,
+              "id": "unreal",
+              "name": "Unreal Engine",
+              "needs": "About 60 GB, an Epic Games account, and Visual Studio's C++ tools.",
+              "ready": false
+            },
+            {
+              "found": null,
+              "id": "godot",
+              "name": "Godot",
+              "needs": "A small download (under 200 MB). Free, no account needed.",
+              "ready": false
+            },
+            {
+              "found": {
+                "program": "C:\\Users\\toti\\.cargo\\bin\\cargo.exe",
+                "version": ""
+              },
+              "id": "rust",
+              "name": "Rust",
+              "needs": "The Rust toolchain (rustup.rs).",
+              "ready": true
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "tool": "web_site_open",
+    "arguments": {
+      "url": "http://127.0.0.1:62723",
+      "headless": true,
+      "settle_ms": 100,
+      "timeout_secs": 20
+    },
+    "result": {
+      "content": [
+        {
+          "text": "{\"authority\":\"our-run\",\"confidence\":\"observed\",\"coverage\":{\"examined\":1,\"status\":\"complete\",\"total\":1},\"environment\":{\"clean_room\":false,\"engine\":\"cdp\",\"engine_version\":\"1.3\",\"host\":\"windows-x86_64\"},\"id\":\"ev_997b2f16ebf74c5ec3ebe64bfc9787d7b7c36ba3c060baff71cdec92caa87cc8\",\"limitations\":[{\"code\":\"private_profile\",\"message\":\"A fresh private browser: pages behind a login show their signed-out state.\"}],\"links\":[],\"locations\":[{\"kind\":\"url\",\"value\":\"http://127.0.0.1:62723/\"}],\"operation\":\"web_site_open\",\"params\":{\"height\":900,\"url\":\"http://127.0.0.1:62723/\",\"width\":1440},\"result\":{\"browser\":\"Chrome/157.0.8103.51\",\"facts\":{\"elements\":39,\"forms\":1,\"height\":900,\"images\":0,\"lang\":\"zh-CN\",\"links\":0,\"ready\":\"complete\",\"title\":\"\u6807\u7b7e\u6536\u7eb3\u76d2\",\"url\":\"http://127.0.0.1:62723/\",\"width\":1440},\"health\":{\"errors\":[],\"failed_requests\":[{\"status\":404,\"type\":\"Other\",\"url\":\"http://127.0.0.1:62723/favicon.ico\"}]},\"title\":\"\u6807\u7b7e\u6536\u7eb3\u76d2\",\"url\":\"http://127.0.0.1:62723/\"},\"subject\":{\"kind\":\"website\",\"name\":\"http://127.0.0.1:62723/\"},\"summary\":\"Opened http://127.0.0.1:62723/: \\\"\u6807\u7b7e\u6536\u7eb3\u76d2\\\". While loading: 0 error(s), 1 failed request(s).\"}",
+          "type": "text"
+        }
+      ],
+      "isError": false,
+      "structuredContent": {
+        "authority": "our-run",
+        "confidence": "observed",
+        "coverage": {
+          "examined": 1,
+          "status": "complete",
+          "total": 1
+        },
+        "environment": {
+          "clean_room": false,
+          "engine": "cdp",
+          "engine_version": "1.3",
+          "host": "windows-x86_64"
+        },
+        "id": "ev_997b2f16ebf74c5ec3ebe64bfc9787d7b7c36ba3c060baff71cdec92caa87cc8",
+        "limitations": [
+          {
+            "code": "private_profile",
+            "message": "A fresh private browser: pages behind a login show their signed-out state."
+          }
+        ],
+        "links": [],
+        "locations": [
+          {
+            "kind": "url",
+            "value": "http://127.0.0.1:62723/"
+          }
+        ],
+        "operation": "web_site_open",
+        "params": {
+          "height": 900,
+          "url": "http://127.0.0.1:62723/",
+          "width": 1440
+        },
+        "result": {
+          "browser": "Chrome/157.0.8103.51",
+          "facts": {
+            "elements": 39,
+            "forms": 1,
+            "height": 900,
+            "images": 0,
+            "lang": "zh-CN",
+            "links": 0,
+            "ready": "complete",
+            "title": "\u6807\u7b7e\u6536\u7eb3\u76d2",
+            "url": "http://127.0.0.1:62723/",
+            "width": 1440
+          },
+          "health": {
+            "errors": [],
+            "failed_requests": [
+              {
+                "status": 404,
+                "type": "Other",
+                "url": "http://127.0.0.1:62723/favicon.ico"
+              }
+            ]
+          },
+          "title": "\u6807\u7b7e\u6536\u7eb3\u76d2",
+          "url": "http://127.0.0.1:62723/"
+        },
+        "subject": {
+          "kind": "website",
+          "name": "http://127.0.0.1:62723/"
+        },
+        "summary": "Opened http://127.0.0.1:62723/: \"\u6807\u7b7e\u6536\u7eb3\u76d2\". While loading: 0 error(s), 1 failed request(s)."
+      }
+    }
+  },
+  {
+    "tool": "web_site_capture",
+    "arguments": {
+      "output_directory": "D:\\Project\\reverse\\state\\rf35-owned-final\\capture",
+      "widths": [
+        1100,
+        390
+      ],
+      "timeout_secs": 30
+    },
+    "result": {
+      "content": [
+        {
+          "text": "{\"authority\":\"our-run\",\"confidence\":\"observed\",\"coverage\":{\"examined\":2,\"status\":\"complete\",\"total\":2},\"environment\":{\"clean_room\":false,\"engine\":\"cdp\",\"engine_version\":\"1.3\",\"host\":\"windows-x86_64\"},\"id\":\"ev_be6ec231d1e40ffbeeb874c31a11ae6fd1aa905696346ef70b55c824b678c00d\",\"limitations\":[{\"code\":\"one_state\",\"message\":\"One state of the page: menus, dialogs and content behind interactions are not opened.\"},{\"code\":\"cross_origin_css\",\"message\":\"CSS custom properties and breakpoints from cross-origin stylesheets can't be read.\"}],\"links\":[],\"locations\":[{\"kind\":\"url\",\"value\":\"http://127.0.0.1:62723/\"},{\"kind\":\"path\",\"value\":\"D:\\\\Project\\\\reverse\\\\state\\\\rf35-owned-final\\\\capture\"}],\"operation\":\"web_site_capture\",\"params\":{\"include_html\":true,\"max_height\":12000,\"noise_pass\":false,\"visitor_view\":false,\"widths\":[1100,390]},\"result\":{\"counts\":{\"forms\":1,\"headings\":1,\"images\":0,\"links\":0,\"outline\":13},\"design\":{\"backgrounds\":[{\"count\":7,\"value\":\"#ffffff\"},{\"count\":1,\"value\":\"#f4f2ee\"},{\"count\":1,\"value\":\"#365b45\"}],\"css_variables\":{},\"font_faces\":[],\"font_sizes\":[{\"count\":14,\"value\":\"16px\"},{\"count\":1,\"value\":\"28px\"}],\"font_weights\":[{\"count\":10,\"value\":\"400\"},{\"count\":4,\"value\":\"600\"},{\"count\":1,\"value\":\"700\"}],\"fonts\":[{\"count\":15,\"value\":\"system-ui, sans-serif\"}],\"max_widths\":[{\"count\":1,\"value\":\"860px\"}],\"radii\":[{\"count\":7,\"value\":\"4px\"},{\"count\":1,\"value\":\"8px\"}],\"shadows\":[],\"spacing\":[{\"count\":26,\"value\":\"12px\"},{\"count\":14,\"value\":\"9px\"},{\"count\":10,\"value\":\"5px\"},{\"count\":8,\"value\":\"24px\"},{\"count\":8,\"value\":\"8px\"},{\"count\":4,\"value\":\"28px\"},{\"count\":2,\"value\":\"48px\"},{\"count\":2,\"value\":\"16px\"},{\"count\":1,\"value\":\"4px\"},{\"count\":1,\"value\":\"20px\"}],\"text_colors\":[{\"count\":8,\"value\":\"#282b28\"},{\"count\":4,\"value\":\"#565f51\"},{\"count\":1,\"value\":\"#656961\"},{\"count\":1,\"value\":\"#ffffff\"},{\"count\":1,\"value\":\"#365b45\"}]},\"files\":[\"README.md\",\"capture.json\"],\"html_bytes\":2187,\"output_directory\":\"D:\\\\Project\\\\reverse\\\\state\\\\rf35-owned-final\\\\capture\",\"screenshots\":[{\"css_width\":1100,\"cut\":false,\"file\":\"screenshot-1100.png\",\"height\":900,\"sha256\":\"68d45d633dc9e52aeba1a364ac98a6b000411aa30b576ca4791e703a30cd3cd8\",\"width\":1100},{\"css_width\":390,\"cut\":false,\"file\":\"screenshot-390.png\",\"height\":935,\"sha256\":\"cc942cd9ac6ad5496f549df758eb5aa1d549e7f0b25eedae02dad5267300375c\",\"width\":390}],\"title\":\"\u6807\u7b7e\u6536\u7eb3\u76d2\",\"url\":\"http://127.0.0.1:62723/\"},\"subject\":{\"kind\":\"website\",\"name\":\"http://127.0.0.1:62723/\"},\"summary\":\"Captured http://127.0.0.1:62723/: 2 screenshot(s), 13 outline items, 1 headings, 0 images, 0 links, 1 forms \u2192 D:\\\\Project\\\\reverse\\\\state\\\\rf35-owned-final\\\\capture.\"}",
+          "type": "text"
+        }
+      ],
+      "isError": false,
+      "structuredContent": {
+        "authority": "our-run",
+        "confidence": "observed",
+        "coverage": {
+          "examined": 2,
+          "status": "complete",
+          "total": 2
+        },
+        "environment": {
+          "clean_room": false,
+          "engine": "cdp",
+          "engine_version": "1.3",
+          "host": "windows-x86_64"
+        },
+        "id": "ev_be6ec231d1e40ffbeeb874c31a11ae6fd1aa905696346ef70b55c824b678c00d",
+        "limitations": [
+          {
+            "code": "one_state",
+            "message": "One state of the page: menus, dialogs and content behind interactions are not opened."
+          },
+          {
+            "code": "cross_origin_css",
+            "message": "CSS custom properties and breakpoints from cross-origin stylesheets can't be read."
+          }
+        ],
+        "links": [],
+        "locations": [
+          {
+            "kind": "url",
+            "value": "http://127.0.0.1:62723/"
+          },
+          {
+            "kind": "path",
+            "value": "D:\\Project\\reverse\\state\\rf35-owned-final\\capture"
+          }
+        ],
+        "operation": "web_site_capture",
+        "params": {
+          "include_html": true,
+          "max_height": 12000,
+          "noise_pass": false,
+          "visitor_view": false,
+          "widths": [
+            1100,
+            390
+          ]
+        },
+        "result": {
+          "counts": {
+            "forms": 1,
+            "headings": 1,
+            "images": 0,
+            "links": 0,
+            "outline": 13
+          },
+          "design": {
+            "backgrounds": [
+              {
+                "count": 7,
+                "value": "#ffffff"
+              },
+              {
+                "count": 1,
+                "value": "#f4f2ee"
+              },
+              {
+                "count": 1,
+                "value": "#365b45"
+              }
+            ],
+            "css_variables": {},
+            "font_faces": [],
+            "font_sizes": [
+              {
+                "count": 14,
+                "value": "16px"
+              },
+              {
+                "count": 1,
+                "value": "28px"
+              }
+            ],
+            "font_weights": [
+              {
+                "count": 10,
+                "value": "400"
+              },
+              {
+                "count": 4,
+                "value": "600"
+              },
+              {
+                "count": 1,
+                "value": "700"
+              }
+            ],
+            "fonts": [
+              {
+                "count": 15,
+                "value": "system-ui, sans-serif"
+              }
+            ],
+            "max_widths": [
+              {
+                "count": 1,
+                "value": "860px"
+              }
+            ],
+            "radii": [
+              {
+                "count": 7,
+                "value": "4px"
+              },
+              {
+                "count": 1,
+                "value": "8px"
+              }
+            ],
+            "shadows": [],
+            "spacing": [
+              {
+                "count": 26,
+                "value": "12px"
+              },
+              {
+                "count": 14,
+                "value": "9px"
+              },
+              {
+                "count": 10,
+                "value": "5px"
+              },
+              {
+                "count": 8,
+                "value": "24px"
+              },
+              {
+                "count": 8,
+                "value": "8px"
+              },
+              {
+                "count": 4,
+                "value": "28px"
+              },
+              {
+                "count": 2,
+                "value": "48px"
+              },
+              {
+                "count": 2,
+                "value": "16px"
+              },
+              {
+                "count": 1,
+                "value": "4px"
+              },
+              {
+                "count": 1,
+                "value": "20px"
+              }
+            ],
+            "text_colors": [
+              {
+                "count": 8,
+                "value": "#282b28"
+              },
+              {
+                "count": 4,
+                "value": "#565f51"
+              },
+              {
+                "count": 1,
+                "value": "#656961"
+              },
+              {
+                "count": 1,
+                "value": "#ffffff"
+              },
+              {
+                "count": 1,
+                "value": "#365b45"
+              }
+            ]
+          },
+          "files": [
+            "README.md",
+            "capture.json"
+          ],
+          "html_bytes": 2187,
+          "output_directory": "D:\\Project\\reverse\\state\\rf35-owned-final\\capture",
+          "screenshots": [
+            {
+              "css_width": 1100,
+              "cut": false,
+              "file": "screenshot-1100.png",
+              "height": 900,
+              "sha256": "68d45d633dc9e52aeba1a364ac98a6b000411aa30b576ca4791e703a30cd3cd8",
+              "width": 1100
+            },
+            {
+              "css_width": 390,
+              "cut": false,
+              "file": "screenshot-390.png",
+              "height": 935,
+              "sha256": "cc942cd9ac6ad5496f549df758eb5aa1d549e7f0b25eedae02dad5267300375c",
+              "width": 390
+            }
+          ],
+          "title": "\u6807\u7b7e\u6536\u7eb3\u76d2",
+          "url": "http://127.0.0.1:62723/"
+        },
+        "subject": {
+          "kind": "website",
+          "name": "http://127.0.0.1:62723/"
+        },
+        "summary": "Captured http://127.0.0.1:62723/: 2 screenshot(s), 13 outline items, 1 headings, 0 images, 0 links, 1 forms \u2192 D:\\Project\\reverse\\state\\rf35-owned-final\\capture."
+      }
+    }
+  },
+  {
+    "tool": "web_site_close",
+    "arguments": {},
+    "result": {
+      "content": [
+        {
+          "text": "{\"result\":{\"closed\":true}}",
+          "type": "text"
+        }
+      ],
+      "isError": false,
+      "structuredContent": {
+        "result": {
+          "closed": true
+        }
+      }
+    }
+  }
+]

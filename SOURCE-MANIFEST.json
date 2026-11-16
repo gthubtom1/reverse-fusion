@@ -69,6 +69,14 @@
       "source": "reverse-fusion",
       "commit": "local",
       "role": "portable host detection and lifecycle commands"
+    },
+    {
+      "id": "craft-mcp",
+      "kind": "owned-launcher",
+      "source": "https://github.com/storytold/craft-anything",
+      "commit": "8374ad71544f2cc44698ea74ef990aa31600bac6",
+      "role": "original engine/MCP/plugins with host reasoning and owned setup",
+      "manifest": "components/craft-mcp/manifest.json"
     }
   ]
 }

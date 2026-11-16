@@ -26,3 +26,9 @@ sources/digests in `components/craft-native/licenses/manifest.json`. MinGW/GCC
 runtime terms and exception are included in the archive. The supplemental 0BSD
 text is the SPDX standard text; yaxpeax-arm declares 0BSD in its package metadata
 and ships no separate license text in that pinned package.
+
+RF-35 additionally distributes `components/craft-mcp`, a thin launcher linked to
+the same pinned Craft engine and original MCP library. Its separate archive
+includes the complete 268-package license inventory and GCC/MinGW notices;
+see `components/craft-mcp/dependency-notices.json` and its manifest. It does not
+embed or invoke the upstream AI/model loop or standalone host installer.

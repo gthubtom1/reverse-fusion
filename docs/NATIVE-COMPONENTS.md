@@ -1,6 +1,9 @@
 # 真实组件部署与实现交接
 
-RF-28 起，完整部署要求实际安装 REA、Spec Kit 和 Craft engine。路由、手写规格、
+RF-28 起，完整部署要求实际安装 REA、Spec Kit、Craft engine与原版MCP工具接入。
+RF-35默认Codex登记REA官方server与Craft engine MCP（303个engine工具）；原版层次、
+插件与现有冻结writer的协作见[MCP-INTEGRATION.md](MCP-INTEGRATION.md)。安装后执行
+`mcp-check`，不能以CLI运行或MCP doctor代替实际宿主登记。路由、手写规格、
 `session` 文件观察器和 `craft --source` 离线复制均不能替代这些组件。
 普通开发仍使用宿主原有工具；分析不强制进入规格或编码阶段。
 当前bridge返回当前项目cwd和组件argv；恢复同一案例/批次用只读

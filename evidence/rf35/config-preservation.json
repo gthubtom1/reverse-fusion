@@ -1,0 +1,18 @@
+{
+  "status": "pass",
+  "scope": "owned registration only; no unrelated model/server/config mutation",
+  "before_sha256": "ce29f287beda277e95dd0c416a9475669126b5dde17f59e89f259e6d6b223996",
+  "unchanged_prefix_bytes": 5189,
+  "after_sha256": "ef7dc2c8ba9a80f81e094db53c5d94ea042040d32a4e67a4003ab6de91c1f946",
+  "unrelated_mcp_names": [
+    "chrome-devtools",
+    "github",
+    "node_repl",
+    "playwright"
+  ],
+  "new_mcp_names": [
+    "reverse-fusion-rea",
+    "reverse-fusion-craft"
+  ],
+  "unrelated_semantic_config_equal": true
+}

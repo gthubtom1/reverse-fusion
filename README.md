@@ -3,12 +3,12 @@
 给当前 coding agent 使用的普通开发、逆向分析与独立复刻工具集。
 仓库：<https://github.com/gthubtom1/reverse-fusion>。
 
-产品版本 **`1.2.1`，Windows x64 / Codex 完整工程版**，当前维护阶段 `RF-34 最终收尾`。
+产品版本 **`1.3.0`，Windows x64 / Codex 完整工程版**，当前维护阶段 `RF-35 MCP 接入修复`。
 不需要用户继续提供样本才能安装或交付本版本。范围与有限发布门见
-[版本说明](docs/RELEASE-1.2.md)。准确的工程检查、历史实测和
+[版本说明](docs/RELEASE-1.3.md)。准确的工程检查、历史实测和
 未覆盖范围分别保存在 [当前状态](docs/CURRENT-STATE.md)、
 [发布验收](docs/FINAL-RELEASE-ACCEPTANCE.md) 与
-[最终收尾](docs/FINAL-CLOSEOUT.md)与[最新 checkpoint](checkpoints/RF-34-20261116-001.md)。
+[最终收尾](docs/FINAL-CLOSEOUT.md)与[最新 checkpoint](checkpoints/RF-35-20261116-001.md)。
 工程版本与具体软件的复刻结果分别报告。旧版本状态和执行记录按需追溯，不是当前下一步指令。
 
 ## 换电脑，只给仓库链接
@@ -38,7 +38,7 @@ cd reverse-fusion
 仓库正文和运行时只保留在这个 checkout；选择 Codex 的安装还会在用户级
 `~/.agents/skills/reverse-fusion/SKILL.md` 与 `~/.codex/AGENTS.md` 写入薄适配层。
 因此在另一个项目中可以直接调用同一个共享路由器，不需要复制整套 `skills/`。若要
-只做仓库本地安装，使用 `--no-global-adapter`。详细的发现、安装、跨项目使用与卸载
+只做仓库本地安装，使用 `--no-global-adapter`。Codex 默认还登记 `reverse-fusion-rea` 和 `reverse-fusion-craft` 两项 MCP；原版对照、模式、工具与宿主权限见 [MCP 接入](docs/MCP-INTEGRATION.md)。`mcp-check` 实际连接登记命令，`release-check --deployed` 缺登记或连接证据就拒绝完成。详细的发现、安装、跨项目使用与卸载
 步骤见 [部署指南](docs/DEPLOYMENT-GUIDE.md) 和 [Codex 跨项目接入](docs/CODEX-INTEGRATION.md)。
 
 ## 在对话中怎么用
@@ -88,8 +88,8 @@ cd reverse-fusion
 | Enhanced Reverse | 从我们二开版 `reverse-skill` 固定来源保留 603 个文件；本仓库维护路由、恢复指针、困难目标交接与有意适配 |
 | REA | 官方 `6.9.0`，负责原生分析、Evidence、比较和 ledger；本仓库有 typed adapter、runner 与明确归属的有限 integration verifier |
 | Spec | 需求、plan、tasks、来源引用与 converge；官方固定版本 CLI 必须安装，并执行其生成的项目工作流 |
-| Craft/Builder | 固定真实 Rust engine + 本仓库外部写入接缝；当前会话推理，原生 Craft 执行写入、命令和检查 |
-| 宿主与安装 | 本仓库的本地安装、Codex 用户级路由适配、发现、只读握手、当前会话 Builder 和配置摘要观察；不更改旧仓库、旧安装、模型、凭据或 provider 配置 |
+| Craft/Builder | 固定真实 Rust engine、原版 MCP 工具/插件加载 + 本仓库外部写入接缝；当前会话推理，原生 Craft 执行写入、命令和检查 |
+| 宿主与安装 | 本仓库的本地安装、Codex 用户级路由适配、发现、只读握手、当前会话 Builder 和配置摘要观察；不更改旧仓库、旧安装、模型、凭据或无关provider配置；Codex管理两项自有MCP登记 |
 
 这是一套有本地代码、技能正文、合同与验收的独立仓库。REA等固定运行时按manifest
 获取；当前Craft engine接缝、可重放Windows补丁和原生身份由本仓库维护。

@@ -1,10 +1,10 @@
 # Reverse Fusion 部署与使用指南
 
-1.2.1 完整工程分发的当前范围是 Windows x64 + Codex；安装不依赖用户样本。
+1.3.0 完整工程分发的当前范围是 Windows x64 + Codex；安装不依赖用户样本。
 Pi项目接入已实际完成全程使用；Claude项目适配及官方Spec布局检查完成，完整模型
 运行未实测。共用核心采用代表性完整运行，单个宿主适配无需登录并重复整段测试，
 验收条件见HOST-PROJECT-CONNECTION.md。其他系统按实际能力报告。
-工程发布门见 [RELEASE-1.2.md](RELEASE-1.2.md)。
+工程发布门见 [RELEASE-1.3.md](RELEASE-1.3.md)。
 把仓库链接交给正在使用的 Codex、Pi、Claude Code 或兼容 coding agent，并说
 “部署到当前工作区”即可。完整部署动作只在
 [AGENT-BOOTSTRAP.md](AGENT-BOOTSTRAP.md) 维护；这份指南解释使用与维护逻辑。
@@ -59,8 +59,8 @@ shell、模型或工具安装路径。
 6. REA、官方 Spec Kit 和真实 Craft 是基础部署必需组件，默认 Windows install 自动运行
    `bootstrap-core.ps1`。WABT、JADX 等按目标需要准备。原生组件交接及当前平台范围见
    [NATIVE-COMPONENTS.md](NATIVE-COMPONENTS.md)。保存实际能力、缺失项和下一步；不写旧安装、模型、凭据或
-   provider 运行配置。Codex 的受控适配层只写路由指引。Craft companion 的
-   `--all-tools` 保持原样。
+   无关provider运行配置。Codex额外登记两个自有MCP server，保留其他配置。执行`mcp-check`实际核实登记命令的
+   initialize、目录和工具调用，再执行`release-check --deployed`。工具范围/模式见[MCP接入](MCP-INTEGRATION.md)。
 
 Reverse Fusion 的正文属于共享 checkout，case 属于当前成果项目。Codex 的用户级适配层在任务涉及
 逆向、保护分析、协议复刻、行为重建或用户明确要求 Reverse Fusion 时触发；普通软件

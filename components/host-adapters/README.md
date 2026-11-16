@@ -4,7 +4,7 @@ The repository exposes one host-neutral CLI and shared Reverse/REA/Spec/Craft
 core. The selected host supplies reasoning with its existing account and model.
 
 Codex `install --apply --client codex` writes a managed user-level skill and
-marked global instruction block pointing to the shared checkout. Pi/Claude use
+marked global instruction block pointing to the shared checkout, plus owned official REA and Craft-engine MCP registrations. `mcp-check` verifies the actual configured stdio commands; desktop reload/tool discovery is separate. Pi/Claude use
 `connect --client <host> --project-root <outcome-project> --apply` for a thin
 project skill, instruction file and connection receipt. Installing the shared
 core alone does not connect every outcome project. Connection/removal preserves

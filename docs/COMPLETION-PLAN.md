@@ -4,7 +4,7 @@
 剩余工作及当前结论在[REMAINING-PRODUCT-WORK](REMAINING-PRODUCT-WORK.md)和
 [CURRENT-STATE](CURRENT-STATE.md)。这三个入口负责当前状态，本文件不再保留另一份“当前阶段”。
 
-当前版本1.2.1的安装/核心/交接/恢复/比较实现已交付，宿主适配按
+当前版本1.3.0的安装/核心/交接/恢复/比较实现已交付，宿主适配按
 [共用核心与宿主接入合同](HOST-PROJECT-CONNECTION.md)验收。
 模型完整运行观测与适配完成分别记录；Claude未完整实测不是待修工程项。
 具体新软件的行为调查和效果验收始终属于自己的case。

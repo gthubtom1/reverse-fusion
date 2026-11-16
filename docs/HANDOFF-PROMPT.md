@@ -14,7 +14,7 @@
 `components/reverse-core/preservation.json`、当前 checkpoint 和 Git 状态。
 具体目标还要读取本地路由返回的 `skill`、`required_reads` 和当前 case。
 
-当前产品版本为`1.2.1`，Reverse领域合同版本为`1.9.0`；维护阶段和本次收尾结果
+当前产品版本为`1.3.0`，Reverse领域合同版本为`1.9.0`；维护阶段和本次收尾结果
 以`CURRENT-STATE.md`、最新checkpoint及`docs/FINAL-CLOSEOUT.md`为准，
 不要从RF-33中间记录恢复已经结束的登录等待或旧样本任务。
 当前原始功能/适配范围已交付；以后新需求与具体目标按自己的范围推进，

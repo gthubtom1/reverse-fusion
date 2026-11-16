@@ -3,7 +3,7 @@
 唯一的当前22项逐条结果在[USER-REQUIREMENTS-REVIEW](USER-REQUIREMENTS-REVIEW.md)；
 本文件说明采用哪些实际材料判断，不重复维护另一张状态表。
 
-当前1.2.1已修复并验证白话目标保留、领域细化、官方Spec到真实Craft交接、比较修正、
+RF33/34已有链路记录；RF35新增MCP接入见[MCP接入](MCP-INTEGRATION.md)。当前1.3.0保留已验证的并验证白话目标保留、领域细化、官方Spec到真实Craft交接、比较修正、
 交付及恢复；Codex/Pi完整自有应用运行记录在`evidence/rf33/`。
 Codex完整运行含1416项有限比较和独立留出UI检查，Pi多次期限恢复后完成；
 真实耗时与失败保留，不把“有预算”宣传成任意任务都即时完成。

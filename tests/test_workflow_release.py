@@ -104,7 +104,9 @@ class WorkflowReleaseTests(unittest.TestCase):
                 if path == ROOT / 'state/install.json':
                     return json.dumps(install)
                 return actual_read(path, *args, **kwargs)
-            with patch('reverse_fusion.release.platform.system', return_value='Windows'), \
+            with patch('reverse_fusion.release.inspect_mcp', return_value={'enabled': True}), \
+                    patch('reverse_fusion.release.connection_status', return_value={'status': 'pass'}), \
+                    patch('reverse_fusion.release.platform.system', return_value='Windows'), \
                     patch('reverse_fusion.release.verification_status', return_value={'status': 'pass'}), \
                     patch('reverse_fusion.release.platform.machine', return_value='AMD64'), \
                     patch('reverse_fusion.release.component_status', return_value={}), \
@@ -116,6 +118,12 @@ class WorkflowReleaseTests(unittest.TestCase):
                 result = check_release(ROOT, deployed=True)
                 self.assertEqual(result['status'], 'blocked')
                 self.assertTrue(any(gate['id'] == 'deployed-entry' and gate['status'] == 'fail' for gate in result['checks']))
+
+    def test_deployed_release_requires_real_registered_protocol_check(self):
+        with patch('reverse_fusion.release.connection_status', return_value={'status':'fail','reason':'no real calls'}):
+            result=check_release(ROOT,deployed=True)
+            self.assertEqual(result['status'],'blocked')
+            self.assertTrue(any(g['id']=='mcp-protocol-calls' and g['status']=='fail' for g in result['checks']))
 
 
 if __name__ == '__main__':

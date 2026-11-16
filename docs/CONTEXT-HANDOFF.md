@@ -1,6 +1,6 @@
 # 当前上下文交接
 
-当前产品版本读取`VERSION`（现为1.2.1），当前阶段和结果读取
+当前产品版本读取`VERSION`（现为1.3.0），当前阶段和结果读取
 [CURRENT-STATE](CURRENT-STATE.md)及最新checkpoint；不从旧聊天或历史“当前”段落恢复任务。
 
 - 新电脑安装以[AGENT-BOOTSTRAP](AGENT-BOOTSTRAP.md)为唯一入口；先安装真实核心，再接所选宿主。

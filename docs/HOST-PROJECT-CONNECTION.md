@@ -1,7 +1,10 @@
 # 在Codex、Pi、Claude的成果项目接入
 
 共享仓库保留唯一组件运行时、路由和领域正文。当前宿主负责推理，真实Craft执行
-实现，不另外选择模型或绑定账号。Codex全局接入继续通过原安装流程管理。
+实现，不另外选择模型或绑定账号。Codex全局接入通过原安装流程管理，1.3默认还登记REA/Craft MCP。
+Pi/Claude的`connect`管理项目技能/指引，不自动写它们的全局MCP配置；共用CLI/native
+链路可用。需要这些宿主的原生MCP时，按其配置约定登记同一固定server，核对实际
+协议/权限，不把Codex登记冒称其他宿主已经接入。见[MCP接入](MCP-INTEGRATION.md)。
 
 Pi、Claude或希望显式接入的Codex项目可执行：
 

@@ -1,8 +1,8 @@
 # 当前开发与维护计划
 
-当前产品版本为1.2.1，阶段结果以[CURRENT-STATE](CURRENT-STATE.md)和最新checkpoint为准。
+当前产品版本为1.3.0，阶段结果以[CURRENT-STATE](CURRENT-STATE.md)和最新checkpoint为准。
 当前约定功能/适配范围已完成；没有因为Claude未登录而遗留的强制开发任务。
-完成清单见[需求核对](USER-REQUIREMENTS-REVIEW.md)，交付说明见[RELEASE-1.2](RELEASE-1.2.md)。
+完成清单见[需求核对](USER-REQUIREMENTS-REVIEW.md)，交付说明见[RELEASE-1.3](RELEASE-1.3.md)。
 
 接下来的工作由用户的新项目、已复现缺陷或有明确收益的上游能力更新驱动：
 
